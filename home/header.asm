@@ -15,10 +15,16 @@ Bankswitch::
 	ret
 
 SECTION "rst18", ROM0[$0018]
-	rst $38
-
-SECTION "rst20", ROM0[$0020]
-	rst $38
+Function18::
+	ldh a, [rSTAT]
+	and %11
+	jr z, Function18
+.loop
+	ldh a, [rSTAT]
+; SECTION "rst20", ROM0[$0020]
+	and %11
+	jr nz, .loop
+	ret
 
 SECTION "rst28", ROM0[$0028]
 JumpTable::
@@ -35,8 +41,13 @@ JumpTable::
 	jp hl
 
 SECTION "rst38", ROM0[$0038]
-	rst $38
-
+Function38::
+	nop
+	ld a, $39
+.loop
+	dec a
+	jr nz, .loop
+	ret
 
 ; Game Boy hardware interrupts
 
