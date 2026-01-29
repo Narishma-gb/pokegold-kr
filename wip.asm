@@ -34,27 +34,70 @@ MACRO drd
 	dr \1, (\2) + gs_diff
 ENDM
 
+; Predefs
+MACRO drp
+	dr \1Predef, (\2) * 3 + $4b5b
+ENDM
+
 
 ;INCLUDE "constants_wip.asm"
 ;INCLUDE "main.asm"
 
-SECTION "rom0", ROM0[$150]
+SECTION "rom0", ROM0[$153f]
 ; ROM $00 : $0000 - $3FFF
 
-	dr VBlank, $150
-	dr LCD, $41b
-	dr _Start, $5ca
-	dr Serial, $698
-	dr Joypad, $8d2
+	dr UpdateBGMapBuffer, $153f
+	dr UpdateBGMap, $15a3
+	dr Serve1bppRequest, $15cc
+	dr Serve2bppRequest, $1623
+	dr AnimateTileset, $167e
+	dr FillBGMap0WithBlack, $1695
+	dr UpdateSprites, $19c2
+	dr PrinterReceive, $1f10
+	dr AskSerial, $1f1c
+	dr GameTimer, $1f57
+	dr Function2e73, $2e73
 	dr FarCall_hl, $2eae
+	dr Predef, $2ed0
+	dr OpenSRAM, $317a
+	dr CloseSRAM, $3194
+	dr ClearSprites, $31a7
+	dr CopyBytes, $31c2
+	dr GetFarWord, $31e4
+	dr ByteFill, $31f4
+	dr LoadTilemapToTempTilemap, $3200
+	dr SafeLoadTempTilemapToTilemap, $3207
+	dr PrintLetterDelay, $3280
+	dr PrintNum, $32db
+	dr WaitBGMap, $34b9
+	dr Function34c4, $34c4
+	dr ApplyTilemap, $34e2
+	dr ClearPalettes, $3539
+	dr GetWeekday, $358e
+	dr PlayMonCry, $39e2
+	dr PrintBCDNumber, $3ac7
+	dr InitSound, $3d1a
+	dr PlaySFX, $3def
+	dr WaitSFX, $3e21
 
 
-;SECTION "rom1", ROMX[$4000], BANK[1]
+SECTION "rom1", ROMX[$4000], BANK[1]
 ; ROM $01 : $4000 - $7FFF
 
+	dr PlaceWaitingText, $4000
+	dr WriteOAMDMACodeToHRAM, $4034
+	set_gs_diff $3b
+	drd GameInit, $65d8
 
-;SECTION "rom2", ROMX[$4000], BANK[2]
+
+SECTION "rom2", ROMX[$4000], BANK[2]
 ; ROM $02 : $8000 - $BFFF
+
+	dr _LoadOverworldAttrmapPals, $4000
+	dr _ScrollBGMapPalettes, $404f
+	dr PredefPointers, $4b5b
+	drp InitSGBBorder, $30
+	dr InitCGBPals, $5ccd
 
 
 ;SECTION "rom3", ROMX[$4000], BANK[3]
@@ -65,8 +108,13 @@ SECTION "rom0", ROM0[$150]
 ; ROM $04 : $10000 - $13FFF
 
 
-;SECTION "rom5", ROMX[$4000], BANK[5]
+SECTION "rom5", ROMX[$4000], BANK[5]
 ; ROM $05 : $14000 - $17FFF
+
+	dr GetTimeOfDay, $4032
+	dr StartClock, $4089
+	dr _InitTime, $40ff
+	dr _UpdatePlayerSprite, $413c
 
 
 ;SECTION "rom6", ROMX[$4000], BANK[6]
@@ -81,8 +129,10 @@ SECTION "rom0", ROM0[$150]
 ; ROM $08 : $20000 - $23FFF
 
 
-;SECTION "rom9", ROMX[$4000], BANK[9]
+SECTION "rom9", ROMX[$4000], BANK[9]
 ; ROM $09 : $24000 - $27FFF
+
+	dr StringBufferPointers, $4000
 
 
 ;SECTION "rom10", ROMX[$4000], BANK[10]
@@ -101,8 +151,10 @@ SECTION "rom0", ROM0[$150]
 ; ROM $0d : $34000 - $37FFF
 
 
-;SECTION "rom14", ROMX[$4000], BANK[14]
+SECTION "rom14", ROMX[$4000], BANK[14]
 ; ROM $0e : $38000 - $3BFFF
+
+	dr Battle_GetTrainerName, $58f2
 
 
 ;SECTION "rom15", ROMX[$4000], BANK[15]
@@ -185,9 +237,11 @@ SECTION "rom0", ROM0[$150]
 ; ROM $22 : $88000 - $8BFFF
 
 
-;SECTION "rom35", ROMX[$4000], BANK[35]
+SECTION "rom35", ROMX[$4000], BANK[35]
 ; ROM $23 : $8C000 - $8FFFF
 
+	dr _TimeOfDayPals, $436a
+	dr _UpdateTimePals, $439b
 
 ;SECTION "rom36", ROMX[$4000], BANK[36]
 ; ROM $24 : $90000 - $93FFF
@@ -277,8 +331,10 @@ SECTION "rom0", ROM0[$150]
 ; ROM $39 : $E4000 - $E7FFF
 
 
-;SECTION "rom58", ROMX[$4000], BANK[58]
+SECTION "rom58", ROMX[$4000], BANK[58]
 ; ROM $3a : $E8000 - $EBFFF
+
+	dr _UpdateSound, $405c
 
 
 ;SECTION "rom59", ROMX[$4000], BANK[59]
@@ -293,9 +349,12 @@ SECTION "rom0", ROM0[$150]
 ; ROM $3d : $F4000 - $F7FFF
 
 
-;SECTION "rom62", ROMX[$4000], BANK[62]
+SECTION "rom62", ROMX[$4000], BANK[62]
 ; ROM $3e : $F8000 - $FBFFF
 
+	dr _LoadStandardFont, $4000
+	dr _LoadFontsExtra, $400f
+	dr _LoadFontsBattleExtra, $4035
 
 ;SECTION "rom63", ROMX[$4000], BANK[63]
 ; ROM $3f : $FC000 - $FFFFF
@@ -493,9 +552,10 @@ SECTION "rom0", ROM0[$150]
 ; ROM $6f : $1BC000 - $1BFFFF
 
 
-;SECTION "rom112", ROMX[$4000], BANK[112]
+SECTION "rom112", ROMX[$4000], BANK[112]
 ; ROM $70 : $1C0000 - $1C3FFF
 
+	dr _DudeAutoInput_A, $4b16
 
 ;SECTION "rom113", ROMX[$4000], BANK[113]
 ; ROM $71 : $1C4000 - $1C7FFF
@@ -553,5 +613,17 @@ SECTION "rom0", ROM0[$150]
 ; ROM $7e : $1F8000 - $1FBFFF
 
 
-;SECTION "rom127", ROMX[$4000], BANK[127]
+SECTION "rom127", ROMX[$4000], BANK[127]
 ; ROM $7f : $1FC000 - $1FFFFF
+
+	dr Function1fc000, $4000
+	dr Function1fc019, $4019
+	dr Function1fc08d, $408d
+	dr Function1fc0b8, $40b8
+	dr Function1fc0ff, $40ff
+	dr Function1fc119, $4119
+	dr Function1fc14e, $414e
+	dr Function1fc180, $4180
+	dr Function1fc1cb, $41cb
+	dr Function1fc1f2, $41f2
+	dr Function1fc225, $4225

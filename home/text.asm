@@ -1,20 +1,31 @@
-ClearBox::
-; Fill a c*b box at hl with blank tiles.
-	ld a, ' '
-	ld de, SCREEN_WIDTH
-.row
+MACRO farcall_text
+	dec sp
 	push hl
-	push bc
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop bc
+	push af
+	push hl
+	ld hl, sp + 6
+	ld [hl], BANK(\1)
+	dec hl
+	ld [hl], HIGH(\1)
+	dec hl
+	ld [hl], LOW(\1)
 	pop hl
-	add hl, de
-	dec b
-	jr nz, .row
+	pop af
+	call Function2e73
+	inc sp
+	inc sp
+	inc sp
+ENDM
+
+Function0ecf::
+	farcall_text Function1fc08d
 	ret
+
+Function0ee6::
+	call Function14a2
+	call ClearTilemap
+	ret z
+	jp WaitBGMap
 
 ClearTilemap::
 ; Fill wTilemap with blank tiles.
@@ -24,98 +35,25 @@ ClearTilemap::
 	ld bc, wTilemapEnd - wTilemap
 	call ByteFill
 
-	; Update the BG Map.
 	ldh a, [rLCDC]
 	bit B_LCDC_ENABLE, a
-	ret z
-	jp WaitBGMap
+	ret
 
 ClearScreen::
 	ld a, PAL_BG_TEXT
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
 	call ByteFill
-	jr ClearTilemap
+	call ClearTilemap
+	ret z
+	jp Function34c4
 
 Textbox::
-; Draw a text box at hl with room for b lines of c characters each.
-; Places a border around the textbox, then switches the palette to the
-; text black-and-white scheme.
-	push bc
-	push hl
-	call TextboxBorder
-	pop hl
-	pop bc
-	jr TextboxPalette
-
-TextboxBorder::
-	; Top
-	push hl
-	ld a, '┌'
-	ld [hli], a
-	inc a ; "─"
-	call .PlaceChars
-	inc a ; "┐"
-	ld [hl], a
-	pop hl
-
-	; Middle
-	ld de, SCREEN_WIDTH
-	add hl, de
-.row
-	push hl
-	ld a, '│'
-	ld [hli], a
-	ld a, ' '
-	call .PlaceChars
-	ld [hl], '│'
-	pop hl
-
-	ld de, SCREEN_WIDTH
-	add hl, de
-	dec b
-	jr nz, .row
-
-	; Bottom
-	ld a, '└'
-	ld [hli], a
-	ld a, '─'
-	call .PlaceChars
-	ld [hl], '┘'
-
+	farcall_text Function1fc0b8
 	ret
 
-.PlaceChars:
-; Place char a c times.
-	ld d, c
-.loop
-	ld [hli], a
-	dec d
-	jr nz, .loop
-	ret
-
-TextboxPalette::
-; Fill text box width c height b at hl with pal 7
-	ld de, wAttrmap - wTilemap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	ld a, PAL_BG_TEXT
-.col
-	push bc
-	push hl
-.row
-	ld [hli], a
-	dec c
-	jr nz, .row
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .col
+Function0f29::
+	farcall_text Function1fc0ff
 	ret
 
 SpeechTextbox::
@@ -126,7 +64,7 @@ SpeechTextbox::
 	jp Textbox
 
 GameFreakText:: ; unreferenced
-	text "ゲームフりーク！" ; "GAMEFREAK!"
+	text "ゲームフリーク！"
 	done
 
 RadioTerminator::
@@ -174,7 +112,6 @@ NextChar::
 	inc de
 	jp PlaceNextChar
 
-CheckDict::
 MACRO dict
 	if \1 == 0
 		and a
@@ -193,6 +130,10 @@ MACRO dict
 		jp z, \2
 	endc
 ENDM
+
+CheckDict::
+	cp $c
+	jp c, Function1229
 
 	dict '<LINE>',    LineChar
 	dict '<NEXT>',    NextLineChar
@@ -227,8 +168,8 @@ ENDM
 	dict '<TARGET>',  PlaceMoveTargetsName
 	dict '<USER>',    PlaceMoveUsersName
 	dict '<ENEMY>',   PlaceEnemysName
-	dict 'ﾟ',         .diacritic
-	cp 'ﾞ'
+	dict '゜',         .diacritic
+	cp '゛'
 	jr nz, .not_diacritic
 
 .diacritic
@@ -252,7 +193,7 @@ ENDM
 .hiragana_dakuten
 	add 'か' - 'が'
 .place_dakuten
-	ld b, 'ﾞ' ; dakuten
+	ld b, '゛' ; dakuten
 	call Diacritic
 	jr .place
 
@@ -266,7 +207,7 @@ ENDM
 .hiragana_handakuten
 	add 'は' - 'ぱ'
 .place_handakuten
-	ld b, 'ﾟ' ; handakuten
+	ld b, '゜' ; handakuten
 	call Diacritic
 
 .place
@@ -364,14 +305,14 @@ PlaceCommandCharacter::
 	pop de
 	jp NextChar
 
-TMCharText::      db "TM@"
-TrainerCharText:: db "TRAINER@"
-PCCharText::      db "PC@"
-RocketCharText::  db "ROCKET@"
-PlacePOKeText::   db "POKé@"
-KougekiText::     db "こうげき@"
+TMCharText::      db "기술머신@"
+TrainerCharText:: db "트레이너@"
+PCCharText::      db "컴퓨터@"
+RocketCharText::  db "로켓단@"
+PlacePOKeText::   db "포켓몬@"
+KougekiText::     db "こうげき@" ; Japanese leftover
 SixDotsCharText:: db "……@"
-EnemyText::       db "Enemy @"
+EnemyText::       db "적의 @"
 PlacePKMNText::   db "<PK><MN>@"
 PlacePOKEText::   db "<PO><KE>@"
 String_Space::    db " @"
@@ -411,9 +352,9 @@ Paragraph::
 .linkbattle
 	call Text_WaitBGMap
 	call PromptButton
-	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
-	call ClearBox
+	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY - 1
+	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
+	call Function0ecf
 	call UnloadBlinkingCursor
 	ld c, 20
 	call DelayFrames
@@ -507,17 +448,17 @@ NullChar:: ; unused
 	text "エラー"
 	done
 
+Function1229::
+	ld b, a
+	inc de
+	ld a, [de]
+	ld c, a
+	farcall_text Function1fc119
+	call PrintLetterDelay
+	jp NextChar
+
 TextScroll::
-	hlcoord TEXTBOX_X, TEXTBOX_INNERY
-	decoord TEXTBOX_X, TEXTBOX_INNERY - 1
-	ld bc, 3 * SCREEN_WIDTH
-	call CopyBytes
-	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
-	ld a, ' '
-	ld bc, TEXTBOX_INNERW
-	call ByteFill
-	ld c, 5
-	call DelayFrames
+	farcall_text Function1fc14e
 	ret
 
 Text_WaitBGMap::
@@ -958,11 +899,116 @@ TextCommand_DAY::
 	dw .Fri
 	dw .Satur
 
-.Sun:    db "SUN@"
-.Mon:    db "MON@"
-.Tues:   db "TUES@"
-.Wednes: db "WEDNES@"
-.Thurs:  db "THURS@"
-.Fri:    db "FRI@"
-.Satur:  db "SATUR@"
-.Day:    db "DAY@"
+.Sun:    db "일@"
+.Mon:    db "월@"
+.Tues:   db "화@"
+.Wednes: db "수@"
+.Thurs:  db "목@"
+.Fri:    db "금@"
+.Satur:  db "토@"
+.Day:    db "요일@"
+
+Function1470::
+	di
+	ld a, $02
+	ldh [rSVBK], a
+	ld a, $00
+	ld [wd120], a
+	ld a, $01
+	ldh [rSVBK], a
+	ei
+	ret
+
+Function1480::
+	di
+	ld a, $02
+	ldh [rSVBK], a
+	ld a, $FF
+	ld [wd120], a
+	ld a, $01
+	ldh [rSVBK], a
+	ei
+	ret
+
+Function1490::
+	di
+	ld a, $02
+	ldh [rSVBK], a
+	ld a, [wd120]
+	cpl
+	ld [wd120], a
+	ld a, $01
+	ldh [rSVBK], a
+	ei
+	ret
+
+Function14a2::
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_AREA
+	inc b
+	inc c
+	jr .start_loop
+
+.loop
+	res B_BG_BANK1, [hl]
+	inc hl
+.start_loop
+	dec c
+	jr nz, .loop
+	dec b
+	jr nz, .loop
+	ret
+
+Function14b6::
+	push bc
+	push hl
+	ld bc, $0940
+	add hl, bc
+	res 3, [hl]
+	pop hl
+	pop bc
+	ret
+
+Function14c1::
+	farcall_text Function1fc180
+	ret
+
+Function14d8::
+	farcall_text Function1fc1cb
+	ret
+
+Function14ef::
+	farcall_text Function1fc1f2
+	ret
+
+Function1506::
+	push de
+	farcall_text Function1fc225
+	pop de
+	ret
+
+Function151f::
+	ldh a, [hROMBank]
+	push af
+	ld a, b
+	rst Bankswitch
+	di
+	ld a, $02
+	ldh [rSVBK], a
+	ld a, [wd120]
+	ld b, a
+	ld c, $10
+.asm_152f
+	ld a, [de]
+	inc de
+	xor b
+	ldi [hl], a
+	ldi [hl], a
+	dec c
+	jr nz, .asm_152f
+	ld a, $01
+	ldh [rSVBK], a
+	ei
+	pop af
+	rst Bankswitch
+	ret

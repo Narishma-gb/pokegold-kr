@@ -93,7 +93,7 @@ Serial_ExchangeBytes::
 	ld b, a
 	inc hl
 
-	ld a, 48
+	ld a, 96
 .wait
 	dec a
 	jr nz, .wait
@@ -176,6 +176,11 @@ Serial_ExchangeByte::
 	dec a
 	jr nz, .long_delay_loop
 
+	ld a, 255
+.long_delay_loop2
+	dec a
+	jr nz, .long_delay_loop2
+
 .await_new_data
 	xor a
 	ldh [hSerialReceivedNewData], a
@@ -222,7 +227,7 @@ Serial_ExchangeByte::
 	jp .timeout_loop
 
 .ShortDelay:
-	ld a, 15
+	ld a, 30
 .short_delay_loop
 	dec a
 	jr nz, .short_delay_loop

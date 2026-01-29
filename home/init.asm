@@ -17,13 +17,18 @@ _Start::
 	cp BOOTUP_A_CGB
 	jr z, .cgb
 	xor a ; FALSE
+	ldh [hCGB], a
 	jr .load
 
 .cgb
 	ld a, TRUE
+	ldh [hCGB], a
+	bit B_BOOTUP_B_AGB, b
+	jr nz, .load
+	xor a ; FALSE
 
 .load
-	ldh [hCGB], a
+	ldh [hAGB], a
 
 Init::
 	di
@@ -70,17 +75,7 @@ Init::
 	ld sp, wStackTop
 
 	call ClearVRAM
-
-; Clear HRAM
-	ldh a, [hCGB]
-	push af
-	xor a
-	ld hl, STARTOF(HRAM)
-	ld bc, SIZEOF(HRAM)
-	call ByteFill
-	pop af
-	ldh [hCGB], a
-
+	farcall Function1fc000
 	call ClearSprites
 
 	ld a, BANK(WriteOAMDMACodeToHRAM) ; aka BANK(GameInit)
@@ -108,10 +103,7 @@ Init::
 	ld a, CONNECTION_NOT_ESTABLISHED
 	ldh [hSerialConnectionStatus], a
 
-	ld h, HIGH(vBGMap0)
-	call BlankBGMap
-	ld h, HIGH(vBGMap1)
-	call BlankBGMap
+	farcall Function1fc019
 
 	callfar InitCGBPals
 
@@ -157,23 +149,4 @@ ClearVRAM::
 	ld bc, SIZEOF(VRAM)
 	xor a
 	call ByteFill
-	ret
-
-BlankBGMap::
-	ld a, ' '
-	jr FillBGMap
-
-FillBGMap_l:: ; unreferenced
-	ld a, l
-	; fallthrough
-
-FillBGMap::
-	ld de, vBGMap1 - vBGMap0
-	ld l, e
-.loop
-	ld [hli], a
-	dec e
-	jr nz, .loop
-	dec d
-	jr nz, .loop
 	ret

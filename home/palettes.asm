@@ -261,6 +261,14 @@ ReloadPalettes::
 	decoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
 .loop
+	ld a, [de]
+	bit B_BG_BANK1, a
+	jr z, .bg_bank0
+	ld a, BG_BANK1 | PAL_BG_TEXT
+	ld [de], a
+	inc hl
+	jr .skip
+.bg_bank0
 	ld a, [hli]
 	cp '■'
 	jr c, .skip

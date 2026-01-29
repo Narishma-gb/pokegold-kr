@@ -300,6 +300,7 @@ VRAM $01
 ; SRAM $03
 ; 	"Boxes 8-14"
 ; 	"Backup Save 3"
-; HRAM
+HRAM
 ; 	"OAM DMA"
-; 	"HRAM"
+	org $ff8a
+	"HRAM"

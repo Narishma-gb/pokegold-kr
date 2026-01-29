@@ -6,8 +6,11 @@ LCD::
 	and a
 	jr z, .done
 
-	push hl
 	ldh a, [rLY]
+	cp LY_VBLANK
+	jr nc, .done
+
+	push hl
 	ld l, a
 	ld h, HIGH(wLYOverrides)
 	ld h, [hl]
