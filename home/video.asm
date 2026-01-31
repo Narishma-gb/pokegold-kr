@@ -78,166 +78,31 @@ WaitTop::
 	and a
 	ret z
 
+	xor a
+	ldh [hBGMapThird], a
+.loop
+	call DelayFrame
 	ldh a, [hBGMapThird]
 	and a
-	jr z, .done
+	jr nz, .loop
 
-	call DelayFrame
-	jr WaitTop
-
-.done
 	xor a
 	ldh [hBGMapMode], a
 	ret
 
 UpdateBGMap::
-; Update the BG Map, in thirds, from wTilemap and wAttrmap.
-
-	ldh a, [hBGMapMode]
-	and a ; 0
-	ret z
-
-; BG Map 0
-	dec a ; 1
-	jr z, .Tiles
-	dec a ; 2
-	jr z, .Attr
-
-; BG Map 1
-	dec a ; useless
-
-	ldh a, [hBGMapAddress]
-	ld l, a
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
-	push hl
-
-	xor a ; LOW(vBGMap1)
-	ldh [hBGMapAddress], a
-	ld a, HIGH(vBGMap1)
-	ldh [hBGMapAddress + 1], a
-
-	ldh a, [hBGMapMode]
-	push af
-	cp 3
-	call z, .Tiles
-	pop af
-	cp 4
-	call z, .Attr
-
-	pop hl
-	ld a, l
-	ldh [hBGMapAddress], a
-	ld a, h
-	ldh [hBGMapAddress + 1], a
+	farcall_reg Function1fc2d1
 	ret
 
-.Attr:
-	ld a, 1
-	ldh [rVBK], a
-
-	hlcoord 0, 0, wAttrmap
-	call .update
-
-	ld a, 0
-	ldh [rVBK], a
-	ret
-
-.Tiles:
-	hlcoord 0, 0
-
-.update
-	ld [hSPBuffer], sp
-
-; Which third?
-	ldh a, [hBGMapThird]
-	and a ; 0
-	jr z, .top
-	dec a ; 1
-	jr z, .middle
-	; 2
-
-DEF THIRD_HEIGHT EQU SCREEN_HEIGHT / 3
-
-; bottom
-	ld de, 2 * THIRD_HEIGHT * SCREEN_WIDTH
-	add hl, de
-	ld sp, hl
-
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
-	ldh a, [hBGMapAddress]
-	ld l, a
-
-	ld de, 2 * THIRD_HEIGHT * TILEMAP_WIDTH
-	add hl, de
-
-; Next time: top third
-	xor a
-	jr .start
-
-.middle
-	ld de, THIRD_HEIGHT * SCREEN_WIDTH
-	add hl, de
-	ld sp, hl
-
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
-	ldh a, [hBGMapAddress]
-	ld l, a
-
-	ld de, THIRD_HEIGHT * TILEMAP_WIDTH
-	add hl, de
-
-; Next time: bottom third
-	ld a, 2
-	jr .start
-
-.top
-	ld sp, hl
-
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
-	ldh a, [hBGMapAddress]
-	ld l, a
-
-; Next time: middle third
-	ld a, 1
-
-.start
-; Which third to update next time
-	ldh [hBGMapThird], a
-
-; Rows of tiles in a third
-	ld a, THIRD_HEIGHT
-
-; Discrepancy between wTilemap and BGMap
-	ld bc, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
-
-.row
-; Copy a row of 20 tiles
-rept SCREEN_WIDTH / 2 - 1
-	pop de
-	ld [hl], e
-	inc l
-	ld [hl], d
-	inc l
-endr
-	pop de
-	ld [hl], e
-	inc l
-	ld [hl], d
-
-	add hl, bc
-	dec a
-	jr nz, .row
-
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
-	ld sp, hl
-	ret
+Function15ba::
+	ldh a, [hVBlank]
+	cp VBLANK_CUTSCENE
+	jr z, .asm_15c3
+	call DelayFrame
+.asm_15c3
+	call DelayFrame
+	call DelayFrame
+	jp DelayFrame
 
 Serve1bppRequest::
 	ld a, [wRequested1bppSize]

@@ -1,9 +1,7 @@
 LoadTilemapToTempTilemap::
 ; Load wTilemap into wTempTilemap
-	hlcoord 0, 0
-	decoord 0, 0, wTempTilemap
-	ld bc, wTilemapEnd - wTilemap
-	jp CopyBytes
+	farcall Function1fc657
+	ret
 
 SafeLoadTempTilemapToTilemap::
 	xor a
@@ -15,7 +13,5 @@ SafeLoadTempTilemapToTilemap::
 
 LoadTempTilemapToTilemap::
 ; Load wTempTilemap into wTilemap
-	hlcoord 0, 0, wTempTilemap
-	decoord 0, 0
-	ld bc, wTilemapEnd - wTilemap
-	jp CopyBytes
+	farcall Function1fc6a4
+	ret

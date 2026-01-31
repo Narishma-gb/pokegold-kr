@@ -166,7 +166,7 @@ SECTION UNION "Miscellaneous", WRAM0
 ; it uses exactly 480 bytes.
 wSurroundingTiles:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
 
-
+/*
 SECTION UNION "Miscellaneous", WRAM0
 
 ; box save buffer
@@ -389,7 +389,7 @@ NEXTU
 wPuzzlePieces:: ds 6 * 6
 ENDU
 
-
+*/
 SECTION "Unused Map Buffer", WRAM0
 
 ; This was a buffer for map-related pointers in the 1997 G/S prototype.
@@ -397,7 +397,7 @@ SECTION "Unused Map Buffer", WRAM0
 wUnusedMapBuffer:: ds 24
 wUnusedMapBufferEnd::
 
-
+/*
 SECTION UNION "Overworld Map", WRAM0
 
 ; overworld map blocks
@@ -621,8 +621,8 @@ wMysteryGiftPlayerWhichDeco:: db
 wMysteryGiftPlayerBackupItem:: db
 	ds 1
 wMysteryGiftPlayerDataEnd::
-
-
+*/
+/*
 SECTION UNION "Overworld Map", WRAM0
 
 	align 8
@@ -1047,8 +1047,8 @@ wDebugRoomGBID:: dw
 ENDU
 
 ENDC
-
-
+*/
+/*
 SECTION "Video", WRAM0
 
 ; bg map
@@ -1815,8 +1815,8 @@ ENDU
 
 wListPointer:: dw
 wUnusedNamesPointer:: dw
-
-
+*/
+/*
 SECTION "WRAM 1", WRAMX
 
 wItemAttributesPointer:: dw
@@ -2303,8 +2303,8 @@ wOptions2::
 	ds 2
 
 wOptionsEnd::
-
-
+*/
+/*
 SECTION "Game Data", WRAMX
 
 wGameData::
@@ -2662,8 +2662,8 @@ wXCoord:: db
 wScreenSave:: ds SCREEN_META_WIDTH * SCREEN_META_HEIGHT
 
 wCurMapDataEnd::
-
-
+*/
+/*
 SECTION "Party", WRAMX
 
 wPokemonData::
@@ -2807,8 +2807,8 @@ ENDU
 
 wPokemonDataEnd::
 wGameDataEnd::
-
-
+*/
+/*
 SECTION "Stack", WRAMX
 
 	ds 2
@@ -2816,5 +2816,5 @@ wStackBottom::
 	ds $fc
 wStackTop::
 	ds 1
-
+*/
 ENDSECTION

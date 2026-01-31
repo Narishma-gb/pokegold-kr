@@ -258,16 +258,16 @@ ROM0
 ; ROMX $7f
 ; 	org $7df8
 ; 	"Stadium 2 Checksums"
-; WRAM0
-; 	"Audio RAM"
-; 	"WRAM"
-; 	align 8
-; 	"GBC Palettes"
-; 	align 8
-; 	"Sprites"
-; 	"Tilemap"
-; 	"Miscellaneous"
-; 	"Unused Map Buffer"
+WRAM0
+	"Audio RAM"
+	"WRAM"
+	align 8
+	"GBC Palettes"
+	align 8
+	"Sprites"
+	"Tilemap"
+	"Miscellaneous"
+	"Unused Map Buffer"
 ; 	align 8
 ; 	"Overworld Map"
 ; 	align 4

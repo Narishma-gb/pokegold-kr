@@ -1,6 +1,6 @@
 ; ScriptCommandTable indexes (see engine/overworld/scripting.asm)
 	const_def
-
+/*
 	const scall_command ; $00
 MACRO scall
 	db scall_command
@@ -531,19 +531,21 @@ ENDM
 MACRO closewindow
 	db closewindow_command
 ENDM
+*/
+	const_next $52
 
-	const jumptextfaceplayer_command ; $51
+	const jumptextfaceplayer_command ; $52
 MACRO jumptextfaceplayer
 	db jumptextfaceplayer_command
 	dw \1 ; text_pointer
 ENDM
 
-	const jumptext_command ; $52
+	const jumptext_command ; $53
 MACRO jumptext
 	db jumptext_command
 	dw \1 ; text_pointer
 ENDM
-
+/*
 	const waitbutton_command ; $53
 MACRO waitbutton
 	db waitbutton_command
@@ -1011,5 +1013,5 @@ MACRO warpfacing
 	db \3 ; x
 	db \4 ; y
 ENDM
-
+*/
 DEF NUM_EVENT_COMMANDS EQU const_value

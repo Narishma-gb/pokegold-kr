@@ -1,3 +1,51 @@
+Function2e73::
+	push hl
+	push hl
+	push af
+	push bc
+	push hl
+	ld hl, sp + 14
+	ldh a, [hROMBank]
+	ld b, a
+	ld a, [hl]
+	rst Bankswitch
+	ld [hl], b
+	dec hl
+	ld b, [hl]
+	dec hl
+	ld c, [hl]
+	dec hl
+	dec hl
+	dec hl
+	ld [hl], HIGH(Function2e94)
+	dec hl
+	ld [hl], LOW(Function2e94)
+	dec hl
+	ld [hl], b
+	dec hl
+	ld [hl], c
+	pop hl
+	pop bc
+	pop af
+	ret
+
+Function2e94::
+	push af
+	push hl
+	ld hl, sp + 8
+	ld a, [hl]
+	rst Bankswitch
+	pop hl
+	pop af
+	ret
+
+DummyEndPredef::
+; Unused function at the end of PredefPointers.
+rept 16
+	nop
+endr
+	ret
+
 FarCall_hl::
 ; Call a:hl.
 ; Preserves other registers.

@@ -15,8 +15,24 @@ _InitString::
 	ld a, [hli]
 	cp '@'
 	jr z, .blank
+	cp $c
+	jr nc, .single_byte
+
+; 2-byte character
+	cp $b
+	jr nz, .notblank
+	dec c
+	jr z, .blank
+; if in table $b, read the second byte
+	ld a, [hli]
+	cp $ff
+	jr nz, .notblank
+	jr .next
+
+.single_byte
 	cp ' '
 	jr nz, .notblank
+.next
 	dec c
 	jr nz, .loop
 .blank

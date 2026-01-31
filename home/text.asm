@@ -1,24 +1,5 @@
-MACRO farcall_text
-	dec sp
-	push hl
-	push af
-	push hl
-	ld hl, sp + 6
-	ld [hl], BANK(\1)
-	dec hl
-	ld [hl], HIGH(\1)
-	dec hl
-	ld [hl], LOW(\1)
-	pop hl
-	pop af
-	call Function2e73
-	inc sp
-	inc sp
-	inc sp
-ENDM
-
-Function0ecf::
-	farcall_text Function1fc08d
+ClearBox::
+	farcall_reg Function1fc08d
 	ret
 
 Function0ee6::
@@ -46,14 +27,14 @@ ClearScreen::
 	call ByteFill
 	call ClearTilemap
 	ret z
-	jp Function34c4
+	jp WaitBGMap2
 
 Textbox::
-	farcall_text Function1fc0b8
+	farcall_reg Function1fc0b8
 	ret
 
 Function0f29::
-	farcall_text Function1fc0ff
+	farcall_reg Function1fc0ff
 	ret
 
 SpeechTextbox::
@@ -354,7 +335,7 @@ Paragraph::
 	call PromptButton
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY - 1
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
-	call Function0ecf
+	call ClearBox
 	call UnloadBlinkingCursor
 	ld c, 20
 	call DelayFrames
@@ -453,12 +434,12 @@ Function1229::
 	inc de
 	ld a, [de]
 	ld c, a
-	farcall_text Function1fc119
+	farcall_reg Function1fc119
 	call PrintLetterDelay
 	jp NextChar
 
 TextScroll::
-	farcall_text Function1fc14e
+	farcall_reg Function1fc14e
 	ret
 
 Text_WaitBGMap::
@@ -970,20 +951,20 @@ Function14b6::
 	ret
 
 Function14c1::
-	farcall_text Function1fc180
+	farcall_reg Function1fc180
 	ret
 
 Function14d8::
-	farcall_text Function1fc1cb
+	farcall_reg Function1fc1cb
 	ret
 
 Function14ef::
-	farcall_text Function1fc1f2
+	farcall_reg Function1fc1f2
 	ret
 
 Function1506::
 	push de
-	farcall_text Function1fc225
+	farcall_reg Function1fc225
 	pop de
 	ret
 

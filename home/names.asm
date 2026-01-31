@@ -97,6 +97,13 @@ GetBasePokemonName::
 	ld hl, wStringBuffer1
 .loop
 	ld a, [hl]
+	cp $c
+	jr nc, .single_byte
+	inc hl
+	inc hl
+	jr .loop
+
+.single_byte
 	cp '@'
 	jr z, .quit
 	cp '♂'
@@ -241,12 +248,12 @@ GetTMHMName::
 	ret
 
 .TMText:
-	db "TM"
+	db "기술머신"
 .TMTextEnd:
 	db "@"
 
 .HMText:
-	db "HM"
+	db "비전머신"
 .HMTextEnd:
 	db "@"
 

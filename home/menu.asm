@@ -86,32 +86,13 @@ CloseWindow::
 	ret
 
 RestoreTileBackup::
-	call MenuBoxCoord2Tile
-	call GetMenuBoxDims
-	inc b
-	inc c
-
-.row
-	push bc
-	push hl
-
-.col
-	ld a, [de]
-	ld [hli], a
-	dec de
-	dec c
-	jr nz, .col
-
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-
+	farcall_reg Function1fc5a0
 	ret
 
 PopWindow::
+	di
+	ld a, $03
+	ldh [rSVBK], a
 	ld b, wMenuHeaderEnd - wMenuHeader
 	ld de, wMenuHeader
 .loop
@@ -120,6 +101,9 @@ PopWindow::
 	inc de
 	dec b
 	jr nz, .loop
+	ld a, $01
+	ldh [rSVBK], a
+	ei
 	ret
 
 GetMenuBoxDims::
@@ -159,9 +143,15 @@ GetWindowStackTop::
 	ld h, [hl]
 	ld l, a
 	inc hl
+	di
+	ld a, $03
+	ldh [rSVBK], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	ld a, $01
+	ldh [rSVBK], a
+	ei
 	ret
 
 PlaceVerticalMenuItems::
@@ -279,6 +269,17 @@ LoadMenuHeader::
 	call PushWindow
 	ret
 
+Function1c17::
+	call CopyMenuHeader
+	ld a, [wMenuBorderTopCoord]
+	dec a
+	ld [wMenuBorderTopCoord], a
+	call PushWindow
+	ld a, [wMenuBorderTopCoord]
+	inc a
+	ld [wMenuBorderTopCoord], a
+	ret
+
 CopyMenuHeader::
 	ld de, wMenuHeader
 	ld bc, wMenuHeaderEnd - wMenuHeader
@@ -343,7 +344,7 @@ VerticalMenu::
 	call InitVerticalMenuCursor
 	call StaticMenuJoypad
 	call MenuClickSound
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .okay
 .cancel
 	scf
@@ -380,7 +381,7 @@ CopyNameFromMenu::
 	ret
 
 YesNoBox::
-	lb bc, SCREEN_WIDTH - 6, 7
+	lb bc, SCREEN_WIDTH - 6, 6
 
 PlaceYesNoBox::
 	jr _YesNoBox
@@ -402,7 +403,7 @@ _YesNoBox::
 	ld [wMenuBorderRightCoord], a
 	ld a, c
 	ld [wMenuBorderTopCoord], a
-	add 4
+	add 5
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
 
@@ -428,15 +429,15 @@ InterpretTwoOptionMenu::
 
 YesNoMenuHeader::
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 5, 15, 9
+	menu_coords 10, 4, 15, 9
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
-	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
+	db STATICMENU_CURSOR ; flags
 	db 2
-	db "YES@"
-	db "NO@"
+	db "예@"
+	db "아니오@"
 
 OffsetMenuHeader::
 	call _OffsetMenuHeader
@@ -603,9 +604,9 @@ GetStaticMenuJoypad::
 	call StaticMenuJoypad
 
 ContinueGettingMenuJoypad:
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .a_button
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .b_start
 	bit B_PAD_START, a
 	jr nz, .b_start
@@ -710,37 +711,7 @@ GetMenuDataPointerTableEntry::
 	ret
 
 ClearWindowData::
-	ld hl, wMenuMetadata
-	call .ClearMenuData
-	ld hl, wMenuHeader
-	call .ClearMenuData
-	ld hl, wMenuData
-	call .ClearMenuData
-	ld hl, wMoreMenuData
-	call .ClearMenuData
-
-	xor a
-	call OpenSRAM
-
-	xor a
-	ld hl, sWindowStackTop
-	ld [hld], a
-	ld [hld], a
-	ld a, l
-	ld [wWindowStackPointer], a
-	ld a, h
-	ld [wWindowStackPointer + 1], a
-
-	call CloseSRAM
-	ret
-
-.ClearMenuData:
-	ld bc, wMenuMetadataEnd - wMenuMetadata
-	assert wMenuMetadataEnd - wMenuMetadata == wMenuHeaderEnd - wMenuHeader
-	assert wMenuMetadataEnd - wMenuMetadata == wMenuDataEnd - wMenuData
-	assert wMenuMetadataEnd - wMenuMetadata == wMoreMenuDataEnd - wMoreMenuData
-	xor a
-	call ByteFill
+	farcall_reg Function1fc61e
 	ret
 
 MenuClickSound::

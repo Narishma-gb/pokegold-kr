@@ -25,3 +25,26 @@ MACRO homecall
 	pop af
 	rst Bankswitch
 ENDM
+
+; This farcall is longer to execute, but preserves all registers.
+; It fixes call and return addresses through stack manipulation.
+; It's unique to the Korean version.
+
+MACRO farcall_reg
+	dec sp
+	push hl
+	push af
+	push hl
+	ld hl, sp + 6
+	ld [hl], BANK(\1)
+	dec hl
+	ld [hl], HIGH(\1)
+	dec hl
+	ld [hl], LOW(\1)
+	pop hl
+	pop af
+	call Function2e73
+	inc sp
+	inc sp
+	inc sp
+ENDM
