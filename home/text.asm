@@ -292,7 +292,7 @@ PCCharText::      db "컴퓨터@"
 RocketCharText::  db "로켓단@"
 PlacePOKeText::   db "포켓몬@"
 KougekiText::     db "こうげき@" ; Japanese leftover
-SixDotsCharText:: db "……@"
+SixDotsCharText:: db "<…><…>@"
 EnemyText::       db "적의 @"
 PlacePKMNText::   db "<PK><MN>@"
 PlacePOKEText::   db "<PO><KE>@"
@@ -794,7 +794,7 @@ TextCommand_DOTS::
 
 .loop
 	push de
-	ld a, '…'
+	ld a, '<…>'
 	ld [hli], a
 	call GetJoypad
 	ldh a, [hJoyDown]

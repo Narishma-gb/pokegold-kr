@@ -42,21 +42,21 @@
 	kr_charmap "ㅟ", $33
 	kr_charmap "ㅢ", $34
 
-	kr_charmap "<_>", $3e
-	kr_charmap "<->", $3f
+	kr_charmap "_", $3e
+	kr_charmap "-", $3f
 
-	kr_charmap "<「>", $60
-	kr_charmap "<」>", $61
-	kr_charmap "<『>", $62
-	kr_charmap "<』>", $63
-	kr_charmap "<(>", $64
-	kr_charmap "<)>", $65
-	kr_charmap "<!>", $66
-	kr_charmap "<?>", $67
+	kr_charmap "「", $60
+	kr_charmap "」", $61
+	kr_charmap "『", $62
+	kr_charmap "』", $63
+	kr_charmap "(", $64
+	kr_charmap ")", $65
+	kr_charmap "!", $66
+	kr_charmap "?", $67
 	kr_charmap "<HYPHEN>", $68
-	kr_charmap "<~>", $69
-	kr_charmap "<…>", $6a
-	kr_charmap "<,>", $6b
+	kr_charmap "~", $69
+	kr_charmap "…", $6a
+	kr_charmap ",", $6b
 	kr_charmap "<.>", $6c
 
 	kr_charmap "<0>", $f0

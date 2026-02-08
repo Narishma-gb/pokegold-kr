@@ -10,9 +10,6 @@
 	const MAINMENUITEM_NEW_GAME     ; 1
 	const MAINMENUITEM_OPTION       ; 2
 	const MAINMENUITEM_MYSTERY_GIFT ; 3
-IF DEF(_DEBUG)
-	const MAINMENUITEM_DEBUG_ROOM   ; 4
-ENDC
 
 MainMenu:
 	ld de, MUSIC_NONE
@@ -38,7 +35,7 @@ MainMenu:
 	call MainMenuJoypadLoop
 	call CloseWindow
 	jr c, .quit
-	call ClearTilemap
+	call Function0ee6
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	rst JumpTable
@@ -49,11 +46,7 @@ MainMenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-IF DEF(_DEBUG)
-	menu_coords 0, 0, 14, 9
-ELSE
 	menu_coords 0, 0, 14, 7
-ENDC
 	dw .MenuData
 	db 1 ; default option
 
@@ -66,13 +59,10 @@ ENDC
 
 .Strings:
 ; entries correspond to MAINMENUITEM_* constants
-	db "CONTINUE@"
-	db "NEW GAME@"
-	db "OPTION@"
-	db "MYSTERY GIFT@"
-IF DEF(_DEBUG)
-	db "DEBUG ROOM@"
-ENDC
+	db "모험을 계속하다@"
+	db "새로운 모험을 시작하다@"
+	db "설정을 바꾸다@"
+	db "이상한 소포@"
 
 .Jumptable:
 ; entries correspond to MAINMENUITEM_* constants
@@ -80,9 +70,6 @@ ENDC
 	dw NewGame
 	dw Option
 	dw MysteryGift
-IF DEF(_DEBUG)
-	dw DebugRoom
-ENDC
 
 MainMenuItems:
 ; entries correspond to MAINMENU_* constants
@@ -94,24 +81,18 @@ MainMenuItems:
 	db -1
 
 	; MAINMENU_CONTINUE
-	db 3 + DEF(_DEBUG)
+	db 3
 	db MAINMENUITEM_CONTINUE
 	db MAINMENUITEM_NEW_GAME
 	db MAINMENUITEM_OPTION
-IF DEF(_DEBUG)
-	db MAINMENUITEM_DEBUG_ROOM
-ENDC
 	db -1
 
 	; MAINMENU_MYSTERY
-	db 4 + DEF(_DEBUG)
+	db 4
 	db MAINMENUITEM_CONTINUE
 	db MAINMENUITEM_NEW_GAME
 	db MAINMENUITEM_OPTION
 	db MAINMENUITEM_MYSTERY_GIFT
-IF DEF(_DEBUG)
-	db MAINMENUITEM_DEBUG_ROOM
-ENDC
 	db -1
 
 MainMenu_GetWhichMenu:
@@ -129,6 +110,10 @@ MainMenu_GetWhichMenu:
 	cp TRUE
 	ld a, MAINMENU_CONTINUE
 	ret nz
+	ldh a, [hAGB]
+	cp TRUE
+	ld a, MAINMENU_CONTINUE
+	ret z
 	ld a, BANK(sNumDailyMysteryGiftPartnerIDs)
 	call OpenSRAM
 	ld a, [sNumDailyMysteryGiftPartnerIDs]
@@ -207,19 +192,21 @@ MainMenu_PrintCurrentTimeAndDay:
 	ld b, a
 	decoord 1, 14
 	call PrintDayOfWeek
-	decoord 4, 16
+	decoord 2, 16
 	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
-	ld [hl], ':'
-	inc hl
+	hlcoord 9, 16
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
+	hlcoord 11, 16
+	ld de, .minString
+	call PlaceString
 	ret
 
-.minString: ; unreferenced
-	db "min.@"
+.minString:
+	db "분@"
 
 .PrintTimeNotSet:
 	hlcoord 1, 14
@@ -228,7 +215,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	ret
 
 .TimeNotSetString:
-	db "TIME NOT SET@"
+	db "시계의 시간 불명@"
 
 .MainMenuTimeUnknownText: ; unreferenced
 	text_far _MainMenuTimeUnknownText
@@ -250,20 +237,20 @@ PrintDayOfWeek:
 	ret
 
 .Days:
-	db "SUN@"
-	db "MON@"
-	db "TUES@"
-	db "WEDNES@"
-	db "THURS@"
-	db "FRI@"
-	db "SATUR@"
+	db "일@"
+	db "월@"
+	db "화@"
+	db "수@"
+	db "목@"
+	db "금@"
+	db "토@"
 .Day:
-	db "DAY@"
+	db "요일@"
 
 ClearTilemapEtc:
 	xor a
 	ldh [hMapAnims], a
-	call ClearTilemap
+	call Function0ee6
 	call LoadFontsExtra
 	call LoadStandardFont
 	call ClearWindowData

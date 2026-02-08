@@ -2380,7 +2380,17 @@ CheckObjectCoveredByTextbox:
 	push bc
 	call Coord2Tile
 	pop bc
-; NPCs disappear if standing on tile $60-$7f (or $e0-$ff),
+; NPCs disappear if standing on tiles displayed from VRAM Bank 1,
+; since those are text characters.
+	push hl
+	push de
+	ld de, wAttrmap - wTilemap
+	add hl, de
+	bit B_BG_BANK1, [hl]
+	pop de
+	pop hl
+	jr nz, .nope
+; NPCs also disappear if standing on tile $60-$7f (or $e0-$ff),
 ; since those IDs are for text characters and textbox frames.
 	ld a, [hl]
 	cp FIRST_REGULAR_TEXT_CHAR

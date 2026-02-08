@@ -397,14 +397,14 @@ SECTION "Unused Map Buffer", WRAM0
 wUnusedMapBuffer:: ds 24
 wUnusedMapBufferEnd::
 
-/*
+
 SECTION UNION "Overworld Map", WRAM0
 
 ; overworld map blocks
 wOverworldMapBlocks:: ds 1300
 wOverworldMapBlocksEnd::
 
-
+/*
 SECTION UNION "Overworld Map", WRAM0
 
 ; decompress buffer in wram
@@ -2304,10 +2304,10 @@ wOptions2::
 
 wOptionsEnd::
 */
-/*
+
 SECTION "Game Data", WRAMX
 
-wGameData::
+;wGameData::
 wPlayerData::
 wPlayerData1::
 wPlayerID:: dw
@@ -2328,17 +2328,6 @@ wStartMinute:: db
 wStartSecond:: db
 
 wRTC:: ds 4
-
-wDSTBackupDay::     db
-wDSTBackupHours::   db
-wDSTBackupMinutes:: db
-wDSTBackupSeconds:: db
-
-wDST::
-; bit 7: dst
-	db
-
-	ds 1
 
 wGameTimeCap::     db
 wGameTimeHours::   dw
@@ -2387,7 +2376,7 @@ wObjectMasks:: ds NUM_OBJECTS
 wVariableSprites:: ds $100 - SPRITE_VARS
 
 wUnusedReanchorBGMapFlags:: db
-	ds 2
+
 wTimeOfDayPal:: db
 	ds 4
 wTimeOfDayPalFlags:: db
@@ -2446,7 +2435,7 @@ wWhichRegisteredItem:: db
 wRegisteredItem:: db
 
 wPlayerState:: db
-
+/*
 wHallOfFameCount:: db
 	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
@@ -2663,7 +2652,7 @@ wScreenSave:: ds SCREEN_META_WIDTH * SCREEN_META_HEIGHT
 
 wCurMapDataEnd::
 */
-/*
+
 SECTION "Party", WRAMX
 
 wPokemonData::
@@ -2748,7 +2737,7 @@ wRoamMons_CurMapNumber:: db
 wRoamMons_CurMapGroup:: db
 wRoamMons_LastMapNumber:: db
 wRoamMons_LastMapGroup:: db
-
+/*
 wBestMagikarpLengthFeet:: db
 wBestMagikarpLengthInches:: db
 wMagikarpRecordHoldersName:: ds NAME_LENGTH

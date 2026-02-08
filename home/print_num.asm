@@ -159,7 +159,7 @@ PrintNum::
 
 	bit PRINTNUM_MONEY_F, d
 	jr z, .stop
-	ld a, '¥'
+	ld a, '₩'
 	ld [hli], a	
 
 .stop

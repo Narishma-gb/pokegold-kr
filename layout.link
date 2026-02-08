@@ -27,8 +27,8 @@ ROM0
 	"Header"
 	org $0150
 	"Home"
-; ROMX $01
-; 	"bank1"
+ROMX $01
+	"bank1"
 ; ROMX $02
 ; 	"bank2"
 ; ROMX $03
@@ -268,14 +268,16 @@ WRAM0
 	"Tilemap"
 	"Miscellaneous"
 	"Unused Map Buffer"
-; 	align 8
-; 	"Overworld Map"
+	align 8
+	"Overworld Map"
 ; 	align 4
 ; 	"Video"
-; WRAMX 1
+WRAMX 1
 ; 	"WRAM 1"
-; 	"Game Data"
-; 	"Party"
+	org $d25c
+	"Game Data"
+	org $db1f
+	"Party"
 ; 	"Stack"
 VRAM $00
 	"VRAM0"
@@ -289,9 +291,10 @@ VRAM $01
 ; 	"SRAM Stack"
 ; 	org $b800
 ; 	"SRAM Window Stack"
-; SRAM $01
+SRAM $01
 ; 	"Save"
-; 	"Active Box"
+	org $adae
+	"Active Box"
 ; 	"Link Battle Data"
 ; 	"SRAM Hall of Fame"
 ; 	"Backup Save 2"
@@ -301,6 +304,5 @@ VRAM $01
 ; 	"Boxes 8-14"
 ; 	"Backup Save 3"
 HRAM
-; 	"OAM DMA"
-	org $ff8a
+	"OAM DMA"
 	"HRAM"

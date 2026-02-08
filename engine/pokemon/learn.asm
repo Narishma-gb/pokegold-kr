@@ -136,18 +136,18 @@ ForgetMove:
 	push hl
 	ld hl, MoveAskForgetText
 	call PrintText
-	hlcoord 5, 2
+	hlcoord 10, 2
 	ld b, NUM_MOVES * 2
-	ld c, MOVE_NAME_LENGTH
+	ld c, 8
 	call Textbox
-	hlcoord 5 + 2, 2 + 2
+	hlcoord 12, 4
 	ld a, SCREEN_WIDTH * 2
 	ld [wListMovesLineSpacing], a
 	predef ListMoves
 	; w2DMenuData
 	ld a, $4
 	ld [w2DMenuCursorInitY], a
-	ld a, $6
+	ld a, $b
 	ld [w2DMenuCursorInitX], a
 	ld a, [wNumMoves]
 	inc a
@@ -169,7 +169,7 @@ ForgetMove:
 	call SafeLoadTempTilemapToTilemap
 	pop af
 	pop hl
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .cancel
 	push hl
 	ld a, [wMenuCursorY]

@@ -13,12 +13,6 @@ NewGame:
 	ldh [hMapEntryMethod], a
 	jp FinishContinueFunction
 
-IF DEF(_DEBUG)
-DebugRoom:
-	farcall _DebugRoom
-	ret
-ENDC
-
 ResetWRAM:
 	xor a
 	ldh [hBGMapMode], a
@@ -26,8 +20,24 @@ ResetWRAM:
 	ret
 
 _ResetWRAM:
+	ld hl, wc1d9
+	ld bc, $22
+	xor a
+	call ByteFill
+
+	ld hl, wd000
+	ld bc, 5
+	xor a
+	call ByteFill
+
 	ld hl, wShadowOAM
-	ld bc, wOptions - wShadowOAM
+	ld bc, $c3d
+	xor a
+	call ByteFill
+
+	; zero the same bytes again
+	ld hl, wShadowOAM
+	ld bc, $254
 	xor a
 	call ByteFill
 
@@ -166,7 +176,7 @@ SetDefaultBoxNames:
 	ld [hli], a
 	ld [hl], '@'
 	pop hl
-	ld de, 9
+	ld de, BOX_NAME_LENGTH
 	add hl, de
 	inc c
 	ld a, c
@@ -175,20 +185,20 @@ SetDefaultBoxNames:
 	ret
 
 .Box:
-	db "BOX@"
+	db "박스@"
 
 InitializeMagikarpHouse:
-	ld hl, wBestMagikarpLengthFeet
-	ld a, $3
+	ld hl, wBestMagikarpLength
+	ld a, HIGH(START_MAGIKARP_SIZE)
 	ld [hli], a
-	ld a, $6
+	ld a, LOW(START_MAGIKARP_SIZE)
 	ld [hli], a
 	ld de, .Ralph
 	call CopyName2
 	ret
 
 .Ralph:
-	db "RALPH@"
+	db "태명@"
 
 InitializeNPCNames:
 	ld hl, .Rival
@@ -212,9 +222,9 @@ InitializeNPCNames:
 	ret
 
 .Rival:  db "???@"
-.Red:    db "RED@"
-.Green:  db "GREEN@"
-.Mom:    db "MOM@"
+.Red:    db "레드@"
+.Green:  db "그린@"
+.Mom:    db "어머니@"
 
 InitializeWorld:
 	call ShrinkPlayer
@@ -277,7 +287,7 @@ Continue:
 	ld [wMusicFadeID + 1], a
 	call ClearBGPalettes
 	call CloseWindow
-	call ClearTilemap
+	call Function0ee6
 	ld c, 20
 	call DelayFrames
 	farcall JumpRoamMons
@@ -315,9 +325,9 @@ ConfirmContinue:
 	call DelayFrame
 	call GetJoypad
 	ld hl, hJoyPressed
-	bit A_BUTTON_F, [hl]
+	bit B_PAD_A, [hl]
 	jr nz, .PressA
-	bit B_BUTTON_F, [hl]
+	bit B_PAD_B, [hl]
 	jr z, .loop
 	scf
 	ret
@@ -360,12 +370,12 @@ DisplaySaveInfoOnContinue:
 	call CheckRTCStatus
 	and RTC_RESET
 	jr z, .clock_ok
-	lb de, 4, 8
+	lb de, 5, 8
 	call DisplayContinueDataWithRTCError
 	ret
 
 .clock_ok
-	lb de, 4, 8
+	lb de, 5, 8
 	call DisplayNormalContinueData
 	ret
 
@@ -402,61 +412,62 @@ Continue_LoadMenuHeader:
 
 .MenuHeader_Dex:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 15, 9
+	menu_coords 0, 0, 14, 9
 	dw .MenuData_Dex
 	db 1 ; default option
 
 .MenuData_Dex:
 	db 0 ; flags
 	db 4 ; items
-	db "PLAYER <PLAYER>@"
-	db "BADGES@"
-	db "#DEX@"
-	db "TIME@"
+	db "주인공 <PLAYER>@"
+	db "가지고있는 배지    개@"
+	db "포켓몬 도감     마리@"
+	db "플레이 시간@"
 
 .MenuHeader_NoDex:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 15, 9
+	menu_coords 0, 0, 14, 9
 	dw .MenuData_NoDex
 	db 1 ; default option
 
 .MenuData_NoDex:
 	db 0 ; flags
 	db 4 ; items
-	db "PLAYER <PLAYER>@"
-	db "BADGES@"
+	db "주인공 <PLAYER>@"
+	db "가지고있는 배지    개@"
 	db " @"
-	db "TIME@"
+	db "플레이 시간@"
 
 Continue_DisplayBadgesDex:
 	call MenuBoxCoord2Tile
 	push hl
-	decoord 13, 4, 0
+	decoord 10, 4, 0
 	add hl, de
 	call Continue_DisplayBadgeCount
 	pop hl
 	push hl
-	decoord 12, 6, 0
+	decoord 9, 6, 0
 	add hl, de
 	call Continue_DisplayPokedexNumCaught
 	pop hl
 	ret
 
 Continue_PrintGameTime:
-	decoord 9, 8, 0
+	decoord 8, 8, 0
 	add hl, de
 	call Continue_DisplayGameTime
 	ret
 
 Continue_UnknownGameTime:
-	decoord 9, 8, 0
 	add hl, de
+	; bug: de is overloaded below. Should these 2 instructions be swapped?
+	decoord 8, 8, 0
 	ld de, .three_question_marks
 	call PlaceString
 	ret
 
 .three_question_marks
-	db " ???@"
+	db " <?><?><?>@"
 
 Continue_DisplayBadgeCount:
 	push hl
@@ -474,11 +485,7 @@ Continue_DisplayPokedexNumCaught:
 	ret z
 	push hl
 	ld hl, wPokedexCaught
-if NUM_POKEMON % 8
-	ld b, NUM_POKEMON / 8 + 1
-else
-	ld b, NUM_POKEMON / 8
-endc
+	ld b, (NUM_POKEMON + 7) / 8
 	call CountSetBits
 	pop hl
 	ld de, wNumSetBits
@@ -498,7 +505,7 @@ Continue_DisplayGameTime:
 OakSpeech:
 	farcall InitClock
 	call RotateFourPalettesLeft
-	call ClearTilemap
+	call Function0ee6
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
@@ -518,7 +525,7 @@ OakSpeech:
 	ld hl, OakText1
 	call PrintText
 	call RotateThreePalettesRight
-	call ClearTilemap
+	call Function0ee6
 
 	ld a, MARILL
 	ld [wCurSpecies], a
@@ -542,7 +549,7 @@ OakSpeech:
 	ld hl, OakText4
 	call PrintText
 	call RotateThreePalettesRight
-	call ClearTilemap
+	call Function0ee6
 
 	xor a
 	ld [wCurPartySpecies], a
@@ -557,7 +564,7 @@ OakSpeech:
 	ld hl, OakText5
 	call PrintText
 	call RotateThreePalettesRight
-	call ClearTilemap
+	call Function0ee6
 
 	xor a
 	ld [wCurPartySpecies], a
@@ -628,7 +635,7 @@ NamePlayer:
 	farcall NamingScreen
 
 	call RotateThreePalettesRight
-	call ClearTilemap
+	call Function0ee6
 
 	call LoadFontsExtra
 	call WaitBGMap
@@ -651,7 +658,7 @@ NamePlayer:
 INCLUDE "data/player_names.asm"
 
 ShowPlayerNamingChoices:
-	call LoadMenuHeader
+	call Function1c17
 	call VerticalMenu
 	ld a, [wMenuCursorY]
 	dec a
@@ -703,9 +710,7 @@ ShrinkPlayer:
 	ld b, 7
 	ld c, 7
 	call ClearBox
-
-	ld c, 3
-	call DelayFrames
+	call Function15ba
 
 	call Intro_PlaceChrisSprite
 	call LoadFontsExtra
@@ -714,7 +719,7 @@ ShrinkPlayer:
 	call DelayFrames
 
 	call RotateThreePalettesRight
-	call ClearTilemap
+	call Function0ee6
 	ret
 
 MovePlayerPicRight:
@@ -868,7 +873,7 @@ StartTitleScreen:
 
 	ld hl, rLCDC
 	res B_LCDC_OBJ_SIZE, [hl] ; 8x8
-	call ClearTilemap
+	call Function0ee6
 	xor a
 	ldh [hLCDCPointer], a
 	ld b, SCGB_DIPLOMA
@@ -959,11 +964,7 @@ TitleScreenTimer:
 
 ; Start a timer
 	ld hl, wTitleScreenTimer
-IF DEF(_GOLD)
 	ld de, 84 * 60 + 16
-ELIF DEF(_SILVER)
-	ld de, 73 * 60 + 36
-ENDC
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -992,13 +993,38 @@ TitleScreenMain:
 	cp  PAD_UP + PAD_B + PAD_SELECT
 	jr z, .delete_save_data
 
-; Clock can be reset by pressing Down + B + Select.
+; To bring up the clock reset dialog:
+
+; Hold Down + B + Select to initiate the sequence.
+	ldh a, [hClockResetTrigger]
+	cp $34
+	jr z, .check_clock_reset
+
 	ld a, [hl]
 	and PAD_DOWN + PAD_B + PAD_SELECT
 	cp  PAD_DOWN + PAD_B + PAD_SELECT
+	jr nz, .check_start
+
+	ld a, $34
+	ldh [hClockResetTrigger], a
+	jr .check_start
+
+; Keep Select pressed, and hold Left + Up.
+; Then let go of Select.
+.check_clock_reset
+	bit B_PAD_SELECT, [hl]
+	jr nz, .check_start
+
+	xor a
+	ldh [hClockResetTrigger], a
+
+	ld a, [hl]
+	and PAD_LEFT + PAD_UP
+	cp  PAD_LEFT + PAD_UP
 	jr z, .reset_clock
 
 ; Press Start or A to start the game.
+.check_start
 	ld a, [hl]
 	and PAD_START | PAD_A
 	jr nz, .incave
@@ -1128,7 +1154,7 @@ ENDM
 ENDC
 
 Copyright:
-	call ClearTilemap
+	call Function0ee6
 	call LoadFontsExtra
 	ld de, CopyrightGFX
 	ld hl, vTiles2 tile $60
@@ -1154,6 +1180,8 @@ CopyrightString:
 	db "@"
 
 GameInit::
+	farcall Function1c8000
+	farcall Function1fc033
 	call ClearWindowData
 	farcall TryLoadSaveData
 	jp IntroSequence

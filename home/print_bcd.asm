@@ -37,7 +37,7 @@ PrintBCDNumber::
 	call PrintLetterDelay
 	inc hl
 .done
-	ld a, '¥'
+	ld a, '₩'
 	ld [hli], a
 	ret
 

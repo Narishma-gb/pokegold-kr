@@ -6,11 +6,16 @@ CorrectNickErrors::
 
 	push bc
 	push de
-	ld b, MON_NAME_LENGTH
+; b counts the number of bytes
+; c counts the number of characters
+	ld b, MON_NAME_LENGTH - 1
+	ld c, 5
 
 .checkchar
 ; end of nick?
 	ld a, [de]
+	cp $c
+	jr c, .two_byte
 	cp '@' ; terminator
 	jr z, .end
 
@@ -34,24 +39,28 @@ CorrectNickErrors::
 	cp [hl]
 	jr nc, .loop
 
-; replace it with a '?'
-	ld a, '?'
+; replace it with a '<?>'
+	ld a, '<?>'
 	ld [de], a
 	jr .loop
+
+.two_byte
+; the current char is a 2-byte character
+	dec b
+	jr z, .write_terminator
+	inc de
 
 .done
 ; next char
 	inc de
-; reached end of nick without finding a terminator?
+	dec c
+	jr z, .write_terminator
+
 	dec b
 	jr nz, .checkchar
 
-; change nick to "?@"
-	pop de
-	push de
-	ld a, '?'
-	ld [de], a
-	inc de
+.write_terminator
+; reached end of nick without finding a terminator
 	ld a, '@'
 	ld [de], a
 .end
@@ -63,12 +72,9 @@ CorrectNickErrors::
 .textcommands
 ; table defining which characters are actually text commands
 ; format:
-	;      ≥           <
-	db '<NULL>',   'ガ'
-	db '<JP_14>',  '<JP_18>' + 1
-	db '<NI>',     '<NO>'    + 1
-	db '<ROUTE>',  '<GREEN>' + 1
-	db '<ENEMY>',  '<ENEMY>' + 1
-	db '<MOM>',    '<TM>'    + 1
-	db '<ROCKET>', '┘'       + 1
+	;      ≥        <
+	db '<NULL>',  ' '
+	db 'z' + 1,   'Ä'
+	db 'ü' + 5,   '\'d'
+	db '\'v' + 4, '\''
 	db -1 ; end
