@@ -116,8 +116,12 @@ EXPORT DEF wDefaultSpawnpoint EQU $CEC1
 EXPORT DEF wMovementBufferCount EQU $CEC2
 EXPORT DEF wMovementBufferObject EQU $CEC3
 EXPORT DEF wUnusedMovementBufferBank EQU $CEC4
+EXPORT DEF wBugContestFirstPlaceScore EQU $CEC4
+EXPORT DEF wBufferTrademonNickname EQU $CEC4
 EXPORT DEF wUnusedMovementBufferPointer EQU $CEC5
+EXPORT DEF wBugContestSecondPlaceScore EQU $CEC8
 EXPORT DEF wRadioText EQU $CECC
+EXPORT DEF wBugContestThirdPlaceScore EQU $CECC
 EXPORT DEF wBugContestWinnerName EQU $CED6
 EXPORT DEF wCurBGEvent EQU $CF11
 EXPORT DEF wCurCoordEvent EQU $CF11
@@ -149,6 +153,7 @@ EXPORT DEF wMonOrItemNameBuffer EQU $D00F
 EXPORT DEF wStringBuffer1 EQU $D036
 EXPORT DEF wStringBuffer2 EQU $D04B
 EXPORT DEF wStringBuffer3 EQU $D060
+EXPORT DEF wStringBuffer4 EQU $D075
 EXPORT DEF wPredefID EQU $D09B
 EXPORT DEF wPredefHL EQU $D09C
 EXPORT DEF wPredefAddress EQU $D09E
@@ -254,6 +259,7 @@ EXPORT DEF wYCoord EQU $DAFF
 EXPORT DEF wXCoord EQU $DB00
 EXPORT DEF wScreenSave EQU $DB01
 EXPORT DEF wBestMagikarpLength EQU $DE30
+EXPORT DEF wMagikarpRecordHoldersName EQU $DE32
 EXPORT DEF wOTPartyMonOTs EQU $DF7A
 EXPORT DEF wGameDataEnd EQU $DFFE
 EXPORT DEF hAGB EQU $FFEA

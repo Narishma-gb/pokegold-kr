@@ -7,11 +7,11 @@ patches := \
 
 rom_obj := \
 	home.o \
+	wip.o \
 	ram.o \
-	wip.o
+	data/text/common.o
 # 	audio.o \
 # 	main.o \
-# 	data/text/common.o \
 # 	data/maps/map_data.o \
 # 	data/pokemon/egg_moves.o \
 # 	data/pokemon/evos_attacks.o \

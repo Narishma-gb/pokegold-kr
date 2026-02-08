@@ -1,557 +1,509 @@
 _SlotsStartText::
-	text "Start!"
+	text "스타트!"
 	done
 
 _SlotsNotEnoughCoinsText::
-	text "Not enough"
-	line "coins."
+	text "동전이 부족합니다!"
 	prompt
 
 _SlotsRanOutOfCoinsText::
-	text "Darn… Ran out of"
-	line "coins…"
+	text "동전이"
+	line "다 떨어져버렸다……"
 	done
 
 _SlotsPlayAgainText::
-	text "Play again?"
+	text "다시한번"
+	line "하겠습니까?"
 	done
 
 _SlotsLinedUpText::
-	text "lined up!"
-	line "Won @"
+	text "(이)가 모였다"
+	line "동전 @"
 	text_ram wStringBuffer2
-	text " coins!"
+	text "개 확보!"
 	done
 
 _SlotsDarnText::
-	text "Darn!"
+	text "꽝<HYPHEN>"
 	done
 
 _GearTodayText::
+	text "@"
 	text_today
 	text_end
 
 _GearEllipseText::
-	text "<……>"
+	text "……"
 	done
 
 _GearOutOfServiceText::
-	text "You're out of the"
-	line "service area."
+	text "이곳은  범위 밖 같군……"
 	prompt
 
 _PokegearAskWhoCallText::
-	text "Whom do you want"
-	line "to call?"
+	text "누구에게"
+	line "전화를 걸겠습니까?"
 	done
 
 _PokegearPressButtonText::
-	text "Press any button"
-	line "to exit."
+	text "버튼을 누르면"
+	line "포켓기어를 종료합니다"
 	done
 
 _PokegearAskDeleteText::
-	text "Delete this stored"
-	line "phone number?"
+	text "정말 삭제하겠습니까?"
 	done
 
 _PhoneWrongNumberText::
-	text "Huh? Sorry, wrong"
-	line "number!"
+	text "앗?"
+	line "죄송합니다 틀렸네요……"
 	done
 
 _PhoneClickText::
-	text "Click!"
+	text "삑!"
 	done
 
 _PhoneEllipseText::
-	text "<……>"
+	text "……"
 	done
 
 _PhoneOutOfAreaText::
-	text "That number is out"
-	line "of the area."
+	text "……연결되지 않는군!"
+	line "범위 밖에 있는 것 같다……"
 	done
 
 _PhoneJustTalkToThemText::
-	text "Just go talk to"
-	line "that person!"
+	text "근처에 있으니까"
+	line "직접 만나서 이야기하자!"
 	done
 
 _PhoneThankYouText::
-	text "Thank you!"
+	text "고마워!"
 	done
 
 _SpaceSpaceColonText:: ; unreferenced
-	text "  :"
+	text "   시"
+	line "   분"
 	done
 
 _PasswordAskResetText::
-	text "Password OK."
-	line "Select CONTINUE &"
-	cont "reset settings."
+	text "패스워드를 확인했습니다"
+	line "「모험을 계속하다」를 선택"
+	cont "재 설정을 해 주십시오"
 	prompt
 
 _PasswordWrongText::
-	text "Wrong password!"
+	text "패스워드가 틀렸습니다!"
 	prompt
 
 _PasswordAskResetClockText::
-	text "Reset the clock?"
+	text "시계를 재 설정 하겠습니까?"
 	done
 
 _PasswordAskEnterText::
-	text "Please enter the"
-	line "password."
+	text "패스워드를"
+	line "넣어주세요"
 	done
 
 _ClearAllSaveDataText::
-	text "Clear all save"
-	line "data area?"
+	text "모든 세이브 데이터 영역을"
+	line "지우겠습니까?"
 	done
 
 _LearnedMoveText::
+	text "@"
 	text_ram wMonOrItemNameBuffer
-	text " learned"
+	text "는(은) 새로"
 	line "@"
 	text_ram wStringBuffer2
-	text "!@"
+	text "를(을) 배웠다@"
 	sound_dex_fanfare_50_79
 	text_promptbutton
 	text_end
 
 _MoveAskForgetText::
-	text "Which move should"
-	next "be forgotten?"
+	text "어느 기술을"
+	next "잊게 하고싶은가?"
 	done
 
 _StopLearningMoveText::
-	text "Stop learning"
+	text "그렇다면……"
 	line "@"
 	text_ram wStringBuffer2
-	text "?"
+	text "를(을)"
+	cont "배우는 것을 그만두겠습니까?"
 	done
 
 _DidNotLearnMoveText::
+	text "@"
 	text_ram wMonOrItemNameBuffer
-	text_start
-	line "did not learn"
-	cont "@"
+	text "는(은)"
+	line "@"
 	text_ram wStringBuffer2
-	text "."
+	text "를(을)"
+	cont "배우지 않고 끝났다!"
 	prompt
 
 _AskForgetMoveText::
+	text "@"
 	text_ram wMonOrItemNameBuffer
-	text " is"
-	line "trying to learn"
-	cont "@"
+	text "는(은) 새로"
+	line "@"
 	text_ram wStringBuffer2
-	text "."
+	text "를(을)"
+	cont "배우고싶다……!"
 
-	para "But @"
+	para "그러나 @"
 	text_ram wMonOrItemNameBuffer
-	text_start
-	line "can't learn more"
-	cont "than four moves."
+	text "는(은)"
+	line "기술을 4개"
+	cont "기억하고있기에 더 이상은 무리다"
 
-	para "Delete an older"
-	line "move to make room"
-	cont "for @"
+	para "@"
 	text_ram wStringBuffer2
-	text "?"
+	text "의 대신"
+	line "다른 기술을 잊게하겠습니까?"
 	done
 
 Text_MoveForgetCount::
-	text "1, 2 and…@"
+	text "1 2 ……@"
 	text_pause
 	text_end
 
 	text_end ; unreferenced
 
 _MoveForgotText::
-	text " Poof!@"
+	text "짠!@"
 	text_pause
 	text_start
 
 	para "@"
 	text_ram wMonOrItemNameBuffer
-	text " forgot"
+	text "는(은)"
 	line "@"
 	text_ram wStringBuffer1
-	text "."
+	text "의"
+	cont "사용방법을 깨끗이 잊었다!"
 
-	para "And…"
+	para "그리고……!"
 	prompt
 
 _MoveCantForgetHMText::
-	text "HM moves can't be"
-	line "forgotten now."
+	text "그것은 중요한 기술입니다"
+	line "잊게하는 것은 할 수 없습니다!"
 	prompt
 
 _CardFlipPlayWithThreeCoinsText::
-	text "Play with three"
-	line "coins?"
+	text "동전 3개로 도전할 수 있습니다"
+	line "하시겠습니까?"
 	done
 
 _CardFlipNotEnoughCoinsText::
-	text "Not enough coins…"
+	text "동전이 부족해……"
 	prompt
 
 _CardFlipChooseACardText::
-	text "Choose a card."
+	text "카드를 골라주십시오"
 	done
 
 _CardFlipPlaceYourBetText::
-	text "Place your bet."
+	text "어디에 걸겠습니까?"
 	done
 
 _CardFlipPlayAgainText::
-	text "Want to play"
-	line "again?"
+	text "다시 한번 하겠습니까?"
 	done
 
 _CardFlipShuffledText::
-	text "The cards have"
-	line "been shuffled."
+	text "카드를 섞겠습니다"
 	prompt
 
 _CardFlipYeahText::
-	text "Yeah!"
+	text "당첨<HYPHEN>"
 	done
 
 _CardFlipDarnText::
-	text "Darn…"
+	text "꽝<HYPHEN>"
 	done
 
 _BallDodgedText::
-	text "It dodged the"
-	line "thrown BALL!"
-
-	para "This #MON"
-	line "can't be caught!"
+	text "빠져나갔다!"
+	line "이녀석은 붙잡지 못할 것 같다!"
 	prompt
 
 _BallMissedText::
-	text "You missed the"
-	line "#MON!"
+	text "포켓몬에게"
+	line "잘 맞추지 못했다!"
 	prompt
 
 _BallBrokeFreeText::
-	text "Oh no! The #MON"
-	line "broke free!"
+	text "이런! 포켓몬이"
+	line "볼에서 튀어 나와버렸다!"
 	prompt
 
 _BallAppearedCaughtText::
-	text "Aww! It appeared"
-	line "to be caught!"
+	text "으으!"
+	line "잡았다고 생각했는데!"
 	prompt
 
 _BallAlmostHadItText::
-	text "Aargh!"
-	line "Almost had it!"
+	text "분하다!"
+	line "조금만 더하면 잡을 수 있었는데!"
 	prompt
 
 _BallSoCloseText::
-	text "Shoot! It was so"
-	line "close too!"
+	text "아까워라!"
+	line "이제 곧 잡을 수 있었는데!"
 	prompt
 
 Text_BallCaught::
-	text "Gotcha! @"
+	text "신난다!"
+	line "@"
 	text_ram wEnemyMonNickname
-	text_start
-	line "was caught!@"
+	text "를(을) 잡았다@"
 	sound_caught_mon
 	text_end
 
 	text_end ; unreferenced
 
 _WaitButtonText::
+	text "@"
 	text_promptbutton
 	text_end
 
 _BallSentToPCText::
+	text "@"
 	text_ram wMonOrItemNameBuffer
-	text " was"
-	line "sent to BILL's PC."
+	text "는(은) 이수재"
+	line "가 있는 곳에 전송되었다!"
 	prompt
 
 _NewDexDataText::
+	text "@"
 	text_ram wEnemyMonNickname
-	text "'s data"
-	line "was newly added to"
-	cont "the #DEX.@"
+	text "의"
+	line "데이터가 새롭게"
+	cont "포켓몬 도감에 세이브 되어집니다!@"
 	sound_slot_machine_start
 	text_promptbutton
 	text_end
 
 _AskGiveNicknameText::
-	text "Give a nickname to"
-	line "@"
+	text "잡은 @"
 	text_ram wStringBuffer1
-	text "?"
+	text "에게"
+	line "별명을 붙이겠습니까?"
 	done
 
 _ItemStatRoseText::
+	text "@"
 	text_ram wStringBuffer1
-	text "'s"
+	text "의"
 	line "@"
 	text_ram wStringBuffer2
-	text " rose."
+	text "의"
+	cont "기초 포인트가 올라갔다!"
 	prompt
 
 _ItemCantUseOnMonText::
-	text "That can't be used"
-	line "on this #MON."
+	text "그 포켓몬에는"
+	line "사용할 수 없습니다"
 	prompt
 
 _RepelUsedEarlierIsStillInEffectText::
-	text "The REPEL used"
-	line "earlier is still"
-	cont "in effect."
+	text "아직 전에 사용한 스프레이의"
+	line "효과가 남아있습니다!"
 	prompt
 
 _PlayedFluteText::
-	text "Played the #"
-	line "FLUTE."
+	text "포켓몬의 피리를 불었다!"
 
-	para "Now, that's a"
-	line "catchy tune!"
+	para "우음!"
+	line "훌륭한 음색이다!"
 	prompt
 
 _FluteWakeUpText::
-	text "All sleeping"
-	line "#MON woke up."
+	text "모든 포켓몬이"
+	line "눈을 떴다!"
 	prompt
 
 Text_PlayedPokeFlute::
-	text "<PLAYER> played the"
-	line "# FLUTE.@"
+	text "<PLAYER>는(은)"
+	line "포켓몬의 피리를 불어보았다!@"
 	text_promptbutton
 	text_end
 
 	text_end ; unreferenced
 
 _CoinCaseCountText::
-; BUG: Using the Coin Case can cause arbitrary code execution (see docs/bugs_and_glitches.md)
-	text "Coins:"
+	text "당신의 동전은"
 	line "@"
 	text_decimal wCoins, 2, 4
+	text "개"
 	done
 
 _RaiseThePPOfWhichMoveText::
-	text "Raise the PP of"
-	line "which move?"
+	text "어느 기술의"
+	line "포인트를 늘릴까?"
 	done
 
 _RestoreThePPOfWhichMoveText::
-	text "Restore the PP of"
-	line "which move?"
+	text "어느 기술을"
+	line "회복할까?"
 	done
 
 _PPIsMaxedOutText::
+	text "@"
 	text_ram wStringBuffer2
-	text "'s PP"
-	line "is maxed out."
+	text "는(은) 더이상"
+	line "늘릴 수가 없습니다!"
 	prompt
 
 _PPsIncreasedText::
+	text "@"
 	text_ram wStringBuffer2
-	text "'s PP"
-	line "increased."
+	text "의"
+	line "기술 포인트가 늘었다!"
 	prompt
 
 _PPRestoredText::
-	text "PP was restored."
+	text "기술 포인트가"
+	line "회복되었다!"
 	prompt
 
 _SentTrophyHomeText::
-	text "There was a trophy"
-	line "inside!@"
+	text "안으로부터 트로피가 나왔다!"
+	line "@"
 	sound_dex_fanfare_50_79
-	text_start
-
-	para "@"
 	text_ram wPlayerName
-	text " sent the"
-	line "trophy home."
+	text "는(은) 그것을"
+
+	para "집으로 보냈다"
 	prompt
 
 _ItemLooksBitterText::
-	text "It looks bitter…"
+	text "…굉장히 맛이 쓸 것 같다……"
 	prompt
 
 _ItemCantUseOnEggText::
-	text "That can't be used"
-	line "on an EGG."
+	text "알에 사용해도"
+	line "효과가 없을꺼야"
 	prompt
 
 _ItemOakWarningText::
-	text "OAK: <PLAYER>!"
-	line "This isn't the"
-	cont "time to use that!"
+	text "오박사님의 말씀……"
+	line "<PLAYER>야(아)! 그런 것은"
+	cont "사용할 때가 따로 있단다!"
 	prompt
 
 _ItemBelongsToSomeoneElseText::
-	text "That belongs to"
-	line "someone else!"
+	text "중요한 보관품입니다!"
+	next "사용하는 것은 할 수 없습니다!"
 	prompt
 
 _ItemWontHaveEffectText::
-	text "It won't have any"
-	line "effect."
+	text "사용해도 효과가 없을껄"
 	prompt
 
 _BallBlockedText::
-	text "The trainer"
-	line "blocked the BALL!"
+	text "트레이너가 볼을 쳐냈다!"
 	prompt
 
 _BallDontBeAThiefText::
-	text "Don't be a thief!"
+	text "다른사람의 물건을 훔치면 도둑놈!"
 	prompt
 
 _NoCyclingText::
-	text "Cycling isn't"
-	line "allowed here."
+	text "여기서는 자전거에"
+	next "탈 수 없습니다"
 	prompt
 
 _ItemCantGetOnText::
-	text "Can't get on your"
-	line "@"
+	text "여기서는@"
 	text_ram wStringBuffer1
-	text " now."
+	text "에"
+	line "탈 수 없습니다"
 	prompt
 
 _BallBoxFullText::
-	text "The #MON BOX"
-	line "is full. That"
-	cont "can't be used now."
+	text "박스에 맡겨놓은 포켓몬이"
+	line "가득차서 더는 사용 못합니다!"
 	prompt
 
 _ItemUsedText::
-	text "<PLAYER> used the"
+	text "<PLAYER>는(은)"
 	line "@"
+	text_low
 	text_ram wStringBuffer2
-	text "."
+	text "를(을)"
+	cont "사용했다!"
 	done
 
 _ItemGotOnText::
-	text "<PLAYER> got on the@"
+	text "<PLAYER>는(은)@"
 	text_low
 	text_ram wStringBuffer2
-	text "."
+	text "에 탔다"
 	prompt
 
 _ItemGotOffText::
-	text "<PLAYER> got off@"
+	text "<PLAYER>는(은)@"
 	text_low
-	text "the @"
 	text_ram wStringBuffer2
-	text "."
+	text "에서 내렸다"
 	prompt
 
 _KnowsMoveText::
+	text "@"
 	text_ram wStringBuffer1
-	text " knows"
+	text "는(은) 이미"
 	line "@"
 	text_ram wStringBuffer2
-	text "."
+	text "를(을)"
+	cont "알고 있습니다"
 	prompt
 
 _MoveKnowsOneText::
-	text "That #MON knows"
-	line "only one move."
+	text "그 포켓몬은 기술을 1개밖에"
+	line "가지고 있지 않아"
 	done
 
 _AskDeleteMoveText::
-	text "Oh, make it forget"
-	line "@"
+	text "오오! @"
 	text_ram wStringBuffer1
-	text "?"
+	text "인가?"
 	done
 
 _DeleterForgotMoveText::
-	text "Done! Your #MON"
-	line "forgot the move."
+	text "대성공! 너의 포켓몬"
+	line "기술을 잊게했다"
 	done
 
 _DeleterEggText::
-	text "An EGG doesn't"
-	line "know any moves!"
+	text "어이 어이"
+	line "그건 알이잖아"
 	done
 
 _DeleterNoComeAgainText::
-	text "No? Come visit me"
-	line "again."
+	text "그래? 잊게 하고싶은 기술이"
+	line "있다면 또 오너라"
 	done
 
 _DeleterAskWhichMoveText::
-	text "Which move should"
-	line "it forget, then?"
+	text "어느 기술을"
+	line "잊게 하고싶니?"
 	prompt
 
 _DeleterIntroText::
-	text "Um… Oh, yes, I'm"
-	line "the MOVE DELETER."
+	text "움 그리고……"
+	line "그래 나는 망각의 아저씨"
 
-	para "I can make #MON"
-	line "forget moves."
+	para "포켓몬의 기술을"
+	line "잊게할 수 있단다"
 
-	para "Shall I make a"
-	line "#MON forget?"
+	para "기술을 잊게하겠니?"
 	done
 
 _DeleterAskWhichMonText::
-	text "Which #MON?"
-	prompt
-
-_DSTIsThatOKText::
-	text " DST,"
-	line "is that OK?"
-	done
-
-_TimeAskOkayText::
-	text ","
-	line "is that OK?"
-	done
-
-_TimesetAskDSTText::
-	text "Do you want to"
-	line "switch to Daylight"
-	cont "Saving Time?"
-	done
-
-_TimesetDSTText::
-	text "I set the clock"
-	line "forward by one"
-	cont "hour."
-	prompt
-
-_TimesetAskNotDSTText::
-	text "Is Daylight Saving"
-	line "Time over?"
-	done
-
-_TimesetNotDSTText::
-	text "I put the clock"
-	line "back one hour."
-	prompt
-
-_TimesetAskAdjustDSTText::
-	text "Do you want to"
-	line "adjust your clock"
-
-	para "for Daylight"
-	line "Saving Time?"
-	done
-
-_MomLostGearBookletText::
-	text "I lost the in-"
-	line "struction booklet"
-	cont "for the #GEAR."
-
-	para "Come back again in"
-	line "a while."
+	text "어느 포켓몬?"
 	prompt

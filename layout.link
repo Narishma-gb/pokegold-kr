@@ -231,10 +231,10 @@ ROMX $01
 ; 	"Map Scripts 32"
 ; ROMX $64
 ; 	"Text 1"
-; ROMX $65
-; 	"Text 2"
-; ROMX $66
-; 	"Text 3"
+ROMX $65
+	"Text 2"
+ROMX $66
+	"Text 3"
 ; ROMX $68
 ; 	"Pokedex Entries 001-064"
 ; ROMX $69

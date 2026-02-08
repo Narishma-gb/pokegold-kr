@@ -40,7 +40,6 @@ MACRO drp
 ENDM
 
 
-;INCLUDE "constants_wip.asm"
 INCLUDE "main.asm"
 
 EXPORT DEF MoveDescriptions EQU $4000
@@ -597,35 +596,6 @@ BattleText::
 
 ;SECTION "rom100", ROMX[$4000], BANK[100]
 ; ROM $64 : $190000 - $193FFF
-
-
-SECTION "rom101", ROMX[$4000], BANK[101]
-; ROM $65 : $194000 - $197FFF
-
-	dr _MainMenuTimeUnknownText, $5c99
-	dr _OakText1, $5cad
-	dr _OakText2, $5d28
-	dr _OakText3, $5d82
-	dr _OakText4, $5d86
-	dr _OakText5, $5ddd
-	dr _OakText6, $5e7c
-	dr _OakText7, $5ea4
-	dr _ObjectEventText, $62cf
-	dr _BGEventText, $62de
-	dr _CoordinatesEventText, $62e9
-
-
-SECTION "rom102", ROMX[$4000], BANK[102]
-; ROM $66 : $198000 - $19BFFF
-
-	dr _LearnedMoveText, $4259
-	dr _MoveAskForgetText, $4285
-	dr _StopLearningMoveText, $42a4
-	dr _DidNotLearnMoveText, $42dd
-	dr _AskForgetMoveText, $430f
-	dr Text_MoveForgetCount, $43ac
-	dr _MoveForgotText, $43b9
-	dr _MoveCantForgetHMText, $4400
 
 
 ;SECTION "rom103", ROMX[$4000], BANK[103]
