@@ -470,7 +470,12 @@ FillBoxCGB:
 	push bc
 	push hl
 .col
+	ld b, a
+	ld a, [hl]
+	and $f8
+	or b
 	ld [hli], a
+	ld a, b
 	dec c
 	jr nz, .col
 	pop hl
@@ -509,9 +514,9 @@ ResetBGPals:
 
 WipeAttrmap:
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_AREA
+	lb bc, SCREEN_HEIGHT, SCREEN_WIDTH
 	xor a
-	call ByteFill
+	call FillBoxCGB
 	ret
 
 ApplyPals:
@@ -529,9 +534,7 @@ ApplyAttrmap:
 	push af
 	ld a, $2
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
+	call Function15ba
 	call DelayFrame
 	pop af
 	ldh [hBGMapMode], a
@@ -575,7 +578,7 @@ CGB_ApplyPartyMenuHPPals:
 	ld a, [de]
 	inc a
 	ld e, a
-	hlcoord 11, 2, wAttrmap
+	hlcoord 11, 0, wAttrmap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wSGBPals]
 .loop

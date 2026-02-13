@@ -130,6 +130,32 @@ wDisableTextAcceleration:: db
 wPCItemsCursor:: db
 wPCItemsScrollPosition:: db
 
+wc1d9:: db
+
+	ds 16
+
+; link data
+UNION
+wOtherPlayerLinkMode:: db
+wOtherPlayerLinkAction::
+wBattleAction:: db
+	ds 3
+wPlayerLinkAction:: db
+wUnusedLinkAction:: db
+	ds 3
+NEXTU
+wLinkReceivedSyncBuffer:: ds 5
+wLinkPlayerSyncBuffer:: ds 5
+ENDU
+wLinkTimeoutFrames:: dw
+wLinkByteTimeout:: dw
+
+wMonType:: db
+
+wCurSpecies:: db
+
+wNamedObjectType:: db
+
 
 SECTION "GBC Palettes", WRAM0
 
@@ -188,7 +214,7 @@ SECTION UNION "Miscellaneous", WRAM0
 ; link patch lists
 wPlayerPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
 wOTPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
-
+*/
 
 SECTION UNION "Miscellaneous", WRAM0
 
@@ -232,7 +258,7 @@ wGlobalAnimYOffset:: db
 wGlobalAnimXOffset:: db
 
 wSpriteAnimDataEnd::
-
+/*
 	ds 7
 
 NEXTU
@@ -265,9 +291,9 @@ wDebugPalette::
 wDebugWhiteTileColor:: ds 2
 wDebugLightTileColor:: ds 2
 wDebugDarkTileColor::  ds 2
-wDebugBlackTileColor:: ds 2
+wDebugBlackTileColor:: ds 2*/
 ENDU
-
+/*
 ; This union spans 280 bytes.
 UNION
 ; pokedex
@@ -1048,7 +1074,7 @@ ENDU
 
 ENDC
 */
-/*
+
 SECTION "Video", WRAM0
 
 ; bg map
@@ -1080,30 +1106,9 @@ wAttrmap::
 ;		bit 2-0: pal # (cgb only)
 	ds SCREEN_AREA
 wAttrmapEnd::
-
+/*
 wTileAnimBuffer:: ds 1 tiles
 
-; link data
-UNION
-wOtherPlayerLinkMode:: db
-wOtherPlayerLinkAction::
-wBattleAction:: db
-	ds 3
-wPlayerLinkAction:: db
-wUnusedLinkAction:: db
-	ds 3
-NEXTU
-wLinkReceivedSyncBuffer:: ds 5
-wLinkPlayerSyncBuffer:: ds 5
-ENDU
-wLinkTimeoutFrames:: dw
-wLinkByteTimeout:: dw
-
-wMonType:: db
-
-wCurSpecies:: db
-
-wNamedObjectType:: db
 
 	ds 1
 

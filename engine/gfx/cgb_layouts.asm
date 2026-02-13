@@ -120,9 +120,9 @@ _CGB_FinishBattleScreenLayout:
 	ld bc, 1 palettes
 	call CopyBytes
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_AREA
+	lb bc, SCREEN_HEIGHT, SCREEN_WIDTH
 	ld a, PAL_BATTLE_BG_ENEMY_HP
-	call ByteFill
+	call FillBoxCGB
 	hlcoord 0, 4, wAttrmap
 	lb bc, 8, 10
 	ld a, PAL_BATTLE_BG_PLAYER
@@ -144,9 +144,9 @@ _CGB_FinishBattleScreenLayout:
 	ld a, PAL_BATTLE_BG_EXP
 	call FillBoxCGB
 	hlcoord 0, 12, wAttrmap
-	ld bc, 6 * SCREEN_WIDTH
+	lb bc, 6, SCREEN_WIDTH
 	ld a, PAL_BATTLE_BG_TEXT
-	call ByteFill
+	call FillBoxCGB
 	ld hl, BattleObjectPals
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
 	ld bc, 6 palettes
@@ -187,26 +187,26 @@ _CGB_StatsScreenHPPals:
 	call WipeAttrmap
 
 	hlcoord 0, 0, wAttrmap
-	lb bc, 8, SCREEN_WIDTH
+	lb bc, SCREEN_HEIGHT, 7
 	ld a, $1 ; mon palette
 	call FillBoxCGB
 
-	hlcoord 10, 16, wAttrmap
-	ld bc, 10
+	hlcoord 9, 16, wAttrmap
+	lb bc, 1, 10
 	ld a, $2 ; exp palette
-	call ByteFill
+	call FillBoxCGB
 
-	hlcoord 13, 5, wAttrmap
+	hlcoord 1, 14, wAttrmap
 	lb bc, 2, 2
 	ld a, $3 ; pink page palette
 	call FillBoxCGB
 
-	hlcoord 15, 5, wAttrmap
+	hlcoord 3, 14, wAttrmap
 	lb bc, 2, 2
 	ld a, $4 ; green page palette
 	call FillBoxCGB
 
-	hlcoord 17, 5, wAttrmap
+	hlcoord 5, 14, wAttrmap
 	lb bc, 2, 2
 	ld a, $5 ; blue page palette
 	call FillBoxCGB
@@ -294,28 +294,6 @@ _CGB_BillsPC:
 	call LoadPalette_White_Col1_Col2_Black
 .GotPalette:
 	call WipeAttrmap
-	hlcoord 1, 4, wAttrmap
-	lb bc, 7, 7
-	ld a, $1 ; mon palette
-	call FillBoxCGB
-	call InitPartyMenuOBPals
-	call ApplyAttrmap
-	call ApplyPals
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-	ret
-
-_CGB_Unknown: ; unreferenced
-	ld hl, BillsPCOrangePalette
-	call LoadHLPaletteIntoDE
-	jr .GotPalette
-
-.GetMonPalette: ; unreferenced
-	ld bc, wTempMonDVs
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-.GotPalette:
-	call WipeAttrmap
 	hlcoord 1, 1, wAttrmap
 	lb bc, 7, 7
 	ld a, $1 ; mon palette
@@ -393,9 +371,9 @@ _CGB_SlotMachine:
 	ld a, $1 ; lights palette
 	call FillBoxCGB
 	hlcoord 0, 12, wAttrmap
-	ld bc, 6 * SCREEN_WIDTH
+	lb bc, 6, SCREEN_WIDTH
 	ld a, $7 ; text palette
-	call ByteFill
+	call FillBoxCGB
 	call ApplyAttrmap
 	call ApplyPals
 	ld a, TRUE
@@ -615,9 +593,9 @@ _CGB_TrainerCard:
 
 	; card border
 	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_AREA
+	lb bc, SCREEN_HEIGHT, SCREEN_WIDTH
 	ld a, $1 ; falkner
-	call ByteFill
+	call FillBoxCGB
 	; trainer sprite area
 	hlcoord 14, 1, wAttrmap
 	lb bc, 7, 5
@@ -713,23 +691,23 @@ _CGB_PackPals:
 	call CopyBytes
 	call WipeAttrmap
 	hlcoord 0, 0, wAttrmap
-	lb bc, 1, 10
+	lb bc, 2, 10
 	ld a, $1
 	call FillBoxCGB
 	hlcoord 10, 0, wAttrmap
-	lb bc, 1, 10
+	lb bc, 2, 10
 	ld a, $2
 	call FillBoxCGB
-	hlcoord 7, 2, wAttrmap
+	hlcoord 8, 3, wAttrmap
 	lb bc, 9, 1
 	ld a, $3
 	call FillBoxCGB
 	hlcoord 0, 7, wAttrmap
-	lb bc, 3, 5
+	lb bc, 2, 6
 	ld a, $4
 	call FillBoxCGB
-	hlcoord 0, 3, wAttrmap
-	lb bc, 3, 5
+	hlcoord 1, 3, wAttrmap
+	lb bc, 3, 4
 	ld a, $5
 	call FillBoxCGB
 	call ApplyAttrmap

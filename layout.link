@@ -29,8 +29,8 @@ ROM0
 	"Home"
 ROMX $01
 	"bank1"
-; ROMX $02
-; 	"bank2"
+ROMX $02
+	"bank2"
 ; ROMX $03
 ; 	"bank3"
 ; ROMX $04
@@ -270,8 +270,8 @@ WRAM0
 	"Unused Map Buffer"
 	align 8
 	"Overworld Map"
-; 	align 4
-; 	"Video"
+	org $cc27
+	"Video"
 WRAMX 1
 ; 	"WRAM 1"
 	org $d25c

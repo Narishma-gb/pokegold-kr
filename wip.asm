@@ -34,11 +34,6 @@ MACRO drd
 	dr \1, (\2) + gs_diff
 ENDM
 
-; Predefs
-MACRO drp
-	dr \1Predef, (\2) * 3 + $4b5b
-ENDM
-
 
 INCLUDE "main.asm"
 
@@ -46,42 +41,28 @@ EXPORT DEF MoveDescriptions EQU $4000
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "rom2", ROMX[$4000], BANK[2]
-; ROM $02 : $8000 - $BFFF
-
-	dr _LoadOverworldAttrmapPals, $4000
-	dr _ScrollBGMapPalettes, $404f
-	dr SpawnPlayer, $461a
-	dr CopyDECoordsToMapObject, $4653
-	dr CopyObjectStruct, $46d7
-	dr CopyTempObjectToObjectStruct, $4876
-	dr QueueFollowerFirstStep, $4a7a
-	dr _Sine, $4ac9
-	dr GetPredefPointer, $4b3b
-	dr PredefPointers, $4b5b
-	drp SmallFarFlagAction, 3
-	drp TryAddMonToParty, 6
-	drp LinkTextboxAtHL, $10
-	drp PlaceGraphic, $13
-	drp ListMoves, $20
-	drp InitSGBBorder, $30
-	drp LoadSGBLayout, $31
-	drp GetMonFrontpic, $3c
-	drp DecompressGet2bpp, $3f
-	dr ApplyMonOrTrainerPals, $51e2
-	dr InitCGBPals, $5ccd
-
-
 SECTION "rom3", ROMX[$4000], BANK[3]
 ; ROM $03 : $C000 - $FFFF
 
 	dr EngineFlagAction, $401b
+	dr SmallFarFlagAction, $4656
+	dr HealParty, $4692
+	dr ComputeHPBarPixels, $46d3
+	dr AnimateHPBar, $471a
 	dr _ReceiveItem, $51d7
 	dr _TossItem, $520f
 	dr _CheckItem, $5246
 	dr GetTMHMNumber, $5409
 	dr _CheckTossableItem, $5429
+	dr TryAddMonToParty, $5867
+	dr FillPP, $5a48
+	dr AddTempmonToParty, $5a71
+	dr SendGetMonIntoFromBox, $5b1a
+	dr SendMonIntoBox, $5e49
+	dr GiveEgg, $5f67
 	dr RemoveMonFromPartyOrBox, $6013
+	dr CalcMonStats, $6141
+	dr CalcMonStatC, $6155
 	dr CheckCurPartyMonFainted, $6509
 	dr _DoItemEffect, $679c
 
@@ -91,7 +72,10 @@ SECTION "rom4", ROMX[$4000], BANK[4]
 
 	dr _InitializeStartDay, $5780
 	dr DoMysteryGiftIfDayHasPassed, $58c3
+	dr CanLearnTMHMMove, $59b4
+	dr GetTMHMMove, $59e5
 	dr NamingScreen, $5a3c
+	dr PartyMonItemName, $6cfa
 
 
 SECTION "rom5", ROMX[$4000], BANK[5]
@@ -153,20 +137,27 @@ SECTION "rom9", ROMX[$4000], BANK[9]
 SECTION "rom10", ROMX[$4000], BANK[10]
 ; ROM $0a : $28000 - $2BFFF
 
+	dr LinkTextboxAtHL, $4e38
+	dr TradeAnimation, $4eae
+	dr TradeAnimationPlayer2, $4ee6
 	dr DoMysteryGift, $5ecb
 	dr CopyMysteryGiftReceivedDecorationsToPC, $65a4
 	dr JumpRoamMons, $69c5
 
-;SECTION "rom11", ROMX[$4000], BANK[11]
+SECTION "rom11", ROMX[$4000], BANK[11]
 ; ROM $0b : $2C000 - $2FFFF
+
+	dr PrintMoveDescription, $4952
 
 
 ;SECTION "rom12", ROMX[$4000], BANK[12]
 ; ROM $0c : $30000 - $33FFF
 
 
-;SECTION "rom13", ROMX[$4000], BANK[13]
+SECTION "rom13", ROMX[$4000], BANK[13]
 ; ROM $0d : $34000 - $37FFF
+
+	dr CheckTypeMatchup, $4923
 
 
 SECTION "rom14", ROMX[$4000], BANK[14]
@@ -178,20 +169,31 @@ SECTION "rom14", ROMX[$4000], BANK[14]
 SECTION "rom15", ROMX[$4000], BANK[15]
 ; ROM $0f : $3C000 - $3FFFF
 
+	dr CheckPlayerPartyForFitMon, $570d
+	dr GetPartyMonDVs, $58f8
+	dr GetEnemyMonDVs, $590a
 	dr UpdatePlayerHUD, $5dac
 	dr UpdateEnemyHUD, $5eac
 	dr _BattleRandom, $6c62
+	dr FillInExpBar, $71e7
+	dr GetBattleMonBackpic, $7294
+	dr GetEnemyMonFrontpic, $72d3
+	dr StartBattle, $7318
 
 
 SECTION "rom16", ROMX[$4000], BANK[16]
 ; ROM $10 : $40000 - $43FFF
 
 	dr Moves, $572e
+	dr EvolveAfterBattle, $5e19
+	dr LearnLevelMoves, $60b3
+	dr FillMoves, $610d
 
 
 SECTION "rom17", ROMX[$4000], BANK[17]
 ; ROM $11 : $44000 - $47FFF
 
+	dr PlaceGraphic, $45e7
 	dr DeletePartyMonMail, $480f
 
 
@@ -207,7 +209,26 @@ SECTION "rom20", ROMX[$4000], BANK[20]
 ; ROM $14 : $50000 - $53FFF
 
 	dr SelectMonFromParty, $4000
+	dr CopyMonToTempMon, $4926
+	dr PrintMonTypes, $49e9
+	dr PrintMoveType, $4a16
+	dr PrintType, $4a2f
+	dr GetTypeName, $4a40
+	dr DrawPlayerHP, $4bcc
+	dr DrawEnemyHP, $4bd0
+	dr StatsScreenInit, $4c3d
+	dr PrintTempMonStats, $5315
+	dr GetGender, $536e
+	dr ListMovePP, $53e1
+	dr Unused_PlaceEnemyHPLevel, $5461
+	dr PlaceNonFaintStatus, $54b4
+	dr ListMoves, $554e
+	dr GetUnownLetter, $581d
+	dr GetMonFrontpic, $5854
+	dr UnusedFrontpicPredef, $585a
+	dr GetMonBackpic, $58d7
 	dr GetTrainerPic, $5974
+	dr DecompressGet2bpp, $59ce
 	dr BaseData, $5bdf
 
 
@@ -274,12 +295,15 @@ SECTION "rom35", ROMX[$4000], BANK[35]
 
 	dr _ResetClock, $417a
 	dr _DeleteSaveData, $4311
+	dr DummyPredef35, $4359
+DummyPredef36::
 	dr UpdateTimeOfDayPal, $435a
 	dr _TimeOfDayPals, $436a
 	dr _UpdateTimePals, $439b
 	dr FadeInFromWhite, $43a4
 	dr FadeOutToWhite, $43af
 	dr ReplaceTimeOfDayPals, $43ed
+	dr DoBattleTransition, $4517
 	dr ClearSpriteAnims, $516c
 	dr PlaySpriteAnimations, $5182
 	dr _InitSpriteAnimStruct, $51ef
@@ -291,6 +315,7 @@ SECTION "rom36", ROMX[$4000], BANK[36]
 
 	dr InitClock, $4647
 	dr PrintHour, $49ca
+	dr Pokedex_GetArea, $5b52
 
 
 SECTION "rom37", ROMX[$4000], BANK[37]
@@ -363,6 +388,8 @@ SECTION "rom50", ROMX[$4000], BANK[50]
 ; ROM $32 : $C8000 - $CBFFF
 
 BattleAnimations::
+	dr DummyPredef2F, $40d7
+	dr LoadPoisonBGPals, $7c76
 
 
 SECTION "rom51", ROMX[$4000], BANK[51]
@@ -370,6 +397,9 @@ SECTION "rom51", ROMX[$4000], BANK[51]
 
 ClearBattleAnims::
 BattleAnimCommands::
+	dr DummyPredef38, $40d7
+DummyPredef39::
+	dr PlayBattleAnim, $40d8
 
 ;SECTION "rom52", ROMX[$4000], BANK[52]
 ; ROM $34 : $D0000 - $D3FFF
@@ -440,11 +470,14 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr CollisionPermissionTable, $746d
 	dr Shrink1Pic, $756d
 	dr Shrink2Pic, $75fd
+	dr NewPokedexEntry, $7930
+	dr ConvertMon_1to2, $799b
 
 
 SECTION "rom63", ROMX[$4000], BANK[63]
 ; ROM $3f : $FC000 - $FFFFF
 
+	dr DummyPredef3A, $4001
 	dr _AnimateTileset, $4003
 
 
