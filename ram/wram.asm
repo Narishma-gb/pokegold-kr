@@ -192,7 +192,7 @@ SECTION UNION "Miscellaneous", WRAM0
 ; it uses exactly 480 bytes.
 wSurroundingTiles:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
 
-/*
+
 SECTION UNION "Miscellaneous", WRAM0
 
 ; box save buffer
@@ -201,7 +201,7 @@ SECTION UNION "Miscellaneous", WRAM0
 wBoxPartialData:: ds 480
 wBoxPartialDataEnd::
 
-
+/*
 SECTION UNION "Miscellaneous", WRAM0
 
 ; 20x18 grid of 8x8 tiles
@@ -648,7 +648,7 @@ wMysteryGiftPlayerBackupItem:: db
 	ds 1
 wMysteryGiftPlayerDataEnd::
 */
-/*
+
 SECTION UNION "Overworld Map", WRAM0
 
 	align 8
@@ -785,7 +785,7 @@ wIntroSpriteStateFlag:: db
 ENDU
 
 	ds 2
-
+/*
 wEnemyTrainerItem1:: db
 wEnemyTrainerItem2:: db
 wEnemyTrainerBaseReward:: db
@@ -1041,9 +1041,9 @@ wEnemyJustGotFrozen:: db
 wBattleEnd::
 
 	ds 1
-
+*/
 ENDU
-
+/*
 
 IF DEF(_DEBUG)
 SECTION UNION "Overworld Map", WRAM0
@@ -1218,6 +1218,8 @@ wPrinterQueueLength::
 wUnusedSGB1eColorOffset::
 	db
 ENDU
+*/
+SECTION "wram_wip1", WRAM0[$ce48]
 
 wRequested2bppSize:: db
 wRequested2bppSource:: dw
@@ -1231,8 +1233,6 @@ wSecondsSince:: db
 wMinutesSince:: db
 wHoursSince:: db
 wDaysSince:: db
-
-	ds 12
 
 wPlayerBGMapOffsetX:: db ; used in FollowNotExact; unit is pixels
 wPlayerBGMapOffsetY:: db ; used in FollowNotExact; unit is pixels
@@ -1561,7 +1561,7 @@ NEXTU
 wDebugColorIsTrainer:: db
 wDebugColorIsShiny:: db
 wDebugColorCurTMHM:: db
-
+/*
 IF DEF(_DEBUG)
 NEXTU
 ; debug room paged values
@@ -1704,9 +1704,9 @@ ENDU
 
 wBoxAlignment:: db
 wFarDecompressPicPointer:: dw
-wFXAnimID:: dw
+wFXAnimID:: dw*/
 ENDU
-
+/*
 wPlaceBallsX:: db
 wPlaceBallsY:: db
 wTileAnimationTimer:: db
@@ -1765,11 +1765,13 @@ wMenuScrollPosition:: ds 4
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
 
+*/
+SECTION "wram_wip2", WRAMX[$d09b], BANK[1]
+
 wPredefID:: db
 wPredefHL:: dw
 wPredefAddress:: dw
 wFarCallBC:: dw
-	ds 1
 
 wNumMoves:: db
 
@@ -1789,14 +1791,12 @@ wStateFlags::
 ; bit 7: in scripted movement
 	db
 
-	ds 3
+	ds 1
 
 wBattleResult::
 ; WIN, LOSE, or DRAW
 ; bit 7: box full
 	db
-
-	ds 1
 
 wUsingItemWithSelect:: db
 
@@ -1820,9 +1820,6 @@ ENDU
 
 wListPointer:: dw
 wUnusedNamesPointer:: dw
-*/
-/*
-SECTION "WRAM 1", WRAMX
 
 wItemAttributesPointer:: dw
 
@@ -1836,8 +1833,6 @@ wCurPartySpecies:: db
 wCurPartyMon::
 ; index of mon's party location (0-5)
 	db
-
-	ds 1
 
 wWhichHPBar::
 ; 0: Enemy
@@ -1883,7 +1878,7 @@ wPrevWarp:: db
 wPrevMapGroup:: db
 wPrevMapNumber:: db
 
-	ds 17
+	ds 19
 
 wUnusedAddOutdoorSpritesReturnValue:: db
 
@@ -2267,7 +2262,7 @@ wReceiveCallDelay_StartTime:: ds 3
 
 wBugContestMinsRemaining:: db
 wBugContestSecsRemaining:: db
-
+/*
 	ds 2
 
 wMapStatusEnd::
@@ -2513,6 +2508,9 @@ wFastShipB1FSceneID::                             db
 wMountMoonSquareSceneID::                         db
 
 	ds 197
+*/
+
+SECTION "wram_wip3", WRAMX[$d84a], BANK[1]
 
 wEventFlags:: flag_array NUM_EVENTS
 
@@ -2607,7 +2605,6 @@ wStepCount:: db
 wPoisonStepCount:: db
 	ds 2
 wHappinessStepCount:: db
-	ds 1
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db
@@ -2615,7 +2612,7 @@ wSafariTimeRemaining:: dw
 
 wPhoneList:: ds CONTACT_LIST_SIZE + 1
 
-	ds 22
+	ds 19
 
 wLuckyNumberShowFlag:: db
 	ds 1
@@ -2646,8 +2643,6 @@ wBackupMapNumber::  db
 wLastSpawnMapGroup:: db
 wLastSpawnMapNumber:: db
 
-	ds 2
-
 wWarpNumber:: db
 wMapGroup:: db
 wMapNumber:: db
@@ -2656,7 +2651,7 @@ wXCoord:: db
 wScreenSave:: ds SCREEN_META_WIDTH * SCREEN_META_HEIGHT
 
 wCurMapDataEnd::
-*/
+
 
 SECTION "Party", WRAMX
 
@@ -2742,9 +2737,8 @@ wRoamMons_CurMapNumber:: db
 wRoamMons_CurMapGroup:: db
 wRoamMons_LastMapNumber:: db
 wRoamMons_LastMapGroup:: db
-/*
-wBestMagikarpLengthFeet:: db
-wBestMagikarpLengthInches:: db
+
+wBestMagikarpLength:: dw
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
 
 UNION
@@ -2801,7 +2795,7 @@ ENDU
 
 wPokemonDataEnd::
 wGameDataEnd::
-*/
+
 /*
 SECTION "Stack", WRAMX
 

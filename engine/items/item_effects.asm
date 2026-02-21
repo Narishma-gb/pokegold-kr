@@ -702,7 +702,7 @@ PokeBallEffect:
 	jr z, .toss
 
 	call ClearBGPalettes
-	call ClearTilemap
+	call Function0ee6
 
 .toss
 	ld hl, wNumItems
@@ -755,68 +755,29 @@ HeavyBallMultiplier:
 ; else add 20 to catch rate if weight < 307.2 kg
 ; else add 30 to catch rate if weight < 409.6 kg
 ; else add 40 to catch rate
+	push bc
 	ld a, [wEnemyMonSpecies]
-	dec a
-	ld hl, PokedexDataPointerTable
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	rlca
-	rlca
-	maskbits NUM_DEX_ENTRY_BANKS
-	add BANK("Pokedex Entries 001-064")
-	ld d, a
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarWord
+	ld b, a
+	farcall Function442ea
 
 .SkipText:
-	ld a, d
+	ld a, b
 	call GetFarByte
 	inc hl
+	cp $c
+	jr nc, .SingleByte
+	inc hl
+	jr .SkipText
+.SingleByte
 	cp '@'
 	jr nz, .SkipText
 
-	ld a, d
-	push bc
 	inc hl
 	inc hl
-	call GetFarWord
-
-	srl h
-	rr l
-	ld b, h
-	ld c, l
-
-rept 4
-	srl b
-	rr c
-endr
-	call .subbc
-
-	srl b
-	rr c
-	call .subbc
-
-	ld a, h
-	pop bc
-	jr .compare
-
-.subbc
-	; subtract bc from hl
-	push bc
 	ld a, b
-	cpl
-	ld b, a
-	ld a, c
-	cpl
-	ld c, a
-	inc bc
-	add hl, bc
+	call GetFarByte
 	pop bc
-	ret
 
-.compare
 	ld c, a
 	cp HIGH(1024) ; 102.4 kg
 	jr c, .lightmon
@@ -1176,7 +1137,7 @@ VitaminEffect:
 	ld h, [hl]
 	ld l, a
 	ld de, wStringBuffer2
-	ld bc, ITEM_NAME_LENGTH
+	ld bc, STAT_NAME_LENGTH
 	call CopyBytes
 
 	call Play_SFX_FULL_HEAL
@@ -1220,11 +1181,11 @@ StatStrings:
 	dw .speed
 	dw .special
 
-.health  db "HEALTH@"
-.attack  db "ATTACK@"
-.defense db "DEFENSE@"
-.speed   db "SPEED@"
-.special db "SPECIAL@"
+.health  db "체력@"
+.attack  db "공격력@"
+.defense db "방어력@"
+.speed   db "스피드@"
+.special db "특수능력@"
 
 GetStatExpRelativePointer:
 	ld a, [wCurItem]
@@ -1336,7 +1297,7 @@ RareCandyEffect:
 	ld c, 9
 	call Textbox
 
-	hlcoord 11, 1
+	hlcoord 11, 2
 	ld bc, 4
 	predef PrintTempMonStats
 

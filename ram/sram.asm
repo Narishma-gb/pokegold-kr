@@ -11,10 +11,10 @@
 ;ENDU
 
 
-;SECTION "SRAM Bank 0", SRAM
+SECTION "SRAM Bank 0", SRAM
 
-;sPartyMail::
-;; sPartyMon1Mail - sPartyMon6Mail
+sPartyMail::
+; sPartyMon1Mail - sPartyMon6Mail
 ;for n, 1, PARTY_LENGTH + 1
 ;sPartyMon{d:n}Mail:: mailmsg sPartyMon{d:n}Mail
 ;endr
@@ -139,29 +139,29 @@ sBox:: curbox sBox
 ;sBackupPlayerData2:: ds wPlayerData2End - wPlayerData2
 
 
-;; The PC boxes will not fit into one SRAM bank,
-;; so they use multiple SECTIONs
-;DEF box_n = 0
-;MACRO boxes
-;	rept \1
-;		DEF box_n += 1
-;	sBox{d:box_n}:: box sBox{d:box_n}
-;	endr
-;ENDM
+; The PC boxes will not fit into one SRAM bank,
+; so they use multiple SECTIONs
+DEF box_n = 0
+MACRO boxes
+	rept \1
+		DEF box_n += 1
+	sBox{d:box_n}:: box sBox{d:box_n}
+	endr
+ENDM
 
-;SECTION "Boxes 1-7", SRAM
+SECTION "Boxes 1-7", SRAM
 
-;; sBox1 - sBox7
-;	boxes 7
+; sBox1 - sBox7
+	boxes 7
 
-;SECTION "Boxes 8-14", SRAM
+SECTION "Boxes 8-14", SRAM
 
-;; sBox8 - sBox14
-;	boxes 7
+; sBox8 - sBox14
+	boxes 7
 
-;; All 14 boxes fit exactly within 2 SRAM banks
-;	assert box_n == NUM_BOXES, \
-;		"boxes: Expected {d:NUM_BOXES} total boxes, got {d:box_n}"
+; All 14 boxes fit exactly within 2 SRAM banks
+	assert box_n == NUM_BOXES, \
+		"boxes: Expected {d:NUM_BOXES} total boxes, got {d:box_n}"
 
 
 ;SECTION "Backup Save 3", SRAM

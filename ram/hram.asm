@@ -163,12 +163,7 @@ hBattleTurn::
 hCGBPalUpdate:: db
 hCGB::          db
 hSGB::          db
-
-IF DEF(_DEBUG)
-hDebugRoomMenuPage:: db
-ELSE
-	ds 1
-ENDC
+hAGB::          db
 
 	ds 20
 

@@ -69,7 +69,7 @@ SpecialsPointers::
 	add_special ReloadSpritesNoPalettes, 2
 	add_special ClearBGPalettes
 	add_special UpdateTimePals
-	add_special ClearTilemap ; unused as special
+	add_special Function0ee6 ; unused as special
 	add_special UpdateSprites
 	add_special UpdatePlayerSprite
 	add_special GameCornerPrizeMonCheckDex
@@ -124,7 +124,4 @@ SpecialsPointers::
 	add_special FadeOutMusic
 	add_special Diploma
 	add_special PrintDiploma
-	add_special InitialSetDSTFlag
-	add_special InitialClearDSTFlag
-	add_special MrChrono
 	add_special UnusedDummySpecial ; unused

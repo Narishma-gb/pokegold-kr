@@ -37,45 +37,32 @@ ENDM
 
 INCLUDE "main.asm"
 
+EXPORT DEF ConfusedNoMoreText EQU $5a29
 EXPORT DEF MoveDescriptions EQU $4000
 EXPORT DEF EggPic EQU $7b57
-
-
-SECTION "rom3", ROMX[$4000], BANK[3]
-; ROM $03 : $C000 - $FFFF
-
-	dr EngineFlagAction, $401b
-	dr SmallFarFlagAction, $4656
-	dr HealParty, $4692
-	dr ComputeHPBarPixels, $46d3
-	dr AnimateHPBar, $471a
-	dr _ReceiveItem, $51d7
-	dr _TossItem, $520f
-	dr _CheckItem, $5246
-	dr GetTMHMNumber, $5409
-	dr _CheckTossableItem, $5429
-	dr TryAddMonToParty, $5867
-	dr FillPP, $5a48
-	dr AddTempmonToParty, $5a71
-	dr SendGetMonIntoFromBox, $5b1a
-	dr SendMonIntoBox, $5e49
-	dr GiveEgg, $5f67
-	dr RemoveMonFromPartyOrBox, $6013
-	dr CalcMonStats, $6141
-	dr CalcMonStatC, $6155
-	dr CheckCurPartyMonFainted, $6509
-	dr _DoItemEffect, $679c
 
 
 SECTION "rom4", ROMX[$4000], BANK[4]
 ; ROM $04 : $10000 - $13FFF
 
 	dr _InitializeStartDay, $5780
+	dr CheckUnusedTwoDayTimer, $5887
+	dr RestartLuckyNumberCountdown, $58a6
+	dr _CheckLuckyNumberShowFlag, $58bd
 	dr DoMysteryGiftIfDayHasPassed, $58c3
 	dr CanLearnTMHMMove, $59b4
 	dr GetTMHMMove, $59e5
+	dr _NamingScreen, $5a32
 	dr NamingScreen, $5a3c
+	dr Script_AbortBugContest, $64f4
+	dr HealMachineAnim, $6557
+	dr ItemFinder, $67a1
 	dr PartyMonItemName, $6cfa
+	dr GiveParkBalls, $7878
+	dr _BugContestJudging, $793a
+	dr SelectRandomBugContestContestants, $7c3f
+	dr ContestDropOffMons, $7ca9
+	dr ContestReturnMons, $7cc8
 
 
 SECTION "rom5", ROMX[$4000], BANK[5]
@@ -89,18 +76,33 @@ SECTION "rom5", ROMX[$4000], BANK[5]
 	dr LoadStandingSpritesGFX, $414b
 	dr LoadWalkingSpritesGFX, $415c
 	dr RefreshSprites, $416d
+	dr LoadUsedSpritesGFX, $4226
 	dr _DoesSpriteHaveFacings, $4317
 	dr _GetSpritePalette, $4334
 	dr CheckWarpCollision, $4a18
 	dr CheckDirectionalWarp, $4a2d
 	dr CheckWarpFacingDown, $4a44
+	dr CheckCutCollision, $4a73
+	dr StartMoveMonWOMail_SaveGame, $4bd2
 	dr TryLoadSaveFile, $4ef5
 	dr TryLoadSaveData, $4f60
 	dr _LoadOverworldTilemap, $538d
+	dr IsSpawnPoint, $5465
 	dr RunMapSetupScript, $5484
+	dr SkipUpdateMapSprites, $560c
 	dr CheckUpdatePlayerSprite, $5612
 	dr Tilesets, $56be
+	dr PokemonCenterPC, $5871
+	dr _PlayersHousePC, $59c1
+	dr BankOfMom, $6495
+	dr DayCareMan, $688c
+	dr DayCareLady, $68e0
+	dr DayCareManOutside, $6ae3
+	dr _UnownPrinter, $6d90
+	dr PhotoStudio, $6f5b
 	dr CheckBreedmonCompatibility, $714b
+	dr DayCareMon1, $771f
+	dr DayCareMon2, $773e
 
 
 ;SECTION "rom6", ROMX[$4000], BANK[6]
@@ -131,7 +133,17 @@ SECTION "rom9", ROMX[$4000], BANK[9]
 	dr _InitVerticalMenuCursor, $43a7
 	dr _InitScrollingMenu, $44e9
 	dr _ScrollingMenu, $4505
+	dr PlaceMoneyTopRight, $4a1e
+	dr DisplayCoinCaseBalance, $4a5b
+	dr DisplayMoneyAndCoinBalance, $4a84
+	dr Kurt_SelectApricorn, $4bb0
+	dr ProfOaksPCBoot, $6852
 	dr InitDecorations, $69b5
+	dr SetSpecificDecorationFlag, $714b
+	dr ToggleMaptileDecorations, $7234
+	dr ToggleDecorationsVisibility, $728c
+	dr GetTrainerDVs, $72e7
+	dr _ReturnToBattle_UseBall, $737d
 
 
 SECTION "rom10", ROMX[$4000], BANK[10]
@@ -140,13 +152,35 @@ SECTION "rom10", ROMX[$4000], BANK[10]
 	dr LinkTextboxAtHL, $4e38
 	dr TradeAnimation, $4eae
 	dr TradeAnimationPlayer2, $4ee6
+	dr CheckTimeCapsuleCompatibility, $5b13
+	dr EnterTimeCapsule, $5b93
+	dr WaitForOtherPlayerToExit, $5ba5
+	dr SetBitsForLinkTradeRequest, $5bee
+	dr SetBitsForBattleRequest, $5bf7
+	dr SetBitsForTimeCapsuleRequest, $5c00
+	dr WaitForLinkedFriend, $5c17
+	dr CheckLinkTimeout_Receptionist, $5c98
+	dr TryQuickSave, $5d3d
+	dr CheckBothSelectedSameRoom, $5d59
+	dr TimeCapsule, $5d86
+	dr TradeCenter, $5d9b
+	dr Colosseum, $5db0
+	dr CloseLink, $5dc5
+	dr FailedLinkToPast, $5dcd
+	dr CableClubCheckWhichChris, $5e1a
 	dr DoMysteryGift, $5ecb
 	dr CopyMysteryGiftReceivedDecorationsToPC, $65a4
+	dr UnlockMysteryGift, $65cc
+	dr InitRoamMons, $68bc
 	dr JumpRoamMons, $69c5
+	dr RandomUnseenWildMon, $6adc
+	dr RandomPhoneWildMon, $6b50
+	dr RandomPhoneMon, $6b98
 
 SECTION "rom11", ROMX[$4000], BANK[11]
 ; ROM $0b : $2C000 - $2FFFF
 
+	dr MoveDeletion, $4352
 	dr PrintMoveDescription, $4952
 
 
@@ -158,6 +192,11 @@ SECTION "rom13", ROMX[$4000], BANK[13]
 ; ROM $0d : $34000 - $37FFF
 
 	dr CheckTypeMatchup, $4923
+	dr RaiseStat, $6311
+	dr BattleCommand_StatUpMessage, $64d5
+	dr BattleCommand_StatUpFailText, $6569
+	dr CalcPlayerStats, $66ee
+	dr GetItemHeldEffect, $7e91
 
 
 SECTION "rom14", ROMX[$4000], BANK[14]
@@ -169,32 +208,41 @@ SECTION "rom14", ROMX[$4000], BANK[14]
 SECTION "rom15", ROMX[$4000], BANK[15]
 ; ROM $0f : $3C000 - $3FFFF
 
+	dr FleeMons, $4551
 	dr CheckPlayerPartyForFitMon, $570d
 	dr GetPartyMonDVs, $58f8
 	dr GetEnemyMonDVs, $590a
 	dr UpdatePlayerHUD, $5dac
 	dr UpdateEnemyHUD, $5eac
+	dr MoveSelectionScreen, $6338
+	dr LoadEnemyMon, $679c
 	dr _BattleRandom, $6c62
 	dr FillInExpBar, $71e7
 	dr GetBattleMonBackpic, $7294
 	dr GetEnemyMonFrontpic, $72d3
 	dr StartBattle, $7318
+	dr _DisplayLinkRecord, $75bd
 
-
+SECTION "Evolutions and Attacks", ROMX[$4000], BANK[16]
 SECTION "rom16", ROMX[$4000], BANK[16]
 ; ROM $10 : $40000 - $43FFF
 
 	dr Moves, $572e
+	dr EvolvePokemon, $5e0b
 	dr EvolveAfterBattle, $5e19
 	dr LearnLevelMoves, $60b3
 	dr FillMoves, $610d
+	dr GetPreEvolution, $63bd
+	dr EvosAttacksPointers, $63ed
 
 
 SECTION "rom17", ROMX[$4000], BANK[17]
 ; ROM $11 : $44000 - $47FFF
 
+	dr Function442ea, $42ea
 	dr PlaceGraphic, $45e7
 	dr DeletePartyMonMail, $480f
+	dr IsAnyMonHoldingMail, $482b
 
 
 ;SECTION "rom18", ROMX[$4000], BANK[18]
@@ -209,6 +257,18 @@ SECTION "rom20", ROMX[$4000], BANK[20]
 ; ROM $14 : $50000 - $53FFF
 
 	dr SelectMonFromParty, $4000
+	dr LoadPartyMenuGFX, $404f
+	dr WritePartyMenuTilemap, $405f
+	dr InitPartyMenuGFX, $4374
+	dr InitPartyMenuWithCancel, $4399
+	dr PartyMenuSelect, $43eb
+	dr PlacePartyMenuText, $442e
+	dr PrintPartyMenuActionText, $4584
+	dr LoadFishingGFX, $45f8
+	dr _Squirtbottle, $480c
+	dr _CardKey, $4855
+	dr _BasementKey, $4890
+	dr _SacredAsh, $48c2
 	dr CopyMonToTempMon, $4926
 	dr PrintMonTypes, $49e9
 	dr PrintMoveType, $4a16
@@ -223,6 +283,8 @@ SECTION "rom20", ROMX[$4000], BANK[20]
 	dr Unused_PlaceEnemyHPLevel, $5461
 	dr PlaceNonFaintStatus, $54b4
 	dr ListMoves, $554e
+	dr CalcLevel, $55fa
+	dr CalcExpAtLevel, $5626
 	dr GetUnownLetter, $581d
 	dr GetMonFrontpic, $5854
 	dr UnusedFrontpicPredef, $585a
@@ -284,6 +346,7 @@ SECTION "rom33", ROMX[$4000], BANK[33]
 ; ROM $21 : $84000 - $87FFF
 
 	dr _PrinterReceive, $42db
+	dr _PrintDiploma, $4684
 
 
 ;SECTION "rom34", ROMX[$4000], BANK[34]
@@ -302,8 +365,17 @@ DummyPredef36::
 	dr _UpdateTimePals, $439b
 	dr FadeInFromWhite, $43a4
 	dr FadeOutToWhite, $43af
+	dr FadeInFromBlack, $43bd
+	dr FadeOutToBlack, $43c8
 	dr ReplaceTimeOfDayPals, $43ed
 	dr DoBattleTransition, $4517
+	dr PlayWhirlpoolSound, $4a56
+	dr BlindingFlash, $4a63
+	dr ShakeHeadbuttTree, $4a86
+	dr OWCutAnimation, $4bb0
+	dr FlyFromAnim, $4d5d
+	dr FlyToAnim, $4da3
+	dr MagnetTrain, $4e74
 	dr ClearSpriteAnims, $516c
 	dr PlaySpriteAnimations, $5182
 	dr _InitSpriteAnimStruct, $51ef
@@ -314,8 +386,15 @@ SECTION "rom36", ROMX[$4000], BANK[36]
 ; ROM $24 : $90000 - $93FFF
 
 	dr InitClock, $4647
+	dr SetDayOfWeek, $4897
 	dr PrintHour, $49ca
+	dr _TownMap, $577d
+	dr PlayRadio, $5888
+	dr PokegearMap, $5930
+	dr _FlyMap, $5942
 	dr Pokedex_GetArea, $5b52
+	dr Fish, $67fe
+	dr _SlotMachine, $6aba
 
 
 SECTION "rom37", ROMX[$4000], BANK[37]
@@ -327,6 +406,7 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr EnableScriptMode, $6b89
 	dr ScriptEvents, $6b91
 	dr CallCallback, $7366
+	dr WarpToSpawnPoint, $7a6a
 	dr ClearCmdQueue, $7c3b
 
 
@@ -366,8 +446,11 @@ SECTION "rom38", ROMX[$4000], BANK[38]
 ; ROM $2d : $B4000 - $B7FFF
 
 
-;SECTION "rom46", ROMX[$4000], BANK[46]
+SECTION "rom46", ROMX[$4000], BANK[46]
 ; ROM $2e : $B8000 - $BBFFF
+
+	dr TreeMonEncounter, $6378
+	dr RockMonEncounter, $63a1
 
 
 ;SECTION "rom47", ROMX[$4000], BANK[47]
@@ -380,8 +463,14 @@ SECTION "rom48", ROMX[$4000], BANK[48]
 	dr ChrisSpriteGFX, $4000
 
 
-;SECTION "rom49", ROMX[$4000], BANK[49]
+SECTION "rom49", ROMX[$4000], BANK[49]
 ; ROM $31 : $C4000 - $C7FFF
+
+	dr _CheckPokerus, $7a40
+	dr CheckForLuckyNumberWinners, $7a5a
+	dr PrintTodaysLuckyNumber, $7bad
+	dr CheckPartyFullAfterContest, $7bbf
+	dr GiveANickname_YesNo, $7cd0
 
 
 SECTION "rom50", ROMX[$4000], BANK[50]
@@ -397,6 +486,8 @@ SECTION "rom51", ROMX[$4000], BANK[51]
 
 ClearBattleAnims::
 BattleAnimCommands::
+	dr DisplayCaughtContestMonStats, $4000
+	dr DisplayAlreadyCaughtText, $40c9
 	dr DummyPredef38, $40d7
 DummyPredef39::
 	dr PlayBattleAnim, $40d8
@@ -417,8 +508,17 @@ DummyPredef39::
 ; ROM $37 : $DC000 - $DFFFF
 
 
-;SECTION "rom56", ROMX[$4000], BANK[56]
+SECTION "rom56", ROMX[$4000], BANK[56]
 ; ROM $38 : $E0000 - $E3FFF
+
+	dr _Diploma, $4002
+	dr _CardFlip, $44d8
+	dr _UnownPuzzle, $556a
+	dr _MemoryGame, $6257
+	dr _DepositPKMN, $6789
+	dr _WithdrawPKMN, $6961
+	dr _MovePKMNWithoutMail, $6b39
+	dr _ChangeBox, $798a
 
 
 SECTION "rom57", ROMX[$4000], BANK[57]
@@ -470,8 +570,13 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr CollisionPermissionTable, $746d
 	dr Shrink1Pic, $756d
 	dr Shrink2Pic, $75fd
+	dr _NameRater, $77a6
+	dr PlaySlowCry, $78fa
 	dr NewPokedexEntry, $7930
 	dr ConvertMon_1to2, $799b
+	dr UpdateUnownDex, $7aab
+	dr CheckMagikarpLength, $7bc5
+	dr MagikarpHouseSign, $7d24
 
 
 SECTION "rom63", ROMX[$4000], BANK[63]
@@ -627,8 +732,18 @@ BattleText::
 ; ROM $63 : $18C000 - $18FFFF
 
 
-;SECTION "rom100", ROMX[$4000], BANK[100]
+SECTION "rom100", ROMX[$4000], BANK[100]
 ; ROM $64 : $190000 - $193FFF
+
+	dr _ReceiveItemText, $530f
+	dr _NoCoinsText, $5345
+	dr _NoCoinCaseText, $5364
+	dr _BadgeRequiredText, $65eb
+	dr _CantUseItemText, $6625
+	dr _UseCutText, $6644
+	dr _CutNothingText, $6668
+	dr _BlindingFlashText, $6689
+	dr _UsedSurfText, $66b0
 
 
 ;SECTION "rom103", ROMX[$4000], BANK[103]

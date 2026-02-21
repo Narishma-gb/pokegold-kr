@@ -233,7 +233,7 @@ HPBarAnim_RedrawHPBar:
 	ld a, [wWhichHPBar]
 	cp $2
 	jr nz, .skip
-	ld a, 2 * SCREEN_WIDTH
+	ld a, SCREEN_WIDTH
 	add l
 	ld l, a
 	ld a, 0
@@ -249,7 +249,7 @@ HPBarAnim_UpdateHPRemaining:
 	ret z
 	cp $1
 	jr z, .load_15
-	ld de, SCREEN_WIDTH + 2
+	ld de, 1
 	jr .loaded_de
 
 .load_15
@@ -296,41 +296,23 @@ HPBarAnim_BGMapUpdate:
 	and a
 	jr z, .load_0
 	cp $1
-	jr z, .load_1
+	jr z, .load_2
 	ld a, [wCurPartyMon]
-	cp $3
-	jr nc, .bottom_half_of_screen
+	cp $4
+	jr nc, .asm_d7ed
+	cp $2
+	jr nc, .asm_d7e9
 	ld c, $0
 	jr .got_third
 
-.bottom_half_of_screen
+.asm_d7e9
 	ld c, $1
-.got_third
-	push af
-	cp $2
-	jr z, .skip_delay
-	cp $5
-	jr z, .skip_delay
-	ld a, $2
-	ldh [hBGMapMode], a
-	ld a, c
-	ldh [hBGMapThird], a
-	call DelayFrame
-.skip_delay
-	ld a, $1
-	ldh [hBGMapMode], a
-	ld a, c
-	ldh [hBGMapThird], a
-	call DelayFrame
-	pop af
-	cp $2
-	jr z, .two_frames
-	cp $5
-	jr z, .two_frames
-	ret
+	jr .got_third
 
-.two_frames
-	inc c
+.asm_d7ed
+	ld c, $2
+
+.got_third
 	ld a, $2
 	ldh [hBGMapMode], a
 	ld a, c
@@ -347,8 +329,8 @@ HPBarAnim_BGMapUpdate:
 	ld c, $0
 	jr .finish
 
-.load_1
-	ld c, $1
+.load_2
+	ld c, $2
 .finish
 	call DelayFrame
 	ld a, c

@@ -1573,8 +1573,8 @@ MovementData_CastRod:
 	step_end
 
 PutTheRodAway:
-	hlcoord 1, 14
-	lb bc, 3, 18
+	hlcoord 1, 13
+	lb bc, 4, 18
 	call ClearBox
 	call WaitBGMap
 	xor a
