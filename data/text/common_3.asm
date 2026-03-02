@@ -24,7 +24,7 @@ _SlotsLinedUpText::
 	done
 
 _SlotsDarnText::
-	text "꽝<HYPHEN>"
+	text "꽝-"
 	done
 
 _GearTodayText::
@@ -219,11 +219,11 @@ _CardFlipShuffledText::
 	prompt
 
 _CardFlipYeahText::
-	text "당첨<HYPHEN>"
+	text "당첨-"
 	done
 
 _CardFlipDarnText::
-	text "꽝<HYPHEN>"
+	text "꽝-"
 	done
 
 _BallDodgedText::

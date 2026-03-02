@@ -709,7 +709,7 @@ _CaughtAskNicknameText::
 	done
 
 _PokecenterPCCantUseText::
-	text "삐<HYPHEN>익!"
+	text "삐-익!"
 	line "포켓몬을 가지고있지 않는"
 	cont "사람은 사용 할 수 없습니다!"
 	prompt
@@ -1099,7 +1099,7 @@ _MainMenuTimeUnknownText::
 	done
 
 _OakText1::
-	text "이야<HYPHEN> 오래 기다리게 했다!"
+	text "이야- 오래 기다리게 했다!"
 
 	para "포켓몬스터의 세계에"
 	line "잘왔단다!"

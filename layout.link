@@ -229,8 +229,8 @@ ROMX $04
 ; 	"Map Scripts 31"
 ; ROMX $62
 ; 	"Map Scripts 32"
-; ROMX $64
-; 	"Text 1"
+ROMX $64
+	"Text 1"
 ROMX $65
 	"Text 2"
 ROMX $66

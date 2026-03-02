@@ -761,26 +761,6 @@ BattleText::
 ; ROM $63 : $18C000 - $18FFFF
 
 
-SECTION "rom100", ROMX[$4000], BANK[100]
-; ROM $64 : $190000 - $193FFF
-
-	dr _AskFloorElevatorText, $51b3
-	dr _BugCatchingContestTimeUpText, $51c6
-	dr _BugCatchingContestIsOverText, $51ee
-	dr _RepelWoreOffText, $5214
-	dr _PlayerFoundItemText, $5230
-	dr _ButNoSpaceText, $5254
-	dr _ReceiveItemText, $530f
-	dr _NoCoinsText, $5345
-	dr _NoCoinCaseText, $5364
-	dr _BadgeRequiredText, $65eb
-	dr _CantUseItemText, $6625
-	dr _UseCutText, $6644
-	dr _CutNothingText, $6668
-	dr _BlindingFlashText, $6689
-	dr _UsedSurfText, $66b0
-
-
 ;SECTION "rom103", ROMX[$4000], BANK[103]
 ; ROM $67 : $19C000 - $19FFFF
 

@@ -1,127 +1,131 @@
 _FruitBearingTreeText::
-	text "It's a fruit-"
-	line "bearing tree."
+	text "열매가 열리는 나무가 있다!"
 	done
 
 _HeyItsFruitText::
-	text "Hey! It's"
-	line "@"
+	text "……@"
 	text_ram wStringBuffer3
-	text "!"
+	text "(이)다!"
 	done
 
 _ObtainedFruitText::
-	text "Obtained"
-	line "@"
+	text "@"
 	text_ram wStringBuffer3
-	text "!"
+	text "를(을)"
+	line "손에 넣었다!"
 	done
 
 _FruitPackIsFullText::
-	text "But the PACK is"
-	line "full…"
+	text "……그러나 가방이 가득 찼다!"
 	done
 
 _NothingHereText::
-	text "There's nothing"
-	line "here…"
+	text "아무것도 발견하지 못했다……"
 	done
 
 _RecoveredSomeHPText::
+	text "@"
 	text_ram wStringBuffer1
-	text_start
-	line "recovered @"
+	text "의 체력이"
+	line "@"
 	text_decimal wCurHPAnimDeltaHP, 2, 3
-	text "HP!"
+	text " 회복되었다"
 	done
 
 _CuredOfPoisonText::
+	text "@"
 	text_ram wStringBuffer1
-	text "'s"
-	line "cured of poison."
+	text "의 독은"
+	line "깨끗이 사라졌다!"
 	done
 
 _RidOfParalysisText::
+	text "@"
 	text_ram wStringBuffer1
-	text "'s"
-	line "rid of paralysis."
+	text "의 몸에"
+	line "마비가 사라졌다"
 	done
 
 _BurnWasHealedText::
+	text "@"
 	text_ram wStringBuffer1
-	text "'s"
-	line "burn was healed."
+	text "의"
+	line "화상이 회복되었다"
 	done
 
 _WasDefrostedText::
+	text "@"
 	text_ram wStringBuffer1
-	text_start
-	line "was defrosted."
+	text "의 몸에"
+	line "얼음이 녹았다"
 	done
 
 _WokeUpText::
+	text "@"
 	text_ram wStringBuffer1
-	text_start
-	line "woke up."
+	text "는(은)"
+	line "눈을 떴다"
 	done
 
 _HealthReturnedText::
+	text "@"
 	text_ram wStringBuffer1
-	text "'s"
-	line "health returned."
+	text "는(은)"
+	line "건강하게 되었다!"
 	done
 
 _RevitalizedText::
+	text "@"
 	text_ram wStringBuffer1
-	text_start
-	line "is revitalized."
+	text "는(은)"
+	line "기운을 되찾았다!"
 	done
 
 _GrewToLevelText::
+	text "@"
 	text_ram wStringBuffer1
-	text " grew to"
-	line "level @"
+	text "의 레벨이"
+	line "@"
 	text_decimal wCurPartyLevel, 1, 3
-	text "!@"
+	text "(으)로 되었다@"
 	sound_dex_fanfare_50_79 ; plays SFX_DEX_FANFARE_50_79, identical to SFX_LEVEL_UP
 	text_promptbutton
 	text_end
 
 _CameToItsSensesText::
+	text "@"
 	text_ram wStringBuffer1
-	text " came"
-	line "to its senses."
+	text "는(은)"
+	line "제 정신을 차렸다!"
 	done
 
 _OakTimeWokeUpText::
-	text "<……><……><……><……><……><……>"
-	line "<……><……><……><……><……><……>"
+	text "………………………………"
+	line "………………………………"
 
-	para "Zzz… Hm? Wha…?"
-	line "You woke me up!"
-
-	para "Will you check the"
-	line "clock for me?"
+	para "움- 음냐 음냐……"
+	line "뭐야 벌써 이런 시간이……"
+	cont "미안하지만 시계를 봐 주겠니?…"
 	prompt
 
 _OakTimeWhatTimeIsItText::
-	text "What time is it?"
+	text "지금은 몇시인가?"
 	done
 
 _OakTimeWhatHoursText::
-	text "What?@"
+	text "뭐야! @"
 	text_end
 
 _OakTimeHoursQuestionMarkText::
-	text "?"
+	text " 라고?"
 	done
 
 _OakTimeHowManyMinutesText::
-	text "How many minutes?"
+	text "그래서 몇 분이라고?"
 	done
 
 _OakTimeWhoaMinutesText::
-	text "Whoa!@"
+	text "뭐라! @"
 	text_end
 
 _OakTimeMinutesQuestionMarkText::
@@ -130,281 +134,265 @@ _OakTimeMinutesQuestionMarkText::
 
 _OakTimeOversleptText::
 	text "!"
-	line "I overslept!"
+	line "이런! 마냥 잠만 잔 것 같군"
 	done
 
 _OakTimeYikesText::
 	text "!"
-	line "Yikes! I over-"
-	cont "slept!"
+	line "큰일이군! 거의 잠으로 때웠다!"
 	done
 
 _OakTimeSoDarkText::
 	text "!"
-	line "No wonder it's so"
-	cont "dark!"
+	line "과연 어두운 것 같군!"
 	done
 
 _OakTimeWhatDayIsItText::
-	text "What day is it?"
+	text "오늘은 무슨 요일?"
 	done
 
 _OakTimeIsItText::
-	text ", is it?"
+	text "설마 틀리지는 않았겠지?"
 	done
 
 _EnemyWithdrewText::
-	text "<ENEMY>"
-	line "withdrew"
-	cont "@"
+	text "<ENEMY>는(은)"
+	line "@"
 	text_ram wEnemyMonNickname
-	text "!"
+	text "를(을)"
+	cont "도로 불러 들였다!"
 	prompt
 
 _EnemyUsedOnText::
-	text "<ENEMY>"
-	line "used @"
-	text_ram wMonOrItemNameBuffer
-	text_start
-	cont "on @"
+	text "<ENEMY>는(은)"
+	line "@"
 	text_ram wEnemyMonNickname
-	text "!"
+	text "에게"
+
+	para "@"
+	text_ram wMonOrItemNameBuffer
+	text "를(을)"
+	line "사용했다!"
 	prompt
 
 _ThatCantBeUsedRightNowText:: ; unreferenced
-	text "That can't be used"
-	line "right now."
+	text "현재 이 기능은"
+	line "사용할 수 없습니다"
 	prompt
 
 _ThatItemCantBePutInThePackText:: ; unreferenced
-	text "That item can't be"
-	line "put in the PACK."
+	text "도구를 가방에"
+	line "넣을 수 없습니다!"
 	done
 
 _TheItemWasPutInThePackText:: ; unreferenced
-	text "The @"
+	text "@"
 	text_ram wStringBuffer1
-	text_start
-	line "was put in the"
-	cont "PACK."
+	text "를(을) "
+	line "가방에 넣었습니다"
 	done
 
 _RemainingTimeText:: ; unreferenced
-	text "Remaining Time"
+	text "대회 남은 시간"
 	done
 
 _YourMonsHPWasHealedText:: ; unreferenced
-	text "Your #MON's HP"
-	line "was healed."
+	text "포켓몬의 체력을"
+	line "회복시켰습니다"
 	prompt
 
 _WarpingText:: ; unreferenced
-	text "Warping…"
+	text "워프합니다!"
 	done
 
 _ChangeWhichNumberText:: ; unreferenced
-	text "Which number"
-	line "should be changed?"
+	text "변경할 번호를"
+	line "지정해주십시오"
 	done
 
 _WillYouPlayWithMonText:: ; unreferenced
-	text "Will you play with"
-	line "@"
+	text "@"
 	text_ram wStringBuffer2
-	text "?"
+	text "(으)로"
+	line "놀겠습니까?"
 	done
 
 _YouNeedTwoMonForBreedingText:: ; unreferenced
-	text "You need two #-"
-	line "MON for breeding."
+	text "2개체 없기때문에"
+	line "작게 할 수 없습니다"
 	prompt
 
 _BreedingIsNotPossibleText:: ; unreferenced
-	text "Breeding is not"
-	line "possible."
+	text "작게 할 수 없습니다"
 	prompt
 
 _CompatibilityShouldTheyBreedText:: ; unreferenced
-	text "The compatibility"
-	line "is @"
+	text "상성 @"
 	text_decimal wBreedingCompatibility, 1, 3
-	text "."
-	cont "Should they breed?"
+	text "입니다"
+	line "작게 하겠습니까?"
 	done
 
 _ThereIsNoEggText:: ; unreferenced
-	text "There is no EGG."
-	line ""
+	text "알이 없어!"
 	prompt
 
 _ItsGoingToHatchText:: ; unreferenced
-	text "It's going to"
-	line "hatch!"
+	text "태어난다!"
 	prompt
 
 _TestEventText:: ; unreferenced
-	text "Test event"
-	line "@"
+	text "이벤트@"
 	text_decimal wStringBuffer2, 1, 2
-	text "?"
+	text "를(을)"
+	line "테스트 하겠습니까?"
 	done
 
 _WhatDoYouWantToPlayWithText:: ; unreferenced
-	text "What do you want"
-	line "to play with?"
+	text "어느 것으로 놀래?"
 	done
 
 _YouCanHaveThisText:: ; unreferenced
-	text "You can have this."
+	text "이것을 주지"
 	prompt
 
 _TheBoxIsFullText:: ; unreferenced
-	text "The BOX is full!"
+	text "박스가 가득!"
 	done
 
 _ObtainedTheVoltorbBadgeText:: ; unreferenced
-	text "Obtained the"
-	line "VOLTORBBADGE!"
+	text "찌리리공배지 넌 내꺼야!!"
 	done
 
 _ThePasswordIsText:: ; unreferenced
-	text "The password is:"
-	line ""
+	text "패스워드는"
+	line "      입니다"
 	done
 
 _IsThisOKText:: ; unreferenced
-	text "Is this OK?"
+	text "이것으로 정하겠습니까?"
 	done
 
 _EnterTheIDNoText:: ; unreferenced
-	text "Enter the"
-	line "ID no."
+	text "ID 를"
+	line "입력"
 	done
 
 _EnterTheAmountText:: ; unreferenced
-	text "Enter the"
-	line "amount."
+	text "돈을"
+	line "입력"
 	done
 
 _NothingToChooseText::
-	text "There's nothing to"
-	line "choose."
+	text "고를 수 있는 것이 없습니다!"
 	prompt
 
 _WhichSidePutOnText::
-	text "Which side do you"
-	line "want to put it on?"
+	text "어느 쪽으로 배치하겠습니까?"
 	done
 
 _WhichSidePutAwayText::
-	text "Which side do you"
-	line "want to put away?"
+	text "어느 쪽을 정리하겠습니까?"
 	done
 
 _PutAwayTheDecoText::
-	text "Put away the"
-	line "@"
+	text "@"
 	text_ram wStringBuffer3
-	text "."
+	text "를(을)"
+	line "정리했다"
 	prompt
 
 _NothingToPutAwayText::
-	text "There's nothing to"
-	line "put away."
+	text "정리할 것이 없습니다"
 	prompt
 
 _SetUpTheDecoText::
-	text "Set up the"
-	line "@"
+	text "@"
 	text_ram wStringBuffer3
-	text "."
+	text "를(을)"
+	line "놓아두었습니다"
 	prompt
 
 _PutAwayAndSetUpText::
-	text "Put away the"
-	line "@"
+	text "@"
 	text_ram wStringBuffer3
-	text_start
-
-	para "and set up the"
+	text "를(을) 치우고"
 	line "@"
 	text_ram wStringBuffer4
-	text "."
+	text "를(을)"
+	cont "놓아두었습니다"
 	prompt
 
 _AlreadySetUpText::
-	text "That's already set"
-	line "up."
+	text "이미 놓여져 있습니다"
 	prompt
 
 _LookTownMapText::
-	text "It's the TOWN MAP."
+	text "마을지도가 있다!"
 	done
 
 _LookPikachuPosterText::
-	text "It's a poster of a"
-	line "cute PIKACHU."
+	text "귀여운 피카츄의 포스터다"
 	done
 
 _LookClefairyPosterText::
-	text "It's a poster of a"
-	line "cute CLEFAIRY."
+	text "귀여운 삐삐의 포스터다"
 	done
 
 _LookJigglypuffPosterText::
-	text "It's a poster of a"
-	line "cute JIGGLYPUFF."
+	text "귀여운 푸린의 포스터다"
 	done
 
 _LookAdorableDecoText::
-	text "It's an adorable"
-	line "@"
+	text "@"
 	text_ram wStringBuffer3
-	text "."
+	text "(이)가 있다!"
 	done
 
 _LookGiantDecoText::
-	text "A giant doll! It's"
-	line "fluffy and cuddly."
+	text "커다란 인형이 있다!"
+	line "푹신하고 기분 좋을 것 같은……"
 	done
 
 _MomHiHowAreYouText::
-	text "Hi, <PLAYER>!"
-	line "How are you?"
+	text "여보세요"
+	line "<PLAYER> 안녕?"
 	prompt
 
 _MomFoundAnItemText::
-	text "I found a useful"
-	line "item shopping, so"
+	text "어제 쇼핑을 갔다가"
+	line "좋아 보이는 도구를 팔고 있어서"
 	prompt
 
 _MomBoughtWithYourMoneyText::
-	text "I bought it with"
-	line "your money. Sorry!"
+	text "<PLAYER>의 돈으로"
+	line "사버렸어! 미안!"
 	prompt
 
 _MomItsInPCText::
-	text "It's in your PC."
-	line "You'll like it!"
+	text "그렇지만 컴퓨터에 넣어두었으니까"
+	line "쓰거라! 반드시 도움이 될 꺼야!"
 	done
 
 _MomFoundADollText::
-	text "While shopping"
-	line "today, I saw this"
-	cont "adorable doll, so"
+	text "어제 쇼핑을 갔다가"
+
+	para "아주 귀여운"
+	line "인형을 팔고있기에……"
 	prompt
 
 _MomItsInYourRoomText::
-	text "It's in your room."
-	line "You'll love it!"
+	text "방에 놓아두었으니까 보거라!"
+	line "꼭 마음에 들꺼라고 생각해!"
 	done
 
 _MonWasSentToText::
+	text "@"
 	text_ram wPlayerTrademonSpeciesName
-	text " was"
-	line "sent to @"
+	text "는(은) 무사히"
+	line "@"
 	text_ram wOTTrademonSenderName
-	text "."
+	text "에게 맡겨졌습니다"
 	done
 
 _MonNameSentToText::
@@ -412,264 +400,267 @@ _MonNameSentToText::
 	done
 
 _BidsFarewellToMonText::
+	text "@"
 	text_ram wOTTrademonSenderName
-	text " bids"
-	line "farewell to"
+	text "(이)가"
+	line "석별의 정을 아쉬워하며"
 	done
 
 _MonNameBidsFarewellText::
+	text "@"
 	text_ram wOTTrademonSpeciesName
-	text "."
+	text "를(을)"
+	line "보냅니다"
 	done
 
 _TakeGoodCareOfMonText::
-	text "Take good care of"
-	line "@"
+	text "@"
 	text_ram wOTTrademonSpeciesName
-	text "."
+	text "를(을)"
+	line "귀여워해 주세요"
 	done
 
 _ForYourMonSendsText::
-	text "For @"
+	text "@"
 	text_ram wPlayerTrademonSenderName
-	text "'s"
+	text "(이)가"
 	line "@"
 	text_ram wPlayerTrademonSpeciesName
-	text ","
+	text "를(을) 보내는 대신"
 	done
 
 _OTSendsText::
+	text "@"
 	text_ram wOTTrademonSenderName
-	text " sends"
+	text "는(은)"
 	line "@"
 	text_ram wOTTrademonSpeciesName
-	text "."
+	text "를(을) 줍니다"
 	done
 
 _WillTradeText::
+	text "이제부터"
+	line "@"
 	text_ram wOTTrademonSenderName
-	text " will"
-	line "trade @"
+	text "의 @"
 	text_ram wOTTrademonSpeciesName
-	text_end
-
-	text_end ; unreferenced
+	text "과(와)"
+	done
 
 _ForYourMonWillTradeText::
-	text "for @"
+	text "@"
 	text_ram wPlayerTrademonSenderName
-	text "'s"
-	line "@"
+	text "의 @"
 	text_ram wPlayerTrademonSpeciesName
-	text "."
+	text "를(을)"
+	line "교환합니다!"
 	done
 
 ; Oak's Pokémon Talk
 
 _OPT_IntroText1::
 	text_start
-	line "MARY: PROF.OAK'S"
+	line "호두『오박사님의"
 	done
 
 _OPT_IntroText2::
 	text_start
-	line "#MON TALK!"
+	line "포켓몬 강좌!"
 	done
 
 _OPT_IntroText3::
 	text_start
-	line "With me, MARY!"
+	line "함께하는 진행자는 호두입니다!"
 	done
 
 _OPT_OakText1::
 	text_start
-	line "OAK: @"
+	line "오박사『@"
 	text_ram wMonOrItemNameBuffer
-	text_end
-
-	text_end ; unreferenced
+	text "는(은)"
+	done
 
 _OPT_OakText2::
 	text_start
-	line "may be seen around"
+	line "@"
+	text_ram wStringBuffer1
+	text "에서"
 	done
 
 _OPT_OakText3::
 	text_start
-	line "@"
-	text_ram wStringBuffer1
-	text "."
+	line "서식하고 있는 것 같다"
 	done
 
 _OPT_MaryText1::
 	text_start
-	line "MARY: @"
+	line "호두『@"
 	text_ram wStringBuffer1
-	text "'s"
+	text "(이)라는 것은 "
 	done
 
 _OPT_SweetAdorablyText::
 	text_start
-	line "sweet and adorably"
+	line "눈에 넣어도 아프지 않을 정도로"
 	done
 
 _OPT_WigglySlicklyText::
 	text_start
-	line "wiggly and slickly"
+	line "꿈틀꿈틀하고서"
 	done
 
 _OPT_AptlyNamedText::
 	text_start
-	line "aptly named and"
+	line "이름 그대로"
 	done
 
 _OPT_UndeniablyKindOfText::
 	text_start
-	line "undeniably kind of"
+	line "정말 말을 듣고보니까"
 	done
 
 _OPT_UnbearablyText::
 	text_start
-	line "so, so unbearably"
+	line "더 이상 참을 수 없을 정도로"
 	done
 
 _OPT_WowImpressivelyText::
 	text_start
-	line "wow, impressively"
+	line "이것이 꽤나 어째서"
 	done
 
 _OPT_AlmostPoisonouslyText::
 	text_start
-	line "almost poisonously"
+	line "색이 강렬해서"
 	done
 
 _OPT_SensuallyText::
 	text_start
-	line "ooh, so sensually"
+	line "야하게 보이고"
 	done
 
 _OPT_MischievouslyText::
 	text_start
-	line "so mischievously"
+	line "도깨비처럼"
 	done
 
 _OPT_TopicallyText::
 	text_start
-	line "so very topically"
+	line "근처에서도 소문이 자자할 정도로"
 	done
 
 _OPT_AddictivelyText::
 	text_start
-	line "sure addictively"
+	line "나쁜 버릇이 될 정도로"
 	done
 
 _OPT_LooksInWaterText::
 	text_start
-	line "looks in water is"
+	line "강 근처에서"
 	done
 
 _OPT_EvolutionMustBeText::
 	text_start
-	line "evolution must be"
+	line "진화하거나 뭔가를 하면"
 	done
 
 _OPT_ProvocativelyText::
 	text_start
-	line "provocatively"
+	line "여러 의미로"
 	done
 
 _OPT_FlippedOutText::
 	text_start
-	line "so flipped out and"
+	line "뒤집어본다면"
 	done
 
 _OPT_HeartMeltinglyText::
 	text_start
-	line "heart-meltingly"
+	line "지켜주고 싶을 정도로"
 	done
 
 _OPT_CuteText::
 	text_start
-	line "cute."
+	line "귀엽지요"
 	done
 
 _OPT_WeirdText::
 	text_start
-	line "weird."
+	line "이상해-"
 	done
 
 _OPT_PleasantText::
 	text_start
-	line "pleasant."
+	line "기분이 좋군요"
 	done
 
 _OPT_BoldSortOfText::
 	text_start
-	line "bold, sort of."
+	line "약간 대담하다고 하는 기분"
 	done
 
 _OPT_FrighteningText::
 	text_start
-	line "frightening."
+	line "무섭지 않니?"
 	done
 
 _OPT_SuaveDebonairText::
 	text_start
-	line "suave & debonair!"
+	line "순조롭게 진행되고 있는 것 같네!"
 	done
 
 _OPT_PowerfulText::
 	text_start
-	line "powerful."
+	line "강하구나-"
 	done
 
 _OPT_ExcitingText::
 	text_start
-	line "exciting."
+	line "박력이 있어 보여"
 	done
 
 _OPT_NowText::
 	text_start
-	line "now!"
+	line "현대적인 감각이구나"
 	done
 
 _OPT_InspiringText::
 	text_start
-	line "inspiring."
+	line "푹 빠져버릴 것 같아-!"
 	done
 
 _OPT_FriendlyText::
 	text_start
-	line "friendly."
+	line "동료로 삼고싶을지도 몰라"
 	done
 
 _OPT_HotHotHotText::
 	text_start
-	line "hot, hot, hot!"
+	line "몸이 달아오르겠어!"
 	done
 
 _OPT_StimulatingText::
 	text_start
-	line "stimulating."
+	line "감전되겠어!"
 	done
 
 _OPT_GuardedText::
 	text_start
-	line "guarded."
+	line "소중히 하고싶어!"
 	done
 
 _OPT_LovelyText::
 	text_start
-	line "lovely."
+	line "헤롱헤롱한 기분!"
 	done
 
 _OPT_SpeedyText::
 	text_start
-	line "speedy."
+	line "동작이 재빠른 것 같네!"
 	done
 
 _OPT_PokemonChannelText::
-	text "#MON"
+	text "포켓몬"
 	done
 
 _PokedexShowText::
@@ -682,648 +673,636 @@ _PokedexShowText::
 
 _BenIntroText1::
 	text_start
-	line "BEN: #MON MUSIC"
+	line "준화『포켓몬 뮤직"
 	done
 
 _BenIntroText2::
 	text_start
-	line "CHANNEL!"
+	line "채널!"
 	done
 
 _BenIntroText3::
 	text_start
-	line "It's me, DJ BEN!"
+	line "DJ는 준화입니다"
 	done
 
 _FernIntroText1::
 	text_start
-	line "FERN: #MUSIC!"
+	line "석호『포켓몬 노래의 광장!"
 	done
 
 _FernIntroText2::
 	text_start
-	line "With DJ FERN!"
+	line "DJ는 석호인 것이다-"
 	done
 
 _BenFernText1::
 	text_start
-	line "Today's @"
+	line "오늘은 @"
 	text_today
-	text ","
+	text "(이)라는 것으로"
 	done
 
 _BenFernText2A::
 	text_start
-	line "so let us jam to"
+	line "포켓몬들도 건강해지는"
 	done
 
 _BenFernText2B::
 	text_start
-	line "so chill out to"
+	line "포켓몬들도 새근새근 잠드는"
 	done
 
 _BenFernText3A::
 	text_start
-	line "#MON March!"
+	line "포켓몬 마치!"
 	done
 
 _BenFernText3B::
 	text_start
-	line "#MON Lullaby!"
+	line "포켓몬 자장가다!"
 	done
 
 ; Lucky Channel
 
 _LC_Text1::
 	text_start
-	line "REED: Yeehaw! How"
+	line "난영『야아! 라디오를 듣고 있어"
 	done
 
 _LC_Text2::
 	text_start
-	line "y'all doin' now?"
+	line "모두 요즘 상태는 어때?"
 	done
 
 _LC_Text3::
 	text_start
-	line "Whether you're up"
+	line "즐거운 그대도 저기압인 그대도"
 	done
 
 _LC_Text4::
 	text_start
-	line "or way down low,"
+	line "이번주의 행운의 넘버"
 	done
 
 _LC_Text5::
 	text_start
-	line "don't you miss the"
+	line "이야기 해보자!"
 	done
 
 _LC_Text6::
 	text_start
-	line "LUCKY NUMBER SHOW!"
+	line "그럼 발표합니다"
 	done
 
 _LC_Text7::
 	text_start
-	line "This week's Lucky"
+	line "이번주 행운의 넘버는"
 	done
 
 _LC_Text8::
 	text_start
-	line "Number is @"
+	line "@"
 	text_pause
+	text_dots 3
 	text_ram wStringBuffer1
 	text "!"
 	done
 
 _LC_Text9::
 	text_start
-	line "I'll repeat that!"
+	line "다시한번 이야기합니다"
 	done
 
 _LC_Text10::
 	text_start
-	line "Match it and go to"
+	line "이 숫자가 맞았으면"
 	done
 
 _LC_Text11::
 	text_start
-	line "the RADIO TOWER!"
+	line "지금바로 라디오타워로 컴온!"
 	done
 
 _LC_DragText1::
 	text_start
-	line "…Repeating myself"
+	line "@"
+	text_dots 3
+	text "같은 것만 이야기하면"
 	done
 
 _LC_DragText2::
 	text_start
-	line "gets to be a drag…"
+	line "피곤해진다구- 뭐"
 	done
 
 ; Places and People
 
 _PnP_Text1::
 	text_start
-	line "PLACES AND PEOPLE!"
+	line "그때 그사람!"
 	done
 
 _PnP_Text2::
 	text_start
-	line "Brought to you by"
+	line "이 방송은 저 리리스가"
 	done
 
 _PnP_Text3::
 	text_start
-	line "me, DJ LILY!"
+	line "보내드립니다!"
 	done
 
 _PnP_Text4::
 	text_start
 	line "@"
 	text_ram wStringBuffer2
-	text " @"
-	text_ram wStringBuffer1
-	text_end
+	text "의"
+	done
 
-	text_end ; unreferenced
+	text_start
+	line "@"
+	text_ram wStringBuffer1
+	text "(이)라는 것"
+	done
 
 _PnP_CuteText::
 	text_start
-	line "is cute."
+	line "귀엽군요"
 	done
 
 _PnP_LazyText::
 	text_start
-	line "is sort of lazy."
+	line "나무늘보일지도 몰라"
 	done
 
 _PnP_HappyText::
 	text_start
-	line "is always happy."
+	line "언제나 좋은 기분"
 	done
 
 _PnP_NoisyText::
 	text_start
-	line "is quite noisy."
+	line "매우 생기 있고"
 	done
 
 _PnP_PrecociousText::
 	text_start
-	line "is precocious."
+	line "약간 느림보씨"
 	done
 
 _PnP_BoldText::
 	text_start
-	line "is somewhat bold."
+	line "약간 대담"
 	done
 
 _PnP_PickyText::
 	text_start
-	line "is too picky!"
+	line "입만 시끄러운 것 같군요!"
 	done
 
 _PnP_SortOfOKText::
 	text_start
-	line "is sort of OK."
+	line "나름대로…네"
 	done
 
 _PnP_SoSoText::
 	text_start
-	line "is just so-so."
+	line "나로서는 그럭저럭일지도?"
 	done
 
 _PnP_GreatText::
 	text_start
-	line "is actually great."
+	line "정말은 대단할지도 몰라"
 	done
 
 _PnP_MyTypeText::
 	text_start
-	line "is just my type."
+	line "나한테 있어서는 타입일지도!"
 	done
 
 _PnP_CoolText::
 	text_start
-	line "is so cool, no?"
+	line "잘 활용하고 있다고 생각하지않니?"
 	done
 
 _PnP_InspiringText::
 	text_start
-	line "is inspiring!"
+	line "나 푹 빠져버릴 것 같아!"
 	done
 
 _PnP_WeirdText::
 	text_start
-	line "is kind of weird."
+	line "생각해보면 이상해!"
 	done
 
 _PnP_RightForMeText::
 	text_start
-	line "is right for me?"
+	line "나에대해 어떻게 생각하고 있을까?"
 	done
 
 _PnP_OddText::
 	text_start
-	line "is definitely odd!"
+	line "역시 이상해!"
 	done
 
 _PnP_Text5::
 	text_start
 	line "@"
 	text_ram wStringBuffer1
-	text_end
-
-	text_end ; unreferenced
+	text "(이)라는 것"
+	done
 
 _RocketRadioText1::
 	text_start
-	line "… …Ahem, we are"
+	line "……@"
+	text_pause
+	text "아-@"
+	text_pause
+	text "……@"
+	text_pause
+	text "우리들은"
 	done
 
 _RocketRadioText2::
 	text_start
-	line "TEAM ROCKET!"
+	line "우는 애도 울음을 그치는 로켓단!"
 	done
 
 _RocketRadioText3::
 	text_start
-	line "After three years"
+	line "조직의 재건을 실행했다"
 	done
 
 _RocketRadioText4::
 	text_start
-	line "of preparation, we"
+	line "3년간의 노력이 결실을 맺었다"
 	done
 
 _RocketRadioText5::
 	text_start
-	line "have risen again"
+	line "지금 여기에 로켓단의"
 	done
 
 _RocketRadioText6::
 	text_start
-	line "from the ashes!"
+	line "부활을 선언한다!"
 	done
 
 _RocketRadioText7::
 	text_start
-	line "GIOVANNI! @"
+	line "비주기님! @"
 	text_pause
-	text "Can you"
+	text "…… @"
+	text_pause
+	text "들리십니까?"
 	done
 
 _RocketRadioText8::
 	text_start
-	line "hear?@"
+	line "…… @"
 	text_pause
-	text " We did it!"
+	text "결국 해냈습니다!"
 	done
 
 _RocketRadioText9::
 	text_start
-	line "@"
+	line "두목님은 어디에 계시는 걸까@"
 	text_pause
-	text "Where is our Boss?"
+	text "……?"
 	done
 
 _RocketRadioText10::
 	text_start
-	line "@"
+	line "라디오를 듣고 있을까@"
 	text_pause
-	text "Is he listening?"
+	text "…… @"
+	text_pause
+	text "……"
 	done
 
 _AskFloorElevatorText::
-	text "Which floor?"
+	text "몇층에 가십니까?"
 	done
 
 _BugCatchingContestTimeUpText::
-	text "ANNOUNCER: BEEEP!"
+	text "아나운서『딩동댕!"
 
-	para "Time's up!"
+	para "시간이 되었습니다!"
 	done
 
 _BugCatchingContestIsOverText::
-	text "ANNOUNCER: The"
-	line "Contest is over!"
+	text "아나운서『곤충채집 대회"
+	line "끝났습니다!"
 	done
 
 _RepelWoreOffText::
-	text "REPEL's effect"
-	line "wore off."
+	text "스프레이의 효과가 떨어졌다"
 	done
 
 _PlayerFoundItemText::
-	text "<PLAYER> found"
+	text "<PLAYER>는(은)"
 	line "@"
 	text_ram wStringBuffer3
-	text "."
+	text "를(을)"
+	cont "발견했다!"
 	done
 
 _ButNoSpaceText::
-	text "But <PLAYER> has"
-	line "no space left…"
+	text "그러나 <PLAYER>는(은)"
+	line "도구를 더 이상 지닐 수 없다!"
 	done
 
 _JustSawSomeRareMonText::
-	text "I just saw some"
-	line "rare @"
-	text_ram wStringBuffer1
-	text " in"
-	cont "@"
+	text "지금 @"
 	text_ram wStringBuffer2
-	text "."
+	text "에서"
+	line "희귀한 @"
+	text_ram wStringBuffer1
+	text_start
+	cont "를(을) 봤어!"
 
-	para "I'll call you if I"
-	line "see another rare"
-	cont "#MON, OK?"
+	para "또 희귀한 포켓몬을"
+	line "발견하면 전화할께!"
 	prompt
 
 _SavingRecordText::
-	text "SAVING RECORD…"
-	line "DON'T TURN OFF!"
+	text "전당등록 데이터를 쓰고 있는 중"
+	line "전원을 끊지 말아주세요"
 	done
 
 _ReceiveItemText::
+	text "@"
 	text_ram wPlayerName
-	text " received"
-	line "@"
+	text "는(은)"
+	line "배달원으로부터"
+	cont "@"
 	text_ram wStringBuffer1
-	text "!@"
+	text "를(을) 받았다@"
 	sound_item
 	text_promptbutton
 	text_end
 
 _NoCoinsText::
-	text "You have no coins."
+	text "동전을 가지고 있지 않습니다!"
 	prompt
 
 _NoCoinCaseText::
-	text "You don't have a"
-	line "COIN CASE."
+	text "동전 케이스가 없습니다!!"
 	prompt
 
 _NPCTradeCableText::
-	text "OK, connect the"
-	line "Game Link Cable."
+	text "자-"
+	line "케이블을 연결해서……그리고"
 	prompt
 
 Text_NPCTraded::
-	text "<PLAYER> traded"
+	text "<PLAYER>는(은)"
 	line "@"
-	text_ram wStringBuffer2
-	text " for"
-	cont "@"
 	text_ram wMonOrItemNameBuffer
-	text ".@"
+	text "와(과)"
+	cont "@"
+	text_ram wStringBuffer2
+	text "를(을)"
+	cont "교환했다!@"
 	text_end
 
 _NPCTradeFanfareText::
+	text "@"
 	sound_dex_fanfare_80_109
 	text_pause
 	text_end
 
 _NPCTradeIntroText1::
-	text "I collect #MON."
-	line "Do you have"
-	cont "@"
+	text "나, 포켓몬 모으고 있어!"
+	line "너는 @"
 	text_ram wStringBuffer1
-	text "?"
+	text "를(을)"
+	cont "가지고 있니?"
 
-	para "Want to trade it"
-	line "for my @"
+	para "내 @"
 	text_ram wStringBuffer2
-	text "?"
+	text "(이)랑"
+	line "교환할래?"
 	done
 
 _NPCTradeCancelText1::
-	text "You don't want to"
-	line "trade? Aww…"
+	text "바꿔주지 않을꺼니?"
+	line "쳇, 실망이다……"
 	done
 
 _NPCTradeWrongText1::
-	text "Huh? That's not"
+	text "얼라리……?"
 	line "@"
 	text_ram wStringBuffer1
-	text ". "
-	cont "What a letdown…"
+	text "(이)가 아니야"
+	cont "쳇, 유감이로군……"
 	done
 
 _NPCTradeCompleteText1::
-	text "Yay! I got myself"
+	text "신난다!"
 	line "@"
 	text_ram wStringBuffer1
-	text "!"
-	cont "Thanks!"
+	text "(이)가"
+	cont "손에 들어왔다"
+	cont "고마워!"
 	done
 
 _NPCTradeAfterText1::
-	text "Hi, how's my old"
-	line "@"
+	text "야아!"
+	line "나랑 바꿨던 @"
 	text_ram wStringBuffer2
-	text " doing?"
+	text_start
+	cont "잘 지내니?"
 	done
 
 _NPCTradeIntroText2::
-	text "Hi, I'm looking"
-	line "for this #MON."
+	text "이봐 너……"
+	line "찾는 포켓몬이 있는데"
 
-	para "If you have"
-	line "@"
+	para "만일 @"
 	text_ram wStringBuffer1
-	text ", would"
-
-	para "you trade it for"
-	line "my @"
+	text "를(을)"
+	line "가지고 있다면"
+	cont "내 @"
 	text_ram wStringBuffer2
-	text "?"
+	text "(이)랑"
+	cont "교환하지 않을래?"
 	done
 
 _NPCTradeCancelText2::
-	text "You don't have"
-	line "one either?"
-
-	para "Gee, that's really"
-	line "disappointing…"
+	text "너도 가지고 있지 않다고?……"
+	line "유감이군……"
 	done
 
 _NPCTradeWrongText2::
-	text "You don't have"
-	line "@"
+	text "@"
 	text_ram wStringBuffer1
-	text "? That's"
-	cont "too bad, then."
+	text "을(를)"
+	line "가지고 있지 않니?"
+	cont "그럼 할 수 없군……"
 	done
 
 _NPCTradeCompleteText2::
-	text "Great! Thank you!"
+	text "오오!"
+	line "고맙다!"
 
-	para "I finally got"
-	line "@"
+	para "드디어 @"
 	text_ram wStringBuffer1
-	text "."
+	text "(이)가"
+	line "손에 들어왔어!"
 	done
 
 _NPCTradeAfterText2::
-	text "Hi! The @"
+	text "오오!"
+
+	para "네게 받은 @"
 	text_ram wMonOrItemNameBuffer
 	text_start
-	line "you traded me is"
-	cont "doing great!"
+	line "는(은) 매우 건강하단다!"
 	done
 
 _NPCTradeIntroText3::
+	text "@"
 	text_ram wMonOrItemNameBuffer
-	text "'s cute,"
-	line "but I don't have"
-
-	para "it. Do you have"
-	line "@"
+	text " 귀엽지!"
+	line "하지만 나는 가지고 있지 않아……"
+	cont "너 @"
 	text_ram wStringBuffer1
-	text "?"
+	text_start
+	cont "가지고 있니?"
 
-	para "Want to trade it"
-	line "for my @"
+	para "내 @"
 	text_ram wStringBuffer2
-	text "?"
+	text "(이)랑"
+	line "교환하자!"
 	done
 
 _NPCTradeCancelText3::
-	text "You don't want to"
-	line "trade? Oh, darn…"
+	text "교환하지 않는다구?"
+	line "에이…… 실망……"
 	done
 
 _NPCTradeWrongText3::
-	text "That's not"
-	line "@"
+	text "@"
 	text_ram wStringBuffer1
-	text "."
-
-	para "Please trade with"
-	line "me if you get one."
+	text "(이)가"
+	line "아니잖아"
+	cont "그거 잡으면 바꿔줘!"
 	done
 
 _NPCTradeCompleteText3::
-	text "Wow! Thank you!"
-	line "I always wanted"
-	cont "@"
+	text "와아! 고마워!"
+	line "@"
 	text_ram wMonOrItemNameBuffer
-	text "!"
+	text " 갖고싶었어!"
 	done
 
 _NPCTradeAfterText3::
-	text "How is that"
-	line "@"
+	text "교환했던 @"
 	text_ram wStringBuffer2
-	text " I"
-	cont "traded you doing?"
-
-	para "Your @"
+	text_start
+	line "잘 있니?"
+	cont "@"
 	text_ram wMonOrItemNameBuffer
-	text "'s"
-	line "so cute!"
+	text "는(은)"
+	cont "엄청 귀여워!"
 	done
 
 _MomLeavingText1::
-	text "Wow, that's a cute"
-	line "#MON."
+	text "와아 귀여운 포켓몬이네"
+	line "어쩐 일이니?"
 
-	para "Where did you get"
-	line "it?"
+	para "…………………………"
+	line "……그래…… 모험을 떠나는구나"
 
-	para "…"
+	para "좋아!"
+	line "엄마도 협력해 줄게"
+	cont "뭘 할 수 있을까……?"
 
-	para "So, you're leaving"
-	line "on an adventure…"
+	para "맞아!"
+	line "돈을 맡아줄게"
 
-	para "OK!"
-	line "I'll help too."
+	para "긴 여행이 될 것 같으니까"
+	line "돈을 소중히 해야지!"
 
-	para "But what can I do"
-	line "for you?"
-
-	para "I know! I'll save"
-	line "money for you."
-
-	para "On a long journey,"
-	line "money's important."
-
-	para "Do you want me to"
-	line "save your money?"
+	para "어때, 저금할래?"
 	done
 
 _MomLeavingText2::
-	text "OK, I'll take care"
-	line "of your money."
+	text "저금한다고?"
+	line "맡겨줘!"
 
-	para "<……><……><……>"
+	para "…………………………"
 	prompt
 
 _MomLeavingText3::
-	text "Be careful."
+	text "……몸조심하거라"
 
-	para "#MON are your"
-	line "friends. You need"
-	cont "to work as a team."
+	para "포켓몬은 소중한 친구"
+	line "힘을 합쳐 분발하는거야"
 
-	para "Now, go on!"
+	para "잘 다녀와라!"
 	done
 
 _MomIsThisAboutYourMoneyText::
-	text "Hi! Welcome home!"
-	line "You're trying very"
-	cont "hard, I see."
+	text "어서오너라!"
+	line "열심히하고 있는 것 같네"
 
-	para "I've kept your"
-	line "room tidy."
-
-	para "Or is this about"
-	line "your money?"
+	para "2층은 잘 정리되어있단다"
+	line "그게 아니면 저금때문이니?"
 	done
 
 _MomBankWhatDoYouWantToDoText::
-	text "What do you want"
-	line "to do?"
+	text "뭘 하겠니?"
 	done
 
 _MomStoreMoneyText::
-	text "How much do you"
-	line "want to save?"
+	text "얼마 맡길꺼니?"
 	done
 
 _MomTakeMoneyText::
-	text "How much do you"
-	line "want to take?"
+	text "얼마 찾아갈꺼야?"
 	done
 
 _MomSaveMoneyText::
-	text "Do you want to"
-	line "save some money?"
+	text "저금할래?"
 	done
 
 _MomHaventSavedThatMuchText::
-	text "You haven't saved"
-	line "that much."
+	text "그렇게 많이 맡아두지 않았어"
 	prompt
 
 _MomNotEnoughRoomInWalletText::
-	text "You can't take"
-	line "that much."
+	text "그렇게 많이 가지고 갈 수 없어"
 	prompt
 
 _MomInsufficientFundsInWalletText::
-	text "You don't have"
-	line "that much."
+	text "그렇게 많이 지니고 있지 않잖아"
 	prompt
 
 _MomNotEnoughRoomInBankText::
-	text "You can't save"
-	line "that much."
+	text "그렇게 맡아둘 수 없어"
 	prompt
 
 _MomStartSavingMoneyText::
-	text "OK, I'll save your"
-	line "money. Trust me!"
+	text "저금한다고?"
+	line "맡겨둬!"
 
-	para "<PLAYER>, stick"
-	line "with it!"
+	para "<PLAYER>! 힘내라!"
 	done
 
 _MomStoredMoneyText::
-	text "Your money's safe"
-	line "here! Get going!"
+	text "소중히 맡아둘께"
+	line "힘내!"
 	done
 
 _MomTakenMoneyText::
-	text "<PLAYER>, don't"
-	line "give up!"
+	text "<PLAYER>! 힘내거라!"
 	done
 
 _MomJustDoWhatYouCanText::
-	text "Just do what"
-	line "you can."
+	text "무리하지 말거라"
 	done
 
 _DaycareDummyText::
@@ -1331,523 +1310,493 @@ _DaycareDummyText::
 	done
 
 _DayCareManIntroText::
-	text "I'm the DAY-CARE"
-	line "MAN. Want me to"
-	cont "raise a #MON?"
+	text "나는 보모 할아버지다"
+	line "뭔가 양육시키고싶은가?"
 	done
 
 _DayCareManIntroEggText::
-	text "I'm the DAY-CARE"
-	line "MAN. Do you know"
-	cont "about EGGS?"
+	text "나는 보모 할아버지다"
+	line "알에 대한 이야기 해줄까?"
 
-	para "I was raising"
-	line "#MON with my"
-	cont "wife, you see."
+	para "할멈과 포켓몬을 양육하고 있는데"
+	line "………깜짝 놀랬단다!"
 
-	para "We were shocked to"
-	line "find an EGG!"
+	para "어쩐지! 알이 있더군!"
+	line "이상한 일도 있지"
 
-	para "How incredible is"
-	line "that?"
-
-	para "So, want me to"
-	line "raise a #MON?"
+	para "어떤가?"
+	line "네 포켓몬의 양육을 맡겨보겠니?"
 	done
 
 _DayCareLadyIntroText::
-	text "I'm the DAY-CARE"
-	line "LADY."
-
-	para "Should I raise a"
-	line "#MON for you?"
+	text "나는 보모 할머니다"
+	line "뭔가 양육시키고싶은가?"
 	done
 
 _DayCareLadyIntroEggText::
-	text "I'm the DAY-CARE"
-	line "LADY. Do you know"
-	cont "about EGGS?"
+	text "나는 보모 할머니다"
+	line "알에 대한 이야기 해줄까?"
 
-	para "My husband and I"
-	line "were raising some"
-	cont "#MON, you see."
+	para "할아범과 포켓몬을 양육하고 있는데"
+	line "………깜짝 놀랬단다!"
 
-	para "We were shocked to"
-	line "find an EGG!"
+	para "어쩐지! 알이 있더군!"
+	line "이상한 일도 있지"
 
-	para "How incredible"
-	line "could that be?"
-
-	para "Should I raise a"
-	line "#MON for you?"
+	para "어떤가?"
+	line "네 포켓몬의 양육을 맡겨보겠니?"
 	done
 
 _WhatShouldIRaiseText::
-	text "What should I"
-	line "raise for you?"
+	text "그럼"
+	line "어느 것을 양육해보겠니?"
 	prompt
 
 _OnlyOneMonText::
-	text "Oh? But you have"
-	line "just one #MON."
+	text "으응? 포켓몬이"
+	line "1마리밖에 없는 것 같구만"
 	prompt
 
 _CantAcceptEggText::
-	text "Sorry, but I can't"
-	line "accept an EGG."
+	text "미안하지만"
+	line "알은 맡아줄 수 없단다"
 	prompt
 
 _RemoveMailText::
-	text "Remove MAIL before"
-	line "you come see me."
+	text "그전에"
+	line "메일을 빼놓고 오거라"
 	prompt
 
 _LastHealthyMonText::
-	text "If you give me"
-	line "that, what will"
-	cont "you battle with?"
+	text "그것을 맡긴다면"
+	line "싸울 수 없게 되어버릴껄"
 	prompt
 
 _IllRaiseYourMonText::
-	text "OK. I'll raise"
-	line "your @"
+	text "알겠다"
+	line "잠시 @"
 	text_ram wStringBuffer1
-	text "."
+	text "를(을)"
+	cont "맡아두마"
 	prompt
 
 _ComeBackLaterText::
-	text "Come back for it"
-	line "later."
+	text "적당히 시간이 지나면"
+	line "또 오너라"
 	done
 
 _AreWeGeniusesText::
-	text "Are we geniuses or"
-	line "what? Want to see"
-	cont "your @"
+	text "역시 우리들은 천재인가봐!"
+	line "너의 @"
 	text_ram wStringBuffer1
-	text "?"
+	text " 봐 볼까"
 	done
 
 _YourMonHasGrownText::
-	text "Your @"
+	text "자네의 @"
 	text_ram wStringBuffer1
 	text_start
-	line "has grown a lot."
+	line "꽤 성장했단다"
 
-	para "By level, it's"
-	line "grown by @"
+	para "그렇지, 레벨로 말하자면"
+	line "@"
 	text_decimal wStringBuffer2 + 1, 1, 3
-	text "."
+	text "정도로 키웠단다"
 
-	para "If you want your"
-	line "#MON back, it"
-	cont "will cost ¥@"
+	para "……음, 포켓몬을 찾아간다면"
+	line "요금은 @"
 	text_decimal wStringBuffer2 + 2, 3, 4
-	text "."
+	text "원일세!"
 	done
 
 _PerfectHeresYourMonText::
-	text "Perfect! Here's"
-	line "your #MON."
+	text "자 여기!"
+	line "그럼 포켓몬 데리고가거라"
 	prompt
 
 _GotBackMonText::
-	text "<PLAYER> got back"
+	text "<PLAYER>는(은) 보모로부터"
 	line "@"
 	text_ram wStringBuffer1
-	text "."
+	text "를(을)"
+	cont "찾았다!"
 	prompt
 
 _BackAlreadyText::
-	text "Huh? Back already?"
-	line "Your @"
+	text "뭐야, 벌써 왔는가?"
+	line "너의 @"
 	text_ram wStringBuffer1
-	text_start
-	para "needs a little"
-	line "more time with us."
+	text "는(은)…"
 
-	para "If you want your"
-	line "#MON back, it"
-	cont "will cost ¥100."
+	para "아직 약간"
+	line "시간이 걸릴 것 같다"
+
+	para "……그래도 포켓몬을 찾아간다면"
+	line "요금은 100원이다"
 	done
 
 _HaveNoRoomText::
-	text "You have no room"
-	line "for it."
+	text "그 이상은 지닐 수 없단다"
 	prompt
 
 _NotEnoughMoneyText::
-	text "You don't have"
-	line "enough money."
+	text "돈이 부족한 것 같구만"
 	prompt
 
 _OhFineThenText::
-	text "Oh, fine then."
+	text "그래, 그렇다면"
 	prompt
 
 _ComeAgainText::
-	text "Come again."
+	text "또 오너라"
 	done
 
 _NotYetText::
-	text "Not yet…"
+	text "아직이란다"
 	done
 
 _FoundAnEggText::
-	text "Ah, it's you!"
+	text "오오! 자넨가"
 
-	para "We were raising"
-	line "your #MON, and"
+	para "맡고있던 포켓몬을"
+	line "양육하고 있으니까……이런일이!"
 
-	para "my goodness, were"
-	line "we surprised!"
+	para "포켓몬이 알을"
+	line "가지고 있더군!"
 
-	para "Your #MON had"
-	line "an EGG!"
-
-	para "We don't know how"
-	line "it got there, but"
-
-	para "your #MON had"
-	line "it. You want it?"
+	para "어디서 가지고 왔는지 모르겠지만"
+	line "너의 포켓몬이 가지고 왔겠지!"
+	cont "역시 가지고싶겠지?"
 	done
 
 _ReceivedEggText::
-	text "<PLAYER> received"
-	line "the EGG!"
+	text "<PLAYER>는(은) 보모로부터"
+	line "알을 건네어 받았다!"
 	done
 
 _TakeGoodCareOfEggText::
-	text "Take good care of"
-	line "it."
+	text "소중히 키우거라"
 	done
 
 _IllKeepItThanksText::
-	text "Well then, I'll"
-	line "keep it. Thanks!"
+	text "그렇다면 내가 받지"
+	line "고맙구나"
 	done
 
 _NoRoomForEggText::
-	text "You have no room"
-	line "in your party."
-	cont "Come back later."
+	text "그 이상은 지니고 갈 수 없단다"
+	line "다음 번에 가지고가거라"
 	done
 
 _WhichMonPhotoText::
-	text "Which #MON"
-	line "should I photo-"
-	cont "graph?"
+	text "어느 포켓몬을"
+	line "촬영할껀가?"
 	prompt
 
 _HoldStillText::
-	text "All righty. Hold"
-	line "still for a bit."
+	text "좋아!"
+	line "잠시 가만 있거라"
 	prompt
 
 _PrestoAllDoneText::
-	text "Presto! All done."
-	line "Come again, OK?"
+	text "자! 다 끝났다!"
+	line "또 오너라"
 	done
 
 _NoPhotoText::
-	text "Oh, no picture?"
-	line "Come again, OK?"
+	text "뭐야……그만둘텐가"
+	line "다음에 또 오너라"
 	done
 
 _EggPhotoText::
-	text "An EGG? My talent"
-	line "is worth more…"
+	text "알을"
+	line "촬영한다고 해도…………"
 	done
 
 _NameRaterHelloText::
-	text "Hello, hello! I'm"
-	line "the NAME RATER."
+	text "예 예!"
+	line "나는 이름풀이 점술가"
+	cont "말하자면 이름으로 점을 칩니다"
 
-	para "I rate the names"
-	line "of #MON."
-
-	para "Would you like me"
-	line "to rate names?"
+	para "네, 당신 포켓몬의"
+	line "별명으로 점을 봐 줄께요"
 	done
 
 _NameRaterWhichMonText::
-	text "Which #MON's"
-	line "nickname should I"
-	cont "rate for you?"
+	text "어느 포켓몬의"
+	line "별명을 점 칠텐가?"
 	prompt
 
 _NameRaterBetterNameText::
-	text "Hm… @"
+	text "우움 @"
 	text_ram wStringBuffer1
-	text "…"
-	line "That's a fairly"
-	cont "decent name."
+	text "인가……"
+	line "꽤"
+	cont "좋은 별명을 붙였군"
 
-	para "But, how about a"
-	line "slightly better"
-	cont "nickname?"
+	para "하지만"
+	line "더 좋은 이름"
 
-	para "Want me to give it"
-	line "a better name?"
+	para "내가 붙여줄까?"
+	line "어떤가?"
 	done
 
 _NameRaterWhatNameText::
-	text "All right. What"
-	line "name should we"
-	cont "give it, then?"
+	text "그래? 그럼"
+	line "어떤 별명으로 해 볼까"
 	prompt
 
 _NameRaterFinishedText::
-	text "That's a better"
-	line "name than before!"
-
-	para "Well done!"
+	text "전 보다도 좋은 이름이지 않은가"
+	line "잘되었네!"
 	done
 
 _NameRaterComeAgainText::
-	text "OK, then. Come"
-	line "again sometime."
+	text "그런가"
+	line "알겠네 또 오거라"
 	done
 
 _NameRaterPerfectNameText::
-	text "Hm… @"
+	text "움 @"
 	text_ram wStringBuffer1
-	text "?"
-	line "What a great name!"
-	cont "It's perfect."
+	text "인가!"
+	line "이건 대단한 별명이군"
+	cont "나쁜건 조금도 없군!"
 
-	para "Treat @"
+	para "계속 @"
 	text_ram wStringBuffer1
-	text_start
-	line "with loving care."
+	text "를(을)"
+	line "귀여워해 주거라!"
 	done
 
 _NameRaterEggText::
-	text "Whoa… That's just"
-	line "an EGG."
+	text "어이어이……"
+	line "그건 알이잖아"
 	done
 
 _NameRaterSameNameText::
-	text "It might look the"
-	line "same as before,"
-
-	para "but this new name"
-	line "is much better!"
-
-	para "Well done!"
+	text "전이랑 비슷하게 보이겠지만"
+	line "이쪽이 단연 뛰어나지!"
+	cont "잘 되었지!"
 	done
 
 _NameRaterNamedText::
-	text "All right. This"
-	line "#MON is now"
-	cont "named @"
+	text "좋아, 이제부터"
+	line "이녀석은"
+	cont "@"
 	text_ram wStringBuffer1
-	text "."
+	text "(이)다!"
 	prompt
 
 Text_Gained::
+	text "@"
 	text_ram wStringBuffer1
-	text " gained@@"
+	text "는(은)@"
+	text_end
 
 _BoostedExpPointsText::
-	text_start
-	line "a boosted"
-	cont "@"
+	text "많은 양의"
+	line "@"
 	text_decimal wStringBuffer2, 2, 4
-	text " EXP. Points!"
+	text " 경험치를 얻었다!"
 	prompt
 
 _ExpPointsText::
 	text_start
 	line "@"
 	text_decimal wStringBuffer2, 2, 4
-	text " EXP. Points!"
+	text " 경험치를 얻었다!"
 	prompt
 
 _GoMonText::
-	text "Go! @"
+	text "가랏! @"
 	text_ram wBattleMonNickname
 	text "!"
 	done
 
 _DoItMonText::
-	text "Do it! @"
+	text "나가랏! @"
 	text_ram wBattleMonNickname
 	text "!"
 	done
 
 _GoForItMonText::
-	text "Go for it,"
-	line "@"
+	text "힘내라! @"
 	text_ram wBattleMonNickname
 	text "!"
 	done
 
 _YourFoesWeakGetmMonText::
-	text "Your foe's weak!"
-	line "Get'm, @"
+	text "상대가 약해져 있다!"
+	line "찬스닷! @"
 	text_ram wBattleMonNickname
 	text "!"
 	done
 
 _BattleMonNickCommaText::
+	text "@"
 	text_ram wBattleMonNickname
-	text ",@@"
+	text " @"
+	text_end
 
 _ThatsEnoughComeBackText::
-	text " that's"
-	line "enough! Come back!"
+	text "이젠 됐어"
+	line "돌아와!"
 	done
 
 _OKComeBackText::
-	text " OK!"
-	line "Come back!"
+	text "좋아!"
+	line "돌아와랏!"
 	done
 
 _GoodComeBackText::
-	text " good!"
-	line "Come back!"
+	text "잘 싸웠다!"
+	line "돌아와!"
 	done
 
 _ComeBackText::
-	text " come"
-	line "back!"
+	text_start
+	line "돌아와!"
 	done
 
 _PlayerPickedUpPayDayMoney::
-	text "<PLAYER> picked up"
-	line "¥@"
+	text "<PLAYER>는(은) @"
 	text_decimal wPayDayMoney, 3, 6
-	text "!"
+	text "원"
+	line "주웠다!"
 	prompt
 
 _BootedTMText::
-	text "Booted up a TM."
+	text "기술 머신을 가동시켰다!"
 	prompt
 
 _BootedHMText::
-	text "Booted up an HM."
+	text "비전 머신을 가동시켰다!"
 	prompt
 
 _ContainedMoveText::
-	text "It contained"
-	line "@"
+	text "안에는 @"
 	text_ram wStringBuffer2
-	text "."
+	text "(이)가"
+	line "기록되어져 있다!"
 
-	para "Teach @"
+	para "@"
 	text_ram wStringBuffer2
-	text_start
-	line "to a #MON?"
+	text "를(을)"
+	line "포켓몬에게 가르치겠습니까?"
 	done
 
 _TMHMNotCompatibleText::
-	text_ram wStringBuffer2
-	text " is"
-	line "not compatible"
-	cont "with @"
+	text "@"
 	text_ram wStringBuffer1
-	text "."
-
-	para "It can't learn"
+	text "과(와)"
 	line "@"
 	text_ram wStringBuffer2
-	text "."
+	text "는(은)"
+	cont "상성이 좋지 않았다!"
+
+	para "@"
+	text_ram wStringBuffer2
+	text "는(은)"
+	line "배울 수 없다!"
 	prompt
 
 _NoRoomTMHMText::
-	text "You have no room"
-	line "for any more"
-	cont "@"
+	text "@"
 	text_ram wStringBuffer1
-	text "S."
+	text "는(은)"
+	line "더 이상 지닐 수 없습니다!"
 	prompt
 
 _ReceivedTMHMText::
-	text "You received"
-	line "@"
+	text "@"
 	text_ram wStringBuffer1
-	text "!"
+	text "를(을)"
+	line "손에 넣었다!"
 	prompt
 
 _MysteryGiftCanceledText::
-	text "The link has been"
-	line "cancelled."
+	text "통신을 중지했습니다"
 	prompt
 
 _MysteryGiftCommErrorText::
-	text "Communication"
-	line "error."
+	text "통신 에러"
 	prompt
 
 _RetrieveMysteryGiftText::
-	text "Must retrieve GIFT"
-	line "at #MON CENTER."
+	text "준비가 되어있지 않습니다"
+	line "포켓몬 센터에 가보자!"
 	prompt
 
 _YourFriendIsNotReadyText::
-	text "Your friend isn't"
-	line "ready."
+	text "상대의 준비가 되어있지 않습니다"
 	prompt
 
 _MysteryGiftFiveADayText::
-	text "Sorry--only five"
-	line "GIFTS a day."
+	text "이상한 소포는"
+	line "하루에 5번밖에는 되지 않습니다!"
 	prompt
 
 _MysteryGiftOneADayText::
-	text "Sorry. One GIFT"
-	line "a day per person."
+	text "이상한 소포는 같은 사람으로부터"
+	line "하루에 1번만 받을 수 있습니다!"
 	prompt
 
 _MysteryGiftSentText::
+	text "@"
 	text_ram wMysteryGiftPartnerName
-	text " sent"
+	text "(으)로부터"
 	line "@"
 	text_ram wStringBuffer1
-	text "."
+	text "(이)가"
+	cont "보내졌다"
 	prompt
 
 _MysteryGiftSentHomeText::
+	text "@"
 	text_ram wMysteryGiftPartnerName
-	text " sent"
+	text "(으)로부터"
 	line "@"
-	text_ram wStringBuffer1
-	text_start
-	cont "to @"
 	text_ram wMysteryGiftPlayerName
-	text "'s home."
+	text "의 집에"
+	cont "@"
+	text_ram wStringBuffer1
+	text "(이)가"
+	cont "보내졌다"
 	prompt
 
 _BadgeRequiredText::
-	text "Sorry! A new BADGE"
-	line "is required."
+	text "새로운 배지를 손에 넣을 때까지"
+	line "아직 사용할 수 없습니다!"
 	prompt
 
 _CantUseItemText::
-	text "Can't use that"
-	line "here."
+	text "이곳에서는 사용할 수 없습니다"
 	prompt
 
 _UseCutText::
+	text "@"
 	text_ram wStringBuffer2
-	text " used"
-	line "CUT!"
+	text "는(은) "
+	line "풀베기를 사용했다!"
 	prompt
 
 _CutNothingText::
-	text "There's nothing to"
-	line "CUT here."
+	text "눈앞에 잘릴만한 것이"
+	line "없습니다!"
 	prompt
 
 _BlindingFlashText::
-	text "A blinding FLASH"
-	line "lights the area!@"
+	text "눈부신 빛이"
+	line "주변을 밝게 비춘다……@"
 	text_promptbutton
-	db "@@"
+	text_end
+
+	text_end ; unreferenced
 
 _UsedSurfText::
+	text "@"
 	text_ram wStringBuffer2
-	text " used"
-	line "SURF!"
+	text "는(은)"
+	line "파도타기를 사용했다!"
 	done
