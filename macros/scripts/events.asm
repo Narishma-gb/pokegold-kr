@@ -197,248 +197,248 @@ MACRO loadvar
 	endc
 ENDM
 
-;	const giveitem_command ; $1f
-;MACRO giveitem
-;	if _NARG == 1
-;		giveitem \1, 1
-;	else
-;		db giveitem_command
-;		db \1 ; item
-;		db \2 ; quantity
-;	endc
-;ENDM
+	const giveitem_command ; $1f
+MACRO giveitem
+	if _NARG == 1
+		giveitem \1, 1
+	else
+		db giveitem_command
+		db \1 ; item
+		db \2 ; quantity
+	endc
+ENDM
 
-;	const takeitem_command ; $20
-;MACRO takeitem
-;	if _NARG == 1
-;		takeitem \1, 1
-;	else
-;		db takeitem_command
-;		db \1 ; item
-;		db \2 ; quantity
-;	endc
-;ENDM
+	const takeitem_command ; $20
+MACRO takeitem
+	if _NARG == 1
+		takeitem \1, 1
+	else
+		db takeitem_command
+		db \1 ; item
+		db \2 ; quantity
+	endc
+ENDM
 
-;	const checkitem_command ; $21
-;MACRO checkitem
-;	db checkitem_command
-;	db \1 ; item
-;ENDM
+	const checkitem_command ; $21
+MACRO checkitem
+	db checkitem_command
+	db \1 ; item
+ENDM
 
-;	const givemoney_command ; $22
-;MACRO givemoney
-;	db givemoney_command
-;	db \1 ; account
-;	bigdt \2 ; money
-;ENDM
+	const givemoney_command ; $22
+MACRO givemoney
+	db givemoney_command
+	db \1 ; account
+	bigdt \2 ; money
+ENDM
 
-;	const takemoney_command ; $23
-;MACRO takemoney
-;	db takemoney_command
-;	db \1 ; account
-;	bigdt \2 ; money
-;ENDM
+	const takemoney_command ; $23
+MACRO takemoney
+	db takemoney_command
+	db \1 ; account
+	bigdt \2 ; money
+ENDM
 
-;	const checkmoney_command ; $24
-;MACRO checkmoney
-;	db checkmoney_command
-;	db \1 ; account
-;	bigdt \2 ; money
-;ENDM
+	const checkmoney_command ; $24
+MACRO checkmoney
+	db checkmoney_command
+	db \1 ; account
+	bigdt \2 ; money
+ENDM
 
-;	const givecoins_command ; $25
-;MACRO givecoins
-;	db givecoins_command
-;	dw \1 ; coins
-;ENDM
+	const givecoins_command ; $25
+MACRO givecoins
+	db givecoins_command
+	dw \1 ; coins
+ENDM
 
-;	const takecoins_command ; $26
-;MACRO takecoins
-;	db takecoins_command
-;	dw \1 ; coins
-;ENDM
+	const takecoins_command ; $26
+MACRO takecoins
+	db takecoins_command
+	dw \1 ; coins
+ENDM
 
-;	const checkcoins_command ; $27
-;MACRO checkcoins
-;	db checkcoins_command
-;	dw \1 ; coins
-;ENDM
+	const checkcoins_command ; $27
+MACRO checkcoins
+	db checkcoins_command
+	dw \1 ; coins
+ENDM
 
-;	const addcellnum_command ; $28
-;MACRO addcellnum
-;	db addcellnum_command
-;	db \1 ; person
-;ENDM
+	const addcellnum_command ; $28
+MACRO addcellnum
+	db addcellnum_command
+	db \1 ; person
+ENDM
 
-;	const delcellnum_command ; $29
-;MACRO delcellnum
-;	db delcellnum_command
-;	db \1 ; person
-;ENDM
+	const delcellnum_command ; $29
+MACRO delcellnum
+	db delcellnum_command
+	db \1 ; person
+ENDM
 
-;	const checkcellnum_command ; $2a
-;MACRO checkcellnum
-;	db checkcellnum_command
-;	db \1 ; person
-;ENDM
+	const checkcellnum_command ; $2a
+MACRO checkcellnum
+	db checkcellnum_command
+	db \1 ; person
+ENDM
 
-;	const checktime_command ; $2b
-;MACRO checktime
-;	db checktime_command
-;	db \1 ; time
-;ENDM
+	const checktime_command ; $2b
+MACRO checktime
+	db checktime_command
+	db \1 ; time
+ENDM
 
-;	const checkpoke_command ; $2c
-;MACRO checkpoke
-;	db checkpoke_command
-;	db \1 ; pkmn
-;ENDM
+	const checkpoke_command ; $2c
+MACRO checkpoke
+	db checkpoke_command
+	db \1 ; pkmn
+ENDM
 
-;	const givepoke_command ; $2d
-;MACRO givepoke
-;	if _NARG == 2
-;		givepoke \1, \2, NO_ITEM, FALSE
-;	elif _NARG == 3
-;		givepoke \1, \2, \3, FALSE
-;	elif _NARG == 5
-;		givepoke \1, \2, \3, TRUE, \4, \5
-;	else
-;		db givepoke_command
-;		db \1 ; pokemon
-;		db \2 ; level
-;		db \3 ; item
-;		db \4 ; trainer
-;		if \4
-;			dw \5 ; nickname_pointer
-;			dw \6 ; ot_name_pointer
-;		endc
-;	endc
-;ENDM
+	const givepoke_command ; $2d
+MACRO givepoke
+	if _NARG == 2
+		givepoke \1, \2, NO_ITEM, FALSE
+	elif _NARG == 3
+		givepoke \1, \2, \3, FALSE
+	elif _NARG == 5
+		givepoke \1, \2, \3, TRUE, \4, \5
+	else
+		db givepoke_command
+		db \1 ; pokemon
+		db \2 ; level
+		db \3 ; item
+		db \4 ; trainer
+		if \4
+			dw \5 ; nickname_pointer
+			dw \6 ; ot_name_pointer
+		endc
+	endc
+ENDM
 
-;	const giveegg_command ; $2e
-;MACRO giveegg
-;	db giveegg_command
-;	db \1 ; pkmn
-;	db \2 ; level
-;ENDM
+	const giveegg_command ; $2e
+MACRO giveegg
+	db giveegg_command
+	db \1 ; pkmn
+	db \2 ; level
+ENDM
 
-;	const givepokemail_command ; $2f
-;MACRO givepokemail
-;	db givepokemail_command
-;	dw \1 ; pointer
-;ENDM
+	const givepokemail_command ; $2f
+MACRO givepokemail
+	db givepokemail_command
+	dw \1 ; pointer
+ENDM
 
-;	const checkpokemail_command ; $30
-;MACRO checkpokemail
-;	db checkpokemail_command
-;	dw \1 ; pointer
-;ENDM
+	const checkpokemail_command ; $30
+MACRO checkpokemail
+	db checkpokemail_command
+	dw \1 ; pointer
+ENDM
 
-;	const checkevent_command ; $31
-;MACRO checkevent
-;	db checkevent_command
-;	dw \1 ; event_flag
-;ENDM
+	const checkevent_command ; $31
+MACRO checkevent
+	db checkevent_command
+	dw \1 ; event_flag
+ENDM
 
-;	const clearevent_command ; $32
-;MACRO clearevent
-;	db clearevent_command
-;	dw \1 ; event_flag
-;ENDM
+	const clearevent_command ; $32
+MACRO clearevent
+	db clearevent_command
+	dw \1 ; event_flag
+ENDM
 
-;	const setevent_command ; $33
-;MACRO setevent
-;	db setevent_command
-;	dw \1 ; event_flag
-;ENDM
+	const setevent_command ; $33
+MACRO setevent
+	db setevent_command
+	dw \1 ; event_flag
+ENDM
 
-;	const checkflag_command ; $34
-;MACRO checkflag
-;	db checkflag_command
-;	dw \1 ; engine_flag
-;ENDM
+	const checkflag_command ; $34
+MACRO checkflag
+	db checkflag_command
+	dw \1 ; engine_flag
+ENDM
 
-;	const clearflag_command ; $35
-;MACRO clearflag
-;	db clearflag_command
-;	dw \1 ; engine_flag
-;ENDM
+	const clearflag_command ; $35
+MACRO clearflag
+	db clearflag_command
+	dw \1 ; engine_flag
+ENDM
 
-;	const setflag_command ; $36
-;MACRO setflag
-;	db setflag_command
-;	dw \1 ; engine_flag
-;ENDM
+	const setflag_command ; $36
+MACRO setflag
+	db setflag_command
+	dw \1 ; engine_flag
+ENDM
 
-;	const wildon_command ; $37
-;MACRO wildon
-;	db wildon_command
-;ENDM
+	const wildon_command ; $37
+MACRO wildon
+	db wildon_command
+ENDM
 
-;	const wildoff_command ; $38
-;MACRO wildoff
-;	db wildoff_command
-;ENDM
+	const wildoff_command ; $38
+MACRO wildoff
+	db wildoff_command
+ENDM
 
-;	const xycompare_command ; $39
-;MACRO xycompare
-;	db xycompare_command
-;	dw \1 ; pointer
-;ENDM
+	const xycompare_command ; $39
+MACRO xycompare
+	db xycompare_command
+	dw \1 ; pointer
+ENDM
 
-;	const warpmod_command ; $3a
-;MACRO warpmod
-;	db warpmod_command
-;	db \1 ; warp_id
-;	map_id \2 ; map
-;ENDM
+	const warpmod_command ; $3a
+MACRO warpmod
+	db warpmod_command
+	db \1 ; warp_id
+	map_id \2 ; map
+ENDM
 
-;	const blackoutmod_command ; $3b
-;MACRO blackoutmod
-;	db blackoutmod_command
-;	map_id \1 ; map
-;ENDM
+	const blackoutmod_command ; $3b
+MACRO blackoutmod
+	db blackoutmod_command
+	map_id \1 ; map
+ENDM
 
-;	const warp_command ; $3c
-;MACRO warp
-;	db warp_command
-;	map_id \1 ; map
-;	db \2 ; x
-;	db \3 ; y
-;ENDM
+	const warp_command ; $3c
+MACRO warp
+	db warp_command
+	map_id \1 ; map
+	db \2 ; x
+	db \3 ; y
+ENDM
 
-;	const getmoney_command ; $3d
-;MACRO getmoney
-;	db getmoney_command
-;	db \2 ; account
-;	db \1 ; string_buffer
-;ENDM
+	const getmoney_command ; $3d
+MACRO getmoney
+	db getmoney_command
+	db \2 ; account
+	db \1 ; string_buffer
+ENDM
 
-;	const getcoins_command ; $3e
-;MACRO getcoins
-;	db getcoins_command
-;	db \1 ; string_buffer
-;ENDM
+	const getcoins_command ; $3e
+MACRO getcoins
+	db getcoins_command
+	db \1 ; string_buffer
+ENDM
 
-;	const getnum_command ; $3f
-;MACRO getnum
-;	db getnum_command
-;	db \1 ; string_buffer
-;ENDM
+	const getnum_command ; $3f
+MACRO getnum
+	db getnum_command
+	db \1 ; string_buffer
+ENDM
 
-;	const getmonname_command ; $40
-;MACRO getmonname
-;	db getmonname_command
-;	db \2 ; pokemon
-;	db \1 ; string_buffer
-;ENDM
+	const getmonname_command ; $40
+MACRO getmonname
+	db getmonname_command
+	db \2 ; pokemon
+	db \1 ; string_buffer
+ENDM
 
-;	const getitemname_command ; $41
-;MACRO getitemname
-;	db getitemname_command
-;	db \2 ; item
-;	db \1 ; string_buffer
-;ENDM
+	const getitemname_command ; $41
+MACRO getitemname
+	db getitemname_command
+	db \2 ; item
+	db \1 ; string_buffer
+ENDM
 
 ;	const getcurlandmarkname_command ; $42
 ;MACRO getcurlandmarkname
@@ -461,17 +461,17 @@ ENDM
 ;	db \1 ; string_buffer
 ;ENDM
 
-;	const itemnotify_command ; $45
-;MACRO itemnotify
-;	db itemnotify_command
-;ENDM
+	const_next $46
 
-;	const pocketisfull_command ; $46
-;MACRO pocketisfull
-;	db pocketisfull_command
-;ENDM
+	const itemnotify_command ; $46
+MACRO itemnotify
+	db itemnotify_command
+ENDM
 
-	const_next $48
+	const pocketisfull_command ; $47
+MACRO pocketisfull
+	db pocketisfull_command
+ENDM
 
 	const opentext_command ; $48
 MACRO opentext
@@ -908,16 +908,16 @@ MACRO end
 	db end_command
 ENDM
 
-;	const reloadend_command ; $91
-;MACRO reloadend
-;	db reloadend_command
-;	db \1 ; which_method
-;ENDM
+	const reloadend_command ; $92
+MACRO reloadend
+	db reloadend_command
+	db \1 ; which_method
+ENDM
 
-;	const endall_command ; $92
-;MACRO endall
-;	db endall_command
-;ENDM
+	const endall_command ; $93
+MACRO endall
+	db endall_command
+ENDM
 
 ;	const pokemart_command ; $93
 ;MACRO pokemart

@@ -177,7 +177,7 @@ SwitchPartyMons:
 	call DelayFrame
 
 	farcall PartyMenuSelect
-	bit B_BUTTON_F, b
+	bit B_PAD_B, b
 	jr c, .DontSwitch
 
 	farcall _SwitchPartyMons
@@ -376,15 +376,15 @@ TakePartyItem:
 
 GiveTakeItemMenuData:
 	db MENU_SPRITE_ANIMS | MENU_BACKUP_TILES ; flags
-	menu_coords 12, 12, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 10, 12, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw .Items
 	db 1 ; default option
 
 .Items:
 	db STATICMENU_CURSOR ; flags
 	db 2 ; # items
-	db "GIVE@"
-	db "TAKE@"
+	db "지니게 하다@"
+	db "맡다@"
 
 PokemonSwapItemText:
 	text_far _PokemonSwapItemText
@@ -552,9 +552,9 @@ MonMailAction:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
-	db "READ@"
-	db "TAKE@"
-	db "QUIT@"
+	db "메일을 읽다@"
+	db "메일을 받다@"
+	db "그만두다@"
 
 .MailLoseMessageText:
 	text_far _MailLoseMessageText
@@ -819,9 +819,9 @@ ChooseMoveToDelete:
 
 .loop
 	call ScrollingMenuJoypad
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jp nz, .b_button
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jp nz, .a_button
 
 .enter_loop
@@ -843,7 +843,7 @@ ChooseMoveToDelete:
 	ld hl, w2DMenuFlags1
 	res _2DMENU_ENABLE_SPRITE_ANIMS_F, [hl]
 	call ClearSprites
-	call ClearTilemap
+	call Function0ee6
 	pop af
 	ret
 
@@ -888,9 +888,9 @@ MoveScreenLoop:
 
 .joy_loop
 	call ScrollingMenuJoypad
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jp nz, .b_button
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jp nz, .a_button
 	bit B_PAD_RIGHT, a
 	jp nz, .d_right
@@ -906,16 +906,18 @@ MoveScreenLoop:
 	jp .joy_loop
 
 .moving_move
-	ld a, ' '
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
 	hlcoord 1, 11
-	ld bc, 5
-	call ByteFill
-	hlcoord 1, 12
-	lb bc, 5, SCREEN_WIDTH - 2
+	lb bc, 6, SCREEN_WIDTH - 2
 	call ClearBox
 	hlcoord 1, 12
 	ld de, String_MoveWhere
 	call PlaceString
+	pop af
+	ldh [hBGMapMode], a
 	jp .joy_loop
 .b_button
 	call PlayClickSFX
@@ -1042,9 +1044,6 @@ MoveScreenLoop:
 	hlcoord 1, 2
 	lb bc, 8, 18
 	call ClearBox
-	hlcoord 10, 10
-	lb bc, 1, 9
-	call ClearBox
 	jp .loop
 
 .copy_move
@@ -1075,7 +1074,7 @@ MoveScreenLoop:
 	ld hl, w2DMenuFlags1
 	res _2DMENU_ENABLE_SPRITE_ANIMS_F, [hl]
 	call ClearSprites
-	jp ClearTilemap
+	jp Function0ee6
 
 MoveScreen2DMenuData:
 	db 3, 1 ; cursor start y, x
@@ -1086,11 +1085,11 @@ MoveScreen2DMenuData:
 	db PAD_CTRL_PAD | PAD_A | PAD_B ; accepted buttons
 
 String_MoveWhere:
-	db "Where?@"
+	db "어디로 이동하겠습니까?@"
 
 SetUpMoveScreenBG:
 	call ClearBGPalettes
-	call ClearTilemap
+	call Function0ee6
 	call ClearSprites
 	xor a
 	ldh [hBGMapMode], a
@@ -1106,33 +1105,26 @@ SetUpMoveScreenBG:
 	ld e, MONICON_MOVES
 	farcall LoadMenuMonIcon
 	hlcoord 0, 1
-	ld b, 9
+	ld b, 8
 	ld c, 18
 	call Textbox
-	hlcoord 0, 11
-	ld b, 5
+	hlcoord 0, 10
+	ld b, 6
 	ld c, 18
 	call Textbox
-	hlcoord 2, 0
-	lb bc, 2, 3
+	hlcoord 1, 0
+	lb bc, 2, 18
 	call ClearBox
 	xor a
 	ld [wMonType], a
-	ld hl, wPartyMonNicknames
-	ld a, [wCurPartyMon]
-	call GetNickname
-	hlcoord 5, 1
-	call PlaceString
-	push bc
-	farcall CopyMonToTempMon
-	pop hl
-	call PrintLevel
+	hlcoord 3, 1
+	predef Unused_PlaceEnemyHPLevel
 	ld hl, wPlayerHPPal
 	call SetHPPal
 	ld b, SCGB_MOVE_LIST
 	call GetSGBLayout
-	hlcoord 16, 0
-	lb bc, 1, 3
+	hlcoord 11, 0
+	lb bc, 1, 9
 	jp ClearBox
 
 SetUpMoveList:
@@ -1149,15 +1141,15 @@ SetUpMoveList:
 	ld [wListMovesLineSpacing], a
 	hlcoord 2, 3
 	predef ListMoves
-	hlcoord 10, 4
+	hlcoord 11, 3
 	predef ListMovePP
 	call WaitBGMap
 	call SetDefaultBGPAndOBP
 	ld a, [wNumMoves]
 	inc a
 	ld [w2DMenuNumRows], a
-	hlcoord 0, 11
-	ld b, 5
+	hlcoord 0, 10
+	ld b, 6
 	ld c, 18
 	jp Textbox
 
@@ -1173,25 +1165,19 @@ PrepareToPlaceMoveData:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurSpecies], a
-	hlcoord 1, 12
-	lb bc, 5, 18
+	hlcoord 1, 11
+	lb bc, 6, 18
 	jp ClearBox
 
 PlaceMoveData:
 	xor a
 	ldh [hBGMapMode], a
-	hlcoord 0, 10
-	ld de, String_MoveType_Top
-	call PlaceString
-	hlcoord 0, 11
-	ld de, String_MoveType_Bottom
-	call PlaceString
-	hlcoord 11, 12
-	ld de, String_MoveAtk
+	hlcoord 1, 12
+	ld de, String_MoveType_Atk
 	call PlaceString
 	ld a, [wCurSpecies]
 	ld b, a
-	hlcoord 2, 12
+	hlcoord 5, 12
 	predef PrintMoveType
 	ld a, [wCurSpecies]
 	dec a
@@ -1200,7 +1186,7 @@ PlaceMoveData:
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 16, 12
+	hlcoord 15, 12
 	cp 2
 	jr c, .no_power
 	ld [wTextDecimalByte], a
@@ -1220,14 +1206,10 @@ PlaceMoveData:
 	ldh [hBGMapMode], a
 	ret
 
-String_MoveType_Top:
-	db "┌─────┐@"
-String_MoveType_Bottom:
-	db "│TYPE/└@"
-String_MoveAtk:
-	db "ATTK/@"
+String_MoveType_Atk:
+	db "타입/       위력/@"
 String_MoveNoPower:
-	db "---@"
+	db "<-><-><->@"
 
 PlaceMoveScreenArrows:
 	call PlaceMoveScreenLeftArrow

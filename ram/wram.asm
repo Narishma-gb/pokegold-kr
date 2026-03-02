@@ -1392,11 +1392,11 @@ NEXTU
 ; credits
 wCreditsPos:: dw
 wCreditsTimer:: db
-
+/*
 NEXTU
 ; mail temp storage
 wTempMail:: mailmsg wTempMail
-
+*/
 NEXTU
 ; bug-catching contest
 wBugContestResults::

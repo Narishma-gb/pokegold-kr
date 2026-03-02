@@ -18,13 +18,7 @@ StartMenu::
 
 	farcall ReanchorBGMap_NoOAMUpdate
 
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	ld hl, .MenuHeader
-	jr z, .GotMenuData
-	ld hl, .ContestMenuHeader
-
-.GotMenuData:
 	call LoadMenuHeader
 	call .SetUpMenuItems
 	ld a, [wBattleMenuCursorPosition]
@@ -102,12 +96,20 @@ StartMenu::
 	ld [wMenuSelection], a
 .loop
 	call .PrintMenuAccount
+.asm_128ad
+	ld a, [wMenuSelection]
+	ld b, a
+	push bc
 	call GetScrollingMenuJoypad
+	pop bc
 	ld a, [wMenuJoypad]
 	cp PAD_B
 	jr z, .b
 	cp PAD_A
 	jr z, .a
+	ld a, [wMenuSelection]
+	cp b
+	jr z, .asm_128ad
 	jr .loop
 .a
 	call PlayClickSFX
@@ -157,13 +159,7 @@ StartMenu::
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
-	dw .MenuData
-	db 1 ; default selection
-
-.ContestMenuHeader:
-	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 2, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 12, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw .MenuData
 	db 1 ; default selection
 
@@ -186,51 +182,50 @@ StartMenu::
 	dw StartMenu_Pokegear, .PokegearString, .PokegearDesc
 	dw StartMenu_Quit,     .QuitString,     .QuitDesc
 
-.PokedexString:  db "#DEX@"
-.PartyString:    db "#MON@"
-.PackString:     db "PACK@"
+.PokedexString:  db "도감@"
+.PartyString:    db "포켓몬@"
+.PackString:     db "가방@"
 .StatusString:   db "<PLAYER>@"
-.SaveString:     db "SAVE@"
-.OptionString:   db "OPTION@"
-.ExitString:     db "EXIT@"
-.PokegearString: db "<POKE>GEAR@"
-.QuitString:     db "QUIT@"
+.SaveString:     db "레포트@"
+.OptionString:   db "설정@"
+.ExitString:     db "닫다@"
+.PokegearString: db "포켓기어@"
+.QuitString:     db "그만두다@"
 
 .PokedexDesc:
-	db   "#MON"
-	next "database@"
+	db   "포켓몬의 비밀이"
+	next "기록되어져 있다@"
 
 .PartyDesc:
-	db   "Party <PKMN>"
-	next "status@"
+	db   "같이 있는"
+	next "포켓몬의 상태@"
 
 .PackDesc:
-	db   "Contains"
-	next "items@"
+	db   "도구를 집어넣는"
+	next "포켓 낚시배낭@"
 
 .PokegearDesc:
-	db   "Trainer's"
-	next "key device@"
+	db   "트레이너의 여행에"
+	next "도움이 되는 툴@"
 
 .StatusDesc:
-	db   "Your own"
-	next "status@"
+	db   "현재"
+	next "당신의 상태@"
 
 .SaveDesc:
-	db   "Save your"
-	next "progress@"
+	db   "잠시 쉬는 동안"
+	next "상태를 기록@"
 
 .OptionDesc:
-	db   "Change"
-	next "settings@"
+	db   "시합의 룰 등의"
+	next "여러가지 변경@"
 
 .ExitDesc:
-	db   "Close this"
-	next "menu@"
+	db   "이 메뉴를 닫는다@"
 
 .QuitDesc:
-	db   "Quit and"
-	next "be judged.@"
+	db   "지금의 상태로"
+	next "표시하게 한다@"
 
 .OpenMenu:
 	ld a, [wMenuSelection]
@@ -361,24 +356,32 @@ endr
 	ret
 
 .DrawMenuAccount:
-	jp ._DrawMenuAccount
+	call .IsMenuAccountOn
+	ret z
+	hlcoord 0, 13
+	lb bc, 5, 20
+	call ClearBox
+	hlcoord 0, 13
+	ld b, 3
+	ld c, 18
+	jp TextboxPalette
 
 .PrintMenuAccount:
 	call .IsMenuAccountOn
 	ret z
 	call ._DrawMenuAccount
-	decoord 0, 14
+	decoord 1, 14
 	jp .MenuDesc
 
 ._DrawMenuAccount:
 	call .IsMenuAccountOn
 	ret z
 	hlcoord 0, 13
-	lb bc, 5, 10
+	lb bc, 5, 12
 	call ClearBox
 	hlcoord 0, 13
 	ld b, 3
-	ld c, 8
+	ld c, 11
 	jp TextboxPalette
 
 .IsMenuAccountOn:

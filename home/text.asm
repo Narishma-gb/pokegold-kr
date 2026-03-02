@@ -33,7 +33,7 @@ Textbox::
 	farcall_reg Function1fc0b8
 	ret
 
-Function0f29::
+TextboxPalette::
 	farcall_reg Function1fc0ff
 	ret
 

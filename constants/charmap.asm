@@ -104,7 +104,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap "<LV>",      $6e
 
 	;charmap "<DO>",      $70 ; hiragana small do, unused
-	;charmap "◀",         $71
+	charmap "◀",         $71
 	;charmap "『",         $72 ; Japanese opening quote, unused
 	;charmap "<ID>",      $73
 	;charmap "№",         $74
@@ -122,6 +122,51 @@ INCLUDE "constants/charmap/japanese.asm"
 
 	; needed for StatsScreen_PlaceShinyIcon and PrintPartyMonPage1
 	;charmap "⁂",         $3f ; gfx/stats/stats_tiles.png, tile 14
+
+	; needed for NamingScreen
+
+	charmap "ㄱ", $a0
+	charmap "ㄴ", $a1
+	charmap "ㄷ", $a2
+	charmap "ㄹ", $a3
+	charmap "ㅁ", $a4
+	charmap "ㅂ", $a5
+	charmap "ㅅ", $a6
+	charmap "ㅇ", $a7
+	charmap "ㅈ", $a8
+	charmap "ㅊ", $a9
+	charmap "ㅋ", $aa
+	charmap "ㅌ", $ab
+	charmap "ㅍ", $ac
+	charmap "ㅎ", $ad
+	charmap "ㄲ", $ae
+	charmap "ㄸ", $af
+	charmap "ㅃ", $b0
+	charmap "ㅆ", $b1
+	charmap "ㅉ", $b2
+
+	charmap "ㅏ", $c0
+	charmap "ㅑ", $c1
+	charmap "ㅓ", $c2
+	charmap "ㅕ", $c3
+	charmap "ㅗ", $c4
+	charmap "ㅛ", $c5
+	charmap "ㅜ", $c6
+	charmap "ㅠ", $c7
+	charmap "ㅡ", $c8
+	charmap "ㅣ", $c9
+	charmap "ㅐ", $ca
+	charmap "ㅒ", $cb
+	charmap "ㅔ", $cc
+	charmap "ㅖ", $cd
+	charmap "ㅘ", $ce
+	charmap "ㅙ", $cf
+	charmap "ㅚ", $d0
+	charmap "ㅝ", $d1
+	charmap "ㅞ", $d2
+	charmap "ㅟ", $d3
+	charmap "ㅢ", $d4
+
 
 ; Actual characters (from gfx/font/font.png)
 
@@ -215,7 +260,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	;charmap "é",         $ea
 	;charmap "→",         $eb
 	charmap "▷",         $ec
-	;charmap "▶",         $ed
+	charmap "▶",         $ed
 	charmap "▼",         $ee
 	charmap "♂",         $ef
 	charmap "₩",         $f0
