@@ -1,5 +1,6 @@
 ClearBox::
-	farcall_reg Function1fc08d
+; Fill a c*b box at hl with blank tiles.
+	farcall_reg _ClearBox
 	ret
 
 Function0ee6::
@@ -30,11 +31,11 @@ ClearScreen::
 	jp WaitBGMap2
 
 Textbox::
-	farcall_reg Function1fc0b8
+	farcall_reg _Textbox
 	ret
 
 TextboxPalette::
-	farcall_reg Function1fc0ff
+	farcall_reg _TextboxPalette
 	ret
 
 SpeechTextbox::
@@ -439,7 +440,7 @@ Function1229::
 	jp NextChar
 
 TextScroll::
-	farcall_reg Function1fc14e
+	farcall_reg _TextScroll
 	ret
 
 Text_WaitBGMap::
@@ -892,40 +893,41 @@ TextCommand_DAY::
 Function1470::
 	di
 	ld a, $02
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $00
 	ld [wd120], a
 	ld a, $01
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ei
 	ret
 
 Function1480::
 	di
 	ld a, $02
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, $FF
 	ld [wd120], a
 	ld a, $01
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ei
 	ret
 
 Function1490::
 	di
 	ld a, $02
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wd120]
 	cpl
 	ld [wd120], a
 	ld a, $01
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ei
 	ret
 
 Function14a2::
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
+Function14a8::
 	inc b
 	inc c
 	jr .start_loop
@@ -975,7 +977,7 @@ Function151f::
 	rst Bankswitch
 	di
 	ld a, $02
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [wd120]
 	ld b, a
 	ld c, $10
@@ -988,7 +990,7 @@ Function151f::
 	dec c
 	jr nz, .asm_152f
 	ld a, $01
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ei
 	pop af
 	rst Bankswitch

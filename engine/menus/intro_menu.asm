@@ -1181,7 +1181,7 @@ CopyrightString:
 
 GameInit::
 	farcall Function1c8000
-	farcall Function1fc033
+	farcall DoubleSpeed
 	call ClearWindowData
 	farcall TryLoadSaveData
 	jp IntroSequence

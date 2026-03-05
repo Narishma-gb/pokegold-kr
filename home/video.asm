@@ -91,7 +91,7 @@ WaitTop::
 	ret
 
 UpdateBGMap::
-	farcall_reg Function1fc2d1
+	farcall_reg _UpdateBGMap
 	ret
 
 Function15ba::

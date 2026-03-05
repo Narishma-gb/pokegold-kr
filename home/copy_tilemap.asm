@@ -1,6 +1,6 @@
 LoadTilemapToTempTilemap::
 ; Load wTilemap into wTempTilemap
-	farcall Function1fc657
+	farcall _LoadTilemapToTempTilemap
 	ret
 
 SafeLoadTempTilemapToTilemap::
@@ -13,5 +13,5 @@ SafeLoadTempTilemapToTilemap::
 
 LoadTempTilemapToTilemap::
 ; Load wTempTilemap into wTilemap
-	farcall Function1fc6a4
+	farcall _LoadTempTilemapToTilemap
 	ret

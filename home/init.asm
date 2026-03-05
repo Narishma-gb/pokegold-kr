@@ -75,7 +75,7 @@ Init::
 	ld sp, wStackTop
 
 	call ClearVRAM
-	farcall Function1fc000
+	farcall ClearHRAM
 	call ClearSprites
 
 	ld a, BANK(WriteOAMDMACodeToHRAM) ; aka BANK(GameInit)
@@ -103,7 +103,7 @@ Init::
 	ld a, CONNECTION_NOT_ESTABLISHED
 	ldh [hSerialConnectionStatus], a
 
-	farcall Function1fc019
+	farcall BlankAllBGMaps
 
 	callfar InitCGBPals
 

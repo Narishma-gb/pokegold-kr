@@ -92,7 +92,7 @@ RestoreTileBackup::
 PopWindow::
 	di
 	ld a, $03
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld b, wMenuHeaderEnd - wMenuHeader
 	ld de, wMenuHeader
 .loop
@@ -102,7 +102,7 @@ PopWindow::
 	dec b
 	jr nz, .loop
 	ld a, $01
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ei
 	ret
 
@@ -145,12 +145,12 @@ GetWindowStackTop::
 	inc hl
 	di
 	ld a, $03
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld a, $01
-	ldh [rSVBK], a
+	ldh [rWBK], a
 	ei
 	ret
 
@@ -711,7 +711,7 @@ GetMenuDataPointerTableEntry::
 	ret
 
 ClearWindowData::
-	farcall_reg Function1fc61e
+	farcall_reg _ClearWindowData
 	ret
 
 MenuClickSound::

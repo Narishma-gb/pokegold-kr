@@ -43,6 +43,7 @@ JumpTable::
 SECTION "rst38", ROM0[$0038]
 Function38::
 	nop
+Function39::
 	ld a, $39
 .loop
 	dec a

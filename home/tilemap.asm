@@ -57,7 +57,7 @@ CGBOnly_CopyTilemapAtOnce::
 	jr z, WaitBGMap
 
 CopyTilemapAtOnce::
-	farcall_reg Function1fc721
+	farcall_reg _CopyTilemapAtOnce
 	ret
 
 SetDefaultBGPAndOBP::

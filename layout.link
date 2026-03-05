@@ -255,7 +255,8 @@ ROMX $66
 ; 	"bank70_2"
 ; 	"Pokégear GFX"
 ; 	"Credits Strings"
-; ROMX $7f
+ROMX $7f
+	"bank7F"
 ; 	org $7df8
 ; 	"Stadium 2 Checksums"
 WRAM0

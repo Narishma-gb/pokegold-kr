@@ -41,6 +41,7 @@ ENDM
 
 
 INCLUDE "main.asm"
+INCLUDE "engine/dumps/bank7f.asm"
 
 EXPORT DEF ConfusedNoMoreText EQU $5a29
 EXPORT DEF MoveDescriptions EQU $4000
@@ -250,10 +251,6 @@ SECTION "rom17", ROMX[$4000], BANK[17]
 ; ROM $12 : $48000 - $4BFFF
 
 
-;SECTION "rom19", ROMX[$4000], BANK[19]
-; ROM $13 : $4C000 - $4FFFF
-
-
 SECTION "rom20", ROMX[$4000], BANK[20]
 ; ROM $14 : $50000 - $53FFF
 
@@ -353,10 +350,6 @@ SECTION "rom33", ROMX[$4000], BANK[33]
 	dr _PrintDiploma, $4684
 
 
-;SECTION "rom34", ROMX[$4000], BANK[34]
-; ROM $22 : $88000 - $8BFFF
-
-
 SECTION "rom35", ROMX[$4000], BANK[35]
 ; ROM $23 : $8C000 - $8FFFF
 
@@ -429,32 +422,12 @@ SECTION "rom38", ROMX[$4000], BANK[38]
 	drd TitleScreenTilemap, $47c6
 
 
-;SECTION "rom39", ROMX[$4000], BANK[39]
-; ROM $27 : $9C000 - $9FFFF
-
-
-;SECTION "rom40", ROMX[$4000], BANK[40]
-; ROM $28 : $A0000 - $A3FFF
-
-
-;SECTION "rom41", ROMX[$4000], BANK[41]
-; ROM $29 : $A4000 - $A7FFF
-
-
 ;SECTION "rom42", ROMX[$4000], BANK[42]
 ; ROM $2a : $A8000 - $ABFFF
 
 
 ;SECTION "rom43", ROMX[$4000], BANK[43]
 ; ROM $2b : $AC000 - $AFFFF
-
-
-;SECTION "rom44", ROMX[$4000], BANK[44]
-; ROM $2c : $B0000 - $B3FFF
-
-
-;SECTION "rom45", ROMX[$4000], BANK[45]
-; ROM $2d : $B4000 - $B7FFF
 
 
 SECTION "rom46", ROMX[$4000], BANK[46]
@@ -465,10 +438,6 @@ SECTION "rom46", ROMX[$4000], BANK[46]
 	dr RockMonEncounter, $63a1
 	dr ReadPartyMonMail, $6eb6
 	dr ItemIsMail, $7ac4
-
-
-;SECTION "rom47", ROMX[$4000], BANK[47]
-; ROM $2f : $BC000 - $BFFFF
 
 
 SECTION "rom48", ROMX[$4000], BANK[48]
@@ -508,13 +477,6 @@ BattleAnimCommands::
 	dr DummyPredef38, $40d7
 DummyPredef39::
 	dr PlayBattleAnim, $40d8
-
-;SECTION "rom52", ROMX[$4000], BANK[52]
-; ROM $34 : $D0000 - $D3FFF
-
-
-;SECTION "rom53", ROMX[$4000], BANK[53]
-; ROM $35 : $D4000 - $D7FFF
 
 
 ;SECTION "rom54", ROMX[$4000], BANK[54]
@@ -713,10 +675,6 @@ BattleText::
 ; ROM $57 : $15C000 - $15FFFF
 
 
-;SECTION "rom88", ROMX[$4000], BANK[88]
-; ROM $58 : $160000 - $163FFF
-
-
 ;SECTION "rom89", ROMX[$4000], BANK[89]
 ; ROM $59 : $164000 - $167FFF
 
@@ -757,28 +715,12 @@ BattleText::
 ; ROM $62 : $188000 - $18BFFF
 
 
-;SECTION "rom99", ROMX[$4000], BANK[99]
-; ROM $63 : $18C000 - $18FFFF
-
-
-;SECTION "rom103", ROMX[$4000], BANK[103]
-; ROM $67 : $19C000 - $19FFFF
-
-
 ;SECTION "rom104", ROMX[$4000], BANK[104]
 ; ROM $68 : $1A0000 - $1A3FFF
 
 
 ;SECTION "rom105", ROMX[$4000], BANK[105]
 ; ROM $69 : $1A4000 - $1A7FFF
-
-
-;SECTION "rom106", ROMX[$4000], BANK[106]
-; ROM $6a : $1A8000 - $1ABFFF
-
-
-;SECTION "rom107", ROMX[$4000], BANK[107]
-; ROM $6b : $1AC000 - $1AFFFF
 
 
 SECTION "rom108", ROMX[$4000], BANK[108]
@@ -796,10 +738,6 @@ SECTION "rom108", ROMX[$4000], BANK[108]
 
 ;SECTION "rom110", ROMX[$4000], BANK[110]
 ; ROM $6e : $1B8000 - $1BBFFF
-
-
-;SECTION "rom111", ROMX[$4000], BANK[111]
-; ROM $6f : $1BC000 - $1BFFFF
 
 
 SECTION "rom112", ROMX[$4000], BANK[112]
@@ -822,26 +760,6 @@ SECTION "rom114", ROMX[$4000], BANK[114]
 ; ROM $72 : $1C8000 - $1CBFFF
 
 	dr Function1c8000, $4000
-
-
-;SECTION "rom115", ROMX[$4000], BANK[115]
-; ROM $73 : $1CC000 - $1CFFFF
-
-
-;SECTION "rom116", ROMX[$4000], BANK[116]
-; ROM $74 : $1D0000 - $1D3FFF
-
-
-;SECTION "rom117", ROMX[$4000], BANK[117]
-; ROM $75 : $1D4000 - $1D7FFF
-
-
-;SECTION "rom118", ROMX[$4000], BANK[118]
-; ROM $76 : $1D8000 - $1DBFFF
-
-
-;SECTION "rom119", ROMX[$4000], BANK[119]
-; ROM $77 : $1DC000 - $1DFFFF
 
 
 ;SECTION "rom120", ROMX[$4000], BANK[120]
@@ -870,26 +788,3 @@ SECTION "rom114", ROMX[$4000], BANK[114]
 
 ;SECTION "rom126", ROMX[$4000], BANK[126]
 ; ROM $7e : $1F8000 - $1FBFFF
-
-
-SECTION "rom127", ROMX[$4000], BANK[127]
-; ROM $7f : $1FC000 - $1FFFFF
-
-	dr Function1fc000, $4000
-	dr Function1fc019, $4019
-	dr Function1fc033, $4033
-	dr Function1fc08d, $408d
-	dr Function1fc0b8, $40b8
-	dr Function1fc0ff, $40ff
-	dr Function1fc119, $4119
-	dr Function1fc14e, $414e
-	dr Function1fc180, $4180
-	dr Function1fc1cb, $41cb
-	dr Function1fc1f2, $41f2
-	dr Function1fc225, $4225
-	dr Function1fc2d1, $42d1
-	dr Function1fc5a0, $45a0
-	dr Function1fc61e, $461e
-	dr Function1fc657, $4657
-	dr Function1fc6a4, $46a4
-	dr Function1fc721, $4721
