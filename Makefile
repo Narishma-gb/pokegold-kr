@@ -6,11 +6,13 @@ patches := \
 	pokesilver.patch
 
 rom_obj := \
+	audio.o \
 	home.o \
 	wip.o \
 	ram.o \
-	data/text/common.o
-# 	audio.o \
+	data/text/common.o \
+	gfx/sprites.o \
+	gfx/tilesets.o
 # 	main.o \
 # 	data/maps/map_data.o \
 # 	data/pokemon/egg_moves.o \
@@ -18,8 +20,6 @@ rom_obj := \
 # 	engine/movie/credits.o \
 # 	engine/overworld/events.o \
 # 	gfx/misc.o \
-# 	gfx/sprites.o \
-# 	gfx/tilesets.o
 
 # Distinguish asm files which are game-exclusive for building (*_[gold|silver].asm)
 gs_excl_asm := \

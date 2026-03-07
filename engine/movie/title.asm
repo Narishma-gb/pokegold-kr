@@ -4,7 +4,7 @@ TitleScreen:
 	ld [wTimeOfDayPal], a
 	ld de, MUSIC_NONE
 	call PlayMusic
-	call Function0ee6
+	call ClearTilemap
 	call DisableLCD
 	call ClearSprites
 

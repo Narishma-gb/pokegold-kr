@@ -41,7 +41,7 @@ NamingScreen:
 	pop af
 	ld [wOptions], a
 	call ClearJoypad
-	call Function0ee6
+	call ClearTilemap
 	call LoadStandardFont
 	ret
 
@@ -879,7 +879,7 @@ _ComposeMailMessage:
 	ldh [hInMenu], a
 	pop af
 	ldh [hMapAnims], a
-	call Function0ee6
+	call ClearTilemap
 	call LoadStandardFont
 	ret
 

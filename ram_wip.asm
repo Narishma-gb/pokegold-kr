@@ -13,6 +13,8 @@ EXPORT DEF wBetaPokerSGBAttr EQU $C605
 EXPORT DEF wBetaPokerSGBCol EQU $C606
 EXPORT DEF wBetaPokerSGBRow EQU $C607
 EXPORT DEF wOTTrademonSenderName EQU $C618
+EXPORT DEF wHallOfFamePokemonList EQU $C700
+EXPORT DEF wHallOfFamePokemonListEnd EQU $C761
 EXPORT DEF wMysteryGiftPartnerName EQU $C803
 EXPORT DEF wMysteryGiftPlayerName EQU $C853
 EXPORT DEF wHandshakeFrameDelay EQU $C98A
@@ -58,23 +60,30 @@ EXPORT DEF wMenuItemsList EQU $CF11
 EXPORT DEF wElevatorPointerBank EQU $CF11
 EXPORT DEF wElevatorData EQU $CF11
 EXPORT DEF wHiddenItemEvent EQU $CF11
+EXPORT DEF wMartType EQU $CF11
 EXPORT DEF wSeenTrainerDistance EQU $CF12
 EXPORT DEF wWalkingIntoNPC EQU $CF12
 EXPORT DEF wItemBallQuantity EQU $CF12
 EXPORT DEF wElevatorPointer EQU $CF12
 EXPORT DEF wJumpStdScriptBuffer EQU $CF12
+EXPORT DEF wMartPointerBank EQU $CF12
 EXPORT DEF wSeenTrainerDirection EQU $CF13
 EXPORT DEF wWalkingIntoLand EQU $CF13
 EXPORT DEF wHiddenItemID EQU $CF13
+EXPORT DEF wMartPointer EQU $CF13
 EXPORT DEF wTempTrainer EQU $CF14
 EXPORT DEF wWalkingIntoEdgeWarp EQU $CF14
 EXPORT DEF wElevatorOriginFloor EQU $CF14
 EXPORT DEF wMovementAnimation EQU $CF15
 EXPORT DEF wElevatorDataEnd EQU $CF15
+EXPORT DEF wMartJumptableIndex EQU $CF15
 EXPORT DEF wWalkingDirection EQU $CF16
+EXPORT DEF wBargainShopFlags EQU $CF16
 EXPORT DEF wFacingDirection EQU $CF17
 EXPORT DEF wWalkingX EQU $CF18
+EXPORT DEF wMenuCursorPositionBackup EQU $CF18
 EXPORT DEF wWalkingY EQU $CF19
+EXPORT DEF wMenuScrollPositionBackup EQU $CF19
 EXPORT DEF wWinTextPointer EQU $CF1A
 EXPORT DEF wWalkingTileCollision EQU $CF1A
 EXPORT DEF wLossTextPointer EQU $CF1C
@@ -102,12 +111,15 @@ EXPORT DEF wSwappingMove EQU $CF35
 EXPORT DEF wMenuScrollPosition EQU $CF36
 EXPORT DEF wQueuedScriptBank EQU $CF3A
 EXPORT DEF wQueuedScriptAddr EQU $CF3B
+EXPORT DEF wStackBottom EQU $CF3D
 EXPORT DEF wStackTop EQU $CFFF
 EXPORT DEF wd000 EQU $D000
 EXPORT DEF wJumptableIndex EQU $D001
 EXPORT DEF wTitleScreenSelectedOption EQU $D002
 EXPORT DEF wPackJumptableIndex EQU $D002
 EXPORT DEF wNamingScreenLetterCase EQU $D002
+EXPORT DEF wMomBankDigitCursorPosition EQU $D002
+EXPORT DEF wFrameCounter EQU $D002
 EXPORT DEF wTitleScreenTimer EQU $D003
 EXPORT DEF wUnusedSGB1eColorOffset EQU $D003
 EXPORT DEF wCurPocket EQU $D003
@@ -129,30 +141,8 @@ EXPORT DEF wSaveFileExists EQU $D255
 EXPORT DEF wTextboxFlags EQU $D257
 EXPORT DEF wOptions2 EQU $D259
 EXPORT DEF wGameData EQU $D25C
+EXPORT DEF wOptionsEnd EQU $D25C
+EXPORT DEF wHallOfFameCount EQU $D736
 EXPORT DEF wWindowStackTop EQU $D7FF
 EXPORT DEF wTempTilemap EQU $D800
 EXPORT DEF hClockResetTrigger EQU $FFEE
-
-
-SECTION "sram2", SRAM[$A000], BANK[0]
-sScratch::
-
-	ds $a188 - @
-sDecompressBuffer::
-
-	ds $afe2 - @
-sMysteryGiftItem:: db
-sMysteryGiftUnlocked::
-	ds 2
-sNumDailyMysteryGiftPartnerIDs::
-	ds 21
-sMysteryGiftTimer::
-	ds 3
-sMysteryGiftTrainerHouseFlag::
-
-	ds $b060 - @
-sRTCStatusFlags::
-
-	ds $b068 - @
-sLuckyNumberDay:: db
-sLuckyIDNumber::

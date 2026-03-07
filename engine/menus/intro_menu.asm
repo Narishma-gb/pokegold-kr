@@ -287,7 +287,7 @@ Continue:
 	ld [wMusicFadeID + 1], a
 	call ClearBGPalettes
 	call CloseWindow
-	call Function0ee6
+	call ClearTilemap
 	ld c, 20
 	call DelayFrames
 	farcall JumpRoamMons
@@ -505,7 +505,7 @@ Continue_DisplayGameTime:
 OakSpeech:
 	farcall InitClock
 	call RotateFourPalettesLeft
-	call Function0ee6
+	call ClearTilemap
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
@@ -525,7 +525,7 @@ OakSpeech:
 	ld hl, OakText1
 	call PrintText
 	call RotateThreePalettesRight
-	call Function0ee6
+	call ClearTilemap
 
 	ld a, MARILL
 	ld [wCurSpecies], a
@@ -549,7 +549,7 @@ OakSpeech:
 	ld hl, OakText4
 	call PrintText
 	call RotateThreePalettesRight
-	call Function0ee6
+	call ClearTilemap
 
 	xor a
 	ld [wCurPartySpecies], a
@@ -564,7 +564,7 @@ OakSpeech:
 	ld hl, OakText5
 	call PrintText
 	call RotateThreePalettesRight
-	call Function0ee6
+	call ClearTilemap
 
 	xor a
 	ld [wCurPartySpecies], a
@@ -635,7 +635,7 @@ NamePlayer:
 	farcall NamingScreen
 
 	call RotateThreePalettesRight
-	call Function0ee6
+	call ClearTilemap
 
 	call LoadFontsExtra
 	call WaitBGMap
@@ -719,7 +719,7 @@ ShrinkPlayer:
 	call DelayFrames
 
 	call RotateThreePalettesRight
-	call Function0ee6
+	call ClearTilemap
 	ret
 
 MovePlayerPicRight:
@@ -873,7 +873,7 @@ StartTitleScreen:
 
 	ld hl, rLCDC
 	res B_LCDC_OBJ_SIZE, [hl] ; 8x8
-	call Function0ee6
+	call ClearTilemap
 	xor a
 	ldh [hLCDCPointer], a
 	ld b, SCGB_DIPLOMA
@@ -1154,7 +1154,7 @@ ENDM
 ENDC
 
 Copyright:
-	call Function0ee6
+	call ClearTilemap
 	call LoadFontsExtra
 	ld de, CopyrightGFX
 	ld hl, vTiles2 tile $60

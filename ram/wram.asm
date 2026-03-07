@@ -2355,7 +2355,7 @@ for n, 1, NUM_OBJECT_STRUCTS
 wObject{d:n}Struct:: object_struct wObject{d:n}
 endr
 NEXTU
-	ds 458
+	ds 464
 wPlayerData1End::
 wPlayerData2::
 ENDU
@@ -2510,7 +2510,7 @@ wMountMoonSquareSceneID::                         db
 	ds 197
 */
 
-SECTION "wram_wip3", WRAMX[$d84a], BANK[1]
+	ds 276
 
 wEventFlags:: flag_array NUM_EVENTS
 

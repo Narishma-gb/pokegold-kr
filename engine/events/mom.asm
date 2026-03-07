@@ -29,7 +29,7 @@ BankOfMom:
 	dw .TakeMoney
 	dw .StopOrStartSavingMoney
 	dw .JustDoWhatYouCan
-	dw .AskDST
+	dw .Quit
 
 .CheckIfBankInitialized:
 	ld a, [wMomSavingMoney]
@@ -77,7 +77,6 @@ BankOfMom:
 	jr .done_2
 
 .nope
-	call DSTChecks
 	ld a, $7
 
 .done_2
@@ -276,134 +275,10 @@ BankOfMom:
 	ld hl, MomJustDoWhatYouCanText
 	call PrintText
 
-.AskDST:
+.Quit:
 	ld hl, wJumptableIndex
 	set JUMPTABLE_EXIT_F, [hl]
 	ret
-
-DSTChecks:
-; check the time; avoid changing DST if doing so would change the current day
-	ld a, [wDST]
-	bit DST_F, a
-	ldh a, [hHours]
-	jr z, .NotDST
-	and a ; within one hour of 00:00?
-	jr z, .LostBooklet
-	jr .loop
-
-.NotDST:
-	cp 23 ; within one hour of 23:00?
-	jr nz, .loop
-	; fallthrough
-
-.LostBooklet:
-	call .ClearBox
-	bccoord 1, 14
-	ld hl, .TimesetAskAdjustDSTText
-	call PrintTextboxTextAt
-	call YesNoBox
-	ret c
-	call .ClearBox
-	bccoord 1, 14
-	ld hl, .MomLostGearBookletText
-	call PrintTextboxTextAt
-	ret
-
-.loop
-	call .ClearBox
-	bccoord 1, 14
-	ld a, [wDST]
-	bit DST_F, a
-	jr z, .SetDST
-	ld hl, .TimesetAskNotDSTText
-	call PrintTextboxTextAt
-	call YesNoBox
-	ret c
-	ld a, [wDST]
-	res DST_F, a
-	ld [wDST], a
-	call .SetClockBack
-	predef UpdateTimePredef
-	call .ClearBox
-	bccoord 1, 14
-	ld hl, .TimesetNotDSTText
-	call PrintTextboxTextAt
-	ret
-
-.SetDST:
-	ld hl, .TimesetAskDSTText
-	call PrintTextboxTextAt
-	call YesNoBox
-	ret c
-	ld a, [wDST]
-	set DST_F, a
-	ld [wDST], a
-	call .SetClockForward
-	predef UpdateTimePredef
-	call .ClearBox
-	bccoord 1, 14
-	ld hl, .TimesetDSTText
-	call PrintTextboxTextAt
-	ret
-
-.SetClockForward:
-	ld a, [wStartHour]
-	add 1
-	sub 24
-	jr nc, .DontLoopHourForward
-	add 24
-.DontLoopHourForward:
-	ld [wStartHour], a
-	ccf
-	ld a, [wStartDay]
-	adc 0
-	ld [wStartDay], a
-	ret
-
-.SetClockBack:
-	ld a, [wStartHour]
-	sub 1
-	jr nc, .DontLoopHourBack
-	add 24
-.DontLoopHourBack:
-	ld [wStartHour], a
-	ld a, [wStartDay]
-	sbc 0
-	jr nc, .DontLoopDayBack
-	add 7
-.DontLoopDayBack:
-	ld [wStartDay], a
-	ret
-
-.ClearBox:
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
-	ret
-
-.TimesetAskAdjustDSTText:
-	text_far _TimesetAskAdjustDSTText
-	text_end
-
-.MomLostGearBookletText:
-	text_far _MomLostGearBookletText
-	text_end
-
-.TimesetAskDSTText:
-	text_far _TimesetAskDSTText
-	text_end
-
-.TimesetDSTText:
-	text_far _TimesetDSTText
-	text_end
-
-.TimesetAskNotDSTText:
-	text_far _TimesetAskNotDSTText
-	text_end
-
-.TimesetNotDSTText:
-	text_far _TimesetNotDSTText
-	text_end
 
 Mom_SetUpWithdrawMenu:
 	ld de, Mon_WithdrawString
@@ -462,7 +337,7 @@ Mom_WithdrawDepositMenuJoypad:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 12, 6
-	ld bc, 7
+	ld bc, 6
 	ld a, ' '
 	call ByteFill
 	hlcoord 12, 6
@@ -472,7 +347,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ldh a, [hVBlankCounter]
 	and $10
 	jr nz, .skip
-	hlcoord 13, 6
+	hlcoord 12, 6
 	ld a, [wMomBankDigitCursorPosition]
 	ld c, a
 	ld b, 0
@@ -629,27 +504,27 @@ MomJustDoWhatYouCanText:
 	text_end
 
 Mom_SavedString:
-	db "SAVED@"
+	db "맡겨놓은 금액@"
 
 Mon_WithdrawString:
-	db "WITHDRAW@"
+	db "찾을 금액@"
 
 Mom_DepositString:
-	db "DEPOSIT@"
+	db "맡길 금액@"
 
 Mom_HeldString:
-	db "HELD@"
+	db "소지한 금액@"
 
 BankOfMom_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 10, 10
+	menu_coords 0, 0, 7, 9
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "GET@"
-	db "SAVE@"
-	db "CHANGE@"
-	db "CANCEL@"
+	db "찾다@"
+	db "맡기다@"
+	db "변경@"
+	db "그만두다@"

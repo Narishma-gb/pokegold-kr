@@ -35,17 +35,17 @@ ROMX $03
 	"bank3"
 ROMX $04
 	"bank4"
-; ROMX $05
-; 	"bank5"
-; ROMX $06
-; 	"Tileset Data 1"
-; ROMX $07
-; 	"Roofs"
-; 	"Tileset Data 2"
-; 	"Extra Songs 1"
-; ROMX $08
-; 	"Clock Reset"
-; 	"Tileset Data 3"
+ROMX $05
+	"bank5"
+ROMX $06
+	"Tileset Data 1"
+ROMX $07
+	"Roofs"
+	"Tileset Data 2"
+	"Extra Songs 1"
+ROMX $08
+	"Clock Reset"
+	"Tileset Data 3"
 ; 	"Catch Tutorial"
 ; 	"Egg Moves"
 ; ROMX $09
@@ -54,8 +54,8 @@ ROMX $04
 ; 	"bankA"
 ; ROMX $0b
 ; 	"bankB"
-; ROMX $0c
-; 	"Tileset Data 4"
+ROMX $0c
+	"Tileset Data 4"
 ; ROMX $0d
 ; 	"Effect Commands"
 ; ROMX $0e
@@ -121,10 +121,10 @@ ROMX $04
 ; 	"Pics 14"
 ; 	org $6300
 ; 	"bank2E"
-; ROMX $30
-; 	"Sprites 1"
-; ROMX $31
-; 	"Sprites 2"
+ROMX $30
+	"Sprites 1"
+ROMX $31
+	"Sprites 2"
 ; 	org $7a40
 ; 	"bank31"
 ; ROMX $32
@@ -135,9 +135,10 @@ ROMX $04
 ; 	"Extra Songs 2"
 ; ROMX $36
 ; 	"Font Inversed"
-; ROMX $37
+ROMX $37
 ; 	"Map Blocks 3"
-; 	"Tileset Data 5"
+	org $5773
+	"Tileset Data 5"
 ; ROMX $38
 ; 	"bank38"
 ; ROMX $39
@@ -249,9 +250,10 @@ ROMX $66
 ; 	"Move Descriptions"
 ; ROMX $6e
 ; 	"Item Descriptions"
-; ROMX $70
+ROMX $70
 ; 	"bank70"
-; 	"Tileset Data 6"
+	org $4407
+	"Tileset Data 6"
 ; 	"bank70_2"
 ; 	"Pokégear GFX"
 ; 	"Credits Strings"
@@ -285,25 +287,26 @@ VRAM $00
 VRAM $01
 	"VRAM1"
 SRAM $00
-; 	"Scratch"
+	"Scratch"
 	org $a600
 	"SRAM Bank 0"
-; 	"Backup Save 1"
-; 	"SRAM Stack"
+	org $b06b
+	"Backup Save 1"
+	org $bc39
+	"SRAM Stack"
 ; 	org $b800
 ; 	"SRAM Window Stack"
 SRAM $01
-; 	"Save"
-	org $adae
+	"Save"
 	"Active Box"
-; 	"Link Battle Data"
-; 	"SRAM Hall of Fame"
-; 	"Backup Save 2"
+	"Link Battle Data"
+	"SRAM Hall of Fame"
+	"Backup Save 2"
 SRAM $02
 	"Boxes 1-7"
 SRAM $03
 	"Boxes 8-14"
-; 	"Backup Save 3"
+	"Backup Save 3"
 HRAM
 	"OAM DMA"
 	"HRAM"

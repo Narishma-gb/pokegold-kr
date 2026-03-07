@@ -121,9 +121,9 @@ RestartClock:
 	push af
 	call .PrintTime
 	pop af
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .press_A
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .press_B
 	bit B_PAD_UP, a
 	jr nz, .pressed_up
@@ -194,7 +194,7 @@ RestartClock:
 	ld b, 5
 	ld c, 18
 	call Textbox
-	decoord 1, 8
+	decoord 3, 8
 	ld a, [wRestartClockDay]
 	ld b, a
 	farcall PrintDayOfWeek
@@ -224,12 +224,12 @@ RestartClock:
 	push de
 	call RestartClock_GetWraparoundTime
 	ld a, [wRestartClockUpArrowYCoord]
-	dec a
+	sub 2
 	ld b, a
 	call Coord2Tile
 	pop de
 	ld [hl], d
-	ld bc, 2 * SCREEN_WIDTH
+	ld bc, 4 * SCREEN_WIDTH
 	add hl, bc
 	ld [hl], e
 	ret

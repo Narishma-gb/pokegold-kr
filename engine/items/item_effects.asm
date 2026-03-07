@@ -702,7 +702,7 @@ PokeBallEffect:
 	jr z, .toss
 
 	call ClearBGPalettes
-	call Function0ee6
+	call ClearTilemap
 
 .toss
 	ld hl, wNumItems

@@ -35,7 +35,7 @@ MainMenu:
 	call MainMenuJoypadLoop
 	call CloseWindow
 	jr c, .quit
-	call Function0ee6
+	call ClearTilemap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	rst JumpTable
@@ -250,7 +250,7 @@ PrintDayOfWeek:
 ClearTilemapEtc:
 	xor a
 	ldh [hMapAnims], a
-	call Function0ee6
+	call ClearTilemap
 	call LoadFontsExtra
 	call LoadStandardFont
 	call ClearWindowData

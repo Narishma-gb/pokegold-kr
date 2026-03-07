@@ -566,8 +566,6 @@ MenuHeader_Buy:
 	ld d, h
 	ld e, l
 	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
 	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
 	call PrintBCDNumber
 	ret
@@ -718,11 +716,8 @@ SellMenu:
 	farcall SelectQuantityToSell
 	call ExitMenu
 	jr c, .declined
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
 	ld hl, MartSellPriceText
-	call PrintTextboxText
+	call PrintText
 	call YesNoBox
 	jr c, .declined
 	ld de, wMoney
@@ -732,11 +727,8 @@ SellMenu:
 	ld hl, wNumItems
 	call TossItem
 	predef PartyMonItemName
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
 	ld hl, MartBoughtText
-	call PrintTextboxText
+	call PrintText
 	call PlayTransactionSound
 	farcall PlaceMoneyBottomLeft
 	call JoyWaitAorB
@@ -763,16 +755,16 @@ MartWelcomeText:
 
 MenuHeader_BuySell:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 11, 8
+	menu_coords 0, 0, 11, 7
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData
 	db STATICMENU_CURSOR ; strings
 	db 3 ; items
-	db "BUY@"
-	db "SELL@"
-	db "QUIT@"
+	db "사러 오다@"
+	db "팔러 오다@"
+	db "아무것도 아닙니다@"
 
 MartThanksText:
 	text_far _MartThanksText

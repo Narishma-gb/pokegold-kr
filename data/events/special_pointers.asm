@@ -69,7 +69,7 @@ SpecialsPointers::
 	add_special ReloadSpritesNoPalettes, 2
 	add_special ClearBGPalettes
 	add_special UpdateTimePals
-	add_special Function0ee6 ; unused as special
+	add_special ClearTilemap ; unused as special
 	add_special UpdateSprites
 	add_special UpdatePlayerSprite
 	add_special GameCornerPrizeMonCheckDex

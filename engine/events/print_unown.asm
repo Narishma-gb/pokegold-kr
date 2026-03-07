@@ -1,3 +1,4 @@
+; These characters are loaded in VRAM but not used
 DEF UNOWNSTAMP_BOLD_A EQU '♂' ; $ef
 DEF UNOWNSTAMP_BOLD_B EQU '♀' ; $f5
 
@@ -39,7 +40,7 @@ _UnownPrinter:
 	lb bc, 2, 18
 	call Textbox
 
-	hlcoord 1, 2
+	hlcoord 4, 2
 	ld de, AlphRuinsStampString
 	call PlaceString
 
@@ -73,21 +74,11 @@ _UnownPrinter:
 	and PAD_B
 	jr nz, .pressed_b
 
-	ldh a, [hJoyPressed]
-	vc_patch Forbid_printing_Unown
-if DEF(_GOLD_VC) || DEF(_SILVER_VC)
-	and NO_INPUT
-else
-	and PAD_A
-endc
-	vc_patch_end
-	jr nz, .pressed_a
-
 	call .LeftRight
 	call DelayFrame
 	jr .joy_loop
 
-.pressed_a
+.pressed_a ; unreferenced
 	ld a, [wJumptableIndex]
 	push af
 	farcall PrintUnownStamp
@@ -161,7 +152,7 @@ endc
 	hlcoord 1, 6
 	lb bc, 7, 7
 	call ClearBox
-	hlcoord 1, 9
+	hlcoord 3, 9
 	ld de, UnownDexVacantString
 	call PlaceString
 	xor a ; sScratch
@@ -182,20 +173,19 @@ endc
 	ret
 
 AlphRuinsStampString:
-	db " ALPH RUINS STAMP@"
+	db "알프의 유적 기념 스탬프@"
 
 UnownDexDoWhatString:
-	db "Do what?@"
+	db "어떻게 하겠습니까?@"
 
 UnownDexMenuString:
-	db   UNOWNSTAMP_BOLD_A, "▶PRINT"
-	next UNOWNSTAMP_BOLD_B, "▶CANCEL"
-	next "L▶BEFORE"
-	next "R▶NEXT"
+	db   "B버튼▶그만두다"
+	next "왼쪽 ▶이전"
+	next "오른쪽▶다음"
 	db   "@"
 
 UnownDexVacantString:
-	db "VACANT@"
+	db "공백@"
 
 UnownDexATile:
 INCBIN "gfx/printer/bold_a.1bpp"

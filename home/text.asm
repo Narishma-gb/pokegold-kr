@@ -3,13 +3,13 @@ ClearBox::
 	farcall_reg _ClearBox
 	ret
 
-Function0ee6::
+ClearTilemap::
 	call Function14a2
-	call ClearTilemap
+	call _ClearTilemap
 	ret z
 	jp WaitBGMap
 
-ClearTilemap::
+_ClearTilemap::
 ; Fill wTilemap with blank tiles.
 
 	hlcoord 0, 0
@@ -26,7 +26,7 @@ ClearScreen::
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
 	call ByteFill
-	call ClearTilemap
+	call _ClearTilemap
 	ret z
 	jp WaitBGMap2
 

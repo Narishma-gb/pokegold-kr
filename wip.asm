@@ -48,61 +48,10 @@ EXPORT DEF MoveDescriptions EQU $4000
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "rom5", ROMX[$4000], BANK[5]
-; ROM $05 : $14000 - $17FFF
-
-	dr GetTimeOfDay, $4032
-	dr StartClock, $4089
-	dr ClockContinue, $40dc
-	dr _InitTime, $40ff
-	dr _UpdatePlayerSprite, $413c
-	dr LoadStandingSpritesGFX, $414b
-	dr LoadWalkingSpritesGFX, $415c
-	dr RefreshSprites, $416d
-	dr LoadUsedSpritesGFX, $4226
-	dr _DoesSpriteHaveFacings, $4317
-	dr _GetSpritePalette, $4334
-	dr CheckWarpCollision, $4a18
-	dr CheckDirectionalWarp, $4a2d
-	dr CheckWarpFacingDown, $4a44
-	dr CheckCutCollision, $4a73
-	dr SaveMenu, $4abe
-	dr StartMoveMonWOMail_SaveGame, $4bd2
-	dr TryLoadSaveFile, $4ef5
-	dr TryLoadSaveData, $4f60
-	dr _LoadOverworldTilemap, $538d
-	dr IsSpawnPoint, $5465
-	dr RunMapSetupScript, $5484
-	dr SkipUpdateMapSprites, $560c
-	dr CheckUpdatePlayerSprite, $5612
-	dr Tilesets, $56be
-	dr PokemonCenterPC, $5871
-	dr _PlayersHousePC, $59c1
-	dr BankOfMom, $6495
-	dr DayCareMan, $688c
-	dr DayCareLady, $68e0
-	dr DayCareManOutside, $6ae3
-	dr _UnownPrinter, $6d90
-	dr PhotoStudio, $6f5b
-	dr CheckBreedmonCompatibility, $714b
-	dr DayCareMon1, $771f
-	dr DayCareMon2, $773e
-
-
-;SECTION "rom6", ROMX[$4000], BANK[6]
-; ROM $06 : $18000 - $1BFFF
-
-
-SECTION "rom7", ROMX[$4000], BANK[7]
-; ROM $07 : $1C000 - $1FFFF
-
-	dr LoadMapGroupRoof, $4000
-
-
-SECTION "rom8", ROMX[$4000], BANK[8]
+SECTION "Egg Moves", ROMX[$7a04], BANK[8]
 ; ROM $08 : $20000 - $23FFF
 
-	dr RestartClock, $4021
+	dr EggMovePointers, $7a04
 
 
 SECTION "rom9", ROMX[$4000], BANK[9]
@@ -116,12 +65,18 @@ SECTION "rom9", ROMX[$4000], BANK[9]
 	dr _ExitMenu, $4366
 	dr _InitVerticalMenuCursor, $43a7
 	dr UpdateItemDescription, $43fd
+	dr Pokepic, $441d
+	dr ClosePokepic, $4462
+	dr LoadObjectMasks, $4489
 	dr _InitScrollingMenu, $44e9
 	dr _ScrollingMenu, $4505
+	dr ScrollingMenu_ClearLeftColumn, $463e
 	dr SwitchItemsInBag, $4846
 	dr PlaceMenuItemName, $49ee
 	dr PlaceMenuItemQuantity, $49fd
 	dr PlaceMoneyTopRight, $4a1e
+	dr PlaceMoneyBottomLeft, $4a26
+	dr PlaceMoneyAtTopLeftOfTextbox, $4a2e
 	dr DisplayCoinCaseBalance, $4a5b
 	dr DisplayMoneyAndCoinBalance, $4a84
 	dr StartMenu_DrawBugContestStatusBox, $4b26
@@ -129,9 +84,13 @@ SECTION "rom9", ROMX[$4000], BANK[9]
 	dr Kurt_SelectApricorn, $4bb0
 	dr MonSubmenu, $4cce
 	dr SelectQuantityToToss, $4f7f
+	dr SelectQuantityToBuy, $4f89
+	dr SelectQuantityToSell, $4fa1
 	dr TrainerCard, $50c0
+	dr ProfOaksPC, $6837
 	dr ProfOaksPCBoot, $6852
 	dr InitDecorations, $69b5
+	dr _PlayerDecorationMenu, $69c0
 	dr SetSpecificDecorationFlag, $714b
 	dr ToggleMaptileDecorations, $7234
 	dr ToggleDecorationsVisibility, $728c
@@ -165,7 +124,11 @@ SECTION "rom10", ROMX[$4000], BANK[10]
 	dr CopyMysteryGiftReceivedDecorationsToPC, $65a4
 	dr UnlockMysteryGift, $65cc
 	dr ResetDailyMysteryGiftLimitIfUnlocked, $65db
+	dr BackupMysteryGift, $65ec
+	dr RestoreMysteryGift, $65fd
+	dr LoadWildMonData, $661e
 	dr InitRoamMons, $68bc
+	dr UpdateRoamMons, $693e
 	dr JumpRoamMons, $69c5
 	dr RandomUnseenWildMon, $6adc
 	dr RandomPhoneWildMon, $6b50
@@ -180,10 +143,6 @@ SECTION "rom11", ROMX[$4000], BANK[11]
 	dr ChooseMonToLearnTMHM, $4606
 	dr TeachTMHM, $4672
 	dr PrintMoveDescription, $4952
-
-
-;SECTION "rom12", ROMX[$4000], BANK[12]
-; ROM $0c : $30000 - $33FFF
 
 
 SECTION "rom13", ROMX[$4000], BANK[13]
@@ -243,8 +202,11 @@ SECTION "rom17", ROMX[$4000], BANK[17]
 	dr Function442ea, $42ea
 	dr PlaceGraphic, $45e7
 	dr SendMailToPC, $4618
+	dr BackupPartyMonMail, $47cf
+	dr RestorePartyMonMail, $47ef
 	dr DeletePartyMonMail, $480f
 	dr IsAnyMonHoldingMail, $482b
+	dr _PlayerMailBoxMenu, $484a
 
 
 ;SECTION "rom18", ROMX[$4000], BANK[18]
@@ -255,6 +217,7 @@ SECTION "rom20", ROMX[$4000], BANK[20]
 ; ROM $14 : $50000 - $53FFF
 
 	dr SelectMonFromParty, $4000
+	dr SelectTradeOrDayCareMon, $401d
 	dr LoadPartyMenuGFX, $404f
 	dr WritePartyMenuTilemap, $405f
 	dr InitPartyMenuGFX, $4374
@@ -347,12 +310,15 @@ SECTION "rom33", ROMX[$4000], BANK[33]
 ; ROM $21 : $84000 - $87FFF
 
 	dr _PrinterReceive, $42db
+	dr PrintUnownStamp, $4560
 	dr _PrintDiploma, $4684
+	dr _HallOfFamePC, $6640
 
 
 SECTION "rom35", ROMX[$4000], BANK[35]
 ; ROM $23 : $8C000 - $8FFFF
 
+	dr SaveMenu_CopyTilemapAtOnce, $4000
 	dr _ResetClock, $417a
 	dr _DeleteSaveData, $4311
 	dr DummyPredef35, $4359
@@ -380,6 +346,7 @@ DummyPredef36::
 	dr _ReinitSpriteAnimFrame, $532a
 	set_gs_diff $1a
 	drd ClearSpriteAnims2, $6752
+	drd LoadOverworldMonIcon, $6769
 	drd LoadMenuMonIcon, $677d
 	drd UnfreezeMonIcons, $6900
 	drd HoldSwitchmonIcon, $691b
@@ -440,18 +407,9 @@ SECTION "rom46", ROMX[$4000], BANK[46]
 	dr ItemIsMail, $7ac4
 
 
-SECTION "rom48", ROMX[$4000], BANK[48]
-; ROM $30 : $C0000 - $C3FFF
-
-	dr ChrisSpriteGFX, $4000
-	dr RivalSpriteGFX, $43C0
-	dr MomSpriteGFX, $4fc0
-
-
-SECTION "rom49", ROMX[$4000], BANK[49]
+SECTION "rom49", ROMX[$7a40], BANK[49]
 ; ROM $31 : $C4000 - $C7FFF
 
-	dr PokeBallSpriteGFX, $7380
 	dr _CheckPokerus, $7a40
 	dr CheckForLuckyNumberWinners, $7a5a
 	dr PrintTodaysLuckyNumber, $7bad
@@ -491,6 +449,7 @@ SECTION "rom56", ROMX[$4000], BANK[56]
 ; ROM $38 : $E0000 - $E3FFF
 
 	dr _Diploma, $4002
+	dr RotateUnownFrontpic, $43ea
 	dr _CardFlip, $44d8
 	dr _UnownPuzzle, $556a
 	dr _MemoryGame, $6257
@@ -504,7 +463,6 @@ SECTION "rom57", ROMX[$4000], BANK[57]
 ; ROM $39 : $E4000 - $E7FFF
 
 	dr CopyrightGFX, $4000
-
 	dr TitleScreenGFX3, $41e0
 	set_gs_diff $40
 	drd TitleScreenGFX2, $4220
@@ -564,6 +522,35 @@ SECTION "rom63", ROMX[$4000], BANK[63]
 
 	dr DummyPredef3A, $4001
 	dr _AnimateTileset, $4003
+	dr Tileset0Anim, $401e
+TilesetJohtoModernAnim::
+TilesetKantoAnim::
+TilesetParkAnim::
+TilesetForestAnim::
+	dr TilesetJohtoAnim, $404a
+	dr TilesetPortAnim, $40d6
+	dr TilesetEliteFourRoomAnim, $4106
+	dr TilesetCaveAnim, $418e
+TilesetDarkCaveAnim::
+	dr TilesetIcePathAnim, $41da
+	dr TilesetTowerAnim, $4226
+	dr TilesetHouseAnim, $428e
+TilesetPlayersHouseAnim::
+TilesetPokecenterAnim::
+TilesetGateAnim::
+TilesetLabAnim::
+TilesetFacilityAnim::
+TilesetMartAnim::
+TilesetMansionAnim::
+TilesetGameCornerAnim::
+TilesetTraditionalHouseAnim::
+TilesetTrainStationAnim::
+TilesetChampionsRoomAnim::
+TilesetLighthouseAnim::
+TilesetPlayersRoomAnim::
+TilesetRuinsOfAlphAnim::
+TilesetRadioTowerAnim::
+TilesetUndergroundAnim::
 
 
 SECTION "rom64", ROMX[$4000], BANK[64]
@@ -740,9 +727,10 @@ SECTION "rom108", ROMX[$4000], BANK[108]
 ; ROM $6e : $1B8000 - $1BBFFF
 
 
-SECTION "rom112", ROMX[$4000], BANK[112]
+SECTION "rom112", ROMX[$4879], BANK[112]
 ; ROM $70 : $1C0000 - $1C3FFF
 
+	dr PrintHoursMins, $4879
 	dr _DudeAutoInput_A, $4b16
 	dr _DudeAutoInput_RightA, $4b1b
 

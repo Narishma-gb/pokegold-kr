@@ -843,7 +843,7 @@ ChooseMoveToDelete:
 	ld hl, w2DMenuFlags1
 	res _2DMENU_ENABLE_SPRITE_ANIMS_F, [hl]
 	call ClearSprites
-	call Function0ee6
+	call ClearTilemap
 	pop af
 	ret
 
@@ -1074,7 +1074,7 @@ MoveScreenLoop:
 	ld hl, w2DMenuFlags1
 	res _2DMENU_ENABLE_SPRITE_ANIMS_F, [hl]
 	call ClearSprites
-	jp Function0ee6
+	jp ClearTilemap
 
 MoveScreen2DMenuData:
 	db 3, 1 ; cursor start y, x
@@ -1089,7 +1089,7 @@ String_MoveWhere:
 
 SetUpMoveScreenBG:
 	call ClearBGPalettes
-	call Function0ee6
+	call ClearTilemap
 	call ClearSprites
 	xor a
 	ldh [hBGMapMode], a

@@ -9,12 +9,18 @@ PhotoStudio:
 
 	ld hl, .HoldStillText
 	call PrintText
-	call DisableSpriteUpdates
-	farcall PrintPartymon
-	call ReturnToMapWithSpeechTextbox
-	ldh a, [hPrinter]
-	and a
-	jr nz, .cancel
+	call ReanchorMap
+	xor a
+	ld [wMonType], a
+	farcall CopyMonToTempMon
+	ld hl, wTempMonDVs
+	predef GetUnownLetter
+
+	farcall Pokepic
+	call WaitButton
+	farcall ClosePokepic
+
+	call ReanchorMap
 	ld hl, .PrestoAllDoneText
 	jr .print_text
 
