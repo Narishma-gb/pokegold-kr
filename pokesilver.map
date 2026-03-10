@@ -1,9 +1,9 @@
 SUMMARY:
 	ROM0: 16114 bytes used / 270 free
-	ROMX: 426255 bytes used / 1654513 free in 127 banks
+	ROMX: 477472 bytes used / 1603296 free in 127 banks
 	SRAM: 28275 bytes used / 4493 free in 4 banks
 	WRAM0: 3833 bytes used / 263 free
-	WRAMX: 3929 bytes used / 167 free in 1 bank
+	WRAMX: 4217 bytes used / 3975 free in 2 banks
 	HRAM: 127 bytes used / 0 free
 
 ROM0 bank #0:
@@ -18,16 +18,15 @@ ROM0 bank #0:
 	         $0010 = Bankswitch
 	EMPTY: $0016-$0017 ($0002 bytes)
 	SECTION: $0018-$0024 ($000d bytes) ["rst18"]
-	         $0018 = Function18
-	         $001e = Function18.loop
+	         $0018 = WaitHBlank
+	         $001e = WaitHBlank.loop
 	EMPTY: $0025-$0027 ($0003 bytes)
 	SECTION: $0028-$0032 ($000b bytes) ["rst28"]
 	         $0028 = JumpTable
 	EMPTY: $0033-$0037 ($0005 bytes)
 	SECTION: $0038-$003e ($0007 bytes) ["rst38"]
-	         $0038 = Function38
-	         $0039 = Function39
-	         $003b = Function39.loop
+	         $0039 = WaitOneLine
+	         $003b = WaitOneLine.loop
 	EMPTY: $003f-$003f ($0001 byte)
 	SECTION: $0040-$0042 ($0003 bytes) ["vblank"]
 	EMPTY: $0043-$0047 ($0005 bytes)
@@ -367,7 +366,7 @@ ROM0 bank #0:
 	         $1217 = DoneText.stop
 	         $1218 = NullChar
 	         $1220 = NullChar.ErrorText
-	         $1229 = Function1229
+	         $1229 = DoubleByteChar
 	         $1249 = TextScroll
 	         $1260 = Text_WaitBGMap
 	         $1270 = Diacritic
@@ -422,12 +421,12 @@ ROM0 bank #0:
 	         $14ac = Function14a8.loop
 	         $14af = Function14a8.start_loop
 	         $14b6 = Function14b6
-	         $14c1 = Function14c1
-	         $14d8 = Function14d8
-	         $14ef = Function14ef
-	         $1506 = Function1506
-	         $151f = Function151f
-	         $152f = Function151f.asm_152f
+	         $14c1 = TrimUnusedHangulChars
+	         $14d8 = FindNextEmptyHangulSlot
+	         $14ef = IsHangulCharDrawn
+	         $1506 = DrawHangulChar
+	         $151f = PrepareVDMAData
+	         $152f = PrepareVDMAData.loop
 	         $153f = UpdateBGMapBuffer
 	         $1550 = UpdateBGMapBuffer.next
 	         $1590 = WaitTop
@@ -6988,18 +6987,80 @@ ROMX bank #112:
 	TOTAL EMPTY: $38fe bytes
 
 ROMX bank #113:
-	SECTION: $4000-$5ebc ($1ebd bytes) ["rom113"]
+	SECTION: $4000-$5bff ($1c00 bytes) ["rom113"]
+	         $4000 = Data1c4000
+	         $4200 = Data1c4200
 	         $5800 = Data1c5800
+	         $5c00 = Data1c5800_end
+	SECTION: $5c00-$5fc2 ($03c3 bytes) ["bank71"]
 	         $5c00 = Function1c5c00
+	         $5c12 = Function1c5c00.asm_1c5c12
+	         $5c24 = Function1c5c00.asm_1c5c24
 	         $5c36 = Function1c5c36
+	         $5c41 = Function1c5c36.asm_1c5c41
+	         $5c49 = Function1c5c36.asm_1c5c49
+	         $5c51 = Function1c5c36.asm_1c5c51
+	         $5c5b = Function1c5c36.asm_1c5c5b
+	         $5c6a = Function1c5c36.asm_1c5c6a
+	         $5c72 = Function1c5c36.asm_1c5c72
+	         $5c75 = Function1c5c36.asm_1c5c75
+	         $5cb6 = Function1c5c36.asm_1c5cb6
+	         $5cc1 = Function1c5c36.asm_1c5cc1
+	         $5cd3 = Function1c5c36.asm_1c5cd3
+	         $5cde = Function1c5c36.asm_1c5cde
+	         $5cea = Function1c5c36.asm_1c5cea
+	         $5d0c = Function1c5c36.asm_1c5d0c
+	         $5d0e = Function1c5c36.asm_1c5d0e
+	         $5d31 = Function1c5c36.asm_1c5d31
+	         $5d43 = Function1c5c36.asm_1c5d43
+	         $5d51 = Function1c5c36.asm_1c5d51
+	         $5d63 = Function1c5c36.asm_1c5d63
+	         $5d70 = Function1c5c36.asm_1c5d70
+	         $5d7d = Function1c5c36.asm_1c5d7d
+	         $5d8a = Function1c5c36.asm_1c5d8a
+	         $5d97 = Function1c5c36.asm_1c5d97
+	         $5da4 = Function1c5c36.asm_1c5da4
+	         $5db2 = Function1c5c36.asm_1c5db2
+	         $5dc5 = Function1c5c36.asm_1c5dc5
+	         $5dc8 = Function1c5c36.asm_1c5dc8
+	         $5e21 = Function1c5c36.asm_1c5e21
+	         $5e28 = Function1c5e28
+	         $5e2d = Function1c5e28.asm_1c5e2d
+	         $5e2f = Function1c5e28.asm_1c5e2f
+	         $5e45 = Function1c5e28.asm_1c5e45
+	         $5e47 = Function1c5e28.asm_1c5e47
+	         $5e4f = Data1c5e4f
+	         $5e75 = Data1c5e75
+	         $5e91 = Data1c5e91
+	         $5ead = Function1c5ead
 	         $5ebd = Function1c5ebd
-	EMPTY: $5ebd-$7fff ($2143 bytes)
-	TOTAL EMPTY: $2143 bytes
+	         $5ed8 = Function1c5ebd.asm_1c5ed8
+	         $5eef = Function1c5ebd.asm_1c5eef
+	         $5f06 = Function1c5ebd.asm_1c5f06
+	         $5f10 = Function1c5ebd.asm_1c5f10
+	         $5f28 = Function1c5ebd.asm_1c5f28
+	         $5f5d = Function1c5ebd.asm_1c5f5d
+	         $5f61 = Function1c5ebd.asm_1c5f61
+	         $5f66 = Function1c5ebd.asm_1c5f66
+	         $5f68 = Function1c5ebd.asm_1c5f68
+	         $5f88 = Function1c5ebd.asm_1c5f88
+	         $5f8a = Function1c5ebd.asm_1c5f8a
+	         $5f93 = Data1c5f93
+	         $5faf = Data1c5faf
+	EMPTY: $5fc3-$7fff ($203d bytes)
+	TOTAL EMPTY: $203d bytes
 
 ROMX bank #114:
-	SECTION: $4000 ($0000 bytes) ["rom114"]
-	         $4000 = Function1c8000
-	EMPTY
+	SECTION: $4000-$470a ($070b bytes) ["DMG Error Screen"]
+	         $4000 = DisplayDMGErrorScreen
+	         $402a = DisplayDMGErrorScreen.lock_loop
+	         $402f = DisplayDMGErrorScreen.load_tilemap
+	         $4037 = DisplayDMGErrorScreen.row
+	         $4039 = DisplayDMGErrorScreen.col
+	         $4043 = ErrorScreenGFX
+	         $45a3 = ErrorScreenTilemap
+	EMPTY: $470b-$7fff ($38f5 bytes)
+	TOTAL EMPTY: $38f5 bytes
 
 ROMX bank #115:
 	EMPTY
@@ -7017,13 +7078,16 @@ ROMX bank #119:
 	EMPTY
 
 ROMX bank #120:
-	EMPTY
+	SECTION: $4000-$7fff ($4000 bytes) ["Hangul Tables 1"]
+	TOTAL EMPTY: $0000 bytes
 
 ROMX bank #121:
-	EMPTY
+	SECTION: $4000-$7fff ($4000 bytes) ["Hangul Tables 2"]
+	TOTAL EMPTY: $0000 bytes
 
 ROMX bank #122:
-	EMPTY
+	SECTION: $4000-$7fff ($4000 bytes) ["Hangul Tables 3"]
+	TOTAL EMPTY: $0000 bytes
 
 ROMX bank #123:
 	EMPTY
@@ -7060,35 +7124,35 @@ ROMX bank #127:
 	         $40ff = _TextboxPalette
 	         $4109 = _TextboxPalette.col
 	         $410b = _TextboxPalette.row
-	         $4119 = Function1fc119
-	         $412c = Function1fc119.asm_1fc12c
+	         $4119 = PlaceDoubleByteChar
+	         $412c = PlaceDoubleByteChar.got_slot
 	         $414e = _TextScroll
-	         $4180 = Function1fc180
-	         $4186 = Function1fc180.asm_1fc186
-	         $418c = Function1fc180.asm_1fc18c
-	         $4194 = Function1fc180.asm_1fc194
-	         $41aa = Function1fc180.asm_1fc1aa
-	         $41c3 = Function1fc180.asm_1fc1c3
-	         $41c4 = Function1fc180.asm_1fc1c4
-	         $41cb = Function1fc1cb
-	         $41d1 = Function1fc1cb.asm_1fc1d1
-	         $41d7 = Function1fc1cb.asm_1fc1d7
-	         $41df = Function1fc1cb.asm_1fc1df
-	         $41ea = Function1fc1cb.asm_1fc1ea
-	         $41eb = Function1fc1cb.asm_1fc1eb
-	         $41f2 = Function1fc1f2
-	         $41f8 = Function1fc1f2.asm_1fc1f8
-	         $41fe = Function1fc1f2.asm_1fc1fe
-	         $4206 = Function1fc1f2.asm_1fc206
-	         $420a = Function1fc1f2.asm_1fc20a
-	         $420b = Function1fc1f2.asm_1fc20b
-	         $4211 = Function1fc1f2.asm_1fc211
-	         $421e = Function1fc1f2.asm_1fc21e
-	         $4225 = Function1fc225
-	         $428f = Function1fc225.asm_1fc28f
-	         $4295 = Function1fc225.asm_1fc295
-	         $42a8 = Function1fc225.asm_1fc2a8
-	         $42ba = Function1fc225.asm_1fc2ba
+	         $4180 = _TrimUnusedHangulChars
+	         $4186 = _TrimUnusedHangulChars.wait_loop
+	         $418c = _TrimUnusedHangulChars.start_check
+	         $4194 = _TrimUnusedHangulChars.clear_flags
+	         $41aa = _TrimUnusedHangulChars.set_flag_loop
+	         $41c3 = _TrimUnusedHangulChars.next
+	         $41c4 = _TrimUnusedHangulChars.start_loop
+	         $41cb = _FindNextEmptyHangulSlot
+	         $41d1 = _FindNextEmptyHangulSlot.wait_loop
+	         $41d7 = _FindNextEmptyHangulSlot.start_check
+	         $41df = _FindNextEmptyHangulSlot.loop
+	         $41ea = _FindNextEmptyHangulSlot.found
+	         $41eb = _FindNextEmptyHangulSlot.done
+	         $41f2 = _IsHangulCharDrawn
+	         $41f8 = _IsHangulCharDrawn.wait_loop
+	         $41fe = _IsHangulCharDrawn.start_check
+	         $4206 = _IsHangulCharDrawn.loop
+	         $420a = _IsHangulCharDrawn.skip1
+	         $420b = _IsHangulCharDrawn.skip2
+	         $4211 = _IsHangulCharDrawn.compare
+	         $421e = _IsHangulCharDrawn.done
+	         $4225 = _DrawHangulChar
+	         $428f = _DrawHangulChar.wait_next_frame
+	         $4295 = _DrawHangulChar.start_HBlank_DMA
+	         $42a8 = _DrawHangulChar.loop
+	         $42ba = _DrawHangulChar.general_purpose_DMA
 	         $42d1 = _UpdateBGMap
 	         $42e1 = _UpdateBGMap.normal_speed
 	         $42e6 = _UpdateBGMap.double_speed
@@ -7127,7 +7191,7 @@ ROMX bank #127:
 	         $45a0 = Function1fc5a0
 	         $45a8 = Function1fc5a0.asm_1fc5a8
 	         $45aa = Function1fc5a0.asm_1fc5aa
-	         $45e0 = Function1fc5a0.asm_1fc5e0
+	         $45e0 = Function1fc5a0.got_slot
 	         $45f7 = Function1fc5a0.asm_1fc5f7
 	         $461e = _ClearWindowData
 	         $464f = _ClearWindowData.ClearMenuData
@@ -7139,7 +7203,7 @@ ROMX bank #127:
 	         $46af = _LoadTempTilemapToTilemap.loop
 	         $46b4 = _LoadTempTilemapToTilemap.start_loop
 	         $46bb = _LoadTempTilemapToTilemap.asm_1fc6bb
-	         $46f1 = _LoadTempTilemapToTilemap.asm_1fc6f1
+	         $46f1 = _LoadTempTilemapToTilemap.got_slot
 	         $4708 = _LoadTempTilemapToTilemap.asm_1fc708
 	         $4721 = _CopyTilemapAtOnce
 	         $472d = _CopyTilemapAtOnce.wait
@@ -14313,8 +14377,8 @@ SRAM bank #3:
 	         $b333 = sBox12Mon15Unused1
 	         $b334 = sBox12Mon15Unused2
 	         $b335 = sBox12Mon15Level
-	         $b336 = sBox12Mon16Species
 	         $b336 = sBox12Mon16
+	         $b336 = sBox12Mon16Species
 	         $b336 = sBox12Mon15BoxEnd
 	         $b337 = sBox12Mon16Item
 	         $b338 = sBox12Mon16Moves
@@ -18440,6 +18504,14 @@ WRAMX bank #1:
 	         $dffe = wGameDataEnd
 	EMPTY: $dffe-$dfff ($0002 bytes)
 	TOTAL EMPTY: $00a7 bytes
+
+WRAMX bank #2:
+	SECTION: $d000-$d11f ($0120 bytes) ["WRAM 2"]
+	         $d000 = wHangulTilesIndexTable
+	         $d100 = wHangulCharBuffer
+	         $d120 = w2_d120
+	EMPTY: $d120-$dfff ($0ee0 bytes)
+	TOTAL EMPTY: $0ee0 bytes
 
 HRAM bank #0:
 	SECTION: $ff80-$ff89 ($000a bytes) ["OAM DMA"]
