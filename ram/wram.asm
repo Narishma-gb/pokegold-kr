@@ -2805,4 +2805,13 @@ wStackBottom::
 wStackTop::
 	ds 1
 */
+
+SECTION "WRAM 2", WRAMX
+
+wHangulTilesIndexTable:: ds $100
+
+wHangulCharBuffer:: ds 2 * TILE_SIZE
+
+w2_d120::
+
 ENDSECTION

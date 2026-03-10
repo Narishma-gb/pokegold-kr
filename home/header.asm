@@ -15,14 +15,16 @@ Bankswitch::
 	ret
 
 SECTION "rst18", ROM0[$0018]
-Function18::
+WaitHBlank::
+; if already in HBlank, wait for the next scanline
 	ldh a, [rSTAT]
-	and %11
-	jr z, Function18
+	and STAT_MODE
+	jr z, WaitHBlank
 .loop
+; return as soon as entering the next HBlank
 	ldh a, [rSTAT]
 ; SECTION "rst20", ROM0[$0020]
-	and %11
+	and STAT_MODE
 	jr nz, .loop
 	ret
 
@@ -41,9 +43,10 @@ JumpTable::
 	jp hl
 
 SECTION "rst38", ROM0[$0038]
-Function38::
-	nop
-Function39::
+	nop ; unused
+
+WaitOneLine::
+; in double-speed mode, this will return after one scanline
 	ld a, $39
 .loop
 	dec a

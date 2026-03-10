@@ -257,6 +257,17 @@ ROMX $70
 ; 	"bank70_2"
 ; 	"Pokégear GFX"
 ; 	"Credits Strings"
+ROMX $71
+	org $5c00
+	"bank71"
+ROMX $72
+	"DMG Error Screen"
+ROMX $78
+	"Hangul Tables 1"
+ROMX $79
+	"Hangul Tables 2"
+ROMX $7a
+	"Hangul Tables 3"
 ROMX $7f
 	"bank7F"
 ; 	org $7df8
@@ -275,13 +286,15 @@ WRAM0
 	"Overworld Map"
 	org $cc27
 	"Video"
-WRAMX 1
+WRAMX $1
 ; 	"WRAM 1"
 	org $d25c
 	"Game Data"
 	org $db1f
 	"Party"
 ; 	"Stack"
+WRAMX $2
+	"WRAM 2"
 VRAM $00
 	"VRAM0"
 VRAM $01

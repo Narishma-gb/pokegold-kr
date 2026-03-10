@@ -41,6 +41,7 @@ ENDM
 
 
 INCLUDE "main.asm"
+INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
 
 EXPORT DEF ConfusedNoMoreText EQU $5a29
@@ -738,28 +739,10 @@ SECTION "rom112", ROMX[$4879], BANK[112]
 SECTION "rom113", ROMX[$4000], BANK[113]
 ; ROM $71 : $1C4000 - $1C7FFF
 
+	dr Data1c4000, $4000
+	dr Data1c4200, $4200
 	dr Data1c5800, $5800
-	dr Function1c5c00, $5c00
-	dr Function1c5c36, $5c36
-	dr Function1c5ebd, $5ebd
-
-
-SECTION "rom114", ROMX[$4000], BANK[114]
-; ROM $72 : $1C8000 - $1CBFFF
-
-	dr Function1c8000, $4000
-
-
-;SECTION "rom120", ROMX[$4000], BANK[120]
-; ROM $78 : $1E0000 - $1E3FFF
-
-
-;SECTION "rom121", ROMX[$4000], BANK[121]
-; ROM $79 : $1E4000 - $1E7FFF
-
-
-;SECTION "rom122", ROMX[$4000], BANK[122]
-; ROM $7a : $1E8000 - $1EBFFF
+	dr Data1c5800_end, $5c00
 
 
 ;SECTION "rom123", ROMX[$4000], BANK[123]

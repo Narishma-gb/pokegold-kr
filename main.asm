@@ -377,6 +377,11 @@ INCLUDE "engine/rtc/restart_clock.asm"
 ;INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
 
 
+SECTION "DMG Error Screen", ROMX
+
+INCLUDE "engine/movie/error_screen.asm"
+
+
 ;SECTION "Credits Strings", ROMX
 
 ;INCLUDE "data/credits_strings.asm"

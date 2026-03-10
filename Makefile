@@ -11,6 +11,7 @@ rom_obj := \
 	wip.o \
 	ram.o \
 	data/text/common.o \
+	gfx/hangul.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
 # 	main.o \
@@ -258,6 +259,8 @@ gfx/pokemon/porygon2/normal.gbcpal: tools/gbcpal += --reverse
 
 gfx/trainers/swimmer_m.gbcpal: tools/gbcpal += --reverse
 
+gfx/error_screen/error_screen.2bpp: tools/gfx += --trim-whitespace
+
 gfx/intro/fire.2bpp: tools/gfx += --remove-whitespace
 gfx/intro/fire1.2bpp: gfx/intro/charizard1.2bpp gfx/intro/charizard2_top.2bpp gfx/intro/space.2bpp ; cat $^ > $@
 gfx/intro/fire2.2bpp: gfx/intro/charizard2_bottom.2bpp gfx/intro/charizard3.2bpp ; cat $^ > $@
@@ -329,6 +332,7 @@ gfx/sprites/big_onix.2bpp: tools/gfx += --remove-whitespace --remove-xflip
 
 gfx/battle/dude.2bpp: RGBGFXFLAGS += --columns
 
+gfx/font/hangul/%.1bpp: tools/gfx += --interleave --png=$<
 gfx/font/unused_bold_font.1bpp: tools/gfx += --trim-whitespace
 
 gfx/sgb/gold_border.2bpp: tools/gfx += --trim-whitespace

@@ -1180,7 +1180,7 @@ CopyrightString:
 	db "@"
 
 GameInit::
-	farcall Function1c8000
+	farcall DisplayDMGErrorScreen
 	farcall DoubleSpeed
 	call ClearWindowData
 	farcall TryLoadSaveData

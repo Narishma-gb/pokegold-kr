@@ -218,35 +218,38 @@ _TextboxPalette::
 	jr nz, .col
 	ret
 
-Function1fc119::
+PlaceDoubleByteChar::
 	push de
 	push hl
 	push bc
-	call Function14ef
-	jr nc, .asm_1fc12c
-	call Function14d8
-	jr nc, .asm_1fc12c
-	call Function14c1
-	call Function14d8
-.asm_1fc12c
+	call IsHangulCharDrawn
+	jr nc, .got_slot
+	call FindNextEmptyHangulSlot
+	jr nc, .got_slot
+	call TrimUnusedHangulChars
+	call FindNextEmptyHangulSlot
+
+.got_slot
 	pop bc
 	push af
-	call Function1506
+	call DrawHangulChar
 	pop af
 	pop hl
 	pop de
+
 	di
-	ld bc, $0940
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
-	set 3, [hl]
-	ld bc, $FFEC
+	set B_BG_BANK1, [hl]
+	ld bc, -SCREEN_WIDTH
 	add hl, bc
-	set 3, [hl]
-	ld bc, $F6C0
+	set B_BG_BANK1, [hl]
+
+	ld bc, wTilemap - wAttrmap
 	add hl, bc
 	ld [hl], a
 	inc a
-	ld bc, $0014
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld [hli], a
 	ei
@@ -258,7 +261,7 @@ _TextScroll::
 	ld bc, 3 * SCREEN_WIDTH
 	call CopyBytes
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
-	ld a, '　'
+	ld a, ' '
 	ld bc, TEXTBOX_INNERW
 	call ByteFill
 
@@ -274,135 +277,156 @@ _TextScroll::
 	call DelayFrames
 	ret
 
-Function1fc180::
+_TrimUnusedHangulChars::
+; mark all entries in wHangulTilesIndexTable as empty slots,
+; except the characters currently on screen
 	ldh a, [rLCDC]
-	bit 7, a
-	jr z, .asm_1fc18c
-.asm_1fc186
+	bit B_LCDC_ENABLE, a
+	jr z, .start_check
+
+.wait_loop
 	ldh a, [rLY]
 	cp $7D
-	jr nc, .asm_1fc186
-.asm_1fc18c
+	jr nc, .wait_loop
+
+.start_check
 	di
 	ld a, $02
 	ldh [rWBK], a
-	ld hl, wd000
-.asm_1fc194
+	ld hl, wHangulTilesIndexTable
+
+.clear_flags
 	res 7, [hl]
 	inc l
 	inc l
-	jr nz, .asm_1fc194
+	jr nz, .clear_flags
+
 	ld a, $01
 	ldh [rWBK], a
 	ei
+
 	ld de, wTilemap
 	ld hl, wAttrmap
-	ld bc, $0269
-	jr .asm_1fc1c4
+	lb bc, HIGH(wAttrmapEnd - wAttrmap) + 1, LOW(wAttrmapEnd - wAttrmap) + 1
+	jr .start_loop
 
-.asm_1fc1aa
+.set_flag_loop
 	ld a, [hli]
-	bit 3, a
-	jr z, .asm_1fc1c3
+	bit B_BG_BANK1, a
+	jr z, .next
+
 	push hl
 	di
 	ld a, $02
 	ldh [rWBK], a
 	ld a, [de]
-	and $FE
+	and %11111110 ; top and bottom tiles point to the same table entry
 	ld l, a
-	ld h, $D0
+	ld h, HIGH(wHangulTilesIndexTable)
 	set 7, [hl]
 	ld a, $01
 	ldh [rWBK], a
 	ei
 	pop hl
-.asm_1fc1c3
+
+.next
 	inc de
-.asm_1fc1c4
+.start_loop
 	dec c
-	jr nz, .asm_1fc1aa
+	jr nz, .set_flag_loop
 	dec b
-	jr nz, .asm_1fc1aa
+	jr nz, .set_flag_loop
 	ret
 
-Function1fc1cb::
+_FindNextEmptyHangulSlot::
+; find the first available slot to draw the next hangul char b:c
+; return carry if no slot is available
 	ldh a, [rLCDC]
-	bit 7, a
-	jr z, .asm_1fc1d7
-.asm_1fc1d1
+	bit B_LCDC_ENABLE, a
+	jr z, .start_check
+
+.wait_loop
 	ldh a, [rLY]
 	cp $7D
-	jr nc, .asm_1fc1d1
-.asm_1fc1d7
+	jr nc, .wait_loop
+
+.start_check
 	di
 	ld a, $02
 	ldh [rWBK], a
-	ld hl, wd000
-.asm_1fc1df
-	bit 7, [hl]
-	jr z, .asm_1fc1ea
-	inc l
-	inc l
-	jr nz, .asm_1fc1df
-	scf
-	jr .asm_1fc1eb
+	ld hl, wHangulTilesIndexTable
 
-.asm_1fc1ea
+.loop
+	bit 7, [hl]
+	jr z, .found
+	inc l
+	inc l
+	jr nz, .loop
+	scf
+	jr .done
+
+.found
 	sub a
-.asm_1fc1eb
+.done
 	ld a, $01
 	ldh [rWBK], a
 	ei
 	ld a, l
 	ret
 
-Function1fc1f2::
+_IsHangulCharDrawn::
+; check if the hangul char at b:c is already drawn in VRAM
+; return carry if no matching char has been found, else
+; return WRAM index of the matching tile in a
 	ldh a, [rLCDC]
-	bit 7, a
-	jr z, .asm_1fc1fe
-.asm_1fc1f8
+	bit B_LCDC_ENABLE, a
+	jr z, .start_check
+
+.wait_loop
 	ldh a, [rLY]
 	cp $7D
-	jr nc, .asm_1fc1f8
-.asm_1fc1fe
+	jr nc, .wait_loop
+
+.start_check
 	di
 	ld a, $02
 	ldh [rWBK], a
-	ld hl, wd000
-.asm_1fc206
-	bit 7, [hl]
-	jr nz, .asm_1fc211
-.asm_1fc20a
-	inc l
-.asm_1fc20b
-	inc l
-	jr nz, .asm_1fc206
-	scf
-	jr .asm_1fc21e
+	ld hl, wHangulTilesIndexTable
 
-.asm_1fc211
+.loop
+	bit 7, [hl]
+	jr nz, .compare
+.skip1
+	inc l
+.skip2
+	inc l
+	jr nz, .loop
+	scf
+	jr .done
+
+.compare
 	ld a, [hl]
 	res 7, a
 	cp b
-	jr nz, .asm_1fc20a
+	jr nz, .skip1
 	inc l
 	ld a, [hl]
 	cp c
-	jr nz, .asm_1fc20b
+	jr nz, .skip2
 	dec l
 	sub a
-.asm_1fc21e
+
+.done
 	ld a, $01
 	ldh [rWBK], a
 	ei
 	ld a, l
 	ret
 
-Function1fc225::
-	and $FE
+_DrawHangulChar::
+	and %11111110 ; table entry must be even-aligned
 	ld l, a
-	ld h, $D0
+	ld h, HIGH(wHangulTilesIndexTable)
 	di
 	ld a, $02
 	ldh [rWBK], a
@@ -414,6 +438,8 @@ Function1fc225::
 	ldh [rWBK], a
 	ei
 	dec l
+
+; initially b:c = char_table:entry
 	ld a, $02
 	srl b
 	rr c
@@ -425,12 +451,14 @@ Function1fc225::
 	rr a
 	rr c
 	rr a
-	push bc
+	push bc ; save b = bank offset
 	ld e, a
-	ld d, c
-	ld a, $80
+	ld d, c ; de = source tile entry address
+
+; initially l = index of VRAM tile pair to be drawn
+	ld a, $80 ; index 0 is in vTiles5
 	add l
-	ld b, $00
+	ld b, 0
 	sla a
 	rl b
 	sla a
@@ -440,67 +468,77 @@ Function1fc225::
 	sla a
 	rl b
 	ld c, a
-	ld hl, $8800
-	add hl, bc
+	ld hl, vTiles4
+	add hl, bc ; hl = destination VRAM address
+
 	ld a, h
 	ldh [rVDMA_DEST_HIGH], a
 	ld a, l
 	ldh [rVDMA_DEST_LOW], a
-	ld hl, wd100
+	ld hl, wHangulCharBuffer
 	ld a, h
 	ldh [rVDMA_SRC_HIGH], a
 	ld a, l
 	ldh [rVDMA_SRC_LOW], a
+
 	pop af
-	add $78
+	add BANK("Hangul Tables 1")
 	ld b, a
-	call Function151f
+	call PrepareVDMAData
 	ldh a, [rLCDC]
-	bit 7, a
-	jr z, .asm_1fc2ba
+	bit B_LCDC_ENABLE, a
+	jr z, .general_purpose_DMA
+
+; same check again, can this branch?
 	ldh a, [rLCDC]
-	bit 7, a
-	jr z, .asm_1fc295
-.asm_1fc28f
+	bit B_LCDC_ENABLE, a
+	jr z, .start_HBlank_DMA
+
+; if we're too close to VBlank, wait until the next frame,
+; else the transfer will pause and waste the whole VBlank cycle
+.wait_next_frame
 	ldh a, [rLY]
-	cp $8C
-	jr nc, .asm_1fc28f
-.asm_1fc295
+	cp LY_VBLANK - 4
+	jr nc, .wait_next_frame
+
+.start_HBlank_DMA
 	di
-	ld a, $01
+	ld a, BANK(vBGMap2)
 	ldh [rVBK], a
 	ld a, $02
 	ldh [rWBK], a
-	rst Function18
-	ld a, $81
+	rst WaitHBlank
+	ld a, VDMA_LEN_MODE_HBLANK | 1 ; HBlank DMA, size: $20 bytes
 	ldh [rVDMA_LEN], a
 	ldh a, [rVDMA_LEN]
-	and $7F
+	and VDMA_LEN_SIZE
 	inc a
-.asm_1fc2a8
+.loop
+; HBlank DMA transfers one tile per scanline, wait until it is done
 	push af
-	call Function39
+	call WaitOneLine
 	pop af
 	dec a
-	jr nz, .asm_1fc2a8
+	jr nz, .loop
+
 	ld a, $01
 	ldh [rWBK], a
-	ld a, $00
+	ld a, BANK(vBGMap0)
 	ldh [rVBK], a
 	ei
 	ret
 
-.asm_1fc2ba:
+.general_purpose_DMA
 	di
-	ld a, $01
+	ld a, BANK(vBGMap2)
 	ldh [rVBK], a
 	ld a, $02
 	ldh [rWBK], a
-	ld a, $01
+	ld a, VDMA_LEN_MODE_GENERAL | 1 ; General Purpose DMA, size: $20 bytes
 	ldh [rVDMA_LEN], a
 	ld a, $01
 	ldh [rWBK], a
-	ld a, $00
+	ld a, BANK(vBGMap0)
 	ldh [rVBK], a
 	ei
 	ret
@@ -964,16 +1002,17 @@ Function1fc5a0::
 	push hl
 	push de
 	push bc
-	call Function14ef
-	jr nc, .asm_1fc5e0
-	call Function14d8
-	jr nc, .asm_1fc5e0
-	call Function14c1
-	call Function14d8
-.asm_1fc5e0
+	call IsHangulCharDrawn
+	jr nc, .got_slot
+	call FindNextEmptyHangulSlot
+	jr nc, .got_slot
+	call TrimUnusedHangulChars
+	call FindNextEmptyHangulSlot
+
+.got_slot
 	pop bc
 	push af
-	call Function1506
+	call DrawHangulChar
 	pop bc
 	pop de
 	pop hl
@@ -1054,7 +1093,7 @@ _ClearWindowData::
 _LoadTilemapToTempTilemap::
 	hlcoord 0, 0
 	decoord 0, 0, wTempTilemap
-	ld bc, wTilemapEnd - wTilemap + (1 << 8) + 1
+	lb bc, HIGH(wTilemapEnd - wTilemap) + 1, LOW(wTilemapEnd - wTilemap) + 1
 	jr .start_loop
 
 .loop
@@ -1110,7 +1149,7 @@ _LoadTilemapToTempTilemap::
 _LoadTempTilemapToTilemap::
 	hlcoord 0, 0
 	decoord 0, 0, wTempTilemap
-	ld bc, wTilemapEnd - wTilemap + (1 << 8) + 1
+	lb bc, HIGH(wTilemapEnd - wTilemap) + 1, LOW(wTilemapEnd - wTilemap) + 1
 	jr .start_loop
 
 .loop
@@ -1151,16 +1190,17 @@ _LoadTempTilemapToTilemap::
 	push hl
 	push de
 	push bc
-	call Function14ef
-	jr nc, .asm_1fc6f1
-	call Function14d8
-	jr nc, .asm_1fc6f1
-	call Function14c1
-	call Function14d8
-.asm_1fc6f1
+	call IsHangulCharDrawn
+	jr nc, .got_slot
+	call FindNextEmptyHangulSlot
+	jr nc, .got_slot
+	call TrimUnusedHangulChars
+	call FindNextEmptyHangulSlot
+
+.got_slot
 	pop bc
 	push af
-	call Function1506
+	call DrawHangulChar
 	pop bc
 	pop de
 	pop hl

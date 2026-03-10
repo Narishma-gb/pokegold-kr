@@ -115,7 +115,7 @@ ENDM
 
 CheckDict::
 	cp $c
-	jp c, Function1229
+	jp c, DoubleByteChar
 
 	dict '<LINE>',    LineChar
 	dict '<NEXT>',    NextLineChar
@@ -430,12 +430,12 @@ NullChar:: ; unused
 	text "エラー"
 	done
 
-Function1229::
+DoubleByteChar::
 	ld b, a
 	inc de
 	ld a, [de]
 	ld c, a
-	farcall_reg Function1fc119
+	farcall_reg PlaceDoubleByteChar
 	call PrintLetterDelay
 	jp NextChar
 
@@ -895,7 +895,7 @@ Function1470::
 	ld a, $02
 	ldh [rWBK], a
 	ld a, $00
-	ld [wd120], a
+	ld [w2_d120], a
 	ld a, $01
 	ldh [rWBK], a
 	ei
@@ -906,7 +906,7 @@ Function1480::
 	ld a, $02
 	ldh [rWBK], a
 	ld a, $FF
-	ld [wd120], a
+	ld [w2_d120], a
 	ld a, $01
 	ldh [rWBK], a
 	ei
@@ -916,9 +916,9 @@ Function1490::
 	di
 	ld a, $02
 	ldh [rWBK], a
-	ld a, [wd120]
+	ld a, [w2_d120]
 	cpl
-	ld [wd120], a
+	ld [w2_d120], a
 	ld a, $01
 	ldh [rWBK], a
 	ei
@@ -952,25 +952,28 @@ Function14b6::
 	pop bc
 	ret
 
-Function14c1::
-	farcall_reg Function1fc180
+TrimUnusedHangulChars::
+	farcall_reg _TrimUnusedHangulChars
 	ret
 
-Function14d8::
-	farcall_reg Function1fc1cb
+FindNextEmptyHangulSlot::
+	farcall_reg _FindNextEmptyHangulSlot
 	ret
 
-Function14ef::
-	farcall_reg Function1fc1f2
+IsHangulCharDrawn::
+	farcall_reg _IsHangulCharDrawn
 	ret
 
-Function1506::
+DrawHangulChar::
 	push de
-	farcall_reg Function1fc225
+	farcall_reg _DrawHangulChar
 	pop de
 	ret
 
-Function151f::
+PrepareVDMAData::
+; input:
+; b:de = source (2-tile 1bpp character)
+; hl = destination (2-tile 2bpp)
 	ldh a, [hROMBank]
 	push af
 	ld a, b
@@ -978,17 +981,19 @@ Function151f::
 	di
 	ld a, $02
 	ldh [rWBK], a
-	ld a, [wd120]
+	ld a, [w2_d120]
 	ld b, a
-	ld c, $10
-.asm_152f
+
+	ld c, 2 * TILE_1BPP_SIZE
+.loop
 	ld a, [de]
 	inc de
 	xor b
 	ldi [hl], a
 	ldi [hl], a
 	dec c
-	jr nz, .asm_152f
+	jr nz, .loop
+
 	ld a, $01
 	ldh [rWBK], a
 	ei
