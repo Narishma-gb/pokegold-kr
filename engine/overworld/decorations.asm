@@ -37,7 +37,7 @@ _PlayerDecorationMenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 5, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 8, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw .MenuData
 	db 1 ; default option
 
@@ -60,14 +60,14 @@ _PlayerDecorationMenu:
 	dw DecoExitMenu,     .exit
 	assert_table_length NUM_DECO_CATEGORIES + 1
 
-.bed:      db "BED@"
-.carpet:   db "CARPET@"
-.plant:    db "PLANT@"
-.poster:   db "POSTER@"
-.game:     db "GAME CONSOLE@"
-.ornament: db "ORNAMENT@"
-.big_doll: db "BIG DOLL@"
-.exit:     db "EXIT@"
+.bed:      db "침대@"
+.carpet:   db "융단@"
+.plant:    db "화분@"
+.poster:   db "포스터@"
+.game:     db "게임기@"
+.ornament: db "장식물@"
+.big_doll: db "커다란 인형@"
+.exit:     db "끝내다@"
 
 .FindCategoriesWithOwnedDecos:
 	xor a
@@ -395,7 +395,7 @@ PopulateDecoCategoryMenu:
 
 .NonscrollingMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 0, 0, 16, SCREEN_HEIGHT - 1
 	dw .NonscrollingMenuData
 	db 1 ; default option
 
@@ -408,7 +408,7 @@ PopulateDecoCategoryMenu:
 
 .ScrollingMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2
+	menu_coords 1, 1, 15, SCREEN_HEIGHT - 2
 	dw .ScrollingMenuData
 	db 1 ; default option
 
@@ -874,16 +874,16 @@ QueryWhichSide:
 
 DecoSideMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 12, 7
+	menu_coords 0, 0, 10, 7
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
-	db "RIGHT SIDE@"
-	db "LEFT SIDE@"
-	db "CANCEL@"
+	db "오른쪽@"
+	db "왼쪽@"
+	db "그만두다@"
 
 PutAwayTheDecoText:
 	text_far _PutAwayTheDecoText

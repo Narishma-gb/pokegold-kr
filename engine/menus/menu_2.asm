@@ -16,8 +16,6 @@ PlaceMenuItemQuantity:
 	pop hl
 	and a
 	jr nz, .done
-	ld de, $15
-	add hl, de
 	ld [hl], '×'
 	inc hl
 	ld de, wMenuSelectionQuantity
@@ -32,14 +30,14 @@ PlaceMoneyTopRight:
 	call CopyMenuHeader
 	jr PlaceMoneyTextbox
 
-PlaceMoneyBottomLeft:
-	ld hl, MoneyBottomLeftMenuHeader
+PlaceMoneyTopLeft:
+	ld hl, MoneyTopLeftMenuHeader
 	call CopyMenuHeader
 	jr PlaceMoneyTextbox
 
-PlaceMoneyAtTopLeftOfTextbox:
+PlaceMoneyWindowTopLeft:
 	ld hl, MoneyTopRightMenuHeader
-	lb de, 0, 11
+	lb de, 0, 0
 	call OffsetMenuHeader
 
 PlaceMoneyTextbox:
@@ -58,59 +56,65 @@ MoneyTopRightMenuHeader:
 	dw NULL
 	db 1 ; default option
 
-MoneyBottomLeftMenuHeader:
+MoneyTopLeftMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 11, 8, 13
+	menu_coords 0, 0, 8, 2
 	dw NULL
 	db 1 ; default option
 
 DisplayCoinCaseBalance:
-	; Place a text box of size 1x7 at 11, 0.
-	hlcoord 11, 0
-	ld b, 1
-	ld c, 7
+	; Place a text box of size 2x8 at 10, 0.
+	hlcoord 10, 0
+	ld b, 2
+	ld c, 8
 	call Textbox
-	hlcoord 12, 0
+	hlcoord 11, 2
 	ld de, CoinString
-	call PlaceString
-	hlcoord 17, 1
-	ld de, ShowMoney_TerminatorString
 	call PlaceString
 	ld de, wCoins
 	lb bc, 2, 4
-	hlcoord 13, 1
+	hlcoord 14, 2
 	call PrintNum
+	hlcoord 18, 2
+	ld de, CoinCounterString
+	call PlaceString
 	ret
 
 DisplayMoneyAndCoinBalance:
-	hlcoord 5, 0
-	ld b, 3
-	ld c, 13
+	hlcoord 9, 0
+	ld b, 4
+	ld c, 9
 	call Textbox
-	hlcoord 6, 1
+	hlcoord 10, 2
 	ld de, MoneyString
 	call PlaceString
-	hlcoord 12, 1
+	hlcoord 12, 2
 	ld de, wMoney
-	lb bc, PRINTNUM_MONEY | 3, 6
+	lb bc, 3, 6
 	call PrintNum
-	hlcoord 6, 3
+	hlcoord 18, 2
+	ld de, MoneySign
+	call PlaceString
+	hlcoord 10, 4
 	ld de, CoinString
 	call PlaceString
-	hlcoord 15, 3
 	ld de, wCoins
 	lb bc, 2, 4
+	hlcoord 14, 4
 	call PrintNum
+	hlcoord 18, 4
+	ld de, CoinCounterString
+	call PlaceString
 	ret
 
 MoneyString:
-	db "MONEY@"
+	db "돈@"
+MoneySign:
+	db "원@"
 CoinString:
-	db "COIN@"
-ShowMoney_TerminatorString:
-	db "@"
-UnusedEmptyString: ; unreferenced
-	db "@"
+	db "동전@"
+CoinCounterString:
+	db "개@"
 
 StartMenu_PrintSafariGameStatus: ; unreferenced
 	ld hl, wOptions
@@ -126,10 +130,10 @@ StartMenu_PrintSafariGameStatus: ; unreferenced
 	lb bc, 2, 3
 	call PrintNum
 	hlcoord 4, 1
-	ld de, .slash_500
+	ld de, .SafariSteps
 	call PlaceString
 	hlcoord 1, 3
-	ld de, .booru_ko
+	ld de, .SafariBallText
 	call PlaceString
 	hlcoord 5, 3
 	ld de, wSafariBallsRemaining
@@ -139,15 +143,15 @@ StartMenu_PrintSafariGameStatus: ; unreferenced
 	ld [wOptions], a
 	ret
 
-.slash_500
+.SafariSteps
 	db "／５００@"
-.booru_ko
+.SafariBallText
 	db "ボール　　　こ@"
 
 StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0
-	ld b, 5
-	ld c, 17
+	ld b, 6
+	ld c, 9
 	call Textbox
 	ret
 
@@ -157,14 +161,14 @@ StartMenu_PrintBugContestStatus:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call StartMenu_DrawBugContestStatusBox
-	hlcoord 1, 5
+	hlcoord 1, 2
 	ld de, .BallsString
 	call PlaceString
-	hlcoord 8, 5
+	hlcoord 5, 2
 	ld de, wParkBallsRemaining
-	lb bc, PRINTNUM_LEFTALIGN | 1, 2
+	lb bc, 1, 2
 	call PrintNum
-	hlcoord 1, 1
+	hlcoord 1, 4
 	ld de, .CaughtString
 	call PlaceString
 	ld a, [wContestMon]
@@ -175,18 +179,16 @@ StartMenu_PrintBugContestStatus:
 	call GetPokemonName
 
 .no_contest_mon
-	hlcoord 8, 1
+	hlcoord 5, 4
 	call PlaceString
 	ld a, [wContestMon]
 	and a
 	jr z, .skip_level
-	hlcoord 1, 3
+	hlcoord 1, 6
 	ld de, .LevelString
 	call PlaceString
 	ld a, [wContestMonLevel]
-	ld h, b
-	ld l, c
-	inc hl
+	hlcoord 5, 6
 	ld c, 3
 	call Print8BitNumLeftAlign
 
@@ -198,13 +200,13 @@ StartMenu_PrintBugContestStatus:
 .BallsJPString: ; unreferenced
 	db "ボール　　　こ@"
 .CaughtString:
-	db "CAUGHT@"
+	db "포획@"
 .BallsString:
-	db "BALLS:@"
+	db "남은것   개@"
 .NoneString:
-	db "None@"
+	db "없음@"
 .LevelString:
-	db "LEVEL@"
+	db "레벨@"
 
 Kurt_SelectApricorn:
 	call FindApricornsInBag
@@ -247,7 +249,7 @@ Kurt_SelectApricorn:
 	ret
 
 .Cancel
-	db "CANCEL@"
+	db "그만두다@"
 
 FindApricornsInBag:
 ; Checks the bag for Apricorns.

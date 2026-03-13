@@ -11,12 +11,12 @@ rom_obj := \
 	wip.o \
 	ram.o \
 	data/text/common.o \
+	data/pokemon/egg_moves.o \
 	gfx/hangul.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
 # 	main.o \
 # 	data/maps/map_data.o \
-# 	data/pokemon/egg_moves.o \
 # 	data/pokemon/evos_attacks.o \
 # 	engine/movie/credits.o \
 # 	engine/overworld/events.o \

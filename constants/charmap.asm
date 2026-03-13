@@ -264,7 +264,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap "▼",         $ee
 	charmap "♂",         $ef
 	charmap "₩",         $f0
-	;charmap "×",         $f1
+	charmap "×",         $f1
 	;charmap "<DOT>",     $f2 ; decimal point; same as "." in English
 	charmap "/",         $f3
 	;charmap "<,>",         $f4

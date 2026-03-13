@@ -109,7 +109,13 @@ TrainerCard_Page1_LoadGFX:
 	ld hl, vTiles2 tile $29
 	lb bc, BANK(CardStatusGFX), 86
 	call Request2bpp
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
 	call TrainerCard_Page1_PrintDexCaught_GameTime
+	pop af
+	ldh [hBGMapMode], a
 	call TrainerCard_IncrementJumptable
 	ret
 
@@ -232,7 +238,7 @@ TrainerCard_PrintTopHalfOfCard:
 	hlcoord 2, 4
 	ld de, .ID_No
 	call TrainerCardSetup_PlaceTilemapString
-	hlcoord 7, 2
+	hlcoord 6, 2
 	ld de, wPlayerName
 	call PlaceString
 	hlcoord 5, 4
@@ -267,9 +273,9 @@ TrainerCard_PrintTopHalfOfCard:
 	ret
 
 .Name_Money:
-	db   "NAME/"
+	db   "이름/"
 	next ""
-	next "MONEY@"
+	next "용돈@"
 
 .ID_No:
 	db $27, $28, -1 ; ID NO
@@ -281,14 +287,17 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	hlcoord 2, 10
 	ld de, .Dex_PlayTime
 	call PlaceString
-	hlcoord 12, 15
+	hlcoord 16, 10
+	ld de, .MonCounter
+	call PlaceString
+	hlcoord 14, 15
 	ld de, .Badges
 	call PlaceString
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
 	ld de, wNumSetBits
-	hlcoord 15, 10
+	hlcoord 13, 10
 	lb bc, 1, 3
 	call PrintNum
 	call TrainerCard_Page1_PrintGameTime
@@ -304,17 +313,17 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	ret
 
 .Dex_PlayTime:
-	db   "#DEX"
-	next "PLAY TIME@"
+	db   "포켓몬 도감"
+	next "플레이 시간@"
 
-.Unused: ; unreferenced
-	db "@"
+.MonCounter:
+	db "마리@"
 
 .Badges:
-	db "BADGES▶@"
+	db "배지화면▶@"
 
 .StatusTilemap:
-	db $29, $2a, $2b, $2c, $2d, -1
+	db $29, $2a, $2b, $2c, $2d, -1 ; "스테이터스"
 
 TrainerCard_Page2_3_InitObjectsAndStrings:
 	hlcoord 2, 8
@@ -347,7 +356,7 @@ endr
 	ret
 
 .BadgesTilemap:
-	db $79, $7a, $7b, $7c, $7d, -1 ; "BADGES"
+	db $79, $7a, $7b, $7c, $7d, -1 ; "리그배지"
 
 TrainerCardSetup_PlaceTilemapString:
 .loop
@@ -372,6 +381,7 @@ TrainerCard_InitBorder:
 	ld e, SCREEN_WIDTH - 3
 	ld a, ' '
 .loop2
+	call Function14b6
 	ld [hli], a
 	dec e
 	jr nz, .loop2
@@ -388,6 +398,7 @@ TrainerCard_InitBorder:
 	ld e, SCREEN_WIDTH - 2
 	ld a, ' '
 .loop4
+	call Function14b6
 	ld [hli], a
 	dec e
 	jr nz, .loop4
@@ -406,6 +417,7 @@ TrainerCard_InitBorder:
 	ld e, SCREEN_WIDTH - 3
 	ld a, ' '
 .loop5
+	call Function14b6
 	ld [hli], a
 	dec e
 	jr nz, .loop5

@@ -1066,7 +1066,7 @@ _ClearWindowData::
 	call .ClearMenuData
 
 	di
-	ld a, $03
+	ld a, BANK("WRAM Window Stack")
 	ldh [rWBK], a
 	xor a
 	ld hl, wWindowStackTop

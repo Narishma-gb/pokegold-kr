@@ -490,14 +490,14 @@ wBillsPC_BackupLoadedBox:: db
 wBillsPC_MonHasMail:: db
 	ds 5
 wBillsPCDataEnd::
-
+*/
 
 SECTION UNION "Overworld Map", WRAM0
 
 ; Hall of Fame data
 wHallOfFamePokemonList:: hall_of_fame wHallOfFamePokemonList
 
-
+/*
 SECTION UNION "Overworld Map", WRAM0
 
 ; debug color picker
@@ -1106,120 +1106,6 @@ wAttrmap::
 ;		bit 2-0: pal # (cgb only)
 	ds SCREEN_AREA
 wAttrmapEnd::
-/*
-wTileAnimBuffer:: ds 1 tiles
-
-
-	ds 1
-
-wJumptableIndex:: db
-
-UNION
-; intro data
-wIntroSceneFrameCounter:: db
-wIntroSceneTimer:: db
-
-NEXTU
-; title data
-wTitleScreenSelectedOption:: db
-wTitleScreenTimer:: dw
-
-NEXTU
-; credits data
-wCreditsBorderFrame:: db
-wCreditsBorderMon:: db
-wCreditsLYOverride:: db
-
-NEXTU
-; pokedex
-wPrevDexEntryJumptableIndex:: db
-wPrevDexEntryBackup::
-wPokedexStatus:: db
-wUnusedPokedexByte:: db
-
-NEXTU
-; pokegear
-wPokegearCard:: db
-wPokegearMapRegion:: db
-wUnusedPokegearByte:: db
-
-NEXTU
-; pack
-wPackJumptableIndex:: db
-wCurPocket:: db
-wPackUsedItem:: db
-
-NEXTU
-; trainer card badges
-wTrainerCardBadgeFrameCounter:: db
-wTrainerCardBadgeTileID:: db
-wTrainerCardBadgeAttributes:: db
-
-NEXTU
-; slot machine
-wSlotsDelay:: db
-	ds 1
-wUnusedSlotReelIconDelay:: db
-
-NEXTU
-; card flip
-wCardFlipCursorY:: db
-wCardFlipCursorX:: db
-wCardFlipWhichCard:: db
-
-NEXTU
-; unused memory game
-wMemoryGameCardChoice:: db
-
-NEXTU
-; magnet train
-wMagnetTrainOffset:: db
-wMagnetTrainPosition:: db
-wMagnetTrainWaitCounter:: db
-
-NEXTU
-; unown puzzle data
-wHoldingUnownPuzzlePiece:: db
-wUnownPuzzleCursorPosition:: db
-wUnownPuzzleHeldPiece:: db
-
-NEXTU
-; battle transitions
-wBattleTransitionCounter:: db
-wBattleTransitionSineWaveOffset::
-wBattleTransitionSpinQuadrant:: db
-
-NEXTU
-; bill's pc
-wUnusedBillsPCData:: ds 3
-
-NEXTU
-; debug mon color picker
-wDebugColorRGBJumptableIndex:: db
-wDebugColorCurColor:: db
-wDebugColorCurMon:: db
-
-NEXTU
-; debug tileset color picker
-wDebugTilesetCurPalette:: db
-wDebugTilesetRGBJumptableIndex:: db
-wDebugTilesetCurColor:: db
-
-NEXTU
-; miscellaneous
-wFrameCounter::
-wMomBankDigitCursorPosition::
-wNamingScreenLetterCase::
-wHallOfFameMonCounter::
-wTradeDialog::
-	db
-wFrameCounter2::
-wPrinterQueueLength::
-wUnusedSGB1eColorOffset::
-	db
-ENDU
-*/
-SECTION "wram_wip1", WRAM0[$ce48]
 
 wRequested2bppSize:: db
 wRequested2bppSource:: dw
@@ -1574,11 +1460,11 @@ wDebugRoomAutoFunction::   dw
 wDebugRoomPageCount::      db
 wDebugRoomPagesPointer::   dw
 ENDC
+*/
+ENDU
 
-NEXTU
-; Every previous NEXTU takes up 60 or fewer bytes,
-; except the initial "mon buffer" UNION.
-	ds 60
+
+SECTION "wram_wip1", WRAM0[$cf11]
 
 UNION
 ; trainer data
@@ -1704,31 +1590,6 @@ ENDU
 
 wBoxAlignment:: db
 wFarDecompressPicPointer:: dw
-wFXAnimID:: dw*/
-ENDU
-/*
-wPlaceBallsX:: db
-wPlaceBallsY:: db
-wTileAnimationTimer:: db
-
-; palette backups?
-wBGP:: db
-wOBP0:: db
-wOBP1:: db
-
-wBattleAfterAnim:: db
-
-	ds 1
-
-wMonOrItemNameBuffer:: ds NAME_LENGTH
-	ds NAME_LENGTH
-wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
-
-wStringBuffer1:: ds STRING_BUFFER_LENGTH
-wStringBuffer2:: ds STRING_BUFFER_LENGTH
-wStringBuffer3:: ds STRING_BUFFER_LENGTH
-wStringBuffer4:: ds STRING_BUFFER_LENGTH
-wStringBuffer5:: ds MOVE_NAME_LENGTH
 
 wBattleMenuCursorPosition:: db
 
@@ -1764,6 +1625,148 @@ wMenuScrollPosition:: ds 4
 
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
+
+/*
+wTileAnimBuffer:: ds 1 tiles
+*/
+
+
+SECTION "WRAM 1", WRAMX
+
+	ds 1
+
+wJumptableIndex:: db
+
+UNION
+; intro data
+wIntroSceneFrameCounter:: db
+wIntroSceneTimer:: db
+
+NEXTU
+; title data
+wTitleScreenSelectedOption:: db
+wTitleScreenTimer:: dw
+
+NEXTU
+; credits data
+wCreditsBorderFrame:: db
+wCreditsBorderMon:: db
+wCreditsLYOverride:: db
+
+NEXTU
+; pokedex
+wPrevDexEntryJumptableIndex:: db
+wPrevDexEntryBackup::
+wPokedexStatus:: db
+wUnusedPokedexByte:: db
+
+NEXTU
+; pokegear
+wPokegearCard:: db
+wPokegearMapRegion:: db
+wUnusedPokegearByte:: db
+
+NEXTU
+; pack
+wPackJumptableIndex:: db
+wCurPocket:: db
+wPackUsedItem:: db
+
+NEXTU
+; trainer card badges
+wTrainerCardBadgeFrameCounter:: db
+wTrainerCardBadgeTileID:: db
+wTrainerCardBadgeAttributes:: db
+
+NEXTU
+; slot machine
+wSlotsDelay:: db
+	ds 1
+wUnusedSlotReelIconDelay:: db
+
+NEXTU
+; card flip
+wCardFlipCursorY:: db
+wCardFlipCursorX:: db
+wCardFlipWhichCard:: db
+
+NEXTU
+; unused memory game
+wMemoryGameCardChoice:: db
+
+NEXTU
+; magnet train
+wMagnetTrainOffset:: db
+wMagnetTrainPosition:: db
+wMagnetTrainWaitCounter:: db
+
+NEXTU
+; unown puzzle data
+wHoldingUnownPuzzlePiece:: db
+wUnownPuzzleCursorPosition:: db
+wUnownPuzzleHeldPiece:: db
+
+NEXTU
+; battle transitions
+wBattleTransitionCounter:: db
+wBattleTransitionSineWaveOffset::
+wBattleTransitionSpinQuadrant:: db
+
+NEXTU
+; bill's pc
+wUnusedBillsPCData:: ds 3
+
+NEXTU
+; debug mon color picker
+wDebugColorRGBJumptableIndex:: db
+wDebugColorCurColor:: db
+wDebugColorCurMon:: db
+
+NEXTU
+; debug tileset color picker
+wDebugTilesetCurPalette:: db
+wDebugTilesetRGBJumptableIndex:: db
+wDebugTilesetCurColor:: db
+
+NEXTU
+; miscellaneous
+wFrameCounter::
+wMomBankDigitCursorPosition::
+wNamingScreenLetterCase::
+wHallOfFameMonCounter::
+wTradeDialog::
+	db
+wFrameCounter2::
+wPrinterQueueLength::
+wUnusedSGB1eColorOffset::
+	db
+ENDU
+
+wFXAnimID:: dw
+
+
+wPlaceBallsX:: db
+wPlaceBallsY:: db
+wTileAnimationTimer:: db
+
+; palette backups?
+wBGP:: db
+wOBP0:: db
+wOBP1:: db
+
+wBattleAfterAnim:: db
+/*
+	ds 1
+
+wMonOrItemNameBuffer:: ds NAME_LENGTH
+	ds NAME_LENGTH
+wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
+
+wStringBuffer1:: ds STRING_BUFFER_LENGTH
+wStringBuffer2:: ds STRING_BUFFER_LENGTH
+wStringBuffer3:: ds STRING_BUFFER_LENGTH
+wStringBuffer4:: ds STRING_BUFFER_LENGTH
+wStringBuffer5:: ds MOVE_NAME_LENGTH
 
 */
 SECTION "wram_wip2", WRAMX[$d09b], BANK[1]
@@ -2813,5 +2816,13 @@ wHangulTilesIndexTable:: ds $100
 wHangulCharBuffer:: ds 2 * TILE_SIZE
 
 w2_d120::
+
+
+SECTION "WRAM Window Stack", WRAMX
+
+;wWindowStackBottom::
+	ds $800 - 1
+wWindowStackTop::
+	ds 1
 
 ENDSECTION

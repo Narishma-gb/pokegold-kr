@@ -50,9 +50,9 @@ MonMenuLoop:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .select
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .cancel
 	jr .loop
 
@@ -264,7 +264,7 @@ BattleMonMenu:
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ldh a, [hJoyPressed]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .clear_carry
 	ret z
 
@@ -278,13 +278,13 @@ BattleMonMenu:
 
 .MenuHeader:
 	db 0 ; flags
-	menu_coords 11, 11, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 9, 10, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
-	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
+	db STATICMENU_CURSOR ; flags
 	db 3 ; items
-	db "SWITCH@"
-	db "STATS@"
-	db "CANCEL@"
+	db "바꾸다@"
+	db "강한정도를 보다@"
+	db "캔슬@"

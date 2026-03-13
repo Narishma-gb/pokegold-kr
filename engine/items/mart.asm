@@ -712,7 +712,7 @@ SellMenu:
 .okay_to_sell
 	ld hl, MartSellHowManyText
 	call PrintText
-	farcall PlaceMoneyAtTopLeftOfTextbox
+	farcall PlaceMoneyWindowTopLeft
 	farcall SelectQuantityToSell
 	call ExitMenu
 	jr c, .declined
@@ -730,7 +730,7 @@ SellMenu:
 	ld hl, MartBoughtText
 	call PrintText
 	call PlayTransactionSound
-	farcall PlaceMoneyBottomLeft
+	farcall PlaceMoneyTopLeft
 	call JoyWaitAorB
 
 .declined

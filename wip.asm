@@ -49,56 +49,6 @@ EXPORT DEF MoveDescriptions EQU $4000
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "Egg Moves", ROMX[$7a04], BANK[8]
-; ROM $08 : $20000 - $23FFF
-
-	dr EggMovePointers, $7a04
-
-
-SECTION "rom9", ROMX[$4000], BANK[9]
-; ROM $09 : $24000 - $27FFF
-
-	dr StringBufferPointers, $4000
-	dr _2DMenu_, $400e
-	dr _StaticMenuJoypad, $4136
-	dr _ScrollingMenuJoypad, $4139
-	dr _PushWindow, $42a0
-	dr _ExitMenu, $4366
-	dr _InitVerticalMenuCursor, $43a7
-	dr UpdateItemDescription, $43fd
-	dr Pokepic, $441d
-	dr ClosePokepic, $4462
-	dr LoadObjectMasks, $4489
-	dr _InitScrollingMenu, $44e9
-	dr _ScrollingMenu, $4505
-	dr ScrollingMenu_ClearLeftColumn, $463e
-	dr SwitchItemsInBag, $4846
-	dr PlaceMenuItemName, $49ee
-	dr PlaceMenuItemQuantity, $49fd
-	dr PlaceMoneyTopRight, $4a1e
-	dr PlaceMoneyBottomLeft, $4a26
-	dr PlaceMoneyAtTopLeftOfTextbox, $4a2e
-	dr DisplayCoinCaseBalance, $4a5b
-	dr DisplayMoneyAndCoinBalance, $4a84
-	dr StartMenu_DrawBugContestStatusBox, $4b26
-	dr StartMenu_PrintBugContestStatus, $4b31
-	dr Kurt_SelectApricorn, $4bb0
-	dr MonSubmenu, $4cce
-	dr SelectQuantityToToss, $4f7f
-	dr SelectQuantityToBuy, $4f89
-	dr SelectQuantityToSell, $4fa1
-	dr TrainerCard, $50c0
-	dr ProfOaksPC, $6837
-	dr ProfOaksPCBoot, $6852
-	dr InitDecorations, $69b5
-	dr _PlayerDecorationMenu, $69c0
-	dr SetSpecificDecorationFlag, $714b
-	dr ToggleMaptileDecorations, $7234
-	dr ToggleDecorationsVisibility, $728c
-	dr GetTrainerDVs, $72e7
-	dr _ReturnToBattle_UseBall, $737d
-
-
 SECTION "rom10", ROMX[$4000], BANK[10]
 ; ROM $0a : $28000 - $2BFFF
 
@@ -138,6 +88,7 @@ SECTION "rom10", ROMX[$4000], BANK[10]
 SECTION "rom11", ROMX[$4000], BANK[11]
 ; ROM $0b : $2C000 - $2FFFF
 
+	dr PrintItemDescription, $4000
 	dr MoveDeletion, $4352
 	dr TMHMPocket, $457a
 	dr AskTeachTMHM, $45ca
@@ -176,12 +127,15 @@ SECTION "rom15", ROMX[$4000], BANK[15]
 	dr UpdateEnemyHUD, $5eac
 	dr MoveSelectionScreen, $6338
 	dr LoadEnemyMon, $679c
+	dr _LoadBattleFontsHPBar, $6c29
 	dr _BattleRandom, $6c62
 	dr FillInExpBar, $71e7
 	dr GetBattleMonBackpic, $7294
 	dr GetEnemyMonFrontpic, $72d3
 	dr StartBattle, $7318
 	dr _DisplayLinkRecord, $75bd
+	dr GetTrainerBackpic, $79b6
+
 
 SECTION "Evolutions and Attacks", ROMX[$4000], BANK[16]
 SECTION "rom16", ROMX[$4000], BANK[16]
@@ -349,6 +303,7 @@ DummyPredef36::
 	drd ClearSpriteAnims2, $6752
 	drd LoadOverworldMonIcon, $6769
 	drd LoadMenuMonIcon, $677d
+	drd FreezeMonIcons, $68d9
 	drd UnfreezeMonIcons, $6900
 	drd HoldSwitchmonIcon, $691b
 

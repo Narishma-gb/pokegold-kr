@@ -20,7 +20,7 @@ _2DMenu_::
 	bit STATICMENU_DISABLE_B_F, a
 	jr nz, .skip2
 	call GetMenuJoypad
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .quit2
 
 .skip2
@@ -250,9 +250,9 @@ Menu_WasButtonPressed:
 
 _2DMenuInterpretJoypad:
 	call GetMenuJoypad
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jp nz, .a_b_start_select
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jp nz, .a_b_start_select
 	bit B_PAD_SELECT, a
 	jp nz, .a_b_start_select
@@ -436,23 +436,34 @@ Place2DMenuCursor:
 	ret
 
 _PushWindow::
-	xor a ; BANK(sWindowStack)
-	call OpenSRAM
+	di
+	ld a, BANK("WRAM Window Stack")
+	ldh [rWBK], a
 
 	ld hl, wWindowStackPointer
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+	ld a, $01
+	ldh [rWBK], a
+	ei
 	push de
 
 	ld b, wMenuHeaderEnd - wMenuHeader
 	ld hl, wMenuHeader
+	di
+	ld a, BANK("WRAM Window Stack")
+	ldh [rWBK], a
 .loop
 	ld a, [hli]
 	ld [de], a
 	dec de
 	dec b
 	jr nz, .loop
+
+	ld a, $01
+	ldh [rWBK], a
+	ei
 
 ; If bit MENU_BACKUP_TILES_F or MENU_BACKUP_TILES_2_F of the menu flags is set,
 ; also set bit MENU_RESTORE_TILES_F of the address at 7:[wWindowStackPointer],
@@ -465,11 +476,17 @@ _PushWindow::
 	jr z, .no_backup_tiles
 
 .backup_tiles
+	di
+	ld a, BANK("WRAM Window Stack")
+	ldh [rWBK], a
 	ld hl, wWindowStackPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	set MENU_RESTORE_TILES_F, [hl]
+	ld a, $01
+	ldh [rWBK], a
+	ei
 	call MenuBoxCoord2Tile
 	call GetMenuBoxDims
 	inc b
@@ -479,10 +496,47 @@ _PushWindow::
 .row
 	push bc
 	push hl
-
 .col
-	ld a, [hli]
+	push bc
+	push hl
+
+	di
+	ld a, BANK("WRAM Window Stack")
+	ldh [rWBK], a
+	ld a, [hl]
 	ld [de], a
+
+	ld bc, wAttrmap - wTilemap
+	add hl, bc
+	and $fe
+	ld c, a
+	ld a, $04
+	ldh [rWBK], a
+	ld a, [hl]
+	ld [de], a
+	ld a, BANK("WRAM 2")
+	ldh [rWBK], a
+	ld l, c
+	ld h, HIGH(wHangulTilesIndexTable)
+	ld a, [hli]
+	ld l, [hl]
+	and $0f
+	ld h, a
+	ld a, $05
+	ldh [rWBK], a
+	ld a, h
+	ld [de], a
+	ld a, $06
+	ldh [rWBK], a
+	ld a, l
+	ld [de], a
+	ld a, $01
+	ldh [rWBK], a
+	ei
+
+	pop hl
+	pop bc
+	inc hl
 	dec de
 	dec c
 	jr nz, .col
@@ -498,14 +552,23 @@ _PushWindow::
 .no_backup_tiles
 	pop hl ; last-pushed register was de
 	push hl
+	di
+	ld a, BANK("WRAM Window Stack")
+	ldh [rWBK], a
 	ld a, [hld]
 	ld l, [hl]
 	ld h, a
 	res MENU_RESTORE_TILES_F, [hl]
+	ld a, $01
+	ldh [rWBK], a
+	ei
 
 .done
 	pop hl
 	call .ret ; empty function
+	di
+	ld a, BANK("WRAM Window Stack")
+	ldh [rWBK], a
 	ld a, h
 	ld [de], a
 	dec de
@@ -516,8 +579,9 @@ _PushWindow::
 	ld [hl], e
 	inc hl
 	ld [hl], d
-
-	call CloseSRAM
+	ld a, $01
+	ldh [rWBK], a
+	ei
 	ld hl, wWindowStackSize
 	inc [hl]
 	ret
@@ -528,9 +592,6 @@ _PushWindow::
 _ExitMenu::
 	xor a
 	ldh [hBGMapMode], a
-
-	xor a ; BANK(sWindowStack)
-	call OpenSRAM
 
 	call GetWindowStackTop
 	ld a, l
@@ -556,46 +617,8 @@ _ExitMenu::
 	call PopWindow
 
 .done
-	call CloseSRAM
 	ld hl, wWindowStackSize
 	dec [hl]
-	call RestoreOverworldMapTiles
-	ld a, [wSpriteUpdatesEnabled]
-	cp 0
-	ret z
-	call ReloadPalettes
-	ret
-
-RestoreOverworldMapTiles:
-	ld a, [wStateFlags]
-	bit SPRITE_UPDATES_DISABLED_F, a
-	ret z
-	xor a ; sScratch
-	call OpenSRAM
-	hlcoord 0, 0
-	ld de, sScratch
-	ld bc, SCREEN_AREA
-	call CopyBytes
-	call CloseSRAM
-	call LoadOverworldTilemapAndAttrmapPals
-	xor a ; sScratch
-	call OpenSRAM
-	ld hl, sScratch
-	decoord 0, 0
-	ld bc, SCREEN_AREA
-.loop
-	ld a, [hl]
-	cp $61
-	jr c, .next
-	ld [de], a
-.next
-	inc hl
-	inc de
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-	call CloseSRAM
 	ret
 
 Error_Cant_ExitMenu:

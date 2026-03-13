@@ -46,10 +46,10 @@ ROMX $07
 ROMX $08
 	"Clock Reset"
 	"Tileset Data 3"
-; 	"Catch Tutorial"
-; 	"Egg Moves"
-; ROMX $09
-; 	"bank9"
+	"Catch Tutorial"
+	"Egg Moves"
+ROMX $09
+	"bank9"
 ; ROMX $0a
 ; 	"bankA"
 ; ROMX $0b
@@ -287,7 +287,7 @@ WRAM0
 	org $cc27
 	"Video"
 WRAMX $1
-; 	"WRAM 1"
+	"WRAM 1"
 	org $d25c
 	"Game Data"
 	org $db1f
@@ -295,6 +295,8 @@ WRAMX $1
 ; 	"Stack"
 WRAMX $2
 	"WRAM 2"
+WRAMX $3
+	"WRAM Window Stack"
 VRAM $00
 	"VRAM0"
 VRAM $01
@@ -308,7 +310,6 @@ SRAM $00
 	org $bc39
 	"SRAM Stack"
 ; 	org $b800
-; 	"SRAM Window Stack"
 SRAM $01
 	"Save"
 	"Active Box"

@@ -31,8 +31,7 @@ _ScrollingMenu::
 	call ScrollingMenu_InitDisplay
 	ld a, 1
 	ldh [hBGMapMode], a
-	ld c, 3
-	call DelayFrames
+	call Function15ba
 	xor a
 	ldh [hBGMapMode], a
 	ret
@@ -60,9 +59,9 @@ ScrollingMenuJoyAction:
 	ldh a, [hJoyPressed]
 	and PAD_BUTTONS
 	or b
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jp nz, .a_button
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jp nz, .b_button
 	bit B_PAD_SELECT, a
 	jp nz, .select
@@ -406,7 +405,7 @@ ScrollingMenu_UpdateDisplay:
 	ret
 
 .CancelString
-	db "CANCEL@"
+	db "그만두다@"
 
 .call_function
 	ld d, h

@@ -12,13 +12,13 @@ DEF NUM_MONMENUVALUES EQU const_value - 1
 MonMenuOptionStrings:
 ; entries correspond to MONMENUVALUE_* constants
 	list_start MOVE_NAME_LENGTH - 2
-	li "STATS"
-	li "SWITCH"
-	li "ITEM"
-	li "CANCEL"
-	li "MOVE"
-	li "MAIL"
-	li "ERROR!"
+	li "강한정도를 보다"
+	li "순서바꾸기"
+	li "소지품"
+	li "돌아가다"
+	li "사용할 수 있는기술"
+	li "메일"
+	li "에러!"
 	assert_list_length NUM_MONMENUVALUES
 
 MonMenuOptions:
