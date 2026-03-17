@@ -23,6 +23,7 @@ _ClearTilemap::
 
 ClearScreen::
 	ld a, PAL_BG_TEXT
+ClearScreen2::
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
 	call ByteFill

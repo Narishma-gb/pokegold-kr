@@ -49,47 +49,14 @@ EXPORT DEF MoveDescriptions EQU $4000
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "rom10", ROMX[$4000], BANK[10]
-; ROM $0a : $28000 - $2BFFF
-
-	dr LinkTextboxAtHL, $4e38
-	dr TradeAnimation, $4eae
-	dr TradeAnimationPlayer2, $4ee6
-	dr CheckTimeCapsuleCompatibility, $5b13
-	dr EnterTimeCapsule, $5b93
-	dr WaitForOtherPlayerToExit, $5ba5
-	dr SetBitsForLinkTradeRequest, $5bee
-	dr SetBitsForBattleRequest, $5bf7
-	dr SetBitsForTimeCapsuleRequest, $5c00
-	dr WaitForLinkedFriend, $5c17
-	dr CheckLinkTimeout_Receptionist, $5c98
-	dr TryQuickSave, $5d3d
-	dr CheckBothSelectedSameRoom, $5d59
-	dr TimeCapsule, $5d86
-	dr TradeCenter, $5d9b
-	dr Colosseum, $5db0
-	dr CloseLink, $5dc5
-	dr FailedLinkToPast, $5dcd
-	dr CableClubCheckWhichChris, $5e1a
-	dr DoMysteryGift, $5ecb
-	dr CopyMysteryGiftReceivedDecorationsToPC, $65a4
-	dr UnlockMysteryGift, $65cc
-	dr ResetDailyMysteryGiftLimitIfUnlocked, $65db
-	dr BackupMysteryGift, $65ec
-	dr RestoreMysteryGift, $65fd
-	dr LoadWildMonData, $661e
-	dr InitRoamMons, $68bc
-	dr UpdateRoamMons, $693e
-	dr JumpRoamMons, $69c5
-	dr RandomUnseenWildMon, $6adc
-	dr RandomPhoneWildMon, $6b50
-	dr RandomPhoneMon, $6b98
-
 SECTION "rom11", ROMX[$4000], BANK[11]
 ; ROM $0b : $2C000 - $2FFFF
 
 	dr PrintItemDescription, $4000
 	dr MoveDeletion, $4352
+	dr StageDataForMysteryGift, $444d
+	dr MysteryGiftGetItem, $4513
+	dr MysteryGiftGetDecoration, $4520
 	dr TMHMPocket, $457a
 	dr AskTeachTMHM, $45ca
 	dr ChooseMonToLearnTMHM, $4606
@@ -111,9 +78,11 @@ SECTION "rom13", ROMX[$4000], BANK[13]
 SECTION "rom14", ROMX[$4000], BANK[14]
 ; ROM $0e : $38000 - $3BFFF
 
+Trainers::
 	dr GetTrainerClassName, $54f3
 	dr Battle_GetTrainerName, $58f2
 	dr GetTrainerName, $58fa
+	dr TrainerGroups, $593e
 
 
 SECTION "rom15", ROMX[$4000], BANK[15]
@@ -201,6 +170,7 @@ SECTION "rom20", ROMX[$4000], BANK[20]
 	dr Unused_PlaceEnemyHPLevel, $5461
 	dr PlaceNonFaintStatus, $54b4
 	dr ListMoves, $554e
+	dr InitList, $5598
 	dr CalcLevel, $55fa
 	dr CalcExpAtLevel, $5626
 	dr _SwitchPartyMons, $56f1
@@ -311,6 +281,7 @@ DummyPredef36::
 SECTION "rom36", ROMX[$4000], BANK[36]
 ; ROM $24 : $90000 - $93FFF
 
+	dr GetCallerLocation, $441a
 	dr InitClock, $4647
 	dr SetDayOfWeek, $4897
 	dr PrintHour, $49ca
@@ -438,6 +409,7 @@ LoadMusicByte::
 	dr _PlayMusic, $4b30
 	dr _PlayCry, $4b79
 	dr _PlaySFX, $4c04
+	dr ClearChannels, $4fe9
 
 
 ;SECTION "rom59", ROMX[$4000], BANK[59]
@@ -464,9 +436,14 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr CollisionPermissionTable, $746d
 	dr Shrink1Pic, $756d
 	dr Shrink2Pic, $75fd
+	dr ValidateOTTrademon, $763d
+	dr CheckAnyOtherAliveMonsForTrade, $769c
+	dr PlaceTradePartnerNamesAndParty, $76cc
+	dr KantoMonSpecials, $770f
 	dr _NameRater, $77a6
 	dr PlaySlowCry, $78fa
 	dr NewPokedexEntry, $7930
+	dr ConvertMon_2to1, $7984
 	dr ConvertMon_1to2, $799b
 	dr UpdateUnownDex, $7aab
 	dr CheckMagikarpLength, $7bc5
@@ -507,6 +484,8 @@ TilesetPlayersRoomAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
 TilesetUndergroundAnim::
+	dr StagePartyDataForMysteryGift, $4f6a
+	dr InitMysteryGiftLayout, $4fb2
 
 
 SECTION "rom64", ROMX[$4000], BANK[64]

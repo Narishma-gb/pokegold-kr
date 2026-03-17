@@ -50,8 +50,8 @@ ROMX $08
 	"Egg Moves"
 ROMX $09
 	"bank9"
-; ROMX $0a
-; 	"bankA"
+ROMX $0a
+	"bankA"
 ; ROMX $0b
 ; 	"bankB"
 ROMX $0c

@@ -22,9 +22,10 @@ LinkCommunications:
 	ld b, 2
 	ld c, 12
 	call LinkTextboxAtHL
-	hlcoord 4, 10
+	hlcoord 7, 10
 	ld de, String_PleaseWait
 	call PlaceString
+	call WaitTop
 	ld hl, wLinkByteTimeout
 	assert LOW(SERIAL_LINK_BYTE_TIMEOUT) == 0
 	xor a ; LOW(SERIAL_LINK_BYTE_TIMEOUT)
@@ -154,6 +155,16 @@ endc
 	dec c
 	jr nz, .loop
 
+; patch hangul characters in all names
+	ld hl, wLinkData
+	ld de, NAME_LENGTH
+	lb bc, SERIAL_TEXT_REPLACEMENT_BYTE, SERIAL_NO_DATA_BYTE
+	call Link_ReplaceBytes
+	ld hl, wTimeCapsulePartyMonOTs
+	ld de, PARTY_LENGTH * (NAME_LENGTH + MON_NAME_LENGTH)
+	lb bc, SERIAL_TEXT_REPLACEMENT_BYTE, SERIAL_NO_DATA_BYTE
+	call Link_ReplaceBytes
+
 	ld hl, wLinkData
 	ld de, wOTPlayerName
 	ld bc, NAME_LENGTH
@@ -269,11 +280,16 @@ endc
 	ld a, [wLinkMode]
 	cp LINK_TRADECENTER
 	jr nz, .not_trading
+
+	ld a, $07
+	ldh [rWBK], a
 	ld hl, wLinkPlayerMail
 	ld de, wLinkOTMail
 	ld bc, wLinkPlayerMailEnd - wLinkPlayerMail
 	vc_hook Wireless_ExchangeBytes_mail
 	call ExchangeBytes
+	ld a, $01
+	ldh [rWBK], a
 .not_trading
 
 	xor a
@@ -322,9 +338,24 @@ endc
 	dec c
 	jr nz, .loop1
 
+; patch hangul characters in all names
+	ld hl, wLinkData
+	ld de, NAME_LENGTH
+	lb bc, SERIAL_TEXT_REPLACEMENT_BYTE, SERIAL_NO_DATA_BYTE
+	call Link_ReplaceBytes
+	ld hl, wLinkPlayerPartyMonOTs
+	ld de, PARTY_LENGTH * (NAME_LENGTH + MON_NAME_LENGTH)
+	lb bc, SERIAL_TEXT_REPLACEMENT_BYTE, SERIAL_NO_DATA_BYTE
+	call Link_ReplaceBytes
+
 	ld a, [wLinkMode]
 	cp LINK_TRADECENTER
-	jr nz, .skip_mail
+	jp nz, .skip_mail
+
+	di
+	ld a, $07
+	ldh [rWBK], a
+
 	ld hl, wLinkOTMail
 .loop2
 	ld a, [hli]
@@ -339,16 +370,16 @@ endc
 	dec hl
 
 	ld de, wLinkOTMail
-	ld bc, wLinkDataEnd - wLinkOTMail ; should be wLinkOTMailEnd - wLinkOTMail
+	ld bc, wLinkOTMailEnd - wLinkOTMail
 	call CopyBytes
 
-; Replace SERIAL_MAIL_REPLACEMENT_BYTE with SERIAL_NO_DATA_BYTE across all mail
+; Replace SERIAL_TEXT_REPLACEMENT_BYTE with SERIAL_NO_DATA_BYTE across all mail
 ; message bodies.
 	ld hl, wLinkOTMailMessages
 	ld bc, (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
 .loop4
 	ld a, [hl]
-	cp SERIAL_MAIL_REPLACEMENT_BYTE
+	cp SERIAL_TEXT_REPLACEMENT_BYTE
 	jr nz, .okay1
 	ld [hl], SERIAL_NO_DATA_BYTE
 .okay1
@@ -407,6 +438,10 @@ endc
 	ld de, wLinkReceivedMailEnd
 	xor a
 	ld [de], a
+
+	ld a, $01
+	ldh [rWBK], a
+	ei
 
 .skip_mail
 	ld hl, wLinkData
@@ -515,7 +550,7 @@ ExchangeBytes:
 	push bc
 	ld b, a
 	inc hl
-	ld a, 48
+	ld a, 96
 .wait
 	dec a
 	jr nz, .wait
@@ -539,7 +574,7 @@ ExchangeBytes:
 	ret
 
 String_PleaseWait:
-	db "PLEASE WAIT!@"
+	db "통신 준비중!@"
 
 ClearLinkData:
 	ld hl, wLinkData
@@ -551,6 +586,21 @@ ClearLinkData:
 	ld a, b
 	or c
 	jr nz, .loop
+
+	di
+	ld a, $07
+	ldh [rWBK], a
+	xor a
+	ld bc, wLinkPlayerMailEnd - wLinkPlayerMail
+	ld hl, wLinkPlayerMail
+	call ByteFill
+	xor a
+	ld bc, wLinkOTMailEnd - wLinkOTMail
+	ld hl, wLinkOTMail
+	call ByteFill
+	ld a, $01
+	ldh [rWBK], a
+	ei
 	ret
 
 FixDataForLinkTransfer:
@@ -635,6 +685,45 @@ endr
 .data2_done
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
+
+; restore hangul characters in all names
+	ld hl, wLinkData + SERIAL_PREAMBLE_LENGTH
+	ld de, NAME_LENGTH
+	lb bc, SERIAL_NO_DATA_BYTE, SERIAL_TEXT_REPLACEMENT_BYTE
+	call Link_ReplaceBytes
+
+	ld a, [wLinkMode]
+	cp LINK_TIMECAPSULE
+	jr nz, .gen2
+
+; gen1
+	ld hl, wLinkData + SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + (1 + PARTY_LENGTH + 1) + REDMON_STRUCT_LENGTH * PARTY_LENGTH
+	ld de, PARTY_LENGTH * (NAME_LENGTH + MON_NAME_LENGTH)
+	lb bc, SERIAL_NO_DATA_BYTE, SERIAL_TEXT_REPLACEMENT_BYTE
+	call Link_ReplaceBytes
+	jr .done
+
+.gen2
+	ld hl, wLinkData + SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + (1 + PARTY_LENGTH + 1) + 2 + PARTYMON_STRUCT_LENGTH * PARTY_LENGTH
+	ld de, PARTY_LENGTH * (NAME_LENGTH + MON_NAME_LENGTH)
+	lb bc, SERIAL_NO_DATA_BYTE, SERIAL_TEXT_REPLACEMENT_BYTE
+	call Link_ReplaceBytes
+
+.done
+	ret
+
+Link_ReplaceBytes:
+.loop
+	ld a, [hl]
+	cp b
+	jr nz, .next
+	ld [hl], c
+.next
+	inc hl
+	dec de
+	ld a, d
+	or e
+	jr nz, .loop
 	ret
 
 Link_PrepPartyData_Gen1:
@@ -846,6 +935,10 @@ Link_PrepPartyData_Gen2:
 	cp LINK_TRADECENTER
 	ret nz
 
+	di
+	ld a, $07
+	ldh [rWBK], a
+
 ; Fill 5 bytes at wLinkPlayerMailPreamble with $20
 	ld de, wLinkPlayerMail
 	ld a, SERIAL_MAIL_PREAMBLE_BYTE
@@ -887,7 +980,7 @@ Link_PrepPartyData_Gen2:
 	ld a, [hl]
 	cp SERIAL_NO_DATA_BYTE
 	jr nz, .message_patch_skip
-	ld [hl], SERIAL_MAIL_REPLACEMENT_BYTE
+	ld [hl], SERIAL_TEXT_REPLACEMENT_BYTE
 .message_patch_skip
 	inc hl
 	dec bc
@@ -915,6 +1008,10 @@ Link_PrepPartyData_Gen2:
 	jr nz, .metadata_patch_loop
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
+
+	ld a, $01
+	ldh [rWBK], a
+	ei
 	ret
 
 Link_CopyMailPreamble:
@@ -1155,7 +1252,8 @@ Link_FindFirstNonControlCharacter_AllowZero:
 	ret
 
 InitTradeMenuDisplay:
-	call ClearTilemap
+	xor a
+	call ClearScreen2
 	call LoadTradeScreenBorderGFX
 	call PlaceTradeScreenTextbox
 	call PlaceTradeScreenFooter
@@ -1174,19 +1272,19 @@ InitTradeMenuDisplay:
 LinkTrade_OTPartyMenu:
 	ld a, OTPARTYMON
 	ld [wMonType], a
-	ld a, PAD_A | PAD_UP | PAD_DOWN
+	ld a, PAD_A | PAD_LEFT | PAD_DOWN
 	ld [wMenuJoypadFilter], a
 	ld a, [wOTPartyCount]
 	ld [w2DMenuNumRows], a
 	ld a, 1
 	ld [w2DMenuNumCols], a
-	ld a, 9
+	ld a, 3
 	ld [w2DMenuCursorInitY], a
-	ld a, 6
+	ld a, 12
 	ld [w2DMenuCursorInitX], a
 	ld a, 1
 	ld [wMenuCursorX], a
-	ln a, 1, 0
+	ln a, 2, 0
 	ld [w2DMenuCursorOffsets], a
 	ld a, MENU_UNUSED
 	ld [w2DMenuFlags1], a
@@ -1197,7 +1295,7 @@ LinkTradeOTPartymonMenuLoop:
 	call ScrollingMenuJoypad
 	and a
 	jp z, LinkTradePartiesMenuMasterLoop
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr z, .not_a_button
 	ld a, INIT_ENEMYOT_LIST
 	ld [wInitListType], a
@@ -1207,21 +1305,20 @@ LinkTradeOTPartymonMenuLoop:
 	jp LinkTradePartiesMenuMasterLoop
 
 .not_a_button
-	bit B_PAD_UP, a
-	jr z, .not_d_up
-	ld a, [wMenuCursorY]
-	ld b, a
-	ld a, [wOTPartyCount]
-	cp b
-	jp nz, LinkTradePartiesMenuMasterLoop
+	bit B_PAD_LEFT, a
+	jr z, .not_d_left
 	xor a
 	ld [wMonType], a
 	call HideCursor
+	ld a, [wMenuCursorY]
+	ld b, a
 	ld a, [wPartyCount]
+	cp b
+	jr nc, LinkTrade_PlayerPartyMenu
 	ld [wMenuCursorY], a
 	jr LinkTrade_PlayerPartyMenu
 
-.not_d_up
+.not_d_left
 	bit B_PAD_DOWN, a
 	jp z, LinkTradePartiesMenuMasterLoop
 	jp LinkTradeOTPartymonMenuCheckCancel
@@ -1229,19 +1326,19 @@ LinkTradeOTPartymonMenuLoop:
 LinkTrade_PlayerPartyMenu:
 	xor a
 	ld [wMonType], a
-	ld a, PAD_A | PAD_UP | PAD_DOWN
+	ld a, PAD_A | PAD_RIGHT | PAD_DOWN
 	ld [wMenuJoypadFilter], a
 	ld a, [wPartyCount]
 	ld [w2DMenuNumRows], a
 	ld a, 1
 	ld [w2DMenuNumCols], a
-	ld a, 1
+	ld a, 3
 	ld [w2DMenuCursorInitY], a
-	ld a, 6
+	ld a, 2
 	ld [w2DMenuCursorInitX], a
 	ld a, 1
 	ld [wMenuCursorX], a
-	ln a, 1, 0
+	ln a, 2, 0
 	ld [w2DMenuCursorOffsets], a
 	ld a, MENU_UNUSED
 	ld [w2DMenuFlags1], a
@@ -1255,35 +1352,29 @@ LinkTradePartymonMenuLoop:
 	jp LinkTradePartiesMenuMasterLoop
 
 .check_joypad
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr z, .not_a_button
 	jp LinkTrade_TradeStatsMenu
 
 .not_a_button
-	bit B_PAD_DOWN, a
-	jr z, .not_d_down
-	ld a, [wMenuCursorY]
-	dec a
-	jp nz, LinkTradePartiesMenuMasterLoop
+	bit B_PAD_RIGHT, a
+	jr z, .not_d_right
 	ld a, OTPARTYMON
 	ld [wMonType], a
 	call HideCursor
-	ld a, 1
-	ld [wMenuCursorY], a
-	jp LinkTrade_OTPartyMenu
-
-.not_d_down
-	bit B_PAD_UP, a
-	jr z, LinkTradePartiesMenuMasterLoop
 	ld a, [wMenuCursorY]
 	ld b, a
-	ld a, [wPartyCount]
+	ld a, [wOTPartyCount]
 	cp b
-	jr nz, LinkTradePartiesMenuMasterLoop
-	call HideCursor
-	ld a, 1
+	jr nc, .cursor_ok
 	ld [wMenuCursorY], a
-	jp LinkTrade_PlayerPartyMenu
+.cursor_ok
+	jp LinkTrade_OTPartyMenu
+
+.not_d_right
+	bit B_PAD_DOWN, a
+	jr z, LinkTradePartiesMenuMasterLoop
+	jp LinkTradeOTPartymonMenuCheckCancel
 
 LinkTradePartiesMenuMasterLoop:
 	ld a, [wMonType]
@@ -1297,8 +1388,8 @@ LinkTrade_TradeStatsMenu:
 	call PlaceHollowCursor
 	ld a, [wMenuCursorY]
 	push af
-	hlcoord 0, 15
-	ld b, 1
+	hlcoord 0, 14
+	ld b, 2
 	ld c, 18
 	call LinkTextboxAtHL
 	hlcoord 2, 16
@@ -1329,7 +1420,7 @@ LinkTrade_TradeStatsMenu:
 	call ScrollingMenuJoypad
 	bit B_PAD_RIGHT, a
 	jr nz, .d_right
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .show_stats
 .b_button
 	pop af
@@ -1361,7 +1452,7 @@ LinkTrade_TradeStatsMenu:
 	call ScrollingMenuJoypad
 	bit B_PAD_LEFT, a
 	jp nz, .joy_loop
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .b_button
 	jr .try_trade
 
@@ -1446,7 +1537,7 @@ LinkTrade_TradeStatsMenu:
 	text_end
 
 .String_Stats_Trade:
-	db "STATS     TRADE@"
+	db "스테이터스를 보다 교환에 내놓다@"
 
 .LinkAbnormalMonText:
 	text_far _LinkAbnormalMonText
@@ -1466,15 +1557,15 @@ LinkTradeOTPartymonMenuCheckCancel:
 	ldh a, [hJoyLast]
 	and a
 	jr z, .loop2
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .a_button
 	bit B_PAD_UP, a
 	jr z, .loop2
 	ld a, ' '
 	ldcoord_a 1, 16
-	ld a, [wOTPartyCount]
+	ld a, [wPartyCount]
 	ld [wMenuCursorY], a
-	jp LinkTrade_OTPartyMenu
+	jp LinkTrade_PlayerPartyMenu
 
 .a_button
 	ld a, '▷'
@@ -1502,28 +1593,27 @@ ExitLinkCommunications:
 
 PlaceTradeScreenFooter:
 ; Fill the screen footer with pattern tile
-	hlcoord 0, 16
+	hlcoord 0, 15
 	ld a, $7e
-	ld bc, 2 * SCREEN_WIDTH
+	ld bc, 3 * SCREEN_WIDTH
 	call ByteFill
-; Clear out area for cancel string
-	hlcoord 1, 16
-	ld a, ' '
-	ld bc, SCREEN_WIDTH - 2
-	call ByteFill
-; Place the string
+; Place the cancel string
+	hlcoord 0, 14
+	ld b, 2
+	ld c, 5
+	call LinkTextboxAtHL
 	hlcoord 2, 16
 	ld de, .CancelString
 	jp PlaceString
 
 .CancelString:
-	db "CANCEL@"
+	db "교환중지@"
 
 LinkTradePlaceArrow:
 ; Indicates which pokemon the other player has selected to trade
 	ld a, [wOtherPlayerLinkMode]
-	hlcoord 6, 9
-	ld bc, SCREEN_WIDTH
+	hlcoord 12, 3
+	ld bc, 2 * SCREEN_WIDTH
 	call AddNTimes
 	ld [hl], '▷'
 	ret
@@ -1578,8 +1668,8 @@ LinkTrade:
 	bccoord 1, 14
 	call PrintTextboxTextAt
 	call LoadTilemapToTempTilemap
-	hlcoord 10, 7
-	ld b, 3
+	hlcoord 10, 6
+	ld b, 4
 	ld c, 7
 	call LinkTextboxAtHL
 	ld de, String_TradeCancel
@@ -1607,7 +1697,7 @@ LinkTrade:
 	push af
 	call SafeLoadTempTilemapToTilemap
 	pop af
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, .canceled
 	ld a, [wMenuCursorY]
 	dec a
@@ -1678,11 +1768,16 @@ LinkTrade:
 	ld a, [wCurOTTradePartyMon]
 	ld bc, MAIL_STRUCT_LENGTH
 	call AddNTimes
+	di
+	ld a, $07
+	ldh [rWBK], a
 	pop de
 	ld bc, MAIL_STRUCT_LENGTH
 	call CopyBytes
 	call CloseSRAM
-
+	ld a, $01
+	ldh [rWBK], a
+	ei
 ; Buffer player data
 ; nickname
 	ld hl, wPlayerName
@@ -1875,6 +1970,7 @@ LinkTrade:
 	hlcoord 1, 14
 	ld de, String_TradeCompleted
 	call PlaceString
+	call WaitTop
 	vc_hook Trade_save_game_end
 	ld c, 50
 	call DelayFrames
@@ -1889,21 +1985,36 @@ InitTradeMenuDisplay_Delay:
 	jp InitTradeMenuDisplay
 
 String_TradeCancel:
-	db   "TRADE"
-	next "CANCEL@"
+	db   "교환"
+	next "그만두다@"
 
 LinkAskTradeForText:
 	text_far _LinkAskTradeForText
 	text_end
 
 String_TradeCompleted:
-	db   "Trade completed!@"
+	db   "교환 종료!@"
 
 String_TooBadTheTradeWasCanceled:
-	db   "Too bad! The trade"
-	next "was canceled!@"
+	db   "유감입니다만"
+	next "교환은 캔슬되었습니다@"
 
 LinkTextboxAtHL:
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	push bc
+	push hl
+	call TextboxPalette
+	pop hl
+	pop bc
+	call .Textbox
+	pop af
+	ldh [hBGMapMode], a
+	ret
+
+.Textbox:
 	push hl
 	ld a, $78
 	ld [hli], a
@@ -1954,13 +2065,13 @@ SetTradeRoomBGPals:
 	jp SetDefaultBGPAndOBP
 
 PlaceTradeScreenTextbox:
-	hlcoord 0, 0
-	ld b, 6
-	ld c, 18
+	hlcoord 0, 1
+	ld b, 12
+	ld c, 8
 	call LinkTextboxAtHL
-	hlcoord 0, 8
-	ld b, 6
-	ld c, 18
+	hlcoord 10, 1
+	ld b, 12
+	ld c, 8
 	call LinkTextboxAtHL
 	farcall PlaceTradePartnerNamesAndParty
 	ret

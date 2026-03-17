@@ -579,21 +579,10 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	ld bc, SCREEN_WIDTH
 	ld a, '─'
 	call ByteFill
-	hlcoord 0, 1
+	hlcoord 1, 2
 	ld de, wLinkPlayer1Name
 	call PlaceString
-	ld hl, wLinkPlayer2Name
-	ld de, 0
-.find_name_end_loop
-	ld a, [hli]
-	cp '@'
-	jr z, .done
-	dec de
-	jr .find_name_end_loop
-
-.done
-	hlcoord 0, 4
-	add hl, de
+	hlcoord 14, 2
 	ld de, wLinkPlayer2Name
 	call PlaceString
 	hlcoord 7, 2
@@ -659,9 +648,9 @@ TradeAnim_ExitLinkTube:
 	ret
 
 TradeAnim_SetupGivemonScroll:
-	ld a, $8f
+	ld a, $87
 	ldh [hWX], a
-	ld a, $88
+	ld a, $80
 	ldh [hSCX], a
 	ld a, $50
 	ldh [hWY], a
@@ -880,40 +869,40 @@ TrademonStats_MonTemplate:
 	call TradeAnim_BlankTilemap
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
-	hlcoord 3, 0
-	ld b, $6
-	ld c, $d
+	hlcoord 5, 0
+	ld b, 6
+	ld c, 9
 	call Textbox
-	hlcoord 4, 0
+	hlcoord 6, 0
 	ld de, .OTMonData
 	call PlaceString
 	ret
 
 .OTMonData:
-	db   "─── №."
+	db   "─ №<DOT>"
 	next ""
-	next "OT/"
-	next "<ID>№.@"
+	next "어버이/"
+	next " <ID>№<DOT>@"
 
 TrademonStats_Egg:
 	call WaitTop
 	call TradeAnim_BlankTilemap
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
-	hlcoord 3, 0
+	hlcoord 5, 0
 	ld b, 6
-	ld c, 13
+	ld c, 9
 	call Textbox
-	hlcoord 4, 2
+	hlcoord 6, 2
 	ld de, .EggData
 	call PlaceString
 	call TrademonStats_WaitBGMap
 	ret
 
 .EggData:
-	db   "EGG"
-	next "OT/?????"
-	next "<ID>№.?????@"
+	db   "알"
+	next "어버이/?????"
+	next " <ID>№<DOT>?????@"
 
 TrademonStats_WaitBGMap:
 	call WaitBGMap
@@ -929,17 +918,17 @@ TrademonStats_PrintSpeciesNumber:
 	ret
 
 TrademonStats_PrintSpeciesName:
-	hlcoord 4, 2
+	hlcoord 6, 2
 	call PlaceString
 	ret
 
 TrademonStats_PrintOTName:
-	hlcoord 7, 4
+	hlcoord 10, 4
 	call PlaceString
 	ret
 
 TrademonStats_PrintTrademonID:
-	hlcoord 7, 6
+	hlcoord 10, 6
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	ret
@@ -1217,6 +1206,7 @@ TradeAnim_BlankTilemap:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	ret
 
 TradeAnim_CopyBoxFromDEtoHL:
@@ -1226,6 +1216,7 @@ TradeAnim_CopyBoxFromDEtoHL:
 .col
 	ld a, [de]
 	inc de
+	call Function14b6
 	ld [hli], a
 	dec c
 	jr nz, .col
@@ -1360,8 +1351,8 @@ MACRO debugtrade
 ENDM
 
 .DebugTradeData:
-	debugtrade VENUSAUR,  "ゲーフり",  $0123 ; GAME FREAK
-	debugtrade CHARIZARD, "クりーチャ", $0456 ; Creatures Inc.
+	debugtrade VENUSAUR,  "ゲーフリ",  $0123 ; GAME FREAK
+	debugtrade CHARIZARD, "クリーチャ", $0456 ; Creatures Inc.
 
 TradeGameBoyTilemap:  INCBIN "gfx/trade/game_boy.tilemap" ; 6x8
 TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap" ; 12x3

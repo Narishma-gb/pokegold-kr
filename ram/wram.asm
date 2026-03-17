@@ -610,7 +610,7 @@ SECTION UNION "Overworld Map", WRAM0
 	ds 500
 wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
-
+*/
 
 SECTION UNION "Overworld Map", WRAM0
 
@@ -647,7 +647,7 @@ wMysteryGiftPlayerWhichDeco:: db
 wMysteryGiftPlayerBackupItem:: db
 	ds 1
 wMysteryGiftPlayerDataEnd::
-*/
+
 
 SECTION UNION "Overworld Map", WRAM0
 

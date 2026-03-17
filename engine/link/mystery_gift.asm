@@ -18,7 +18,7 @@ DEF MG_OKAY           EQU ~MG_NOT_OKAY
 DEF MG_START_END      EQU %11111111
 
 DEF REGION_PREFIX EQU $96
-DEF REGION_CODE   EQU $90 ; USA
+DEF REGION_CODE   EQU $80 ; Korea
 
 DEF MESSAGE_PREFIX EQU $5a
 
@@ -27,7 +27,7 @@ DoMysteryGift:
 	call ClearSprites
 	call WaitBGMap
 	farcall InitMysteryGiftLayout
-	hlcoord 3, 8
+	hlcoord 4, 8
 	ld de, .String_PressAToLink_BToCancel
 	call PlaceString
 	call WaitBGMap
@@ -76,14 +76,13 @@ endc
 	jp nz, .CommunicationError
 	ld a, [wMysteryGiftPartnerGameVersion]
 	cp POKEMON_PIKACHU_2_VERSION
-	jr z, .skip_checks
+	jp z, .CommunicationError
 	call .CheckAlreadyGotFiveGiftsToday
 	ld hl, .MysteryGiftFiveADayText ; Only 5 gifts a day
 	jp nc, .PrintTextAndExit
 	call .CheckAlreadyGotAGiftFromThatPerson
 	ld hl, .MysteryGiftOneADayText ; Only one gift a day per person
 	jp c, .PrintTextAndExit
-.skip_checks
 	ld a, [wMysteryGiftPlayerBackupItem]
 	and a
 	jr nz, .GiftWaiting
@@ -157,10 +156,10 @@ endc
 	ret
 
 .String_PressAToLink_BToCancel:
-	db   "Press A to"
-	next "link IR-Device"
-	next "Press B to"
-	next "cancel it."
+	db   "A버튼을 누르면"
+	next "통신을 할 수 있어요!"
+	next "B버튼을 누르면"
+	next "통신을 중지합니다!"
 	db   "@"
 
 .MysteryGiftCanceledText:
@@ -357,7 +356,7 @@ endc
 	jr nz, .restart
 	; Check if we've pressed the B button to cancel
 	ldh a, [hMGJoypadReleased]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .continue
 	ld a, MG_CANCELED
 	ldh [hMGStatusFlags], a
@@ -702,7 +701,7 @@ InitializeIRCommunicationRoles:
 	ld c, LOW(rRP)
 	; Check if we've pressed the B button to cancel
 	ldh a, [hMGJoypadReleased]
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr z, .not_canceled
 	ld a, MG_CANCELED
 	ldh [hMGStatusFlags], a
@@ -710,7 +709,7 @@ InitializeIRCommunicationRoles:
 
 .not_canceled
 	; Check if we've pressed the A button to start sending
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, SendIRHelloMessageAfterDelay
 	; If rRP is not receiving data, keep checking for input
 	ldh a, [c]
