@@ -42,8 +42,9 @@
 	kr_charmap "<ㅟ>", $33
 	kr_charmap "<ㅢ>", $34
 
-;	kr_charmap "_", $3e
-;	kr_charmap "-", $3f
+; naming screen font characters
+	kr_charmap "<_>", $3e ; underline
+	kr_charmap "<—>", $3f ; middleline
 
 	kr_charmap "「", $60
 	kr_charmap "」", $61
@@ -69,3 +70,5 @@
 	kr_charmap "<7>", $f7
 	kr_charmap "<8>", $f8
 	kr_charmap "<9>", $f9
+
+	kr_charmap "< >", $ff

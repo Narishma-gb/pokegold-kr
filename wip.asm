@@ -670,15 +670,6 @@ SECTION "rom112", ROMX[$4879], BANK[112]
 	dr _DudeAutoInput_RightA, $4b1b
 
 
-SECTION "rom113", ROMX[$4000], BANK[113]
-; ROM $71 : $1C4000 - $1C7FFF
-
-	dr Data1c4000, $4000
-	dr Data1c4200, $4200
-	dr Data1c5800, $5800
-	dr Data1c5800_end, $5c00
-
-
 ;SECTION "rom123", ROMX[$4000], BANK[123]
 ; ROM $7b : $1EC000 - $1EFFFF
 

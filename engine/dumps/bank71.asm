@@ -1,9 +1,30 @@
 SECTION "bank71", ROMX
 
+MACRO kr_struct
+	if _NARG > 2
+		dw \1 + (\2) << 5 + (\3) << 10
+	elif _NARG > 1
+		dw \1 + (\2) << 5
+	else
+		dw \1
+	endc
+ENDM
+
+HangulStructureTables:
+INCLUDE "data/text/hangul_structure_tables.asm"
+
+NamingScreenGFX_Font:
+INCBIN "gfx/font/hangul/jamo_consonants.2bpp"
+INCBIN "gfx/font/font_naming_screen.2bpp"
+INCBIN "gfx/font/hangul/jamo_vowels.2bpp"
+INCBIN "gfx/font/font_naming_screen2.2bpp"
+
+	ds 16, 0 ; blank tile
+
 Function1c5c00:
-	call Function1c5ead
+	call GetTextCursorPosition
 	dec hl
-	ldd a, [hl]
+	ld a, [hld]
 	ld b, [hl]
 	ld c, a
 	cp $FF
@@ -17,9 +38,9 @@ Function1c5c00:
 .asm_1c5c12
 	sla c
 	rl b
-	ld hl, Data1c4000
+	ld hl, HangulStructureTables
 	add hl, bc
-	ldi a, [hl]
+	ld a, [hli]
 	ld b, [hl]
 	ld c, a
 	and b
@@ -30,297 +51,317 @@ Function1c5c00:
 
 .asm_1c5c24
 	ld a, b
-	and $7C
+	and HIGH(FINAL_BLOCK_MASK)
 	ret z
-	cp $04
+	cp FINAL_GIYEOK << 2 ; "ㄱ"
 	ret z
-	cp $10
+	cp FINAL_NIEUN << 2  ; "ㄴ"
 	ret z
-	cp $20
+	cp FINAL_RIEUL << 2  ; "ㄹ"
 	ret z
-	cp $44
+	cp FINAL_BIEUP << 2  ; "ㅂ"
 	ret z
 	scf
 	ret
 
-Function1c5c36::
+TryAddCharacter::
 	ld a, [wNamingScreenLastCharacter]
-	cp $7F
-	jr nz, .asm_1c5c41
-	ld bc, $0BFF
+	cp ' '
+	jr nz, .not_space
+	lb bc, charval("< >", 0), charval("< >", 1)
 	ret
 
-.asm_1c5c41:
-	cp $E6
-	jr nz, .asm_1c5c49
-	ld bc, $0B67
+.not_space
+	cp '<?>'
+	jr nz, .not_question
+	lb bc, charval("?", 0), charval("?", 1)
 	ret
 
-.asm_1c5c49:
-	cp $E7
-	jr nz, .asm_1c5c51
-	ld bc, $0B66
+.not_question
+	cp '<!>'
+	jr nz, .not_exclamation
+	lb bc, charval("!", 0), charval("!", 1)
 	ret
 
-.asm_1c5c51:
-	cp $F6
-	jr c, .asm_1c5c5b
-	sub $06
+.not_exclamation
+	cp '0'
+	jr c, .not_digit
+	sub '0' - charval("<0>", 1)
 	ld c, a
-	ld b, $0B
+	ld b, charval("<0>", 0)
 	ret
 
-.asm_1c5c5b:
+.not_digit
 	ld a, [wNamingScreenCurNameLength]
 	and a
-	jr nz, .asm_1c5c6a
+	jr nz, .not_first_char
 	ld a, [wNamingScreenLastCharacter]
-	sub $A0
+	sub 'ㄱ'
 	ld c, a
 	ld b, $0B
 	ret
 
-.asm_1c5c6a:
+.not_first_char
 	add sp, -6
-	ld hl, .asm_1c5c72
+	ld hl, .return
 	push hl
-	jr .asm_1c5c75
+	jr .add_jamo
 
-.asm_1c5c72:
+.return
 	add sp, 6
 	ret
 
-.asm_1c5c75:
+.add_jamo
 	ld a, [wNamingScreenLastCharacter]
-	sub $A0
+	sub 'ㄱ'
 	ld c, a
 	ld b, $0B
-	ld hl, sp+2
-	ldi [hl], a
+	ld hl, sp + 2
+	ld [hli], a
 	ld [hl], b
 	sla c
 	rl b
-	ld hl, $4000
+	ld hl, HangulStructureTables
 	add hl, bc
-	ldi a, [hl]
+	ld a, [hli]
 	ld b, [hl]
-	ld hl, sp+4
-	ldi [hl], a
+	ld hl, sp + 4
+	ld [hli], a
 	ld [hl], b
 	ld a, [wNamingScreenLastCharacter]
-	cp $C0
+	cp 'ㅏ'
 	rl a
 	and $01
-	ld hl, sp+6
+	ld hl, sp + 6
 	ld [hl], a
+
+; Stack layout:
+; +7 nothing
+; +6 boolean (0 = vowel; 1 = consonant)
+; +4 index of selected hangul character (in HangulStructureTables)
+; +2 charmap index of selected hangul character (in table $b)
+; +0 .return address
 	ld hl, wNamingScreenCurNameLength
 	dec [hl]
 	dec [hl]
-	call Function1c5ead
-	ldi a, [hl]
+	call GetTextCursorPosition
+	ld a, [hli]
 	ld c, [hl]
 	ld b, a
 	sla c
 	rl b
-	ld hl, Data1c4000
+	ld hl, HangulStructureTables
 	add hl, bc
-	ldi a, [hl]
+	ld a, [hli]
 	ld b, [hl]
 	ld c, a
 	and b
-	cp $FF
-	jr nz, .asm_1c5cc1
-.asm_1c5cb6:
+	cp -1
+	jr nz, .try_add_block
+
+.new_character
 	ld hl, wNamingScreenCurNameLength
 	inc [hl]
 	inc [hl]
-	ld hl, sp+2
-	ldi a, [hl]
+	ld hl, sp + 2
+	ld a, [hli]
 	ld b, [hl]
 	ld c, a
 	ret
 
-.asm_1c5cc1:
+.try_add_block
+; check current character under cursor
 	ld a, b
-	and $7F
-	jr nz, .asm_1c5cde
+	and HIGH(FINAL_BLOCK_MASK) | HIGH(MEDIAL_BLOCK_MASK)
+	jr nz, .try_add_final
 	ld a, c
-	and $E0
-	jr nz, .asm_1c5cde
-	ld hl, sp+6
+	and LOW(MEDIAL_BLOCK_MASK)
+	jr nz, .try_add_final
+; current is initial consonant
+	ld hl, sp + 6
 	bit 0, [hl]
-	jr z, .asm_1c5cd3
-	jr .asm_1c5cb6
+	jr z, .add_medial_vowel
+; add medial consonant (illegal)
+	jr .new_character
 
-.asm_1c5cd3:
-	ld hl, sp+4
-	ldi a, [hl]
+.add_medial_vowel
+	ld hl, sp + 4
+	ld a, [hli]
 	or c
 	ld c, a
 	ld a, [hl]
 	or b
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5cde:
+.try_add_final
 	ld a, b
-	and $7C
-	jr nz, .asm_1c5cea
+	and HIGH(FINAL_BLOCK_MASK)
+	jr nz, .add_final
 	ld a, c
-	and $1F
-	jr nz, .asm_1c5cea
-	jr .asm_1c5cb6
+	and INITIAL_BLOCK_MASK
+	jr nz, .add_final
+; current is jamo vowel (illegal character)
+	jr .new_character
 
-.asm_1c5cea:
+.add_final
 	ld a, b
-	and $7C
-	jr nz, .asm_1c5d0e
-	ld hl, sp+6
+	and HIGH(FINAL_BLOCK_MASK)
+	jr nz, .add_second_final
+	ld hl, sp + 6
 	bit 0, [hl]
-	jr z, .asm_1c5d0c
-	ld hl, sp+2
+	jr z, .add_final_vowel
+; add first final consonant
+	ld hl, sp + 2
 	ld a, [hl]
 	ld e, a
-	ld d, $00
+	ld d, 0
 	sla e
 	rl d
-	ld hl, Data1c5e4f
+	ld hl, FinalConsonantTable
 	add hl, de
-	ldi a, [hl]
+	ld a, [hli]
 	or c
 	ld c, a
 	ld a, [hl]
 	or b
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d0c:
-	jr .asm_1c5cb6
+.add_final_vowel
+; add a vowel after a medial vowel
+	jr .new_character
 
-.asm_1c5d0e:
-	ld hl, sp+6
+.add_second_final
+	ld hl, sp + 6
 	bit 0, [hl]
-	jp z, .asm_1c5dc8
-	ld hl, sp+4
+	jp z, .add_second_final_vowel
+; add second final consonant
+	ld hl, sp + 4
 	ld a, [hl]
-	and $1F
+	and INITIAL_BLOCK_MASK
 	ld e, a
 	ld a, b
-	and $7C
-	cp $04
-	jr nz, .asm_1c5d31
+	and HIGH(FINAL_BLOCK_MASK)
+
+	cp FINAL_GIYEOK << 2 ; "ㄱ"
+	jr nz, .not_final_giyeok
 	ld a, e
-	cp $0A
-	jp nz, .asm_1c5cb6
+	cp INITIAL_SIOT ; "ㅅ"
+	jp nz, .new_character
 	ld a, b
-	and $03
-	or $0C
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_GIYEOK_SIOT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d31:
-	cp $10
-	jr nz, .asm_1c5d51
+.not_final_giyeok
+	cp FINAL_NIEUN << 2 ; "ㄴ"
+	jr nz, .not_final_nieun
 	ld a, e
-	cp $0D
-	jr nz, .asm_1c5d43
+	cp INITIAL_JIEUT ; "ㅈ"
+	jr nz, .not_nieun_jieut
 	ld a, b
-	and $03
-	or $14
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_NIEUN_JIEUT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d43:
-	cp $13
-	jp nz, .asm_1c5cb6
+.not_nieun_jieut
+	cp INITIAL_HIEUT ; "ㅎ"
+	jp nz, .new_character
 	ld a, b
-	and $03
-	or $18
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_NIEUN_HIEUT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d51:
-	cp $20
-	jr nz, .asm_1c5db2
+.not_final_nieun
+	cp FINAL_RIEUL << 2 ; "ㄹ"
+	jr nz, .not_final_rieul
 	ld a, e
-	cp $01
-	jr nz, .asm_1c5d63
+	cp INITIAL_GIYEOK ; "ㄱ"
+	jr nz, .not_rieul_giyeok
 	ld a, b
-	and $03
-	or $24
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_GIYEOK << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d63:
-	cp $07
-	jr nz, .asm_1c5d70
+.not_rieul_giyeok
+	cp INITIAL_MIEUM ; "ㅁ"
+	jr nz, .not_rieul_mieum
 	ld a, b
-	and $03
-	or $28
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_MIEUM << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d70:
-	cp $08
-	jr nz, .asm_1c5d7d
+.not_rieul_mieum
+	cp INITIAL_BIEUP ; "ㅂ"
+	jr nz, .not_rieul_bieup
 	ld a, b
-	and $03
-	or $2C
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_BIEUP << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d7d:
-	cp $0A
-	jr nz, .asm_1c5d8a
+.not_rieul_bieup
+	cp INITIAL_SIOT ; "ㅅ"
+	jr nz, .not_rieul_siot
 	ld a, b
-	and $03
-	or $30
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_SIOT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d8a:
-	cp $11
-	jr nz, .asm_1c5d97
+.not_rieul_siot
+	cp INITIAL_TIEUT ; "ㅌ"
+	jr nz, .not_rieul_tieut
 	ld a, b
-	and $03
-	or $34
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_TIEUT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5d97:
-	cp $12
-	jr nz, .asm_1c5da4
+.not_rieul_tieut
+	cp INITIAL_PIEUP ; "ㅍ"
+	jr nz, .not_rieul_pieup
 	ld a, b
-	and $03
-	or $38
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_PIEUP << 2
+; this double final consonant is never used in hangul tables,
+; and will result in a new character being added
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5da4:
-	cp $13
-	jp nz, .asm_1c5cb6
+.not_rieul_pieup
+	cp INITIAL_HIEUT ; "ㅎ"
+	jp nz, .new_character
 	ld a, b
-	and $03
-	or $3C
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_RIEUL_HIEUT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5db2:
-	cp $44
-	jr nz, .asm_1c5dc5
+.not_final_rieul
+	cp FINAL_BIEUP << 2 ; "ㅂ"
+	jr nz, .not_final_bieup
 	ld a, e
-	cp $0A
-	jp nz, .asm_1c5cb6
+	cp INITIAL_SIOT ; "ㅅ"
+	jp nz, .new_character
 	ld a, b
-	and $03
-	or $48
+	and HIGH(MEDIAL_BLOCK_MASK)
+	or FINAL_BIEUP_SIOT << 2
 	ld b, a
-	jp .asm_1c5e21
+	jp .done
 
-.asm_1c5dc5:
-	jp .asm_1c5cb6
+.not_final_bieup
+	jp .new_character
 
-.asm_1c5dc8:
+.add_second_final_vowel
+; Add a vowel after a final consonant: grab last consonant and try to write a new char.
+; If successful, update the previous char with the removed consonant
 	ld hl, wNamingScreenCurNameLength
 	inc [hl]
 	inc [hl]
@@ -333,44 +374,55 @@ Function1c5c36::
 	dec [hl]
 	dec [hl]
 	ld a, b
-	and $7C
+	and HIGH(FINAL_BLOCK_MASK)
 	ld e, a
-	ld d, $00
+	ld d, 0
 	srl e
 	rr d
 	srl e
 	rr d
 	push bc
-	ld hl, Data1c5e91
+
+; Stack layout:
+; +9 nothing
+; +8 boolean (0 = vowel; 1 = consonant)
+; +6 index of selected hangul character (in HangulStructureTables)
+; +4 charmap index of selected hangul character (in table $b)
+; +2 .return address
+; +0 saved bc	
+	ld hl, NewVowelGrabConsonantTable
 	add hl, de
 	ld c, [hl]
-	ld hl, sp+6
-	ldi a, [hl]
-	and $E0
+	ld hl, sp + 6
+	ld a, [hli]
+	and LOW(MEDIAL_BLOCK_MASK)
 	or c
 	ld c, a
 	ld b, [hl]
 	push de
-	call Function1c5e28
+	call SearchMatchingHangulChar
 	pop de
 	pop hl
-	jp nc, .asm_1c5cb6
+	jp nc, .new_character
+
 	push bc
 	ld c, l
 	ld b, h
-	ld hl, Data1c5e75
+	ld hl, NewVowelRemainingConsonantTable
 	add hl, de
 	ld a, b
-	and $03
+	and HIGH(MEDIAL_BLOCK_MASK)
 	or [hl]
 	ld b, a
-	call Function1c5e28
+	call SearchMatchingHangulChar
 	pop hl
-	jp nc, .asm_1c5cb6
+	jp nc, .new_character
+
+; overwrite last character, removing last consonant
 	push hl
-	call Function1c5ead
+	call GetTextCursorPosition
 	ld a, b
-	ldi [hl], a
+	ld [hli], a
 	ld [hl], c
 	ld hl, wNamingScreenCurNameLength
 	inc [hl]
@@ -378,25 +430,26 @@ Function1c5c36::
 	pop bc
 	ret
 
-.asm_1c5e21:
-	call Function1c5e28
-	jp nc, .asm_1c5cb6
+.done
+	call SearchMatchingHangulChar
+	jp nc, .new_character
 	ret
 
-Function1c5e28:
-	ld hl, Data1c4200
-	ld d, $0A
-.asm_1c5e2d
+SearchMatchingHangulChar:
+	ld hl, HangulStructureTable1
+	ld d, $0A ; skip table $b
+.next_table
 	ld e, $00
-.asm_1c5e2f
+.next_char
 	ld a, [hl]
 	cp c
-	jr nz, .asm_1c5e45
+	jr nz, .skip1
 	inc hl
-	ldi a, [hl]
+	ld a, [hli]
 	cp b
-	jr nz, .asm_1c5e47
-	ld de, $C000
+	jr nz, .skip2
+; convert address to charmap entry: bc = ((hl - 2) - $4000) / 2
+	ld de, -$4000
 	add hl, de
 	srl h
 	rr l
@@ -406,198 +459,192 @@ Function1c5e28:
 	scf
 	ret
 
-.asm_1c5e45
+.skip1
 	inc hl
 	inc hl
-.asm_1c5e47
+.skip2
 	dec e
-	jr nz, .asm_1c5e2f
+	jr nz, .next_char
 	dec d
-	jr nz, .asm_1c5e2d
+	jr nz, .next_table
 	and a
 	ret
 
-Data1c5e4f:
-db $00, $04, $00, $10, $00, $1C, $00, $20, $00, $40, $00, $44, $00, $4C, $00, $54
-db $00, $58, $00, $5C, $00, $60, $00, $64, $00, $68, $00, $6C, $00, $08, $00, $7C
-db $00, $7C, $00, $50, $00, $7C
+INCLUDE "data/text/hangul_final_blocks.asm"
 
-Data1c5e75:
-db $00, $00, $00, $04, $00, $10, $10, $00, $00, $20, $20, $20, $20, $20, $20, $20
-db $00, $00, $44
-ds 9, $00
-
-Data1c5e91:
-db $00, $01, $02, $0A, $03, $0D, $13, $04, $06, $01, $07, $08, $0A, $11, $12, $13
-db $07, $08, $0A, $0A, $0B, $0C, $0D, $0F, $10, $11, $12, $13
-
-Function1c5ead:
+GetTextCursorPosition:
+; identical to NamingScreen_GetTextCursorPosition
 	push af
 	ld hl, wNamingScreenDestinationPointer
-	ldi a, [hl]
+	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld a, [wNamingScreenCurNameLength]
 	ld e, a
-	ld d, $00
+	ld d, 0
 	add hl, de
 	pop af
 	ret
 
-Function1c5ebd::
+DeleteCharacter::
 	ld hl, wNamingScreenCurNameLength
 	dec [hl]
 	dec [hl]
-	call Function1c5ead
-	ldi a, [hl]
+	call GetTextCursorPosition
+	ld a, [hli]
 	ld c, [hl]
 	ld b, a
 	sla c
 	rl b
-	ld hl, Data1c4000
+	ld hl, HangulStructureTables
 	add hl, bc
-	ldi a, [hl]
+	ld a, [hli]
 	ld b, [hl]
 	ld c, a
 	and b
-	cp $FF
-	jr nz, .asm_1c5eef
-.asm_1c5ed8:
-	call Function1c5ead
-	ld [hl], $0B
+	cp -1
+	jr nz, .delete_hangul_block
+
+.delete_char
+	call GetTextCursorPosition
+	ld [hl], charval("<_>", 0)
 	inc hl
-	ld [hl], $3E
+	ld [hl], charval("<_>", 1)
 	inc hl
-	ldi a, [hl]
-	cp $0B
+; was the next char also an underline?
+	ld a, [hli]
+	cp charval("<_>", 0)
 	ret nz
-	ldd a, [hl]
-	cp $3E
+	ld a, [hld]
+	cp charval("<_>", 1)
 	ret nz
-	ld [hl], $0B
+; if so, replace it with a middleline
+	ld [hl], charval("<—>", 0)
 	inc hl
-	ld [hl], $3F
+	ld [hl], charval("<—>", 1)
 	ret
 
-.asm_1c5eef:
+.delete_hangul_block
 	ld a, b
-	and $7C
-	jr z, .asm_1c5f06
-	ld hl, Data1c5f93
+	and HIGH(FINAL_BLOCK_MASK)
+	jr z, .no_final_block
+; delete a jamo in the final block
+	ld hl, DeleteLastConsonantTable
 	srl a
 	srl a
 	ld e, a
-	ld d, $00
+	ld d, 0
 	add hl, de
 	ld a, b
-	and $03
+	and HIGH(MEDIAL_BLOCK_MASK)
 	or [hl]
 	ld b, a
-	jr .asm_1c5f61
+	jr .find_remaining_char
 
-.asm_1c5f06:
+.no_final_block
 	ld a, b
-	and $03
-	jr nz, .asm_1c5f10
+	and HIGH(MEDIAL_BLOCK_MASK)
+	jr nz, .delete_medial_block
 	ld a, c
-	and $E0
-	jr z, .asm_1c5ed8
-.asm_1c5f10:
-	call Function1c5ead
-	ld [hl], $0B
+	and LOW(MEDIAL_BLOCK_MASK)
+	jr z, .delete_char
+
+.delete_medial_block
+	call GetTextCursorPosition
+; preventively delete the current character
+	ld [hl], charval("<_>", 0)
 	inc hl
-	ld [hl], $3E
+	ld [hl], charval("<_>", 1)
 	inc hl
-	ldi a, [hl]
-	cp $0B
-	jr nz, .asm_1c5f28
-	ldd a, [hl]
-	cp $3E
-	jr nz, .asm_1c5f28
-	ld [hl], $0B
+; was the next char also an underline?
+	ld a, [hli]
+	cp charval("<_>", 0)
+	jr nz, .check_initial_block
+	ld a, [hld]
+	cp charval("<_>", 1)
+	jr nz, .check_initial_block
+; if so, replace it with a middleline
+	ld [hl], charval("<—>", 0)
 	inc hl
-	ld [hl], $3F
-.asm_1c5f28:
-	ld b, $00
+	ld [hl], charval("<—>", 1)
+
+.check_initial_block
+	ld b, 0
 	ld a, c
-	and $1F
+	and INITIAL_BLOCK_MASK
 	ret z
+; remaining block is initial consonant
 	ld c, a
-	ld hl, Data1c5faf
+	ld hl, InitialConsonantJamoTable
 	add hl, bc
 	ld a, [hl]
 	ld [wNamingScreenLastCharacter], a
-	call Function1c5c36
+	call TryAddCharacter
 	ld a, [wNamingScreenMaxNameLength]
 	ld e, a
 	ld a, [wNamingScreenCurNameLength]
 	cp e
 	ret nc
-	call Function1c5ead
+	call GetTextCursorPosition
 	ld a, b
-	ldi [hl], a
+	ld [hli], a
 	ld [hl], c
 	ld hl, wNamingScreenCurNameLength
 	inc [hl]
 	inc [hl]
-	call Function1c5ead
+	call GetTextCursorPosition
 	ld a, [hl]
-	cp $50
+	cp '@'
 	jr z, .asm_1c5f5d
-	ld [hl], $0B
+	ld [hl], charval("<_>", 0)
 	inc hl
-	ld [hl], $3E
+	ld [hl], charval("<_>", 1)
 	and a
 	ret
 
-.asm_1c5f5d:
+.asm_1c5f5d
 	call Function1c5c00
 	ret
 
-.asm_1c5f61:
-	ld hl, Data1c4200
+.find_remaining_char
+	ld hl, HangulStructureTable1
 	ld d, $0B
-.asm_1c5f66:
+.next_table
 	ld e, $00
-.asm_1c5f68:
+.next_char
 	ld a, [hl]
 	cp c
-	jr nz, .asm_1c5f88
+	jr nz, .skip1
 	inc hl
-	ldi a, [hl]
+	ld a, [hli]
 	cp b
-	jr nz, .asm_1c5f8a
-	ld de, $C000
+	jr nz, .skip2
+; convert address to charmap entry: bc = ((hl - 2) - $4000) / 2
+	ld de, -$4000
 	add hl, de
 	srl h
 	rr l
 	dec hl
 	ld c, l
 	ld b, h
-	call Function1c5ead
+	call GetTextCursorPosition
 	ld a, b
-	ldi [hl], a
+	ld [hli], a
 	ld [hl], c
 	ld hl, wNamingScreenCurNameLength
 	inc [hl]
 	inc [hl]
 	ret
 
-.asm_1c5f88:
+.skip1
 	inc hl
 	inc hl
-.asm_1c5f8a:
+.skip2
 	dec e
-	jr nz, .asm_1c5f68
+	jr nz, .next_char
 	dec d
-	jr nz, .asm_1c5f66
-	jp .asm_1c5ed8
+	jr nz, .next_table
 
-Data1c5f93:
-db $00, $00, $00, $04, $00, $10, $10, $00, $00, $20, $20, $20, $20, $20, $20, $20
-db $00, $00, $44
-ds 9, $00
+	jp .delete_char
 
-Data1c5faf:
-db $7F, $A0, $AE, $A1, $A2, $AF, $A3, $A4, $A5, $B0, $A6, $B1, $A7, $A8, $B2, $A9
-db $AA, $AB, $AC, $AD
+INCLUDE "data/text/hangul_delete_chars.asm"

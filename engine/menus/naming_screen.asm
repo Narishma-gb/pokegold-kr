@@ -1,8 +1,6 @@
 DEF NAMINGSCREEN_CURSOR     EQU $7e
 
 DEF NAMINGSCREEN_BORDER     EQU '■' ; $60
-DEF NAMINGSCREEN_UNDERLINE  EQU $3e
-DEF NAMINGSCREEN_MIDDLELINE EQU $3f
 
 _NamingScreen:
 	call DisableSpriteUpdates
@@ -638,7 +636,7 @@ NamingScreen_AnimateCursor:
 	ret
 
 NamingScreen_TryAddCharacter:
-	farcall Function1c5c36
+	farcall TryAddCharacter
 MailComposition_TryAddCharacter:
 	ld a, [wNamingScreenMaxNameLength]
 	ld e, a
@@ -660,9 +658,9 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 	ld a, [hl]
 	cp '@'
 	jr z, .end_of_string
-	ld [hl], $b
+	ld [hl], charval("<_>", 0)
 	inc hl
-	ld [hl], NAMINGSCREEN_UNDERLINE
+	ld [hl], charval("<_>", 1)
 	and a
 	ret
 
@@ -677,7 +675,7 @@ NamingScreen_DeleteCharacter:
 	ld a, [hl]
 	and a
 	ret z
-	farcall Function1c5ebd
+	farcall DeleteCharacter
 	ret
 
 NamingScreen_GetTextCursorPosition:
@@ -694,23 +692,23 @@ NamingScreen_GetTextCursorPosition:
 	ret
 
 NamingScreen_InitNameEntry:
-; load NAMINGSCREEN_UNDERLINE, (NAMINGSCREEN_MIDDLELINE * [wNamingScreenMaxNameLength]), "@" into the dw address at wNamingScreenDestinationPointer
+; load '<_>', ('<—>' * [wNamingScreenMaxNameLength] / 2), "@" into the dw address at wNamingScreenDestinationPointer
 	ld hl, wNamingScreenDestinationPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld [hl], $b
+	ld [hl], charval("<_>", 0)
 	inc hl
-	ld [hl], NAMINGSCREEN_UNDERLINE
+	ld [hl], charval("<_>", 1)
 	inc hl
 	ld a, [wNamingScreenMaxNameLength]
 	and $fe
 	dec a
 	dec a
 .loop
-	ld [hl], $b
+	ld [hl], charval("<—>", 0)
 	inc hl
-	ld [hl], NAMINGSCREEN_MIDDLELINE
+	ld [hl], charval("<—>", 1)
 	inc hl
 	dec a
 	dec a
@@ -727,19 +725,19 @@ NamingScreen_StoreEntry:
 	ld c, a
 .loop
 	ld a, [hl]
-	cp $b
+	cp charval("<—>", 0)
 	jr nz, .asm_11f58
 	inc hl
 	ld a, [hld]
-	cp NAMINGSCREEN_MIDDLELINE
+	cp charval("<—>", 1)
 	jr z, .terminator
 .asm_11f58
 	ld a, [hl]
-	cp $b
+	cp charval("<_>", 0)
 	jr nz, .not_terminator
 	inc hl
 	ld a, [hld]
-	cp NAMINGSCREEN_UNDERLINE
+	cp charval("<_>", 1)
 	jr nz, .not_terminator
 .terminator
 	ld [hl], '@'
@@ -810,9 +808,9 @@ LoadNamingScreenGFX:
 	call FarCopyBytes
 
 	ld de, vTiles1 tile $20
-	ld hl, Data1c5800
+	ld hl, NamingScreenGFX_Font
 	ld bc, $40 tiles
-	ld a, BANK(Data1c5800)
+	ld a, BANK(NamingScreenGFX_Font)
 	call FarCopyBytes
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR

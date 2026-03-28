@@ -258,7 +258,6 @@ ROMX $70
 ; 	"Pokégear GFX"
 ; 	"Credits Strings"
 ROMX $71
-	org $5c00
 	"bank71"
 ROMX $72
 	"DMG Error Screen"
