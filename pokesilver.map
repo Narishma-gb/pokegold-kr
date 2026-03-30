@@ -1,9 +1,9 @@
 SUMMARY:
 	ROM0: 16114 bytes used / 270 free
-	ROMX: 491571 bytes used / 1589197 free in 127 banks
+	ROMX: 513787 bytes used / 1566981 free in 127 banks
 	SRAM: 28275 bytes used / 4493 free in 4 banks
 	WRAM0: 3877 bytes used / 219 free
-	WRAMX: 6279 bytes used / 6009 free in 3 banks
+	WRAMX: 6420 bytes used / 5868 free in 3 banks
 	HRAM: 127 bytes used / 0 free
 
 ROM0 bank #0:
@@ -7088,19 +7088,180 @@ ROMX bank #10:
 	TOTAL EMPTY: $0038 bytes
 
 ROMX bank #11:
-	SECTION: $4000-$4951 ($0952 bytes) ["rom11"]
+	SECTION: $4000-$4a3f ($0a40 bytes) ["bankB"]
 	         $4000 = PrintItemDescription
+	         $4019 = PrintItemDescription.not_a_tm
+	         $4033 = BattleStart_TrainerHuds
+	         $4045 = EnemySwitch_TrainerHud
+	         $404f = ShowPlayerMonsRemaining
+	         $406d = ShowOTTrainerMonsRemaining
+	         $408c = StageBallTilesData
+	         $4095 = StageBallTilesData.loop1
+	         $409e = StageBallTilesData.loop2
+	         $40a8 = StageBallTilesData.GetHUDTile
+	         $40b2 = StageBallTilesData.got_hp
+	         $40be = StageBallTilesData.fainted
+	         $40c1 = StageBallTilesData.load
+	         $40c8 = DrawPlayerHUDBorder
+	         $40dc = DrawPlayerHUDBorder.tiles
+	         $40e0 = DrawPlayerPartyIconHUDBorder
+	         $40e0 = DrawPlayerHUDBorder.tiles_end
+	         $40f4 = DrawPlayerPartyIconHUDBorder.tiles
+	         $40f8 = DrawEnemyHUDBorder
+	         $40f8 = DrawPlayerPartyIconHUDBorder.tiles_end
+	         $4120 = DrawEnemyHUDBorder.tiles
+	         $4124 = PlaceHUDBorderTiles
+	         $4124 = DrawEnemyHUDBorder.tiles_end
+	         $4132 = PlaceHUDBorderTiles.loop
+	         $4140 = LinkBattle_TrainerHuds
+	         $4176 = LoadTrainerHudOAM
+	         $417b = LoadTrainerHudOAM.loop
+	         $4198 = LoadBallIconGFX
+	         $41a4 = LoadBallIconGFX.gfx
+	         $41e4 = _ShowLinkBattleParticipants
+	         $4225 = AI_Redundant
+	         $4237 = AI_Redundant.Moves
+	         $4292 = AI_Redundant.LightScreen
+	         $4298 = AI_Redundant.Mist
+	         $429e = AI_Redundant.FocusEnergy
+	         $42a4 = AI_Redundant.Confuse
+	         $42b0 = AI_Redundant.Transform
+	         $42b6 = AI_Redundant.Reflect
+	         $42bc = AI_Redundant.Substitute
+	         $42c2 = AI_Redundant.LeechSeed
+	         $42c8 = AI_Redundant.Disable
+	         $42cd = AI_Redundant.Encore
+	         $42d3 = AI_Redundant.Snore
+	         $42d3 = AI_Redundant.SleepTalk
+	         $42dc = AI_Redundant.MeanLook
+	         $42e2 = AI_Redundant.Nightmare
+	         $42ee = AI_Redundant.Spikes
+	         $42f4 = AI_Redundant.Foresight
+	         $42fa = AI_Redundant.PerishSong
+	         $4300 = AI_Redundant.Sandstorm
+	         $4309 = AI_Redundant.Attract
+	         $4317 = AI_Redundant.Safeguard
+	         $431d = AI_Redundant.RainDance
+	         $4326 = AI_Redundant.SunnyDay
+	         $432f = AI_Redundant.DreamEater
+	         $4338 = AI_Redundant.Swagger
+	         $433e = AI_Redundant.FutureSight
+	         $4344 = AI_Redundant.Heal
+	         $4344 = AI_Redundant.MorningSun
+	         $4344 = AI_Redundant.Synthesis
+	         $4344 = AI_Redundant.Moonlight
+	         $434c = AI_Redundant.Teleport
+	         $434c = AI_Redundant.Redundant
+	         $4350 = AI_Redundant.NotRedundant
 	         $4352 = MoveDeletion
+	         $43c7 = MoveDeletion.egg
+	         $43ce = MoveDeletion.declined
+	         $43d5 = MoveDeletion.onlyonemove
+	         $43dc = MoveDeletion.MoveKnowsOneText
+	         $43e1 = MoveDeletion.AskDeleteMoveText
+	         $43e6 = MoveDeletion.DeleterForgotMoveText
+	         $43eb = MoveDeletion.MailEggText
+	         $43f0 = MoveDeletion.DeleterNoComeAgainText
+	         $43f5 = MoveDeletion.DeleterAskWhichMoveText
+	         $43fa = MoveDeletion.DeleterIntroText
+	         $43ff = MoveDeletion.DeleterAskWhichMonText
+	         $4404 = MoveDeletion.DeleteMove
+	         $441a = MoveDeletion.loop
+	         $4426 = MoveDeletion.okay
+	         $443e = MoveDeletion.loop2
+	         $444a = MoveDeletion.done
 	         $444d = StageDataForMysteryGift
+	         $44b7 = StageDataForMysteryGift.RandomSample
+	         $44c9 = StageDataForMysteryGift.loop
+	         $44d4 = StageDataForMysteryGift.skip
+	         $44d7 = StageDataForMysteryGift.tenpercent
+	         $44e8 = StageDataForMysteryGift.loop2
+	         $44f3 = StageDataForMysteryGift.skip2
+	         $44f8 = StageDataForMysteryGift.twopercent
+	         $4508 = StageDataForMysteryGift.pointfourpercent
+	         $4511 = StageDataForMysteryGift.done
 	         $4513 = MysteryGiftGetItem
 	         $4520 = MysteryGiftGetDecoration
+	         $452d = MysteryGiftFallbackItem
+	         $4530 = MysteryGiftItems
+	         $4555 = MysteryGiftItems.End
+	         $4555 = MysteryGiftDecos
 	         $457a = TMHMPocket
+	         $457a = MysteryGiftDecos.End
+	         $45a3 = TMHMPocket.ConvertItemToTMHMNumber
+	         $45b2 = ConvertCurItemIntoCurTMHM
+	         $45c1 = GetTMHMItemMove
 	         $45ca = AskTeachTMHM
+	         $45f4 = AskTeachTMHM.TM
+	         $4600 = AskTeachTMHM.NotTMHM
 	         $4606 = ChooseMonToLearnTMHM
+	         $462c = ChooseMonToLearnTMHM.loopback
+	         $465f = ChooseMonToLearnTMHM.egg
 	         $4672 = TeachTMHM
+	         $4696 = TeachTMHM.compatible
+	         $46bb = TeachTMHM.nope
+	         $46bd = TeachTMHM.didnt_use
+	         $46c2 = TeachTMHM.learned_move
+	         $46c4 = BootedTMText
+	         $46c9 = BootedHMText
+	         $46ce = ContainedMoveText
+	         $46d3 = TMHMNotCompatibleText
+	         $46d8 = TMHM_PocketLoop
+	         $46f6 = TMHM_PocketLoop.okay
+	         $471a = TMHM_JoypadLoop
+	         $474b = TMHM_ShowTMMoveDescription
+	         $4779 = TMHM_ChooseTMorHM
+	         $478f = TMHM_CheckHoveringOverCancel
+	         $4796 = TMHM_CheckHoveringOverCancel.loop
+	         $47a4 = TMHM_CheckHoveringOverCancel.okay
+	         $47aa = TMHM_ExitPack
+	         $47ad = _TMHM_ExitPack
+	         $47b4 = TMHM_ExitPocket
+	         $47b6 = TMHM_ScrollPocket
+	         $47ca = TMHM_ScrollPocket.down
+	         $47cf = TMHM_ScrollPocket.loop
+	         $47e7 = TMHM_DisplayPocketItems
+	         $47ff = TMHM_DisplayPocketItems.loop2
+	         $4827 = TMHM_DisplayPocketItems.HM
+	         $483e = TMHM_DisplayPocketItems.okay
+	         $4875 = TMHM_DisplayPocketItems.hm2
+	         $487d = TMHM_DisplayPocketItems.NotTMHM
+	         $488b = TMHM_DisplayPocketItems.done
+	         $488c = PlaceHMPrefix
+	         $4895 = PlaceHMPrefix.HM_prefix
+	         $4898 = TMHMPocket_GetCurrentLineCoord
+	         $48a2 = TMHMPocket_GetCurrentLineCoord.loop
+	         $48a7 = PlaceMoveNameAfterTMHMName
+	         $48c0 = TMHM_CancelString
+	         $48c9 = TMHM_GetCurrentPocketPosition
+	         $48d3 = TMHM_GetCurrentPocketPosition.loop
+	         $48de = Tutorial_TMHMPocket
+	         $48ea = TMHM_PlaySFX_ReadText2
+	         $48f3 = VerboseReceiveTMHM
+	         $4901 = VerboseReceiveTMHM.print
+	         $4904 = VerboseReceiveTMHM.NoRoomTMHMText
+	         $4909 = VerboseReceiveTMHM.ReceivedTMHMText
+	         $490e = VerboseReceiveTMHM.CheckHaveRoomForTMHM
+	         $4920 = ConsumeTM
+	         $493e = CountTMsHMs
+	         $4945 = CountTMsHMs.loop
+	         $494a = CountTMsHMs.skip
 	         $4952 = PrintMoveDescription
-	EMPTY: $4952-$7fff ($36ae bytes)
-	TOTAL EMPTY: $36ae bytes
+	         $496c = GivePokerusAndConvertBerries
+	         $4979 = GivePokerusAndConvertBerries.loopMons
+	         $4998 = GivePokerusAndConvertBerries.randomMonSelectLoop
+	         $49aa = GivePokerusAndConvertBerries.randomPokerusLoop
+	         $49b9 = GivePokerusAndConvertBerries.load_pkrs
+	         $49c2 = GivePokerusAndConvertBerries.TrySpreadPokerus
+	         $49db = GivePokerusAndConvertBerries.checkFollowingMonsLoop
+	         $49eb = GivePokerusAndConvertBerries.checkPreviousMonsLoop
+	         $4a01 = GivePokerusAndConvertBerries.infectMon
+	         $4a0e = ConvertBerriesToBerryJuice
+	         $4a20 = ConvertBerriesToBerryJuice.partyMonLoop
+	         $4a30 = ConvertBerriesToBerryJuice.loopMon
+	         $4a3a = ConvertBerriesToBerryJuice.convertToJuice
+	EMPTY: $4a40-$7fff ($35c0 bytes)
+	TOTAL EMPTY: $35c0 bytes
 
 ROMX bank #12:
 	SECTION: $4000-$7d8f ($3d90 bytes) ["Tileset Data 4"]
@@ -7134,6 +7295,7 @@ ROMX bank #13:
 	         $64d5 = BattleCommand_StatUpMessage
 	         $6569 = BattleCommand_StatUpFailText
 	         $66ee = CalcPlayerStats
+	         $78ea = CheckOppositeGender
 	         $7e91 = GetItemHeldEffect
 	EMPTY: $7e91-$7fff ($016f bytes)
 	TOTAL EMPTY: $016f bytes
@@ -7141,6 +7303,7 @@ ROMX bank #13:
 ROMX bank #14:
 	SECTION: $4000-$593d ($193e bytes) ["rom14"]
 	         $4000 = Trainers
+	         $5217 = AICheckEnemyMaxHP
 	         $54f3 = GetTrainerClassName
 	         $58f2 = Battle_GetTrainerName
 	         $58fa = GetTrainerName
@@ -8461,19 +8624,479 @@ ROMX bank #107:
 	EMPTY
 
 ROMX bank #108:
-	SECTION: $4000-$5649 ($164a bytes) ["rom108"]
+	SECTION: $4000-$5ee0 ($1ee1 bytes) ["Names"]
 	         $4000 = ItemNames
 	         $49a1 = TrainerClassNames
 	         $4c4a = PokemonNames
 	         $564a = MoveNames
-	EMPTY: $564a-$7fff ($29b6 bytes)
-	TOTAL EMPTY: $29b6 bytes
+	EMPTY: $5ee1-$7fff ($211f bytes)
+	TOTAL EMPTY: $211f bytes
 
 ROMX bank #109:
-	EMPTY
+	SECTION: $4000-$72d2 ($32d3 bytes) ["Move Descriptions"]
+	         $4000 = MoveDescriptions
+	         $4200 = MoveFCDescription
+	         $4200 = MoveFDDescription
+	         $4200 = MoveFEDescription
+	         $4200 = MoveFFDescription
+	         $4200 = Move00Description
+	         $4202 = PoundDescription
+	         $422b = KarateChopDescription
+	         $424f = DoubleslapDescription
+	         $4279 = CometPunchDescription
+	         $42a8 = MegaPunchDescription
+	         $42d1 = PayDayDescription
+	         $4306 = FirePunchDescription
+	         $4340 = IcePunchDescription
+	         $436b = ThunderpunchDescription
+	         $439a = ScratchDescription
+	         $43c4 = VicegripDescription
+	         $43ec = GuillotineDescription
+	         $4424 = RazorWindDescription
+	         $4459 = SwordsDanceDescription
+	         $447d = CutDescription
+	         $44b1 = GustDescription
+	         $44e3 = WingAttackDescription
+	         $4516 = WhirlwindDescription
+	         $454b = FlyDescription
+	         $4575 = BindDescription
+	         $45ae = SlamDescription
+	         $45d5 = VineWhipDescription
+	         $4603 = StompDescription
+	         $463a = DoubleKickDescription
+	         $4667 = MegaKickDescription
+	         $4692 = JumpKickDescription
+	         $46c8 = RollingKickDescription
+	         $4703 = SandAttackDescription
+	         $4735 = HeadbuttDescription
+	         $4766 = HornAttackDescription
+	         $4793 = FuryAttackDescription
+	         $47c2 = HornDrillDescription
+	         $47f9 = TackleDescription
+	         $4823 = BodySlamDescription
+	         $4852 = WrapDescription
+	         $4892 = TakeDownDescription
+	         $48d0 = ThrashDescription
+	         $490c = DoubleEdgeDescription
+	         $4948 = TailWhipDescription
+	         $497f = PoisonStingDescription
+	         $49b6 = TwineedleDescription
+	         $49e5 = PinMissileDescription
+	         $4a1a = LeerDescription
+	         $4a52 = BiteDescription
+	         $4a88 = GrowlDescription
+	         $4abc = RoarDescription
+	         $4af4 = SingDescription
+	         $4b21 = SupersonicDescription
+	         $4b56 = SonicboomDescription
+	         $4b85 = DisableDescription
+	         $4bc8 = AcidDescription
+	         $4bfb = EmberDescription
+	         $4c2a = FlamethrowerDescription
+	         $4c5b = MistDescription
+	         $4c91 = WaterGunDescription
+	         $4cad = HydroPumpDescription
+	         $4cd7 = SurfDescription
+	         $4d0f = IceBeamDescription
+	         $4d3c = BlizzardDescription
+	         $4d71 = PsybeamDescription
+	         $4da2 = BubblebeamDescription
+	         $4dda = AuroraBeamDescription
+	         $4e0a = HyperBeamDescription
+	         $4e44 = PeckDescription
+	         $4e6c = DrillPeckDescription
+	         $4e9c = SubmissionDescription
+	         $4ed9 = LowKickDescription
+	         $4f03 = CounterDescription
+	         $4f3c = SeismicTossDescription
+	         $4f6b = StrengthDescription
+	         $4f93 = AbsorbDescription
+	         $4fc3 = MegaDrainDescription
+	         $4ff3 = LeechSeedDescription
+	         $5023 = GrowthDescription
+	         $504e = RazorLeafDescription
+	         $5078 = SolarbeamDescription
+	         $50a9 = PoisonpowderDescription
+	         $50d3 = StunSporeDescription
+	         $50fa = SleepPowderDescription
+	         $512c = PetalDanceDescription
+	         $5169 = StringShotDescription
+	         $51a1 = DragonRageDescription
+	         $51d2 = FireSpinDescription
+	         $51ff = ThundershockDescription
+	         $522b = ThunderboltDescription
+	         $525e = ThunderWaveDescription
+	         $528f = ThunderDescription
+	         $52c0 = RockThrowDescription
+	         $52e1 = EarthquakeDescription
+	         $5316 = FissureDescription
+	         $5354 = DigDescription
+	         $5388 = ToxicDescription
+	         $53b6 = ConfusionDescription
+	         $53e2 = PsychicMDescription
+	         $5414 = HypnosisDescription
+	         $543a = MeditateDescription
+	         $546b = AgilityDescription
+	         $549a = QuickAttackDescription
+	         $54c8 = RageDescription
+	         $54f3 = TeleportDescription
+	         $5517 = NightShadeDescription
+	         $5550 = MimicDescription
+	         $5581 = ScreechDescription
+	         $55b5 = DoubleTeamDescription
+	         $55e3 = RecoverDescription
+	         $5608 = HardenDescription
+	         $5640 = MinimizeDescription
+	         $5666 = SmokescreenDescription
+	         $5695 = ConfuseRayDescription
+	         $56c1 = WithdrawDescription
+	         $56e6 = DefenseCurlDescription
+	         $5712 = BarrierDescription
+	         $573b = LightScreenDescription
+	         $5771 = HazeDescription
+	         $57a4 = ReflectDescription
+	         $57dc = FocusEnergyDescription
+	         $580d = BideDescription
+	         $5847 = MetronomeDescription
+	         $5885 = MirrorMoveDescription
+	         $58b4 = SelfdestructDescription
+	         $58f0 = EggBombDescription
+	         $590f = LickDescription
+	         $593e = SmogDescription
+	         $5971 = SludgeDescription
+	         $599f = BoneClubDescription
+	         $59d2 = FireBlastDescription
+	         $5a0d = WaterfallDescription
+	         $5a40 = ClampDescription
+	         $5a66 = SwiftDescription
+	         $5a99 = SkullBashDescription
+	         $5acd = SpikeCannonDescription
+	         $5b02 = ConstrictDescription
+	         $5b3b = AmnesiaDescription
+	         $5b72 = KinesisDescription
+	         $5bac = SoftboiledDescription
+	         $5bd4 = HiJumpKickDescription
+	         $5c0e = GlareDescription
+	         $5c48 = DreamEaterDescription
+	         $5c7b = PoisonGasDescription
+	         $5ca2 = BarrageDescription
+	         $5cd1 = LeechLifeDescription
+	         $5cfb = LovelyKissDescription
+	         $5d31 = SkyAttackDescription
+	         $5d61 = TransformDescription
+	         $5d96 = BubbleDescription
+	         $5dcd = DizzyPunchDescription
+	         $5e0c = SporeDescription
+	         $5e3d = FlashDescription
+	         $5e70 = PsywaveDescription
+	         $5ea6 = SplashDescription
+	         $5ed3 = AcidArmorDescription
+	         $5eff = CrabhammerDescription
+	         $5f2b = ExplosionDescription
+	         $5f63 = FurySwipesDescription
+	         $5f9a = BonemerangDescription
+	         $5fd0 = RestDescription
+	         $6000 = RockSlideDescription
+	         $602d = HyperFangDescription
+	         $6064 = SharpenDescription
+	         $6095 = ConversionDescription
+	         $60d1 = TriAttackDescription
+	         $60ff = SuperFangDescription
+	         $6132 = SlashDescription
+	         $6164 = SubstituteDescription
+	         $6196 = StruggleDescription
+	         $61d6 = SketchDescription
+	         $6213 = TripleKickDescription
+	         $6248 = ThiefDescription
+	         $627f = SpiderWebDescription
+	         $62b2 = MindReaderDescription
+	         $62ec = NightmareDescription
+	         $6326 = FlameWheelDescription
+	         $635b = SnoreDescription
+	         $6397 = CurseDescription
+	         $63cc = FlailDescription
+	         $63fd = Conversion2Description
+	         $6429 = AeroblastDescription
+	         $6453 = CottonSporeDescription
+	         $6481 = ReversalDescription
+	         $64b2 = SpiteDescription
+	         $64ee = PowderSnowDescription
+	         $6521 = ProtectDescription
+	         $655c = MachPunchDescription
+	         $6596 = ScaryFaceDescription
+	         $65ce = FaintAttackDescription
+	         $6607 = SweetKissDescription
+	         $663d = BellyDrumDescription
+	         $6671 = SludgeBombDescription
+	         $66a0 = MudSlapDescription
+	         $66d4 = OctazookaDescription
+	         $6704 = SpikesDescription
+	         $6733 = ZapCannonDescription
+	         $6771 = ForesightDescription
+	         $67ab = DestinyBondDescription
+	         $67e0 = PerishSongDescription
+	         $680d = IcyWindDescription
+	         $683e = DetectDescription
+	         $6878 = BoneRushDescription
+	         $68a9 = LockOnDescription
+	         $68db = OutrageDescription
+	         $6918 = SandstormDescription
+	         $6948 = GigaDrainDescription
+	         $6974 = EndureDescription
+	         $69a3 = CharmDescription
+	         $69d5 = RolloutDescription
+	         $6a0c = FalseSwipeDescription
+	         $6a35 = SwaggerDescription
+	         $6a73 = MilkDrinkDescription
+	         $6a9d = SparkDescription
+	         $6acd = FuryCutterDescription
+	         $6af2 = SteelWingDescription
+	         $6b2c = MeanLookDescription
+	         $6b63 = AttractDescription
+	         $6ba0 = SleepTalkDescription
+	         $6bde = HealBellDescription
+	         $6c13 = ReturnDescription
+	         $6c48 = PresentDescription
+	         $6c7d = FrustrationDescription
+	         $6caf = SafeguardDescription
+	         $6ce4 = PainSplitDescription
+	         $6d17 = SacredFireDescription
+	         $6d48 = MagnitudeDescription
+	         $6d7f = DynamicpunchDescription
+	         $6dc1 = MegahornDescription
+	         $6df2 = DragonbreathDescription
+	         $6e1c = BatonPassDescription
+	         $6e4e = EncoreDescription
+	         $6e8a = PursuitDescription
+	         $6ec3 = RapidSpinDescription
+	         $6ee8 = SweetScentDescription
+	         $6f16 = IronTailDescription
+	         $6f4e = MetalClawDescription
+	         $6f81 = VitalThrowDescription
+	         $6faf = MorningSunDescription
+	         $6fd8 = SynthesisDescription
+	         $7001 = MoonlightDescription
+	         $702a = HiddenPowerDescription
+	         $705d = CrossChopDescription
+	         $708a = TwisterDescription
+	         $70af = RainDanceDescription
+	         $70da = SunnyDayDescription
+	         $7107 = CrunchDescription
+	         $7143 = MirrorCoatDescription
+	         $7173 = PsychUpDescription
+	         $719e = ExtremespeedDescription
+	         $71cc = AncientpowerDescription
+	         $71f1 = ShadowBallDescription
+	         $7227 = FutureSightDescription
+	         $724e = RockSmashDescription
+	         $7283 = WhirlpoolDescription
+	         $72b3 = BeatUpDescription
+	EMPTY: $72d3-$7fff ($0d2d bytes)
+	TOTAL EMPTY: $0d2d bytes
 
 ROMX bank #110:
-	EMPTY
+	SECTION: $4000-$5a6f ($1a70 bytes) ["Item Descriptions"]
+	         $4000 = ItemDescriptions
+	         $4200 = MasterBallDesc
+	         $4227 = UltraBallDesc
+	         $424c = BrightpowderDesc
+	         $4281 = GreatBallDesc
+	         $42b1 = PokeBallDesc
+	         $42c9 = TeruSama1Desc
+	         $42cc = BicycleDesc
+	         $42f8 = MoonStoneDesc
+	         $4311 = AntidoteDesc
+	         $4330 = BurnHealDesc
+	         $434b = IceHealDesc
+	         $436a = AwakeningDesc
+	         $4389 = ParlyzHealDesc
+	         $43a8 = FullRestoreDesc
+	         $43d0 = MaxPotionDesc
+	         $43e7 = HyperPotionDesc
+	         $43fd = SuperPotionDesc
+	         $4412 = PotionDesc
+	         $4427 = EscapeRopeDesc
+	         $4446 = RepelDesc
+	         $4473 = MaxElixerDesc
+	         $44a7 = FireStoneDesc
+	         $44c0 = ThunderStoneDesc
+	         $44d9 = WaterStoneDesc
+	         $44f2 = TeruSama2Desc
+	         $44f5 = HPUpDesc
+	         $4512 = ProteinDesc
+	         $452f = IronDesc
+	         $454c = CarbosDesc
+	         $456b = LuckyPunchDesc
+	         $4597 = CalciumDesc
+	         $45c1 = RareCandyDesc
+	         $45dc = XAccuracyDesc
+	         $4609 = LeafStoneDesc
+	         $4622 = MetalPowderDesc
+	         $464a = NuggetDesc
+	         $4661 = PokeDollDesc
+	         $4695 = FullHealDesc
+	         $46b3 = ReviveDesc
+	         $46e2 = MaxReviveDesc
+	         $470f = GuardSpecDesc
+	         $473e = SuperRepelDesc
+	         $476b = MaxRepelDesc
+	         $4798 = DireHitDesc
+	         $47c7 = TeruSama3Desc
+	         $47ca = FreshWaterDesc
+	         $47f9 = SodaPopDesc
+	         $4827 = LemonadeDesc
+	         $484c = XAttackDesc
+	         $4872 = TeruSama4Desc
+	         $4875 = XDefendDesc
+	         $489b = XSpeedDesc
+	         $48c1 = XSpecialDesc
+	         $48eb = CoinCaseDesc
+	         $4918 = ItemfinderDesc
+	         $4946 = TeruSama5Desc
+	         $4949 = ExpShareDesc
+	         $497d = OldRodDesc
+	         $49a5 = GoodRodDesc
+	         $49ce = SilverLeafDesc
+	         $49e3 = SuperRodDesc
+	         $4a16 = PPUpDesc
+	         $4a35 = EtherDesc
+	         $4a5b = MaxEtherDesc
+	         $4a83 = ElixerDesc
+	         $4aa5 = RedScaleDesc
+	         $4acf = SecretPotionDesc
+	         $4aee = SSTicketDesc
+	         $4b13 = MysteryEggDesc
+	         $4b40 = TeruSama6Desc
+	         $4b43 = SilverWingDesc
+	         $4b5f = MoomooMilkDesc
+	         $4b80 = QuickClawDesc
+	         $4ba9 = PsnCureBerryDesc
+	         $4bd2 = GoldLeafDesc
+	         $4be7 = SoftSandDesc
+	         $4c12 = SharpBeakDesc
+	         $4c40 = PrzCureBerryDesc
+	         $4c69 = BurntBerryDesc
+	         $4c92 = IceBerryDesc
+	         $4cbb = PoisonBarbDesc
+	         $4ce7 = KingsRockDesc
+	         $4d1b = BitterBerryDesc
+	         $4d44 = MintBerryDesc
+	         $4d6d = RedApricornDesc
+	         $4d7b = TinyMushroomDesc
+	         $4d93 = BigMushroomDesc
+	         $4dad = SilverPowderDesc
+	         $4ddb = BluApricornDesc
+	         $4de9 = TeruSama7Desc
+	         $4dec = AmuletCoinDesc
+	         $4e25 = YlwApricornDesc
+	         $4e33 = GrnApricornDesc
+	         $4e3f = CleanseTagDesc
+	         $4e6d = MysticWaterDesc
+	         $4e99 = TwistedSpoonDesc
+	         $4ec9 = WhtApricornDesc
+	         $4ed7 = BlackbeltDesc
+	         $4f05 = BlkApricornDesc
+	         $4f13 = TeruSama8Desc
+	         $4f16 = PnkApricornDesc
+	         $4f26 = BlackGlassesDesc
+	         $4f52 = SlowpokeTailDesc
+	         $4f6c = PinkBowDesc
+	         $4f9a = StickDesc
+	         $4fb2 = SmokeBallDesc
+	         $4fe7 = NeverMeltIceDesc
+	         $5016 = MagnetDesc
+	         $5044 = MiracleBerryDesc
+	         $5073 = PearlDesc
+	         $508d = BigPearlDesc
+	         $50b1 = EverStoneDesc
+	         $50e4 = SpellTagDesc
+	         $5114 = RageCandyBarDesc
+	         $5146 = TeruSama9Desc
+	         $5149 = TeruSama10Desc
+	         $514c = MiracleSeedDesc
+	         $5178 = ThickClubDesc
+	         $5190 = FocusBandDesc
+	         $51bd = TeruSama11Desc
+	         $51c0 = EnergyPowderDesc
+	         $51e8 = EnergyRootDesc
+	         $5211 = HealPowderDesc
+	         $523b = RevivalHerbDesc
+	         $526a = HardStoneDesc
+	         $5298 = LuckyEggDesc
+	         $52cd = CardKeyDesc
+	         $52f1 = MachinePartDesc
+	         $5303 = TeruSama12Desc
+	         $5306 = LostItemDesc
+	         $532a = StardustDesc
+	         $534d = StarPieceDesc
+	         $5379 = BasementKeyDesc
+	         $5388 = PassDesc
+	         $53a5 = TeruSama13Desc
+	         $53a8 = TeruSama14Desc
+	         $53ab = TeruSama15Desc
+	         $53ae = CharcoalDesc
+	         $53dc = BerryJuiceDesc
+	         $5410 = ScopeLensDesc
+	         $5435 = TeruSama16Desc
+	         $5438 = TeruSama17Desc
+	         $543b = MetalCoatDesc
+	         $5469 = DragonFangDesc
+	         $549a = TeruSama18Desc
+	         $549d = LeftoversDesc
+	         $54c9 = TeruSama19Desc
+	         $54cc = TeruSama20Desc
+	         $54cf = TeruSama21Desc
+	         $54d2 = MysteryBerryDesc
+	         $5506 = DragonScaleDesc
+	         $5536 = BerserkGeneDesc
+	         $5563 = TeruSama22Desc
+	         $5566 = TeruSama23Desc
+	         $5569 = TeruSama24Desc
+	         $556c = SacredAshDesc
+	         $559c = HeavyBallDesc
+	         $55c5 = FlowerMailDesc
+	         $55fb = LevelBallDesc
+	         $562d = LureBallDesc
+	         $5654 = FastBallDesc
+	         $5681 = TeruSama25Desc
+	         $5684 = LightBallDesc
+	         $56a2 = FriendBallDesc
+	         $56bf = MoonBallDesc
+	         $56e7 = LoveBallDesc
+	         $5712 = NormalBoxDesc
+	         $571b = GorgeousBoxDesc
+	         $5724 = SunStoneDesc
+	         $573d = PolkadotBowDesc
+	         $576b = TeruSama26Desc
+	         $576e = UpGradeDesc
+	         $578c = BerryDesc
+	         $57b4 = GoldBerryDesc
+	         $57dc = SquirtBottleDesc
+	         $580e = TeruSama27Desc
+	         $5811 = ParkBallDesc
+	         $583d = RainbowWingDesc
+	         $585d = TeruSama28Desc
+	         $5860 = BrickPieceDesc
+	         $586e = SurfMailDesc
+	         $58a1 = LiteBlueMailDesc
+	         $58d0 = PortraitMailDesc
+	         $5913 = LovelyMailDesc
+	         $594d = EonMailDesc
+	         $5985 = MorphMailDesc
+	         $59bd = BlueSkyMailDesc
+	         $59f7 = MusicMailDesc
+	         $5a28 = MirageMailDesc
+	         $5a55 = TeruSama29Desc
+	         $5a58 = TeruSama30Desc
+	         $5a5b = TeruSama31Desc
+	         $5a5e = TeruSama32Desc
+	         $5a61 = TeruSama33Desc
+	         $5a64 = TeruSama34Desc
+	         $5a67 = TeruSama35Desc
+	         $5a6a = TeruSama36Desc
+	         $5a6d = TeruSama37Desc
+	EMPTY: $5a70-$7fff ($2590 bytes)
+	TOTAL EMPTY: $2590 bytes
 
 ROMX bank #111:
 	EMPTY
@@ -8723,16 +9346,16 @@ ROMX bank #127:
 	         $4748 = _CopyTilemapAtOnce.wait2
 	         $4756 = _CopyTilemapAtOnce.CopyBGMapViaStack
 	         $4767 = _CopyTilemapAtOnce.loop
-	         $4768 = _CopyTilemapAtOnce.loop_u56
-	         $4771 = _CopyTilemapAtOnce.loop_u57
-	         $477a = _CopyTilemapAtOnce.loop_u58
-	         $4783 = _CopyTilemapAtOnce.loop_u59
-	         $478c = _CopyTilemapAtOnce.loop_u60
-	         $4795 = _CopyTilemapAtOnce.loop_u61
-	         $479e = _CopyTilemapAtOnce.loop_u62
-	         $47a7 = _CopyTilemapAtOnce.loop_u63
-	         $47b0 = _CopyTilemapAtOnce.loop_u64
-	         $47b9 = _CopyTilemapAtOnce.loop_u65
+	         $4768 = _CopyTilemapAtOnce.loop_u62
+	         $4771 = _CopyTilemapAtOnce.loop_u63
+	         $477a = _CopyTilemapAtOnce.loop_u64
+	         $4783 = _CopyTilemapAtOnce.loop_u65
+	         $478c = _CopyTilemapAtOnce.loop_u66
+	         $4795 = _CopyTilemapAtOnce.loop_u67
+	         $479e = _CopyTilemapAtOnce.loop_u68
+	         $47a7 = _CopyTilemapAtOnce.loop_u69
+	         $47b0 = _CopyTilemapAtOnce.loop_u70
+	         $47b9 = _CopyTilemapAtOnce.loop_u71
 	EMPTY: $47d4-$7fff ($382c bytes)
 	TOTAL EMPTY: $382c bytes
 
@@ -18430,7 +19053,7 @@ WRAM0 bank #0:
 	TOTAL EMPTY: $00db bytes
 
 WRAMX bank #1:
-	SECTION: $d000-$d00d ($000e bytes) ["WRAM 1"]
+	SECTION: $d000-$d251 ($0252 bytes) ["WRAM 1"]
 	         $d001 = wJumptableIndex
 	         $d002 = wTitleScreenSelectedOption
 	         $d002 = wUnusedBillsPCData
@@ -18490,8 +19113,13 @@ WRAMX bank #1:
 	         $d00b = wOBP0
 	         $d00c = wOBP1
 	         $d00d = wBattleAfterAnim
-	EMPTY: $d00e-$d09a ($008d bytes)
-	SECTION: $d09b-$d251 ($01b7 bytes) ["wram_wip2"]
+	         $d00f = wMonOrItemNameBuffer
+	         $d025 = wTMHMMoveNameBackup
+	         $d036 = wStringBuffer1
+	         $d04b = wStringBuffer2
+	         $d060 = wStringBuffer3
+	         $d075 = wStringBuffer4
+	         $d08a = wStringBuffer5
 	         $d09b = wPredefID
 	         $d09c = wPredefHL
 	         $d09e = wPredefAddress
@@ -20234,7 +20862,7 @@ WRAMX bank #1:
 	         $dffe = wPokemonDataEnd
 	         $dffe = wGameDataEnd
 	EMPTY: $dffe-$dfff ($0002 bytes)
-	TOTAL EMPTY: $0099 bytes
+	TOTAL EMPTY: $000c bytes
 
 WRAMX bank #2:
 	SECTION: $d000-$d11f ($0120 bytes) ["WRAM 2"]
