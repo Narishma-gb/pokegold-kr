@@ -44,7 +44,12 @@ ENDM
 MACRO? li
 	assert STRFIND(\1, "@") == -1, "String terminator \"@\" in list entry: \1"
 	if list_item_length
-		assert CHARLEN(\1) <= list_item_length, \
+		DEF str_size = 0
+		for n, CHARLEN(\1)
+			DEF str_size += CHARSIZE(STRCHAR(\1, n))
+		endr
+
+		assert str_size <= list_item_length, \
 			"List entry longer than {d:list_item_length} characters: \1"
 	endc
 	db \1, "@"

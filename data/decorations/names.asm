@@ -1,6 +1,6 @@
 DecorationNames:
 ; entries correspond to constants/deco_constants.asm
-	list_start TEXTBOX_INNERW - 5
+	list_start STRING_BUFFER_LENGTH - 1
 	li "그만두다"
 	li "정돈하다"
 	li "잘 자란 식물"

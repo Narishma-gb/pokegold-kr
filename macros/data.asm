@@ -126,9 +126,15 @@ MACRO? dname
 		def n = NAME_LENGTH - 1
 	endc
 	assert STRFIND(\1, "@") == -1, "String terminator \"@\" in name: \1"
-	assert CHARLEN(\1) <= n, "Name longer than {d:n} characters: \1"
+
+	def str_size = 0
+	for k, CHARLEN(\1)
+		def str_size += CHARSIZE(STRCHAR(\1, k))
+	endr
+
+	assert str_size <= n, "Name longer than {d:n} characters: \1"
 	db \1
-	ds n - CHARLEN(\1), '@'
+	ds n - str_size, '@'
 ENDM
 
 MACRO? bcd

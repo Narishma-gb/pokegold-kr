@@ -196,7 +196,7 @@ LinkBattle_TrainerHuds:
 	ld hl, wPlaceBallsX
 	ld a, 10 * TILE_WIDTH
 	ld [hli], a
-	ld [hl], 13 * TILE_WIDTH
+	ld [hl], 12 * TILE_WIDTH
 	ld hl, wShadowOAMSprite00 + PARTY_LENGTH * OBJ_SIZE
 	jp LoadTrainerHudOAM
 
@@ -235,10 +235,10 @@ _ShowLinkBattleParticipants:
 	call ClearBGPalettes
 	call LoadFontsExtra
 	hlcoord 3, 3
-	ld b, 9
+	ld b, 8
 	ld c, 12
 	call Textbox
-	hlcoord 4, 5
+	hlcoord 4, 6
 	ld de, wPlayerName
 	call PlaceString
 	hlcoord 4, 10

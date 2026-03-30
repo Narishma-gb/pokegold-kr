@@ -1755,7 +1755,7 @@ wOBP0:: db
 wOBP1:: db
 
 wBattleAfterAnim:: db
-/*
+
 	ds 1
 
 wMonOrItemNameBuffer:: ds NAME_LENGTH
@@ -1767,9 +1767,6 @@ wStringBuffer2:: ds STRING_BUFFER_LENGTH
 wStringBuffer3:: ds STRING_BUFFER_LENGTH
 wStringBuffer4:: ds STRING_BUFFER_LENGTH
 wStringBuffer5:: ds MOVE_NAME_LENGTH
-
-*/
-SECTION "wram_wip2", WRAMX[$d09b], BANK[1]
 
 wPredefID:: db
 wPredefHL:: dw

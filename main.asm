@@ -141,16 +141,16 @@ INCLUDE "engine/link/mystery_gift.asm"
 INCLUDE "engine/overworld/wildmons.asm"
 
 
-;SECTION "bankB", ROMX
+SECTION "bankB", ROMX
 
-;INCLUDE "engine/items/print_item_description.asm"
-;INCLUDE "engine/battle/trainer_huds.asm"
-;INCLUDE "engine/battle/ai/redundant.asm"
-;INCLUDE "engine/events/move_deleter.asm"
-;INCLUDE "engine/link/mystery_gift_2.asm"
-;INCLUDE "engine/items/tmhm.asm"
-;INCLUDE "engine/pokemon/print_move_description.asm"
-;INCLUDE "engine/events/pokerus/pokerus.asm"
+INCLUDE "engine/items/print_item_description.asm"
+INCLUDE "engine/battle/trainer_huds.asm"
+INCLUDE "engine/battle/ai/redundant.asm"
+INCLUDE "engine/events/move_deleter.asm"
+INCLUDE "engine/link/mystery_gift_2.asm"
+INCLUDE "engine/items/tmhm.asm"
+INCLUDE "engine/pokemon/print_move_description.asm"
+INCLUDE "engine/events/pokerus/pokerus.asm"
 
 
 ;SECTION "Effect Commands", ROMX
@@ -343,22 +343,22 @@ INCLUDE "engine/overworld/wildmons.asm"
 ;INCLUDE "data/phone/text/bike_shop.asm"
 
 
-;SECTION "Names", ROMX
+SECTION "Names", ROMX
 
-;INCLUDE "data/items/names.asm"
-;INCLUDE "data/trainers/class_names.asm"
-;INCLUDE "data/pokemon/names.asm"
-;INCLUDE "data/moves/names.asm"
-
-
-;SECTION "Move Descriptions", ROMX
-
-;INCLUDE "data/moves/descriptions.asm"
+INCLUDE "data/items/names.asm"
+INCLUDE "data/trainers/class_names.asm"
+INCLUDE "data/pokemon/names.asm"
+INCLUDE "data/moves/names.asm"
 
 
-;SECTION "Item Descriptions", ROMX
+SECTION "Move Descriptions", ROMX
 
-;INCLUDE "data/items/descriptions.asm"
+INCLUDE "data/moves/descriptions.asm"
+
+
+SECTION "Item Descriptions", ROMX
+
+INCLUDE "data/items/descriptions.asm"
 
 
 ;SECTION "bank70", ROMX

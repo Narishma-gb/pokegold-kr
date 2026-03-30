@@ -184,9 +184,9 @@ TMHM_PocketLoop:
 	xor a
 	ldh [hBGMapMode], a
 	call TMHM_DisplayPocketItems
-	ld a, 2
+	ld a, 3
 	ld [w2DMenuCursorInitY], a
-	ld a, 7
+	ld a, 8
 	ld [w2DMenuCursorInitX], a
 	ld a, 1
 	ld [w2DMenuNumCols], a
@@ -227,9 +227,9 @@ TMHM_JoypadLoop:
 	jp nz, TMHM_ScrollPocket
 	ld a, b
 	ld [wMenuJoypad], a
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jp nz, TMHM_ChooseTMorHM
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jp nz, TMHM_ExitPack
 	bit B_PAD_RIGHT, a
 	jp nz, TMHM_ExitPocket
@@ -332,8 +332,8 @@ TMHM_DisplayPocketItems:
 	cp BATTLETYPE_TUTORIAL
 	jp z, Tutorial_TMHMPocket
 
-	hlcoord 5, 2
-	lb bc, 10, 15
+	hlcoord 6, 2
+	lb bc, 10, 14
 	ld a, ' '
 	call ClearBox
 	call TMHM_GetCurrentPocketPosition
@@ -366,7 +366,7 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wTempTMHM], a
-	ld [hl], 'H'
+	call PlaceHMPrefix
 	inc hl
 	ld de, wTempTMHM
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
@@ -389,7 +389,7 @@ TMHM_DisplayPocketItems:
 	push bc
 	cp NUM_TMS + 1
 	jr nc, .hm2
-	ld bc, SCREEN_WIDTH + 9
+	ld bc, 8
 	add hl, bc
 	ld [hl], '×'
 	inc hl
@@ -421,8 +421,18 @@ TMHM_DisplayPocketItems:
 .done
 	ret
 
+PlaceHMPrefix:
+	ld de, .HM_prefix
+	push hl
+	call PlaceString
+	pop hl
+	ret
+
+.HM_prefix:
+	db "비@"
+
 TMHMPocket_GetCurrentLineCoord:
-	hlcoord 5, 0
+	hlcoord 6, 1
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, 6
 	sub d
@@ -449,7 +459,7 @@ PlaceMoveNameAfterTMHMName: ; unreferenced
 	ret
 
 TMHM_CancelString:
-	db "CANCEL@"
+	db "그만두다@"
 
 TMHM_GetCurrentPocketPosition:
 	ld hl, wTMsHMs

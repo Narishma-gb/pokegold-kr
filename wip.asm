@@ -45,23 +45,7 @@ INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
 
 EXPORT DEF ConfusedNoMoreText EQU $5a29
-EXPORT DEF MoveDescriptions EQU $4000
 EXPORT DEF EggPic EQU $7b57
-
-
-SECTION "rom11", ROMX[$4000], BANK[11]
-; ROM $0b : $2C000 - $2FFFF
-
-	dr PrintItemDescription, $4000
-	dr MoveDeletion, $4352
-	dr StageDataForMysteryGift, $444d
-	dr MysteryGiftGetItem, $4513
-	dr MysteryGiftGetDecoration, $4520
-	dr TMHMPocket, $457a
-	dr AskTeachTMHM, $45ca
-	dr ChooseMonToLearnTMHM, $4606
-	dr TeachTMHM, $4672
-	dr PrintMoveDescription, $4952
 
 
 SECTION "rom13", ROMX[$4000], BANK[13]
@@ -72,6 +56,7 @@ SECTION "rom13", ROMX[$4000], BANK[13]
 	dr BattleCommand_StatUpMessage, $64d5
 	dr BattleCommand_StatUpFailText, $6569
 	dr CalcPlayerStats, $66ee
+	dr CheckOppositeGender, $78ea
 	dr GetItemHeldEffect, $7e91
 
 
@@ -79,6 +64,7 @@ SECTION "rom14", ROMX[$4000], BANK[14]
 ; ROM $0e : $38000 - $3BFFF
 
 Trainers::
+	dr AICheckEnemyMaxHP, $5217
 	dr GetTrainerClassName, $54f3
 	dr Battle_GetTrainerName, $58f2
 	dr GetTrainerName, $58fa
@@ -643,23 +629,6 @@ BattleText::
 
 ;SECTION "rom105", ROMX[$4000], BANK[105]
 ; ROM $69 : $1A4000 - $1A7FFF
-
-
-SECTION "rom108", ROMX[$4000], BANK[108]
-; ROM $6c : $1B0000 - $1B3FFF
-
-	dr ItemNames, $4000
-	dr TrainerClassNames, $49a1
-	dr PokemonNames, $4c4a
-	dr MoveNames, $564a
-
-
-;SECTION "rom109", ROMX[$4000], BANK[109]
-; ROM $6d : $1B4000 - $1B7FFF
-
-
-;SECTION "rom110", ROMX[$4000], BANK[110]
-; ROM $6e : $1B8000 - $1BBFFF
 
 
 SECTION "rom112", ROMX[$4879], BANK[112]

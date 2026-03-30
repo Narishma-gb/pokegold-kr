@@ -60,6 +60,9 @@ EXPORT DEF wDisabledMove EQU $CBDB
 EXPORT DEF wLastPlayerCounterMove EQU $CBDE
 EXPORT DEF wLastEnemyCounterMove EQU $CBDF
 EXPORT DEF wBattleParticipantsIncludingFainted EQU $CBE2
+EXPORT DEF wPlayerScreens EQU $CBE5
+EXPORT DEF wEnemyScreens EQU $CBE6
+EXPORT DEF wBattleWeather EQU $CBF0
 EXPORT DEF wEffectFailed EQU $CBF3
 EXPORT DEF wLastPlayerMove EQU $CC01
 EXPORT DEF wLastEnemyMove EQU $CC02
@@ -75,12 +78,6 @@ EXPORT DEF wd000 EQU $D000
 EXPORT DEF wLinkPlayerMail EQU $D000
 EXPORT DEF wLinkReceivedMail EQU $D000
 EXPORT DEF wLinkPlayerMailMessages EQU $D005
-EXPORT DEF wMonOrItemNameBuffer EQU $D00F
-EXPORT DEF wStringBuffer1 EQU $D036
-EXPORT DEF wStringBuffer2 EQU $D04B
-EXPORT DEF wStringBuffer3 EQU $D060
-EXPORT DEF wStringBuffer4 EQU $D075
-EXPORT DEF wStringBuffer5 EQU $D08A
 EXPORT DEF wLinkPlayerMailMetadata EQU $D18B
 EXPORT DEF wLinkReceivedMailEnd EQU $D1DA
 EXPORT DEF wLinkPlayerMailPatchSet EQU $D1DF

@@ -11,7 +11,7 @@ DEF NUM_MONMENUVALUES EQU const_value - 1
 
 MonMenuOptionStrings:
 ; entries correspond to MONMENUVALUE_* constants
-	list_start MOVE_NAME_LENGTH - 2
+	list_start
 	li "강한정도를 보다"
 	li "순서바꾸기"
 	li "소지품"
