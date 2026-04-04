@@ -75,7 +75,7 @@
 	const SECRETPOTION ; 43
 	const S_S_TICKET   ; 44
 	const MYSTERY_EGG  ; 45
-	const ITEM_46      ; 46
+	const CLEAR_BELL   ; 46 (dummy)
 	const SILVER_WING  ; 47
 	const MOOMOO_MILK  ; 48
 	const QUICK_CLAW   ; 49
@@ -120,8 +120,8 @@
 	const EVERSTONE    ; 70
 	const SPELL_TAG    ; 71
 	const RAGECANDYBAR ; 72
-	const ITEM_73      ; 73
-	const ITEM_74      ; 74
+	const GS_BALL      ; 73 (dummy)
+	const BLUE_CARD    ; 74 (dummy)
 	const MIRACLE_SEED ; 75
 	const THICK_CLUB   ; 76
 	const FOCUS_BAND   ; 77

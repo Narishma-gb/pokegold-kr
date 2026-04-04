@@ -3351,8 +3351,7 @@ PlayFXAnimID:
 	ld a, d
 	ld [wFXAnimID + 1], a
 
-	ld c, 3
-	call DelayFrames
+	call Function15ba
 	callfar PlayBattleAnim
 	ret
 
@@ -4580,7 +4579,7 @@ GetStatName:
 
 .Copy:
 	ld de, wStringBuffer2
-	ld bc, NAME_LENGTH - 1
+	ld bc, STRING_BUFFER_LENGTH
 	jp CopyBytes
 
 INCLUDE "data/battle/stat_names.asm"
@@ -5614,11 +5613,11 @@ BattleCommand_TrapTarget:
 	jp StdBattleTextbox
 
 .Traps:
-	dbw BIND,      UsedBindText   ; 'used BIND on'
-	dbw WRAP,      WrappedByText  ; 'was WRAPPED by'
-	dbw FIRE_SPIN, WasTrappedText ; 'was trapped!'
-	dbw CLAMP,     ClampedByText  ; 'was CLAMPED by'
-	dbw WHIRLPOOL, WasTrappedText ; 'was trapped!'
+	dbw BIND,      UsedBindText
+	dbw WRAP,      WrappedByText
+	dbw FIRE_SPIN, WasTrappedText2
+	dbw CLAMP,     ClampedByText
+	dbw WHIRLPOOL, WasTrappedText
 
 INCLUDE "engine/battle/move_effects/mist.asm"
 

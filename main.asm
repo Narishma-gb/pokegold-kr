@@ -153,9 +153,9 @@ INCLUDE "engine/pokemon/print_move_description.asm"
 INCLUDE "engine/events/pokerus/pokerus.asm"
 
 
-;SECTION "Effect Commands", ROMX
+SECTION "Effect Commands", ROMX
 
-;INCLUDE "engine/battle/effect_commands.asm"
+INCLUDE "engine/battle/effect_commands.asm"
 
 
 ;SECTION "Enemy Trainers", ROMX

@@ -37,38 +37,7 @@ EXPORT DEF wHandshakeFrameDelay EQU $C98A
 EXPORT DEF wCurLinkOTPartyMonTypePointer EQU $CAE8
 EXPORT DEF wLinkOTPartyMonTypes EQU $CAEA
 EXPORT DEF wOTClassName EQU $CB34
-EXPORT DEF wCurOTMon EQU $CB49
-EXPORT DEF wBattleParticipantsNotFainted EQU $CB4A
-EXPORT DEF wAttackMissed EQU $CB4D
-EXPORT DEF wPlayerSubStatus1 EQU $CB4E
-EXPORT DEF wPlayerSubStatus2 EQU $CB4F
-EXPORT DEF wPlayerSubStatus3 EQU $CB50
-EXPORT DEF wPlayerSubStatus4 EQU $CB51
-EXPORT DEF wPlayerSubStatus5 EQU $CB52
-EXPORT DEF wEnemySubStatus1 EQU $CB53
-EXPORT DEF wEnemySubStatus2 EQU $CB54
-EXPORT DEF wEnemySubStatus3 EQU $CB55
-EXPORT DEF wEnemySubStatus4 EQU $CB56
-EXPORT DEF wEnemySubStatus5 EQU $CB57
-EXPORT DEF wPlayerDisableCount EQU $CB5B
-EXPORT DEF wBattleAnimParam EQU $CB6F
-EXPORT DEF wCurPlayerMove EQU $CBC9
-EXPORT DEF wCurEnemyMove EQU $CBCA
-EXPORT DEF wPayDayMoney EQU $CBD2
-EXPORT DEF wEnemyBackupDVs EQU $CBD8
-EXPORT DEF wDisabledMove EQU $CBDB
-EXPORT DEF wLastPlayerCounterMove EQU $CBDE
-EXPORT DEF wLastEnemyCounterMove EQU $CBDF
-EXPORT DEF wBattleParticipantsIncludingFainted EQU $CBE2
-EXPORT DEF wPlayerScreens EQU $CBE5
-EXPORT DEF wEnemyScreens EQU $CBE6
-EXPORT DEF wBattleWeather EQU $CBF0
-EXPORT DEF wEffectFailed EQU $CBF3
-EXPORT DEF wLastPlayerMove EQU $CC01
-EXPORT DEF wLastEnemyMove EQU $CC02
 EXPORT DEF wLinkDataEnd EQU $CC14
-EXPORT DEF wWildMonMoves EQU $CC1B
-EXPORT DEF wWildMonPP EQU $CC1F
 EXPORT DEF wTempMailMessage EQU $CEC2
 EXPORT DEF wTempMail EQU $CEC2
 EXPORT DEF wTempMailAuthor EQU $CF03
@@ -96,3 +65,258 @@ EXPORT DEF wLinkOTMailEnd EQU $D468
 EXPORT DEF wHallOfFameCount EQU $D736
 EXPORT DEF wTempTilemap EQU $D800
 EXPORT DEF hClockResetTrigger EQU $FFEE
+
+
+SECTION UNION "Overworld Map", WRAM0
+
+	ds $449
+
+wCurOTMon:: db
+
+wBattleParticipantsNotFainted::
+; Bit array.  Bits 0 - 5 correspond to party members 1 - 6.
+; Bit set if the mon appears in battle.
+; Bit cleared if the mon faints.
+; Backed up if the enemy switches.
+; All bits cleared if the enemy faints.
+	db
+
+wTypeModifier::
+; >10: super-effective
+;  10: normal
+; <10: not very effective
+; bit 7: stab
+	db
+
+wCriticalHit::
+; 0 if not critical
+; 1 for a critical hit
+; 2 for a OHKO
+	db
+
+wAttackMissed::
+; nonzero for a miss
+	db
+
+wPlayerSubStatus1:: db
+wPlayerSubStatus2:: db
+wPlayerSubStatus3:: db
+wPlayerSubStatus4:: db
+wPlayerSubStatus5:: db
+
+wEnemySubStatus1:: db
+wEnemySubStatus2:: db
+wEnemySubStatus3:: db
+wEnemySubStatus4:: db
+wEnemySubStatus5:: db
+
+wPlayerRolloutCount:: db
+wPlayerConfuseCount:: db
+wPlayerToxicCount:: db
+wPlayerDisableCount:: db
+wPlayerEncoreCount:: db
+wPlayerPerishCount:: db
+wPlayerFuryCutterCount:: db
+wPlayerProtectCount:: db
+
+wEnemyRolloutCount:: db
+wEnemyConfuseCount:: db
+wEnemyToxicCount:: db
+wEnemyDisableCount:: db
+wEnemyEncoreCount:: db
+wEnemyPerishCount:: db
+wEnemyFuryCutterCount:: db
+wEnemyProtectCount:: db
+
+wPlayerDamageTaken:: dw
+wEnemyDamageTaken::  dw
+
+wBattleReward:: ds 3
+
+wBattleAnimParam:: db
+
+wBattleScriptBuffer:: ds 40
+
+wBattleScriptBufferAddress:: dw
+wTurnEnded:: db
+
+	ds 1
+
+wPlayerStats::
+wPlayerAttack::  dw
+wPlayerDefense:: dw
+wPlayerSpeed::   dw
+wPlayerSpAtk::   dw
+wPlayerSpDef::   dw
+	ds 1
+
+wEnemyStats::
+wEnemyAttack::  dw
+wEnemyDefense:: dw
+wEnemySpeed::   dw
+wEnemySpAtk::   dw
+wEnemySpDef::   dw
+	ds 1
+
+wPlayerStatLevels::
+wPlayerAtkLevel::  db
+wPlayerDefLevel::  db
+wPlayerSpdLevel::  db
+wPlayerSAtkLevel:: db
+wPlayerSDefLevel:: db
+wPlayerAccLevel::  db
+wPlayerEvaLevel::  db
+	ds 1
+
+wEnemyStatLevels::
+wEnemyAtkLevel::  db
+wEnemyDefLevel::  db
+wEnemySpdLevel::  db
+wEnemySAtkLevel:: db
+wEnemySDefLevel:: db
+wEnemyAccLevel::  db
+wEnemyEvaLevel::  db
+	ds 1
+
+wEnemyTurnsTaken::  db
+wPlayerTurnsTaken:: db
+	ds 1
+
+wPlayerSubstituteHP:: db
+wEnemySubstituteHP::  db
+
+wUnusedPlayerLockedMove:: db
+	ds 1
+
+wCurPlayerMove:: db
+wCurEnemyMove::  db
+
+wLinkBattleRNCount::
+; how far through the prng stream
+	db
+
+wEnemyItemState:: db
+	ds 2
+wCurEnemyMoveNum:: db
+
+wEnemyHPAtTimeOfPlayerSwitch:: dw
+wPayDayMoney:: ds 3
+
+wSafariMonAngerCount:: db ; unreferenced
+wSafariMonEating:: db
+	ds 1
+wEnemyBackupDVs:: dw ; used when enemy is transformed
+wAlreadyDisobeyed:: db
+
+wDisabledMove:: db
+wEnemyDisabledMove:: db
+wWhichMonFaintedFirst:: db
+
+; exists so you can't counter on switch
+wLastPlayerCounterMove:: db
+wLastEnemyCounterMove:: db
+
+wEnemyMinimized:: db
+
+wAlreadyFailed:: db
+
+wBattleParticipantsIncludingFainted:: db
+wBattleLowHealthAlarm:: db
+wPlayerMinimized:: db
+
+wPlayerScreens::
+; bit
+; 0 spikes
+; 1
+; 2 safeguard
+; 3 light screen
+; 4 reflect
+; 5-7 unused
+	db
+
+wEnemyScreens::
+; see wPlayerScreens
+	db
+
+wPlayerSafeguardCount:: db
+wPlayerLightScreenCount:: db
+wPlayerReflectCount:: db
+	ds 1
+
+wEnemySafeguardCount:: db
+wEnemyLightScreenCount:: db
+wEnemyReflectCount:: db
+	ds 2
+
+wBattleWeather::
+; 00 normal
+; 01 rain
+; 02 sun
+; 03 sandstorm
+; 04 rain stopped
+; 05 sunliight faded
+; 06 sandstorm subsided
+	db
+
+wWeatherCount::
+; # turns remaining
+	db
+
+wLoweredStat:: db
+wEffectFailed:: db
+wFailedMessage:: db
+wEnemyGoesFirst:: db
+
+wPlayerIsSwitching:: db
+wEnemyIsSwitching:: db
+
+wPlayerUsedMoves::
+; add a move that has been used once by the player
+; added in order of use
+	ds NUM_MOVES
+
+wEnemyAISwitchScore:: db
+wEnemySwitchMonParam:: db
+wEnemySwitchMonIndex:: db
+wTempLevel:: db
+wLastPlayerMon:: db
+wLastPlayerMove:: db
+wLastEnemyMove:: db
+
+wPlayerFutureSightCount:: db
+wEnemyFutureSightCount:: db
+
+wGivingExperienceToExpShareHolders:: db
+
+wBackupEnemyMonBaseStats:: ds NUM_EXP_STATS
+wBackupEnemyMonCatchRate:: db
+wBackupEnemyMonBaseExp:: db
+
+wPlayerFutureSightDamage:: dw
+wEnemyFutureSightDamage:: dw
+wPlayerRageCounter:: db
+wEnemyRageCounter:: db
+
+wBeatUpHitAtLeastOnce:: db
+
+wPlayerTrappingMove:: db
+wEnemyTrappingMove:: db
+wPlayerWrapCount:: db
+wEnemyWrapCount:: db
+wPlayerCharging:: db
+wEnemyCharging:: db
+
+wBattleEnded:: db
+
+wWildMonMoves:: ds NUM_MOVES
+wWildMonPP:: ds NUM_MOVES
+
+wAmuletCoin:: db
+
+wSomeoneIsRampaging:: db
+
+wPlayerJustGotFrozen:: db
+wEnemyJustGotFrozen:: db
+wBattleEnd::
+
+ENDSECTION

@@ -69,7 +69,7 @@ ItemNames::
 	li "비전 신약"
 	li "승선 티켓"
 	li "이상한 알"
-	li "크리스탈 방울"
+	li "크리스탈 방울" ; CLEAR_BELL
 	li "은빛 날개"
 	li "튼튼 밀크"
 	li "선제공격 손톱"
@@ -114,8 +114,8 @@ ItemNames::
 	li "변함없는 돌"
 	li "저주의 부적"
 	li "분노의 호두과자"
-	li "GS볼"
-	li "블루카드"
+	li "GS볼" ; GS_BALL
+	li "블루카드" ; BLUE_CARD
 	li "기적의 씨"
 	li "굵은 뼈"
 	li "기합의 머리띠"

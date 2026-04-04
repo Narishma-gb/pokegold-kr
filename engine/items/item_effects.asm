@@ -83,7 +83,7 @@ ItemEffects:
 	dw NoEffect            ; SECRETPOTION
 	dw NoEffect            ; S_S_TICKET
 	dw NoEffect            ; MYSTERY_EGG
-	dw NoEffect            ; ITEM_46
+	dw NoEffect            ; CLEAR_BELL
 	dw NoEffect            ; SILVER_WING
 	dw RestoreHPEffect     ; MOOMOO_MILK
 	dw NoEffect            ; QUICK_CLAW
@@ -128,8 +128,8 @@ ItemEffects:
 	dw NoEffect            ; EVERSTONE
 	dw NoEffect            ; SPELL_TAG
 	dw RestoreHPEffect     ; RAGECANDYBAR
-	dw NoEffect            ; ITEM_73
-	dw NoEffect            ; ITEM_74
+	dw NoEffect            ; GS_BALL
+	dw NoEffect            ; BLUE_CARD
 	dw NoEffect            ; MIRACLE_SEED
 	dw NoEffect            ; THICK_CLUB
 	dw NoEffect            ; FOCUS_BAND

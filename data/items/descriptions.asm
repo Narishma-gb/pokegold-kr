@@ -507,7 +507,7 @@ MysteryEggDesc:
 	db   "포켓몬 할아버지가 맡긴 것"
 	next "어떤 알인지 모른다@"
 
-TeruSama6Desc:
+TeruSama6Desc: ; CLEAR_BELL
 	db   "?@"
 
 SilverWingDesc:
@@ -675,10 +675,10 @@ RageCandyBarDesc:
 	db   "황토마을의 명물인 호두과자"
 	next "체력을 20 회복시켜준다@"
 
-TeruSama9Desc:
+TeruSama9Desc: ; GS_BALL
 	db   "?@"
 
-TeruSama10Desc:
+TeruSama10Desc: ; BLUE_CARD
 	db   "?@"
 
 MiracleSeedDesc:
