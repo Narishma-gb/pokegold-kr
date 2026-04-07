@@ -47,18 +47,6 @@ INCLUDE "engine/dumps/bank7f.asm"
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "rom14", ROMX[$4000], BANK[14]
-; ROM $0e : $38000 - $3BFFF
-
-Trainers::
-	dr AICheckPlayerMaxHP, $520c
-	dr AICheckEnemyMaxHP, $5217
-	dr GetTrainerClassName, $54f3
-	dr Battle_GetTrainerName, $58f2
-	dr GetTrainerName, $58fa
-	dr TrainerGroups, $593e
-
-
 SECTION "Battle Core", ROMX[$4000], BANK[15]
 SECTION "rom15", ROMX[$4000], BANK[15]
 ; ROM $0f : $3C000 - $3FFFF
@@ -75,13 +63,17 @@ SECTION "rom15", ROMX[$4000], BANK[15]
 	dr SetUpBattlePartyMenu, $5227
 	dr ForcePickSwitchMonInBattle, $5292
 	dr ForceEnemySwitch, $5384
+	dr EnemySwitch, $53a2
 	dr EnemySwitch_SetMode, $53d8
 	dr ResetBattleParticipants, $543b
+	dr NewEnemyMonStatus, $56ce
+	dr ResetEnemyStatLevels, $5701
 	dr CheckPlayerPartyForFitMon, $570d
 	dr GetPartyMonDVs, $58f8
 	dr GetEnemyMonDVs, $590a
 	dr SwitchPlayerMon, $59a5
 	dr SpikesDamage, $5a87
+	dr PursuitSwitch, $5abf
 	dr UseHeldStatusHealingItem, $5c4d
 	dr UseConfusionHealingItem, $5cb5
 	dr UpdatePlayerHUD, $5dac
@@ -90,6 +82,7 @@ SECTION "rom15", ROMX[$4000], BANK[15]
 	dr DrawEnemyHUD, $5eb9
 	dr PassedBattleMonEntrance, $62d5
 	dr MoveSelectionScreen, $6338
+	dr CheckEnemyLockedIn, $6739
 	dr LinkBattleSendReceiveAction, $674c
 	dr LoadEnemyMon, $679c
 	dr ApplyPrzEffectOnSpeed, $6ac8

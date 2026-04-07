@@ -785,7 +785,7 @@ wIntroSpriteStateFlag:: db
 ENDU
 
 	ds 2
-/*
+
 wEnemyTrainerItem1:: db
 wEnemyTrainerItem2:: db
 wEnemyTrainerBaseReward:: db
@@ -1039,9 +1039,6 @@ wSomeoneIsRampaging:: db
 wPlayerJustGotFrozen:: db
 wEnemyJustGotFrozen:: db
 wBattleEnd::
-
-	ds 1
-*/
 ENDU
 /*
 
