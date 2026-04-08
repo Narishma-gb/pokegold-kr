@@ -1598,9 +1598,9 @@ HandleScreens:
 	jp CopyName2
 
 .Your:
-	db "Your@"
+	db "같은편@"
 .Enemy:
-	db "Enemy@"
+	db "상대편@"
 
 .LightScreenTick:
 	ld a, [de]
@@ -2596,7 +2596,7 @@ AskUseNextPokemon:
 	ld hl, BattleText_UseNextMon
 	call StdBattleTextbox
 .loop
-	lb bc, 1, 7
+	lb bc, 1, 6
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	jr c, .pressed_b
@@ -2856,7 +2856,7 @@ MonFaintedAnimation:
 	dec b
 	jr nz, .InnerLoop
 
-	ld bc, 20
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld de, .Spaces
 	call PlaceString
@@ -3297,7 +3297,7 @@ OfferSwitch:
 	callfar Battle_GetTrainerName
 	ld hl, BattleText_EnemyIsAboutToUseWillPlayerChangeMon
 	call StdBattleTextbox
-	lb bc, 1, 7
+	lb bc, 1, 6
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	dec a
@@ -4412,8 +4412,8 @@ CheckDanger:
 
 PrintPlayerHUD:
 	ld de, wBattleMonNickname
-	hlcoord 10, 7
-	call Battle_DummyFunction
+	hlcoord 10, 8
+	call CenterMonName
 	call PlaceString
 
 	push bc
@@ -4442,19 +4442,37 @@ PrintPlayerHUD:
 	pop hl
 	dec hl
 
+	push hl
+	ld de, wAttrmap - wTilemap
+	add hl, de
+	bit B_BG_BANK1, [hl]
+	pop hl
+	jr z, .not_hangul
+	inc hl
+	jr .get_gender
+
+.not_hangul
+	ld a, [hli]
+	cp '♂'
+	jr z, .print_status
+	cp '♀'
+	jr z, .print_status
+
+.get_gender
 	ld a, TEMPMON
 	ld [wMonType], a
+	push hl
 	callfar GetGender
+	pop hl
 	ld a, ' '
 	jr c, .got_gender_char
 	ld a, '♂'
 	jr nz, .got_gender_char
 	ld a, '♀'
-
 .got_gender_char
-	hlcoord 17, 8
-	ld [hl], a
-	hlcoord 14, 8
+	ld [hli], a
+
+.print_status
 	push af ; back up gender
 	push hl
 	ld de, wBattleMonStatus
@@ -4498,13 +4516,31 @@ DrawEnemyHUD:
 	ld [wCurPartySpecies], a
 	call GetBaseData
 	ld de, wEnemyMonNickname
-	hlcoord 1, 0
-	call Battle_DummyFunction
+	hlcoord 2, 1
+	call CenterMonName
 	call PlaceString
 	ld h, b
 	ld l, c
 	dec hl
 
+	push hl
+	ld de, wAttrmap - wTilemap
+	add hl, de
+	bit B_BG_BANK1, [hl]
+	pop hl
+	jr z, .not_hangul
+	inc hl
+	jr .get_gender
+
+.not_hangul
+	ld a, [hli]
+	cp '♂'
+	jr z, .print_status
+	cp '♀'
+	jr z, .print_status
+
+.get_gender
+	push hl
 	ld hl, wEnemyMonDVs
 	ld de, wTempMonDVs
 	ld a, [wEnemySubStatus5]
@@ -4521,17 +4557,16 @@ DrawEnemyHUD:
 	ld a, TEMPMON
 	ld [wMonType], a
 	callfar GetGender
+	pop hl
 	ld a, ' '
 	jr c, .got_gender
 	ld a, '♂'
 	jr nz, .got_gender
 	ld a, '♀'
-
 .got_gender
-	hlcoord 9, 1
-	ld [hl], a
+	ld [hli], a
 
-	hlcoord 6, 1
+.print_status
 	push af
 	push hl
 	ld de, wEnemyMonStatus
@@ -4628,8 +4663,35 @@ UpdateHPPal:
 	ret z
 	jp FinishBattleAnim
 
-Battle_DummyFunction:
-; called before placing either battler's nickname in the HUD
+; center mon name and level on the HUD
+; if the name is 5 chars long, print at the leftmost position
+; if the name is 4 chars long, print 1 space to the right
+; if the name is between 1 and 3 chars long, print 2 spaces to the right
+CenterMonName:
+	push de
+	inc hl
+	inc hl
+	ld b, 0
+.loop
+	ld a, [de]
+	cp $c
+	inc de
+	jr nc, .single_byte
+	inc de
+	jr .inc_char
+.single_byte
+	cp '@'
+	jr z, .done
+.inc_char
+	inc b
+	ld a, b
+	cp 4
+	jr c, .loop
+	dec hl
+	cp 5
+	jr c, .loop
+.done
+	pop de
 	ret
 
 BattleMenu:
@@ -4669,9 +4731,9 @@ BattleMenu:
 	ld a, [wBattleMenuCursorPosition]
 	cp $1
 	jp z, BattleMenu_Fight
-	cp $3
-	jp z, BattleMenu_Pack
 	cp $2
+	jp z, BattleMenu_Pack
+	cp $3
 	jp z, BattleMenu_PKMN
 	cp $4
 	jp z, BattleMenu_Run
@@ -5065,37 +5127,36 @@ MoveSelectionScreen:
 	xor a
 	ldh [hBGMapMode], a
 
-	hlcoord 4, 17 - NUM_MOVES - 1
-	ld b, 4
-	ld c, 14
+	hlcoord 0, 8
+	ld b, 8
+	ld c, 8
 	ld a, [wMoveSelectionMenuType]
 	cp $2
 	jr nz, .got_dims
-	hlcoord 4, 17 - NUM_MOVES - 1 - 4
-	ld b, 4
-	ld c, 14
+	hlcoord 10, 8
+	ld b, 8
+	ld c, 8
 .got_dims
 	call Textbox
 
-	hlcoord 6, 17 - NUM_MOVES
+	hlcoord 2, 10
 	ld a, [wMoveSelectionMenuType]
 	cp $2
 	jr nz, .got_start_coord
-	hlcoord 6, 17 - NUM_MOVES - 4
+	hlcoord 12, 10
 .got_start_coord
-	ld a, SCREEN_WIDTH
+	ld a, 2 * SCREEN_WIDTH
 	ld [wListMovesLineSpacing], a
 	predef ListMoves
 
-	ld b, 5
+	ld b, 1
 	ld a, [wMoveSelectionMenuType]
 	cp $2
-	ld a, 17 - NUM_MOVES
 	jr nz, .got_default_coord
-	ld b, 5
-	ld a, 17 - NUM_MOVES - 4
+	ld b, 11
 
 .got_default_coord
+	ld a, 10
 	ld [w2DMenuCursorInitY], a
 	ld a, b
 	ld [w2DMenuCursorInitX], a
@@ -5134,7 +5195,7 @@ MoveSelectionScreen:
 	ld [w2DMenuFlags1], a
 	xor a
 	ld [w2DMenuFlags2], a
-	ld a, $10
+	ld a, $20
 	ld [w2DMenuCursorOffsets], a
 .menu_loop
 	ld a, [wMoveSelectionMenuType]
@@ -5152,9 +5213,9 @@ MoveSelectionScreen:
 	ld a, [wSwappingMove]
 	and a
 	jr z, .interpret_joypad
-	hlcoord 5, 13
-	ld bc, SCREEN_WIDTH
+	hlcoord 1, 10
 	dec a
+	ld bc, 2 * SCREEN_WIDTH
 	call AddNTimes
 	ld [hl], '▷'
 
@@ -5168,7 +5229,7 @@ MoveSelectionScreen:
 	jp nz, .pressed_down
 	bit B_PAD_SELECT, a
 	jp nz, .pressed_select
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	; A button
 	push af
 
@@ -5398,8 +5459,8 @@ MoveInfoBox:
 	xor a
 	ldh [hBGMapMode], a
 
-	hlcoord 0, 8
-	ld b, 3
+	hlcoord 9, 12
+	ld b, 4
 	ld c, 9
 	call Textbox
 
@@ -5414,7 +5475,7 @@ MoveInfoBox:
 	cp b
 	jr nz, .not_disabled
 
-	hlcoord 1, 10
+	hlcoord 10, 15
 	ld de, .Disabled
 	call PlaceString
 	jr .done
@@ -5446,18 +5507,20 @@ MoveInfoBox:
 	ld a, [hl]
 	and PP_MASK
 	ld [wStringBuffer1], a
-	hlcoord 1, 9
+	hlcoord 10, 15
 	ld de, .Type
 	call PlaceString
 
-	hlcoord 7, 11
+	hlcoord 16, 13
 	ld [hl], '/'
-	hlcoord 5, 11
+	hlcoord 14, 16
+	ld [hl], '/'
+	hlcoord 14, 13
 	ld de, wStringBuffer1
 	lb bc, 1, 2
 	call PrintNum
 
-	hlcoord 8, 11
+	hlcoord 17, 13
 	ld de, wNamedObjectIndex
 	lb bc, 1, 2
 	call PrintNum
@@ -5465,16 +5528,16 @@ MoveInfoBox:
 	callfar UpdateMoveData
 	ld a, [wPlayerMoveStruct + MOVE_ANIM]
 	ld b, a
-	hlcoord 2, 10
+	hlcoord 15, 16
 	predef PrintMoveType
 
 .done
 	ret
 
 .Disabled:
-	db "Disabled!@"
+	db "봉쇄되어 있다!@"
 .Type:
-	db "TYPE/@"
+	db "기술타입@"
 
 ParseEnemyAction:
 	ld a, [wEnemyIsSwitching]
@@ -5909,14 +5972,8 @@ LoadEnemyMon:
 	jr c, .GenerateDVs ; try again
 
 .Magikarp:
-; These filters are untranslated.
-; They expect at wMagikarpLength a 2-byte value in mm,
-; but the value is in feet and inches (one byte each).
-
-; The first filter is supposed to make very large Magikarp even rarer,
-; by targeting those 1600 mm (= 5'3") or larger.
-; After the conversion to feet, it is unable to target any,
-; since the largest possible Magikarp is 5'3", and $0503 = 1283 mm.
+; The first filter makes very large Magikarp even rarer,
+; by targeting those 1600 mm or larger.
 	ld a, [wTempEnemyMonSpecies]
 	cp MAGIKARP
 	jr nz, .Happiness
@@ -5926,27 +5983,27 @@ LoadEnemyMon:
 	ld bc, wPlayerID
 	callfar CalcMagikarpLength
 
-; No reason to keep going if length > 1536 mm (i.e. if HIGH(length) > 6 feet)
+; No reason to keep going if length > 1536 mm
 	ld a, [wMagikarpLength]
-	cp HIGH(1536) ; should be "cp 5", since 1536 mm = 5'0", but HIGH(1536) = 6
+	cp HIGH(1536)
 	jr nz, .CheckMagikarpArea
 
 ; 5% chance of skipping both size checks
 	call Random
 	cp 5 percent
 	jr c, .CheckMagikarpArea
-; Try again if length >= 1616 mm (i.e. if LOW(length) >= 4 inches)
+; Try again if length >= 1616 mm
 	ld a, [wMagikarpLength + 1]
-	cp LOW(1616) ; should be "cp 4", since 1616 mm = 5'4", but LOW(1616) = 80
+	cp LOW(1616)
 	jr nc, .GenerateDVs
 
 ; 20% chance of skipping this check
 	call Random
 	cp 20 percent - 1
 	jr c, .CheckMagikarpArea
-; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
+; Try again if length >= 1600 mm
 	ld a, [wMagikarpLength + 1]
-	cp LOW(1600) ; should be "cp 3", since 1600 mm = 5'3", but LOW(1600) = 64
+	cp LOW(1600)
 	jr nc, .GenerateDVs
 
 .CheckMagikarpArea:
@@ -5961,8 +6018,6 @@ LoadEnemyMon:
 ; Intended behavior enforces a minimum size at Lake of Rage.
 ; The real behavior prevents a minimum size in the Lake of Rage area.
 
-; Moreover, due to the check not being translated to feet+inches, all Magikarp
-; smaller than 4'0" may be caught by the filter, a lot more than intended.
 	ld a, [wMapGroup]
 	cp GROUP_LAKE_OF_RAGE
 	jr z, .Happiness
@@ -5973,9 +6028,9 @@ LoadEnemyMon:
 	call Random
 	cp 39 percent + 1
 	jr c, .Happiness
-; Try again if length < 1024 mm (i.e. if HIGH(length) < 3 feet)
+; Try again if length < 1024 mm
 	ld a, [wMagikarpLength]
-	cp HIGH(1024) ; should be "cp 3", since 1024 mm = 3'4", but HIGH(1024) = 4
+	cp HIGH(1024)
 	jr c, .GenerateDVs ; try again
 
 ; Finally done with DVs
@@ -7055,7 +7110,7 @@ GiveExperiencePoints:
 	ld b, 10
 	ld c, 9
 	call Textbox
-	hlcoord 11, 1
+	hlcoord 11, 2
 	ld bc, 4
 	predef PrintTempMonStats
 	ld c, 30
@@ -7800,7 +7855,7 @@ StartBattle:
 	set B_LCDC_WIN_MAP, [hl] ; select vBGMap1/vBGMap3
 	call EmptyBattleTextbox
 	hlcoord 9, 7
-	lb bc, 5, 11
+	lb bc, 5, 10
 	call ClearBox
 	hlcoord 1, 0
 	lb bc, 4, 10
@@ -8058,7 +8113,7 @@ ShowLinkBattleParticipantsAfterEnd:
 	ld de, .Draw
 
 .store_result
-	hlcoord 6, 8
+	hlcoord 7, 8
 	call PlaceString
 	ld c, 200
 	call DelayFrames
@@ -8076,11 +8131,11 @@ ShowLinkBattleParticipantsAfterEnd:
 	ret
 
 .YouWin:
-	db "YOU WIN@"
+	db "당신의<SP>승리@"
 .YouLose:
-	db "YOU LOSE@"
+	db "당신의<SP>패배@"
 .Draw:
-	db "  DRAW@"
+	db "<SP><SP>무승부<SP>@"
 
 _DisplayLinkRecord:
 	ld a, BANK(sLinkBattleStats)
@@ -8090,9 +8145,10 @@ _DisplayLinkRecord:
 
 	call CloseSRAM
 	hlcoord 0, 0, wAttrmap
-	xor a
-	ld bc, SCREEN_AREA
-	call ByteFill
+	lb bc, SCREEN_HEIGHT, SCREEN_WIDTH
+	xor a ; bug: a is overloaded by farcall
+	farcall FillBoxCGB
+
 	call WaitBGMap2
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
@@ -8135,7 +8191,7 @@ ReadAndPrintLinkBattleRecord:
 	pop hl
 	call PlaceString
 	pop hl
-	ld de, 26
+	ld de, 6
 	add hl, de
 	push hl
 	ld de, wLinkBattleRecordWins
@@ -8174,38 +8230,45 @@ ReadAndPrintLinkBattleRecord:
 	ret
 
 .PrintBattleRecord:
-	hlcoord 1, 0
+	hlcoord 2, 1
 	ld de, .Record
 	call PlaceString
 
-	hlcoord 0, 6
+	hlcoord 7, 6
 	ld de, .Result
 	call PlaceString
 
-	hlcoord 0, 2
-	ld de, .Total
-	call PlaceString
-
-	hlcoord 6, 4
+	hlcoord 1, 3
 	ld de, sLinkBattleWins
 	call .PrintZerosIfNoSaveFileExists
 
-	lb bc, 2, 4
+	lb bc, PRINTNUM_LEFTALIGN | 2, 4
 	call PrintNum
 
-	hlcoord 11, 4
+	ld de, .Win
+	call PlaceString
+
+	ld h, b
+	ld l, c
 	ld de, sLinkBattleLosses
 	call .PrintZerosIfNoSaveFileExists
 
-	lb bc, 2, 4
+	lb bc, PRINTNUM_LEFTALIGN | 2, 4
 	call PrintNum
 
-	hlcoord 16, 4
+	ld de, .Loss
+	call PlaceString
+
+	ld h, b
+	ld l, c
 	ld de, sLinkBattleDraws
 	call .PrintZerosIfNoSaveFileExists
 
-	lb bc, 2, 4
+	lb bc, PRINTNUM_LEFTALIGN | 2, 4
 	call PrintNum
+
+	ld de, .Draw
+	call PlaceString
 
 	ret
 
@@ -8219,14 +8282,17 @@ ReadAndPrintLinkBattleRecord:
 .Scores:
 	db "<NULL><NULL>"
 .Format:
-	db "  ---  <LF>"
-	db "         -    -    -@"
+	db "<-><-><-><-><-> <-><-><-><-> <-><-><-><-> <-><-><-><->@"
 .Record:
-	db "<PLAYER>'s RECORD@"
+	db "<PLAYER>의 대전 성적@"
 .Result:
-	db "RESULT WIN LOSE DRAW@"
-.Total:
-	db "TOTAL  WIN LOSE DRAW@"
+	db "승리   패배   무승부@"
+.Win:
+	db "승@"
+.Loss:
+	db "패@"
+.Draw:
+	db "무승부@"
 
 BattleEnd_HandleRoamMons:
 	ld a, [wBattleType]

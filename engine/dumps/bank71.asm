@@ -68,7 +68,7 @@ TryAddCharacter::
 	ld a, [wNamingScreenLastCharacter]
 	cp ' '
 	jr nz, .not_space
-	lb bc, charval("< >", 0), charval("< >", 1)
+	lb bc, charval("<SP>", 0), charval("<SP>", 1)
 	ret
 
 .not_space

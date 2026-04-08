@@ -71,4 +71,4 @@
 	kr_charmap "<8>", $f8
 	kr_charmap "<9>", $f9
 
-	kr_charmap "< >", $ff
+	kr_charmap "<SP>", $ff ; 2-byte variant of ' '

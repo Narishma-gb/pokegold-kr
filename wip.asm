@@ -47,61 +47,6 @@ INCLUDE "engine/dumps/bank7f.asm"
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "Battle Core", ROMX[$4000], BANK[15]
-SECTION "rom15", ROMX[$4000], BANK[15]
-; ROM $0f : $3C000 - $3FFFF
-
-	dr FleeMons, $4551
-	dr GetMoveEffect, $45a4
-	dr SubtractHPFromUser, $4bea
-	dr GetEighthMaxHP, $4c2e
-	dr GetQuarterMaxHP, $4c39
-	dr GetHalfMaxHP, $4c4a
-	dr GetMaxHP, $4c57
-	dr CheckUserHasEnoughHP, $4c89
-	dr RestoreHP, $4c9a
-	dr SetUpBattlePartyMenu, $5227
-	dr ForcePickSwitchMonInBattle, $5292
-	dr ForceEnemySwitch, $5384
-	dr EnemySwitch, $53a2
-	dr EnemySwitch_SetMode, $53d8
-	dr ResetBattleParticipants, $543b
-	dr NewEnemyMonStatus, $56ce
-	dr ResetEnemyStatLevels, $5701
-	dr CheckPlayerPartyForFitMon, $570d
-	dr GetPartyMonDVs, $58f8
-	dr GetEnemyMonDVs, $590a
-	dr SwitchPlayerMon, $59a5
-	dr SpikesDamage, $5a87
-	dr PursuitSwitch, $5abf
-	dr UseHeldStatusHealingItem, $5c4d
-	dr UseConfusionHealingItem, $5cb5
-	dr UpdatePlayerHUD, $5dac
-	dr DrawPlayerHUD, $5dbc
-	dr UpdateEnemyHUD, $5eac
-	dr DrawEnemyHUD, $5eb9
-	dr PassedBattleMonEntrance, $62d5
-	dr MoveSelectionScreen, $6338
-	dr CheckEnemyLockedIn, $6739
-	dr LinkBattleSendReceiveAction, $674c
-	dr LoadEnemyMon, $679c
-	dr ApplyPrzEffectOnSpeed, $6ac8
-	dr ApplyBrnEffectOnAttack, $6b05
-	dr ApplyStatLevelMultiplierOnAllStats, $6b3a
-	dr BadgeStatBoosts, $6bd4
-	dr _LoadBattleFontsHPBar, $6c29
-	dr _BattleRandom, $6c62
-	dr FillInExpBar, $71e7
-	dr GetBattleMonBackpic, $7294
-	dr DropPlayerSub, $729e
-	dr GetEnemyMonFrontpic, $72d3
-	dr DropEnemySub, $72dd
-	dr StartBattle, $7318
-	dr _DisplayLinkRecord, $75bd
-	dr GetTrainerBackpic, $79b6
-	dr BattleCommandPointers, $7d9b
-
-
 SECTION "Evolutions and Attacks", ROMX[$4000], BANK[16]
 SECTION "rom16", ROMX[$4000], BANK[16]
 ; ROM $10 : $40000 - $43FFF
@@ -119,7 +64,10 @@ SECTION "rom16", ROMX[$4000], BANK[16]
 SECTION "rom17", ROMX[$4000], BANK[17]
 ; ROM $11 : $44000 - $47FFF
 
+	dr AIChooseMove, $40c8
 	dr Function442ea, $42ea
+	dr PlayBattleMusic, $44f5
+	dr ClearBattleRAM, $4591
 	dr PlaceGraphic, $45e7
 	dr SendMailToPC, $4618
 	dr BackupPartyMonMail, $47cf
@@ -266,6 +214,7 @@ DummyPredef36::
 	dr _InitSpriteAnimStruct, $51ef
 	dr _ReinitSpriteAnimFrame, $532a
 	set_gs_diff $1a
+	drd AnimateEndOfExpBar, $66db
 	drd ClearSpriteAnims2, $6752
 	drd LoadOverworldMonIcon, $6769
 	drd LoadMenuMonIcon, $677d
@@ -358,6 +307,8 @@ BattleAnimCommands::
 	dr DummyPredef38, $40d7
 DummyPredef39::
 	dr PlayBattleAnim, $40d8
+	dr BattleAnimCmd_RaiseSub, $45e6
+	dr BattleAnimCmd_MinimizeOpp, $466b
 
 
 ;SECTION "rom54", ROMX[$4000], BANK[54]
@@ -428,7 +379,12 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr _LoadStandardFont, $4000
 	dr _LoadFontsExtra, $400f
 	dr _LoadFontsBattleExtra, $4035
+	dr LoadBattleFontsHPBar, $4069
+	dr LoadHPBar, $4084
 	dr LoadStatsScreenPageTilesGFX, $40dc
+	dr EnemyHPBarBorderGFX, $4bb5
+	dr HPExpBarBorderGFX, $4bd5
+	dr ExpBarGFX, $4c05
 	dr CollisionPermissionTable, $746d
 	dr Shrink1Pic, $756d
 	dr Shrink2Pic, $75fd
@@ -443,6 +399,7 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr ConvertMon_1to2, $799b
 	dr UpdateUnownDex, $7aab
 	dr CheckMagikarpLength, $7bc5
+	dr CalcMagikarpLength, $7c69
 	dr MagikarpHouseSign, $7d24
 	dr HiddenPowerDamage, $7d3f
 	dr _DisappearUser, $7da8
@@ -655,6 +612,7 @@ SECTION "rom112", ROMX[$4879], BANK[112]
 	dr PrintHoursMins, $4879
 	dr _DudeAutoInput_A, $4b16
 	dr _DudeAutoInput_RightA, $4b1b
+	dr _DudeAutoInput_DownA, $4b20
 
 
 ;SECTION "rom123", ROMX[$4000], BANK[123]
