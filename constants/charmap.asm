@@ -63,6 +63,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap "<DONE>",    $5e
 	charmap "<PROMPT>",  $5f
 
+
 ; Actual characters (from gfx/font/font_extra.png)
 
 	;charmap "<BOLD_A>",  $60 ; unused
@@ -99,6 +100,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap "┘",         $7e
 	charmap " ",         $7f
 
+
 ; Actual characters (from gfx/font/font_battle_extra.png)
 
 	charmap "<LV>",      $6e
@@ -108,6 +110,17 @@ INCLUDE "constants/charmap/japanese.asm"
 	;charmap "『",         $72 ; Japanese opening quote, unused
 	charmap "<ID>",      $73
 	charmap "№",         $74
+
+
+; Actual characters (from gfx/pokedex/pokedex.png)
+
+;	Needed for Pokedex_DrawDexEntryScreenBG (see engine/menus/pokedex.asm)
+;	As these characters partially overlap with control codes values,
+;	they can not be used with PlaceString or PrintText.
+	charmap "<m>", $5e
+	charmap "<k>", $5f
+	charmap "<g>", $60
+
 
 ; Actual characters (from other graphics files)
 

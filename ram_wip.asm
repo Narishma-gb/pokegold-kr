@@ -64,3 +64,37 @@ EXPORT DEF wLinkOTMailEnd EQU $D468
 EXPORT DEF wHallOfFameCount EQU $D736
 EXPORT DEF wTempTilemap EQU $D800
 EXPORT DEF hClockResetTrigger EQU $FFEE
+
+
+SECTION UNION "Miscellaneous", WRAM0
+
+	ds 200
+
+wPokedexDataStart::
+wPokedexOrder:: ds $100 ; >= NUM_POKEMON
+wPokedexOrderEnd::
+wDexListingScrollOffset:: db ; offset of the first displayed entry from the start
+wDexListingCursor:: db ; Dex cursor
+wDexListingEnd:: db ; Last mon to display
+wDexListingHeight:: db ; number of entries displayed at once in the dex listing
+wCurDexMode:: db ; Pokedex Mode
+wDexSearchMonType1:: db ; first type to search
+wDexSearchMonType2:: db ; second type to search
+wDexSearchResultCount:: db
+wDexArrowCursorPosIndex:: db
+wDexArrowCursorDelayCounter:: db
+wDexArrowCursorBlinkCounter:: db
+wDexSearchSlowpokeFrame:: db
+wUnlockedUnownMode:: db
+wDexCurUnownIndex:: db
+wDexUnownCount:: db
+wDexConvertedMonType:: db ; mon type converted from dex search mon type
+wDexListingScrollOffsetBackup:: db
+wDexListingCursorBackup:: db
+wBackupDexListingCursor:: db
+wBackupDexListingPage:: db
+wDexCurLocation:: db
+wPokedexDataEnd::
+	ds 3
+
+ENDSECTION

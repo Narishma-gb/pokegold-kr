@@ -47,24 +47,13 @@ INCLUDE "engine/dumps/bank7f.asm"
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "Evolutions and Attacks", ROMX[$4000], BANK[16]
-SECTION "rom16", ROMX[$4000], BANK[16]
-; ROM $10 : $40000 - $43FFF
-
-	dr Pokedex, $4000
-	dr Moves, $572e
-	dr EvolvePokemon, $5e0b
-	dr EvolveAfterBattle, $5e19
-	dr LearnLevelMoves, $60b3
-	dr FillMoves, $610d
-	dr GetPreEvolution, $63bd
-	dr EvosAttacksPointers, $63ed
-
-
 SECTION "rom17", ROMX[$4000], BANK[17]
 ; ROM $11 : $44000 - $47FFF
 
 	dr AIChooseMove, $40c8
+	dr AnimateDexSearchSlowpoke, $41c2
+	dr DoDexSearchSlowpokeFrame, $41fa
+	dr DisplayDexEntry, $4240
 	dr Function442ea, $42ea
 	dr PlayBattleMusic, $44f5
 	dr ClearBattleRAM, $4591
@@ -179,6 +168,7 @@ SECTION "rom33", ROMX[$4000], BANK[33]
 ; ROM $21 : $84000 - $87FFF
 
 	dr _PrinterReceive, $42db
+	dr PrintDexEntry, $442c
 	dr PrintUnownStamp, $4560
 	dr _PrintDiploma, $4684
 	dr _HallOfFamePC, $6640
@@ -385,6 +375,8 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr EnemyHPBarBorderGFX, $4bb5
 	dr HPExpBarBorderGFX, $4bd5
 	dr ExpBarGFX, $4c05
+	dr Footprints, $52bd
+	dr UnownFont, $72bd
 	dr CollisionPermissionTable, $746d
 	dr Shrink1Pic, $756d
 	dr Shrink2Pic, $75fd
@@ -398,6 +390,7 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr ConvertMon_2to1, $7984
 	dr ConvertMon_1to2, $799b
 	dr UpdateUnownDex, $7aab
+	dr PrintUnownWord, $7ac1
 	dr CheckMagikarpLength, $7bc5
 	dr CalcMagikarpLength, $7c69
 	dr MagikarpHouseSign, $7d24
@@ -610,6 +603,9 @@ SECTION "rom112", ROMX[$4879], BANK[112]
 ; ROM $70 : $1C0000 - $1C3FFF
 
 	dr PrintHoursMins, $4879
+	dr LoadSGBPokedexGFX, $48c1
+	dr LoadSGBPokedexGFX2, $48cb
+	dr LoadQuestionMarkPic, $4a7c
 	dr _DudeAutoInput_A, $4b16
 	dr _DudeAutoInput_RightA, $4b1b
 	dr _DudeAutoInput_DownA, $4b20

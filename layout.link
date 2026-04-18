@@ -62,9 +62,9 @@ ROMX $0e
 	"Enemy Trainers"
 ROMX $0f
 	"Battle Core"
-; ROMX $10
-; 	"bank10"
-; 	"Evolutions and Attacks"
+ROMX $10
+	"bank10"
+	"Evolutions and Attacks"
 ; ROMX $11
 ; 	"bank11"
 ; ROMX $12
