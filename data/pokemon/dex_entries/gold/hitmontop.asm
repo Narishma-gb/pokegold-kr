@@ -1,10 +1,7 @@
-	db "HANDSTAND@" ; species name
-	dw 407, 1060 ; height, weight
+	db "물구나무@" ; species name
+	db 14 ; height
+	dw 480 ; weight
 
-	db   "If you become"
-	next "enchanted by its"
-	next "smooth, elegant,"
-
-	page "dance-like kicks,"
-	next "you may get"
-	next "drilled hard.@"
+	db   "춤추듯이 화려하고 거침없는"
+	next "발차기 기술에 넋을 잃고있으면"
+	next "강력한 일격을 선사한다@"

@@ -1,10 +1,7 @@
-	db "CORAL@" ; species name
-	dw 200, 110 ; height, weight
+	db "산호@" ; species name
+	db 6 ; height
+	dw 50 ; weight
 
-	db   "It continuously"
-	next "sheds and grows."
-	next "The tip of its"
-
-	page "head is prized as"
-	next "a treasure for its"
-	next "beauty.@"
+	db   "점점 자라면서 돋아나는"
+	next "머리의 끝은 아름답기에"
+	next "보석으로서 매우 인기가 높다@"

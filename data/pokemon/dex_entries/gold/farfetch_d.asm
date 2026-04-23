@@ -1,10 +1,7 @@
-	db "WILD DUCK@" ; species name
-	dw 207, 330 ; height, weight
+	db "천둥오리@" ; species name
+	db 8 ; height
+	dw 150 ; weight
 
-	db   "If anyone tries to"
-	next "disturb where the"
-	next "essential plant"
-
-	page "sticks grow, it"
-	next "uses its own stick"
-	next "to thwart them.@"
+	db   "중요한 줄기가 나는 장소를"
+	next "빼앗으려 하는 녀석은 가지고 있는"
+	next "줄기를 사용하여 해치운다@"

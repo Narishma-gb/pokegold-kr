@@ -1,10 +1,7 @@
-	db "WEED@" ; species name
-	dw 207, 190 ; height, weight
+	db "잡초@" ; species name
+	db 8 ; height
+	dw 86 ; weight
 
-	db   "It secretes a"
-	next "sticky, drool-like"
-	next "honey. Although"
-
-	page "sweet, it smells"
-	next "too repulsive to"
-	next "get very close.@"
+	db   "끈적끈적 거리는 침 같은 꿀"
+	next "매우 달콤하지만 냄새가"
+	next "의외로 역겨워서 다가갈 수 없다@"

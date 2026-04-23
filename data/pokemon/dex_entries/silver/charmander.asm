@@ -1,10 +1,7 @@
-	db "LIZARD@" ; species name
-	dw 200, 190 ; height, weight
+	db "도롱뇽@" ; species name
+	db 6 ; height
+	dw 85 ; weight
 
-	db   "The flame on its"
-	next "tail indicates"
-	next "CHARMANDER's life"
-
-	page "force. If it is"
-	next "healthy, the flame"
-	next "burns brightly.@"
+	db   "꼬리의 화염은 파이리의"
+	next "생명력의 상징"
+	next "건강할 때 왕성하게 불타오른다@"

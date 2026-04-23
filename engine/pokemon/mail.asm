@@ -101,7 +101,7 @@ MoveMailFromPCToParty:
 	ld bc, MAIL_STRUCT_LENGTH
 	call CopyBytes
 	pop hl
-	ld de, PARTYMON_STRUCT_LENGTH - MON_MOVES
+	ld de, MAIL_STRUCT_LENGTH - 1 ; message type
 	add hl, de
 	ld d, [hl]
 	ld a, [wCurPartyMon]
@@ -148,7 +148,7 @@ CheckPokeMail::
 	pop bc
 
 ; Compare the mail message, byte for byte, with the expected message.
-	ld a, MAIL_MSG_LENGTH
+	ld a, $20
 	ld [wTempByteValue], a
 .loop
 	ld a, [de]
@@ -539,13 +539,13 @@ MailboxPC:
 
 .TopMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 8, 1, SCREEN_WIDTH - 2, 10
+	menu_coords 9, 1, 16, 10
 	dw .TopMenuData
 	db 1 ; default option
 
 .TopMenuData:
 	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
-	db 4, 0 ; rows, columns
+	db 5, 0 ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; item format
 	dbw 0, wMailboxCount
 	dba MailboxPC_PrintMailAuthor
@@ -554,14 +554,14 @@ MailboxPC:
 
 .SubMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 13, 9
+	menu_coords 0, 0, 14, 9
 	dw .SubMenuData
 	db 1 ; default option
 
 .SubMenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "READ MAIL@"
-	db "PUT IN PACK@"
-	db "ATTACH MAIL@"
-	db "CANCEL@"
+	db "내용을 읽다@"
+	db "가방에 다시넣다@"
+	db "포켓몬에게 지니게한다@"
+	db "그만두다@"

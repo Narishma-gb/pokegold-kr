@@ -1,10 +1,7 @@
-	db "WOOL@" ; species name
-	dw 200, 170 ; height, weight
+	db "솜털@" ; species name
+	db 6 ; height
+	dw 78 ; weight
 
-	db   "If static elec-"
-	next "tricity builds in"
-	next "its body, its"
-
-	page "fleece doubles in"
-	next "volume. Touching"
-	next "it will shock you.@"
+	db   "몸에 정전기가 모이면"
+	next "털이 평상시의 2배정도로"
+	next "부풀어 오른다  만지면 감전됨@"

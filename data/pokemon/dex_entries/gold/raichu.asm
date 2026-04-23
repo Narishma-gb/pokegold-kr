@@ -1,10 +1,7 @@
-	db "MOUSE@" ; species name
-	dw 207, 660 ; height, weight
+	db "쥐@" ; species name
+	db 8 ; height
+	dw 300 ; weight
 
-	db   "When its electric-"
-	next "ity builds, its"
-	next "muscles are stimu-"
-
-	page "lated, and it be-"
-	next "comes more aggres-"
-	next "sive than usual.@"
+	db   "전기가 모이면"
+	next "근육이 자극되어 평상시보다"
+	next "공격적으로 되어버린다@"

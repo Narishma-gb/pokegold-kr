@@ -1,10 +1,7 @@
-	db "BAT@" ; species name
-	dw 207, 170 ; height, weight
+	db "박쥐@" ; species name
+	db 8 ; height
+	dw 75 ; weight
 
-	db   "Capable of flying"
-	next "safely in dark"
-	next "places, it emits"
-
-	page "ultrasonic cries"
-	next "to check for any"
-	next "obstacles.@"
+	db   "어두운 곳도 잘 날아다니는 것은"
+	next "초음파를 내서 주변의"
+	next "상태를 조사하기 때문이다@"

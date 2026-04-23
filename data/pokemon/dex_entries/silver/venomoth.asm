@@ -1,10 +1,7 @@
-	db "POISONMOTH@" ; species name
-	dw 411, 280 ; height, weight
+	db "독나방@" ; species name
+	db 15 ; height
+	dw 125 ; weight
 
-	db   "The powder on its"
-	next "wings is poisonous"
-	next "if it is dark in"
-
-	page "color. If it is"
-	next "light, it causes"
-	next "paralysis.@"
+	db   "날개의 가루는 상태에 따라 색이"
+	next "짙어지면 독의 성질을 내고 색이"
+	next "옅어지면 마비의 효과를 나타낸다@"

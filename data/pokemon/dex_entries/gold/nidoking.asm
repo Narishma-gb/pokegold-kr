@@ -1,10 +1,7 @@
-	db "DRILL@" ; species name
-	dw 407, 1370 ; height, weight
+	db "드릴@" ; species name
+	db 14 ; height
+	dw 620 ; weight
 
-	db   "It swings its big"
-	next "tail around during"
-	next "battle. If its foe"
-
-	page "flinches, it will"
-	next "charge with its"
-	next "sturdy body.@"
+	db   "커다란 꼬리를 휘둘러"
+	next "상대의 기가 죽으면 튼튼한"
+	next "몸으로 돌진해온다@"

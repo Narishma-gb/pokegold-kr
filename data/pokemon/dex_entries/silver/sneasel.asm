@@ -1,10 +1,7 @@
-	db "SHARP CLAW@" ; species name
-	dw 211, 620 ; height, weight
+	db "갈고리손톱@" ; species name
+	db 9 ; height
+	dw 280 ; weight
 
-	db   "Vicious in nature,"
-	next "it drives PIDGEY"
-	next "from their nests"
-
-	page "and feasts on the"
-	next "eggs that are left"
-	next "behind.@"
+	db   "거친 성격"
+	next "어미 구구를 쫓아내고"
+	next "둥지에 남은 알을 먹는다@"

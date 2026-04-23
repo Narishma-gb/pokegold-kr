@@ -1,10 +1,7 @@
-	db "OWL@" ; species name
-	dw 503, 900 ; height, weight
+	db "부엉이@" ; species name
+	db 16 ; height
+	dw 408 ; weight
 
-	db   "When it needs to"
-	next "think, it rotates"
-	next "its head 180 de-"
-
-	page "grees to sharpen"
-	next "its intellectual"
-	next "power.@"
+	db   "뭔가를 생각해내면"
+	next "목을 180도 회전시켜"
+	next "머리회전을 높인다@"

@@ -1,10 +1,7 @@
-	db "SUPERPOWER@" ; species name
-	dw 207, 430 ; height, weight
+	db "괴력@" ; species name
+	db 8 ; height
+	dw 195 ; weight
 
-	db   "It loves to work"
-	next "out and build its"
-	next "muscles. It is"
-
-	page "never satisfied,"
-	next "even if it trains"
-	next "hard all day long.@"
+	db   "체력단련을 제일 좋아한다"
+	next "하루종일 수행을 해도"
+	next "전혀 지치지 않는다@"

@@ -1,10 +1,7 @@
-	db "SCOUT@" ; species name
-	dw 207, 130 ; height, weight
+	db "망보기@" ; species name
+	db 8 ; height
+	dw 60 ; weight
 
-	db   "It stands on its"
-	next "tail so it can see"
-	next "a long way. If it"
-
-	page "spots an enemy, it"
-	next "cries loudly to"
-	next "warn its kind.@"
+	db   "먼 곳까지 볼 수 있도록 꼬리를"
+	next "사용해서 선다  적을 발견하면"
+	next "큰 소리로 동료들에게 알린다@"

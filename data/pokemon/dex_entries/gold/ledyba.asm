@@ -1,10 +1,7 @@
-	db "FIVE STAR@" ; species name
-	dw 303, 240 ; height, weight
+	db "별다섯@" ; species name
+	db 10 ; height
+	dw 108 ; weight
 
-	db   "It is very timid."
-	next "It will be afraid"
-	next "to move if it is"
-
-	page "alone. But it will"
-	next "be active if it is"
-	next "in a group.@"
+	db   "무리를 만들지 않으면 불안해서"
+	next "움직이지 못할 정도로 겁이 많지만"
+	next "동료가 있으면 활발하게 움직인다@"

@@ -1,10 +1,7 @@
-	db "PARENT@" ; species name
-	dw 703, 1760 ; height, weight
+	db "가족@" ; species name
+	db 22 ; height
+	dw 800 ; weight
 
-	db   "To protect its"
-	next "young, it will"
-	next "never give up"
-
-	page "during battle, no"
-	next "matter how badly"
-	next "wounded it is.@"
+	db   "자식을 지키기 위해서라면"
+	next "어떠한 상처를 입더라도"
+	next "싸움을 멈추지 않는다@"

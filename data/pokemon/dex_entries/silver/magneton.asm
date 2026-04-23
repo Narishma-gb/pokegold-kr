@@ -1,10 +1,7 @@
-	db "MAGNET@" ; species name
-	dw 303, 1320 ; height, weight
+	db "자석@" ; species name
+	db 10 ; height
+	dw 600 ; weight
 
-	db   "The MAGNEMITE are"
-	next "united by a mag-"
-	next "netism so power-"
-
-	page "ful, it dries all"
-	next "moisture in its"
-	next "vicinities.@"
+	db   "상호간에 코일을 엮어서"
+	next "강력하게 만든 자력은 주변의"
+	next "수분을 건조하게 만들정도다@"

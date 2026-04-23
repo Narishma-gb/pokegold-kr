@@ -1,10 +1,7 @@
-	db "SUPERPOWER@" ; species name
-	dw 503, 2870 ; height, weight
+	db "괴력@" ; species name
+	db 16 ; height
+	dw 1300 ; weight
 
-	db   "It quickly swings"
-	next "its four arms to"
-	next "rock its opponents"
-
-	page "with ceaseless"
-	next "punches and chops"
-	next "from all angles.@"
+	db   "4개의 팔을 재빠르게 움직여서"
+	next "모든 각도에서 쉬지않고"
+	next "펀치와 당수를 날려온다@"

@@ -1,10 +1,7 @@
-	db "FLYSCORPIO@" ; species name
-	dw 307, 1430 ; height, weight
+	db "날전갈@" ; species name
+	db 11 ; height
+	dw 648 ; weight
 
-	db   "It flies straight"
-	next "at its target's"
-	next "face then clamps"
-
-	page "down on the star-"
-	next "tled victim to"
-	next "inject poison.@"
+	db   "안면을 노리고 덤벼든다"
+	next "붙어 있던 먹이가 놀라는"
+	next "순간에 독침을 찌른다@"

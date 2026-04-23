@@ -1,10 +1,7 @@
-	db "FLOWER@" ; species name
-	dw 311, 410 ; height, weight
+	db "꽃@" ; species name
+	db 12 ; height
+	dw 186 ; weight
 
-	db   "The bud bursts"
-	next "into bloom with a"
-	next "bang. It then"
-
-	page "starts scattering"
-	next "allergenic, poi-"
-	next "sonous pollen.@"
+	db   "뽕 하는 소리가 나며 꽃봉오리가"
+	next "열리면 알레르기를 일으키는"
+	next "독가루를 뿌리기 시작한다@"

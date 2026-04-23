@@ -1,10 +1,7 @@
-	db "COTTONWEED@" ; species name
-	dw 104, 10 ; height, weight
+	db "솜풀@" ; species name
+	db 4 ; height
+	dw 5 ; weight
 
-	db   "To keep from being"
-	next "blown away by the"
-	next "wind, they gather"
-
-	page "in clusters. They"
-	next "do enjoy gentle"
-	next "breezes, though.@"
+	db   "통통코끼리 모여서 바람에"
+	next "날려가지 않도록 하고있다"
+	next "단 산들바람에 날리는 것은 좋아함@"

@@ -1,10 +1,7 @@
-	db "WATER FISH@" ; species name
-	dw 104, 190 ; height, weight
+	db "수어@" ; species name
+	db 4 ; height
+	dw 85 ; weight
 
-	db   "When it walks a-"
-	next "round on the"
-	next "ground, it coats"
-
-	page "its body with a"
-	next "slimy, poisonous"
-	next "film.@"
+	db   "지상을 돌아다닐 때는"
+	next "미끈미끈한 독의 점막으로"
+	next "몸의 표면을 덮고 있다@"

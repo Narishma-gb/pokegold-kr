@@ -1,10 +1,7 @@
-	db "BIG JAW@" ; species name
-	dw 200, 210 ; height, weight
+	db "큰턱@" ; species name
+	db 6 ; height
+	dw 95 ; weight
 
-	db   "It is small but"
-	next "rough and tough."
-	next "It won't hesitate"
-
-	page "to take a bite out"
-	next "of anything that"
-	next "moves.@"
+	db   "작아도 성격은 거칠다"
+	next "눈 앞에서 움직이는 것이 있으면"
+	next "무조건 물어버린다@"

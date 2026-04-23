@@ -1,10 +1,7 @@
-	db "LIGHT@" ; species name
-	dw 407, 1360 ; height, weight
+	db "라이트@" ; species name
+	db 14 ; height
+	dw 615 ; weight
 
-	db   "The bright light"
-	next "on its tail can be"
-	next "seen far away. It"
-
-	page "has been treasured"
-	next "since ancient"
-	next "times as a beacon.@"
+	db   "꼬리의 빛은 멀리까지"
+	next "전해지기 때문에 예전부터 봉화"
+	next "역할로서 중요하게 여겨지고 있다@"

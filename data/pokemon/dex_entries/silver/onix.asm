@@ -1,10 +1,7 @@
-	db "ROCK SNAKE@" ; species name
-	dw 2810, 4630 ; height, weight
+	db "돌뱀@" ; species name
+	db 88 ; height
+	dw 2100 ; weight
 
-	db   "It rapidly bores"
-	next "through the ground"
-	next "at 50 mph by"
-
-	page "squirming and"
-	next "twisting its mas-"
-	next "sive, rugged body.@"
+	db   "크고 튼튼한 몸을"
+	next "뒤틀어서 땅을 파며"
+	next "시속 80ㅋㅍ로 땅속을 전진한다@"

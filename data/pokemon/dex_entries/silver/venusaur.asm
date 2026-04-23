@@ -1,10 +1,7 @@
-	db "SEED@" ; species name
-	dw 607, 2210 ; height, weight
+	db "씨앗@" ; species name
+	db 20 ; height
+	dw 1000 ; weight
 
-	db   "It is able to con-"
-	next "vert sunlight into"
-	next "energy. As a"
-
-	page "result, it is more"
-	next "powerful in the"
-	next "summertime.@"
+	db   "내리쪼이는 태양의 빛을"
+	next "에너지로 변환할 수 있기 때문에"
+	next "여름 때에 더욱 강해진다@"

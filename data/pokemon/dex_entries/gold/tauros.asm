@@ -1,10 +1,7 @@
-	db "WILD BULL@" ; species name
-	dw 407, 1950 ; height, weight
+	db "성난소@" ; species name
+	db 14 ; height
+	dw 884 ; weight
 
-	db   "They fight each"
-	next "other by locking"
-	next "horns. The herd's"
-
-	page "protector takes"
-	next "pride in its bat-"
-	next "tle-scarred horns.@"
+	db   "뿔을 마주대고 싸운다"
+	next "무리를 지키는 강한 켄타로스는"
+	next "상처투성인 뿔을 자랑한다@"

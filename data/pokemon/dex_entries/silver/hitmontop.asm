@@ -1,10 +1,7 @@
-	db "HANDSTAND@" ; species name
-	dw 407, 1060 ; height, weight
+	db "물구나무@" ; species name
+	db 14 ; height
+	dw 480 ; weight
 
-	db   "It launches kicks"
-	next "while spinning. If"
-	next "it spins at high"
-
-	page "speed, it may bore"
-	next "its way into the"
-	next "ground.@"
+	db   "빙글빙글 돌며 킥을 날린다"
+	next "고속으로 돌다보면"
+	next "그대로 지면을 파고들어 간다@"

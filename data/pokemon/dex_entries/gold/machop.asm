@@ -1,10 +1,7 @@
-	db "SUPERPOWER@" ; species name
-	dw 207, 430 ; height, weight
+	db "괴력@" ; species name
+	db 8 ; height
+	dw 195 ; weight
 
-	db   "Always brimming"
-	next "with power, it"
-	next "passes time by"
-
-	page "lifting boulders."
-	next "Doing so makes it"
-	next "even stronger.@"
+	db   "항상 강력한 체력을"
+	next "유지하기 위해서 심심풀이로"
+	next "바위를 들어올려 힘을 기른다@"

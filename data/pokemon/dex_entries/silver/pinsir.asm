@@ -1,10 +1,7 @@
-	db "STAGBEETLE@" ; species name
-	dw 411, 1210 ; height, weight
+	db "투구@" ; species name
+	db 15 ; height
+	dw 550 ; weight
 
-	db   "Swings its long"
-	next "antlers wildly to"
-	next "attack. During"
-
-	page "cold periods, it"
-	next "hides deep in"
-	next "forests.@"
+	db   "긴 뿔을 휘둘러서"
+	next "공격을 해온다  추울 때는"
+	next "깊은 숲에서 몸을 숨긴다@"

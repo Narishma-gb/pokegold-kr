@@ -1,10 +1,7 @@
-	db "DRAGON@" ; species name
-	dw 703, 4630 ; height, weight
+	db "드래곤@" ; species name
+	db 22 ; height
+	dw 2100 ; weight
 
-	db   "This marine #-"
-	next "MON has an impres-"
-	next "sive build that"
-
-	page "lets it freely fly"
-	next "over raging seas"
-	next "without trouble.@"
+	db   "뛰어난 풍채로"
+	next "성난 바다위를 "
+	next "자유롭게 날아다니는 바다의 화신@"

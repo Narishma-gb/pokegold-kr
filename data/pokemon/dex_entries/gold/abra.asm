@@ -1,10 +1,7 @@
-	db "PSI@" ; species name
-	dw 211, 430 ; height, weight
+	db "초능력@" ; species name
+	db 9 ; height
+	dw 195 ; weight
 
-	db   "It senses impend-"
-	next "ing attacks and"
-	next "TELEPORTS away to"
-
-	page "safety before the"
-	next "actual attacks can"
-	next "strike.@"
+	db   "상대의 공격방향을 읽어서"
+	next "덤벼들기 직전에 "
+	next "순간이동으로 그 장소를 떠난다@"

@@ -1,10 +1,7 @@
-	db "COCOON@" ; species name
-	dw 200, 220 ; height, weight
+	db "번데기@" ; species name
+	db 6 ; height
+	dw 100 ; weight
 
-	db   "Although it is a"
-	next "cocoon, it can"
-	next "move a little. It"
-
-	page "can extend its"
-	next "poison barb if it"
-	next "is attacked.@"
+	db   "번데기지만 조금이라면 움직인다"
+	next "적에게 공격을 받을듯하면"
+	next "독침을 쏘는 일도 있다@"

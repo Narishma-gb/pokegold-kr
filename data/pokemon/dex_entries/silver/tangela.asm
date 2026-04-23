@@ -1,10 +1,7 @@
-	db "VINE@" ; species name
-	dw 303, 770 ; height, weight
+	db "넝쿨@" ; species name
+	db 10 ; height
+	dw 350 ; weight
 
-	db   "It tangles any"
-	next "moving thing with"
-	next "its vines. Their"
-
-	page "subtle shaking"
-	next "is ticklish if you"
-	next "get ensnared.@"
+	db   "움직이는 것에 넝쿨을 감는다"
+	next "넝쿨은 미묘하게 흔들리기 때문에"
+	next "휘감기면 간지럽다@"

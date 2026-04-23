@@ -1,10 +1,7 @@
-	db "PSI@" ; species name
-	dw 211, 430 ; height, weight
+	db "초능력@" ; species name
+	db 9 ; height
+	dw 195 ; weight
 
-	db   "If it decides to"
-	next "TELEPORT randomly,"
-	next "it creates the"
-
-	page "illusion that it"
-	next "has created copies"
-	next "of itself.@"
+	db   "제멋대로 순간이동을"
+	next "반복하고 있으면 마치"
+	next "분신술을 펼치고 있는 듯 보인다@"

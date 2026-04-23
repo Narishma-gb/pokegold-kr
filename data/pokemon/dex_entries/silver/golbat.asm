@@ -1,10 +1,7 @@
-	db "BAT@" ; species name
-	dw 503, 1210 ; height, weight
+	db "박쥐@" ; species name
+	db 16 ; height
+	dw 550 ; weight
 
-	db   "It can drink more"
-	next "than 10 ounces of"
-	next "blood at once. If"
-
-	page "it has too much,"
-	next "it gets heavy and"
-	next "flies clumsily.@"
+	db   "300ㄷㄷ의 피를 빨 수 있지만"
+	next "한번에 너무 많이 빨면 몸이"
+	next "몸이 무거워져서 비틀거린다@"

@@ -1,10 +1,7 @@
-	db "SCUFFLE@" ; species name
-	dw 204, 460 ; height, weight
+	db "싸움@" ; species name
+	db 7 ; height
+	dw 210 ; weight
 
-	db   "It is always"
-	next "bursting with en-"
-	next "ergy. To make it-"
-
-	page "self stronger, it"
-	next "keeps on fighting"
-	next "even if it loses.@"
+	db   "항상 기운이 넘친다"
+	next "강해지기 위해 계속 져도"
+	next "상대에게 덤벼든다@"

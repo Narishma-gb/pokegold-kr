@@ -1,10 +1,7 @@
-	db "LITTLEBIRD@" ; species name
-	dw 8, 40 ; height, weight
+	db "아기새@" ; species name
+	db 2 ; height
+	dw 20 ; weight
 
-	db   "It usually forages"
-	next "for food on the"
-	next "ground but may, on"
-
-	page "rare occasions,"
-	next "hop onto branches"
-	next "to peck at shoots.@"
+	db   "보통은 지상에서 먹이를 찾지만"
+	next "극히 드물게 나뭇가지에 날아 앉아"
+	next "나무 싹을 쪼아먹기도 한다@"

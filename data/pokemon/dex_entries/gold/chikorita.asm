@@ -1,10 +1,7 @@
-	db "LEAF@" ; species name
-	dw 211, 140 ; height, weight
+	db "잎사귀@" ; species name
+	db 9 ; height
+	dw 64 ; weight
 
-	db   "A sweet aroma"
-	next "gently wafts from"
-	next "the leaf on its"
-
-	page "head. It is docile"
-	next "and loves to soak"
-	next "up the sun's rays.@"
+	db   "머리의 잎사귀에서 몽롱한"
+	next "향기가 감돈다  얌전하고"
+	next "햇살을 받는 것을 매우 좋아한다@"

@@ -1,10 +1,7 @@
-	db "MOUSE@" ; species name
-	dw 207, 660 ; height, weight
+	db "쥐@" ; species name
+	db 8 ; height
+	dw 300 ; weight
 
-	db   "If the electric"
-	next "pouches in its"
-	next "cheeks become"
-
-	page "fully charged,"
-	next "both ears will"
-	next "stand straight up.@"
+	db   "양 볼의 전기주머니에 모인"
+	next "전기가 가득차게 되면"
+	next "두 귀가 곧게 선다@"

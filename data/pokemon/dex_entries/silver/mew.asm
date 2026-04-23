@@ -1,10 +1,7 @@
-	db "NEW SPECIE@" ; species name
-	dw 104, 90 ; height, weight
+	db "신종@" ; species name
+	db 4 ; height
+	dw 40 ; weight
 
-	db   "Its DNA is said to"
-	next "contain the genet-"
-	next "ic codes of all"
-
-	page "#MON, so it can"
-	next "use all kinds of"
-	next "techniques.@"
+	db   "유전자에는 모든 포켓몬의"
+	next "정보가 담겨져 있기 때문에"
+	next "모든 기술을 쓸 수 있다고 한다@"

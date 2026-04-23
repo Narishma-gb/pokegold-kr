@@ -1,10 +1,7 @@
-	db "VOLCANO@" ; species name
-	dw 211, 420 ; height, weight
+	db "화산@" ; species name
+	db 9 ; height
+	dw 190 ; weight
 
-	db   "This #MON is"
-	next "fully covered by"
-	next "nonflammable fur."
-
-	page "It can withstand"
-	next "any kind of fire"
-	next "attack.@"
+	db   "몸을 뒤덮는 털가죽은"
+	next "절대로 불에타지 않는다"
+	next "어떤한 불의 공격에도 괜찮다@"

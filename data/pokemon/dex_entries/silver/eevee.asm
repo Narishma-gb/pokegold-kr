@@ -1,10 +1,7 @@
-	db "EVOLUTION@" ; species name
-	dw 100, 140 ; height, weight
+	db "진화@" ; species name
+	db 3 ; height
+	dw 65 ; weight
 
-	db   "Its irregularly"
-	next "configured DNA is"
-	next "affected by its"
-
-	page "surroundings. It"
-	next "evolves if its en-"
-	next "vironment changes.@"
+	db   "불규칙한 형태의 유전자는"
+	next "주변의 영향을 받기 쉽다"
+	next "환경이 바뀌면 진화한다@"

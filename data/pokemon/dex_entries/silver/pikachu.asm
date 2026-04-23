@@ -1,10 +1,7 @@
-	db "MOUSE@" ; species name
-	dw 104, 130 ; height, weight
+	db "쥐@" ; species name
+	db 4 ; height
+	dw 60 ; weight
 
-	db   "It raises its tail"
-	next "to check its sur-"
-	next "roundings. The"
-
-	page "tail is sometimes"
-	next "struck by light-"
-	next "ning in this pose.@"
+	db   "꼬리를 세우고"
+	next "주변을 살피다 보면"
+	next "가끔 꼬리에 번개가 친다@"

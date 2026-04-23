@@ -1,10 +1,7 @@
-	db "HAIRY BUG@" ; species name
-	dw 100, 70 ; height, weight
+	db "송충이@" ; species name
+	db 3 ; height
+	dw 32 ; weight
 
-	db   "Its poison stinger"
-	next "is very powerful."
-	next "Its bright-colored"
-
-	page "body is intended"
-	next "to warn off its"
-	next "enemies.@"
+	db   "독침은 매우 강력하다"
+	next "눈에 띄는 몸의 색깔은"
+	next "상대방에게 경계심을 심어준다@"

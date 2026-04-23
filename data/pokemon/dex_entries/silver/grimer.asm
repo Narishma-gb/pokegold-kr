@@ -1,10 +1,7 @@
-	db "SLUDGE@" ; species name
-	dw 211, 660 ; height, weight
+	db "진흙@" ; species name
+	db 9 ; height
+	dw 300 ; weight
 
-	db   "Wherever GRIMER"
-	next "has passed, so"
-	next "many germs are"
-
-	page "left behind that"
-	next "no plants will"
-	next "ever grow again.@"
+	db   "질퍽이가 지나간 자리는"
+	next "세균 투성이기 때문에"
+	next "어떠한 잡초도 생기지 않게 된다@"

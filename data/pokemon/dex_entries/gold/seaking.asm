@@ -1,10 +1,7 @@
-	db "GOLDFISH@" ; species name
-	dw 403, 860 ; height, weight
+	db "금붕어@" ; species name
+	db 13 ; height
+	dw 390 ; weight
 
-	db   "During spawning"
-	next "season, SEAKING"
-	next "gather from all"
-
-	page "over, coloring"
-	next "the rivers a"
-	next "brilliant red.@"
+	db   "산란할 시기가 되면"
+	next "각지에서 왕콘치가 모여들어"
+	next "강물색깔을 빨갛게 물들인다@"

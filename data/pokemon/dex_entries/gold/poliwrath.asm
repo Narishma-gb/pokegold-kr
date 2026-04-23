@@ -1,10 +1,7 @@
-	db "TADPOLE@" ; species name
-	dw 403, 1190 ; height, weight
+	db "올챙이@" ; species name
+	db 13 ; height
+	dw 540 ; weight
 
-	db   "This strong and"
-	next "skilled swimmer is"
-	next "even capable of"
-
-	page "crossing the"
-	next "Pacific Ocean just"
-	next "by kicking.@"
+	db   "앞다리만으로도"
+	next "태평양을 횡단할 수 있을 정도로"
+	next "헤엄치는 실력이 뛰어나다@"

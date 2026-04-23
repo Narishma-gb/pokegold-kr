@@ -1,10 +1,7 @@
-	db "PIG MONKEY@" ; species name
-	dw 108, 620 ; height, weight
+	db "돈숭이@" ; species name
+	db 5 ; height
+	dw 280 ; weight
 
-	db   "It is extremely"
-	next "ill-tempered."
-	next "Groups of them"
-
-	page "will attack any"
-	next "handy target for"
-	next "no reason.@"
+	db   "항상 화를내고 있다"
+	next "근처의 먹이를 발견하면"
+	next "무리를 일으켜 덤벼든다@"

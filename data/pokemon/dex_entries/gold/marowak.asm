@@ -1,10 +1,7 @@
-	db "BONEKEEPER@" ; species name
-	dw 303, 990 ; height, weight
+	db "뼈다귀@" ; species name
+	db 10 ; height
+	dw 450 ; weight
 
-	db   "It has been seen"
-	next "pounding boulders"
-	next "with the bone it"
-
-	page "carries in order"
-	next "to tap out mes-"
-	next "sages to others.@"
+	db   "들고 있는 뼈로 돌을 두드려"
+	next "소리를 내서 동료에게 연락을 하는"
+	next "모습이 목격되었다@"

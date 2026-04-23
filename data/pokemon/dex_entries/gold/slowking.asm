@@ -1,10 +1,7 @@
-	db "ROYAL@" ; species name
-	dw 607, 1750 ; height, weight
+	db "임금@" ; species name
+	db 20 ; height
+	dw 795 ; weight
 
-	db   "It has incredible"
-	next "intellect and in-"
-	next "tuition. Whatever"
-
-	page "the situation, it"
-	next "remains calm and"
-	next "collected.@"
+	db   "대단한 지성과 번뜩임을"
+	next "지니고 있다  어느 때든 놀라거나"
+	next "소란피우지 않고 태연하게 있다@"

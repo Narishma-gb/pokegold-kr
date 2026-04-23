@@ -1,10 +1,7 @@
-	db "DRILL@" ; species name
-	dw 403, 1320 ; height, weight
+	db "드릴@" ; species name
+	db 13 ; height
+	dw 600 ; weight
 
-	db   "It uses its scaly,"
-	next "rugged body to"
-	next "seal the entrance"
-
-	page "of its nest and"
-	next "protect its young"
-	next "from predators.@"
+	db   "비늘로 뒤덮인 튼튼한"
+	next "몸으로 둥지의 입구를 지켜"
+	next "적으로부터 새끼들을 지킨다@"

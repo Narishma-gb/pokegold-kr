@@ -1,10 +1,7 @@
-	db "SLEEPING@" ; species name
-	dw 611, 10140 ; height, weight
+	db "졸음@" ; species name
+	db 21 ; height
+	dw 4600 ; weight
 
-	db   "What sounds like"
-	next "its cry may ac-"
-	next "tually be its"
-
-	page "snores or the"
-	next "rumblings of its"
-	next "hungry belly.@"
+	db   "울음소리라 생각되지만 실은"
+	next "코고는 소리 혹은 배가 고파서"
+	next "나는 소리다@"

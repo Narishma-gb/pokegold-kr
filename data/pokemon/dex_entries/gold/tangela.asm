@@ -1,10 +1,7 @@
-	db "VINE@" ; species name
-	dw 303, 770 ; height, weight
+	db "넝쿨@" ; species name
+	db 10 ; height
+	dw 350 ; weight
 
-	db   "The vines that"
-	next "cloak its entire"
-	next "body are always"
-
-	page "jiggling. They"
-	next "effectively un-"
-	next "nerve its foes.@"
+	db   "전신을 뒤덮는 덩쿨은"
+	next "항상 섬세하게 움직임을 계속해서"
+	next "상대의 신경을 혼란스럽게 만든다@"

@@ -1,10 +1,7 @@
-	db "FREEZE@" ; species name
-	dw 507, 1220 ; height, weight
+	db "냉동@" ; species name
+	db 17 ; height
+	dw 554 ; weight
 
-	db   "One of the legen-"
-	next "dary bird #MON,"
-	next "it chills moisture"
-
-	page "in the atmosphere"
-	next "to create snow"
-	next "while flying.@"
+	db   "공기중의 수분을 얼려서"
+	next "눈발을 날리며 날아간다"
+	next "전설의 새포켓몬의 하나@"

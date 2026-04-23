@@ -1,10 +1,7 @@
-	db "ELECTRIC@" ; species name
-	dw 307, 660 ; height, weight
+	db "전기@" ; species name
+	db 11 ; height
+	dw 300 ; weight
 
-	db   "Electricity runs"
-	next "across the surface"
-	next "of its body. In"
-
-	page "darkness, its en-"
-	next "tire body glows a"
-	next "whitish-blue.@"
+	db   "몸의 표면에는 전기가"
+	next "흐르고 있다  주위가 어두우면"
+	next "전신이 푸르스름하게 빛난다@"

@@ -1,10 +1,7 @@
-	db "BEAK@" ; species name
-	dw 311, 840 ; height, weight
+	db "부리@" ; species name
+	db 12 ; height
+	dw 380 ; weight
 
-	db   "It shoots itself"
-	next "suddenly high into"
-	next "the sky, then"
-
-	page "plummets down in"
-	next "one fell swoop to"
-	next "strike its prey.@"
+	db   "단숨에 높은 하늘까지 날아올라"
+	next "거기서부터 급강하로"
+	next "단숨에 공격해온다@"

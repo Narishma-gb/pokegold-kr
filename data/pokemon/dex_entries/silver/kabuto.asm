@@ -1,10 +1,7 @@
-	db "SHELLFISH@" ; species name
-	dw 108, 250 ; height, weight
+	db "껍질@" ; species name
+	db 5 ; height
+	dw 115 ; weight
 
-	db   "This #MON lived"
-	next "in ancient times."
-	next "On rare occasions,"
-
-	page "it has been"
-	next "discovered as a"
-	next "living fossil.@"
+	db   "오랜 옛날의 포켓몬"
+	next "극히 드물게 살아있는 화석으로서"
+	next "발견되어진 일이 있다@"

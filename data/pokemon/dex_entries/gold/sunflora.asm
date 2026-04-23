@@ -1,10 +1,7 @@
-	db "SUN@" ; species name
-	dw 207, 190 ; height, weight
+	db "태양@" ; species name
+	db 8 ; height
+	dw 85 ; weight
 
-	db   "It converts sun-"
-	next "light into energy."
-	next "In the darkness"
-
-	page "after sunset, it"
-	next "closes its petals"
-	next "and becomes still.@"
+	db   "햇빛을 에너지로 바꾼다"
+	next "태양이 저물어 어두워지면"
+	next "꽃잎을 닫고 그자리에서 머문다@"

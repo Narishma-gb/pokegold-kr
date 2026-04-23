@@ -1,10 +1,7 @@
-	db "JET@" ; species name
-	dw 200, 260 ; height, weight
+	db "분사@" ; species name
+	db 6 ; height
+	dw 120 ; weight
 
-	db   "Using its dorsal"
-	next "fin as a suction"
-	next "pad, it clings to"
-
-	page "a MANTINE's under-"
-	next "side to scavenge"
-	next "for leftovers.@"
+	db   "빨판처럼 변화한"
+	next "등지느러미로 만타인에게 달라붙어"
+	next "먹다 남은 것을 얻어먹고 있다@"

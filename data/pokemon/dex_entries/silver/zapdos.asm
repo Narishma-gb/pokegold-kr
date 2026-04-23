@@ -1,10 +1,7 @@
-	db "ELECTRIC@" ; species name
-	dw 503, 1160 ; height, weight
+	db "전기@" ; species name
+	db 16 ; height
+	dw 526 ; weight
 
-	db   "This legendary"
-	next "bird #MON is"
-	next "said to appear"
-
-	page "only when a thun-"
-	next "dercloud parts"
-	next "into two halves.@"
+	db   "번개구름이 둘로 갈라졌을 때"
+	next "모습을 나타낸다고 전해진다"
+	next "전설의 새포켓몬@"

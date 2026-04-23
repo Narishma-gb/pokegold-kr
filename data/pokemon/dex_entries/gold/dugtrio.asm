@@ -1,10 +1,7 @@
-	db "MOLE@" ; species name
-	dw 204, 730 ; height, weight
+	db "두더지@" ; species name
+	db 7 ; height
+	dw 333 ; weight
 
-	db   "Its three heads"
-	next "bob separately up"
-	next "and down to loosen"
-
-	page "the soil nearby,"
-	next "making it easier"
-	next "for it to burrow.@"
+	db   "3개의 머리가 서로 어긋나게"
+	next "움직이는 것은 주변의 흙을"
+	next "부드럽게해서 파기 쉽게하기 위함임@"

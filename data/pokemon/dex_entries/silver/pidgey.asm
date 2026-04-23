@@ -1,10 +1,7 @@
-	db "TINY BIRD@" ; species name
-	dw 100, 40 ; height, weight
+	db "아기새@" ; species name
+	db 3 ; height
+	dw 18 ; weight
 
-	db   "Common in grassy"
-	next "areas and forests,"
-	next "it is very docile"
-
-	page "and will chase off"
-	next "enemies by flap-"
-	next "ping up sand.@"
+	db   "풀숲과 숲속에 많이 분포되어 있다"
+	next "얌전한 성격으로 날개짓을 해서"
+	next "모래를 뿌려 적을 쫓아낸다@"

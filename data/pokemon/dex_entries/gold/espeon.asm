@@ -1,10 +1,7 @@
-	db "SUN@" ; species name
-	dw 211, 580 ; height, weight
+	db "태양@" ; species name
+	db 9 ; height
+	dw 265 ; weight
 
-	db   "It uses the fine"
-	next "hair that covers"
-	next "its body to sense"
-
-	page "air currents and"
-	next "predict its ene-"
-	next "my's actions.@"
+	db   "전신의 세밀한 털로"
+	next "공기의 흐름을 느껴서"
+	next "상대방의 행동을 예측한다@"

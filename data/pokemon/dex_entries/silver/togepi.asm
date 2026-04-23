@@ -1,10 +1,7 @@
-	db "SPIKE BALL@" ; species name
-	dw 100, 30 ; height, weight
+	db "바늘알@" ; species name
+	db 3 ; height
+	dw 15 ; weight
 
-	db   "A proverb claims"
-	next "that happiness"
-	next "will come to any-"
-
-	page "one who can make a"
-	next "sleeping TOGEPI"
-	next "stand up.@"
+	db   "자고 있는 토게피를 잘"
+	next "세울 수 있다면 행복해질 수"
+	next "있다는 전설이 전해진다@"

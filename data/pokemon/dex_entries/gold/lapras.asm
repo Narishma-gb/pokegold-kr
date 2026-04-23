@@ -1,10 +1,7 @@
-	db "TRANSPORT@" ; species name
-	dw 802, 4850 ; height, weight
+	db "탈것@" ; species name
+	db 25 ; height
+	dw 2200 ; weight
 
-	db   "They have gentle"
-	next "hearts. Because"
-	next "they rarely fight,"
-
-	page "many have been"
-	next "caught. Their num-"
-	next "ber has dwindled.@"
+	db   "부드러운 마음씨의 소유자"
+	next "좀처럼 싸우려 하지 않기 때문에"
+	next "많이 잡혀서 수가 줄었다@"

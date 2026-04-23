@@ -1,10 +1,7 @@
-	db "FREEZE@" ; species name
-	dw 507, 1220 ; height, weight
+	db "냉동@" ; species name
+	db 17 ; height
+	dw 554 ; weight
 
-	db   "The magnificent,"
-	next "seemingly translu-"
-	next "cent wings of this"
-
-	page "legendary bird"
-	next "#MON are said"
-	next "to be made of ice.@"
+	db   "비쳐보이는 훌륭한 날개는"
+	next "얼음으로 되어있다고 전해지는"
+	next "전설의 포켓몬이다@"

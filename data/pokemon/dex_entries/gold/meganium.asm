@@ -1,10 +1,7 @@
-	db "HERB@" ; species name
-	dw 511, 2220 ; height, weight
+	db "허브@" ; species name
+	db 18 ; height
+	dw 1005 ; weight
 
-	db   "The aroma that"
-	next "rises from its"
-	next "petals contains a"
-
-	page "substance that"
-	next "calms aggressive"
-	next "feelings.@"
+	db   "꽃잎에서 발산되어지는"
+	next "향기에는 싸울 기분을"
+	next "가라앉게 하는 성분이 담겨있다@"

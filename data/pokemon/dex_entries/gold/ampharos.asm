@@ -1,10 +1,7 @@
-	db "LIGHT@" ; species name
-	dw 407, 1360 ; height, weight
+	db "라이트@" ; species name
+	db 14 ; height
+	dw 615 ; weight
 
-	db   "The tail's tip"
-	next "shines brightly"
-	next "and can be seen"
-
-	page "from far away. It"
-	next "acts as a beacon"
-	next "for lost people.@"
+	db   "꼬리 끝이 빛나며 반짝인다"
+	next "빛은 아주 먼 곳까지 닿아서"
+	next "길잃은 자들의 이정표가 된다@"

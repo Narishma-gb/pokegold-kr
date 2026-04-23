@@ -1,10 +1,7 @@
-	db "DELIVERY@" ; species name
-	dw 211, 350 ; height, weight
+	db "배달@" ; species name
+	db 9 ; height
+	dw 160 ; weight
 
-	db   "It carries food"
-	next "all day long."
-	next "There are tales"
-
-	page "about lost people"
-	next "who were saved by"
-	next "the food it had.@"
+	db   "하루종일 먹이를 운반한다"
+	next "조난당한 사람이 딜리버드의"
+	next "먹이로 살아난 이야기도 있다@"

@@ -1,10 +1,7 @@
-	db "FOX@" ; species name
-	dw 307, 440 ; height, weight
+	db "여우@" ; species name
+	db 11 ; height
+	dw 199 ; weight
 
-	db   "Some legends claim"
-	next "that each of its"
-	next "nine tails has its"
-
-	page "own unique type"
-	next "of special"
-	next "mystical power.@"
+	db   "9개의 꼬리에는 각각"
+	next "다른 신비한 힘이"
+	next "담겨져 있다고 하는 말이 있다@"

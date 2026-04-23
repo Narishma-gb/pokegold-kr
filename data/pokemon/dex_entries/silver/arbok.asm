@@ -1,10 +1,7 @@
-	db "COBRA@" ; species name
-	dw 1106, 1430 ; height, weight
+	db "코브라@" ; species name
+	db 35 ; height
+	dw 650 ; weight
 
-	db   "With a very venge-"
-	next "ful nature, it"
-	next "won't give up the"
-
-	page "chase, no matter"
-	next "how far, once it"
-	next "targets its prey.@"
+	db   "매우 집념이 강한 성격"
+	next "한번 타겟으로 정한"
+	next "먹이는 어디든지 쫓아간다@"

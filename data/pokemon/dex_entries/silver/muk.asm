@@ -1,10 +1,7 @@
-	db "SLUDGE@" ; species name
-	dw 311, 660 ; height, weight
+	db "진흙@" ; species name
+	db 12 ; height
+	dw 300 ; weight
 
-	db   "Its body is made"
-	next "of a powerful poi-"
-	next "son. Touching it"
-
-	page "accidentally will"
-	next "cause a fever that"
-	next "requires bed rest.@"
+	db   "몸의 성분은 맹독이다"
+	next "실수로 만지게 되면"
+	next "온몸에 열이 나서 눕게 되어버린다@"

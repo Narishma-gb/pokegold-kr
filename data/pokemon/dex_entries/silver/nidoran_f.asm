@@ -1,10 +1,7 @@
-	db "POISON PIN@" ; species name
-	dw 104, 150 ; height, weight
+	db "독침@" ; species name
+	db 4 ; height
+	dw 70 ; weight
 
-	db   "Although not very"
-	next "combative, it will"
-	next "torment its foes"
-
-	page "with poison spikes"
-	next "if it is threat-"
-	next "ened in any way.@"
+	db   "싸움을 그리 좋아하지 않지만"
+	next "위기가 닥쳤을 때"
+	next "뿔의 독으로 상대를 물리친다@"

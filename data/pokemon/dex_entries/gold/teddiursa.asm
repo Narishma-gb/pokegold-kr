@@ -1,10 +1,7 @@
-	db "LITTLEBEAR@" ; species name
-	dw 200, 190 ; height, weight
+	db "아기곰@" ; species name
+	db 6 ; height
+	dw 88 ; weight
 
-	db   "If it finds honey,"
-	next "its crescent mark"
-	next "glows. It always"
-
-	page "licks its paws"
-	next "because they are"
-	next "soaked with honey.@"
+	db   "꿀을 발견하면 초승달 문양이"
+	next "빛난다  달콤한 꿀이 흡착된"
+	next "손바닥을 항상 핥고 있다@"

@@ -1,10 +1,7 @@
-	db "MYSTIC@" ; species name
-	dw 411, 330 ; height, weight
+	db "정령@" ; species name
+	db 15 ; height
+	dw 150 ; weight
 
-	db   "They say that it"
-	next "stays still and"
-	next "quiet because it"
-
-	page "is seeing both the"
-	next "past and future at"
-	next "the same time.@"
+	db   "거의 움직이거나 울지도 않고"
+	next "가만히 있는 것은 과거와 미래를"
+	next "보고있기 때문이라고 믿어지고 있다@"

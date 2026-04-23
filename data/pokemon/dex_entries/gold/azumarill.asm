@@ -1,10 +1,7 @@
-	db "AQUARABBIT@" ; species name
-	dw 207, 630 ; height, weight
+	db "물토끼@" ; species name
+	db 8 ; height
+	dw 285 ; weight
 
-	db   "By keeping still"
-	next "and listening in-"
-	next "tently, it can"
-
-	page "tell what is in"
-	next "even wild, fast-"
-	next "moving rivers.@"
+	db   "가만히 귀를 기울이면"
+	next "거세게 흐르는 강 안에"
+	next "무엇이 있는가 들어서 구별한다@"

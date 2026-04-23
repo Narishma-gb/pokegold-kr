@@ -1,10 +1,7 @@
-	db "ARMOR BIRD@" ; species name
-	dw 507, 1110 ; height, weight
+	db "갑옷새@" ; species name
+	db 17 ; height
+	dw 505 ; weight
 
-	db   "Its sturdy wings"
-	next "look heavy, but"
-	next "they are actually"
-
-	page "hollow and light,"
-	next "allowing it to fly"
-	next "freely in the sky.@"
+	db   "튼튼한 날개는 무겁게 보이지만"
+	next "뼛속은 비어있어서 가볍기에"
+	next "자유롭게 높은 하늘을 날아다닌다@"

@@ -47,25 +47,6 @@ INCLUDE "engine/dumps/bank7f.asm"
 EXPORT DEF EggPic EQU $7b57
 
 
-SECTION "rom17", ROMX[$4000], BANK[17]
-; ROM $11 : $44000 - $47FFF
-
-	dr AIChooseMove, $40c8
-	dr AnimateDexSearchSlowpoke, $41c2
-	dr DoDexSearchSlowpokeFrame, $41fa
-	dr DisplayDexEntry, $4240
-	dr Function442ea, $42ea
-	dr PlayBattleMusic, $44f5
-	dr ClearBattleRAM, $4591
-	dr PlaceGraphic, $45e7
-	dr SendMailToPC, $4618
-	dr BackupPartyMonMail, $47cf
-	dr RestorePartyMonMail, $47ef
-	dr DeletePartyMonMail, $480f
-	dr IsAnyMonHoldingMail, $482b
-	dr _PlayerMailBoxMenu, $484a
-
-
 ;SECTION "rom18", ROMX[$4000], BANK[18]
 ; ROM $12 : $48000 - $4BFFF
 
@@ -226,6 +207,7 @@ SECTION "rom36", ROMX[$4000], BANK[36]
 	dr PokegearMap, $5930
 	dr _FlyMap, $5942
 	dr Pokedex_GetArea, $5b52
+	dr RegionCheck, $67d2
 	dr Fish, $67fe
 	dr _SlotMachine, $6aba
 
@@ -266,6 +248,7 @@ SECTION "rom46", ROMX[$4000], BANK[46]
 	dr TreeMonEncounter, $6378
 	dr RockMonEncounter, $63a1
 	dr ReadPartyMonMail, $6eb6
+	dr ReadAnyMail, $6ec4
 	dr ItemIsMail, $7ac4
 
 
@@ -589,14 +572,6 @@ INCLUDE "data/text/battle.asm"
 
 ;SECTION "rom98", ROMX[$4000], BANK[98]
 ; ROM $62 : $188000 - $18BFFF
-
-
-;SECTION "rom104", ROMX[$4000], BANK[104]
-; ROM $68 : $1A0000 - $1A3FFF
-
-
-;SECTION "rom105", ROMX[$4000], BANK[105]
-; ROM $69 : $1A4000 - $1A7FFF
 
 
 SECTION "rom112", ROMX[$4879], BANK[112]

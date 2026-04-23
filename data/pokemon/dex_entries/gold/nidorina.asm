@@ -1,10 +1,7 @@
-	db "POISON PIN@" ; species name
-	dw 207, 440 ; height, weight
+	db "독침@" ; species name
+	db 8 ; height
+	dw 200 ; weight
 
-	db   "When feeding its"
-	next "young, it first"
-	next "chews and tender-"
-
-	page "izes the food,"
-	next "then spits it out"
-	next "for the offspring.@"
+	db   "새끼에게 먹이를 나누어줄 때"
+	next "어미가 씹어서 소화해놓은"
+	next "먹이를 토해서 준다@"

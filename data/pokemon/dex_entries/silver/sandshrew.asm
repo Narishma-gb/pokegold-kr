@@ -1,10 +1,7 @@
-	db "MOUSE@" ; species name
-	dw 200, 260 ; height, weight
+	db "쥐@" ; species name
+	db 6 ; height
+	dw 120 ; weight
 
-	db   "Disliking water,"
-	next "it lives in deep"
-	next "burrows in arid"
-
-	page "areas. It can roll"
-	next "itself instantly"
-	next "into a ball.@"
+	db   "습기를 싫어해서 건조한 땅에"
+	next "깊은 구멍을 파서 생활을 한다"
+	next "눈 깜짝할 새에 몸을 둥글게 만다@"

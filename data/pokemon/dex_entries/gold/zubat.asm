@@ -1,10 +1,7 @@
-	db "BAT@" ; species name
-	dw 207, 170 ; height, weight
+	db "박쥐@" ; species name
+	db 8 ; height
+	dw 75 ; weight
 
-	db   "While flying, it"
-	next "constantly emits"
-	next "ultrasonic waves"
-
-	page "from its mouth to"
-	next "check its sur-"
-	next "roundings.@"
+	db   "날고있을 때는 항상 입에서"
+	next "나오는 초음파로 주변이"
+	next "어떤 상태인가 판단하고 있다@"

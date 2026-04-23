@@ -1,11 +1,7 @@
-	db "VOLCANO@" ; species name
-	dw 507, 1750 ; height, weight
+	db "화산@" ; species name
+	db 17 ; height
+	dw 795 ; weight
 
-	db   "It has a secret,"
-	next "devastating move."
-	next "It rubs its blaz-"
-	next ""
-
-	page "ing fur together"
-	next "to cause huge"
-	next "explosions.@"
+	db   "한창 타오르는 털을 문질러"
+	next "폭풍을 일으켜서 공격한다"
+	next "큰 기술을 감추어 놓고 있다@"

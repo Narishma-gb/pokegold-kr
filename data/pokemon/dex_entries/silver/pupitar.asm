@@ -1,10 +1,7 @@
-	db "HARD SHELL@" ; species name
-	dw 311, 3350 ; height, weight
+	db "탄환@" ; species name
+	db 12 ; height
+	dw 1520 ; weight
 
-	db   "Even sealed in its"
-	next "shell, it can move"
-	next "freely. Hard and"
-
-	page "fast, it has out-"
-	next "standing destruc-"
-	next "tive power.@"
+	db   "껍질에 덮혀있지만 자유로이"
+	next "뛰어다닌다<.> 단단함과 스피드를"
+	next "지니고 있어서 파괴력이 대단하다@"

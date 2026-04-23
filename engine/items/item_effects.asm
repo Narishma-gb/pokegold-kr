@@ -758,7 +758,7 @@ HeavyBallMultiplier:
 	push bc
 	ld a, [wEnemyMonSpecies]
 	ld b, a
-	farcall Function442ea
+	farcall GetDexEntryPointer
 
 .SkipText:
 	ld a, b

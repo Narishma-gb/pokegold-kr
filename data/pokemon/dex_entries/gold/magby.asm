@@ -1,10 +1,7 @@
-	db "LIVE COAL@" ; species name
-	dw 204, 470 ; height, weight
+	db "불씨@" ; species name
+	db 7 ; height
+	dw 214 ; weight
 
-	db   "Each and every"
-	next "time it inhales"
-	next "and exhales, hot"
-
-	page "embers dribble out"
-	next "of its mouth and"
-	next "nostrils.@"
+	db   "숨을 쉬거나 뱉거나"
+	next "할 때마다 입과 코에서"
+	next "불꽃이 새어나와 버린다@"

@@ -1,10 +1,7 @@
-	db "TRANSFORM@" ; species name
-	dw 100, 90 ; height, weight
+	db "변신@" ; species name
+	db 3 ; height
+	dw 40 ; weight
 
-	db   "It can transform"
-	next "into anything."
-	next "When it sleeps, it"
-
-	page "changes into a"
-	next "stone to avoid"
-	next "being attacked.@"
+	db   "어떤 것이든 변신할 수 있다"
+	next "잘 때는 돌로 변신해서"
+	next "공격받지 않도록 하고 있다@"

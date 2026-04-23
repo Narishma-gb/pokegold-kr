@@ -1,10 +1,7 @@
-	db "WATER FISH@" ; species name
-	dw 104, 190 ; height, weight
+	db "수어@" ; species name
+	db 4 ; height
+	dw 85 ; weight
 
-	db   "This #MON lives"
-	next "in cold water. It"
-	next "will leave the"
-
-	page "water to search"
-	next "for food when it"
-	next "gets cold outside.@"
+	db   "차가운 물속에서 생활한다"
+	next "근처가 선선해지면 먹이를"
+	next "찾으러 지상에도 나타난다@"

@@ -1,10 +1,7 @@
-	db "TRIPLEBIRD@" ; species name
-	dw 511, 1880 ; height, weight
+	db "세쌍둥이@" ; species name
+	db 18 ; height
+	dw 852 ; weight
 
-	db   "It collects data "
-	next "and plans three"
-	next "times as wisely,"
-
-	page "but it may think"
-	next "too much and be-"
-	next "come immobilized.@"
+	db   "3배의 정보를 모아서 고도의"
+	next "작전을 짠다  가끔은 많은 생각을"
+	next "해서 움직이지 못하게 될 때도있다@"

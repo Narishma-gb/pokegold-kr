@@ -1,10 +1,7 @@
-	db "VOLCANO@" ; species name
-	dw 507, 1750 ; height, weight
+	db "화산@" ; species name
+	db 17 ; height
+	dw 795 ; weight
 
-	db   "If its rage peaks,"
-	next "it becomes so hot"
-	next "that anything that"
-
-	page "touches it will"
-	next "instantly go"
-	next "up in flames.@"
+	db   "분노가 최고조에 달할 때"
+	next "건드린 자는 모두 일순간에"
+	next "불태워버릴 정도로 뜨겁다@"

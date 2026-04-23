@@ -1,10 +1,7 @@
-	db "DIVING@" ; species name
-	dw 1701, 4760 ; height, weight
+	db "잠수@" ; species name
+	db 52 ; height
+	dw 2160 ; weight
 
-	db   "It is said to be"
-	next "the guardian of"
-	next "the seas. It is"
-
-	page "rumored to have"
-	next "been seen on the"
-	next "night of a storm.@"
+	db   "바다의 신이라고 전해지는"
+	next "포켓몬  폭풍의 밤에 모습을"
+	next "보았다는 이야기가 전해져온다@"

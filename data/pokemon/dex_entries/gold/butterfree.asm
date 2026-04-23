@@ -1,10 +1,7 @@
-	db "BUTTERFLY@" ; species name
-	dw 307, 710 ; height, weight
+	db "나비@" ; species name
+	db 11 ; height
+	dw 320 ; weight
 
-	db   "It collects honey"
-	next "every day. It rubs"
-	next "honey onto the"
-
-	page "hairs on its legs"
-	next "to carry it back"
-	next "to its nest.@"
+	db   "매일 꿀을 모으러 다닌다"
+	next "다리의 털에 꿀을 모아"
+	next "집에 가지고 돌아가는 습성이 있다@"

@@ -1,10 +1,7 @@
-	db "SEA LION@" ; species name
-	dw 507, 2650 ; height, weight
+	db "강치@" ; species name
+	db 17 ; height
+	dw 1200 ; weight
 
-	db   "It loves frigid"
-	next "seas with ice"
-	next "floes. It uses its"
-
-	page "long tail to"
-	next "change swimming"
-	next "direction quickly.@"
+	db   "얼음이 떠다니는 차가운 바다를"
+	next "좋아한다  긴 꼬리는 방향을"
+	next "재빨리 바꾸는데 도움이 된다@"

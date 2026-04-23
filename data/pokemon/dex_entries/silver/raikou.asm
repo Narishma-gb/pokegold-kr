@@ -1,10 +1,7 @@
-	db "THUNDER@" ; species name
-	dw 603, 3920 ; height, weight
+	db "우뢰@" ; species name
+	db 19 ; height
+	dw 1780 ; weight
 
-	db   "A #MON that"
-	next "races across the"
-	next "land while barking"
-
-	page "a cry that sounds"
-	next "like crashing"
-	next "thunder.@"
+	db   "번개가 쳤을 때 같은"
+	next "울음소리로 짖으며"
+	next "대지를 달리는 포켓몬@"

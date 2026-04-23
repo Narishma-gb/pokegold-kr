@@ -1,10 +1,7 @@
-	db "FIRE HORSE@" ; species name
-	dw 507, 2090 ; height, weight
+	db "불의말@" ; species name
+	db 17 ; height
+	dw 950 ; weight
 
-	db   "With incredible"
-	next "acceleration, it"
-	next "reaches its top"
-
-	page "speed of 150 mph"
-	next "after running just"
-	next "ten steps.@"
+	db   "엄청나게 빠른 가속력"
+	next "달리기 시작해 겨우 10걸음으로"
+	next "최고시속 240Kㅍ가 된다@"

@@ -179,14 +179,14 @@ INCLUDE "data/moves/moves.asm"
 INCLUDE "engine/pokemon/evolve.asm"
 
 
-;SECTION "bank11", ROMX
+SECTION "bank11", ROMX
 
-;INCLUDE "engine/events/fruit_trees.asm"
-;INCLUDE "engine/battle/ai/move.asm"
-;INCLUDE "engine/pokedex/pokedex_2.asm"
-;INCLUDE "engine/battle/start_battle.asm"
-;INCLUDE "engine/gfx/place_graphic.asm"
-;INCLUDE "engine/pokemon/mail.asm"
+INCLUDE "engine/events/fruit_trees.asm"
+INCLUDE "engine/battle/ai/move.asm"
+INCLUDE "engine/pokedex/pokedex_2.asm"
+INCLUDE "engine/battle/start_battle.asm"
+INCLUDE "engine/gfx/place_graphic.asm"
+INCLUDE "engine/pokemon/mail.asm"
 
 
 ;SECTION "bank14", ROMX

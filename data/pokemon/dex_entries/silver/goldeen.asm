@@ -1,10 +1,7 @@
-	db "GOLDFISH@" ; species name
-	dw 200, 330 ; height, weight
+	db "금붕어@" ; species name
+	db 6 ; height
+	dw 150 ; weight
 
-	db   "A strong swimmer,"
-	next "it is capable of"
-	next "swimming nonstop"
-
-	page "up fast streams at"
-	next "a steady speed of"
-	next "five knots.@"
+	db   "물살이 빠른 강도"
+	next "5노트의 스피드로"
+	next "슥슥 거슬러올라간다@"

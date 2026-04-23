@@ -1,10 +1,7 @@
-	db "POISONMOTH@" ; species name
-	dw 411, 280 ; height, weight
+	db "독나방@" ; species name
+	db 15 ; height
+	dw 125 ; weight
 
-	db   "When it attacks,"
-	next "it flaps its large"
-	next "wings violently to"
-
-	page "scatter its poi-"
-	next "sonous powder all"
-	next "around.@"
+	db   "공격할 때는 격하게"
+	next "커다란 날개를 움직여서"
+	next "독가루를 뿌린다@"

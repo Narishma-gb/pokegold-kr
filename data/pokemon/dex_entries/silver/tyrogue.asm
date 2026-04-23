@@ -1,10 +1,7 @@
-	db "SCUFFLE@" ; species name
-	dw 204, 460 ; height, weight
+	db "싸움@" ; species name
+	db 7 ; height
+	dw 210 ; weight
 
-	db   "Even though it is"
-	next "small, it can't be"
-	next "ignored because"
-
-	page "it will slug any"
-	next "handy target with-"
-	next "out warning.@"
+	db   "어울리는 상대를 발견하면"
+	next "바로 공격해오기 때문에"
+	next "몸집이 작아도 방심은 할 수 없다@"

@@ -1,10 +1,7 @@
-	db "WORM@" ; species name
-	dw 100, 60 ; height, weight
+	db "애벌레@" ; species name
+	db 3 ; height
+	dw 29 ; weight
 
-	db   "For protection, it"
-	next "releases a horri-"
-	next "ble stench from"
-
-	page "the antenna on its"
-	next "head to drive away"
-	next "enemies.@"
+	db   "머리의 더듬이로부터"
+	next "강렬한 냄새를 풍겨서"
+	next "적을 물리치고 몸을 보호한다@"

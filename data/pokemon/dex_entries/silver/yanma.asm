@@ -1,10 +1,7 @@
-	db "CLEAR WING@" ; species name
-	dw 311, 840 ; height, weight
+	db "얇은날개@" ; species name
+	db 12 ; height
+	dw 380 ; weight
 
-	db   "Its large eyes can"
-	next "scan 360 degrees."
-	next "It looks in all"
-
-	page "directions to seek"
-	next "out insects as its"
-	next "prey.@"
+	db   "커다란 양쪽 눈으로 360도"
+	next "모든 방향을 멀리 살펴서"
+	next "먹이가 되는 벌레를 찾고 있다@"

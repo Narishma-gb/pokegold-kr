@@ -1,10 +1,7 @@
-	db "EVOLUTION@" ; species name
-	dw 100, 140 ; height, weight
+	db "진화@" ; species name
+	db 3 ; height
+	dw 65 ; weight
 
-	db   "It has the ability"
-	next "to alter the com-"
-	next "position of its"
-
-	page "body to suit its"
-	next "surrounding envi-"
-	next "ronment.@"
+	db   "주변환경에 따라서"
+	next "몸의 구조를 바꿔나가는"
+	next "능력의 소유자@"

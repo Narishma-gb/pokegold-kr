@@ -1,10 +1,7 @@
-	db "SLEEPING@" ; species name
-	dw 611, 10140 ; height, weight
+	db "졸음@" ; species name
+	db 21 ; height
+	dw 4600 ; weight
 
-	db   "Its stomach's di-"
-	next "gestive juices can"
-	next "dissolve any kind"
-
-	page "of poison. It can"
-	next "even eat things"
-	next "off the ground.@"
+	db   "위 안의 소화액은"
+	next "어떠한 독도 소화할 수 있다"
+	next "썩은 것을 먹어도 괜찮다@"

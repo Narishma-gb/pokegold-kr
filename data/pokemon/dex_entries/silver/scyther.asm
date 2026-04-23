@@ -1,10 +1,7 @@
-	db "MANTIS@" ; species name
-	dw 411, 1230 ; height, weight
+	db "버마재비@" ; species name
+	db 15 ; height
+	dw 560 ; weight
 
-	db   "When it moves, it"
-	next "leaves only a"
-	next "blur. If it hides"
-
-	page "in grass, its pro-"
-	next "tective colors"
-	next "make it invisible.@"
+	db   "움직여도 잔상밖에 보이지 않는다"
+	next "멈춰서도 풀숲에 몸을 숨기면"
+	next "보호색 때문에 보이지 않는다@"

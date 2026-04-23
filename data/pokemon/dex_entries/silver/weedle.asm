@@ -1,10 +1,7 @@
-	db "HAIRY BUG@" ; species name
-	dw 100, 70 ; height, weight
+	db "송충이@" ; species name
+	db 3 ; height
+	dw 32 ; weight
 
-	db   "It attacks using a"
-	next "two-inch poison"
-	next "barb on its head."
-
-	page "It can usually be"
-	next "found under the"
-	next "leaves it eats.@"
+	db   "머리끝 5ㄷㅍ정도의 독침으로"
+	next "공격을 해온다  보통은"
+	next "먹이가 되는 잎사귀 아래 있다@"

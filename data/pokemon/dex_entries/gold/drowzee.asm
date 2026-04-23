@@ -1,10 +1,7 @@
-	db "HYPNOSIS@" ; species name
-	dw 303, 710 ; height, weight
+	db "최면@" ; species name
+	db 10 ; height
+	dw 324 ; weight
 
-	db   "If you think that"
-	next "you had a good"
-	next "dream, but you"
-
-	page "can't remember it,"
-	next "a DROWZEE has"
-	next "probably eaten it.@"
+	db   "즐거운 꿈을 꾸고 있었지만"
+	next "어떤 꿈인지 생각나지 않을 때는"
+	next "슬리프가 그 꿈을 먹었을 것이다@"

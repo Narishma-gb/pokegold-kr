@@ -1,10 +1,7 @@
-	db "OWL@" ; species name
-	dw 503, 900 ; height, weight
+	db "부엉이@" ; species name
+	db 16 ; height
+	dw 408 ; weight
 
-	db   "Its eyes are"
-	next "specially adapted."
-	next "They concentrate"
-
-	page "even faint light"
-	next "and enable it to"
-	next "see in the dark.@"
+	db   "양쪽 눈은 특수한 형태"
+	next "적은 빛을 집중시키면"
+	next "어둠속에서도 주변을 식별한다@"

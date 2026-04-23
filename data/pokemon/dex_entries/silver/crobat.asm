@@ -1,10 +1,7 @@
-	db "BAT@" ; species name
-	dw 511, 1650 ; height, weight
+	db "박쥐@" ; species name
+	db 18 ; height
+	dw 750 ; weight
 
-	db   "The development of"
-	next "wings on its legs"
-	next "enables it to fly"
-
-	page "fast but also"
-	next "makes it tough to"
-	next "stop and rest.@"
+	db   "발에도 날개가 발달해있어서"
+	next "고속으로 날 수 있도록 되었지만"
+	next "멈춰서 쉬는 것은 어렵게 되었다@"

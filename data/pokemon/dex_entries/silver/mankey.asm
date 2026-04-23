@@ -1,10 +1,7 @@
-	db "PIG MONKEY@" ; species name
-	dw 108, 620 ; height, weight
+	db "돈숭이@" ; species name
+	db 5 ; height
+	dw 280 ; weight
 
-	db   "It's unsafe to ap-"
-	next "proach if it gets"
-	next "violently enraged"
-
-	page "for no reason and"
-	next "can't distinguish"
-	next "friends from foes.@"
+	db   "이유없이 화나서 날뛰기 시작하면"
+	next "동료도 구별 할 수 없기에"
+	next "가까이 가는것은 매우 위험하다@"

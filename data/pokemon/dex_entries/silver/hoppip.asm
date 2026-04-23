@@ -1,10 +1,7 @@
-	db "COTTONWEED@" ; species name
-	dw 104, 10 ; height, weight
+	db "솜풀@" ; species name
+	db 4 ; height
+	dw 5 ; weight
 
-	db   "Its body is so"
-	next "light, it must"
-	next "grip the ground"
-
-	page "firmly with its"
-	next "feet to keep from"
-	next "being blown away.@"
+	db   "매우 가벼운 몸을 가졌다"
+	next "바람에 날아가지 않도록 단단히"
+	next "지면을 밟아 지탱하고 있다@"

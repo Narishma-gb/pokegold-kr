@@ -1,10 +1,7 @@
-	db "CLEAR WING@" ; species name
-	dw 311, 840 ; height, weight
+	db "얇은날개@" ; species name
+	db 12 ; height
+	dw 380 ; weight
 
-	db   "If it flaps its"
-	next "wings really fast,"
-	next "it can generate"
-
-	page "shock waves that"
-	next "will shatter win-"
-	next "dows in the area.@"
+	db   "고속으로 날개를 치면"
+	next "충격파가 발생해서"
+	next "주변의 유리창이 깨진다@"

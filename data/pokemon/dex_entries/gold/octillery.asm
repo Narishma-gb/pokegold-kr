@@ -1,10 +1,7 @@
-	db "JET@" ; species name
-	dw 211, 630 ; height, weight
+	db "분사@" ; species name
+	db 9 ; height
+	dw 285 ; weight
 
-	db   "It traps enemies"
-	next "with its suction-"
-	next "cupped tentacles"
-
-	page "then smashes them"
-	next "with its rock-hard"
-	next "head.@"
+	db   "견고한 돌머리"
+	next "빨판이 붙어있는 다리를 휘감아서"
+	next "오직 머리로 때려 공격한다@"

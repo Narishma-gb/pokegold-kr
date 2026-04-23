@@ -1,10 +1,7 @@
-	db "FLAME@" ; species name
-	dw 211, 550 ; height, weight
+	db "화염@" ; species name
+	db 9 ; height
+	dw 250 ; weight
 
-	db   "It stores some of"
-	next "the air it inhales"
-	next "in its internal"
-
-	page "flame pouch, which"
-	next "heats it to over"
-	next "3,000 degrees.@"
+	db   "들이마신 공기의 일부는"
+	next "체내의 화염주머니에 보내져서"
+	next "1700도의 화염이 된다@"

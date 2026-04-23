@@ -1,10 +1,7 @@
-	db "LONG NOSE@" ; species name
-	dw 108, 740 ; height, weight
+	db "긴코@" ; species name
+	db 5 ; height
+	dw 335 ; weight
 
-	db   "As a sign of af-"
-	next "fection, it bumps"
-	next "with its snout."
-
-	page "However, it is so"
-	next "strong, it may"
-	next "send you flying.@"
+	db   "애정표현으로 코를"
+	next "부딛치지만 힘이 있기 때문에"
+	next "조심하지 않으면 날아가 버린다@"

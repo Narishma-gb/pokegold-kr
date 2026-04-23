@@ -1,10 +1,7 @@
-	db "TWIN BIRD@" ; species name
-	dw 407, 860 ; height, weight
+	db "쌍둥이새@" ; species name
+	db 14 ; height
+	dw 392 ; weight
 
-	db   "It races through"
-	next "grassy plains with"
-	next "powerful strides,"
-
-	page "leaving footprints"
-	next "up to four inches"
-	next "deep.@"
+	db   "깊이 10ㄷㅍ이상의 발자국이"
+	next "생길 정도로 힘차게"
+	next "지면을 박차고 초원을 달린다@"

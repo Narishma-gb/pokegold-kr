@@ -1,10 +1,7 @@
-	db "FLAME@" ; species name
-	dw 211, 550 ; height, weight
+	db "화염@" ; species name
+	db 9 ; height
+	dw 250 ; weight
 
-	db   "It fluffs out its"
-	next "fur collar to cool"
-	next "down its body"
-
-	page "temperature, which"
-	next "can reach 1,650"
-	next "degrees.@"
+	db   "목 주위의 부드러운"
+	next "털을 펼쳐 섭씨 900도까지"
+	next "올라간 체온을 식히고 있다@"

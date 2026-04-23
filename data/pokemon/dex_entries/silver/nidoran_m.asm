@@ -1,10 +1,7 @@
-	db "POISON PIN@" ; species name
-	dw 108, 200 ; height, weight
+	db "독침@" ; species name
+	db 5 ; height
+	dw 90 ; weight
 
-	db   "It raises its big"
-	next "ears to check its"
-	next "surroundings."
-
-	page "It will strike"
-	next "first if it senses"
-	next "any danger.@"
+	db   "커다란 귀를 세워서"
+	next "주변을 살피고 위험이 닥치면"
+	next "먼저 공격을 해온다@"

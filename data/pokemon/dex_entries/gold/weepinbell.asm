@@ -1,10 +1,7 @@
-	db "FLYCATCHER@" ; species name
-	dw 303, 140 ; height, weight
+	db "파리잡이@" ; species name
+	db 10 ; height
+	dw 64 ; weight
 
-	db   "Even though it is"
-	next "filled with ACID,"
-	next "it does not melt"
-
-	page "because it also"
-	next "oozes a neutral-"
-	next "izing fluid.@"
+	db   "용해액의 효능을 없애는"
+	next "액체도 분비하고 있기 때문에"
+	next "자신은 용해액의 해를 입지 않는다@"

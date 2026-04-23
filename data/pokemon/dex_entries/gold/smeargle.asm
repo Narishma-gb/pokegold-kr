@@ -1,10 +1,7 @@
-	db "PAINTER@" ; species name
-	dw 311, 1280 ; height, weight
+	db "그림장이@" ; species name
+	db 12 ; height
+	dw 580 ; weight
 
-	db   "A special fluid"
-	next "oozes from the tip"
-	next "of its tail. It"
-
-	page "paints the fluid"
-	next "everywhere to mark"
-	next "its territory.@"
+	db   "꼬리 끝에서 분비하는"
+	next "액체를 여기저기에 칠해서"
+	next "자신의 세력권을 어필한다@"

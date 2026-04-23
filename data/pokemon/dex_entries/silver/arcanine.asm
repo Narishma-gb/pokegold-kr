@@ -1,10 +1,7 @@
-	db "LEGENDARY@" ; species name
-	dw 603, 3420 ; height, weight
+	db "전설@" ; species name
+	db 19 ; height
+	dw 1550 ; weight
 
-	db   "Its magnificent"
-	next "bark conveys a"
-	next "sense of majesty."
-
-	page "Anyone hearing it"
-	next "can't help but"
-	next "grovel before it.@"
+	db   "위풍당당한 울음소리는"
+	next "위엄이 넘쳐 소리를 들은 상대는"
+	next "무의식중에 몸을 움츠리게된다@"

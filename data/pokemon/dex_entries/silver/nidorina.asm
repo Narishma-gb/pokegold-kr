@@ -1,10 +1,7 @@
-	db "POISON PIN@" ; species name
-	dw 207, 440 ; height, weight
+	db "독침@" ; species name
+	db 8 ; height
+	dw 200 ; weight
 
-	db   "It has a calm and"
-	next "caring nature."
-	next "Because its horn"
-
-	page "grows slowly, it"
-	next "prefers not to"
-	next "fight.@"
+	db   "온화하고 부드러운 성격"
+	next "뿔의 성장도 늦기때문에"
+	next "먼저 싸움을 걸지는 않는다@"

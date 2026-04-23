@@ -1,10 +1,7 @@
-	db "OWL@" ; species name
-	dw 204, 470 ; height, weight
+	db "부엉이@" ; species name
+	db 7 ; height
+	dw 212 ; weight
 
-	db   "It has a perfect"
-	next "sense of time."
-	next "Whatever happens,"
-
-	page "it keeps rhythm by"
-	next "precisely tilting"
-	next "its head in time.@"
+	db   "체내의 시간 감각은"
+	next "어느 때든 정확해서"
+	next "규칙적인 리듬으로 목을 기울인다@"

@@ -1,10 +1,7 @@
-	db "WEED@" ; species name
-	dw 108, 120 ; height, weight
+	db "잡초@" ; species name
+	db 5 ; height
+	dw 54 ; weight
 
-	db   "If exposed to"
-	next "moonlight, it"
-	next "starts to move."
-
-	page "It roams far and"
-	next "wide at night to"
-	next "scatter its seeds.@"
+	db   "달빛을 받아 움직인다"
+	next "밤중에 씨앗을 여기저기에"
+	next "뿌리기 위해 돌아다닌다@"

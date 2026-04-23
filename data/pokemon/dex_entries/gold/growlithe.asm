@@ -1,10 +1,7 @@
-	db "PUPPY@" ; species name
-	dw 204, 420 ; height, weight
+	db "강아지@" ; species name
+	db 7 ; height
+	dw 190 ; weight
 
-	db   "It has a brave and"
-	next "trustworthy na-"
-	next "ture. It fear-"
-
-	page "lessly stands up"
-	next "to bigger and"
-	next "stronger foes.@"
+	db   "자신보다 강하고 커다란"
+	next "상대라도 겁없이 덤벼드는"
+	next "용감하고 믿음직한 성격이다@"

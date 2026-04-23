@@ -1,10 +1,7 @@
-	db "SYMBOL@" ; species name
-	dw 108, 110 ; height, weight
+	db "심볼@" ; species name
+	db 5 ; height
+	dw 50 ; weight
 
-	db   "Their shapes look"
-	next "like hieroglyphs"
-	next "on ancient tab-"
-
-	page "lets. It is said"
-	next "that the two are"
-	next "somehow related.@"
+	db   "모습과 형태가 옛날 석판에"
+	next "새겨진 문자랑 닮아서 관계가"
+	next "있을 것이라는 소문이 돌고 있다@"

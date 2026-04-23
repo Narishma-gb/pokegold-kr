@@ -1,10 +1,7 @@
-	db "FIRE MOUSE@" ; species name
-	dw 108, 170 ; height, weight
+	db "불쥐@" ; species name
+	db 5 ; height
+	dw 79 ; weight
 
-	db   "It is timid, and"
-	next "always curls it-"
-	next "self up in a ball."
-
-	page "If attacked, it"
-	next "flares up its back"
-	next "for protection.@"
+	db   "겁이 많아서 항상 몸을"
+	next "움츠리고 있다  공격받으면 등의"
+	next "화염을 타올려 몸을 보호한다@"

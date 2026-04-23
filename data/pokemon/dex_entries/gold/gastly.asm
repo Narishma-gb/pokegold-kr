@@ -1,10 +1,7 @@
-	db "GAS@" ; species name
-	dw 403, 2 ; height, weight
+	db "가스@" ; species name
+	db 13 ; height
+	dw 1 ; weight
 
-	db   "With its gas-like"
-	next "body, it can sneak"
-	next "into any place it"
-
-	page "desires. However,"
-	next "it can be blown"
-	next "away by wind.@"
+	db   "옅은 가스 같은 몸으로"
+	next "어디든지 숨어들지만"
+	next "바람이 불면 날려가버린다@"

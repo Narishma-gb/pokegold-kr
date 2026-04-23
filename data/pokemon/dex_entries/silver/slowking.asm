@@ -1,10 +1,7 @@
-	db "ROYAL@" ; species name
-	dw 607, 1750 ; height, weight
+	db "임금@" ; species name
+	db 20 ; height
+	dw 795 ; weight
 
-	db   "When its head was"
-	next "bitten, toxins"
-	next "entered SLOWPOKE's"
-
-	page "head and unlocked"
-	next "an extraordinary"
-	next "power.@"
+	db   "물렸을 때 머리에 깊게 스며든"
+	next "독소에 의해 심상치 않은"
+	next "능력에 눈을 뜬 야돈@"

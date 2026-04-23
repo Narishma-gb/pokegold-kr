@@ -1,10 +1,7 @@
-	db "FLOWER@" ; species name
-	dw 204, 90 ; height, weight
+	db "꽃@" ; species name
+	db 7 ; height
+	dw 40 ; weight
 
-	db   "It plants its feet"
-	next "deep underground"
-	next "to replenish wa-"
-
-	page "ter. It can't es-"
-	next "cape its enemy"
-	next "while it's rooted.@"
+	db   "다리를 지면 깊이 뻗어서"
+	next "수분을 보충한다  그때"
+	next "공격을 받으면 도망치지 못한다@"

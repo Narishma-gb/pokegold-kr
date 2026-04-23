@@ -1,10 +1,7 @@
-	db "DARK@" ; species name
-	dw 407, 770 ; height, weight
+	db "다크@" ; species name
+	db 14 ; height
+	dw 350 ; weight
 
-	db   "Upon hearing its"
-	next "eerie howls, other"
-	next "#MON get the"
-
-	page "shivers and head"
-	next "straight back to"
-	next "their nests.@"
+	db   "기분나쁜 울음소리를 들은"
+	next "포켓몬은 겁을 내서 그대로 곧장"
+	next "자신의 둥지에 되돌아온다@"

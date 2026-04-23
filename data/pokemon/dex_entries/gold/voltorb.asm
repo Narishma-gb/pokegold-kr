@@ -1,10 +1,7 @@
-	db "BALL@" ; species name
-	dw 108, 230 ; height, weight
+	db "볼@" ; species name
+	db 5 ; height
+	dw 104 ; weight
 
-	db   "It rolls to move."
-	next "If the ground is"
-	next "uneven, a sudden"
-
-	page "jolt from hitting"
-	next "a bump can cause"
-	next "it to explode.@"
+	db   "굴러서 이동하기 때문에"
+	next "지면이 울퉁불퉁하면"
+	next "충격으로 폭발해버린다@"

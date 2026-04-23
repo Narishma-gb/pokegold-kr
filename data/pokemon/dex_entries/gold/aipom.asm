@@ -1,10 +1,7 @@
-	db "LONG TAIL@" ; species name
-	dw 207, 250 ; height, weight
+	db "긴꼬리@" ; species name
+	db 8 ; height
+	dw 115 ; weight
 
-	db   "Its tail is so"
-	next "powerful that it"
-	next "can use it to grab"
-
-	page "a tree branch and"
-	next "hold itself up in"
-	next "the air.@"
+	db   "힘이 센 꼬리만으로"
+	next "나뭇가지에 매달려서"
+	next "몸을 지탱할 수 있다@"

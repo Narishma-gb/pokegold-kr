@@ -1,10 +1,7 @@
-	db "FISH@" ; species name
-	dw 211, 220 ; height, weight
+	db "물고기@" ; species name
+	db 9 ; height
+	dw 100 ; weight
 
-	db   "For no reason, it"
-	next "jumps and splashes"
-	next "about, making it"
-
-	page "easy for predators"
-	next "like PIDGEOTTO to"
-	next "catch it mid-jump.@"
+	db   "어쨌든 뛴다  이유도 없이 뛴다"
+	next "펄떡거리고 있을때 날아 온"
+	next "피죤등에게 잡혀버린다@"

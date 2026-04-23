@@ -1,10 +1,7 @@
-	db "HARD SHELL@" ; species name
-	dw 311, 3350 ; height, weight
+	db "탄환@" ; species name
+	db 12 ; height
+	dw 1520 ; weight
 
-	db   "Its shell is as"
-	next "hard as sheet"
-	next "rock, and it is"
-
-	page "also very strong."
-	next "Its THRASHING can"
-	next "topple a mountain.@"
+	db   "암반 같은 단단한 껍질로"
+	next "둘러싸여있지만 힘은 강해서"
+	next "화가나면 산도 무너뜨려 버린다@"

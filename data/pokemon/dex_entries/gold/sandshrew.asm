@@ -1,10 +1,7 @@
-	db "MOUSE@" ; species name
-	dw 200, 260 ; height, weight
+	db "쥐@" ; species name
+	db 6 ; height
+	dw 120 ; weight
 
-	db   "If it fell from a"
-	next "great height, this"
-	next "#MON could save"
-
-	page "itself by rolling"
-	next "into a ball and"
-	next "bouncing.@"
+	db   "아무리 높은 곳에서부터"
+	next "떨어져도 몸을 둥글게 말면"
+	next "바운드가 되어 살 수 있다@"

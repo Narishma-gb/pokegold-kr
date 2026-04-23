@@ -1,10 +1,7 @@
-	db "SUN@" ; species name
-	dw 211, 580 ; height, weight
+	db "태양@" ; species name
+	db 9 ; height
+	dw 265 ; weight
 
-	db   "By reading air"
-	next "currents, it can"
-	next "predict things"
-
-	page "such as the weath-"
-	next "er or its foe's"
-	next "next move.@"
+	db   "공기의 흐름을 읽어내는 것으로"
+	next "이제부터의 날씨와 상대방의"
+	next "움직임등을 모두 맞혀버린다@"

@@ -1,10 +1,7 @@
-	db "IRON SNAKE@" ; species name
-	dw 3002, 8820 ; height, weight
+	db "철뱀@" ; species name
+	db 92 ; height
+	dw 4000 ; weight
 
-	db   "Its body has been"
-	next "compressed deep"
-	next "under the ground."
-
-	page "As a result, it is"
-	next "even harder than a"
-	next "diamond.@"
+	db   "깊은 땅속 아래서"
+	next "압축되어진 몸은"
+	next "다이아몬드보다 단단하다@"

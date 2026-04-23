@@ -1,10 +1,7 @@
-	db "STAGBEETLE@" ; species name
-	dw 411, 1210 ; height, weight
+	db "투구@" ; species name
+	db 15 ; height
+	dw 550 ; weight
 
-	db   "With its horns, it"
-	next "digs burrows to"
-	next "sleep in at night."
-
-	page "In the morning,"
-	next "damp soil clings"
-	next "to its body.@"
+	db   "밤에은 뿔로 지면을 파고"
+	next "안에서 잔다  아침일찍 일어나면"
+	next "피부에 젖은 흙이 붙어있다@"

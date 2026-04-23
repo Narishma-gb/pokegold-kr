@@ -1,10 +1,7 @@
-	db "BIG JAW@" ; species name
-	dw 200, 210 ; height, weight
+	db "큰턱@" ; species name
+	db 6 ; height
+	dw 95 ; weight
 
-	db   "Its well-developed"
-	next "jaws are powerful"
-	next "and capable of"
-
-	page "crushing anything."
-	next "Even its trainer"
-	next "must be careful.@"
+	db   "발달한 턱은 매우 강해서"
+	next "뭐든지 물어뜯어 버리기 때문에"
+	next "어버이 트레이너라도 주의해야 한다@"

@@ -1,10 +1,7 @@
-	db "BIRD@" ; species name
-	dw 307, 660 ; height, weight
+	db "새@" ; species name
+	db 11 ; height
+	dw 300 ; weight
 
-	db   "It immobilizes its"
-	next "prey using well-"
-	next "developed claws,"
-
-	page "then carries the"
-	next "prey more than 60"
-	next "miles to its nest.@"
+	db   "발달한 발의 발톱으로"
+	next "먹이를 꼼짝 못하게 움켜쥐고"
+	next "100Kㅍ떨어진 둥지까지 운반한다@"

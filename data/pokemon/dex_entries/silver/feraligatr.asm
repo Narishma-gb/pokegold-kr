@@ -1,10 +1,7 @@
-	db "BIG JAW@" ; species name
-	dw 707, 1960 ; height, weight
+	db "큰턱@" ; species name
+	db 23 ; height
+	dw 888 ; weight
 
-	db   "It is hard for it"
-	next "to support its own"
-	next "weight out of"
-
-	page "water, so it gets"
-	next "down on all fours."
-	next "But it moves fast.@"
+	db   "지상에서는 몸을 지탱하기가"
+	next "힘들기 때문에 엎드려 다니지만"
+	next "매우 빠르게 이동할 수 있다@"

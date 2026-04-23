@@ -1,10 +1,7 @@
-	db "WEED@" ; species name
-	dw 108, 120 ; height, weight
+	db "잡초@" ; species name
+	db 5 ; height
+	dw 54 ; weight
 
-	db   "Awakened by moon-"
-	next "light, it roams "
-	next "actively at night."
-
-	page "In the day, it"
-	next "stays quietly"
-	next "underground.@"
+	db   "달빛을 받아 눈을 뜨면"
+	next "이곳저곳을 돌아다닌다  낮에는"
+	next "땅속에서 꼼짝않고 있다@"

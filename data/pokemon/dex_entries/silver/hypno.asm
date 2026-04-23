@@ -1,10 +1,7 @@
-	db "HYPNOSIS@" ; species name
-	dw 503, 1670 ; height, weight
+	db "최면@" ; species name
+	db 16 ; height
+	dw 756 ; weight
 
-	db   "Always holding a"
-	next "pendulum that it"
-	next "rocks at a steady"
-
-	page "rhythm, it causes"
-	next "drowsiness in any-"
-	next "one nearby.@"
+	db   "항상 지니고 있는 추를"
+	next "규칙적인 리듬으로 흔들고 있다"
+	next "가까이 가면 어쩐지 졸립다@"

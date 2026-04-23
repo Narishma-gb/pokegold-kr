@@ -1,10 +1,7 @@
-	db "DRAGON@" ; species name
-	dw 311, 550 ; height, weight
+	db "드래곤@" ; species name
+	db 12 ; height
+	dw 250 ; weight
 
-	db   "An examination of"
-	next "its cells revealed"
-	next "the presence of a"
-
-	page "gene not found in"
-	next "HORSEA. It became"
-	next "a hot topic.@"
+	db   "세포를 조사해보면 쏘드라에게는"
+	next "없었던 새로운 유전자가"
+	next "발견되어 화제가 되고있다@"

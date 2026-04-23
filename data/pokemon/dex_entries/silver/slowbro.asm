@@ -1,10 +1,7 @@
-	db "HERMITCRAB@" ; species name
-	dw 503, 1730 ; height, weight
+	db "기생@" ; species name
+	db 16 ; height
+	dw 785 ; weight
 
-	db   "Naturally dull to"
-	next "begin with, it"
-	next "lost its ability"
-
-	page "to feel pain due"
-	next "to SHELLDER's"
-	next "seeping poison.@"
+	db   "원래 감각이 둔했었지만"
+	next "셀러의 독소가 퍼져"
+	next "아픔을 느끼지 못하게 되었다@"

@@ -1,10 +1,7 @@
-	db "LAND SNAKE@" ; species name
-	dw 411, 310 ; height, weight
+	db "땅뱀@" ; species name
+	db 15 ; height
+	dw 140 ; weight
 
-	db   "When spotted, this"
-	next "#MON escapes"
-	next "backward by furi-"
-
-	page "ously boring into"
-	next "the ground with"
-	next "its tail.@"
+	db   "누군가에게 들키면"
+	next "꼬리로 땅을 파서"
+	next "뒤를 보이고 도망치기 시작한다@"

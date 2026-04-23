@@ -1,10 +1,7 @@
-	db "SPIKES@" ; species name
-	dw 303, 2540 ; height, weight
+	db "뿔@" ; species name
+	db 10 ; height
+	dw 1150 ; weight
 
-	db   "It doesn't care if"
-	next "there is anything"
-	next "in its way. It"
-
-	page "just charges and"
-	next "destroys all ob-"
-	next "stacles.@"
+	db   "자신이 향하고 있는 방향에"
+	next "무엇이 있는가 신경쓰지 않는다"
+	next "전부 돌진해서 부술 뿐이다@"

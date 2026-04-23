@@ -1,10 +1,7 @@
-	db "TURTLE@" ; species name
-	dw 303, 500 ; height, weight
+	db "거북@" ; species name
+	db 10 ; height
+	dw 225 ; weight
 
-	db   "It is recognized"
-	next "as a symbol of"
-	next "longevity. If its"
-
-	page "shell has algae on"
-	next "it, that WARTORTLE"
-	next "is very old.@"
+	db   "장수의 상징으로 여겨지고 있다"
+	next "껍질에 이끼가 붙어있는 것은"
+	next "특별히 장수를 한 거북이다@"

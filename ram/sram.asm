@@ -15,32 +15,29 @@ SECTION "SRAM Bank 0", SRAM
 
 sPartyMail::
 ; sPartyMon1Mail - sPartyMon6Mail
-;for n, 1, PARTY_LENGTH + 1
-;sPartyMon{d:n}Mail:: mailmsg sPartyMon{d:n}Mail
-;endr
+for n, 1, PARTY_LENGTH + 1
+sPartyMon{d:n}Mail:: mailmsg sPartyMon{d:n}Mail
+endr
 
-;sPartyMailBackup::
-;; sPartyMon1MailBackup - sPartyMon6MailBackup
-;for n, 1, PARTY_LENGTH + 1
-;sPartyMon{d:n}MailBackup:: mailmsg sPartyMon{d:n}MailBackup
-;endr
+sPartyMailBackup::
+; sPartyMon1MailBackup - sPartyMon6MailBackup
+for n, 1, PARTY_LENGTH + 1
+sPartyMon{d:n}MailBackup:: mailmsg sPartyMon{d:n}MailBackup
+endr
 
-;sMailboxCount:: db
-;sMailboxes::
-;; sMailbox1 - sMailbox10
-;for n, 1, MAILBOX_CAPACITY + 1
-;sMailbox{d:n}:: mailmsg sMailbox{d:n}
-;endr
+sMailboxCount:: db
+sMailboxes::
+; sMailbox1 - sMailbox10
+for n, 1, MAILBOX_CAPACITY + 1
+sMailbox{d:n}:: mailmsg sMailbox{d:n}
+endr
 
-;sMailboxCountBackup:: db
-;sMailboxesBackup::
-;; sMailbox1Backup - sMailbox10Backup
-;for n, 1, MAILBOX_CAPACITY + 1
-;sMailbox{d:n}Backup:: mailmsg sMailbox{d:n}Backup
-;endr
-
-
-SECTION "sram1", SRAM[$afe2], BANK[0]
+sMailboxCountBackup:: db
+sMailboxesBackup::
+; sMailbox1Backup - sMailbox10Backup
+for n, 1, MAILBOX_CAPACITY + 1
+sMailbox{d:n}Backup:: mailmsg sMailbox{d:n}Backup
+endr
 
 sMysteryGiftData::
 sMysteryGiftItem:: db
@@ -55,10 +52,7 @@ sMysteryGiftTimer:: dw
 sMysteryGiftTrainerHouseFlag:: db
 sMysteryGiftPartnerName:: ds NAME_LENGTH
 sMysteryGiftUnusedFlag:: db
-sMysteryGiftTrainer:: ds 38
-/*
 sMysteryGiftTrainer:: ds wMysteryGiftTrainerEnd - wMysteryGiftTrainer
-*/
 sBackupMysteryGiftItemEnd::
 
 	ds $30

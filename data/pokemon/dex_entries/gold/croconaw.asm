@@ -1,10 +1,7 @@
-	db "BIG JAW@" ; species name
-	dw 307, 550 ; height, weight
+	db "큰턱@" ; species name
+	db 11 ; height
+	dw 250 ; weight
 
-	db   "If it loses a"
-	next "fang, a new one"
-	next "grows back in its"
-
-	page "place. There are"
-	next "always 48 fangs"
-	next "lining its mouth.@"
+	db   "이빨이 빠져도 계속해서"
+	next "자라 나온다  항상 입안에는"
+	next "48개의 이빨이 늘어서 있다@"

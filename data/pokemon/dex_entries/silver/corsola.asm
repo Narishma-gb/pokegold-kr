@@ -1,10 +1,7 @@
-	db "CORAL@" ; species name
-	dw 200, 110 ; height, weight
+	db "산호@" ; species name
+	db 6 ; height
+	dw 50 ; weight
 
-	db   "In a south sea"
-	next "nation, the people"
-	next "live in communi-"
-
-	page "ties that are"
-	next "built on groups of"
-	next "these #MON.@"
+	db   "남쪽 바다의 나라에서는"
+	next "코산호의 집단 위에"
+	next "사람들이 생활을 하고 있다@"

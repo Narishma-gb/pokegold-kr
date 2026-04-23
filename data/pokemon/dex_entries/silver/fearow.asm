@@ -1,10 +1,7 @@
-	db "BEAK@" ; species name
-	dw 311, 840 ; height, weight
+	db "부리@" ; species name
+	db 12 ; height
+	dw 380 ; weight
 
-	db   "It cleverly uses"
-	next "its thin, long"
-	next "beak to pluck and"
-
-	page "eat small insects"
-	next "that hide under"
-	next "the ground.@"
+	db   "가늘고 긴 부리를 능숙하게"
+	next "사용하여 지면의 작은"
+	next "벌레를 집어 먹는다@"

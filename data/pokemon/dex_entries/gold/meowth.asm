@@ -1,10 +1,7 @@
-	db "SCRATCHCAT@" ; species name
-	dw 104, 90 ; height, weight
+	db "요괴고양이@" ; species name
+	db 4 ; height
+	dw 42 ; weight
 
-	db   "It is fascinated"
-	next "by round objects."
-	next "It can't stop"
-
-	page "playing with them"
-	next "until it tires and"
-	next "falls asleep.@"
+	db   "둥근 물건을 발견하면"
+	next "장난치느라 시간가는 줄 모른다"
+	next "그리고 지쳐서 잠들어버린다@"

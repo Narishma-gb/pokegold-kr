@@ -1,10 +1,7 @@
-	db "SEED@" ; species name
-	dw 100, 40 ; height, weight
+	db "씨앗@" ; species name
+	db 3 ; height
+	dw 18 ; weight
 
-	db   "It lives by drink-"
-	next "ing only dewdrops"
-	next "from under the"
-
-	page "leaves of plants."
-	next "It is said that it"
-	next "eats nothing else.@"
+	db   "잎사귀의 뒷면에 모인"
+	next "이슬만을 먹고산다<.> 그밖에는"
+	next "아무것도 먹지 않는다고 한다@"

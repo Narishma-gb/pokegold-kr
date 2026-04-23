@@ -1,10 +1,7 @@
-	db "ELECTRIC@" ; species name
-	dw 200, 520 ; height, weight
+	db "전류@" ; species name
+	db 6 ; height
+	dw 235 ; weight
 
-	db   "Even in the most"
-	next "vicious storm,"
-	next "this #MON plays"
-
-	page "happily if thunder"
-	next "rumbles in the"
-	next "sky.@"
+	db   "아무리 거친 폭풍 속이라도"
+	next "번개가 치고 있다면"
+	next "즐겁게 놀고 다닌다@"

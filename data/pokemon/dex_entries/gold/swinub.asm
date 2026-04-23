@@ -1,10 +1,7 @@
-	db "PIG@" ; species name
-	dw 104, 140 ; height, weight
+	db "산돼지@" ; species name
+	db 4 ; height
+	dw 65 ; weight
 
-	db   "It rubs its snout"
-	next "on the ground to"
-	next "find and dig up"
-
-	page "food. It sometimes"
-	next "discovers hot"
-	next "springs.@"
+	db   "먹이를 찾기 위해 코를"
+	next "이용해서 지면을 파고 있다"
+	next "가끔씩 온천을 발굴해낸다@"

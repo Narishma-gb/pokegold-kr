@@ -1,10 +1,7 @@
-	db "JET@" ; species name
-	dw 200, 260 ; height, weight
+	db "분사@" ; species name
+	db 6 ; height
+	dw 120 ; weight
 
-	db   "It has superb ac-"
-	next "curacy. The water"
-	next "it shoots out can"
-
-	page "strike even moving"
-	next "prey from more"
-	next "than 300 feet.@"
+	db   "명사수로서 뿜어낸 물은"
+	next "100ㅍ 앞에서 움직이는"
+	next "먹이를 반드시 명중시킨다@"

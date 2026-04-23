@@ -1,10 +1,7 @@
-	db "DARK@" ; species name
-	dw 200, 240 ; height, weight
+	db "다크@" ; species name
+	db 6 ; height
+	dw 108 ; weight
 
-	db   "To corner prey,"
-	next "they check each"
-	next "other's location"
-
-	page "using barks that"
-	next "only they can"
-	next "understand.@"
+	db   "동료들끼리만 서로 알 수 있는"
+	next "울음소리로 서로의 위치를"
+	next "확인해가며 먹이를 몰아 붙인다@"

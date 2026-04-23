@@ -1,10 +1,7 @@
-	db "CLASSY CAT@" ; species name
-	dw 303, 710 ; height, weight
+	db "샴고양이@" ; species name
+	db 10 ; height
+	dw 320 ; weight
 
-	db   "Many adore it for"
-	next "its sophisticated"
-	next "air. However, it"
-
-	page "will lash out and"
-	next "scratch for little"
-	next "reason.@"
+	db   "전신에서 감도는 기품에"
+	next "마음이 끌리는 사람도 많지만"
+	next "뭔일이 있으면 바로 할퀴려고 한다@"

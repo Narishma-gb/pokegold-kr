@@ -1,10 +1,7 @@
-	db "FOX@" ; species name
-	dw 200, 220 ; height, weight
+	db "여우@" ; species name
+	db 6 ; height
+	dw 99 ; weight
 
-	db   "As it develops, "
-	next "its single white"
-	next "tail gains color"
-
-	page "and splits into"
-	next "six. It is quite"
-	next "warm and cuddly.@"
+	db   "하얀 꼬리가 크게 자라면"
+	next "색이 생겨 6개로 나누어진다"
+	next "끌어안으면  따뜻하다@"

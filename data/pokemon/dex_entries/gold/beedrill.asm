@@ -1,10 +1,7 @@
-	db "POISON BEE@" ; species name
-	dw 303, 650 ; height, weight
+	db "독벌@" ; species name
+	db 10 ; height
+	dw 295 ; weight
 
-	db   "It can take down"
-	next "any opponent with"
-	next "its powerful poi-"
-
-	page "son stingers. It"
-	next "sometimes attacks"
-	next "in swarms.@"
+	db   "어떠한 상대라도 강력한"
+	next "독침으로 쏴 죽인다"
+	next "가끔은 집단적으로 공격해온다@"

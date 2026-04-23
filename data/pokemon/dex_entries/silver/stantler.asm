@@ -1,10 +1,7 @@
-	db "BIG HORN@" ; species name
-	dw 407, 1570 ; height, weight
+	db "큰뿔@" ; species name
+	db 14 ; height
+	dw 712 ; weight
 
-	db   "Those who stare at"
-	next "its antlers will"
-	next "gradually lose"
-
-	page "control of their"
-	next "senses and be"
-	next "unable to stand.@"
+	db   "뿔의 모양을 보고있으면"
+	next "감각이 점점 이상해져서"
+	next "자신의 힘으로 서있을 수 없게된다@"

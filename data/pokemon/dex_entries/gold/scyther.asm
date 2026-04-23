@@ -1,10 +1,7 @@
-	db "MANTIS@" ; species name
-	dw 411, 1230 ; height, weight
+	db "버마재비@" ; species name
+	db 15 ; height
+	dw 560 ; weight
 
-	db   "It slashes through"
-	next "grass with its"
-	next "sharp scythes,"
-
-	page "moving too fast"
-	next "for the human eye"
-	next "to track.@"
+	db   "잘 들고 날카로운 낫을 사용하여"
+	next "풀숲을 베고 지나간다  매우 빠른"
+	next "움직임에 눈이 따라가지 못한다@"

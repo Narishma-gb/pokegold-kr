@@ -1,10 +1,7 @@
-	db "KITE@" ; species name
-	dw 611, 4850 ; height, weight
+	db "연@" ; species name
+	db 21 ; height
+	dw 2200 ; weight
 
-	db   "Swimming freely in"
-	next "open seas, it may"
-	next "fly out of the"
-
-	page "water and over the"
-	next "waves if it builds"
-	next "up enough speed.@"
+	db   "넓은 바다를 자유롭게 헤엄친다"
+	next "속도가 올라가면 그대로"
+	next "파도 위를 날아올라버린다@"

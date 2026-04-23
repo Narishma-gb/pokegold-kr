@@ -1,10 +1,7 @@
-	db "FROG@" ; species name
-	dw 307, 750 ; height, weight
+	db "개구리@" ; species name
+	db 11 ; height
+	dw 339 ; weight
 
-	db   "If POLIWAG and"
-	next "POLIWHIRL hear its"
-	next "echoing cry, they"
-
-	page "respond by gather-"
-	next "ing from far and"
-	next "wide.@"
+	db   "울음소리가 울려퍼지면"
+	next "여기저기서 발챙이랑"
+	next "수륙챙이들이 모인다@"

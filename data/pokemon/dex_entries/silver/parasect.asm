@@ -1,10 +1,7 @@
-	db "MUSHROOM@" ; species name
-	dw 303, 650 ; height, weight
+	db "버섯@" ; species name
+	db 10 ; height
+	dw 295 ; weight
 
-	db   "The larger the"
-	next "mushroom on its"
-	next "back grows, the"
-
-	page "stronger the mush-"
-	next "room spores it"
-	next "scatters.@"
+	db   "등의 버섯이 자랄수록"
+	next "흩뿌려지는 버섯포자의"
+	next "효과는 강력해진다@"

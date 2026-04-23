@@ -1,10 +1,7 @@
-	db "MOLE@" ; species name
-	dw 8, 20 ; height, weight
+	db "두더지@" ; species name
+	db 2 ; height
+	dw 8 ; weight
 
-	db   "Its skin is very"
-	next "thin. If it is"
-	next "exposed to light,"
-
-	page "its blood heats"
-	next "up, causing it to"
-	next "grow weak.@"
+	db   "피부가 매우 얇기 때문에"
+	next "빛에 쪼이게 되면 혈액이"
+	next "데워져서 약해져버린다@"

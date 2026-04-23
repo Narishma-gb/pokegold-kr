@@ -1,10 +1,7 @@
-	db "FIRE HORSE@" ; species name
-	dw 303, 660 ; height, weight
+	db "불의말@" ; species name
+	db 10 ; height
+	dw 300 ; weight
 
-	db   "Its hind legs,"
-	next "which have hard-"
-	next "er-than-diamond"
-
-	page "hooves, kick back"
-	next "at any presence it"
-	next "senses behind it.@"
+	db   "배후에서 이상한 기미를 느끼면"
+	next "뒷다리의 다이아몬드보다 단단한"
+	next "발굽으로 걷어차 버린다@"

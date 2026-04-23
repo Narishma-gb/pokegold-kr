@@ -1,10 +1,7 @@
-	db "SCREECH@" ; species name
-	dw 204, 20 ; height, weight
+	db "야명@" ; species name
+	db 7 ; height
+	dw 10 ; weight
 
-	db   "It loves to bite"
-	next "and yank people's"
-	next "hair from behind"
-
-	page "without warning,"
-	next "just to see their"
-	next "shocked reactions.@"
+	db   "갑자기 뒷머리에 달려들어"
+	next "잡아당기고는 사람들이 놀래는"
+	next "모습을 보고 즐거워한다@"

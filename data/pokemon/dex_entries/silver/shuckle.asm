@@ -1,10 +1,7 @@
-	db "MOLD@" ; species name
-	dw 200, 450 ; height, weight
+	db "발효@" ; species name
+	db 6 ; height
+	dw 205 ; weight
 
-	db   "It stores BERRIES"
-	next "inside its shell."
-	next "To avoid attacks,"
-
-	page "it hides beneath"
-	next "rocks and remains"
-	next "completely still.@"
+	db   "껍질에 열매가 비축되어 있다"
+	next "공격받지 않도록 바위 밑에"
+	next "틀어박혀 꼼짝하지 않고 있다@"

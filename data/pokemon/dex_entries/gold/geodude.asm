@@ -1,10 +1,7 @@
-	db "ROCK@" ; species name
-	dw 104, 440 ; height, weight
+	db "암석@" ; species name
+	db 4 ; height
+	dw 200 ; weight
 
-	db   "Most people may"
-	next "not notice, but"
-	next "a closer look"
-
-	page "should reveal that"
-	next "there are many"
-	next "GEODUDE around.@"
+	db   "많은 사람들이 알아차리지 못할뿐"
+	next "주변 근처를 잘 살펴본다면"
+	next "꼬마돌이 많이 있다@"

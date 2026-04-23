@@ -1,10 +1,7 @@
-	db "ANGLER@" ; species name
-	dw 108, 260 ; height, weight
+	db "아귀@" ; species name
+	db 5 ; height
+	dw 120 ; weight
 
-	db   "On the dark ocean"
-	next "floor, its only"
-	next "means of communi-"
-
-	page "cation is its"
-	next "constantly flash-"
-	next "ing lights.@"
+	db   "어두운 해저에서는 항상"
+	next "깜빡거리고 있는 촉수의"
+	next "빛만이 통신수단이다@"

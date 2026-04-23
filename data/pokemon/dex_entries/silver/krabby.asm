@@ -1,10 +1,7 @@
-	db "RIVER CRAB@" ; species name
-	dw 104, 140 ; height, weight
+	db "게@" ; species name
+	db 4 ; height
+	dw 65 ; weight
 
-	db   "The pincers break"
-	next "off easily. If it"
-	next "loses a pincer,"
-
-	page "it somehow becomes"
-	next "incapable of walk-"
-	next "ing sideways.@"
+	db   "집게는 간단하게 분리된다"
+	next "집게가 없어지면 어째서인지"
+	next "게걸음을 하지 못하게 된다@"

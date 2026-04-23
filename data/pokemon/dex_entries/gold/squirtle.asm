@@ -1,10 +1,7 @@
-	db "TINYTURTLE@" ; species name
-	dw 108, 200 ; height, weight
+	db "꼬마거북@" ; species name
+	db 5 ; height
+	dw 90 ; weight
 
-	db   "The shell is soft"
-	next "when it is born."
-	next "It soon becomes so"
-
-	page "resilient, prod-"
-	next "ding fingers will"
-	next "bounce off it.@"
+	db   "태어나서는 부드러운 껍질도"
+	next "곧 손으로 찌르면 뜅겨나갈 정도의"
+	next "탄력성을 지니도록 된다@"

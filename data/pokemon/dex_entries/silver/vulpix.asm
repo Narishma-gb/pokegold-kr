@@ -1,10 +1,7 @@
-	db "FOX@" ; species name
-	dw 200, 220 ; height, weight
+	db "여우@" ; species name
+	db 6 ; height
+	dw 99 ; weight
 
-	db   "If it is attacked"
-	next "by an enemy that"
-	next "is stronger than"
-
-	page "itself, it feigns"
-	next "injury to fool the"
-	next "enemy and escapes.@"
+	db   "자신보다 강한 상대에게"
+	next "공격을 받으면 다친 척을 해서"
+	next "속이고 그 틈을 타서 도망친다@"

@@ -1,10 +1,7 @@
-	db "TINY BIRD@" ; species name
-	dw 100, 40 ; height, weight
+	db "아기새@" ; species name
+	db 3 ; height
+	dw 18 ; weight
 
-	db   "It usually hides"
-	next "in tall grass. Be-"
-	next "cause it dislikes"
-
-	page "fighting, it pro-"
-	next "tects itself by"
-	next "kicking up sand.@"
+	db   "보통은 풀숲에 숨어 있다"
+	next "싸움을 바라지 않고 공격받으면"
+	next "필사적으로 모래를뿌려 몸을 보호함@"

@@ -1,10 +1,7 @@
-	db "LICKING@" ; species name
-	dw 311, 1440 ; height, weight
+	db "핥기@" ; species name
+	db 12 ; height
+	dw 655 ; weight
 
-	db   "Its long tongue,"
-	next "slathered with a"
-	next "gooey saliva,"
-
-	page "sticks to any-"
-	next "thing, so it is"
-	next "very useful.@"
+	db   "긴 혀는 끈적끈적한"
+	next "침으로 덮혀있다  어떤 것이든"
+	next "달라붙어서 매우 편리하다@"

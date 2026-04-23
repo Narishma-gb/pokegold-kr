@@ -1,10 +1,7 @@
-	db "DUCK@" ; species name
-	dw 507, 1690 ; height, weight
+	db "오리@" ; species name
+	db 17 ; height
+	dw 766 ; weight
 
-	db   "When it swims at"
-	next "full speed using"
-	next "its long, webbed"
-
-	page "limbs, its fore-"
-	next "head somehow be-"
-	next "gins to glow.@"
+	db   "물갈퀴가 있는 긴 손발을"
+	next "사용하여 전력으로 헤엄치면"
+	next "어떤 이유인지 이마에서 빛이 난다@"

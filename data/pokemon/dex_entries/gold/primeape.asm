@@ -1,10 +1,7 @@
-	db "PIG MONKEY@" ; species name
-	dw 303, 710 ; height, weight
+	db "돈숭이@" ; species name
+	db 10 ; height
+	dw 320 ; weight
 
-	db   "If approached"
-	next "while asleep, it"
-	next "may awaken and"
-
-	page "angrily give chase"
-	next "in a groggy state"
-	next "of semi-sleep.@"
+	db   "자고있을 때 다가가면"
+	next "잠든 채로 화를 내기 시작하여"
+	next "영문도 모른 채 덤벼든다@"

@@ -1,10 +1,7 @@
-	db "SEED@" ; species name
-	dw 204, 150 ; height, weight
+	db "씨앗@" ; species name
+	db 7 ; height
+	dw 69 ; weight
 
-	db   "The seed on its"
-	next "back is filled"
-	next "with nutrients."
-
-	page "The seed grows"
-	next "steadily larger as"
-	next "its body grows.@"
+	db   "등의 씨앗 안에는"
+	next "영양이 가득하다  씨앗은"
+	next "몸과함께 크게 자란다@"

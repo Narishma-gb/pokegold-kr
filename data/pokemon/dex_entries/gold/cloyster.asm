@@ -1,10 +1,7 @@
-	db "BIVALVE@" ; species name
-	dw 411, 2920 ; height, weight
+	db "두조개@" ; species name
+	db 15 ; height
+	dw 1325 ; weight
 
-	db   "Once it slams its"
-	next "shell shut, it is"
-	next "impossible to"
-
-	page "open, even by"
-	next "those with superi-"
-	next "or strength.@"
+	db   "한번 껍질을 닫아버리면"
+	next "어떠한 괴력을 소유한 자도"
+	next "여는 것은 불가능하다@"

@@ -1,10 +1,7 @@
-	db "INSECT@" ; species name
-	dw 303, 660 ; height, weight
+	db "곤충@" ; species name
+	db 10 ; height
+	dw 300 ; weight
 
-	db   "Poison oozes from"
-	next "all over its body."
-	next "It catches and"
-
-	page "eats small bugs at"
-	next "night that are at-"
-	next "tracted by light.@"
+	db   "전신에서 독이 번져나온다"
+	next "어두워지면 밝은 곳에 모인"
+	next "작은 벌레를 잡아 먹는다@"

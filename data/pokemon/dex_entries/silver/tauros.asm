@@ -1,10 +1,7 @@
-	db "WILD BULL@" ; species name
-	dw 407, 1950 ; height, weight
+	db "성난소@" ; species name
+	db 14 ; height
+	dw 884 ; weight
 
-	db   "After heightening"
-	next "its will to fight"
-	next "by whipping itself"
-
-	page "with its three"
-	next "tails, it charges"
-	next "at full speed.@"
+	db   "3개의 꼬리로 자신을 때려서"
+	next "투지가 끓어오르면"
+	next "전속력으로 돌진해온다@"

@@ -1,10 +1,7 @@
-	db "SHADOW@" ; species name
-	dw 411, 890 ; height, weight
+	db "그림자@" ; species name
+	db 15 ; height
+	dw 405 ; weight
 
-	db   "It steals heat"
-	next "from its surround-"
-	next "ings. If you feel"
-
-	page "a sudden chill, it"
-	next "is certain that a"
-	next "GENGAR appeared.@"
+	db   "주변의 열을 빼앗고 있다"
+	next "갑자기 한기가 느껴지는 것은"
+	next "팬텀이 나타났기 때문이다@"
