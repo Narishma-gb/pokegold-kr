@@ -1,6 +1,6 @@
 SUMMARY:
 	ROM0: 16114 bytes used / 270 free
-	ROMX: 773406 bytes used / 1307362 free in 127 banks
+	ROMX: 798014 bytes used / 1282754 free in 127 banks
 	SRAM: 30805 bytes used / 1963 free in 4 banks
 	WRAM0: 3896 bytes used / 200 free
 	WRAMX: 6420 bytes used / 5868 free in 3 banks
@@ -10207,50 +10207,402 @@ ROMX bank #19:
 	EMPTY
 
 ROMX bank #20:
-	SECTION: $4000-$5bde ($1bdf bytes) ["rom20"]
+	SECTION: $4000-$7b56 ($3b57 bytes) ["bank14"]
 	         $4000 = SelectMonFromParty
 	         $401d = SelectTradeOrDayCareMon
+	         $403f = InitPartyMenuLayout
 	         $404f = LoadPartyMenuGFX
 	         $405f = WritePartyMenuTilemap
+	         $407a = WritePartyMenuTilemap.loop
+	         $4087 = WritePartyMenuTilemap.end
+	         $408c = WritePartyMenuTilemap.Jumptable
+	         $409c = PlacePartyNicknames
+	         $40a8 = PlacePartyNicknames.loop
+	         $40c0 = PlacePartyNicknames.end
+	         $40c9 = PlacePartyNicknames.CancelString
+	         $40d2 = PlacePartyHPBar
+	         $40e1 = PlacePartyHPBar.loop
+	         $4106 = PlacePartyHPBar.skip
+	         $411a = PlacePartymonHPBar
+	         $412c = PlacePartymonHPBar.not_fainted
+	         $413b = PlacePartyMenuHPDigits
+	         $4146 = PlacePartyMenuHPDigits.loop
+	         $416e = PlacePartyMenuHPDigits.next
+	         $4179 = PlacePartyMonLevel
+	         $4184 = PlacePartyMonLevel.loop
+	         $41a4 = PlacePartyMonLevel.ThreeDigits
+	         $41aa = PlacePartyMonLevel.next
+	         $41b5 = PlacePartyMonStatus
+	         $41c0 = PlacePartyMonStatus.loop
+	         $41d8 = PlacePartyMonStatus.next
+	         $41e3 = PlacePartyMonTMHMCompatibility
+	         $41ee = PlacePartyMonTMHMCompatibility.loop
+	         $420d = PlacePartyMonTMHMCompatibility.next
+	         $4218 = PlacePartyMonTMHMCompatibility.PlaceAbleNotAble
+	         $4220 = PlacePartyMonTMHMCompatibility.able
+	         $4224 = PlacePartyMonTMHMCompatibility.string_able
+	         $4231 = PlacePartyMonTMHMCompatibility.string_not_able
+	         $423e = PlacePartyMonEvoStoneCompatibility
+	         $4249 = PlacePartyMonEvoStoneCompatibility.loop
+	         $426c = PlacePartyMonEvoStoneCompatibility.next
+	         $4277 = PlacePartyMonEvoStoneCompatibility.DetermineCompatibility
+	         $4296 = PlacePartyMonEvoStoneCompatibility.loop2
+	         $42ae = PlacePartyMonEvoStoneCompatibility.nope
+	         $42b2 = PlacePartyMonEvoStoneCompatibility.string_able
+	         $42bd = PlacePartyMonEvoStoneCompatibility.string_not_able
+	         $42c8 = PlacePartyMonGender
+	         $42d3 = PlacePartyMonGender.loop
+	         $42f6 = PlacePartyMonGender.got_gender
+	         $42fa = PlacePartyMonGender.next
+	         $4305 = PlacePartyMonGender.male
+	         $430f = PlacePartyMonGender.female
+	         $4319 = PlacePartyMonGender.unknown
+	         $4324 = PartyMenuCheckEgg
+	         $4331 = GetPartyMenuQualityIndexes
+	         $4349 = GetPartyMenuQualityIndexes.skip
+	         $434d = PartyMenuQualityPointers
+	         $435f = PartyMenuQualityPointers.Default
+	         $4365 = PartyMenuQualityPointers.TMHM
+	         $436a = PartyMenuQualityPointers.EvoStone
+	         $436f = PartyMenuQualityPointers.Gender
 	         $4374 = InitPartyMenuGFX
+	         $437e = InitPartyMenuGFX.loop
 	         $4399 = InitPartyMenuWithCancel
+	         $43b6 = InitPartyMenuWithCancel.skip
+	         $43b8 = InitPartyMenuWithCancel.done
 	         $43c1 = InitPartyMenuNoCancel
+	         $43d8 = InitPartyMenuNoCancel.skip
+	         $43da = InitPartyMenuNoCancel.done
+	         $43e3 = PartyMenu2DMenuData
 	         $43eb = PartyMenuSelect
+	         $4423 = PartyMenuSelect.exitmenu
 	         $442e = PlacePartyMenuText
+	         $4442 = PlacePartyMenuText.haspokemon
+	         $4452 = PlacePartyMenuText.gotstring
+	         $4466 = PartyMenuStrings
+	         $4478 = ChooseAMonString
+	         $448f = UseOnWhichPKMNString
+	         $44ae = WhichPKMNString
+	         $44cb = TeachWhichPKMNString
+	         $44ec = MoveToWhereString
+	         $4504 = ChooseAFemalePKMNString
+	         $4524 = ChooseAMalePKMNString
+	         $4544 = ToWhichPKMNString
+	         $4567 = YouHaveNoPKMNString
 	         $4584 = PrintPartyMenuActionText
+	         $4599 = PrintPartyMenuActionText.MenuActionTexts
+	         $45ad = PrintPartyMenuActionText.RecoveredSomeHPText
+	         $45b2 = PrintPartyMenuActionText.CuredOfPoisonText
+	         $45b7 = PrintPartyMenuActionText.RidOfParalysisText
+	         $45bc = PrintPartyMenuActionText.BurnWasHealedText
+	         $45c1 = PrintPartyMenuActionText.WasDefrostedText
+	         $45c6 = PrintPartyMenuActionText.WokeUpText
+	         $45cb = PrintPartyMenuActionText.HealthReturnedText
+	         $45d0 = PrintPartyMenuActionText.RevitalizedText
+	         $45d5 = PrintPartyMenuActionText.GrewToLevelText
+	         $45da = PrintPartyMenuActionText.CameToItsSensesText
+	         $45df = PrintPartyMenuActionText.PrintText
 	         $45f8 = LoadFishingGFX
+	         $4629 = FishingGFX
+	         $46b9 = DoPoisonStep
+	         $46c5 = DoPoisonStep.loop_clearPoisonStepData
+	         $46cd = DoPoisonStep.loop_check_poison
+	         $46e4 = DoPoisonStep.not_poisoned
+	         $4701 = DoPoisonStep.someone_has_fainted
+	         $470b = DoPoisonStep.no_faint
+	         $470d = DoPoisonStep.DamageMonIfPoisoned
+	         $4733 = DoPoisonStep.not_fainted
+	         $4737 = DoPoisonStep.PlayPoisonSFX
+	         $4748 = DoPoisonStep.Script_MonFaintedToPoison
+	         $4756 = DoPoisonStep.whiteout
+	         $475a = DoPoisonStep.CheckWhitedOut
+	         $4761 = DoPoisonStep.party_loop
+	         $477b = DoPoisonStep.mon_not_fainted
+	         $4791 = DoPoisonStep.PoisonFaintText
+	         $4796 = DoPoisonStep.PoisonWhiteoutText
 	         $479b = SweetScentFromMenu
+	         $47a7 = SweetScentFromMenu.SweetScent
+	         $47c4 = SweetScentFromMenu.BugCatchingContest
+	         $47c8 = SweetScentNothing
+	         $47ce = SweetScentEncounter
+	         $47f1 = SweetScentEncounter.in_bug_contest
+	         $47f7 = SweetScentEncounter.start_battle
+	         $47fd = SweetScentEncounter.no_battle
+	         $4802 = UseSweetScentText
+	         $4807 = SweetScentNothingText
 	         $480c = _Squirtbottle
+	         $4818 = _Squirtbottle.SquirtbottleScript
+	         $4827 = _Squirtbottle.SquirtbottleNothingScript
+	         $482a = _Squirtbottle.SquirtbottleNothingText
+	         $482f = _Squirtbottle.CheckCanUseSquirtbottle
+	         $4850 = _Squirtbottle.nope
 	         $4855 = _CardKey
+	         $4885 = _CardKey.nope
+	         $488b = _CardKey.CardKeyScript
 	         $4890 = _BasementKey
+	         $48b7 = _BasementKey.nope
+	         $48bd = _BasementKey.BasementKeyScript
 	         $48c2 = _SacredAsh
+	         $48d7 = CheckAnyFaintedMon
+	         $48e5 = CheckAnyFaintedMon.loop
+	         $48f1 = CheckAnyFaintedMon.next
+	         $48f9 = CheckAnyFaintedMon.done
+	         $48fd = SacredAshScript
+	         $4921 = SacredAshScript.UseSacredAshText
 	         $4926 = CopyMonToTempMon
+	         $4957 = CopyMonToTempMon.copywholestruct
+	         $4966 = CopyMonToTempMon.done
+	         $4967 = CalcBufferMonStats
+	         $496c = CalcTempmonStats
+	         $496f = _TempMonStatsCalculation
+	         $499d = _TempMonStatsCalculation.not_egg
+	         $49a9 = _TempMonStatsCalculation.zero_status
+	         $49b1 = GetMonSpecies
+	         $49c3 = GetMonSpecies.partymon
+	         $49c8 = GetMonSpecies.otpartymon
+	         $49cd = GetMonSpecies.boxmon
+	         $49dc = GetMonSpecies.breedmon
+	         $49e1 = GetMonSpecies.done
+	         $49e5 = GetMonSpecies.done2
 	         $49e9 = PrintMonTypes
+	         $4a04 = PrintMonTypes.Print
+	         $4a07 = PrintMonTypes.hide_type_2
 	         $4a16 = PrintMoveType
 	         $4a2f = PrintType
 	         $4a40 = GetTypeName
+	         $4a57 = TypeNames
+	         $4a8f = Normal
+	         $4a94 = Fighting
+	         $4a99 = Flying
+	         $4a9e = Poison
+	         $4aa1 = CurseType
+	         $4aa8 = Fire
+	         $4aad = Water
+	         $4ab0 = Grass
+	         $4ab3 = Electric
+	         $4ab8 = Psychic
+	         $4abf = Ice
+	         $4ac4 = Ground
+	         $4ac7 = Rock
+	         $4acc = Bird
+	         $4acf = Bug
+	         $4ad4 = Ghost
+	         $4adb = Steel
+	         $4ae0 = Dragon
+	         $4ae7 = Dark
+	         $4aea = GetGen1TrainerClassName
+	         $4afc = GetGen1TrainerClassName.copy
+	         $4b04 = Gen1TrainerClassNames
+	         $4b62 = Gen1TrainerClassNames.Youngster
+	         $4b67 = Gen1TrainerClassNames.BugCatcher
+	         $4b6c = Gen1TrainerClassNames.Lass
+	         $4b71 = Gen1TrainerClassNames.JrTrainerM
+	         $4b75 = Gen1TrainerClassNames.JrTrainerF
+	         $4b79 = Gen1TrainerClassNames.Pokemaniac
+	         $4b7d = Gen1TrainerClassNames.SuperNerd
+	         $4b82 = Gen1TrainerClassNames.Burglar
+	         $4b87 = Gen1TrainerClassNames.Engineer
+	         $4b8b = Gen1TrainerClassNames.Jack
+	         $4b90 = Gen1TrainerClassNames.Swimmer
+	         $4b95 = Gen1TrainerClassNames.Beauty
+	         $4b9b = Gen1TrainerClassNames.Rocker
+	         $4ba0 = Gen1TrainerClassNames.Juggler
+	         $4ba6 = Gen1TrainerClassNames.Blackbelt
+	         $4baa = Gen1TrainerClassNames.ProfOak
+	         $4baf = Gen1TrainerClassNames.Chief
+	         $4bb3 = Gen1TrainerClassNames.Scientist
+	         $4bbb = Gen1TrainerClassNames.Rocket
+	         $4bc0 = Gen1TrainerClassNames.CooltrainerM
+	         $4bc6 = Gen1TrainerClassNames.CooltrainerF
 	         $4bcc = DrawPlayerHP
 	         $4bd0 = DrawEnemyHP
+	         $4bd2 = DrawHP
+	         $4bf2 = DrawHP.at_least_1_hp
+	         $4c03 = DrawHP.not_boxmon
+	         $4c0c = DrawHP.fainted
+	         $4c28 = DrawHP.not_boxmon_2
 	         $4c3d = StatsScreenInit
+	         $4c4c = StatsScreenMain
+	         $4c6b = StatsScreenMain.not_tempmon
+	         $4c80 = StatsScreenMain.got_stats
+	         $4ca0 = StatsScreen_LoadPage
+	         $4ca6 = StatsScreen_LoadPage.done_loading
+	         $4ca9 = StatsScreen_LoadPage.joypad_loop
+	         $4ccb = StatsScreen_LoadPage.not_tempmon
+	         $4ccd = StatsScreen_LoadPage.joypad_action
+	         $4cf6 = StatsScreen_LoadPage.next_mon
+	         $4d0f = StatsScreen_LoadPage.d_up
+	         $4d25 = StatsScreen_LoadPage.load_mon
+	         $4d28 = StatsScreen_LoadPage.a_button
+	         $4d2d = StatsScreen_LoadPage.d_right
+	         $4d37 = StatsScreen_LoadPage.d_left
+	         $4d3c = StatsScreen_JumpToLoadPageFunction
+	         $4d4c = EggStatsInit
+	         $4d51 = EggStats_JoypadLoop
+	         $4d74 = EggStats_JoypadLoop.not_tempmon
+	         $4d76 = EggStats_JoypadLoop.joypad_action
+	         $4d8b = StatsScreen_Exit
+	         $4d92 = EggStats_DownAction
+	         $4da2 = EggStats_DownAction.next_mon
+	         $4dbb = EggStats_UpAction
+	         $4dd1 = EggStats_ScrollToLoadMon
+	         $4dd4 = StatsScreen_LoadPageJumptable
+	         $4dda = StatsScreen_InitUpperHalf
+	         $4e2a = StatsScreen_InitUpperHalf.got_gender
+	         $4e2e = StatsScreen_InitUpperHalf.next
+	         $4e68 = StatsScreen_InitUpperHalf.NicknamePointers
+	         $4e70 = LoadPinkPage
+	         $4eb4 = LoadPinkPage.NotImmuneToPkrs
+	         $4ec8 = LoadPinkPage.HasPokerus
+	         $4ed3 = LoadPinkPage.StatusOK
+	         $4ed9 = LoadPinkPage.done_status
+	         $4efe = LoadPinkPage.got_level
+	         $4f63 = LoadPinkPage.CalcExpToNextLevel
+	         $4f8a = LoadPinkPage.AlreadyAtMaxLevel
+	         $4f92 = LoadPinkPage.Status_Type
+	         $4f9e = LoadPinkPage.OK_str
+	         $4fa3 = LoadPinkPage.ExpPointStr
+	         $4faa = LoadPinkPage.LevelUpStr
+	         $4fb1 = LoadPinkPage.ToStr
+	         $4fb6 = LoadPinkPage.PkrsStr
+	         $4fbf = StatsScreen_PlaceVerticalDivider
+	         $4fc7 = StatsScreen_PlaceVerticalDivider.loop
+	         $4fcf = StatsScreen_PlacePageSwitchArrows
+	         $4fdc = StatsScreen_PlaceShinyIcon
+	         $4fec = LoadGreenPage
+	         $501f = LoadGreenPage.got_item_name
+	         $506f = LoadGreenPage.Item
+	         $5076 = LoadGreenPage.None
+	         $507b = LoadGreenPage.Move
+	         $508d = LoadBluePage
+	         $50cb = LoadBluePage.PlaceOTInfo
+	         $5119 = LoadBluePage.OTNamePointers
+	         $5121 = IDNoString
+	         $5125 = OTString
+	         $512d = StatsScreen_PlaceFrontpic
+	         $5146 = StatsScreen_PlaceFrontpic.unown
+	         $514d = StatsScreen_PlaceFrontpic.play_cry
+	         $5157 = EggStatsScreen
+	         $51ad = EggStatsScreen.picked
+	         $51d3 = EggString
+	         $51d6 = FiveQMarkString
+	         $51dc = EggSoonString
+	         $520c = EggCloseString
+	         $5253 = EggMoreTimeString
+	         $5296 = EggALotMoreTimeString
+	         $52c6 = StatsScreen_LoadPageIndicators
+	         $52f0 = StatsScreen_LoadPageIndicators.load_square
+	         $52fe = GetNicknamePointer
 	         $5315 = PrintTempMonStats
+	         $5341 = PrintTempMonStats.PrintStat
+	         $534b = PrintTempMonStats.StatNames
 	         $536e = GetGender
+	         $5394 = GetGender.PartyMon
+	         $5394 = GetGender.sBoxMon
+	         $539a = GetGender.DVs
+	         $53d9 = GetGender.Female
+	         $53db = GetGender.Male
+	         $53df = GetGender.Genderless
 	         $53e1 = ListMovePP
+	         $5400 = ListMovePP.skip
+	         $540b = ListMovePP.loop
+	         $5459 = ListMovePP.done
+	         $545a = ListMovePP.load_loop
 	         $5461 = Unused_PlaceEnemyHPLevel
+	         $548f = Unused_PlaceEnemyHPLevel.egg
+	         $5490 = PlaceStatusString
+	         $54a7 = FntString
+	         $54ab = CopyStatusString
 	         $54b4 = PlaceNonFaintStatus
+	         $54d9 = PlaceNonFaintStatus.place
+	         $54df = PlaceNonFaintStatus.no_status
+	         $54e1 = SlpString
+	         $54e5 = PsnString
+	         $54e9 = BrnString
+	         $54ed = FrzString
+	         $54f1 = ParString
+	         $54f5 = PlaceStatusStatsScreen
+	         $5506 = PlaceStatusStatsScreen.NonFaintStatus
+	         $552a = PlaceStatusStatsScreen.place
+	         $5530 = PlaceStatusStatsScreen.no_status
+	         $5532 = PlaceStatusStatsScreen.FntString
+	         $5537 = PlaceStatusStatsScreen.SlpString
+	         $553c = PlaceStatusStatsScreen.PsnString
+	         $553f = PlaceStatusStatsScreen.BrnString
+	         $5544 = PlaceStatusStatsScreen.FrzString
+	         $5549 = PlaceStatusStatsScreen.ParString
 	         $554e = ListMoves
+	         $5553 = ListMoves.moves_loop
+	         $5586 = ListMoves.no_more_moves
+	         $5587 = ListMoves.nonmove_loop
+	         $5597 = ListMoves.done
 	         $5598 = InitList
+	         $55a9 = InitList.check_party_ot_name
+	         $55b7 = InitList.check_mon_name
+	         $55c5 = InitList.check_item_name
+	         $55d3 = InitList.check_ob_item_name
+	         $55db = InitList.done
 	         $55fa = CalcLevel
+	         $5605 = CalcLevel.next_level
+	         $5624 = CalcLevel.got_level
 	         $5626 = CalcExpAtLevel
+	         $56a7 = CalcExpAtLevel.subtract
+	         $56b9 = CalcExpAtLevel.done_quadratic
+	         $56cc = CalcExpAtLevel.LevelSquared
+	         $56d9 = GrowthRates
 	         $56f1 = _SwitchPartyMons
+	         $5712 = _SwitchPartyMons.skip
+	         $5713 = _SwitchPartyMons.ClearSprite
+	         $5732 = _SwitchPartyMons.gfx_loop
+	         $573f = _SwitchPartyMons.SwapMonAndMail
+	         $5813 = _SwitchPartyMons.CopyNameToSwitchMonBuffer
+	         $5816 = _SwitchPartyMons.CopyName
 	         $581d = GetUnownLetter
 	         $5854 = GetMonFrontpic
 	         $585a = UnusedFrontpicPredef
+	         $5868 = GetFrontpic
+	         $589d = GetFrontpic.unown
+	         $58a2 = GetFrontpic.not_egg
+	         $58b7 = GetFrontpic.ok
+	         $58c9 = Load2bppToSRAM
 	         $58d7 = GetMonBackpic
+	         $58f9 = GetMonBackpic.ok
+	         $5937 = FixPicBank
+	         $593d = FixPicBank.loop
+	         $5948 = FixPicBank.done
+	         $594c = FixPicBank.FixPicBankTable
+	         $5953 = Intro_GetMonFrontpic
 	         $5974 = GetTrainerPic
 	         $59ce = DecompressGet2bpp
+	         $59eb = FixBackpicAlignment
+	         $5a05 = FixBackpicAlignment.got_dims
+	         $5a0a = FixBackpicAlignment.loop
+	         $5a17 = FixBackpicAlignment.keep_dims
+	         $5a1a = PadFrontpic
+	         $5a23 = PadFrontpic.seven_loop
+	         $5a2c = PadFrontpic.six
+	         $5a32 = PadFrontpic.six_loop
+	         $5a41 = PadFrontpic.five
+	         $5a47 = PadFrontpic.five_loop
+	         $5a5c = PadFrontpic.Fill
+	         $5a64 = PadFrontpic.fill_loop
+	         $5a78 = LoadOrientedFrontpic
+	         $5a86 = LoadOrientedFrontpic.left_loop
+	         $5aba = LoadOrientedFrontpic.x_flip
+	         $5abb = LoadOrientedFrontpic.right_loop
+	         $5add = InsertPokemonIntoBox
+	         $5b46 = InsertPokemonIntoParty
+	         $5b86 = InsertSpeciesIntoBoxOrParty
+	         $5b93 = InsertSpeciesIntoBoxOrParty.loop
+	         $5b9b = InsertDataIntoBoxOrParty
+	         $5baa = InsertDataIntoBoxOrParty.loop
+	         $5bd0 = InsertDataIntoBoxOrParty.insert
 	         $5bdf = BaseData
-	EMPTY: $5bdf-$7fff ($2421 bytes)
-	TOTAL EMPTY: $2421 bytes
+	         $7b3f = BetaMonPicBanks
+	SECTION: $7b57-$7be8 ($0092 bytes) ["Egg Pic"]
+	         $7b57 = EggPic
+	EMPTY: $7be9-$7fff ($0417 bytes)
+	TOTAL EMPTY: $0417 bytes
 
 ROMX bank #21:
 	SECTION: $4000-$7ff6 ($3ff7 bytes) ["Pics 2"]
@@ -10928,6 +11280,8 @@ ROMX bank #37:
 	         $6b91 = ScriptEvents
 	         $7366 = CallCallback
 	         $7a6a = WarpToSpawnPoint
+	         $7b3f = CanEncounterWildMon
+	         $7b73 = ChooseWildEncounter_BugContest
 	         $7c3b = ClearCmdQueue
 	EMPTY: $7c3b-$7fff ($03c5 bytes)
 	TOTAL EMPTY: $03c5 bytes
@@ -11201,6 +11555,7 @@ ROMX bank #56:
 	         $6789 = _DepositPKMN
 	         $6961 = _WithdrawPKMN
 	         $6b39 = _MovePKMNWithoutMail
+	         $734b = StatsScreenDPad
 	         $798a = _ChangeBox
 	EMPTY: $798a-$7fff ($0676 bytes)
 	TOTAL EMPTY: $0676 bytes
@@ -11247,6 +11602,7 @@ ROMX bank #62:
 	         $4035 = _LoadFontsBattleExtra
 	         $4069 = LoadBattleFontsHPBar
 	         $4084 = LoadHPBar
+	         $40a9 = StatsScreen_LoadFont
 	         $40dc = LoadStatsScreenPageTilesGFX
 	         $4bb5 = EnemyHPBarBorderGFX
 	         $4bd5 = HPExpBarBorderGFX
@@ -11588,7 +11944,10 @@ ROMX bank #66:
 	EMPTY
 
 ROMX bank #67:
-	EMPTY
+	SECTION: $4000-$5c1c ($1c1d bytes) ["rom67"]
+	         $5c1d = CardKeySlotScript
+	EMPTY: $5c1d-$7fff ($23e3 bytes)
+	TOTAL EMPTY: $23e3 bytes
 
 ROMX bank #68:
 	EMPTY
@@ -11597,7 +11956,10 @@ ROMX bank #69:
 	EMPTY
 
 ROMX bank #70:
-	EMPTY
+	SECTION: $4000-$429d ($029e bytes) ["rom70"]
+	         $429e = BasementDoorScript
+	EMPTY: $429e-$7fff ($3d62 bytes)
+	TOTAL EMPTY: $3d62 bytes
 
 ROMX bank #71:
 	EMPTY
@@ -11612,7 +11974,10 @@ ROMX bank #74:
 	EMPTY
 
 ROMX bank #75:
-	EMPTY
+	SECTION: $4000-$615a ($215b bytes) ["rom75"]
+	         $615b = WateredWeirdTreeScript
+	EMPTY: $615b-$7fff ($1ea5 bytes)
+	TOTAL EMPTY: $1ea5 bytes
 
 ROMX bank #76:
 	EMPTY
@@ -13091,6 +13456,7 @@ ROMX bank #112:
 	EMPTY: $4867-$4878 ($0012 bytes)
 	SECTION: $4879-$4b1f ($02a7 bytes) ["rom112"]
 	         $4879 = PrintHoursMins
+	         $48c0 = StubbedGetFrontpic
 	         $48c1 = LoadSGBPokedexGFX
 	         $48cb = LoadSGBPokedexGFX2
 	         $4a7c = LoadQuestionMarkPic
@@ -13333,16 +13699,16 @@ ROMX bank #127:
 	         $4748 = _CopyTilemapAtOnce.wait2
 	         $4756 = _CopyTilemapAtOnce.CopyBGMapViaStack
 	         $4767 = _CopyTilemapAtOnce.loop
-	         $4768 = _CopyTilemapAtOnce.loop_u73
-	         $4771 = _CopyTilemapAtOnce.loop_u74
-	         $477a = _CopyTilemapAtOnce.loop_u75
-	         $4783 = _CopyTilemapAtOnce.loop_u76
-	         $478c = _CopyTilemapAtOnce.loop_u77
-	         $4795 = _CopyTilemapAtOnce.loop_u78
-	         $479e = _CopyTilemapAtOnce.loop_u79
-	         $47a7 = _CopyTilemapAtOnce.loop_u80
-	         $47b0 = _CopyTilemapAtOnce.loop_u81
-	         $47b9 = _CopyTilemapAtOnce.loop_u82
+	         $4768 = _CopyTilemapAtOnce.loop_u78
+	         $4771 = _CopyTilemapAtOnce.loop_u79
+	         $477a = _CopyTilemapAtOnce.loop_u80
+	         $4783 = _CopyTilemapAtOnce.loop_u81
+	         $478c = _CopyTilemapAtOnce.loop_u82
+	         $4795 = _CopyTilemapAtOnce.loop_u83
+	         $479e = _CopyTilemapAtOnce.loop_u84
+	         $47a7 = _CopyTilemapAtOnce.loop_u85
+	         $47b0 = _CopyTilemapAtOnce.loop_u86
+	         $47b9 = _CopyTilemapAtOnce.loop_u87
 	EMPTY: $47d4-$7fff ($382c bytes)
 	TOTAL EMPTY: $382c bytes
 
