@@ -134,7 +134,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	;charmap "″",         $6f ; gfx/font/feet_inches.png
 
 	; needed for StatsScreen_PlaceShinyIcon and PrintPartyMonPage1
-	;charmap "⁂",         $3f ; gfx/stats/stats_tiles.png, tile 14
+	charmap "⁂",         $3f ; gfx/stats/stats_tiles.png, tile 14
 
 	; needed for NamingScreen
 

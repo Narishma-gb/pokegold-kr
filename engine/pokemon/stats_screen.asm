@@ -90,13 +90,13 @@ StatsScreen_LoadPage:
 .joypad_action
 	and PAD_CTRL_PAD | PAD_A | PAD_B
 	jr z, .joypad_loop
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jp nz, StatsScreen_Exit
 	bit B_PAD_LEFT, a
 	jr nz, .d_left
 	bit B_PAD_RIGHT, a
 	jr nz, .d_right
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, .a_button
 	bit B_PAD_UP, a
 	jr nz, .d_up
@@ -202,9 +202,9 @@ EggStats_JoypadLoop:
 .joypad_action
 	and PAD_DOWN | PAD_UP | PAD_A | PAD_B
 	jr z, EggStats_JoypadLoop
-	bit A_BUTTON_F, a
+	bit B_PAD_A, a
 	jr nz, StatsScreen_Exit
-	bit B_BUTTON_F, a
+	bit B_PAD_B, a
 	jr nz, StatsScreen_Exit
 	bit B_PAD_UP, a
 	jr nz, EggStats_UpAction
@@ -273,15 +273,15 @@ StatsScreen_InitUpperHalf:
 	ld a, [wBaseDexNo]
 	ld [wTextDecimalByte], a
 	ld [wCurSpecies], a
-	hlcoord 8, 0
+	hlcoord 1, 0
 	ld [hl], '№'
 	inc hl
-	ld [hl], '.'
+	ld [hl], '<DOT>'
 	inc hl
 	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
-	hlcoord 14, 0
+	hlcoord 1, 8
 	call PrintLevel
 	ld hl, .NicknamePointers
 	call GetNicknamePointer
@@ -292,7 +292,7 @@ StatsScreen_InitUpperHalf:
 	call z, OpenSRAM
 	ld d, h
 	ld e, l
-	hlcoord 8, 2
+	hlcoord 1, 10
 	call PlaceString
 	ld a, [wMonType]
 	cp BOXMON
@@ -304,17 +304,17 @@ StatsScreen_InitUpperHalf:
 	jr nz, .got_gender
 	ld a, '♀'
 .got_gender
-	hlcoord 18, 0
+	hlcoord 5, 8
 	ld [hl], a
 .next
-	hlcoord 9, 4
+	hlcoord 1, 12
 	ld a, '/'
 	ld [hli], a
 	ld a, [wBaseDexNo]
 	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	call PlaceString
-	call StatsScreen_PlaceHorizontalDivider
+	call StatsScreen_PlaceVerticalDivider
 	call StatsScreen_PlacePageSwitchArrows
 	call StatsScreen_PlaceShinyIcon
 ; Place HP bar
@@ -352,15 +352,15 @@ LoadPinkPage:
 	call StatsScreen_LoadPageIndicators
 
 ; Load graphics
-	hlcoord 0, 8
-	lb bc, 10, 20
+	hlcoord 8, 0
+	lb bc, 18, 12
 	call ClearBox
-	hlcoord 0, 9
+	hlcoord 10, 1
 	ld b, $0
 	call DrawPlayerHP
-	hlcoord 8, 9
+	hlcoord 18, 1
 	ld [hl], $41 ; right HP/exp bar end cap
-	hlcoord 0, 12
+	hlcoord 9, 4
 	ld de, .Status_Type
 	call PlaceString
 	ld a, [wTempMonPokerusStatus]
@@ -370,47 +370,34 @@ LoadPinkPage:
 	ld a, b
 	and $f0
 	jr z, .NotImmuneToPkrs
-	hlcoord 8, 8
-	ld [hl], '.' ; Pokérus immunity dot
+	hlcoord 19, 9
+	ld [hl], '<DOT>' ; Pokérus immunity dot
 .NotImmuneToPkrs:
 	ld a, [wMonType]
 	cp BOXMON
 	jr z, .StatusOK
-	hlcoord 6, 13
+	hlcoord 14, 4
 	push hl
 	ld de, wTempMonStatus
-	call PlaceStatusString
+	call PlaceStatusStatsScreen
 	pop hl
 	jr .StatusOK
 .HasPokerus:
 	ld de, .PkrsStr
-	hlcoord 1, 13
+	hlcoord 14, 4
 	call PlaceString
 	jr .done_status
 .StatusOK:
 	ld de, .OK_str
 	call z, PlaceString
 .done_status
-	hlcoord 1, 15
+	hlcoord 14, 6
 	call PrintMonTypes
-	ld bc, 9
-	decoord 0, 16
-	hlcoord 0, 17
-	call CopyBytes
-	ld a, ' '
-	ld bc, 9
-	hlcoord 0, 17
-	call ByteFill
-	hlcoord 9, 8
-	ld de, SCREEN_WIDTH
-	ld b, 10
-	ld a, $31 ; vertical divider
-.vertical_divider
-	ld [hl], a
-	add hl, de
-	dec b
-	jr nz, .vertical_divider
-	hlcoord 10, 9
+	hlcoord 8, 10
+	ld b, 6
+	ld c, 10
+	call Textbox
+	hlcoord 9, 10
 	ld de, .ExpPointStr
 	call PlaceString
 ; print next level
@@ -421,34 +408,34 @@ LoadPinkPage:
 	inc a
 	ld [wTempMonLevel], a
 .got_level
-	hlcoord 17, 14
+	hlcoord 16, 15
 	call PrintLevel
 	pop af
 	ld [wTempMonLevel], a
 	ld de, wTempMonExp
-	hlcoord 13, 10
+	hlcoord 12, 11
 	lb bc, 3, 7
 	call PrintNum
 ; level-up graphics and strings
 	call .CalcExpToNextLevel
 	ld de, wExpToNextLevel
-	hlcoord 13, 13
+	hlcoord 12, 13
 	lb bc, 3, 7
 	call PrintNum
-	hlcoord 10, 12
+	hlcoord 9, 13
 	ld de, .LevelUpStr
 	call PlaceString
-	hlcoord 14, 14
+	hlcoord 9, 15
 	ld de, .ToStr
 	call PlaceString
 	ld a, [wTempMonLevel]
 	ld b, a
 	ld de, wTempMonExp + 2
-	hlcoord 11, 16
-	predef FillInExpBar
 	hlcoord 10, 16
+	predef FillInExpBar
+	hlcoord 9, 16
 	ld [hl], $40 ; left exp bar end cap
-	hlcoord 19, 16
+	hlcoord 18, 16
 	ld [hl], $41 ; right exp bar end cap
 
 ; Load palettes / place frontpic
@@ -494,26 +481,25 @@ LoadPinkPage:
 	ret
 
 .Status_Type:
-	db   "STATUS/"
-	next "TYPE/@"
+	db   "상태/"
+	next "타입/@"
 
 .OK_str:
-	db "OK @"
+	db "보통@"
 
 .ExpPointStr:
-	db "EXP POINTS@"
+	db "경험치@"
 
 .LevelUpStr:
-	db "LEVEL UP@"
+	db "앞으로@"
 
 .ToStr:
-	db "TO@"
+	db "에서@"
 
 .PkrsStr:
-	db "#RUS@"
+	db "포케러스@"
 
-StatsScreen_PlaceVerticalDivider: ; unreferenced
-; The Japanese stats screen has a vertical divider.
+StatsScreen_PlaceVerticalDivider:
 	hlcoord 7, 0
 	ld bc, SCREEN_WIDTH
 	ld d, SCREEN_HEIGHT
@@ -525,28 +511,24 @@ StatsScreen_PlaceVerticalDivider: ; unreferenced
 	jr nz, .loop
 	ret
 
-StatsScreen_PlaceHorizontalDivider:
-	hlcoord 0, 7
-	ld b, SCREEN_WIDTH
-	ld a, $62 ; horizontal divider (empty HP/exp bar)
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ret
-
 StatsScreen_PlacePageSwitchArrows:
-	hlcoord 12, 6
-	ld [hl], '◀'
-	hlcoord 19, 6
-	ld [hl], '▶'
+; place "◀페이지▶"
+	hlcoord 2, 16
+	ld a, $32
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
 	ret
 
 StatsScreen_PlaceShinyIcon:
 	ld bc, wTempMonDVs
 	callfar CheckShininess
 	ret nc
-	hlcoord 19, 0
+	hlcoord 6, 8
 	ld [hl], '⁂'
 	ret
 
@@ -559,16 +541,16 @@ LoadGreenPage:
 	call StatsScreen_LoadPageIndicators
 
 ; Load graphics
-	hlcoord 0, 8
-	lb bc, 10, 20
+	hlcoord 8, 0
+	lb bc, 18, 12
 	call ClearBox
 ; item info
-	hlcoord 0, 8
+	hlcoord 8, 1
 	ld de, .Item
 	call PlaceString
 	ld a, [wTempMonItem]
 	and a
-	ld de, .ThreeDashes
+	ld de, .None
 	jr z, .got_item_name
 	ld b, a
 	farcall TimeCapsule_ReplaceTeruSama
@@ -576,22 +558,26 @@ LoadGreenPage:
 	ld [wNamedObjectIndex], a
 	call GetItemName
 .got_item_name
-	hlcoord 6, 8
+	hlcoord 12, 2
 	call PlaceString
 ; move info
 	ld hl, wTempMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
 	call CopyBytes
-	hlcoord 0, 10
+	hlcoord 8, 4
+	ld b, 12
+	ld c, 10
+	call Textbox
+	hlcoord 9, 4
 	ld de, .Move
 	call PlaceString
-	hlcoord 8, 10
-	ld a, SCREEN_WIDTH * 2
+	hlcoord 9, 6
+	ld a, SCREEN_WIDTH * 3
 	ld [wListMovesLineSpacing], a
 	call ListMoves
-	hlcoord 12, 11
-	ld a, SCREEN_WIDTH * 2
+	hlcoord 11, 7
+	ld a, SCREEN_WIDTH * 3
 	ld [wListMovesLineSpacing], a
 	call ListMovePP
 
@@ -608,13 +594,13 @@ LoadGreenPage:
 	ret
 
 .Item:
-	db "ITEM@"
+	db "소지품@"
 
-.ThreeDashes:
-	db "---@"
+.None:
+	db "없음@"
 
 .Move:
-	db "MOVE@"
+	db "사용할수 있는기술@"
 
 LoadBluePage:
 	push bc
@@ -625,20 +611,15 @@ LoadBluePage:
 	call StatsScreen_LoadPageIndicators
 
 ; Load graphics
-	hlcoord 0, 8
-	lb bc, 10, 20
+	hlcoord 8, 0
+	lb bc, 18, 12
 	call ClearBox
 	call .PlaceOTInfo
-	hlcoord 10, 8
-	ld de, SCREEN_WIDTH
+	hlcoord 8, 6
 	ld b, 10
-	ld a, $31 ; vertical divider
-.vertical_divider
-	ld [hl], a
-	add hl, de
-	dec b
-	jr nz, .vertical_divider
-	hlcoord 11, 8
+	ld c, 10
+	call Textbox
+	hlcoord 9, 8
 	ld bc, 6
 	call PrintTempMonStats
 
@@ -655,13 +636,13 @@ LoadBluePage:
 	ret
 
 .PlaceOTInfo:
-	hlcoord 0, 9
+	hlcoord 9, 1
 	ld de, IDNoString
 	call PlaceString
-	hlcoord 0, 12
+	hlcoord 8, 3
 	ld de, OTString
 	call PlaceString
-	hlcoord 2, 10
+	hlcoord 12, 1
 	ld de, wTempMonID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
@@ -681,29 +662,7 @@ LoadBluePage:
 	cp BOXMON
 	call z, CloseSRAM
 	callfar CorrectNickErrors
-	push de
-
-; Adjust coordinate of OT name based on index of nickname terminator
-	lb bc, 0, -1
-.loop
-	inc c
-	ld a, [de]
-	inc de
-	cp '@'
-	jr nz, .loop
-; remove left padding if name was 8-10 chars (somehow?)
-	ld a, NAME_LENGTH - 1
-	sub c
-	cp NAME_LENGTH - PLAYER_NAME_LENGTH
-; otherwise, use 2 spaces of left padding
-	jr c, .ok
-	ld a, NAME_LENGTH - PLAYER_NAME_LENGTH - 1
-.ok
-	ld c, a
-	hlcoord 0, 13
-	add hl, bc
-; that's finally over ... place string, quit forever
-	pop de
+	hlcoord 12, 3
 	call PlaceString
 	ret
 
@@ -717,14 +676,14 @@ IDNoString:
 	db "<ID>№.@"
 
 OTString:
-	db "OT/@"
+	db "어버이/@"
 
 StatsScreen_PlaceFrontpic:
 	push bc
 	call SetDefaultBGPAndOBP
 	ld hl, wTempMonDVs
 	call GetUnownLetter
-	hlcoord 0, 0
+	hlcoord 0, 1
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr z, .unown
@@ -749,20 +708,20 @@ EggStatsScreen:
 	call SetHPPal
 	ld b, SCGB_STATS_SCREEN_HP_PALS
 	call GetSGBLayout
-	call StatsScreen_PlaceHorizontalDivider
-	hlcoord 8, 1
+	call StatsScreen_PlaceVerticalDivider
+	hlcoord 3, 9
 	ld de, EggString
 	call PlaceString
-	hlcoord 8, 3
+	hlcoord 9, 1
 	ld de, IDNoString
 	call PlaceString
-	hlcoord 8, 5
+	hlcoord 8, 3
 	ld de, OTString
 	call PlaceString
-	hlcoord 11, 3
+	hlcoord 12, 1
 	ld de, FiveQMarkString
 	call PlaceString
-	hlcoord 11, 5
+	hlcoord 12, 3
 	ld de, FiveQMarkString
 	call PlaceString
 	ld a, [wTempMonHappiness] ; egg status
@@ -777,13 +736,13 @@ EggStatsScreen:
 	jr c, .picked
 	ld de, EggALotMoreTimeString
 .picked
-	hlcoord 1, 9
+	hlcoord 8, 6
 	call PlaceString
 	call WaitBGMap
 	ld a, 1
 	ldh [hBGMapMode], a
 	call SetDefaultBGPAndOBP
-	hlcoord 0, 0
+	hlcoord 0, 1
 	call PrepMonFrontpic
 	ld a, [wTempMonHappiness]
 	cp 6
@@ -794,50 +753,51 @@ EggStatsScreen:
 	ret
 
 EggString:
-	db "EGG@"
+	db "알@"
 
 FiveQMarkString:
-	db "?????@"
+	db "<?><?><?><?><?>@"
 
 EggSoonString:
-	db   "It's making sounds"
-	next "inside. It's going"
-	next "to hatch soon!@"
+	db   "안에서 소리가"
+	next "들려온다  이제"
+	next "곧 태어날것 같다!@"
 
 EggCloseString:
-	db   "It moves around"
-	next "inside sometimes."
-	next "It must be close"
-	next "to hatching.@"
+	db   "가끔씩 안에서"
+	next "움직이고 있는듯 하다"
+	next "태어나기 전 까지 얼마"
+	next "남지 않았나?@"
 
 EggMoreTimeString:
-	db   "Wonder what's"
-	next "inside? It needs"
-	next "more time, though.@"
+	db   "무엇이 태어나"
+	next "줄까 궁금한데?"
+	next "태어날 때 까지는"
+	next "조금더 걸릴 것 같다@"
 
 EggALotMoreTimeString:
-	db   "This EGG needs a"
-	next "lot more time to"
-	next "hatch.@"
+	db   "이 알은"
+	next "태어날 때 까지 꽤나"
+	next "시간이 걸릴 것 같다@"
 
 StatsScreen_LoadPageIndicators:
-	hlcoord 13, 5
+	hlcoord 1, 14
 	ld a, $36 ; first of 4 small square tiles
 	call .load_square
-	hlcoord 15, 5
+	hlcoord 3, 14
 	ld a, $36 ; " " " "
 	call .load_square
-	hlcoord 17, 5
+	hlcoord 5, 14
 	ld a, $36 ; " " " "
 	call .load_square
 	ld a, b
 	cp GREEN_PAGE
 	ld a, $3a ; first of 4 large square tiles
-	hlcoord 13, 5 ; PINK_PAGE (< GREEN_PAGE)
+	hlcoord 1, 14 ; PINK_PAGE (< GREEN_PAGE)
 	jr c, .load_square
-	hlcoord 15, 5 ; GREEN_PAGE (= GREEN_PAGE)
+	hlcoord 3, 14 ; GREEN_PAGE (= GREEN_PAGE)
 	jr z, .load_square
-	hlcoord 17, 5 ; BLUE_PAGE (> GREEN_PAGE)
+	hlcoord 5, 14 ; BLUE_PAGE (> GREEN_PAGE)
 .load_square
 	ld [hli], a
 	inc a

@@ -51,6 +51,7 @@ WritePartyMenuTilemap:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill ; blank the tilemap
+	call Function14a2
 	call GetPartyMenuQualityIndexes
 .loop
 	ld a, [hli]
@@ -109,7 +110,7 @@ PlacePartyNicknames:
 	ret
 
 .CancelString:
-	db "CANCEL@"
+	db "그만두다@"
 
 PlacePartyHPBar:
 	xor a
@@ -119,7 +120,7 @@ PlacePartyHPBar:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 11, 2
+	hlcoord 11, 1
 .loop
 	push bc
 	push hl
@@ -185,7 +186,7 @@ PlacePartyMenuHPDigits:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 13, 1
+	hlcoord 12, 0
 .loop
 	push bc
 	push hl
@@ -226,7 +227,7 @@ PlacePartyMonLevel:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 8, 2
+	hlcoord 8, 1
 .loop
 	push bc
 	push hl
@@ -268,7 +269,7 @@ PlacePartyMonStatus:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 5, 2
+	hlcoord 8, 0
 .loop
 	push bc
 	push hl
@@ -300,7 +301,7 @@ PlacePartyMonTMHMCompatibility:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 12, 2
+	hlcoord 12, 1
 .loop
 	push bc
 	push hl
@@ -340,10 +341,10 @@ PlacePartyMonTMHMCompatibility:
 	ret
 
 .string_able
-	db "ABLE@"
+	db "배울 수 있다@"
 
 .string_not_able
-	db "NOT ABLE@"
+	db "배울 수 없다@"
 
 PlacePartyMonEvoStoneCompatibility:
 	ld a, [wPartyCount]
@@ -351,7 +352,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 12, 2
+	hlcoord 12, 1
 .loop
 	push bc
 	push hl
@@ -422,9 +423,9 @@ PlacePartyMonEvoStoneCompatibility:
 	ret
 
 .string_able
-	db "ABLE@"
+	db "쓸 수 있다@"
 .string_not_able
-	db "NOT ABLE@"
+	db "쓸 수 없다@"
 
 PlacePartyMonGender:
 	ld a, [wPartyCount]
@@ -432,7 +433,7 @@ PlacePartyMonGender:
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 12, 2
+	hlcoord 12, 1
 .loop
 	push bc
 	push hl
@@ -466,13 +467,13 @@ PlacePartyMonGender:
 	ret
 
 .male
-	db "♂…MALE@"
+	db "♂……수컷@"
 
 .female
-	db "♀…FEMALE@"
+	db "♀……암컷@"
 
 .unknown
-	db "…UNKNOWN@"
+	db "………불명@"
 
 PartyMenuCheckEgg:
 	ld a, LOW(wPartySpecies)
@@ -601,7 +602,7 @@ PartyMenuSelect:
 	ld [wPartyMenuCursor], a
 	ldh a, [hJoyLast]
 	ld b, a
-	bit B_BUTTON_F, b
+	bit B_PAD_B, b
 	jr nz, .exitmenu ; B button
 	ld a, [wMenuCursorY]
 	dec a
@@ -669,31 +670,33 @@ PartyMenuStrings:
 	dw ToWhichPKMNString
 
 ChooseAMonString:
-	db "Choose a #MON.@"
+	db "포켓몬을 골라 주십시오@"
 
 UseOnWhichPKMNString:
-	db "Use on which <PK><MN>?@"
+	db "어느 포켓몬에 사용하겠습니까?@"
 
 WhichPKMNString:
-	db "Which <PK><MN>?@"
+	db "어느 포켓몬을 꺼내겠습니까?@"
 
 TeachWhichPKMNString:
-	db "Teach which <PK><MN>?@"
+	db "어느 포켓몬에게 가르치겠습니까?@"
 
 MoveToWhereString:
-	db "Move to where?@"
+	db "어디로 이동하겠습니까?@"
 
 ChooseAFemalePKMNString: ; unreferenced
-	db "Choose a ♀<PK><MN>.@"
+	db   "암컷인 포켓몬을"
+	line "선택해 주십시오@"
 
 ChooseAMalePKMNString: ; unreferenced
-	db "Choose a ♂<PK><MN>.@"
+	db   "수컷인 포켓몬을"
+	line "선택해 주십시오@"
 
 ToWhichPKMNString:
-	db "To which <PK><MN>?@"
+	db "어떤포켓몬에게 지니게 하겠습니까?@"
 
 YouHaveNoPKMNString:
-	db "You have no <PK><MN>!@"
+	db "포켓몬을 가지고있지 않습니다@"
 
 PrintPartyMenuActionText:
 	ld a, [wCurPartyMon]

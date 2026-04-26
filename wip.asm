@@ -44,54 +44,6 @@ INCLUDE "main.asm"
 INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
 
-EXPORT DEF EggPic EQU $7b57
-
-
-SECTION "rom20", ROMX[$4000], BANK[20]
-; ROM $14 : $50000 - $53FFF
-
-	dr SelectMonFromParty, $4000
-	dr SelectTradeOrDayCareMon, $401d
-	dr LoadPartyMenuGFX, $404f
-	dr WritePartyMenuTilemap, $405f
-	dr InitPartyMenuGFX, $4374
-	dr InitPartyMenuWithCancel, $4399
-	dr InitPartyMenuNoCancel, $43c1
-	dr PartyMenuSelect, $43eb
-	dr PlacePartyMenuText, $442e
-	dr PrintPartyMenuActionText, $4584
-	dr LoadFishingGFX, $45f8
-	dr SweetScentFromMenu, $479b
-	dr _Squirtbottle, $480c
-	dr _CardKey, $4855
-	dr _BasementKey, $4890
-	dr _SacredAsh, $48c2
-	dr CopyMonToTempMon, $4926
-	dr PrintMonTypes, $49e9
-	dr PrintMoveType, $4a16
-	dr PrintType, $4a2f
-	dr GetTypeName, $4a40
-	dr DrawPlayerHP, $4bcc
-	dr DrawEnemyHP, $4bd0
-	dr StatsScreenInit, $4c3d
-	dr PrintTempMonStats, $5315
-	dr GetGender, $536e
-	dr ListMovePP, $53e1
-	dr Unused_PlaceEnemyHPLevel, $5461
-	dr PlaceNonFaintStatus, $54b4
-	dr ListMoves, $554e
-	dr InitList, $5598
-	dr CalcLevel, $55fa
-	dr CalcExpAtLevel, $5626
-	dr _SwitchPartyMons, $56f1
-	dr GetUnownLetter, $581d
-	dr GetMonFrontpic, $5854
-	dr UnusedFrontpicPredef, $585a
-	dr GetMonBackpic, $58d7
-	dr GetTrainerPic, $5974
-	dr DecompressGet2bpp, $59ce
-	dr BaseData, $5bdf
-
 
 SECTION "rom33", ROMX[$4000], BANK[33]
 ; ROM $21 : $84000 - $87FFF
@@ -170,6 +122,8 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr ScriptEvents, $6b91
 	dr CallCallback, $7366
 	dr WarpToSpawnPoint, $7a6a
+	dr CanEncounterWildMon, $7b3f
+	dr ChooseWildEncounter_BugContest, $7b73
 	dr ClearCmdQueue, $7c3b
 
 
@@ -251,6 +205,7 @@ SECTION "rom56", ROMX[$4000], BANK[56]
 	dr _DepositPKMN, $6789
 	dr _WithdrawPKMN, $6961
 	dr _MovePKMNWithoutMail, $6b39
+	dr StatsScreenDPad, $734b
 	dr _ChangeBox, $798a
 
 
@@ -302,6 +257,7 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr _LoadFontsBattleExtra, $4035
 	dr LoadBattleFontsHPBar, $4069
 	dr LoadHPBar, $4084
+	dr StatsScreen_LoadFont, $40a9
 	dr LoadStatsScreenPageTilesGFX, $40dc
 	dr EnemyHPBarBorderGFX, $4bb5
 	dr HPExpBarBorderGFX, $4bd5
@@ -398,8 +354,10 @@ INCLUDE "data/text/battle.asm"
 ; ROM $42 : $108000 - $10BFFF
 
 
-;SECTION "rom67", ROMX[$4000], BANK[67]
+SECTION "rom67", ROMX[$4000], BANK[67]
 ; ROM $43 : $10C000 - $10FFFF
+
+	dr CardKeySlotScript, $5c1d
 
 
 ;SECTION "rom68", ROMX[$4000], BANK[68]
@@ -410,8 +368,10 @@ INCLUDE "data/text/battle.asm"
 ; ROM $45 : $114000 - $117FFF
 
 
-;SECTION "rom70", ROMX[$4000], BANK[70]
+SECTION "rom70", ROMX[$4000], BANK[70]
 ; ROM $46 : $118000 - $11BFFF
+
+	dr BasementDoorScript, $429e
 
 
 ;SECTION "rom71", ROMX[$4000], BANK[71]
@@ -430,8 +390,10 @@ INCLUDE "data/text/battle.asm"
 ; ROM $4a : $128000 - $12BFFF
 
 
-;SECTION "rom75", ROMX[$4000], BANK[75]
+SECTION "rom75", ROMX[$4000], BANK[75]
 ; ROM $4b : $12C000 - $12FFFF
+
+	dr WateredWeirdTreeScript, $615b
 
 
 ;SECTION "rom76", ROMX[$4000], BANK[76]
@@ -526,6 +488,7 @@ SECTION "rom112", ROMX[$4879], BANK[112]
 ; ROM $70 : $1C0000 - $1C3FFF
 
 	dr PrintHoursMins, $4879
+	dr StubbedGetFrontpic, $48c0
 	dr LoadSGBPokedexGFX, $48c1
 	dr LoadSGBPokedexGFX2, $48cb
 	dr LoadQuestionMarkPic, $4a7c

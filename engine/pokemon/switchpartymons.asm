@@ -18,12 +18,11 @@ _SwitchPartyMons:
 
 .ClearSprite:
 	push af
-	hlcoord 0, 1
+	hlcoord 0, 0
 	ld bc, 2 * SCREEN_WIDTH
 	call AddNTimes
-	ld bc, 2 * SCREEN_WIDTH
-	ld a, ' '
-	call ByteFill
+	lb bc, 2, SCREEN_WIDTH
+	call ClearBox
 	pop af
 	ld hl, wShadowOAMSprite00
 	ld bc, 4 * OBJ_SIZE

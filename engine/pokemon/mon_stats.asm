@@ -93,8 +93,6 @@ PrintTempMonStats:
 	pop hl
 	pop bc
 	add hl, bc
-	ld bc, SCREEN_WIDTH
-	add hl, bc
 	ld de, wTempMonAttack
 	lb bc, 2, 3
 	call .PrintStat
@@ -116,12 +114,11 @@ PrintTempMonStats:
 	ret
 
 .StatNames:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPCL.ATK"
-	next "SPCL.DEF"
-	next "SPEED"
-	next "@"
+	db   "공격"
+	next "방어"
+	next "특수공격"
+	next "특수방어"
+	next "스피드@"
 
 GetGender:
 ; Return the gender of a given monster (wCurPartyMon/wCurOTMon/wCurWildMon).
@@ -253,7 +250,7 @@ ListMovePP:
 	and a
 	jr z, .skip
 	ld c, a
-	ld a, '-'
+	ld a, '<->'
 	call .load_loop
 
 .skip
@@ -374,7 +371,7 @@ PlaceStatusString:
 	ret
 
 FntString:
-	db "FNT@"
+	db $ba, $bb, $bc, "@" ; 기절
 
 CopyStatusString:
 	ld a, [de]
@@ -415,11 +412,62 @@ PlaceNonFaintStatus:
 	pop de
 	ret
 
-SlpString: db "SLP@"
-PsnString: db "PSN@"
-BrnString: db "BRN@"
-FrzString: db "FRZ@"
-ParString: db "PAR@"
+SlpString: db $bd, $be, $bf, "@" ; 잠듦
+PsnString: db $ca, $cb, $cc, "@" ; 독
+BrnString: db $cd, $ce, $cf, "@" ; 화상
+FrzString: db $da, $db, $dc, "@" ; 얼음
+ParString: db $dd, $de, $df, "@" ; 마비
+
+PlaceStatusStatsScreen:
+; The stats screen's status uses 2-tile high Hangul characters
+; Return nz if the status is not OK
+	push de
+	inc de
+	inc de
+	ld a, [de]
+	ld b, a
+	inc de
+	ld a, [de]
+	or b
+	pop de
+	push de
+	jr nz, .NonFaintStatus
+	ld de, .FntString
+	jr .place
+
+.NonFaintStatus
+	ld a, [de]
+	ld de, .PsnString
+	bit PSN, a
+	jr nz, .place
+	ld de, .BrnString
+	bit BRN, a
+	jr nz, .place
+	ld de, .FrzString
+	bit FRZ, a
+	jr nz, .place
+	ld de, .ParString
+	bit PAR, a
+	jr nz, .place
+	ld de, .SlpString
+	and SLP_MASK
+	jr z, .no_status
+
+.place
+	call PlaceString
+	ld a, TRUE
+	and a
+
+.no_status
+	pop de
+	ret
+
+.FntString: db "기절@"
+.SlpString: db "잠듦@"
+.PsnString: db "독@"
+.BrnString: db "화상@"
+.FrzString: db "얼음@"
+.ParString: db "마비@"
 
 ListMoves:
 ; List moves at hl, spaced every [wListMovesLineSpacing] tiles.
@@ -462,7 +510,7 @@ ListMoves:
 	ld a, b
 .nonmove_loop
 	push af
-	ld [hl], '-'
+	ld [hl], '<->'
 	ld a, [wListMovesLineSpacing]
 	ld c, a
 	ld b, 0
