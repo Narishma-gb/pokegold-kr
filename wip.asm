@@ -45,16 +45,6 @@ INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
 
 
-SECTION "rom33", ROMX[$4000], BANK[33]
-; ROM $21 : $84000 - $87FFF
-
-	dr _PrinterReceive, $42db
-	dr PrintDexEntry, $442c
-	dr PrintUnownStamp, $4560
-	dr _PrintDiploma, $4684
-	dr _HallOfFamePC, $6640
-
-
 SECTION "rom35", ROMX[$4000], BANK[35]
 ; ROM $23 : $8C000 - $8FFFF
 
@@ -92,6 +82,8 @@ DummyPredef36::
 	drd FreezeMonIcons, $68d9
 	drd UnfreezeMonIcons, $6900
 	drd HoldSwitchmonIcon, $691b
+	drd InitDisplayForHallOfFame, $7d9c
+	drd InitDisplayForRedCredits, $7ddd
 
 
 SECTION "rom36", ROMX[$4000], BANK[36]
@@ -170,6 +162,7 @@ SECTION "rom50", ROMX[$4000], BANK[50]
 BattleAnimations::
 	dr DummyPredef2F, $40d7
 	dr LoadPoisonBGPals, $7c76
+	dr TheEndGFX, $7cbd
 
 
 SECTION "rom51", ROMX[$4000], BANK[51]
@@ -186,8 +179,10 @@ DummyPredef39::
 	dr BattleAnimCmd_MinimizeOpp, $466b
 
 
-;SECTION "rom54", ROMX[$4000], BANK[54]
+SECTION "rom54", ROMX[$4000], BANK[54]
 ; ROM $36 : $D8000 - $DBFFF
+
+	dr FontInversed, $4000
 
 
 ;SECTION "rom55", ROMX[$4000], BANK[55]
@@ -198,6 +193,8 @@ SECTION "rom56", ROMX[$4000], BANK[56]
 ; ROM $38 : $E0000 - $E3FFF
 
 	dr _Diploma, $4002
+	dr PlaceDiplomaOnScreen, $4009
+	dr PrintDiplomaPage2, $40d5
 	dr RotateUnownFrontpic, $43ea
 	dr _CardFlip, $44d8
 	dr _UnownPuzzle, $556a
@@ -259,6 +256,8 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr LoadHPBar, $4084
 	dr StatsScreen_LoadFont, $40a9
 	dr LoadStatsScreenPageTilesGFX, $40dc
+	dr FontExtra, $40f5
+	dr StatsScreenPageTilesGFX, $4aa5
 	dr EnemyHPBarBorderGFX, $4bb5
 	dr HPExpBarBorderGFX, $4bd5
 	dr ExpBarGFX, $4c05
@@ -482,19 +481,6 @@ SECTION "rom75", ROMX[$4000], BANK[75]
 
 ;SECTION "rom98", ROMX[$4000], BANK[98]
 ; ROM $62 : $188000 - $18BFFF
-
-
-SECTION "rom112", ROMX[$4879], BANK[112]
-; ROM $70 : $1C0000 - $1C3FFF
-
-	dr PrintHoursMins, $4879
-	dr StubbedGetFrontpic, $48c0
-	dr LoadSGBPokedexGFX, $48c1
-	dr LoadSGBPokedexGFX2, $48cb
-	dr LoadQuestionMarkPic, $4a7c
-	dr _DudeAutoInput_A, $4b16
-	dr _DudeAutoInput_RightA, $4b1b
-	dr _DudeAutoInput_DownA, $4b20
 
 
 ;SECTION "rom123", ROMX[$4000], BANK[123]

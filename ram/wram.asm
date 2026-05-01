@@ -270,11 +270,11 @@ wInitHourBuffer:: db
 wInitMinuteBuffer:: db
 	ds 19
 wTimeSetBufferEnd::
-
+*/
 NEXTU
 ; hall of fame temp struct
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
-
+/*
 NEXTU
 ; debug mon color picker
 wDebugMiddleColors::
@@ -435,7 +435,7 @@ SECTION UNION "Overworld Map", WRAM0
 
 ; decompress buffer in wram
 wDecompressScratch:: ds 40 tiles
-
+*/
 
 SECTION UNION "Overworld Map", WRAM0
 
@@ -472,7 +472,7 @@ wPrinterExposureTime:: db
 	ds 16
 wGameboyPrinterRAMEnd::
 
-
+/*
 SECTION UNION "Overworld Map", WRAM0
 
 ; bill's pc data

@@ -101,9 +101,9 @@ ROMX $1f
 ROMX $20
 	"Trainer Pic Pointers"
 	"Pics 13"
-; ROMX $21
-; 	"bank21"
-; 	"Credits"
+ROMX $21
+	"bank21"
+	"Credits"
 ; ROMX $23
 ; 	"bank23"
 ; ROMX $24
@@ -247,12 +247,11 @@ ROMX $6d
 ROMX $6e
 	"Item Descriptions"
 ROMX $70
-; 	"bank70"
-	org $4407
+	"bank70"
 	"Tileset Data 6"
-; 	"bank70_2"
-; 	"Pokégear GFX"
-; 	"Credits Strings"
+	"bank70_2"
+	"Pokégear GFX"
+	"Credits Strings"
 ROMX $71
 	"bank71"
 ROMX $72

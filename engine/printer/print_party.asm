@@ -351,7 +351,7 @@ PrintParty_StatsString:
 	db   "@"
 
 PrintParty_NoMoveString:
-	db "------------@"
+	db "<-><-><-><-><-><-><-><-><-><-><-><->@"
 
 GBPrinterHPIcon:
 INCBIN "gfx/printer/hp.1bpp"

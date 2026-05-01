@@ -212,12 +212,12 @@ INCLUDE "data/pokemon/base_stats.asm"
 INCLUDE "data/pokemon/unused_pic_banks.asm"
 
 
-;SECTION "bank21", ROMX
+SECTION "bank21", ROMX
 
-;INCLUDE "engine/printer/printer_serial.asm"
-;INCLUDE "engine/printer/printer.asm"
-;INCLUDE "gfx/battle_anims.asm"
-;INCLUDE "engine/events/halloffame.asm"
+INCLUDE "engine/printer/printer_serial.asm"
+INCLUDE "engine/printer/printer.asm"
+INCLUDE "gfx/battle_anims.asm"
+INCLUDE "engine/events/halloffame.asm"
 
 
 ;SECTION "bank23", ROMX
@@ -361,20 +361,20 @@ SECTION "Item Descriptions", ROMX
 INCLUDE "data/items/descriptions.asm"
 
 
-;SECTION "bank70", ROMX
+SECTION "bank70", ROMX
 
-;INCLUDE "engine/printer/print_party.asm"
+INCLUDE "engine/printer/print_party.asm"
 ;IF DEF(_DEBUG)
 ;INCLUDE "engine/debug/debug_room.asm"
 ;ENDC
 
 
-;SECTION "bank70_2", ROMX
+SECTION "bank70_2", ROMX
 
-;INCLUDE "engine/rtc/print_hours_mins.asm"
-;INCLUDE "engine/pokedex/pokedex_3.asm"
-;INCLUDE "engine/events/catch_tutorial_input.asm"
-;INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
+INCLUDE "engine/rtc/print_hours_mins.asm"
+INCLUDE "engine/pokedex/pokedex_3.asm"
+INCLUDE "engine/events/catch_tutorial_input.asm"
+INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
 
 
 SECTION "DMG Error Screen", ROMX
@@ -382,9 +382,9 @@ SECTION "DMG Error Screen", ROMX
 INCLUDE "engine/movie/error_screen.asm"
 
 
-;SECTION "Credits Strings", ROMX
+SECTION "Credits Strings", ROMX
 
-;INCLUDE "data/credits_strings.asm"
+INCLUDE "data/credits_strings.asm"
 
 
 ;SECTION "Stadium 2 Checksums", ROMX[$7DF8], BANK[$7F]

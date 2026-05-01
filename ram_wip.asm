@@ -33,7 +33,6 @@ EXPORT DEF wTimeCapsulePlayerData EQU $C713
 EXPORT DEF wLinkPlayerData EQU $C713
 EXPORT DEF wTimeCapsulePartyMonOTs EQU $C81B
 EXPORT DEF wLinkPlayerPartyMonOTs EQU $C835
-EXPORT DEF wHandshakeFrameDelay EQU $C98A
 EXPORT DEF wCurLinkOTPartyMonTypePointer EQU $CAE8
 EXPORT DEF wLinkOTPartyMonTypes EQU $CAEA
 EXPORT DEF wLinkDataEnd EQU $CC14
@@ -55,6 +54,7 @@ EXPORT DEF wLinkOTMailMessages EQU $D234
 EXPORT DEF wOptions EQU $D254
 EXPORT DEF wSaveFileExists EQU $D255
 EXPORT DEF wTextboxFlags EQU $D257
+EXPORT DEF wGBPrinterBrightness EQU $D258
 EXPORT DEF wOptions2 EQU $D259
 EXPORT DEF wGameData EQU $D25C
 EXPORT DEF wOptionsEnd EQU $D25C

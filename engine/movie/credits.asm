@@ -33,8 +33,13 @@ Credits::
 	jr nz, .load_loop
 
 	ld de, CreditsBorderGFX
-	ld hl, vTiles2 tile $20
+	ld hl, vTiles2 tile $10
 	lb bc, BANK(CreditsBorderGFX), 9
+	call Request2bpp
+
+	ld de, CreditsCopyrightGFX
+	ld hl, vTiles2 tile $19
+	lb bc, BANK(CreditsBorderGFX), 55
 	call Request2bpp
 
 	ld de, CopyrightGFX
@@ -43,7 +48,7 @@ Credits::
 	call Request2bpp
 
 	ld de, TheEndGFX
-	ld hl, vTiles2 tile $40
+	ld hl, vTiles2 tile $50
 	lb bc, BANK(TheEndGFX), 16
 	call Request2bpp
 
@@ -244,6 +249,9 @@ ParseCredits:
 	ld bc, SCREEN_WIDTH * 8
 	ld a, ' '
 	call ByteFill
+	hlcoord 0, 5, wAttrmap
+	ld bc, SCREEN_WIDTH * 8
+	call Function14a8
 
 ; Then read the script.
 
@@ -265,6 +273,8 @@ ParseCredits:
 	jr z, .wait2
 	cp CREDITS_THEEND
 	jr z, .theend
+	cp CREDITS_KR_COPYRIGHT
+	jp z, .krcopyright
 
 ; If it's not a command, it's a string identifier.
 
@@ -366,6 +376,10 @@ ParseCredits:
 	ld [wMusicFadeID + 1], a
 	ret
 
+.krcopyright
+	call Credits_KoreanCopyright
+	jp .loop
+
 .get
 ; Get byte wCreditsPos from CreditsScript
 	push hl
@@ -393,7 +407,7 @@ ConstructCreditsTilemap:
 	ld a, $c
 	ldh [hBGMapAddress], a
 
-	ld a, $28
+	ld a, $18
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 	call ByteFill
@@ -404,11 +418,11 @@ ConstructCreditsTilemap:
 	call ByteFill
 
 	hlcoord 0, 4
-	ld a, $24
+	ld a, $14
 	call DrawCreditsBorder
 
 	hlcoord 0, 13
-	ld a, $20
+	ld a, $10
 	call DrawCreditsBorder
 
 	hlcoord 0, 0, wAttrmap
@@ -608,8 +622,26 @@ Credits_LoadBorderGFX:
 	dw CreditsSentretGFX   + 32 tiles
 	dw CreditsSentretGFX   + 48 tiles
 
+Credits_KoreanCopyright:
+	ld a, $19
+	hlcoord 2, 6
+	ld c, 16
+	call .LoadLoop
+	hlcoord 0, 8
+	ld c, 20
+	call .LoadLoop
+	hlcoord 1, 10
+	ld c, 19
+
+.LoadLoop:
+	ld [hli], a
+	inc a
+	dec c
+	jr nz, .LoadLoop
+	ret
+
 Credits_TheEnd:
-	ld a, $40
+	ld a, $50
 	hlcoord 6, 8
 	call .Load
 	hlcoord 6, 9
@@ -629,6 +661,8 @@ CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 CreditsTogepiGFX:    INCBIN "gfx/credits/togepi.2bpp"
 CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
 CreditsSentretGFX:   INCBIN "gfx/credits/sentret.2bpp"
+
+CreditsCopyrightGFX: INCBIN "gfx/credits/copyright.2bpp"
 
 INCLUDE "data/credits_script.asm"
 INCLUDE "data/credits_strings_pointers.asm"

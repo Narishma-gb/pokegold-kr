@@ -13,13 +13,13 @@ rom_obj := \
 	data/text/common.o \
 	data/pokemon/egg_moves.o \
 	data/pokemon/evos_attacks.o \
+	engine/movie/credits.o \
 	gfx/misc.o \
 	gfx/hangul.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
 # 	main.o \
 # 	data/maps/map_data.o \
-# 	engine/movie/credits.o \
 # 	engine/overworld/events.o \
 
 # Distinguish asm files which are game-exclusive for building (*_[gold|silver].asm)
@@ -258,6 +258,8 @@ gfx/pokemon/bellossom/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/porygon2/normal.gbcpal: tools/gbcpal += --reverse
 
 gfx/trainers/swimmer_m.gbcpal: tools/gbcpal += --reverse
+
+gfx/credits/copyright.2bpp: tools/gfx += --remove-whitespace
 
 gfx/error_screen/error_screen.2bpp: tools/gfx += --trim-whitespace
 

@@ -25,33 +25,22 @@ CreditsStringsPointers:
 	dw Credits_NobuhiroSeya
 	dw Credits_KazuhitoSekine
 	dw Credits_TetsujiOota
-	dw Credits_NclSuperMarioClub
-	dw Credits_Sarugakucho
-	dw Credits_AkitoMori
-	dw Credits_TakahiroHarada
-	dw Credits_TohruHashimoto
-	dw Credits_NoboruMatsumoto
+	dw Credits_SuperMarioClub
 	dw Credits_TakehiroIzushi
 	dw Credits_TakashiKawaguchi
 	dw Credits_TsunekazuIshihara
 	dw Credits_HiroshiYamauchi
-	dw Credits_KenjiSaiki
-	dw Credits_AtsushiTada
-	dw Credits_NaokoKawakami
-	dw Credits_HiroyukiZinnai
-	dw Credits_KunimiKawamura
-	dw Credits_GailTilden
 	dw Credits_HiroNakamura
-	dw Credits_JeffKalles
-	dw Credits_WilliamGiese
-	dw Credits_NobOgasawara
-	dw Credits_RandyShoemake
-	dw Credits_KathyHuguenard
-	dw Credits_JoelSimon
 	dw Credits_TerukiMurakawa
-	dw Credits_KazuyoshiOsawa
 	dw Credits_KimikoNakamichi
-	dw Credits_End
+	dw Credits_HataoOgata
+	dw Credits_SohnChanHo
+	dw Credits_JeonSangCheol
+	dw Credits_HiroKawaharabayashi
+	dw Credits_NoriakiTeramoto
+	dw Credits_JunSugata
+	dw Credits_DaisukeMiyao
+	dw Credits_MasakiFujita
 	dw Credits_Staff
 	dw Credits_Director
 	dw Credits_SubDirector
@@ -73,8 +62,8 @@ CreditsStringsPointers:
 	dw Credits_Producers
 	dw Credits_ExecutiveProducer
 	dw Credits_Copyright
-	dw Credits_UsVersionStaff
-	dw Credits_UsCoordination
+	dw Credits_KoreanVersionStaff
+	dw Credits_KoreanCoordination
 	dw Credits_TextTranslation
-	dw Credits_PaadTesting
+	dw Credits_Designer
 	assert_table_length NUM_CREDITS_STRINGS

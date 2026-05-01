@@ -13,7 +13,7 @@ CreditsScript:
 
 	db CREDITS_WAIT2, 10
 
-	db CREDITS_WAIT, 1
+	db CREDITS_WAIT, 4
 
 ; Update the banner.
 	db CREDITS_SCENE, 0 ; Bellossom
@@ -177,64 +177,57 @@ CreditsScript:
 ; Update the banner.
 	db CREDITS_SCENE, 3 ; Sentret
 
-	db     US_VERSION_STAFF, 1
+	db KOREAN_VERSION_STAFF, 1
 
 	db CREDITS_WAIT, 12
 
-	db      US_COORDINATION, 0
-	db          GAIL_TILDEN, 1
+	db  KOREAN_COORDINATION, 1
 	db        HIRO_NAKAMURA, 2
 
 	db CREDITS_WAIT, 12
 
-	db      US_COORDINATION, 0
-	db       JUNICHI_MASUDA, 1
-	db       NAOKO_KAWAKAMI, 2
+	db  KOREAN_COORDINATION, 0
+	db      TERUKI_MURAKAWA, 1
+	db     KIMIKO_NAKAMICHI, 2
 
 	db CREDITS_WAIT, 12
 
-	db      US_COORDINATION, 0
-	db          JEFF_KALLES, 1
-	db        WILLIAM_GIESE, 2
+	db  KOREAN_COORDINATION, 1
+	db          HATAO_OGATA, 2
 
 	db CREDITS_WAIT, 12
 
-	db     TEXT_TRANSLATION, 1
-	db        NOB_OGASAWARA, 2
+	db     TEXT_TRANSLATION, 0
+	db         SOHN_CHAN_HO, 1
+	db      JEON_SANG_CHEOL, 2
 
 	db CREDITS_WAIT, 12
 
 	db          PROGRAMMERS, 0
-	db      TERUKI_MURAKAWA, 1
-	db      KAZUYOSHI_OSAWA, 2
+	db HIRO_KAWAHARABAYASHI, 1
+	db     NORIAKI_TERAMOTO, 2
 
 	db CREDITS_WAIT, 12
 
-	db         PAAD_TESTING, 0
-	db       RANDY_SHOEMAKE, 1
-	db      KATHY_HUGUENARD, 2
-	db           JOEL_SIMON, 3
+	db          PROGRAMMERS, 0
+	db           JUN_SUGATA, 1
+	db        DAISUKE_MIYAO, 2
 
 	db CREDITS_WAIT, 12
 
-	db      PRODUCT_TESTING, 0
-	db NCL_SUPER_MARIO_CLUB, 1
-	db          KENJI_SAIKI, 2
-	db         ATSUSHI_TADA, 3
+	db             DESIGNER, 1
+	db        MASAKI_FUJITA, 2
 
 	db CREDITS_WAIT, 12
 
-	db       SPECIAL_THANKS, 0
-	db           AKITO_MORI, 1
-	db      TAKAHIRO_HARADA, 2
-	db         SATORU_IWATA, 3
+	db      PRODUCT_TESTING, 1
+	db     SUPER_MARIO_CLUB, 2
 
 	db CREDITS_WAIT, 12
 
 	db       SPECIAL_THANKS, 0
-	db      HIROYUKI_ZINNAI, 1
-	db      KUNIMI_KAWAMURA, 2
-	db     KIMIKO_NAKAMICHI, 3
+	db      TAKEHIRO_IZUSHI, 1
+	db         SATORU_IWATA, 2
 
 	db CREDITS_WAIT, 12
 
@@ -243,11 +236,14 @@ CreditsScript:
 
 	db CREDITS_WAIT, 12
 
-	db            COPYRIGHT, 0
+	db CREDITS_KR_COPYRIGHT
 
 	db CREDITS_WAIT, 20
 
-	db CREDITS_WAIT, 19
+	db            COPYRIGHT, 0
+
+	db CREDITS_WAIT, 20
+	db CREDITS_WAIT, 5
 
 ; Display "The End" graphic.
 	db CREDITS_THEEND

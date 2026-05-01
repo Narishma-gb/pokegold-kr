@@ -63,16 +63,3 @@ PrintHoursMins:
 
 String_AM: db "AM@"
 String_PM: db "PM@"
-
-UpdateTimePredef::
-	call UpdateTime
-	ld hl, wDSTBackupDay
-	ld a, [wCurDay]
-	ld [hli], a ; wDSTBackupDay
-	ldh a, [hHours]
-	ld [hli], a ; wDSTBackupHours
-	ldh a, [hMinutes]
-	ld [hli], a ; wDSTBackupMinutes
-	ldh a, [hSeconds]
-	ld [hli], a ; wDSTBackupSeconds
-	ret

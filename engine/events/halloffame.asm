@@ -127,7 +127,7 @@ AnimateHallOfFame:
 	ret
 
 .String_NewHallOfFamer:
-	db "New Hall of Famer!@"
+	db "전당 등록을 축하합니다!!@"
 
 GetHallOfFameParty:
 	ld hl, wHallOfFamePokemonList
@@ -234,6 +234,7 @@ AnimateHOFMonEntrance:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	ld de, vTiles2 tile $31
 	predef GetMonBackpic
 	ld a, $31
@@ -258,6 +259,7 @@ AnimateHOFMonEntrance:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	hlcoord 6, 5
 	call _PrepMonFrontpic
 	call WaitBGMap
@@ -361,24 +363,24 @@ _HallOfFamePC:
 	ld a, [wHallOfFameTempWinCount]
 	cp HOF_MASTER_COUNT + 1
 	jr c, .print_num_hof
-	ld de, .HOFMaster
-	hlcoord 1, 2
+	ld de, .HowManyTimes
+	hlcoord 3, 2
 	call PlaceString
-	hlcoord 13, 2
+	hlcoord 12, 2
 	jr .finish
 
 .print_num_hof
 	ld de, .TimeFamer
-	hlcoord 1, 2
+	hlcoord 4, 2
 	call PlaceString
-	hlcoord 2, 2
+	hlcoord 5, 2
 	ld de, wHallOfFameTempWinCount
 	lb bc, 1, 3
 	call PrintNum
-	hlcoord 11, 2
+	hlcoord 10, 2
 
 .finish
-	ld de, .EmptyString
+	ld de, .HallOfFamer
 	call PlaceString
 	call WaitBGMap
 	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
@@ -389,17 +391,14 @@ _HallOfFamePC:
 	and a
 	ret
 
-.EmptyString:
-	db "@"
+.HallOfFamer:
+	db "전당 등록@"
 
-.EmptyString2: ; unreferenced
-	db "@"
-
-.HOFMaster:
-	db "    HOF Master!@"
+.HowManyTimes:
+	db "제…몇 회였지?@"
 
 .TimeFamer:
-	db "    -Time Famer@"
+	db "제   회@"
 
 LoadHOFTeam:
 	ld a, [wJumptableIndex]
@@ -451,6 +450,7 @@ DisplayHOFMon:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	hlcoord 0, 0
 	lb bc, 3, SCREEN_WIDTH - 2
 	call Textbox
@@ -469,16 +469,16 @@ DisplayHOFMon:
 	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .print_id_no
-	hlcoord 1, 13
+	hlcoord 1, 14
 	ld a, '№'
 	ld [hli], a
 	ld [hl], '.'
-	hlcoord 3, 13
+	hlcoord 3, 14
 	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 	call GetBasePokemonName
-	hlcoord 7, 13
+	hlcoord 7, 14
 	call PlaceString
 	ld a, TEMPMON
 	ld [wMonType], a
@@ -490,9 +490,8 @@ DisplayHOFMon:
 	ld a, '♀'
 
 .got_gender
-	hlcoord 18, 13
+	hlcoord 12, 14
 	ld [hli], a
-	hlcoord 8, 14
 	ld a, '/'
 	ld [hli], a
 	ld de, wStringBuffer2
@@ -523,6 +522,7 @@ HOF_AnimatePlayerPic:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 
 	ld hl, ChrisBackpic
 	ld de, vTiles2 tile $31
@@ -553,6 +553,7 @@ HOF_AnimatePlayerPic:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	ld a, CAL
 	ld [wTrainerClass], a
 	ld de, vTiles2
@@ -590,10 +591,10 @@ HOF_AnimatePlayerPic:
 	ld de, wPlayerID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	hlcoord 1, 8
+	hlcoord 1, 9
 	ld de, .PlayTime
 	call PlaceString
-	hlcoord 3, 9
+	hlcoord 3, 10
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
@@ -607,4 +608,4 @@ HOF_AnimatePlayerPic:
 	ret
 
 .PlayTime:
-	db "PLAY TIME@"
+	db "플레이 시간@"
