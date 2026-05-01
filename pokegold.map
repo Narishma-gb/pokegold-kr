@@ -1,6 +1,6 @@
 SUMMARY:
 	ROM0: 16114 bytes used / 270 free
-	ROMX: 798108 bytes used / 1282660 free in 127 banks
+	ROMX: 813093 bytes used / 1267675 free in 127 banks
 	SRAM: 30805 bytes used / 1963 free in 4 banks
 	WRAM0: 3896 bytes used / 200 free
 	WRAMX: 6420 bytes used / 5868 free in 3 banks
@@ -11206,20 +11206,293 @@ ROMX bank #32:
 	TOTAL EMPTY: $0026 bytes
 
 ROMX bank #33:
-	SECTION: $4000-$663f ($2640 bytes) ["rom33"]
+	SECTION: $4000-$68fc ($28fd bytes) ["bank21"]
+	         $4000 = Printer_StartTransmission
+	         $4022 = PrinterJumptableIteration
+	         $4031 = PrinterJumptableIteration.Jumptable
+	         $4059 = _Printer_NextSection
+	         $405e = Printer_PrevSection
+	         $4063 = Printer_Quit
+	         $406d = Printer_NextSection
+	         $4071 = Printer_SectionOne
+	         $4077 = Print_InitPrinterHandshake
+	         $4099 = Printer_StartTransmittingTilemap
+	         $40c5 = Printer_EndTilemapTransmission
+	         $40de = Printer_SignalSendHeader
+	         $4103 = Printer_SignalLoopBack
+	         $4120 = Printer_WaitSerial
+	         $412e = Printer_WaitSerialAndLoopBack2
+	         $4143 = Printer_CheckConnectionStatus
+	         $4156 = Printer_CheckConnectionStatus.printer_connected
+	         $4172 = Printer_CheckConnectionStatus.printer_error
+	         $4180 = Printer_TransmissionLoop
+	         $4197 = Printer_TransmissionLoop.cycle_back
+	         $419b = Printer_TransmissionLoop.enter_wait_loop
+	         $41a1 = Printer_WaitUntilFinished
+	         $41b0 = Printer_NextSectionWaitLoopBack
+	         $41b3 = Printer_WaitLoopBack
+	         $41c3 = Printer_WaitHandshake
+	         $41c3 = Printer_WaitHandshake.loop
+	         $41e2 = Printer_CopyPacket
+	         $41fb = Printer_ResetData
+	         $4219 = Printer_ComputeChecksum
+	         $423c = Printer_ComputeChecksum.ComputeChecksum
+	         $423c = Printer_ComputeChecksum.loop
+	         $4242 = Printer_ComputeChecksum.no_overflow
+	         $4249 = Printer_StageHeaderForSend
+	         $4260 = Printer_Convert2RowsTo2bpp
+	         $4271 = Printer_Convert2RowsTo2bpp.loop1
+	         $4278 = Printer_Convert2RowsTo2bpp.okay1
+	         $427f = Printer_Convert2RowsTo2bpp.loop2
+	         $4297 = Printer_Convert2RowsTo2bpp.vtiles_8xxx
+	         $4299 = Printer_Convert2RowsTo2bpp.got_vtile_addr
+	         $42ab = Printer_ByteFill
+	         $42ad = Printer_ByteFill.loop
+	         $42b7 = PrinterDataPacket1
+	         $42bd = PrinterDataPacket2
+	         $42c3 = PrinterDataPacket3
+	         $42c9 = PrinterDataPacket4
+	         $42cf = PrinterDataPacket5
+	         $42d5 = PrinterDataPacket6
 	         $42db = _PrinterReceive
+	         $42ea = _PrinterReceive.Jumptable
+	         $432a = Printer_NextInstruction
+	         $432f = Printer_DoNothing
+	         $4330 = Printer_Send0x33
+	         $4339 = Printer_SendPrinterData1
+	         $4343 = Printer_SendPrinterData2
+	         $434d = Printer_SendPrinterData3
+	         $4357 = Printer_SendPrinterData4
+	         $4361 = Printer_SendNextByte
+	         $4388 = Printer_SendNextByte.done
+	         $438b = Printer_SendwPrinterChecksumLo
+	         $4395 = Printer_SendwPrinterChecksumHi
+	         $439f = Printer_Send0x00_2
+	         $43a8 = Printer_ReceiveTwoPrinterHandshakeAndSend0x00
+	         $43b6 = Printer_ReceiveTwoPrinterStatusFlagsAndExitSendLoop
+	         $43c0 = Printer_Send0x0f
+	         $43c9 = Printer_Send0x00
+	         $43d2 = Printer_Send0x08
+	         $43db = Printer_SerialSend
+	         $43e6 = Printer_ReceiveTwoPrinterStatusFlagsAndExitSendLoop_2
+	         $43f0 = SendScreenToPrinter
+	         $43f0 = SendScreenToPrinter.loop
+	         $440d = SendScreenToPrinter.finished
+	         $440f = SendScreenToPrinter.cancel
+	         $4411 = Printer_CleanUpAfterSend
+	         $4419 = Printer_PrepareTilemapForPrint
+	         $4425 = Printer_ExitPrinter
 	         $442c = PrintDexEntry
+	         $449d = PrintDexEntry.skip_second_page
+	         $44ae = PrintDexEntry.low_volume_delay_frames
+	         $44bc = PrintPCBox
+	         $4545 = PrintPCBox.cancel
+	         $4559 = Printer_ResetRegistersAndStartDataSend
 	         $4560 = PrintUnownStamp
+	         $4597 = PrintUnownStamp.loop
+	         $45b5 = PrintUnownStamp.check_status
+	         $45c0 = PrintUnownStamp.done
+	         $45d4 = PrintMailAndExit
+	         $4616 = PrintPartymon
+	         $466d = PrintPartymon.cancel
 	         $4684 = _PrintDiploma
+	         $46de = _PrintDiploma.cancel
+	         $46f2 = CheckCancelPrint
+	         $46fa = CheckCancelPrint.pressed_b
+	         $4701 = CheckCancelPrint.loop
+	         $4718 = CheckCancelPrint.loop2
+	         $471e = CheckCancelPrint.cancel
+	         $4724 = Printer_CopyTilemapToBuffer
+	         $4731 = Printer_CopyBufferToTilemap
+	         $473e = Printer_ResetJoypadRegisters
+	         $4748 = Printer_PlayMusic
+	         $474f = Printer_RestartMapMusic
+	         $4753 = CheckPrinterStatus
+	         $4761 = CheckPrinterStatus.printer_connected
+	         $4773 = CheckPrinterStatus.error_4
+	         $4777 = CheckPrinterStatus.error_1
+	         $477b = CheckPrinterStatus.error_2
+	         $477d = CheckPrinterStatus.load_text_index
+	         $4781 = PlacePrinterStatusString
+	         $47b9 = PlacePrinterStatusStringBorderless
+	         $47f1 = String_PressBToCancel
+	         $4803 = PrinterStatusStringPointers
+	         $4813 = PrintPCBox_Page1
+	         $4861 = PrintPCBox_Page1.String_PokemonList
+	         $486b = PrintPCBox_Page2
+	         $488f = PrintPCBox_Page3
+	         $48b3 = PrintPCBox_Page4
+	         $48e3 = Printer_PrintBoxListSegment
+	         $48e9 = Printer_PrintBoxListSegment.loop
+	         $496e = Printer_PrintBoxListSegment.ok2
+	         $497d = Printer_PrintBoxListSegment.finish
+	         $4982 = Printer_PrintBoxListSegment.max_length
+	         $4986 = Printer_GetMonGender
+	         $49bf = Printer_GetMonGender.got_gender
+	         $49c2 = Printer_GetBoxMonSpecies
+	         $49d3 = Printer_PlaceTopBorder
+	         $49dd = Printer_PlaceTopBorder.loop
+	         $49e5 = Printer_PlaceSideBorders
+	         $49ed = Printer_PlaceSideBorders.loop
+	         $49f8 = Printer_PlaceBottomBorders
+	         $4a02 = Printer_PlaceBottomBorders.loop
+	         $4a0a = Printer_PlaceEmptyBoxSlotString
+	         $4a0f = Printer_PlaceEmptyBoxSlotString.loop
+	         $4a21 = Printer_PlaceEmptyBoxSlotString.EmptyBoxSlotString
+	         $4a2a = AnimObj00GFX
+	         $4a2a = AnimObjHitGFX
+	         $4b1a = AnimObjCutGFX
+	         $4b7a = AnimObjFireGFX
+	         $4bda = AnimObjWaterGFX
+	         $4caa = AnimObjLightningGFX
+	         $4dea = AnimObjSmokeGFX
+	         $4e7a = AnimObjExplosionGFX
+	         $4eda = AnimObjIceGFX
+	         $4f1a = AnimObjRocksGFX
+	         $500a = AnimObjPoisonGFX
+	         $507a = AnimObjPlantGFX
+	         $515a = AnimObjPokeBallGFX
+	         $51aa = AnimObjBubbleGFX
+	         $524a = AnimObjNoiseGFX
+	         $530a = AnimObjReflectGFX
+	         $537a = AnimObjPowderGFX
+	         $539a = AnimObjBeamGFX
+	         $542a = AnimObjSpeedGFX
+	         $547a = AnimObjChargeGFX
+	         $54ea = AnimObjWindGFX
+	         $55aa = AnimObjWhipGFX
+	         $562a = AnimObjRopeGFX
+	         $56ea = AnimObjEggGFX
+	         $576a = AnimObjPsychicGFX
+	         $57da = AnimObjSandGFX
+	         $583a = AnimObjWebGFX
+	         $58ba = AnimObjHazeGFX
+	         $594a = AnimObjHornGFX
+	         $59aa = AnimObjFlowerGFX
+	         $5a0a = AnimObjMiscGFX
+	         $5baa = AnimObjSkyAttackGFX
+	         $5d0a = AnimObjGlobeGFX
+	         $5dfa = AnimObjShapesGFX
+	         $5e9a = AnimObjStatusGFX
+	         $5fba = AnimObjObjectsGFX
+	         $609a = AnimObjShineGFX
+	         $617a = AnimObjAngelsGFX
+	         $62ea = AnimObjWaveGFX
+	         $638a = AnimObjAeroblastGFX
+	         $640a = HallOfFame
+	         $642c = HallOfFame.ok
+	         $6446 = RedCredits
+	         $647a = HallOfFame_FadeOutMusic
+	         $64a0 = HallOfFame_PlayMusicDE
+	         $64af = AnimateHallOfFame
+	         $64c2 = AnimateHallOfFame.loop
+	         $64e7 = AnimateHallOfFame.done
+	         $64f8 = AnimateHallOfFame.DisplayNewHallOfFamer
+	         $6514 = AnimateHallOfFame.String_NewHallOfFamer
+	         $652f = GetHallOfFameParty
+	         $6546 = GetHallOfFameParty.next
+	         $6552 = GetHallOfFameParty.mon
+	         $65a1 = GetHallOfFameParty.done
+	         $65a5 = AnimateHOFMonEntrance
+	         $6625 = HOF_SlideBackpic
+	         $6625 = HOF_SlideBackpic.backpicloop
+	         $6633 = HOF_SlideFrontpic
+	         $6633 = HOF_SlideFrontpic.frontpicloop
 	         $6640 = _HallOfFamePC
-	EMPTY: $6640-$7fff ($19c0 bytes)
-	TOTAL EMPTY: $19c0 bytes
+	         $6647 = _HallOfFamePC.MasterLoop
+	         $6655 = _HallOfFamePC.DisplayTeam
+	         $6659 = _HallOfFamePC.next
+	         $665e = _HallOfFamePC.loop
+	         $6678 = _HallOfFamePC.a_button
+	         $667e = _HallOfFamePC.b_button
+	         $6680 = _HallOfFamePC.start_button
+	         $6682 = _HallOfFamePC.DisplayMonAndStrings
+	         $6697 = _HallOfFamePC.fail
+	         $6699 = _HallOfFamePC.okay
+	         $66b6 = _HallOfFamePC.print_num_hof
+	         $66ce = _HallOfFamePC.finish
+	         $66e7 = _HallOfFamePC.HallOfFamer
+	         $66f1 = _HallOfFamePC.HowManyTimes
+	         $6701 = _HallOfFamePC.TimeFamer
+	         $6709 = LoadHOFTeam
+	         $6730 = LoadHOFTeam.absent
+	         $6733 = LoadHOFTeam.invalid
+	         $6735 = DisplayHOFMon
+	         $67d2 = DisplayHOFMon.got_gender
+	         $67e5 = DisplayHOFMon.print_id_no
+	         $67fd = HOF_AnimatePlayerPic
+	         $68f1 = HOF_AnimatePlayerPic.PlayTime
+	SECTION: $68fd-$7f9e ($16a2 bytes) ["Credits"]
+	         $68fd = Credits
+	         $6906 = Credits.okay
+	         $691a = Credits.load_loop
+	         $699a = Credits.execution_loop
+	         $69aa = Credits.exit_credits
+	         $69b6 = Credits_HandleAButton
+	         $69c1 = Credits_HandleBButton
+	         $69d7 = Credits_HandleBButton.okay
+	         $69df = Credits_Jumptable
+	         $69f0 = Credits_Jumptable.Jumptable
+	         $6a0a = Credits_Next
+	         $6a0f = Credits_LoopBack
+	         $6a17 = Credits_PrepBGMapUpdate
+	         $6a1d = Credits_UpdateGFXRequestPath
+	         $6a34 = Credits_RequestGFX
+	         $6a3f = Credits_LYOverride
+	         $6a5c = Credits_LYOverride.Fill
+	         $6a5e = Credits_LYOverride.loop
+	         $6a63 = ParseCredits
+	         $6a76 = ParseCredits.parse
+	         $6a8d = ParseCredits.loop
+	         $6acc = ParseCredits.copyright
+	         $6ad1 = ParseCredits.staff
+	         $6ad4 = ParseCredits.print
+	         $6ae4 = ParseCredits.theend
+	         $6ae9 = ParseCredits.scene
+	         $6afb = ParseCredits.clear
+	         $6b02 = ParseCredits.music
+	         $6b0a = ParseCredits.wait2
+	         $6b12 = ParseCredits.wait
+	         $6b1f = ParseCredits.done
+	         $6b22 = ParseCredits.end
+	         $6b37 = ParseCredits.krcopyright
+	         $6b3d = ParseCredits.get
+	         $6b58 = ConstructCreditsTilemap
+	         $6bbc = ConstructCreditsTilemap.InitTopPortion
+	         $6bbe = ConstructCreditsTilemap.outer_loop
+	         $6bc5 = ConstructCreditsTilemap.inner_loop
+	         $6bda = DrawCreditsBorder
+	         $6bdc = DrawCreditsBorder.loop
+	         $6be9 = GetCreditsPalette
+	         $6c05 = GetCreditsPalette.cgb
+	         $6c21 = GetCreditsPalette.GetPalAddress
+	         $6c31 = GetCreditsPalette.UpdatePals
+	         $6c52 = CreditsPalettes
+	         $6c82 = Credits_LoadBorderGFX
+	         $6ca5 = Credits_LoadBorderGFX.init
+	         $6ca9 = Credits_LoadBorderGFX.Frames
+	         $6cc9 = Credits_KoreanCopyright
+	         $6ce0 = Credits_KoreanCopyright.LoadLoop
+	         $6ce6 = Credits_TheEnd
+	         $6cf1 = Credits_TheEnd.Load
+	         $6cf3 = Credits_TheEnd.loop
+	         $6cf9 = CreditsBorderGFX
+	         $6d89 = CreditsMonsGFX
+	         $6d89 = CreditsBellossomGFX
+	         $7089 = CreditsTogepiGFX
+	         $7389 = CreditsElekidGFX
+	         $7689 = CreditsSentretGFX
+	         $7a89 = CreditsCopyrightGFX
+	         $7df9 = CreditsScript
+	         $7f1d = CreditsStringsPointers
+	EMPTY: $7f9f-$7fff ($0061 bytes)
+	TOTAL EMPTY: $0061 bytes
 
 ROMX bank #34:
 	EMPTY
 
 ROMX bank #35:
-	SECTION: $4000-$6934 ($2935 bytes) ["rom35"]
+	SECTION: $4000-$7df6 ($3df7 bytes) ["rom35"]
 	         $4000 = SaveMenu_CopyTilemapAtOnce
 	         $417a = _ResetClock
 	         $4311 = _DeleteSaveData
@@ -11253,8 +11526,10 @@ ROMX bank #35:
 	         $68f3 = FreezeMonIcons
 	         $691a = UnfreezeMonIcons
 	         $6935 = HoldSwitchmonIcon
-	EMPTY: $6935-$7fff ($16cb bytes)
-	TOTAL EMPTY: $16cb bytes
+	         $7db6 = InitDisplayForHallOfFame
+	         $7df7 = InitDisplayForRedCredits
+	EMPTY: $7df7-$7fff ($0209 bytes)
+	TOTAL EMPTY: $0209 bytes
 
 ROMX bank #36:
 	SECTION: $4000-$6ab9 ($2aba bytes) ["rom36"]
@@ -11498,12 +11773,13 @@ ROMX bank #49:
 	TOTAL EMPTY: $0330 bytes
 
 ROMX bank #50:
-	SECTION: $4000-$7c75 ($3c76 bytes) ["rom50"]
+	SECTION: $4000-$7cbc ($3cbd bytes) ["rom50"]
 	         $4000 = BattleAnimations
 	         $40d7 = DummyPredef2F
 	         $7c76 = LoadPoisonBGPals
-	EMPTY: $7c76-$7fff ($038a bytes)
-	TOTAL EMPTY: $038a bytes
+	         $7cbd = TheEndGFX
+	EMPTY: $7cbd-$7fff ($0343 bytes)
+	TOTAL EMPTY: $0343 bytes
 
 ROMX bank #51:
 	SECTION: $4000-$466a ($066b bytes) ["rom51"]
@@ -11526,6 +11802,8 @@ ROMX bank #53:
 	EMPTY
 
 ROMX bank #54:
+	SECTION: $4000 ($0000 bytes) ["rom54"]
+	         $4000 = FontInversed
 	EMPTY
 
 ROMX bank #55:
@@ -11550,6 +11828,8 @@ ROMX bank #55:
 ROMX bank #56:
 	SECTION: $4000-$7989 ($398a bytes) ["rom56"]
 	         $4002 = _Diploma
+	         $4009 = PlaceDiplomaOnScreen
+	         $40d5 = PrintDiplomaPage2
 	         $43ea = RotateUnownFrontpic
 	         $44d8 = _CardFlip
 	         $556a = _UnownPuzzle
@@ -11606,6 +11886,8 @@ ROMX bank #62:
 	         $4084 = LoadHPBar
 	         $40a9 = StatsScreen_LoadFont
 	         $40dc = LoadStatsScreenPageTilesGFX
+	         $40f5 = FontExtra
+	         $4aa5 = StatsScreenPageTilesGFX
 	         $4bb5 = EnemyHPBarBorderGFX
 	         $4bd5 = HPExpBarBorderGFX
 	         $4c05 = ExpBarGFX
@@ -13452,21 +13734,146 @@ ROMX bank #111:
 	EMPTY
 
 ROMX bank #112:
-	EMPTY: $4000-$4406 ($0407 bytes)
+	SECTION: $4000-$4406 ($0407 bytes) ["bank70"]
+	         $4000 = PrintPage1
+	         $405a = PrintPage1.column_loop
+	         $4063 = PrintPage2
+	         $40ba = PrintPage2.FillColumn
+	         $40be = PrintPage2.column_loop
+	         $40c5 = GBPrinterStrings
+	         $40c5 = GBPrinterString_Null
+	         $40c6 = GBPrinterString_CheckingLink
+	         $40d9 = GBPrinterString_Transmitting
+	         $40ec = GBPrinterString_Printing
+	         $40fd = GBPrinterString_PrinterError1
+	         $4132 = GBPrinterString_PrinterError2
+	         $4167 = GBPrinterString_PrinterError3
+	         $419c = GBPrinterString_PrinterError4
+	         $41d1 = PrintPartyMonPage1
+	         $42be = PrintPartyMonPage2
+	         $436e = PrintPartyMonPage2.PrintTempMonStats
+	         $4375 = GetCurPartyMonName
+	         $4381 = PlaceMoveNameString
+	         $438c = PlaceMoveNameString.no_move
+	         $438f = PlaceMoveNameString.got_string
+	         $4393 = PlaceGenderAndShininess
+	         $43a3 = PlaceGenderAndShininess.got_gender
+	         $43b7 = PrintParty_OTString
+	         $43bb = PrintParty_MoveString
+	         $43c0 = PrintParty_IDNoString
+	         $43c3 = PrintParty_StatsString
+	         $43ea = PrintParty_NoMoveString
+	         $43f7 = GBPrinterHPIcon
+	         $43ff = GBPrinterLvIcon
 	SECTION: $4407-$4866 ($0460 bytes) ["Tileset Data 6"]
 	         $4407 = TilesetKantoGFX
-	EMPTY: $4867-$4878 ($0012 bytes)
-	SECTION: $4879-$4b1f ($02a7 bytes) ["rom112"]
+	SECTION: $4867-$4b6f ($0309 bytes) ["bank70_2"]
+	         $4867 = PrintFiveDigitNumber
 	         $4879 = PrintHoursMins
+	         $4885 = PrintHoursMins.AM
+	         $488a = PrintHoursMins.PM
+	         $48b5 = PrintHoursMins.place_am_pm
+	         $48ba = String_AM
+	         $48bd = String_PM
 	         $48c0 = StubbedGetFrontpic
 	         $48c1 = LoadSGBPokedexGFX
 	         $48cb = LoadSGBPokedexGFX2
+	         $48d8 = SGBPokedexGFX_LZ
 	         $4a7c = LoadQuestionMarkPic
+	         $4a86 = LoadQuestionMarkPic.QuestionMarkLZ
 	         $4b16 = _DudeAutoInput_A
 	         $4b1b = _DudeAutoInput_RightA
 	         $4b20 = _DudeAutoInput_DownA
-	EMPTY: $4b20-$7fff ($34e0 bytes)
-	TOTAL EMPTY: $38f9 bytes
+	         $4b25 = _DudeAutoInput
+	         $4b2b = DudeAutoInput_A
+	         $4b2b = DudeAutoInputs
+	         $4b31 = DudeAutoInput_RightA
+	         $4b3b = DudeAutoInput_DownA
+	         $4b51 = TownMap_ConvertLineBreakCharacters
+	         $4b54 = TownMap_ConvertLineBreakCharacters.loop
+	         $4b64 = TownMap_ConvertLineBreakCharacters.line_feed
+	         $4b66 = TownMap_ConvertLineBreakCharacters.end
+	SECTION: $4b70-$4dbb ($024c bytes) ["Pokégear GFX"]
+	         $4b70 = PokegearGFX
+	SECTION: $4dbc-$5327 ($056c bytes) ["Credits Strings"]
+	         $4dbc = CreditsStrings
+	         $4dbc = Credits_SatoshiTajiri
+	         $4dce = Credits_JunichiMasuda
+	         $4de0 = Credits_TetsuyaWatanabe
+	         $4df3 = Credits_ShigekiMorimoto
+	         $4e06 = Credits_SousukeTamada
+	         $4e18 = Credits_TakenoriOota
+	         $4e29 = Credits_KenSugimori
+	         $4e3a = Credits_MotofumiFujiwara
+	         $4e4d = Credits_AtsukoNishida
+	         $4e5f = Credits_MuneoSaito
+	         $4e6f = Credits_SatoshiOota
+	         $4e80 = Credits_RenaYoshikawa
+	         $4e92 = Credits_JunOkutani
+	         $4ea2 = Credits_HironobuYoshida
+	         $4eb5 = Credits_AsukaIwashita
+	         $4ec7 = Credits_GoIchinose
+	         $4ed7 = Credits_MorikazuAoki
+	         $4ee8 = Credits_KohjiNishino
+	         $4ef9 = Credits_KenjiMatsushima
+	         $4f0c = Credits_ToshinobuMatsumiya
+	         $4f20 = Credits_SatoruIwata
+	         $4f31 = Credits_NobuhiroSeya
+	         $4f42 = Credits_KazuhitoSekine
+	         $4f54 = Credits_TetsujiOota
+	         $4f65 = Credits_SuperMarioClub
+	         $4f78 = Credits_Sarugakucho
+	         $4f88 = Credits_AkitoMori
+	         $4f98 = Credits_TakahiroHarada
+	         $4faa = Credits_TohruHashimoto
+	         $4fbc = Credits_NoboruMatsumoto
+	         $4fcf = Credits_TakehiroIzushi
+	         $4fe1 = Credits_TakashiKawaguchi
+	         $4ff4 = Credits_TsunekazuIshihara
+	         $5008 = Credits_HiroshiYamauchi
+	         $501b = Credits_KenjiSaiki
+	         $502b = Credits_AtsushiTada
+	         $503c = Credits_NaokoKawakami
+	         $504e = Credits_HiroyukiZinnai
+	         $5060 = Credits_KunimiKawamura
+	         $5072 = Credits_HiroNakamura
+	         $5083 = Credits_TerukiMurakawa
+	         $5095 = Credits_KimikoNakamichi
+	         $50a8 = Credits_HataoOgata
+	         $50b8 = Credits_SohnChanHo
+	         $50c9 = Credits_JeonSangCheol
+	         $50db = Credits_HiroKawaharabayashi
+	         $50f0 = Credits_NoriakiTeramoto
+	         $5103 = Credits_JunSugata
+	         $5113 = Credits_DaisukeMiyao
+	         $5124 = Credits_MasakiFujita
+	         $5135 = Credits_Staff
+	         $5165 = Credits_Director
+	         $5174 = Credits_SubDirector
+	         $5185 = Credits_Programmers
+	         $5195 = Credits_GraphicsDirector
+	         $51a8 = Credits_MonsterDesign
+	         $51ba = Credits_GraphicsDesign
+	         $51cc = Credits_Music
+	         $51d9 = Credits_SoundEffects
+	         $51ea = Credits_GameDesign
+	         $51fa = Credits_GameScenario
+	         $520b = Credits_ToolProgramming
+	         $521e = Credits_ParametricDesign
+	         $5231 = Credits_ScriptDesign
+	         $5242 = Credits_MapDataDesign
+	         $5254 = Credits_MapDesign
+	         $5264 = Credits_ProductTesting
+	         $5276 = Credits_SpecialThanks
+	         $5288 = Credits_Producers
+	         $5297 = Credits_ExecutiveProducer
+	         $52ab = Credits_KoreanVersionStaff
+	         $52c0 = Credits_KoreanCoordination
+	         $52d4 = Credits_TextTranslation
+	         $52e7 = Credits_Designer
+	         $52f6 = Credits_Copyright
+	EMPTY: $5328-$7fff ($2cd8 bytes)
+	TOTAL EMPTY: $2cd8 bytes
 
 ROMX bank #113:
 	SECTION: $4000-$5fc2 ($1fc3 bytes) ["bank71"]
@@ -13803,8 +14210,8 @@ SRAM bank #0:
 	         $a874 = sPartyMon2MailBackupAuthorID
 	         $a876 = sPartyMon2MailBackupSpecies
 	         $a877 = sPartyMon2MailBackupType
-	         $a878 = sPartyMon3MailBackupMessage
 	         $a878 = sPartyMon3MailBackup
+	         $a878 = sPartyMon3MailBackupMessage
 	         $a878 = sPartyMon2MailBackupEnd
 	         $a8b8 = sPartyMon3MailBackupMessageEnd
 	         $a8b9 = sPartyMon3MailBackupAuthor
@@ -14044,9 +14451,9 @@ SRAM bank #1:
 	         $adae = sBox
 	         $adae = sBoxCount
 	         $adaf = sBoxSpecies
+	         $adc4 = sBoxMon1Species
 	         $adc4 = sBoxMons
 	         $adc4 = sBoxMon1
-	         $adc4 = sBoxMon1Species
 	         $adc5 = sBoxMon1Item
 	         $adc6 = sBoxMon1Moves
 	         $adca = sBoxMon1ID
@@ -15380,8 +15787,8 @@ SRAM bank #1:
 	         $b986 = sHallOfFame19Mon5Level
 	         $b987 = sHallOfFame19Mon5Nickname
 	         $b991 = sHallOfFame19Mon5End
-	         $b991 = sHallOfFame19Mon6
 	         $b991 = sHallOfFame19Mon6Species
+	         $b991 = sHallOfFame19Mon6
 	         $b992 = sHallOfFame19Mon6ID
 	         $b994 = sHallOfFame19Mon6DVs
 	         $b996 = sHallOfFame19Mon6Level
@@ -17660,8 +18067,8 @@ SRAM bank #2:
 	         $b041 = sBox4Mon18OT
 	         $b04c = sBox4Mon19OT
 	         $b057 = sBox4Mon20OT
-	         $b062 = sBox4Mon1Nickname
 	         $b062 = sBox4MonNicknames
+	         $b062 = sBox4Mon1Nickname
 	         $b06d = sBox4Mon2Nickname
 	         $b078 = sBox4Mon3Nickname
 	         $b083 = sBox4Mon4Nickname
@@ -18155,8 +18562,8 @@ SRAM bank #2:
 	         $b5c4 = sBox6Mon1Unused2
 	         $b5c5 = sBox6Mon1Level
 	         $b5c6 = sBox6Mon2Species
-	         $b5c6 = sBox6Mon1BoxEnd
 	         $b5c6 = sBox6Mon2
+	         $b5c6 = sBox6Mon1BoxEnd
 	         $b5c7 = sBox6Mon2Item
 	         $b5c8 = sBox6Mon2Moves
 	         $b5cc = sBox6Mon2ID
@@ -20439,15 +20846,15 @@ SRAM bank #3:
 	         $ad63 = sBox11Mon3Unused1
 	         $ad64 = sBox11Mon3Unused2
 	         $ad65 = sBox11Mon3Level
+	         $ad66 = sBox11Mon4Species
 	         $ad66 = sBox11Mon4
 	         $ad66 = sBox11Mon3BoxEnd
-	         $ad66 = sBox11Mon4Species
 	         $ad67 = sBox11Mon4Item
 	         $ad68 = sBox11Mon4Moves
 	         $ad6c = sBox11Mon4ID
 	         $ad6e = sBox11Mon4Exp
-	         $ad71 = sBox11Mon4StatExp
 	         $ad71 = sBox11Mon4HPExp
+	         $ad71 = sBox11Mon4StatExp
 	         $ad73 = sBox11Mon4AtkExp
 	         $ad75 = sBox11Mon4DefExp
 	         $ad77 = sBox11Mon4SpdExp
@@ -20460,14 +20867,14 @@ SRAM bank #3:
 	         $ad84 = sBox11Mon4Unused2
 	         $ad85 = sBox11Mon4Level
 	         $ad86 = sBox11Mon5Species
-	         $ad86 = sBox11Mon4BoxEnd
 	         $ad86 = sBox11Mon5
+	         $ad86 = sBox11Mon4BoxEnd
 	         $ad87 = sBox11Mon5Item
 	         $ad88 = sBox11Mon5Moves
 	         $ad8c = sBox11Mon5ID
 	         $ad8e = sBox11Mon5Exp
-	         $ad91 = sBox11Mon5StatExp
 	         $ad91 = sBox11Mon5HPExp
+	         $ad91 = sBox11Mon5StatExp
 	         $ad93 = sBox11Mon5AtkExp
 	         $ad95 = sBox11Mon5DefExp
 	         $ad97 = sBox11Mon5SpdExp
@@ -22371,8 +22778,8 @@ WRAM0 bank #0:
 	         $c0f7 = wChannel5Field2e
 	         $c0f8 = wChannel5Field2f
 	         $c0f9 = wChannel5Field30
-	         $c0fb = wChannel6MusicID
 	         $c0fb = wChannel6
+	         $c0fb = wChannel6MusicID
 	         $c0fd = wChannel6MusicBank
 	         $c0fe = wChannel6Flags1
 	         $c0ff = wChannel6Flags2
@@ -22766,15 +23173,30 @@ WRAM0 bank #0:
 	         $c508 = wTilemapEnd
 	SECTION: $c508-$c6e7 ($01e0 bytes) ["Miscellaneous"]
 	         $c508 = wBoxPartialData
+	         $c508 = wHallOfFameTemp
+	         $c508 = wHallOfFameTempWinCount
 	         $c508 = wSpriteAnimDict
 	         $c508 = wSurroundingTiles
 	         $c508 = wSpriteAnimData
+	         $c509 = wHallOfFameTempMon1
+	         $c509 = wHallOfFameTempMon1Species
+	         $c50a = wHallOfFameTempMon1ID
+	         $c50c = wHallOfFameTempMon1DVs
+	         $c50e = wHallOfFameTempMon1Level
+	         $c50f = wHallOfFameTempMon1Nickname
+	         $c519 = wHallOfFameTempMon2
+	         $c519 = wHallOfFameTempMon2Species
+	         $c519 = wHallOfFameTempMon1End
+	         $c51a = wHallOfFameTempMon2ID
 	         $c51c = wSpriteAnim1
 	         $c51c = wSpriteAnimationStructs
 	         $c51c = wSpriteAnim1Index
+	         $c51c = wHallOfFameTempMon2DVs
 	         $c51d = wSpriteAnim1FramesetID
+	         $c51e = wHallOfFameTempMon2Level
 	         $c51e = wSpriteAnim1AnimSeqID
 	         $c51f = wSpriteAnim1TileID
+	         $c51f = wHallOfFameTempMon2Nickname
 	         $c520 = wSpriteAnim1XCoord
 	         $c521 = wSpriteAnim1YCoord
 	         $c522 = wSpriteAnim1XOffset
@@ -22785,12 +23207,19 @@ WRAM0 bank #0:
 	         $c527 = wSpriteAnim1JumptableIndex
 	         $c528 = wSpriteAnim1Var1
 	         $c529 = wSpriteAnim1Var2
+	         $c529 = wHallOfFameTempMon2End
+	         $c529 = wHallOfFameTempMon3
+	         $c529 = wHallOfFameTempMon3Species
+	         $c52a = wHallOfFameTempMon3ID
 	         $c52a = wSpriteAnim1Var3
 	         $c52b = wSpriteAnim1Var4
+	         $c52c = wHallOfFameTempMon3DVs
 	         $c52c = wSpriteAnim2
 	         $c52c = wSpriteAnim2Index
 	         $c52d = wSpriteAnim2FramesetID
 	         $c52e = wSpriteAnim2AnimSeqID
+	         $c52e = wHallOfFameTempMon3Level
+	         $c52f = wHallOfFameTempMon3Nickname
 	         $c52f = wSpriteAnim2TileID
 	         $c530 = wSpriteAnim2XCoord
 	         $c531 = wSpriteAnim2YCoord
@@ -22801,14 +23230,21 @@ WRAM0 bank #0:
 	         $c536 = wSpriteAnim2FrameIndex
 	         $c537 = wSpriteAnim2JumptableIndex
 	         $c538 = wSpriteAnim2Var1
+	         $c539 = wHallOfFameTempMon4Species
 	         $c539 = wSpriteAnim2Var2
+	         $c539 = wHallOfFameTempMon3End
+	         $c539 = wHallOfFameTempMon4
 	         $c53a = wSpriteAnim2Var3
+	         $c53a = wHallOfFameTempMon4ID
 	         $c53b = wSpriteAnim2Var4
+	         $c53c = wHallOfFameTempMon4DVs
 	         $c53c = wSpriteAnim3Index
 	         $c53c = wSpriteAnim3
 	         $c53d = wSpriteAnim3FramesetID
 	         $c53e = wSpriteAnim3AnimSeqID
+	         $c53e = wHallOfFameTempMon4Level
 	         $c53f = wSpriteAnim3TileID
+	         $c53f = wHallOfFameTempMon4Nickname
 	         $c540 = wSpriteAnim3XCoord
 	         $c541 = wSpriteAnim3YCoord
 	         $c542 = wSpriteAnim3XOffset
@@ -22819,12 +23255,19 @@ WRAM0 bank #0:
 	         $c547 = wSpriteAnim3JumptableIndex
 	         $c548 = wSpriteAnim3Var1
 	         $c549 = wSpriteAnim3Var2
+	         $c549 = wHallOfFameTempMon5
+	         $c549 = wHallOfFameTempMon5Species
+	         $c549 = wHallOfFameTempMon4End
+	         $c54a = wHallOfFameTempMon5ID
 	         $c54a = wSpriteAnim3Var3
 	         $c54b = wSpriteAnim3Var4
 	         $c54c = wSpriteAnim4
 	         $c54c = wSpriteAnim4Index
+	         $c54c = wHallOfFameTempMon5DVs
 	         $c54d = wSpriteAnim4FramesetID
 	         $c54e = wSpriteAnim4AnimSeqID
+	         $c54e = wHallOfFameTempMon5Level
+	         $c54f = wHallOfFameTempMon5Nickname
 	         $c54f = wSpriteAnim4TileID
 	         $c550 = wSpriteAnim4XCoord
 	         $c551 = wSpriteAnim4YCoord
@@ -22835,13 +23278,20 @@ WRAM0 bank #0:
 	         $c556 = wSpriteAnim4FrameIndex
 	         $c557 = wSpriteAnim4JumptableIndex
 	         $c558 = wSpriteAnim4Var1
+	         $c559 = wHallOfFameTempMon6
+	         $c559 = wHallOfFameTempMon5End
 	         $c559 = wSpriteAnim4Var2
+	         $c559 = wHallOfFameTempMon6Species
+	         $c55a = wHallOfFameTempMon6ID
 	         $c55a = wSpriteAnim4Var3
 	         $c55b = wSpriteAnim4Var4
+	         $c55c = wHallOfFameTempMon6DVs
 	         $c55c = wSpriteAnim5
 	         $c55c = wSpriteAnim5Index
 	         $c55d = wSpriteAnim5FramesetID
+	         $c55e = wHallOfFameTempMon6Level
 	         $c55e = wSpriteAnim5AnimSeqID
+	         $c55f = wHallOfFameTempMon6Nickname
 	         $c55f = wSpriteAnim5TileID
 	         $c560 = wSpriteAnim5XCoord
 	         $c561 = wSpriteAnim5YCoord
@@ -22852,7 +23302,9 @@ WRAM0 bank #0:
 	         $c566 = wSpriteAnim5FrameIndex
 	         $c567 = wSpriteAnim5JumptableIndex
 	         $c568 = wSpriteAnim5Var1
+	         $c569 = wHallOfFameTempMon6End
 	         $c569 = wSpriteAnim5Var2
+	         $c569 = wHallOfFameTempEnd
 	         $c56a = wSpriteAnim5Var3
 	         $c56b = wSpriteAnim5Var4
 	         $c56c = wSpriteAnim6
@@ -22988,6 +23440,8 @@ WRAM0 bank #0:
 	SECTION: $c700-$cc26 ($0527 bytes) ["Overworld Map"]
 	         $c700 = wLYOverrides
 	         $c700 = wOverworldMapBlocks
+	         $c700 = wGameboyPrinterRAM
+	         $c700 = wGameboyPrinter2bppSource
 	         $c700 = wHallOfFamePokemonList
 	         $c700 = wHallOfFamePokemonListWinCount
 	         $c700 = wMysteryGiftStaging
@@ -23157,21 +23611,33 @@ WRAM0 bank #0:
 	         $c978 = wAnimObject5JumptableIndex
 	         $c979 = wAnimObject5Var1
 	         $c97a = wAnimObject5Var2
+	         $c980 = wUnusedGameboyPrinterSafeCancelFlag
+	         $c980 = wGameboyPrinter2bppSourceEnd
+	         $c981 = wPrinterRowIndex
 	         $c982 = wAnimObject6
 	         $c982 = wAnimObject6Index
+	         $c982 = wPrinterData
 	         $c983 = wAnimObject6OAMFlags
 	         $c984 = wAnimObject6FixY
 	         $c985 = wAnimObject6FramesetID
 	         $c986 = wAnimObject6Function
+	         $c986 = wPrinterChecksum
 	         $c987 = wAnimObject6Palette
+	         $c988 = wPrinterHandshake
 	         $c988 = wAnimObject6TileID
 	         $c989 = wAnimObject6XCoord
+	         $c989 = wPrinterStatusFlags
+	         $c98a = wHandshakeFrameDelay
 	         $c98a = wAnimObject6YCoord
+	         $c98b = wPrinterSerialFrameDelay
 	         $c98b = wAnimObject6XOffset
 	         $c98c = wAnimObject6YOffset
+	         $c98c = wPrinterSendByteOffset
 	         $c98d = wAnimObject6Param
+	         $c98e = wPrinterSendByteCounter
 	         $c98e = wAnimObject6Duration
 	         $c98f = wAnimObject6Frame
+	         $c990 = wPrinterTilemapBuffer
 	         $c990 = wAnimObject6JumptableIndex
 	         $c991 = wAnimObject6Var1
 	         $c992 = wAnimObject6Var2
@@ -23329,9 +23795,13 @@ WRAM0 bank #0:
 	         $caf4 = wPlayerMoveStructPP
 	         $caf5 = wPlayerMoveStructEffectChance
 	         $caf6 = wEnemyMonNickname
+	         $caf8 = wPrinterStatus
+	         $cafa = wPrinterMargins
+	         $cafb = wPrinterExposureTime
 	         $cb01 = wBattleMonNickname
 	         $cb0c = wBattleMonSpecies
 	         $cb0c = wBattleMon
+	         $cb0c = wGameboyPrinterRAMEnd
 	         $cb0d = wBattleMonItem
 	         $cb0e = wBattleMonMoves
 	         $cb10 = wIntroJumptableIndex
@@ -23421,8 +23891,8 @@ WRAM0 bank #0:
 	         $cbb6 = wPlayerSDefLevel
 	         $cbb7 = wPlayerAccLevel
 	         $cbb8 = wPlayerEvaLevel
-	         $cbba = wEnemyAtkLevel
 	         $cbba = wEnemyStatLevels
+	         $cbba = wEnemyAtkLevel
 	         $cbbb = wEnemyDefLevel
 	         $cbbc = wEnemySpdLevel
 	         $cbbd = wEnemySAtkLevel
@@ -23626,7 +24096,6 @@ WRAM0 bank #0:
 	         $cec2 = wBugContestFirstPlaceWinnerID
 	         $cec2 = wSwitchMonBuffer
 	         $cec2 = wNumOwnedDecoCategories
-	         $cec2 = wMovementBufferCount
 	         $cec2 = wBoxNameBuffer
 	         $cec2 = wMagnetTrainDirection
 	         $cec2 = wCreditsPos
@@ -23637,6 +24106,7 @@ WRAM0 bank #0:
 	         $cec2 = wTownMapPlayerIconLandmark
 	         $cec2 = wCurRadioLine
 	         $cec2 = wLuckyNumberDigitsBuffer
+	         $cec2 = wMovementBufferCount
 	         $cec2 = wWhichBoxMonToPrint
 	         $cec2 = wPrintedUnownTileSource
 	         $cec2 = wExperienceGained
@@ -24060,12 +24530,12 @@ WRAMX bank #1:
 	         $d190 = wFinalCatchRate
 	         $d190 = wCurDecoration
 	         $d190 = wCurMapScriptBank
-	         $d190 = wCurMailAuthorID
 	         $d190 = wRestartClockCurDivision
 	         $d190 = wTreeMonCoordScore
 	         $d190 = wExpToNextLevel
 	         $d190 = wSkipMovesBeforeLevelUp
 	         $d190 = wPPUpPPBuffer
+	         $d190 = wCurMailAuthorID
 	         $d190 = wFieldMoveData
 	         $d190 = wHPBuffer1
 	         $d190 = wCurHPAnimMaxHP
@@ -25110,8 +25580,8 @@ WRAMX bank #1:
 	         $db48 = wPartyMon1Unused
 	         $db49 = wPartyMon1HP
 	         $db4b = wPartyMon1MaxHP
-	         $db4d = wPartyMon1Stats
 	         $db4d = wPartyMon1Attack
+	         $db4d = wPartyMon1Stats
 	         $db4f = wPartyMon1Defense
 	         $db51 = wPartyMon1Speed
 	         $db53 = wPartyMon1SpclAtk
