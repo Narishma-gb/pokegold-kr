@@ -104,8 +104,8 @@ ROMX $20
 ROMX $21
 	"bank21"
 	"Credits"
-; ROMX $23
-; 	"bank23"
+ROMX $23
+	"bank23"
 ; ROMX $24
 ; 	"bank24"
 ; ROMX $25

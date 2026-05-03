@@ -44,15 +44,15 @@ _ResetClock:
 
 .NoYes_MenuHeader:
 	db 0 ; flags
-	menu_coords 14, 7, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 14, 6, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw .NoYes_MenuData
 	db 1 ; default option
 
 .NoYes_MenuData:
-	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
+	db STATICMENU_CURSOR ; flags
 	db 2 ; items
-	db "NO@"
-	db "YES@"
+	db "아니오@"
+	db "예@"
 
 ClockResetPassword:
 	call .CalculatePassword
@@ -77,8 +77,7 @@ ClockResetPassword:
 	and PAD_CTRL_PAD
 	jr z, .loop2
 	call .dpadinput
-	ld c, 3
-	call DelayFrames
+	call Function15ba
 	jr .loop
 
 .confirm

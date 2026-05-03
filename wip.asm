@@ -45,47 +45,6 @@ INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
 
 
-SECTION "rom35", ROMX[$4000], BANK[35]
-; ROM $23 : $8C000 - $8FFFF
-
-	dr SaveMenu_CopyTilemapAtOnce, $4000
-	dr _ResetClock, $417a
-	dr _DeleteSaveData, $4311
-	dr DummyPredef35, $4359
-DummyPredef36::
-	dr UpdateTimeOfDayPal, $435a
-	dr _TimeOfDayPals, $436a
-	dr _UpdateTimePals, $439b
-	dr FadeInFromWhite, $43a4
-	dr FadeOutToWhite, $43af
-	dr FadeInFromBlack, $43bd
-	dr FadeOutToBlack, $43c8
-	dr ReplaceTimeOfDayPals, $43ed
-	dr DoBattleTransition, $4517
-	dr PlayWhirlpoolSound, $4a56
-	dr BlindingFlash, $4a63
-	dr ShakeHeadbuttTree, $4a86
-	dr OWCutAnimation, $4bb0
-	dr FlyFromAnim, $4d5d
-	dr FlyToAnim, $4da3
-	dr MagnetTrain, $4e74
-	dr ClearSpriteAnims, $516c
-	dr PlaySpriteAnimationsAndDelayFrame, $517b
-	dr PlaySpriteAnimations, $5182
-	dr _InitSpriteAnimStruct, $51ef
-	dr _ReinitSpriteAnimFrame, $532a
-	set_gs_diff $1a
-	drd AnimateEndOfExpBar, $66db
-	drd ClearSpriteAnims2, $6752
-	drd LoadOverworldMonIcon, $6769
-	drd LoadMenuMonIcon, $677d
-	drd FreezeMonIcons, $68d9
-	drd UnfreezeMonIcons, $6900
-	drd HoldSwitchmonIcon, $691b
-	drd InitDisplayForHallOfFame, $7d9c
-	drd InitDisplayForRedCredits, $7ddd
-
-
 SECTION "rom36", ROMX[$4000], BANK[36]
 ; ROM $24 : $90000 - $93FFF
 
@@ -94,6 +53,8 @@ SECTION "rom36", ROMX[$4000], BANK[36]
 	dr SetDayOfWeek, $4897
 	dr PrintHour, $49ca
 	dr PokeGear, $4a24
+	dr AnimatePokegearModeIndicatorArrow, $4bd1
+	dr AnimateTuningKnob, $54d2
 	dr _TownMap, $577d
 	dr PlayRadio, $5888
 	dr PokegearMap, $5930
@@ -102,6 +63,8 @@ SECTION "rom36", ROMX[$4000], BANK[36]
 	dr RegionCheck, $67d2
 	dr Fish, $67fe
 	dr _SlotMachine, $6aba
+	dr Slots_AnimateGolem, $75f6
+	dr Slots_AnimateChansey, $7685
 
 
 SECTION "rom37", ROMX[$4000], BANK[37]
@@ -192,13 +155,16 @@ SECTION "rom54", ROMX[$4000], BANK[54]
 SECTION "rom56", ROMX[$4000], BANK[56]
 ; ROM $38 : $E0000 - $E3FFF
 
+	dr AnimateUnusedPikachu, $4000
 	dr _Diploma, $4002
 	dr PlaceDiplomaOnScreen, $4009
 	dr PrintDiplomaPage2, $40d5
 	dr RotateUnownFrontpic, $43ea
+	dr UnusedCursor_InterpretJoypad_AnimateCursor, $44d7
 	dr _CardFlip, $44d8
 	dr _UnownPuzzle, $556a
 	dr _MemoryGame, $6257
+	dr MemoryGame_InterpretJoypad_AnimateCursor, $6599
 	dr _DepositPKMN, $6789
 	dr _WithdrawPKMN, $6961
 	dr _MovePKMNWithoutMail, $6b39
@@ -216,6 +182,7 @@ SECTION "rom57", ROMX[$4000], BANK[57]
 	set_gs_diff $1b8
 	drd _Option, $4450
 	drd SplashScreen, $4804
+	drd GameFreakPresents_UpdateLogoPal, $497c
 	drd GoldSilverIntro, $4b0d
 
 
