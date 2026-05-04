@@ -236,6 +236,7 @@ InitPokegearTilemap:
 	ld bc, SCREEN_AREA
 	ld a, $4f
 	call ByteFill
+	call Function14a2
 	ld a, [wPokegearCard]
 	maskbits NUM_POKEGEAR_CARDS
 	add a
@@ -286,8 +287,7 @@ InitPokegearTilemap:
 	jr z, .dmg
 	ld a, $2
 	ldh [hBGMapMode], a
-	ld c, 3
-	call DelayFrames
+	call Function15ba
 .dmg
 	call WaitBGMap
 	ret
@@ -302,7 +302,7 @@ InitPokegearTilemap:
 .Clock:
 	ld de, ClockTilemapRLE
 	call Pokegear_LoadTilemapRLE
-	hlcoord 13, 1
+	hlcoord 15, 1
 	ld de, .switch
 	call PlaceString
 	hlcoord 0, 12
@@ -312,7 +312,7 @@ InitPokegearTilemap:
 	ret
 
 .switch
-	db "SWITCH▶@"
+	db "바꿈 ▶@"
 
 .Map:
 	ld a, [wPokegearMapPlayerIconLandmark]
@@ -328,14 +328,6 @@ InitPokegearTilemap:
 	ld e, 1
 .ok
 	farcall PokegearMap
-	ld a, $07
-	ld bc, SCREEN_WIDTH - 2
-	hlcoord 1, 2
-	call ByteFill
-	hlcoord 0, 2
-	ld [hl], $06
-	hlcoord 19, 2
-	ld [hl], $17
 	ld a, [wPokegearMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
 	ret
@@ -415,7 +407,7 @@ Pokegear_FinishTilemap:
 	ld [hli], a
 	inc a
 	ld [hld], a
-	ld bc, $14
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	add $f
 	ld [hli], a
@@ -685,15 +677,23 @@ PokegearMap_InitCursor:
 PokegearMap_UpdateLandmarkName:
 	push af
 	hlcoord 8, 0
-	lb bc, 2, 12
+	lb bc, 3, 12
 	call ClearBox
+	hlcoord 8, 0
+	ld [hl], $30
+	hlcoord 19, 0
+	ld [hl], $31
+	hlcoord 8, 2
+	ld [hl], $32
+	hlcoord 19, 2
+	ld [hl], $33
 	pop af
 	ld e, a
-	push de
 	farcall GetLandmarkName
-	pop de
-	farcall TownMap_ConvertLineBreakCharacters
-	hlcoord 8, 0
+	hlcoord 9, 1
+	ld de, wStringBuffer1
+	call PlaceString
+	hlcoord 19, 1
 	ld [hl], $34
 	ret
 
@@ -1008,6 +1008,7 @@ PokegearPhone_UpdateDisplayList:
 .row
 	ld c, SCREEN_WIDTH - 2
 .col
+	call Function14b6
 	ld [hli], a
 	dec c
 	jr nz, .col
@@ -1234,9 +1235,9 @@ PokegearPhoneContactSubmenu:
 .CallDeleteCancelStrings:
 	dwcoord 10, 6
 	db 3
-	db   "CALL"
-	next "DELETE"
-	next "CANCEL"
+	db   "전화하다"
+	next "삭제"
+	next "그만두다"
 	db   "@"
 
 .CallDeleteCancelJumptable:
@@ -1247,8 +1248,8 @@ PokegearPhoneContactSubmenu:
 .CallCancelStrings:
 	dwcoord 10, 8
 	db 2
-	db   "CALL"
-	next "CANCEL"
+	db   "전화하다"
+	next "그만두다"
 	db   "@"
 
 .CallCancelJumptable:
@@ -1695,15 +1696,15 @@ NoRadioStation:
 	ldh [hBGMapMode], a
 	ret
 
-OaksPKMNTalkName:     db "OAK's <PK><MN> Talk@"
-PokedexShowName:      db "#DEX Show@"
-PokemonMusicName:     db "#MON Music@"
-LuckyChannelName:     db "Lucky Channel@"
+OaksPKMNTalkName:     db "오박사의 포켓몬 강좌@"
+PokedexShowName:      db "잘 알 수 있는 포켓몬 도감@"
+PokemonMusicName:     db "포켓몬 뮤직@"
+LuckyChannelName:     db "럭키채널@"
 UnownStationName:     db "?????@"
 
-PlacesAndPeopleName:  db "Places & People@"
-LetsAllSingName:      db "Let's All Sing!@"
-PokeFluteStationName: db "# FLUTE@"
+PlacesAndPeopleName:  db "그때 그사람@"
+LetsAllSingName:      db "모두함께 노래하자!@"
+PokeFluteStationName: db "포켓몬의 피리@"
 
 _TownMap:
 	ld hl, wOptions
@@ -1849,25 +1850,8 @@ _TownMap:
 .kanto2
 	ld e, KANTO_REGION
 .okay_tilemap
+	call Function14a2
 	farcall PokegearMap
-	ld a, $07
-	ld bc, 6
-	hlcoord 1, 0
-	call ByteFill
-	hlcoord 0, 0
-	ld [hl], $06
-	hlcoord 7, 0
-	ld [hl], $17
-	hlcoord 7, 1
-	ld [hl], $16
-	hlcoord 7, 2
-	ld [hl], $26
-	ld a, $07
-	ld bc, NAME_LENGTH
-	hlcoord 8, 2
-	call ByteFill
-	hlcoord 19, 2
-	ld [hl], $17
 	ld a, [wTownMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
 	farcall TownMapPals
@@ -1924,15 +1908,32 @@ PlayRadio:
 	lb bc, 4, 18
 	call Textbox
 	hlcoord 1, 14
-	ld [hl], '“'
+	call .PlaceOpeningQuote
 	pop de
 	hlcoord 2, 14
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld [hl], '”'
+	call .PlaceClosingQuote
 	call WaitBGMap
 	ret
+
+.PlaceOpeningQuote
+	ld de, .opening_quote
+	push hl
+	call PlaceString
+	pop hl
+	ret
+
+.PlaceClosingQuote
+	ld de, .closing_quote
+	push hl
+	call PlaceString
+	pop hl
+	ret
+
+.opening_quote: db "「@"
+.closing_quote: db "」@"
 
 PlayRadioStationPointers:
 ; entries correspond to MAPRADIO_* constants
@@ -2086,39 +2087,26 @@ _FlyMap:
 
 TownMapBubble:
 ; Draw the bubble containing the location text in the town map HUD
+	hlcoord 1, 0
+	lb bc, 3, SCREEN_WIDTH - 2
+	call ClearBox
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $30
-	ld [hli], a
-; Top row
-	ld bc, 16
-	ld a, ' '
-	call ByteFill
+	ld [hl], $30
 ; Top-right corner
-	ld a, $31
-	ld [hl], a
-	hlcoord 1, 1
-
-; Middle row
-	ld bc, SCREEN_WIDTH - 2
-	ld a, ' '
-	call ByteFill
+	hlcoord 18, 0
+	ld [hl], $31
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $32
-	ld [hli], a
-; Bottom row
-	ld bc, 16
-	ld a, ' '
-	call ByteFill
+	ld [hl], $32
 ; Bottom-right corner
-	ld a, $33
-	ld [hl], a
+	hlcoord 18, 2
+	ld [hl], $33
 
 ; Print "Where?"
-	hlcoord 2, 0
+	hlcoord 2, 1
 	ld de, .Where
 	call PlaceString
 ; Print the name of the default flypoint
@@ -2129,7 +2117,7 @@ TownMapBubble:
 	ret
 
 .Where:
-	db "Where?@"
+	db "어디에?@"
 
 .Name:
 ; We need the map location of the default flypoint
@@ -2141,7 +2129,7 @@ TownMapBubble:
 	add hl, de
 	ld e, [hl]
 	farcall GetLandmarkName
-	hlcoord 2, 1
+	hlcoord 8, 1
 	ld de, wStringBuffer1
 	call PlaceString
 	ret
@@ -2303,11 +2291,13 @@ Pokedex_GetArea:
 	ld c, 4
 	call Request2bpp
 	call LoadTownMapGFX
+	call Function14a2
 	call FillKantoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	hlbgcoord 0, 0, vBGMap1
 	call TownMapBGUpdate
+	call Function14a2
 	call FillJohtoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
@@ -2401,27 +2391,32 @@ Pokedex_GetArea:
 
 .PlaceString_MonsNest:
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH
+	ld bc, 11
 	ld a, ' '
 	call ByteFill
+	ld [hl], $06
 	hlcoord 0, 1
+	ld bc, 11
+	ld a, ' '
+	call ByteFill
+	ld [hl], $16
+	hlcoord 0, 2
 	ld a, $06
 	ld [hli], a
-	ld bc, SCREEN_WIDTH - 2
+	ld bc, 10
 	ld a, $07
 	call ByteFill
-	ld [hl], $17
+	ld [hl], $27
 	call GetPokemonName
-	hlcoord 2, 0
+	hlcoord 1, 1
 	call PlaceString
-	ld h, b
-	ld l, c
+	hlcoord 6, 1
 	ld de, .String_SNest
 	call PlaceString
 	ret
 
 .String_SNest:
-	db "'S NEST@"
+	db "의 집@"
 
 .GetAndPlaceNest:
 	ld [wTownMapCursorLandmark], a
@@ -2567,8 +2562,7 @@ TownMapBGUpdate:
 ; The BG Map is updated in thirds, so we wait
 
 ; 3 frames to update the whole screen's palettes.
-	ld c, 3
-	call DelayFrames
+	call Function15ba
 .tiles
 ; Update BG Map tiles
 	call WaitBGMap
@@ -2600,6 +2594,15 @@ TownMapPals:
 	decoord 0, 0, wAttrmap
 	ld bc, SCREEN_AREA
 .loop
+	ld a, [de]
+	bit B_BG_BANK1, a
+	jr z, .not_hangul
+	and ~(BG_PRIO | BG_PALETTE)
+	inc hl
+	push hl
+	jr .update
+
+.not_hangul
 ; Current tile
 	ld a, [hli]
 	push hl

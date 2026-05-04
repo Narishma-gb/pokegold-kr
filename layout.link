@@ -106,8 +106,8 @@ ROMX $21
 	"Credits"
 ROMX $23
 	"bank23"
-; ROMX $24
-; 	"bank24"
+ROMX $24
+	"bank24"
 ; ROMX $25
 ; 	"Maps"
 ; 	"Events"

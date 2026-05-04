@@ -8,8 +8,8 @@ NonTrainerCallerNames:
 	dw .elm
 	assert_table_length NUM_NONTRAINER_PHONECONTACTS + 1
 
-.none:     db "----------@"
-.mom:      db "MOM@"
-.bill:     db "BILL@"
-.elm:      db "PROF.ELM@"
-.bikeshop: db "BIKE SHOP@"
+.none:     db "<-><-><-><-><-><-><-><-><-><->@"
+.mom:      db "어머니@"
+.bill:     db "이수재@"
+.elm:      db "공박사@"
+.bikeshop: db "미라클 사이클 주인@"

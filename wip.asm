@@ -39,32 +39,16 @@ MACRO drs
 	dr \1StdScript, (\2) * 3 + $4000
 ENDM
 
+; Phone scripts
+MACRO drc
+	dr \1CalleeScript, \2
+	dr \1CallerScript, \3
+ENDM
+
 
 INCLUDE "main.asm"
 INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
-
-
-SECTION "rom36", ROMX[$4000], BANK[36]
-; ROM $24 : $90000 - $93FFF
-
-	dr GetCallerLocation, $441a
-	dr InitClock, $4647
-	dr SetDayOfWeek, $4897
-	dr PrintHour, $49ca
-	dr PokeGear, $4a24
-	dr AnimatePokegearModeIndicatorArrow, $4bd1
-	dr AnimateTuningKnob, $54d2
-	dr _TownMap, $577d
-	dr PlayRadio, $5888
-	dr PokegearMap, $5930
-	dr _FlyMap, $5942
-	dr Pokedex_GetArea, $5b52
-	dr RegionCheck, $67d2
-	dr Fish, $67fe
-	dr _SlotMachine, $6aba
-	dr Slots_AnimateGolem, $75f6
-	dr Slots_AnimateChansey, $7685
 
 
 SECTION "rom37", ROMX[$4000], BANK[37]
@@ -104,6 +88,7 @@ SECTION "rom46", ROMX[$6300], BANK[46]
 	dr CheckForHiddenItems, $6300
 	dr TreeMonEncounter, $6378
 	dr RockMonEncounter, $63a1
+	dr PlayRadioShow, $65bd
 	dr ReadPartyMonMail, $6eb6
 	dr ReadAnyMail, $6ec4
 	dr ItemIsMail, $7ac4
@@ -140,6 +125,7 @@ DummyPredef39::
 	dr PlayBattleAnim, $40d8
 	dr BattleAnimCmd_RaiseSub, $45e6
 	dr BattleAnimCmd_MinimizeOpp, $466b
+	dr BattleAnim_Sine_e, $6699
 
 
 SECTION "rom54", ROMX[$4000], BANK[54]
@@ -228,6 +214,7 @@ SECTION "rom62", ROMX[$4000], BANK[62]
 	dr EnemyHPBarBorderGFX, $4bb5
 	dr HPExpBarBorderGFX, $4bd5
 	dr ExpBarGFX, $4c05
+	dr TownMapGFX, $4c95
 	dr Footprints, $52bd
 	dr UnownFont, $72bd
 	dr CollisionPermissionTable, $746d
@@ -312,8 +299,43 @@ INCLUDE "data/text/std_text.asm"
 INCLUDE "data/text/battle.asm"
 
 
-;SECTION "rom65", ROMX[$4000], BANK[65]
+SECTION "rom65", ROMX[$4000], BANK[65]
 ; ROM $41 : $104000 - $107FFF
+
+	dr UnusedPhoneScript, $4000
+	dr MomPhoneCalleeScript, $4004
+	dr MomPhoneLectureScript, $40fa
+	drc BillPhone, $410d, $4148
+	drc ElmPhone, $414d, $41b7
+	drc JackPhone, $4200, $420a
+	drc BeverlyPhone, $422b, $4235
+	drc HueyPhone, $4256, $4260
+	drc GavenPhone, $427a, $4284
+	drc BethPhone, $42a5, $42af
+	drc JosePhone, $42d0, $42da
+	drc ReenaPhone, $4302, $430c
+	drc JoeyPhone, $432d, $4337
+	drc WadePhone, $435e, $4383
+	drc RalphPhone, $43c5, $43cf
+	drc LizPhone, $4411, $441b
+	drc AnthonyPhone, $4442, $444c
+	drc ToddPhone, $448c, $4496
+	drc GinaPhone, $44bd, $44cd
+	drc IrwinPhone, $44fa, $450a
+	drc ArniePhone, $4531, $453b
+	drc AlanPhone, $4575, $457f
+	drc DanaPhone, $45a0, $45aa
+	drc ChadPhone, $45cb, $45d5
+	drc DerekPhone, $460f, $4634
+	drc ChrisPhone, $4670, $467a
+	drc BrentPhone, $469b, $46a5
+	drc TiffanyPhone, $46cd, $46d7
+	drc VancePhone, $46ff, $4709
+	drc WiltonPhone, $472a, $4734
+	drc KenjiPhone, $4770, $477a
+	drc ParryPhone, $479b, $47a5
+	drc ErinPhone, $47df, $47e9
+	dr BikeShopPhoneCallerScript, $4962
 
 
 ;SECTION "rom66", ROMX[$4000], BANK[66]

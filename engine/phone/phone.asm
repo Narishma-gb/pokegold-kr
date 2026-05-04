@@ -582,7 +582,7 @@ Phone_Wait20Frames:
 Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
-	hlcoord 1, 1
+	hlcoord 1, 2
 	ld [hl], '☎'
 	inc hl
 	inc hl
@@ -641,11 +641,9 @@ GetCallerName:
 	push hl
 	push bc
 	call PlaceString
-	ld a, ':'
-	ld [bc], a
 	pop bc
 	pop hl
-	ld de, SCREEN_WIDTH + 3
+	ld de, 6
 	add hl, de
 	call Phone_GetTrainerClassName
 	call PlaceString
@@ -663,8 +661,6 @@ GetCallerName:
 	ld d, [hl]
 	pop hl
 	call PlaceString
-	ld a, ':'
-	ld [bc], a
 	ret
 
 INCLUDE "data/phone/non_trainer_names.asm"

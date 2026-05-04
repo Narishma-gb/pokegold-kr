@@ -235,14 +235,14 @@ INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "engine/movie/init_hof_credits.asm"
 
 
-;SECTION "bank24", ROMX
+SECTION "bank24", ROMX
 
-;INCLUDE "engine/phone/phone.asm"
-;INCLUDE "engine/rtc/timeset.asm"
-;INCLUDE "engine/pokegear/pokegear.asm"
-;INCLUDE "engine/overworld/landmarks.asm"
-;INCLUDE "engine/events/fish.asm"
-;INCLUDE "engine/games/slot_machine.asm"
+INCLUDE "engine/phone/phone.asm"
+INCLUDE "engine/rtc/timeset.asm"
+INCLUDE "engine/pokegear/pokegear.asm"
+INCLUDE "engine/overworld/landmarks.asm"
+INCLUDE "engine/events/fish.asm"
+INCLUDE "engine/games/slot_machine.asm"
 
 
 ;SECTION "bank2E", ROMX

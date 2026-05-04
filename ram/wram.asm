@@ -207,14 +207,14 @@ SECTION UNION "Miscellaneous", WRAM0
 ; 20x18 grid of 8x8 tiles
 wTempTilemap::
 	ds SCREEN_AREA
-
+*/
 
 SECTION UNION "Miscellaneous", WRAM0
 
 ; link patch lists
 wPlayerPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
 wOTPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
-*/
+
 
 SECTION UNION "Miscellaneous", WRAM0
 
@@ -258,7 +258,7 @@ wGlobalAnimYOffset:: db
 wGlobalAnimXOffset:: db
 
 wSpriteAnimDataEnd::
-/*
+
 	ds 7
 
 NEXTU
@@ -270,7 +270,7 @@ wInitHourBuffer:: db
 wInitMinuteBuffer:: db
 	ds 19
 wTimeSetBufferEnd::
-*/
+
 NEXTU
 ; hall of fame temp struct
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
@@ -293,9 +293,9 @@ wDebugLightTileColor:: ds 2
 wDebugDarkTileColor::  ds 2
 wDebugBlackTileColor:: ds 2*/
 ENDU
-/*
+
 ; This union spans 280 bytes.
-UNION
+UNION/*
 ; pokedex
 wPokedexDataStart::
 wPokedexOrder:: ds $100 ; >= NUM_POKEMON
@@ -324,7 +324,7 @@ wDexCurLocation:: db
 wPokedexDataEnd::
 	ds 3
 
-NEXTU
+NEXTU*/
 ; pokegear
 wPokegearPhoneDisplayPosition:: db
 wPokegearPhoneCursorPosition:: db
@@ -381,7 +381,7 @@ wSlotBuildingMatch:: db
 wSlotsDataEnd::
 	ds 28
 wSlotsEnd::
-
+/*
 NEXTU
 ; card flip
 wDeck:: ds CARDFLIP_DECK_SIZE
@@ -412,10 +412,10 @@ wMemoryGameNumCardsMatched:: db
 
 NEXTU
 ; unown puzzle
-wPuzzlePieces:: ds 6 * 6
+wPuzzlePieces:: ds 6 * 6*/
 ENDU
 
-*/
+
 SECTION "Unused Map Buffer", WRAM0
 
 ; This was a buffer for map-related pointers in the 1997 G/S prototype.
