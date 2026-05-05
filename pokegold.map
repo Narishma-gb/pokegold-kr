@@ -1,9 +1,9 @@
 SUMMARY:
 	ROM0: 16114 bytes used / 270 free
-	ROMX: 828757 bytes used / 1252011 free in 127 banks
+	ROMX: 819849 bytes used / 1260919 free in 127 banks
 	SRAM: 30805 bytes used / 1963 free in 4 banks
 	WRAM0: 3896 bytes used / 200 free
-	WRAMX: 6420 bytes used / 5868 free in 3 banks
+	WRAMX: 6430 bytes used / 5858 free in 3 banks
 	HRAM: 127 bytes used / 0 free
 
 ROM0 bank #0:
@@ -12979,26 +12979,495 @@ ROMX bank #36:
 	TOTAL EMPTY: $01ea bytes
 
 ROMX bank #37:
-	SECTION: $4000-$7c3a ($3c3b bytes) ["rom37"]
+	SECTION: $4000-$40ec ($00ed bytes) ["rom37"]
 	         $4000 = MapScenes
 	         $40ed = MapGroupPointers
+	EMPTY: $40ed-$65f8 ($250c bytes)
+	SECTION: $65f9-$7da6 ($17ae bytes) ["Events"]
 	         $65f9 = OverworldLoop
+	         $65fd = OverworldLoop.loop
+	         $660b = OverworldLoop.done
+	         $660c = OverworldLoop.Jumptable
+	         $6614 = DisableEvents
+	         $6619 = EnableEvents
+	         $661f = CheckEnabledMapEventsBit5
+	         $6625 = DisableWarpsConnections
+	         $662b = DisableCoordEvents
+	         $6631 = DisableStepCount
+	         $6637 = DisableWildEncounters
+	         $663d = EnableWarpsConnections
+	         $6643 = EnableCoordEvents
+	         $6649 = EnableStepCount
+	         $664f = EnableWildEncounters
+	         $6655 = CheckWarpConnectionsEnabled
+	         $665b = CheckCoordEventsEnabled
+	         $6661 = CheckStepCountEnabled
+	         $6667 = CheckWildEncountersEnabled
+	         $666d = StartMap
+	         $6683 = EnterMap
+	         $669f = EnterMap.dont_enable
+	         $66a9 = EnterMap.dontresetpoison
+	         $66b2 = UnusedWait30Frames
+	         $66b8 = HandleMap
+	         $66da = MapEvents
+	         $66e2 = MapEvents.Jumptable
+	         $66e6 = MapEvents.events
+	         $66f3 = MapEvents.no_events
+	         $66f4 = MaxOverworldDelay
+	         $66f5 = ResetOverworldDelay
+	         $66fc = NextOverworldFrame
+	         $6706 = HandleMapTimeAndJoypad
+	         $6716 = HandleMapObjects
+	         $6726 = HandleMapBackground
+	         $6733 = CheckPlayerState
+	         $6745 = CheckPlayerState.events
+	         $674b = CheckPlayerState.noevents
+	         $6751 = _CheckObjectEnteringVisibleRange
+	         $675e = PlayerEvents
+	         $6787 = PlayerEvents.ok
+	         $6797 = CheckTrainerEvent
+	         $67a2 = CheckTrainerEvent.nope
+	         $67a4 = CheckTileEvent
+	         $67b3 = CheckTileEvent.connections_disabled
+	         $67bd = CheckTileEvent.coord_events_disabled
+	         $67c6 = CheckTileEvent.step_count_disabled
+	         $67d1 = CheckTileEvent.ok
+	         $67d3 = CheckTileEvent.map_connection
+	         $67d7 = CheckTileEvent.warp_tile
+	         $67e3 = CheckTileEvent.not_pit
+	         $67e7 = CheckTileEvent.coord_event
+	         $67f4 = CheckWildEncounterCooldown
+	         $67fe = SetUpFiveStepWildEncounterCooldown
+	         $6804 = SetMinTwoStepWildEncounterCooldown
+	         $6811 = Dummy_CheckEnabledMapEventsBit5
+	         $6819 = RunSceneScript
+	         $6865 = RunSceneScript.nope
+	         $6867 = CheckTimeEvents
+	         $687e = CheckTimeEvents.do_daily
+	         $6897 = CheckTimeEvents.nothing
+	         $6899 = CheckTimeEvents.end_bug_contest
+	         $68a3 = CheckTimeEvents.hatch
+	         $68a7 = OWPlayerInput
+	         $68c0 = OWPlayerInput.NoAction
+	         $68c2 = OWPlayerInput.Action
+	         $68cc = CheckAPressOW
+	         $68df = PlayTalkObject
+	         $68e8 = TryObjectEvent
+	         $68f2 = TryObjectEvent.IsObject
+	         $691f = TryObjectEvent.nope
+	         $6921 = ObjectEventTypeArray
+	         $6937 = ObjectEventTypeArray.script
+	         $6945 = ObjectEventTypeArray.itemball
+	         $695c = ObjectEventTypeArray.trainer
+	         $6963 = ObjectEventTypeArray.three
+	         $6965 = ObjectEventTypeArray.four
+	         $6967 = ObjectEventTypeArray.five
+	         $6969 = ObjectEventTypeArray.six
+	         $696b = TryBGEvent
+	         $6972 = TryBGEvent.is_bg_event
+	         $697a = BGEventJumptable
+	         $698c = BGEventJumptable.up
+	         $6990 = BGEventJumptable.down
+	         $6994 = BGEventJumptable.right
+	         $6998 = BGEventJumptable.left
+	         $699c = BGEventJumptable.checkdir
+	         $69a5 = BGEventJumptable.read
+	         $69b6 = BGEventJumptable.itemifset
+	         $69d5 = BGEventJumptable.copy
+	         $69e8 = BGEventJumptable.ifset
+	         $69ef = BGEventJumptable.ifnotset
+	         $69f4 = BGEventJumptable.thenread
+	         $6a09 = BGEventJumptable.dontread
+	         $6a0b = CheckBGEventFlag
+	         $6a23 = PlayerMovement
+	         $6a30 = PlayerMovementPointers
+	         $6a40 = PlayerMovementPointers.normal
+	         $6a40 = PlayerMovementPointers.finish
+	         $6a43 = PlayerMovementPointers.jump
+	         $6a49 = PlayerMovementPointers.warp
+	         $6a4e = PlayerMovementPointers.turn
+	         $6a53 = PlayerMovementPointers.force_turn
+	         $6a5e = PlayerMovementPointers.continue
+	         $6a5e = PlayerMovementPointers.exit_water
+	         $6a63 = CheckMenuOW
+	         $6a7c = CheckMenuOW.NoMenu
+	         $6a7e = CheckMenuOW.Select
+	         $6a8b = StartMenuScript
+	         $6a92 = SelectMenuScript
+	         $6a99 = StartMenuCallback
+	         $6a99 = SelectMenuCallback
+	         $6aa5 = SelectMenuCallback.Script
+	         $6aa8 = SelectMenuCallback.Asm
+	         $6aac = CountStep
+	         $6acf = CountStep.skip_happiness
+	         $6ade = CountStep.skip_egg
+	         $6af6 = CountStep.skip_poison
+	         $6afc = CountStep.done
+	         $6afe = CountStep.doscript
+	         $6b02 = CountStep.hatch
+	         $6b06 = CountStep.whiteout
+	         $6b0a = DoRepelStep
+	         $6b1e = DoPlayerEvent
+	         $6b3f = PlayerEventScriptPointers
+	         $6b60 = InvalidEventScript
+	         $6b61 = UnusedPlayerEventScript
+	         $6b62 = HatchEggScript
+	         $6b67 = WarpToNewMapScript
+	         $6b6b = FallIntoMapScript
+	         $6b7b = FallIntoMapScript.SkyfallMovement
+	         $6b7d = LandAfterPitfallScript
+	         $6b80 = EdgeWarpScript
+	         $6b82 = ChangeDirectionScript
 	         $6b89 = EnableScriptMode
 	         $6b91 = ScriptEvents
+	         $6b94 = ScriptEvents.loop
+	         $6ba1 = ScriptEvents.modes
+	         $6ba9 = EndScript
+	         $6bad = WaitScript
+	         $6bc4 = WaitScriptMovement
+	         $6bdc = RunScriptCommand
+	         $6be4 = ScriptCommandTable
+	         $6d2a = StartScript
+	         $6d30 = CheckScript
+	         $6d36 = StopScript
+	         $6d3c = Script_callasm
+	         $6d4b = Script_special
+	         $6d5a = Script_memcallasm
+	         $6d6a = Script_jumptextfaceplayer
+	         $6d84 = Script_jumptext
+	         $6d9e = JumpTextFacePlayerScript
+	         $6d9f = JumpTextScript
+	         $6da6 = Script_writetext
+	         $6db6 = Script_farwritetext
+	         $6dc6 = Script_repeattext
+	         $6de3 = Script_repeattext.done
+	         $6de4 = Script_waitbutton
+	         $6de7 = Script_promptbutton
+	         $6df8 = Script_yesorno
+	         $6e01 = Script_yesorno.no
+	         $6e05 = Script_loadmenu
+	         $6e1a = Script_closewindow
+	         $6e21 = Script_pokepic
+	         $6e2a = Script_pokepic.ok
+	         $6e34 = Script_closepokepic
+	         $6e3b = Script_verticalmenu
+	         $6e48 = Script_verticalmenu.ok
+	         $6e4c = Script__2dmenu
+	         $6e59 = Script__2dmenu.ok
+	         $6e5d = Script_verbosegiveitem
+	         $6e73 = GiveItemScript_DummyFunction
+	         $6e74 = GiveItemScript
+	         $6e83 = GiveItemScript.Full
+	         $6e86 = GiveItemScript.ReceivedItemText
+	         $6e8b = Script_itemnotify
+	         $6e9a = Script_pocketisfull
+	         $6ea9 = Script_specialsound
+	         $6ebc = Script_specialsound.play
+	         $6ec3 = GetPocketName
+	         $6ee1 = ItemPocketNames
+	         $6ee9 = ItemPocketNames.Item
+	         $6ef3 = ItemPocketNames.Key
+	         $6eff = ItemPocketNames.Ball
+	         $6f07 = ItemPocketNames.TM
+	         $6f15 = CurItemName
+	         $6f1f = PutItemInPocketText
+	         $6f24 = PocketIsFullText
+	         $6f29 = Script_pokemart
+	         $6f40 = Script_elevator
+	         $6f5d = Script_trade
+	         $6f68 = Script_phonecall
+	         $6f7b = Script_hangup
+	         $6f82 = Script_askforphonenumber
+	         $6f96 = Script_askforphonenumber.phonefull
+	         $6f9a = Script_askforphonenumber.refused
+	         $6f9f = Script_askforphonenumber.done
+	         $6fa3 = Script_describedecoration
+	         $6fb2 = Script_fruittree
+	         $6fc0 = Script_swarm
+	         $6fcf = Script_trainertext
+	         $6fe5 = Script_scripttalkafter
+	         $6ff2 = Script_trainerflagaction
+	         $700c = Script_winlosstext
+	         $7023 = Script_endifjustbattled
+	         $702b = Script_checkjustbattled
+	         $703a = Script_encountermusic
+	         $7045 = Script_playmapmusic
+	         $7049 = Script_playmusic
+	         $7062 = Script_musicfadeout
+	         $7077 = Script_playsound
+	         $7083 = Script_waitsfx
+	         $7087 = Script_warpsound
+	         $7091 = Script_cry
+	         $709f = Script_cry.ok
+	         $70a3 = Script_setlasttalked
+	         $70a9 = Script_applymovement
+	         $70ad = ApplyMovement
+	         $70d4 = UnfreezeFollowerObject
+	         $70db = Script_applymovementlasttalked
+	         $70e1 = Script_faceplayer
+	         $70fb = Script_faceobject
+	         $7104 = Script_faceobject.ok
+	         $710e = Script_faceobject.ok2
+	         $7121 = Script_turnobject
+	         $712a = Script_turnobject.ok
+	         $7135 = ApplyObjectFacing
+	         $7159 = ApplyObjectFacing.not_visible
+	         $715c = Script_variablesprite
+	         $716b = Script_appear
+	         $7179 = Script_disappear
+	         $7182 = Script_disappear.ok
+	         $7193 = ApplyEventActionAppearDisappear
+	         $71a9 = ApplyEventActionAppearDisappear.okay
+	         $71ad = Script_follow
+	         $71bc = Script_stopfollow
+	         $71c3 = Script_moveobject
+	         $71da = Script_writeobjectxy
+	         $71e3 = Script_writeobjectxy.ok
+	         $71eb = Script_follownotexact
+	         $71fa = Script_loademote
+	         $7204 = Script_loademote.not_var_emote
+	         $720c = Script_showemote
+	         $721b = Script_showemote.ok
+	         $7229 = ShowEmoteScript
+	         $7234 = ShowEmoteScript.Show
+	         $7237 = ShowEmoteScript.Hide
+	         $723a = Script_earthquake
+	         $7259 = Script_earthquake.script
+	         $725e = EarthquakeMovement
+	         $7263 = Script_loadpikachudata
+	         $7263 = EarthquakeMovement.End
+	         $726e = Script_randomwildmon
+	         $7273 = Script_loadtemptrainer
+	         $7285 = Script_loadwildmon
+	         $7297 = Script_loadtrainer
+	         $72a9 = Script_startbattle
+	         $72ba = Script_catchtutorial
+	         $72cc = Script_reloadmapafterbattle
+	         $72e3 = Script_reloadmapafterbattle.notblackedout
+	         $72ef = Script_reloadmapafterbattle.was_wild
+	         $7301 = Script_reloadmapafterbattle.done
+	         $7304 = Script_reloadmap
+	         $7315 = Script_scall
+	         $7323 = Script_farscall
+	         $7331 = Script_memcall
+	         $733e = ScriptCall
 	         $7366 = CallCallback
+	         $7371 = Script_sjump
+	         $7380 = Script_farsjump
+	         $738f = Script_memjump
+	         $739f = Script_iffalse
+	         $73a9 = Script_iftrue
+	         $73b3 = Script_ifequal
+	         $73be = Script_ifnotequal
+	         $73c9 = Script_ifgreater
+	         $73d5 = Script_ifless
+	         $73e1 = Script_jumpstd
+	         $73e6 = Script_callstd
+	         $73ee = StdScript
+	         $7409 = SkipTwoScriptBytes
+	         $7410 = ScriptJump
+	         $741d = Script_sdefer
+	         $7435 = Script_checkscene
+	         $743e = Script_checkscene.no_scene
+	         $7444 = Script_checkmapscene
+	         $7458 = Script_checkmapscene.no_scene
+	         $745e = Script_setscene
+	         $7468 = Script_setmapscene
+	         $7470 = DoScene
+	         $747b = DoScene.no_scene
+	         $747c = Script_readmem
+	         $7489 = Script_writemem
+	         $7496 = Script_loadmem
+	         $74a3 = Script_setval
+	         $74aa = Script_addval
+	         $74b3 = Script_random
+	         $74c6 = Script_random.loop
+	         $74d2 = Script_random.no_restriction
+	         $74d9 = Script_random.finish
+	         $74e6 = Script_random.Divide256byC
+	         $74e9 = Script_random.mod_loop
+	         $74f0 = Script_readvar
+	         $74fb = Script_writevar
+	         $7506 = Script_loadvar
+	         $7511 = GetVarAction
+	         $7519 = Script_checkver
+	         $7520 = Script_checkver.gs_version
+	         $7521 = Script_getmonname
+	         $752a = Script_getmonname.gotit
+	         $7533 = GetStringBuffer
+	         $753b = CopyConvertedText
+	         $753b = GetStringBuffer.ok
+	         $7548 = Script_getitemname
+	         $7551 = Script_getitemname.ok
+	         $755c = Script_getcurlandmarkname
+	         $7574 = Script_gettrainername
+	         $7584 = Script_getmoney
+	         $7599 = Script_getcoins
+	         $75ae = Script_getnum
+	         $75c3 = ResetStringBuffer1
+	         $75cf = Script_getstring
+	         $75e4 = Script_getlandmarkname
+	         $75f4 = Script_givepokemail
+	         $7619 = Script_checkpokemail
+	         $762c = Script_giveitem
+	         $7636 = Script_giveitem.ok
+	         $764d = Script_giveitem.full
+	         $7652 = Script_takeitem
+	         $7674 = Script_checkitem
+	         $768b = Script_givemoney
+	         $7698 = Script_takemoney
+	         $76a5 = Script_checkmoney
+	         $76b1 = CompareMoneyAction
+	         $76b9 = CompareMoneyAction.exact
+	         $76bd = CompareMoneyAction.less
+	         $76bf = CompareMoneyAction.done
+	         $76c3 = GetMoneyAccount
+	         $76cf = LoadMoneyAmountToMem
+	         $76e3 = Script_givecoins
+	         $76ed = Script_takecoins
+	         $76f7 = Script_checkcoins
+	         $7702 = LoadCoinAmountToMem
+	         $7710 = Script_checktime
+	         $7725 = Script_checkpoke
+	         $773c = Script_addcellnum
+	         $7751 = Script_delcellnum
+	         $7766 = Script_checkcellnum
+	         $777b = Script_specialphonecall
+	         $7788 = Script_checkphonecall
+	         $7790 = Script_checkphonecall.ok
+	         $7794 = Script_givepoke
+	         $77bf = Script_givepoke.ok
+	         $77ca = Script_giveegg
+	         $77ea = Script_setevent
+	         $77f8 = Script_clearevent
+	         $7806 = Script_checkevent
+	         $7819 = Script_checkevent.false
+	         $781d = Script_setflag
+	         $782b = Script_clearflag
+	         $7839 = Script_checkflag
+	         $784c = Script_checkflag.false
+	         $7850 = _EngineFlagAction
+	         $7857 = Script_wildoff
+	         $785d = Script_wildon
+	         $7863 = Script_xycompare
+	         $7870 = Script_warpfacing
+	         $787f = Script_warp
+	         $78ac = Script_warp.not_ok
+	         $78c7 = Script_warpmod
+	         $78da = Script_blackoutmod
+	         $78e7 = Script_dontrestartmapmusic
+	         $78ed = Script_writecmdqueue
+	         $7900 = Script_delcmdqueue
+	         $7915 = Script_changemapblocks
+	         $792e = Script_changeblock
+	         $7945 = Script_refreshmap
+	         $7955 = Script_warpcheck
+	         $7960 = Script_enableevents
+	         $7967 = Script_newloadmap
+	         $7975 = Script_reloadend
+	         $797b = Script_opentext
+	         $797f = Script_reanchormap
+	         $7986 = Script_writeunusedbyte
+	         $798d = UnusedClosetextScript
+	         $798e = Script_closetext
+	         $799f = Script_autoinput
+	         $79b0 = Script_pause
+	         $79b9 = Script_pause.loop
+	         $79c5 = Script_deactivatefacing
+	         $79ce = Script_deactivatefacing.no_time
+	         $79d7 = Script_stopandsjump
+	         $79dd = Script_end
+	         $79e3 = Script_end.resume
+	         $79f5 = Script_endcallback
+	         $79fa = Script_endcallback.dummy
+	         $7a03 = ExitScriptSubroutine
+	         $7a27 = ExitScriptSubroutine.done
+	         $7a29 = Script_endall
+	         $7a3e = Script_halloffame
+	         $7a50 = Script_credits
+	         $7a56 = ReturnFromCredits
+	         $7a62 = Script_checkver_duplicate
+	         $7a69 = Script_checkver_duplicate.gs_version
 	         $7a6a = WarpToSpawnPoint
+	         $7a72 = RunMemScript
+	         $7a91 = LoadMemScript
+	         $7aa1 = TryTileCollisionEvent
+	         $7abd = TryTileCollisionEvent.whirlpool
+	         $7acd = TryTileCollisionEvent.waterfall
+	         $7add = TryTileCollisionEvent.headbutt
+	         $7aef = TryTileCollisionEvent.surf
+	         $7af9 = TryTileCollisionEvent.noevent
+	         $7afb = TryTileCollisionEvent.done
+	         $7b02 = RandomEncounter
+	         $7b1d = RandomEncounter.bug_contest
+	         $7b24 = RandomEncounter.nope
+	         $7b28 = RandomEncounter.ok
+	         $7b2f = RandomEncounter.ok_bug_contest
+	         $7b36 = RandomEncounter.done
+	         $7b3b = WildBattleScript
 	         $7b3f = CanEncounterWildMon
+	         $7b59 = CanEncounterWildMon.ice_check
+	         $7b63 = CanEncounterWildMon.no
+	         $7b65 = _TryWildEncounter_BugContest
 	         $7b73 = ChooseWildEncounter_BugContest
+	         $7b73 = ChooseWildEncounter_BugContest.loop
+	         $7b82 = ChooseWildEncounter_BugContest.CheckMon
+	         $7b88 = ChooseWildEncounter_BugContest.GotMon
+	         $7b96 = ChooseWildEncounter_BugContest.RandomLevel
+	         $7ba1 = ChooseWildEncounter_BugContest.GotLevel
+	         $7ba6 = TryWildEncounter_BugContest
+	         $7bb2 = TryWildEncounter_BugContest.ok
+	         $7bc9 = ContestMons
+	         $7bf5 = DoBikeStep
+	         $7c1a = DoBikeStep.increment
+	         $7c1e = DoBikeStep.dont_increment
+	         $7c39 = DoBikeStep.NoCall
 	         $7c3b = ClearCmdQueue
-	EMPTY: $7c3b-$7fff ($03c5 bytes)
-	TOTAL EMPTY: $03c5 bytes
+	         $7c44 = ClearCmdQueue.loop
+	         $7c4a = HandleCmdQueue
+	         $7c4e = HandleCmdQueue.loop
+	         $7c5b = HandleCmdQueue.skip
+	         $7c67 = GetNthCmdQueueEntry
+	         $7c73 = WriteCmdQueue
+	         $7c87 = WriteCmdQueue.GetNextEmptyEntry
+	         $7c8f = WriteCmdQueue.loop
+	         $7c99 = WriteCmdQueue.done
+	         $7c9e = DelCmdQueue
+	         $7ca6 = DelCmdQueue.loop
+	         $7cb0 = DelCmdQueue.done
+	         $7cb4 = _DelCmdQueue
+	         $7cbb = HandleQueuedCommand
+	         $7cc5 = HandleQueuedCommand.okay
+	         $7cd6 = HandleQueuedCommand.Jumptable
+	         $7ce5 = CmdQueues_AnonJumptable
+	         $7ced = CmdQueues_IncAnonJumptableIndex
+	         $7cf3 = CmdQueues_DecAnonJumptableIndex
+	         $7cf9 = CmdQueue_Null
+	         $7cfa = CmdQueue_Type1
+	         $7cfe = CmdQueue_Type4
+	         $7d01 = CmdQueue_Type4.anon_dw
+	         $7d05 = CmdQueue_Type4.zero
+	         $7d0f = CmdQueue_Type4.one
+	         $7d26 = CmdQueue_Type4.add
+	         $7d30 = CmdQueue_Type4.finish
+	         $7d3b = CmdQueue_Type3
+	         $7d3c = CmdQueue_StoneTable
+	         $7d41 = CmdQueue_StoneTable.loop
+	         $7d6b = CmdQueue_StoneTable.next
+	         $7d76 = CmdQueue_StoneTable.fall_down_hole
+	         $7d78 = TalkToTrainerScript
+	         $7d83 = SeenByTrainerScript
+	         $7d98 = StartBattleWithMapTrainerScript
+	         $7da6 = AlreadyBeatenTrainerScript
+	EMPTY: $7da7-$7fff ($0259 bytes)
+	TOTAL EMPTY: $2765 bytes
 
 ROMX bank #38:
-	SECTION: $4000-$47c1 ($07c2 bytes) ["rom38"]
+	SECTION: $4000-$4874 ($0875 bytes) ["Title Screen"]
 	         $4000 = TitleScreenGFX1
 	         $47c2 = TitleScreenTilemap
-	EMPTY: $47c2-$7fff ($383e bytes)
-	TOTAL EMPTY: $383e bytes
+	EMPTY: $4875-$7fff ($378b bytes)
+	TOTAL EMPTY: $378b bytes
 
 ROMX bank #39:
 	EMPTY
@@ -13289,7 +13758,7 @@ ROMX bank #57:
 	TOTAL EMPTY: $333b bytes
 
 ROMX bank #58:
-	SECTION: $4000-$4fe8 ($0fe9 bytes) ["rom58"]
+	SECTION: $4000-$5009 ($100a bytes) ["rom58"]
 	         $4000 = LoadMusicByte
 	         $4000 = _InitSound
 	         $405c = _UpdateSound
@@ -13297,8 +13766,9 @@ ROMX bank #58:
 	         $4b79 = _PlayCry
 	         $4c04 = _PlaySFX
 	         $4fe9 = ClearChannels
-	EMPTY: $4fe9-$7fff ($3017 bytes)
-	TOTAL EMPTY: $3017 bytes
+	         $500a = PlayTrainerEncounterMusic
+	EMPTY: $500a-$7fff ($2ff6 bytes)
+	TOTAL EMPTY: $2ff6 bytes
 
 ROMX bank #59:
 	EMPTY
@@ -13388,6 +13858,8 @@ ROMX bank #63:
 	         $428e = TilesetRuinsOfAlphAnim
 	         $428e = TilesetRadioTowerAnim
 	         $428e = TilesetUndergroundAnim
+	         $49ae = NPCTrade
+	         $4d87 = MomTriesToBuySomething
 	         $4f6a = StagePartyDataForMysteryGift
 	         $4fb2 = InitMysteryGiftLayout
 	EMPTY: $4fb2-$7fff ($304e bytes)
@@ -16921,8 +17393,8 @@ SRAM bank #1:
 	         $b664 = sHallOfFame11Mon4DVs
 	         $b666 = sHallOfFame11Mon4Level
 	         $b667 = sHallOfFame11Mon4Nickname
-	         $b671 = sHallOfFame11Mon4End
 	         $b671 = sHallOfFame11Mon5
+	         $b671 = sHallOfFame11Mon4End
 	         $b671 = sHallOfFame11Mon5Species
 	         $b672 = sHallOfFame11Mon5ID
 	         $b674 = sHallOfFame11Mon5DVs
@@ -17289,8 +17761,8 @@ SRAM bank #1:
 	         $b986 = sHallOfFame19Mon5Level
 	         $b987 = sHallOfFame19Mon5Nickname
 	         $b991 = sHallOfFame19Mon5End
-	         $b991 = sHallOfFame19Mon6Species
 	         $b991 = sHallOfFame19Mon6
+	         $b991 = sHallOfFame19Mon6Species
 	         $b992 = sHallOfFame19Mon6ID
 	         $b994 = sHallOfFame19Mon6DVs
 	         $b996 = sHallOfFame19Mon6Level
@@ -18939,8 +19411,8 @@ SRAM bank #2:
 	         $aa33 = sBox3Mon12Unused1
 	         $aa34 = sBox3Mon12Unused2
 	         $aa35 = sBox3Mon12Level
-	         $aa36 = sBox3Mon13Species
 	         $aa36 = sBox3Mon13
+	         $aa36 = sBox3Mon13Species
 	         $aa36 = sBox3Mon12BoxEnd
 	         $aa37 = sBox3Mon13Item
 	         $aa38 = sBox3Mon13Moves
@@ -19569,8 +20041,8 @@ SRAM bank #2:
 	         $b041 = sBox4Mon18OT
 	         $b04c = sBox4Mon19OT
 	         $b057 = sBox4Mon20OT
-	         $b062 = sBox4MonNicknames
 	         $b062 = sBox4Mon1Nickname
+	         $b062 = sBox4MonNicknames
 	         $b06d = sBox4Mon2Nickname
 	         $b078 = sBox4Mon3Nickname
 	         $b083 = sBox4Mon4Nickname
@@ -19982,8 +20454,8 @@ SRAM bank #2:
 	         $b3b8 = sBox5Mon20Moves
 	         $b3bc = sBox5Mon20ID
 	         $b3be = sBox5Mon20Exp
-	         $b3c1 = sBox5Mon20HPExp
 	         $b3c1 = sBox5Mon20StatExp
+	         $b3c1 = sBox5Mon20HPExp
 	         $b3c3 = sBox5Mon20AtkExp
 	         $b3c5 = sBox5Mon20DefExp
 	         $b3c7 = sBox5Mon20SpdExp
@@ -20751,8 +21223,8 @@ SRAM bank #2:
 	         $bb93 = sBox7Mon13Unused1
 	         $bb94 = sBox7Mon13Unused2
 	         $bb95 = sBox7Mon13Level
-	         $bb96 = sBox7Mon13BoxEnd
 	         $bb96 = sBox7Mon14
+	         $bb96 = sBox7Mon13BoxEnd
 	         $bb96 = sBox7Mon14Species
 	         $bb97 = sBox7Mon14Item
 	         $bb98 = sBox7Mon14Moves
@@ -21064,8 +21536,8 @@ SRAM bank #3:
 	         $a0d3 = sBox8Mon6Unused1
 	         $a0d4 = sBox8Mon6Unused2
 	         $a0d5 = sBox8Mon6Level
-	         $a0d6 = sBox8Mon6BoxEnd
 	         $a0d6 = sBox8Mon7
+	         $a0d6 = sBox8Mon6BoxEnd
 	         $a0d6 = sBox8Mon7Species
 	         $a0d7 = sBox8Mon7Item
 	         $a0d8 = sBox8Mon7Moves
@@ -21085,8 +21557,8 @@ SRAM bank #3:
 	         $a0f4 = sBox8Mon7Unused2
 	         $a0f5 = sBox8Mon7Level
 	         $a0f6 = sBox8Mon8
-	         $a0f6 = sBox8Mon7BoxEnd
 	         $a0f6 = sBox8Mon8Species
+	         $a0f6 = sBox8Mon7BoxEnd
 	         $a0f7 = sBox8Mon8Item
 	         $a0f8 = sBox8Mon8Moves
 	         $a0fc = sBox8Mon8ID
@@ -22207,8 +22679,8 @@ SRAM bank #3:
 	         $aaf8 = sBox10Mon19Moves
 	         $aafc = sBox10Mon19ID
 	         $aafe = sBox10Mon19Exp
-	         $ab01 = sBox10Mon19StatExp
 	         $ab01 = sBox10Mon19HPExp
+	         $ab01 = sBox10Mon19StatExp
 	         $ab03 = sBox10Mon19AtkExp
 	         $ab05 = sBox10Mon19DefExp
 	         $ab07 = sBox10Mon19SpdExp
@@ -22221,14 +22693,14 @@ SRAM bank #3:
 	         $ab14 = sBox10Mon19Unused2
 	         $ab15 = sBox10Mon19Level
 	         $ab16 = sBox10Mon20Species
-	         $ab16 = sBox10Mon19BoxEnd
 	         $ab16 = sBox10Mon20
+	         $ab16 = sBox10Mon19BoxEnd
 	         $ab17 = sBox10Mon20Item
 	         $ab18 = sBox10Mon20Moves
 	         $ab1c = sBox10Mon20ID
 	         $ab1e = sBox10Mon20Exp
-	         $ab21 = sBox10Mon20StatExp
 	         $ab21 = sBox10Mon20HPExp
+	         $ab21 = sBox10Mon20StatExp
 	         $ab23 = sBox10Mon20AtkExp
 	         $ab25 = sBox10Mon20DefExp
 	         $ab27 = sBox10Mon20SpdExp
@@ -22241,8 +22713,8 @@ SRAM bank #3:
 	         $ab34 = sBox10Mon20Unused2
 	         $ab35 = sBox10Mon20Level
 	         $ab36 = sBox10Mon20BoxEnd
-	         $ab36 = sBox10Mon1OT
 	         $ab36 = sBox10MonOTs
+	         $ab36 = sBox10Mon1OT
 	         $ab41 = sBox10Mon2OT
 	         $ab4c = sBox10Mon3OT
 	         $ab57 = sBox10Mon4OT
@@ -23265,8 +23737,8 @@ SRAM bank #3:
 	         $b624 = sBox13Mon4Unused2
 	         $b625 = sBox13Mon4Level
 	         $b626 = sBox13Mon5
-	         $b626 = sBox13Mon5Species
 	         $b626 = sBox13Mon4BoxEnd
+	         $b626 = sBox13Mon5Species
 	         $b627 = sBox13Mon5Item
 	         $b628 = sBox13Mon5Moves
 	         $b62c = sBox13Mon5ID
@@ -24768,9 +25240,9 @@ WRAM0 bank #0:
 	         $c54a = wHallOfFameTempMon5ID
 	         $c54a = wSpriteAnim3Var3
 	         $c54b = wSpriteAnim3Var4
-	         $c54c = wSpriteAnim4
 	         $c54c = wSpriteAnim4Index
 	         $c54c = wHallOfFameTempMon5DVs
+	         $c54c = wSpriteAnim4
 	         $c54d = wSpriteAnim4FramesetID
 	         $c54e = wSpriteAnim4AnimSeqID
 	         $c54e = wHallOfFameTempMon5Level
@@ -24916,8 +25388,8 @@ WRAM0 bank #0:
 	         $c5c8 = wGlobalAnimXOffset
 	         $c5c9 = wSpriteAnimDataEnd
 	         $c5d0 = wPokedexOrder
-	         $c5d0 = wPokedexDataStart
 	         $c5d0 = wOTPatchLists
+	         $c5d0 = wPokedexDataStart
 	         $c5d0 = wPokegearPhoneDisplayPosition
 	         $c5d0 = wPlayerTrademon
 	         $c5d0 = wPlayerTrademonSpecies
@@ -25836,6 +26308,7 @@ WRAM0 bank #0:
 	         $cf11 = wHiddenItemData
 	         $cf11 = wHiddenItemEvent
 	         $cf11 = wElevatorData
+	         $cf11 = wElevatorPointerBank
 	         $cf11 = wCurCoordEvent
 	         $cf11 = wCurCoordEventSceneID
 	         $cf11 = wCurBGEventYCoord
@@ -25844,7 +26317,6 @@ WRAM0 bank #0:
 	         $cf11 = wCheckedTime
 	         $cf11 = wPoisonStepData
 	         $cf11 = wItemBallData
-	         $cf11 = wElevatorPointerBank
 	         $cf12 = wElevatorPointer
 	         $cf12 = wJumpStdScriptBuffer
 	         $cf12 = wCurCoordEventMapY
@@ -25920,17 +26392,17 @@ WRAM0 bank #0:
 	TOTAL EMPTY: $00c8 bytes
 
 WRAMX bank #1:
-	SECTION: $d000-$d251 ($0252 bytes) ["WRAM 1"]
+	SECTION: $d000-$d25b ($025c bytes) ["WRAM 1"]
 	         $d001 = wJumptableIndex
 	         $d002 = wTitleScreenSelectedOption
 	         $d002 = wUnusedBillsPCData
 	         $d002 = wIntroSceneFrameCounter
 	         $d002 = wDebugTilesetCurPalette
+	         $d002 = wCardFlipCursorY
 	         $d002 = wMomBankDigitCursorPosition
 	         $d002 = wTrainerCardBadgeFrameCounter
 	         $d002 = wCreditsBorderFrame
 	         $d002 = wNamingScreenLetterCase
-	         $d002 = wCardFlipCursorY
 	         $d002 = wTradeDialog
 	         $d002 = wPrevDexEntryJumptableIndex
 	         $d002 = wPokegearCard
@@ -26143,12 +26615,12 @@ WRAMX bank #1:
 	         $d190 = wFinalCatchRate
 	         $d190 = wCurDecoration
 	         $d190 = wCurMapScriptBank
+	         $d190 = wCurMailAuthorID
 	         $d190 = wRestartClockCurDivision
 	         $d190 = wTreeMonCoordScore
 	         $d190 = wExpToNextLevel
 	         $d190 = wSkipMovesBeforeLevelUp
 	         $d190 = wPPUpPPBuffer
-	         $d190 = wCurMailAuthorID
 	         $d190 = wFieldMoveData
 	         $d190 = wHPBuffer1
 	         $d190 = wCurHPAnimMaxHP
@@ -26182,8 +26654,8 @@ WRAMX bank #1:
 	         $d191 = wRestartClockPrevDivision
 	         $d191 = wSwitchMonTo
 	         $d192 = wHealMachineAnimState
-	         $d192 = wRestartClockUpArrowYCoord
 	         $d192 = wCurMailIndex
+	         $d192 = wRestartClockUpArrowYCoord
 	         $d192 = wHPBuffer2
 	         $d192 = wCurHPAnimOldHP
 	         $d192 = wEvolutionPicOffset
@@ -26342,8 +26814,16 @@ WRAMX bank #1:
 	         $d24a = wReceiveCallDelay_StartTime
 	         $d250 = wBugContestMinsRemaining
 	         $d251 = wBugContestSecsRemaining
-	EMPTY: $d252-$d25b ($000a bytes)
+	         $d254 = wMapStatusEnd
+	         $d254 = wOptions
+	         $d255 = wSaveFileExists
+	         $d256 = wTextboxFrame
+	         $d257 = wTextboxFlags
+	         $d258 = wGBPrinterBrightness
+	         $d259 = wOptions2
+	         $d25c = wOptionsEnd
 	SECTION: $d25c-$db1e ($08c3 bytes) ["Game Data"]
+	         $d25c = wGameData
 	         $d25c = wPlayerData
 	         $d25c = wPlayerData1
 	         $d25c = wPlayerID
@@ -27090,6 +27570,7 @@ WRAMX bank #1:
 	         $d733 = wWhichRegisteredItem
 	         $d734 = wRegisteredItem
 	         $d735 = wPlayerState
+	         $d736 = wHallOfFameCount
 	         $d84a = wEventFlags
 	         $d94a = wUnusedLinkCommunicationByte
 	         $d94b = wGameTimerPaused
@@ -27729,7 +28210,7 @@ WRAMX bank #1:
 	         $dffe = wPokemonDataEnd
 	         $dffe = wGameDataEnd
 	EMPTY: $dffe-$dfff ($0002 bytes)
-	TOTAL EMPTY: $000c bytes
+	TOTAL EMPTY: $0002 bytes
 
 WRAMX bank #2:
 	SECTION: $d000-$d11f ($0120 bytes) ["WRAM 2"]
