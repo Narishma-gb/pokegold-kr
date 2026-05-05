@@ -295,7 +295,7 @@ wDebugBlackTileColor:: ds 2*/
 ENDU
 
 ; This union spans 280 bytes.
-UNION/*
+UNION
 ; pokedex
 wPokedexDataStart::
 wPokedexOrder:: ds $100 ; >= NUM_POKEMON
@@ -324,7 +324,7 @@ wDexCurLocation:: db
 wPokedexDataEnd::
 	ds 3
 
-NEXTU*/
+NEXTU
 ; pokegear
 wPokegearPhoneDisplayPosition:: db
 wPokegearPhoneCursorPosition:: db
@@ -2259,12 +2259,9 @@ wReceiveCallDelay_StartTime:: ds 3
 
 wBugContestMinsRemaining:: db
 wBugContestSecsRemaining:: db
-/*
-	ds 2
 
+	ds 2
 wMapStatusEnd::
-
-	ds 2
 
 wOptions::
 ; bit 0-2: number of frames to delay when printing text
@@ -2300,11 +2297,11 @@ wOptions2::
 	ds 2
 
 wOptionsEnd::
-*/
+
 
 SECTION "Game Data", WRAMX
 
-;wGameData::
+wGameData::
 wPlayerData::
 wPlayerData1::
 wPlayerID:: dw
@@ -2432,9 +2429,9 @@ wWhichRegisteredItem:: db
 wRegisteredItem:: db
 
 wPlayerState:: db
-/*
+
 wHallOfFameCount:: db
-	ds 1
+/*	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
 
 	ds 33
@@ -2507,7 +2504,7 @@ wMountMoonSquareSceneID::                         db
 	ds 197
 */
 
-	ds 276
+	ds 275
 
 wEventFlags:: flag_array NUM_EVENTS
 

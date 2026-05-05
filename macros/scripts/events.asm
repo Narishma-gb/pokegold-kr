@@ -440,28 +440,33 @@ MACRO getitemname
 	db \1 ; string_buffer
 ENDM
 
-;	const getcurlandmarkname_command ; $42
-;MACRO getcurlandmarkname
-;	db getcurlandmarkname_command
-;	db \1 ; string_buffer
-;ENDM
+	const getcurlandmarkname_command ; $42
+MACRO getcurlandmarkname
+	db getcurlandmarkname_command
+	db \1 ; string_buffer
+ENDM
 
-;	const gettrainername_command ; $43
-;MACRO gettrainername
-;	db gettrainername_command
-;	db \2 ; trainer_group
-;	db \3 ; trainer_id
-;	db \1 ; string_buffer
-;ENDM
+	const gettrainername_command ; $43
+MACRO gettrainername
+	db gettrainername_command
+	db \2 ; trainer_group
+	db \3 ; trainer_id
+	db \1 ; string_buffer
+ENDM
 
-;	const getstring_command ; $44
-;MACRO getstring
-;	db getstring_command
-;	dw \2 ; text_pointer
-;	db \1 ; string_buffer
-;ENDM
+	const getstring_command ; $44
+MACRO getstring
+	db getstring_command
+	dw \2 ; text_pointer
+	db \1 ; string_buffer
+ENDM
 
-	const_next $46
+	const getlandmarkname_command ; $45
+MACRO getlandmarkname
+	db getlandmarkname_command
+	db \2 ; landmark_id
+	db \1 ; string_buffer
+ENDM
 
 	const itemnotify_command ; $46
 MACRO itemnotify
@@ -919,99 +924,99 @@ MACRO endall
 	db endall_command
 ENDM
 
-;	const pokemart_command ; $93
-;MACRO pokemart
-;	db pokemart_command
-;	db \1 ; dialog_id
-;	dw \2 ; mart_id
-;ENDM
+	const pokemart_command ; $94
+MACRO pokemart
+	db pokemart_command
+	db \1 ; dialog_id
+	dw \2 ; mart_id
+ENDM
 
-;	const elevator_command ; $94
-;MACRO elevator
-;	db elevator_command
-;	dw \1 ; floor_list_pointer
-;ENDM
+	const elevator_command ; $95
+MACRO elevator
+	db elevator_command
+	dw \1 ; floor_list_pointer
+ENDM
 
-;	const trade_command ; $95
-;MACRO trade
-;	db trade_command
-;	db \1 ; trade_id
-;ENDM
+	const trade_command ; $96
+MACRO trade
+	db trade_command
+	db \1 ; trade_id
+ENDM
 
-;	const askforphonenumber_command ; $96
-;MACRO askforphonenumber
-;	db askforphonenumber_command
-;	db \1 ; number
-;ENDM
+	const askforphonenumber_command ; $97
+MACRO askforphonenumber
+	db askforphonenumber_command
+	db \1 ; number
+ENDM
 
-;	const phonecall_command ; $97
-;MACRO phonecall
-;	db phonecall_command
-;	dw \1 ; caller_name
-;ENDM
+	const phonecall_command ; $98
+MACRO phonecall
+	db phonecall_command
+	dw \1 ; caller_name
+ENDM
 
-;	const hangup_command ; $98
-;MACRO hangup
-;	db hangup_command
-;ENDM
+	const hangup_command ; $99
+MACRO hangup
+	db hangup_command
+ENDM
 
-;	const describedecoration_command ; $99
-;MACRO describedecoration
-;	db describedecoration_command
-;	db \1 ; byte
-;ENDM
+	const describedecoration_command ; $9a
+MACRO describedecoration
+	db describedecoration_command
+	db \1 ; byte
+ENDM
 
-;	const fruittree_command ; $9a
-;MACRO fruittree
-;	db fruittree_command
-;	db \1 ; tree_id
-;ENDM
+	const fruittree_command ; $9b
+MACRO fruittree
+	db fruittree_command
+	db \1 ; tree_id
+ENDM
 
-;	const specialphonecall_command ; $9b
-;MACRO specialphonecall
-;	db specialphonecall_command
-;	dw \1 ; call_id
-;ENDM
+	const specialphonecall_command ; $9c
+MACRO specialphonecall
+	db specialphonecall_command
+	dw \1 ; call_id
+ENDM
 
-;	const checkphonecall_command ; $9c
-;MACRO checkphonecall
-;	db checkphonecall_command
-;ENDM
+	const checkphonecall_command ; $9d
+MACRO checkphonecall
+	db checkphonecall_command
+ENDM
 
-;	const verbosegiveitem_command ; $9d
-;MACRO verbosegiveitem
-;	if _NARG == 1
-;		verbosegiveitem \1, 1
-;	else
-;		db verbosegiveitem_command
-;		db \1 ; item
-;		db \2 ; quantity
-;	endc
-;ENDM
+	const verbosegiveitem_command ; $9e
+MACRO verbosegiveitem
+	if _NARG == 1
+		verbosegiveitem \1, 1
+	else
+		db verbosegiveitem_command
+		db \1 ; item
+		db \2 ; quantity
+	endc
+ENDM
 
-;	const swarm_command ; $9e
-;MACRO swarm
-;	db swarm_command
-;	map_id \1 ; map
-;ENDM
+	const swarm_command ; $9f
+MACRO swarm
+	db swarm_command
+	map_id \1 ; map
+ENDM
 
-;	const halloffame_command ; $9f
-;MACRO halloffame
-;	db halloffame_command
-;ENDM
+	const halloffame_command ; $a0
+MACRO halloffame
+	db halloffame_command
+ENDM
 
-;	const credits_command ; $a0
-;MACRO credits
-;	db credits_command
-;ENDM
+	const credits_command ; $a1
+MACRO credits
+	db credits_command
+ENDM
 
-;	const warpfacing_command ; $a1
-;MACRO warpfacing
-;	db warpfacing_command
-;	db \1 ; facing
-;	map_id \2 ; map
-;	db \3 ; x
-;	db \4 ; y
-;ENDM
+	const warpfacing_command ; $a2
+MACRO warpfacing
+	db warpfacing_command
+	db \1 ; facing
+	map_id \2 ; map
+	db \3 ; x
+	db \4 ; y
+ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

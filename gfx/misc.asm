@@ -4,23 +4,19 @@ EggPic::
 INCBIN "gfx/pokemon/egg/egg.2bpp.lz"
 
 
-;SECTION "Title Screen", ROMX
+SECTION "Title Screen", ROMX
 
-;IF DEF(_GOLD)
-;TitleScreenGFX1::
-;INCBIN "gfx/title/logo_bottom_gold.2bpp.lz"
-;TitleScreenGFX2::
-;INCBIN "gfx/title/logo_top_gold.2bpp.lz"
+IF DEF(_GOLD)
+TitleScreenGFX1::
+INCBIN "gfx/title/logo_gold.2bpp.lz"
 
-;ELIF DEF(_SILVER)
-;TitleScreenGFX1::
-;INCBIN "gfx/title/logo_bottom_silver.2bpp.lz"
-;TitleScreenGFX2::
-;INCBIN "gfx/title/logo_top_silver.2bpp.lz"
-;ENDC
+ELIF DEF(_SILVER)
+TitleScreenGFX1::
+INCBIN "gfx/title/logo_silver.2bpp.lz"
+ENDC
 
-;TitleScreenTilemap::
-;INCBIN "gfx/title/logo.tilemap"
+TitleScreenTilemap::
+INCBIN "gfx/title/logo.tilemap"
 
 
 ;SECTION "The End", ROMX

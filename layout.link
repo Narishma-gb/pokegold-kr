@@ -108,11 +108,12 @@ ROMX $23
 	"bank23"
 ROMX $24
 	"bank24"
-; ROMX $25
+ROMX $25
 ; 	"Maps"
-; 	"Events"
-; ROMX $26
-; 	"Title Screen"
+	org $65f9
+	"Events"
+ROMX $26
+	"Title Screen"
 ; ROMX $2a
 ; 	"Map Blocks 1"
 ; ROMX $2b

@@ -56,22 +56,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 
 	dr MapScenes, $4000
 	dr MapGroupPointers, $40ed
-	dr OverworldLoop, $65f9
-	dr EnableScriptMode, $6b89
-	dr ScriptEvents, $6b91
-	dr CallCallback, $7366
-	dr WarpToSpawnPoint, $7a6a
-	dr CanEncounterWildMon, $7b3f
-	dr ChooseWildEncounter_BugContest, $7b73
-	dr ClearCmdQueue, $7c3b
-
-
-SECTION "rom38", ROMX[$4000], BANK[38]
-; ROM $26 : $98000 - $9BFFF
-
-	dr TitleScreenGFX1, $4000
-	set_gs_diff -4
-	drd TitleScreenTilemap, $47c6
 
 
 ;SECTION "rom42", ROMX[$4000], BANK[42]
@@ -183,6 +167,7 @@ LoadMusicByte::
 	dr _PlayCry, $4b79
 	dr _PlaySFX, $4c04
 	dr ClearChannels, $4fe9
+	dr PlayTrainerEncounterMusic, $500a
 
 
 ;SECTION "rom59", ROMX[$4000], BANK[59]
@@ -276,6 +261,8 @@ TilesetPlayersRoomAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
 TilesetUndergroundAnim::
+	dr NPCTrade, $49ae
+	dr MomTriesToBuySomething, $4d87
 	dr StagePartyDataForMysteryGift, $4f6a
 	dr InitMysteryGiftLayout, $4fb2
 

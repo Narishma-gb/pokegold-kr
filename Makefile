@@ -14,13 +14,13 @@ rom_obj := \
 	data/pokemon/egg_moves.o \
 	data/pokemon/evos_attacks.o \
 	engine/movie/credits.o \
+	engine/overworld/events.o \
 	gfx/misc.o \
 	gfx/hangul.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
 # 	main.o \
 # 	data/maps/map_data.o \
-# 	engine/overworld/events.o \
 
 # Distinguish asm files which are game-exclusive for building (*_[gold|silver].asm)
 gs_excl_asm := \
@@ -289,8 +289,8 @@ gfx/mystery_gift/mystery_gift.2bpp: tools/gfx += --remove-whitespace
 gfx/mystery_gift/mystery_gift_2.2bpp: tools/gfx += --trim-whitespace
 gfx/mystery_gift/question_mark.1bpp: tools/gfx += --remove-whitespace
 
-gfx/title/logo_bottom_gold.2bpp: tools/gfx += --trim-whitespace
-gfx/title/logo_bottom_silver.2bpp: tools/gfx += --trim-whitespace
+gfx/title/logo_gold.2bpp: tools/gfx += --trim-whitespace
+gfx/title/logo_silver.2bpp: tools/gfx += --trim-whitespace
 gfx/title/hooh_gold.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/lugia_silver.2bpp: tools/gfx += --interleave --png=$<
 

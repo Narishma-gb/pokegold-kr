@@ -7,7 +7,7 @@ ItemPocketNames:
 	dw .TM
 	assert_table_length NUM_ITEM_TYPES
 
-.Item: db "ITEM POCKET@"
-.Key:  db "KEY POCKET@"
-.Ball: db "BALL POCKET@"
-.TM:   db "TM POCKET@"
+.Item: db "도구 포켓@"
+.Key:  db "중요한 포켓@"
+.Ball: db "볼 포켓@"
+.TM:   db "기술머신 포켓@"
