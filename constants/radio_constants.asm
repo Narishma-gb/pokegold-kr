@@ -55,24 +55,22 @@ DEF NUM_RADIO_CHANNELS EQU const_value
 	const PLACES_AND_PEOPLE_5    ; 2e
 	const PLACES_AND_PEOPLE_6    ; 2f
 	const PLACES_AND_PEOPLE_7    ; 30
-	const ROCKET_RADIO_2         ; 31
-	const ROCKET_RADIO_3         ; 32
-	const ROCKET_RADIO_4         ; 33
-	const ROCKET_RADIO_5         ; 34
-	const ROCKET_RADIO_6         ; 35
-	const ROCKET_RADIO_7         ; 36
-	const ROCKET_RADIO_8         ; 37
-	const ROCKET_RADIO_9         ; 38
-	const ROCKET_RADIO_10        ; 39
-	const OAKS_POKEMON_TALK_10   ; 3a
-	const OAKS_POKEMON_TALK_11   ; 3b
-	const OAKS_POKEMON_TALK_12   ; 3c
-	const OAKS_POKEMON_TALK_13   ; 3d
-	const OAKS_POKEMON_TALK_14   ; 3e
-	const RADIO_SCROLL           ; 3f
-	const POKEDEX_SHOW_6         ; 40
-	const POKEDEX_SHOW_7         ; 41
-	const POKEDEX_SHOW_8         ; 42
+	const PLACES_AND_PEOPLE_8    ; 31
+	const ROCKET_RADIO_2         ; 32
+	const ROCKET_RADIO_3         ; 33
+	const ROCKET_RADIO_4         ; 34
+	const ROCKET_RADIO_5         ; 35
+	const ROCKET_RADIO_6         ; 36
+	const ROCKET_RADIO_7         ; 37
+	const ROCKET_RADIO_8         ; 38
+	const ROCKET_RADIO_9         ; 39
+	const ROCKET_RADIO_10        ; 3a
+	const OAKS_POKEMON_TALK_10   ; 3b
+	const OAKS_POKEMON_TALK_11   ; 3c
+	const OAKS_POKEMON_TALK_12   ; 3d
+	const OAKS_POKEMON_TALK_13   ; 3e
+	const OAKS_POKEMON_TALK_14   ; 3f
+	const RADIO_SCROLL           ; 40
 DEF NUM_RADIO_SEGMENTS EQU const_value
 
 ; PlayRadioStationPointers indexes (see engine/pokegear/pokegear.asm)

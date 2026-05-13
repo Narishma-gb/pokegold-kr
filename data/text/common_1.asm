@@ -820,6 +820,7 @@ _PnP_Text4::
 	text "의"
 	done
 
+_PnP_Text5::
 	text_start
 	line "@"
 	text_ram wStringBuffer1
@@ -906,7 +907,7 @@ _PnP_OddText::
 	line "역시 이상해!"
 	done
 
-_PnP_Text5::
+_PnP_Text6::
 	text_start
 	line "@"
 	text_ram wStringBuffer1

@@ -245,19 +245,19 @@ INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/games/slot_machine.asm"
 
 
-;SECTION "bank2E", ROMX
+SECTION "bank2E", ROMX
 
-;INCLUDE "engine/events/checkforhiddenitems.asm"
-;INCLUDE "engine/events/treemons.asm"
-;INCLUDE "engine/pokegear/radio.asm"
-;INCLUDE "engine/pokemon/mail_2.asm"
+INCLUDE "engine/events/checkforhiddenitems.asm"
+INCLUDE "engine/events/treemons.asm"
+INCLUDE "engine/pokegear/radio.asm"
+INCLUDE "engine/pokemon/mail_2.asm"
 
 
-;SECTION "bank31", ROMX
+SECTION "bank31", ROMX
 
-;INCLUDE "engine/events/pokerus/check_pokerus.asm"
-;INCLUDE "engine/events/lucky_number.asm"
-;INCLUDE "engine/pokemon/caught_nickname.asm"
+INCLUDE "engine/events/pokerus/check_pokerus.asm"
+INCLUDE "engine/events/lucky_number.asm"
+INCLUDE "engine/pokemon/caught_nickname.asm"
 
 
 ;SECTION "bank32", ROMX

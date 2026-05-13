@@ -75,27 +75,24 @@ RadioJumptable:
 	dw PeoplePlaces5     ; $2e
 	dw PeoplePlaces6     ; $2f
 	dw PeoplePlaces7     ; $30
+	dw PeoplePlaces8     ; $31
 ; Rocket Radio
-	dw RocketRadio2      ; $31
-	dw RocketRadio3      ; $32
-	dw RocketRadio4      ; $33
-	dw RocketRadio5      ; $34
-	dw RocketRadio6      ; $35
-	dw RocketRadio7      ; $36
-	dw RocketRadio8      ; $37
-	dw RocketRadio9      ; $38
-	dw RocketRadio10     ; $39
+	dw RocketRadio2      ; $32
+	dw RocketRadio3      ; $33
+	dw RocketRadio4      ; $34
+	dw RocketRadio5      ; $35
+	dw RocketRadio6      ; $36
+	dw RocketRadio7      ; $37
+	dw RocketRadio8      ; $38
+	dw RocketRadio9      ; $39
+	dw RocketRadio10     ; $3a
 ; More Pokemon Channel stuff
-	dw OaksPKMNTalk10    ; $3a
-	dw OaksPKMNTalk11    ; $3b
-	dw OaksPKMNTalk12    ; $3c
-	dw OaksPKMNTalk13    ; $3d
-	dw OaksPKMNTalk14    ; $3e
-	dw RadioScroll       ; $3f
-; More Pokemon Channel stuff
-	dw PokedexShow6      ; $40
-	dw PokedexShow7      ; $41
-	dw PokedexShow8      ; $42
+	dw OaksPKMNTalk10    ; $3b
+	dw OaksPKMNTalk11    ; $3c
+	dw OaksPKMNTalk12    ; $3d
+	dw OaksPKMNTalk13    ; $3e
+	dw OaksPKMNTalk14    ; $3f
+	dw RadioScroll       ; $40
 	assert_table_length NUM_RADIO_SEGMENTS
 
 PrintRadioLine:
@@ -543,13 +540,13 @@ OaksPKMNTalk11:
 	ld hl, wRadioTextDelay
 	dec [hl]
 	ret nz
-	hlcoord 9, 14
+	hlcoord 6, 14
 	ld de, .pokemon_string
 	ld a, OAKS_POKEMON_TALK_12
 	jp PlaceRadioString
 
 .pokemon_string
-	db "#MON@"
+	db "포켓몬@"
 
 OaksPKMNTalk12:
 	ld hl, wRadioTextDelay
@@ -561,7 +558,7 @@ OaksPKMNTalk12:
 	jp PlaceRadioString
 
 .pokemon_channel_string
-	db "#MON Channel@"
+	db "포켓몬 채널@"
 
 OaksPKMNTalk13:
 	ld hl, wRadioTextDelay
@@ -603,12 +600,22 @@ PlaceRadioString:
 	jp PlaceString
 
 CopyBottomLineToTopLine:
+	hlcoord 0, 15, wAttrmap
+	decoord 0, 13, wAttrmap
+	ld bc, SCREEN_WIDTH * 2
+	call CopyBytes
 	hlcoord 0, 15
 	decoord 0, 13
 	ld bc, SCREEN_WIDTH * 2
 	jp CopyBytes
 
 ClearBottomLine:
+	hlcoord 1, 15, wAttrmap
+	ld bc, SCREEN_WIDTH - 2
+	call Function14a8
+	hlcoord 1, 16, wAttrmap
+	ld bc, SCREEN_WIDTH - 2
+	call Function14a8
 	hlcoord 1, 15
 	ld bc, SCREEN_WIDTH - 2
 	ld a, ' '
@@ -641,37 +648,24 @@ PokedexShow1:
 
 PokedexShow2:
 	ld a, [wCurPartySpecies]
-	dec a
-	ld hl, PokedexDataPointerTable
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	rlca
-	rlca
-	maskbits NUM_DEX_ENTRY_BANKS
-	add BANK("Pokedex Entries 001-064")
-	push af
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarWord
-	pop af
-	push af
-	push hl
-	call CopyDexEntryPart1
-	dec hl
-	ld [hl], '<DONE>'
-	ld hl, wPokedexShowPointerAddr
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-	call CopyDexEntryPart2
-rept 4
+	ld b, a
+	farcall GetDexEntryPointer
+	call CopyDexEntryLine
+	dec de
+	ld a, '#'
+	ld [de], a
+	inc de
+	ld a, '<DONE>'
+	ld [de], a
+rept 3
 	inc hl
 endr
 	ld a, l
 	ld [wPokedexShowPointerAddr], a
 	ld a, h
 	ld [wPokedexShowPointerAddr + 1], a
+	ld a, b
+	ld [wPokedexShowPointerBank], a
 	ld a, POKEDEX_SHOW_3
 	jp PrintRadioLine
 
@@ -687,21 +681,6 @@ PokedexShow4:
 
 PokedexShow5:
 	call CopyDexEntry
-	ld a, POKEDEX_SHOW_6
-	jp PrintRadioLine
-
-PokedexShow6:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_7
-	jp PrintRadioLine
-
-PokedexShow7:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_8
-	jp PrintRadioLine
-
-PokedexShow8:
-	call CopyDexEntry
 	ld a, POKEDEX_SHOW
 	jp PrintRadioLine
 
@@ -711,29 +690,40 @@ CopyDexEntry:
 	ld a, [wPokedexShowPointerAddr + 1]
 	ld h, a
 	ld a, [wPokedexShowPointerBank]
-	push af
-	push hl
-	call CopyDexEntryPart1
-	dec hl
-	ld [hl], '<DONE>'
-	ld hl, wPokedexShowPointerAddr
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-	call CopyDexEntryPart2
+	ld b, a
+	call CopyDexEntryLine
+	dec de
+	ld a, '<DONE>'
+	ld [de], a
+	ld a, l
+	ld [wPokedexShowPointerAddr], a
+	ld a, h
+	ld [wPokedexShowPointerAddr + 1], a
+	ld a, b
+	ld [wPokedexShowPointerBank], a
 	ret
 
-CopyDexEntryPart1:
-	ld de, wPokedexShowPointerBank
-	ld bc, SCREEN_WIDTH - 1
-	call FarCopyBytes
-	ld hl, wPokedexShowPointerAddr
-	ld [hl], TX_START
-	inc hl
-	ld [hl], '<LINE>'
-	inc hl
+CopyDexEntryLine:
+	ld a, TX_START
+	ld [wRadioText], a
+	ld a, '<LINE>'
+	ld [wRadioText + 1], a
+	ld de, wRadioText + 2
 .loop
-	ld a, [hli]
+	ld a, b
+	call GetFarByte
+	inc hl
+	ld [de], a
+	inc de
+	cp $c
+	jr nc, .not_hangul
+	ld a, b
+	call GetFarByte
+	inc hl
+	ld [de], a
+	inc de
+	jr .loop
+.not_hangul
 	cp '@'
 	ret z
 	cp '<NEXT>'
@@ -741,27 +731,6 @@ CopyDexEntryPart1:
 	cp '<DEXEND>'
 	ret z
 	jr .loop
-
-CopyDexEntryPart2:
-	ld d, a
-.loop
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp '@'
-	jr z, .okay
-	cp '<NEXT>'
-	jr z, .okay
-	cp '<DEXEND>'
-	jr nz, .loop
-.okay
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
-	ld a, d
-	ld [wPokedexShowPointerBank], a
-	ret
 
 PokedexShowText:
 	text_far _PokedexShowText
@@ -1034,7 +1003,7 @@ PeoplePlaces3:
 	cp 49 percent - 1
 	ld a, PLACES_AND_PEOPLE_4 ; People
 	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
+	ld a, PLACES_AND_PEOPLE_7 ; Places
 .ok
 	jp NextRadioLine
 
@@ -1092,6 +1061,15 @@ PnP_Text4:
 	text_end
 
 PeoplePlaces5:
+	ld hl, PnP_Text5
+	ld a, PLACES_AND_PEOPLE_6
+	jp NextRadioLine
+
+PnP_Text5:
+	text_far _PnP_Text5
+	text_end
+
+PeoplePlaces6:
 	; 0-15 are all valid indexes into .Adjectives,
 	; so no need for a retry loop
 	call Random
@@ -1113,7 +1091,7 @@ PeoplePlaces5:
 	cp 49 percent - 1
 	ld a, PLACES_AND_PEOPLE_4 ; People
 	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
+	ld a, PLACES_AND_PEOPLE_7 ; Places
 .ok
 	jp NextRadioLine
 
@@ -1201,10 +1179,10 @@ PnP_OddText:
 	text_far _PnP_OddText
 	text_end
 
-PeoplePlaces6: ; Places
+PeoplePlaces7: ; Places
 	call Random
 	cp (PnP_Places.End - PnP_Places) / 2
-	jr nc, PeoplePlaces6
+	jr nc, PeoplePlaces7
 	ld hl, PnP_Places
 	ld c, a
 	ld b, 0
@@ -1216,17 +1194,17 @@ PeoplePlaces6: ; Places
 	call GetWorldMapLocation
 	ld e, a
 	callfar GetLandmarkName
-	ld hl, PnP_Text5
-	ld a, PLACES_AND_PEOPLE_7
+	ld hl, PnP_Text6
+	ld a, PLACES_AND_PEOPLE_8
 	jp NextRadioLine
 
 INCLUDE "data/radio/pnp_places.asm"
 
-PnP_Text5:
-	text_far _PnP_Text5
+PnP_Text6:
+	text_far _PnP_Text6
 	text_end
 
-PeoplePlaces7:
+PeoplePlaces8:
 	; 0-15 are all valid indexes into .Adjectives,
 	; so no need for a retry loop
 	call Random
@@ -1249,7 +1227,7 @@ PeoplePlaces7:
 	cp 49 percent - 1
 	ld a, PLACES_AND_PEOPLE_4 ; People
 	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
+	ld a, PLACES_AND_PEOPLE_7 ; Places
 .ok
 	jp PrintRadioLine
 

@@ -48,17 +48,9 @@ ReadAnyMail:
 	ldh a, [hJoyPressed]
 	and PAD_A | PAD_B | PAD_START
 	jr z, .loop
-	vc_patch Forbid_printing_mail
-if DEF(_GOLD_VC) || DEF(_SILVER_VC)
-	and NO_INPUT
-else
-	and PAD_START
-endc
-	vc_patch_end
-	jr nz, .pressed_start
 	ret
 
-.pressed_start
+.pressed_start ; unreferenced
 	ld a, [wJumptableIndex]
 	push af
 	callfar PrintMailAndExit ; printer
@@ -702,16 +694,7 @@ MailGFX_PlaceMessage:
 	ld a, [de]
 	and a
 	ret z
-	ld a, [wCurMailIndex]
-	hlcoord 8, 14
-	cp PORTRAITMAIL_INDEX
-	jr z, .place_author
-	hlcoord 6, 14
-	cp MORPH_MAIL_INDEX
-	jr z, .place_author
-	hlcoord 5, 14
-
-.place_author
+	hlcoord 10, 14
 	jp PlaceString
 
 InvertBytes: ; unreferenced

@@ -114,20 +114,20 @@ ROMX $25
 	"Events"
 ROMX $26
 	"Title Screen"
-; ROMX $2a
-; 	"Map Blocks 1"
-; ROMX $2b
-; 	"Map Blocks 2"
+ROMX $2a
+	"Map Blocks 1"
+ROMX $2b
+	"Map Blocks 2"
 ROMX $2e
 	"Pics 14"
-; 	org $6300
-; 	"bank2E"
+	org $6300
+	"bank2E"
 ROMX $30
 	"Sprites 1"
 ROMX $31
 	"Sprites 2"
-; 	org $7a40
-; 	"bank31"
+	org $7a40
+	"bank31"
 ; ROMX $32
 ; 	"bank32"
 ; 	"The End"
@@ -137,8 +137,7 @@ ROMX $31
 ; ROMX $36
 ; 	"Font Inversed"
 ROMX $37
-; 	"Map Blocks 3"
-	org $5773
+	"Map Blocks 3"
 	"Tileset Data 5"
 ; ROMX $38
 ; 	"bank38"

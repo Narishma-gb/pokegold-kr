@@ -58,36 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-;SECTION "rom42", ROMX[$4000], BANK[42]
-; ROM $2a : $A8000 - $ABFFF
-
-
-;SECTION "rom43", ROMX[$4000], BANK[43]
-; ROM $2b : $AC000 - $AFFFF
-
-
-SECTION "rom46", ROMX[$6300], BANK[46]
-; ROM $2e : $B8000 - $BBFFF
-
-	dr CheckForHiddenItems, $6300
-	dr TreeMonEncounter, $6378
-	dr RockMonEncounter, $63a1
-	dr PlayRadioShow, $65bd
-	dr ReadPartyMonMail, $6eb6
-	dr ReadAnyMail, $6ec4
-	dr ItemIsMail, $7ac4
-
-
-SECTION "rom49", ROMX[$7a40], BANK[49]
-; ROM $31 : $C4000 - $C7FFF
-
-	dr _CheckPokerus, $7a40
-	dr CheckForLuckyNumberWinners, $7a5a
-	dr PrintTodaysLuckyNumber, $7bad
-	dr CheckPartyFullAfterContest, $7bbf
-	dr GiveANickname_YesNo, $7cd0
-
-
 SECTION "rom50", ROMX[$4000], BANK[50]
 ; ROM $32 : $C8000 - $CBFFF
 
@@ -116,10 +86,6 @@ SECTION "rom54", ROMX[$4000], BANK[54]
 ; ROM $36 : $D8000 - $DBFFF
 
 	dr FontInversed, $4000
-
-
-;SECTION "rom55", ROMX[$4000], BANK[55]
-; ROM $37 : $DC000 - $DFFFF
 
 
 SECTION "rom56", ROMX[$4000], BANK[56]
