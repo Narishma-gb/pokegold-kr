@@ -40,9 +40,6 @@ Printer_ExitPrinter:
 	ret
 
 PrintDexEntry:
-	ld a, [wPrinterQueueLength]
-	push af
-
 	ld hl, vTiles1
 	ld de, FontInversed
 	lb bc, BANK(FontInversed), $80
@@ -60,9 +57,29 @@ PrintDexEntry:
 	ldh [rIE], a
 
 	call Printer_StartTransmission
-	ln a, 1, 0
+	ln a, 1, 3
 	ld [wPrinterMargins], a
-	farcall PrintPage1
+	hlcoord 0, 0
+	decoord 0, 0, wPrinterTilemapBuffer
+	ld bc, 17 * SCREEN_WIDTH
+	call CopyBytes
+	hlcoord 0, 17, wPrinterTilemapBuffer
+	ld bc, SCREEN_WIDTH
+	ld a, $32
+	call ByteFill
+
+	ld a, BANK(sScratch)
+	call OpenSRAM
+	hlcoord 0, 0, wAttrmap
+	decoord 0, 0, sScratch
+	ld bc, 17 * SCREEN_WIDTH
+	call CopyBytes
+	hlcoord 0, 17, sScratch
+	ld bc, SCREEN_WIDTH
+	xor a
+	call ByteFill
+	call CloseSRAM
+
 	call ClearTilemap
 	ld a, %11100100
 	call DmgToCgbBGPals
@@ -73,28 +90,8 @@ PrintDexEntry:
 	push af
 	ld [hl], VBLANK_SERIAL
 
-	ld a, 16 / 2
-	ld [wPrinterQueueLength], a
-	call Printer_ResetJoypadRegisters
-	call SendScreenToPrinter
-	jr c, .skip_second_page ; canceled or got an error
-
-	call Printer_CleanUpAfterSend
-	ld c, 12
-	call DelayFrames
-	xor a
-	ldh [hBGMapMode], a
-
-	call Printer_StartTransmission
-	ln a, 0, 3
-	ld [wPrinterMargins], a
-	farcall PrintPage2
-	call Printer_ResetJoypadRegisters
-	ld a, 8 / 2
-	ld [wPrinterQueueLength], a
 	call SendScreenToPrinter
 
-.skip_second_page
 	pop af
 	ldh [hVBlank], a
 	call Printer_CleanUpAfterSend
@@ -111,9 +108,6 @@ PrintDexEntry:
 	call DelayFrame
 	dec c
 	jr nz, .low_volume_delay_frames
-
-	pop af
-	ld [wPrinterQueueLength], a
 	ret
 
 PrintPCBox:

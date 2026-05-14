@@ -75,7 +75,7 @@ Print_InitPrinterHandshake:
 	xor a
 	ld [wPrinterSendByteCounter], a
 	ld [wPrinterSendByteCounter + 1], a
-	ld a, [wPrinterQueueLength]
+	ld a, 9
 	ld [wPrinterRowIndex], a
 	call _Printer_NextSection
 	call Printer_WaitHandshake
@@ -149,7 +149,7 @@ Printer_SignalLoopBack:
 	xor a
 	ld [wPrinterSendByteCounter], a
 	ld [wPrinterSendByteCounter + 1], a
-	ld a, [wPrinterQueueLength]
+	ld a, 9
 	ld [wPrinterRowIndex], a
 	call _Printer_NextSection
 	call Printer_WaitHandshake
@@ -353,14 +353,11 @@ Printer_StageHeaderForSend:
 	ret
 
 Printer_Convert2RowsTo2bpp:
-	; de = wPrinterTilemapBuffer + 2 * SCREEN_WIDTH * ([wPrinterQueueLength] - [wPrinterRowIndex])
+	; de = wPrinterTilemapBuffer + 2 * SCREEN_WIDTH * (10 - [wPrinterRowIndex])
 	ld a, [wPrinterRowIndex]
 	xor $ff
-	ld d, a
-	ld a, [wPrinterQueueLength]
-	inc a
-	add d
-	ld hl, wPrinterTilemapBuffer
+	add 10
+	ld hl, 0
 	ld de, 2 * SCREEN_WIDTH
 .loop1
 	and a
@@ -371,7 +368,19 @@ Printer_Convert2RowsTo2bpp:
 .okay1
 	ld e, l
 	ld d, h
+	ld hl, sScratch
+	add hl, de
+	ld a, l
+	ld [wPrinterAttrmapPointer], a
+	ld a, h
+	ld [wPrinterAttrmapPointer + 1], a
+
+	ld hl, wPrinterTilemapBuffer
+	add hl, de
+	ld e, l
+	ld d, h
 	ld hl, wGameboyPrinter2bppSource
+	ld b, 0
 	ld c, 2 * SCREEN_WIDTH
 .loop2
 	ld a, [de]
@@ -397,14 +406,56 @@ Printer_Convert2RowsTo2bpp:
 	or $80
 .got_vtile_addr
 	ld d, a
+
+	push de
+	push hl
+	ld a, BANK(sScratch)
+	call OpenSRAM
+	ld hl, wPrinterAttrmapPointer
+	ld a, [hli]
+	ld h, [hl]
+	add b
+	ld l, a
+	jr nc, .no_carry
+	inc h
+.no_carry
+	bit B_BG_BANK1, [hl]
+	call CloseSRAM
+	pop hl
+	pop de
+	jr z, .not_hangul
+
+	di
+	ld a, BANK("VRAM1")
+	ldh [rVBK], a
+	ld b, 1 tiles
+.loop3
+	ldh a, [rSTAT]
+	and STAT_BUSY
+	jr nz, .loop3
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec b
+	jr nz, .loop3
+
+	xor a
+	ldh [rVBK], a
+	ei
+
+	jr .done
+
+.not_hangul
 	; copy 1 vtile to hl
 	lb bc, BANK(Printer_Convert2RowsTo2bpp), 1
 	call Request2bpp
+.done
 	pop hl
 	ld de, 1 tiles
 	add hl, de
 	pop de
 	pop bc
+	inc b
 	dec c
 	jr nz, .loop2
 	ret

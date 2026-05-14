@@ -470,6 +470,7 @@ wPrinterStatus:: db
 wPrinterMargins:: db
 wPrinterExposureTime:: db
 	ds 16
+wPrinterAttrmapPointer:: dw
 wGameboyPrinterRAMEnd::
 
 /*

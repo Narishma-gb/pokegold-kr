@@ -347,13 +347,15 @@ Pokedex_ReinitDexEntryScreen:
 	ret
 
 DexEntryScreen_ArrowCursorData:
-	db PAD_RIGHT | PAD_LEFT, 2
-	dwcoord 4, 17  ; AREA
-	dwcoord 10, 17 ; CRY
+	db PAD_RIGHT | PAD_LEFT, 3
+	dwcoord 1, 17  ; AREA
+	dwcoord 7, 17  ; CRY
+	dwcoord 13, 17 ; PRNT
 
 DexEntryScreen_MenuActionJumptable:
 	dw .Area
 	dw .Cry
+	dw .Print
 
 .Area:
 	call Pokedex_BlackOutBG
@@ -1052,7 +1054,7 @@ Pokedex_DrawDexEntryScreenBG:
 	hlcoord 14, 8
 	ld de, .Kilogram
 	call Pokedex_PlaceString
-	hlcoord 3, 17
+	hlcoord 0, 17
 	ld de, .MenuItems
 	call Pokedex_PlaceString
 	call Pokedex_PlaceFrontpicTopLeftCorner
@@ -1070,7 +1072,8 @@ Pokedex_DrawDexEntryScreenBG:
 	db "<?><?><?><k><g>", -1
 .MenuItems:
 	db $3b, " ", $55, $56, $57, "   " ; 분포
-	db $58, $59, $5a, $5b, " ", $3c, -1 ; 울음소리
+	db $58, $59, $5a, $5b, "  " ; 울음소리
+	db "PRNT ", $3c, -1
 
 Pokedex_DrawOptionScreenBG:
 	call Pokedex_FillBackgroundColor2
