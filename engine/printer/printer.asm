@@ -1,3 +1,5 @@
+DEF PRINTPARTY_HP EQU '◀' ; $71
+
 SendScreenToPrinter:
 .loop
 	call JoyTextDelay
@@ -313,8 +315,6 @@ PrintMailAndExit:
 	ret
 
 PrintPartymon:
-	ld a, [wPrinterQueueLength]
-	push af
 	xor a
 	ldh [hPrinter], a
 	call Printer_PlayMusic
@@ -328,8 +328,8 @@ PrintPartymon:
 
 	xor a
 	ldh [hBGMapMode], a
-	farcall PrintPartyMonPage1
-	ln a, 1, 0 ; to be loaded to wPrinterMargins
+	call PrintPartyMon
+	ln a, 1, 3 ; to be loaded to wPrinterMargins
 	call Printer_PrepareTilemapForPrint
 
 	ld hl, hVBlank
@@ -337,27 +337,8 @@ PrintPartymon:
 	push af
 	ld [hl], VBLANK_SERIAL
 
-	ld a, 16 / 2
-	ld [wPrinterQueueLength], a
-	call Printer_ResetJoypadRegisters
 	call SendScreenToPrinter
-	jr c, .cancel
 
-	call Printer_CleanUpAfterSend
-	ld c, 12
-	call DelayFrames
-
-	xor a
-	ldh [hBGMapMode], a
-	farcall PrintPartyMonPage2
-	ln a, 0, 3 ; to be loaded to wPrinterMargins
-	call Printer_PrepareTilemapForPrint
-
-	ld a, 18 / 2
-	ld [wPrinterQueueLength], a
-	call Printer_ResetJoypadRegisters
-	call SendScreenToPrinter
-.cancel
 	pop af
 	ldh [hVBlank], a
 	call Printer_CleanUpAfterSend
@@ -368,9 +349,6 @@ PrintPartymon:
 	pop af
 	ldh [rIE], a
 	call Printer_ExitPrinter
-
-	pop af
-	ld [wPrinterQueueLength], a
 	ret
 
 _PrintDiploma:
@@ -477,6 +455,15 @@ Printer_CopyTilemapToBuffer:
 	ld de, wPrinterTilemapBuffer
 	ld bc, SCREEN_AREA
 	call CopyBytes
+
+	ld a, BANK(sScratch)
+	call OpenSRAM
+	hlcoord 0, 0, wAttrmap
+	decoord 0, 0, sScratch
+	ld bc, SCREEN_AREA
+	call CopyBytes
+	call CloseSRAM
+
 	ret
 
 Printer_CopyBufferToTilemap:
@@ -563,8 +550,7 @@ PlacePrinterStatusString:
 	inc hl
 	ld d, [hl]
 	hlcoord 1, 7
-	ld a, BANK(GBPrinterStrings)
-	call PlaceFarString
+	call PlaceString
 	hlcoord 2, 15
 	ld de, String_PressBToCancel
 	call PlaceString
@@ -596,8 +582,7 @@ PlacePrinterStatusStringBorderless: ; unreferenced
 	inc hl
 	ld d, [hl]
 	hlcoord 4, 7
-	ld a, BANK(GBPrinterStrings)
-	call PlaceFarString
+	call PlaceString
 	hlcoord 4, 15
 	ld de, String_PressBToCancel
 	call PlaceString
@@ -619,6 +604,35 @@ PrinterStatusStringPointers:
 	dw GBPrinterString_PrinterError2 ; error 2
 	dw GBPrinterString_PrinterError3 ; error 3
 	dw GBPrinterString_PrinterError4 ; error 4
+
+GBPrinterString_Null: db "@"
+GBPrinterString_CheckingLink: next " CHECKING LINK...@"
+GBPrinterString_Transmitting: next "  TRANSMITTING...@"
+GBPrinterString_Printing: next "    PRINTING...@"
+GBPrinterString_PrinterError1:
+	db   " Printer Error 1"
+	next ""
+	next "Check the Game Boy"
+	next "Printer Manual."
+	db   "@"
+GBPrinterString_PrinterError2:
+	db   " Printer Error 2"
+	next ""
+	next "Check the Game Boy"
+	next "Printer Manual."
+	db   "@"
+GBPrinterString_PrinterError3:
+	db   " Printer Error 3"
+	next ""
+	next "Check the Game Boy"
+	next "Printer Manual."
+	db   "@"
+GBPrinterString_PrinterError4:
+	db   " Printer Error 4"
+	next ""
+	next "Check the Game Boy"
+	next "Printer Manual."
+	db   "@"
 
 PrintPCBox_Page1:
 	xor a
@@ -920,3 +934,194 @@ Printer_PlaceEmptyBoxSlotString:
 
 .EmptyBoxSlotString:
 	db "  <-><-><-><-><-><->@"
+
+PrintPartyMon:
+	call ClearBGPalettes
+	call ClearTilemap
+	call ClearSprites
+	xor a
+	ldh [hBGMapMode], a
+	call LoadFontsBattleExtra
+
+	ld de, GBPrinterHPIcon
+	ld hl, vTiles2 tile PRINTPARTY_HP
+	lb bc, BANK(GBPrinterHPIcon), 1
+	call Request1bpp
+
+	ld de, GBPrinterLvIcon
+	ld hl, vTiles2 tile '<LV>'
+	lb bc, BANK(GBPrinterLvIcon), 1
+	call Request1bpp
+
+	ld de, StatsScreenPageTilesGFX + 14 tiles ; shiny icon
+	ld hl, vTiles2 tile '⁂'
+	lb bc, BANK(StatsScreenPageTilesGFX), 1
+	call Get2bpp
+
+	xor a
+	ld [wMonType], a
+	farcall CopyMonToTempMon
+	hlcoord 7, 0
+	ld b, 16
+	ld c, 11
+	call Textbox
+	hlcoord 0, 8
+	ld b, 8
+	ld c, 7
+	call Textbox
+	hlcoord 8, 1
+	ld a, [wTempMonLevel]
+	call PrintLevel_Force3Digits
+	hlcoord 12, 1
+	ld [hl], PRINTPARTY_HP
+	inc hl
+	ld de, wTempMonMaxHP
+	lb bc, 2, 3
+	call PrintNum
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	ld [wCurSpecies], a
+	ld hl, wPartyMonNicknames
+	call GetCurPartyMonName
+	hlcoord 8, 3
+	call PlaceString
+	hlcoord 13, 3
+	ld [hl], '/'
+	call GetPokemonName
+	hlcoord 14, 3
+	call PlaceString
+	hlcoord 1, 0
+	ld [hl], '№'
+	inc hl
+	ld [hl], '<DOT>'
+	inc hl
+	ld de, wNamedObjectIndex
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
+	call PrintNum
+	hlcoord 10, 5
+	ld de, PrintParty_OTString
+	call PlaceString
+	ld hl, wPartyMonOTs
+	call GetCurPartyMonName
+	hlcoord 14, 5
+	call PlaceString
+	hlcoord 11, 6
+	ld de, PrintParty_IDNoString
+	call PlaceString
+	hlcoord 14, 6
+	ld de, wTempMonID
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
+
+	hlcoord 9, 8
+	ld de, PrintParty_StatsString
+	call PlaceString
+	hlcoord 16, 8
+	ld de, wTempMonAttack
+	call .PrintTempMonStats
+	hlcoord 16, 10
+	ld de, wTempMonDefense
+	call .PrintTempMonStats
+	hlcoord 16, 12
+	ld de, wTempMonSpclAtk
+	call .PrintTempMonStats
+	hlcoord 16, 14
+	ld de, wTempMonSpclDef
+	call .PrintTempMonStats
+	hlcoord 16, 16
+	ld de, wTempMonSpeed
+	call .PrintTempMonStats
+
+	hlcoord 1, 10
+	ld a, [wTempMonMoves + 0]
+	call PlaceMoveNameString
+	hlcoord 1, 12
+	ld a, [wTempMonMoves + 1]
+	call PlaceMoveNameString
+	hlcoord 1, 14
+	ld a, [wTempMonMoves + 2]
+	call PlaceMoveNameString
+	hlcoord 1, 16
+	ld a, [wTempMonMoves + 3]
+	call PlaceMoveNameString
+
+	call PlaceGenderAndShininess
+	ld hl, wTempMonDVs
+	predef GetUnownLetter
+	hlcoord 0, 1
+	call PrepMonFrontpic
+	call WaitBGMap
+	ld b, SCGB_STATS_SCREEN_HP_PALS
+	call GetSGBLayout
+	call SetDefaultBGPAndOBP
+	call DelayFrame
+	ret
+
+.PrintTempMonStats:
+	lb bc, 2, 3
+	call PrintNum
+	ret
+
+GetCurPartyMonName:
+	ld bc, NAME_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	ld e, l
+	ld d, h
+	ret
+
+PlaceMoveNameString:
+	and a
+	jr z, .no_move
+
+	ld [wNamedObjectIndex], a
+	call GetMoveName
+	jr .got_string
+
+.no_move
+	ld de, PrintParty_NoMoveString
+
+.got_string
+	call PlaceString
+	ret
+
+PlaceGenderAndShininess:
+	farcall GetGender
+	ld a, '　'
+	jr c, .got_gender
+	ld a, '♂'
+	jr nz, .got_gender
+	ld a, '♀'
+
+.got_gender
+	hlcoord 17, 1
+	ld [hl], a
+	ld bc, wTempMonDVs
+	farcall CheckShininess
+	ret nc
+	hlcoord 18, 1
+	ld [hl], '⁂'
+	ret
+
+PrintParty_OTString:
+	db "어버이/@"
+
+PrintParty_IDNoString:
+	db "<ID>№@"
+
+PrintParty_StatsString:
+	db   "공격력"
+	next "방어력"
+	next "특수공격"
+	next "특수방어"
+	next "스피드"
+	db   "@"
+
+PrintParty_NoMoveString:
+	db "<-><-><-><-><-><-><->@"
+
+GBPrinterHPIcon:
+INCBIN "gfx/printer/hp.1bpp"
+
+GBPrinterLvIcon:
+INCBIN "gfx/printer/lv.1bpp"

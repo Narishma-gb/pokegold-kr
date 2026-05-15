@@ -407,7 +407,6 @@ Printer_Convert2RowsTo2bpp:
 .got_vtile_addr
 	ld d, a
 
-	push de
 	push hl
 	ld a, BANK(sScratch)
 	call OpenSRAM
@@ -422,7 +421,6 @@ Printer_Convert2RowsTo2bpp:
 	bit B_BG_BANK1, [hl]
 	call CloseSRAM
 	pop hl
-	pop de
 	jr z, .not_hangul
 
 	di

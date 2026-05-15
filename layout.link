@@ -250,7 +250,7 @@ ROMX $6d
 ROMX $6e
 	"Item Descriptions"
 ROMX $70
-	"bank70"
+	org $4407
 	"Tileset Data 6"
 	"bank70_2"
 	"Pokégear GFX"

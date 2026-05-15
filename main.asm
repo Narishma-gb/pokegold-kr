@@ -365,9 +365,8 @@ SECTION "Item Descriptions", ROMX
 INCLUDE "data/items/descriptions.asm"
 
 
-SECTION "bank70", ROMX
+;SECTION "bank70", ROMX
 
-INCLUDE "engine/printer/print_party.asm"
 ;IF DEF(_DEBUG)
 ;INCLUDE "engine/debug/debug_room.asm"
 ;ENDC
