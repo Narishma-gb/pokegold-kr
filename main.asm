@@ -214,10 +214,14 @@ INCLUDE "data/pokemon/unused_pic_banks.asm"
 
 SECTION "bank21", ROMX
 
-INCLUDE "engine/printer/printer_serial.asm"
-INCLUDE "engine/printer/printer.asm"
 INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
+
+
+SECTION "bank22", ROMX
+
+INCLUDE "engine/printer/printer_serial.asm"
+INCLUDE "engine/printer/printer.asm"
 
 
 SECTION "bank23", ROMX

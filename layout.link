@@ -102,8 +102,11 @@ ROMX $20
 	"Trainer Pic Pointers"
 	"Pics 13"
 ROMX $21
+	org $4a2a
 	"bank21"
 	"Credits"
+ROMX $22
+	"bank22"
 ROMX $23
 	"bank23"
 ROMX $24
