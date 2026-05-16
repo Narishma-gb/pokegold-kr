@@ -153,7 +153,6 @@ BatttleBGEffects_GetNamedJumptablePointer:
 
 BattleBGEffects_AnonJumptable:
 	pop de
-DummyPredef2F::
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld l, [hl]

@@ -58,15 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-SECTION "rom50", ROMX[$4000], BANK[50]
-; ROM $32 : $C8000 - $CBFFF
-
-BattleAnimations::
-	dr DummyPredef2F, $40d7
-	dr LoadPoisonBGPals, $7c76
-	dr TheEndGFX, $7cbd
-
-
 SECTION "rom51", ROMX[$4000], BANK[51]
 ; ROM $33 : $CC000 - $CFFFF
 
@@ -76,10 +67,13 @@ BattleAnimCommands::
 	dr DisplayAlreadyCaughtText, $40c9
 	dr DummyPredef38, $40d7
 DummyPredef39::
+DummyPredef2F::
 	dr PlayBattleAnim, $40d8
 	dr BattleAnimCmd_RaiseSub, $45e6
 	dr BattleAnimCmd_MinimizeOpp, $466b
+	dr QueueBattleAnimation, $48df
 	dr BattleAnim_Sine_e, $6699
+	dr BattleAnim_Cosine_e, $669f
 
 
 SECTION "rom54", ROMX[$4000], BANK[54]

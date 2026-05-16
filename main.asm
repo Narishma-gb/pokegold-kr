@@ -260,11 +260,11 @@ INCLUDE "engine/events/lucky_number.asm"
 INCLUDE "engine/pokemon/caught_nickname.asm"
 
 
-;SECTION "bank32", ROMX
+SECTION "bank32", ROMX
 
-;INCLUDE "engine/battle_anims/bg_effects.asm"
-;INCLUDE "data/moves/animations.asm"
-;INCLUDE "engine/events/poisonstep_pals.asm"
+INCLUDE "engine/battle_anims/bg_effects.asm"
+INCLUDE "data/moves/animations.asm"
+INCLUDE "engine/events/poisonstep_pals.asm"
 
 
 ;SECTION "Move Animations", ROMX
