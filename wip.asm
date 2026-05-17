@@ -58,30 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-SECTION "rom51", ROMX[$4000], BANK[51]
-; ROM $33 : $CC000 - $CFFFF
-
-ClearBattleAnims::
-BattleAnimCommands::
-	dr DisplayCaughtContestMonStats, $4000
-	dr DisplayAlreadyCaughtText, $40c9
-	dr DummyPredef38, $40d7
-DummyPredef39::
-DummyPredef2F::
-	dr PlayBattleAnim, $40d8
-	dr BattleAnimCmd_RaiseSub, $45e6
-	dr BattleAnimCmd_MinimizeOpp, $466b
-	dr QueueBattleAnimation, $48df
-	dr BattleAnim_Sine_e, $6699
-	dr BattleAnim_Cosine_e, $669f
-
-
-SECTION "rom54", ROMX[$4000], BANK[54]
-; ROM $36 : $D8000 - $DBFFF
-
-	dr FontInversed, $4000
-
-
 SECTION "rom56", ROMX[$4000], BANK[56]
 ; ROM $38 : $E0000 - $E3FFF
 
@@ -126,6 +102,7 @@ LoadMusicByte::
 	dr _PlayMusic, $4b30
 	dr _PlayCry, $4b79
 	dr _PlaySFX, $4c04
+	dr PlayStereoSFX, $4ca6
 	dr ClearChannels, $4fe9
 	dr PlayTrainerEncounterMusic, $500a
 

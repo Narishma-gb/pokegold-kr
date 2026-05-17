@@ -259,7 +259,6 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap "'t", $d5
 	charmap "'v", $d6
 
-	;charmap "←",         $df
 	charmap "'",    $e0
 	charmap "<PK>", $e1
 	charmap "<MN>", $e2
@@ -270,8 +269,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap ".",   $e8
 	charmap "&",   $e9
 
-	;charmap "é",         $ea
-	;charmap "→",         $eb
+	charmap "é",         $ea
 	charmap "▷",         $ec
 	charmap "▶",         $ed
 	charmap "▼",         $ee
@@ -280,7 +278,7 @@ INCLUDE "constants/charmap/japanese.asm"
 	charmap "×",         $f1
 	charmap "<DOT>",     $f2 ; decimal point; same as "." in English
 	charmap "/",         $f3
-	;charmap "<,>",         $f4
+	charmap "<,>",       $f4
 	charmap "♀",         $f5
 
 	charmap "0",         $f6
