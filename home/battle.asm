@@ -143,7 +143,7 @@ UpdateEnemyMonInParty::
 
 RefreshBattleHuds::
 	call UpdateBattleHuds
-	call Function15ba
+	call Delay4
 	jp WaitBGMap
 
 UpdateBattleHuds::

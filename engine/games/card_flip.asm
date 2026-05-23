@@ -483,10 +483,10 @@ CardFlip_UpdateCoinBalanceDisplay:
 	ret
 
 CardFlip_PrintCoinBalance:
-	hlcoord 9, 15
-	lb bc, 1, 9
+	hlcoord 11, 15
+	lb bc, 1, 7
 	call Textbox
-	hlcoord 10, 16
+	hlcoord 12, 16
 	ld de, .CoinStr
 	call PlaceString
 	hlcoord 15, 16
@@ -496,7 +496,7 @@ CardFlip_PrintCoinBalance:
 	ret
 
 .CoinStr:
-	db "COIN@"
+	db $c8, $c9, "@" ; 동전
 
 CardFlip_InitTilemap:
 	xor a

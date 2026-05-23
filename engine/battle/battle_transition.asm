@@ -350,7 +350,7 @@ endr
 .end
 	ld a, 1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	xor a
 	ldh [hBGMapMode], a
 	ld a, BATTLETRANSITION_FINISH
@@ -483,7 +483,7 @@ StartTrainerBattle_SpeckleToBlack:
 .done
 	ld a, 1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	xor a
 	ldh [hBGMapMode], a
 	ld a, BATTLETRANSITION_FINISH

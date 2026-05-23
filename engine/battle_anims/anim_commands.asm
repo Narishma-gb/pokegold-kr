@@ -24,9 +24,7 @@ PlayBattleAnim:
 	ld a, 1
 	ldh [hBGMapMode], a
 
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
+	call Delay4
 	call WaitSFX
 	ret
 
@@ -122,9 +120,7 @@ BattleAnimClearHud:
 	call ClearActorHud
 	ld a, $1
 	ldh [hBGMapMode], a
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
+	call Delay4
 	call WaitTop
 	ret
 
@@ -139,9 +135,7 @@ BattleAnimRestoreHuds:
 
 	ld a, $1
 	ldh [hBGMapMode], a
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
+	call Delay4
 	call WaitTop
 	vc_hook Stop_reducing_move_anim_flashing
 	ret

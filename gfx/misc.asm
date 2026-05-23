@@ -19,16 +19,16 @@ TitleScreenTilemap::
 INCBIN "gfx/title/logo.tilemap"
 
 
-;SECTION "The End", ROMX
+SECTION "The End", ROMX
 
-;TheEndGFX::
-;INCBIN "gfx/credits/theend.2bpp"
+TheEndGFX::
+INCBIN "gfx/credits/theend.2bpp"
 
 
-;SECTION "Font Inversed", ROMX
+SECTION "Font Inversed", ROMX
 
-;FontInversed::
-;INCBIN "gfx/font/font_inversed.1bpp"
+FontInversed::
+INCBIN "gfx/font/font_inversed.1bpp"
 
 
 ;SECTION "Copyright", ROMX
@@ -65,3 +65,9 @@ SECTION "Pokégear GFX", ROMX
 
 PokegearGFX::
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
+
+
+SECTION "Diploma GFX", ROMX
+
+DiplomaGFX::
+INCBIN "gfx/diploma/diploma.2bpp.lz"

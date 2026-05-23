@@ -77,7 +77,7 @@ ClockResetPassword:
 	and PAD_CTRL_PAD
 	jr z, .loop2
 	call .dpadinput
-	call Function15ba
+	call Delay4
 	jr .loop
 
 .confirm

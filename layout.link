@@ -131,19 +131,19 @@ ROMX $31
 	"Sprites 2"
 	org $7a40
 	"bank31"
-; ROMX $32
-; 	"bank32"
-; 	"The End"
-; ROMX $33
-; 	"Move Animations"
-; 	"Extra Songs 2"
-; ROMX $36
-; 	"Font Inversed"
+ROMX $32
+	"bank32"
+	"The End"
+ROMX $33
+	"Move Animations"
+	"Extra Songs 2"
+ROMX $36
+	"Font Inversed"
 ROMX $37
 	"Map Blocks 3"
 	"Tileset Data 5"
-; ROMX $38
-; 	"bank38"
+ROMX $38
+	"bank38"
 ; ROMX $39
 ; 	"Copyright"
 ; 	"Title Screen 2"
@@ -265,6 +265,8 @@ ROMX $79
 	"Hangul Tables 2"
 ROMX $7a
 	"Hangul Tables 3"
+ROMX $7b
+	"Diploma GFX"
 ROMX $7f
 	"bank7F"
 ; 	org $7df8

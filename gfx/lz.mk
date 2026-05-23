@@ -6,7 +6,7 @@ gfx/battle_anims/%.lz: LZFLAGS += --method 2 --align 4
 
 gfx/battle/dude.2bpp.lz: LZFLAGS += --align 4
 
-gfx/diploma/diploma.2bpp.lz: LZFLAGS += --method 8 --align 1
+gfx/diploma/diploma.2bpp.lz: LZFLAGS = --compressor repetitions
 
 gfx/memory_game/memory_game.2bpp.lz: LZFLAGS += --method 2 --align 4
 
@@ -52,4 +52,3 @@ gfx/title/logo_silver.2bpp.lz: LZFLAGS = --compressor repetitions --align 1
 gfx/title/lugia_silver.2bpp.lz: LZFLAGS += --align 4
 
 gfx/unown_puzzle/%.lz: LZFLAGS += --align 4
-gfx/unown_puzzle/start_cancel.2bpp.lz: LZFLAGS += --method 8 --align 1

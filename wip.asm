@@ -58,56 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-SECTION "rom50", ROMX[$4000], BANK[50]
-; ROM $32 : $C8000 - $CBFFF
-
-BattleAnimations::
-	dr DummyPredef2F, $40d7
-	dr LoadPoisonBGPals, $7c76
-	dr TheEndGFX, $7cbd
-
-
-SECTION "rom51", ROMX[$4000], BANK[51]
-; ROM $33 : $CC000 - $CFFFF
-
-ClearBattleAnims::
-BattleAnimCommands::
-	dr DisplayCaughtContestMonStats, $4000
-	dr DisplayAlreadyCaughtText, $40c9
-	dr DummyPredef38, $40d7
-DummyPredef39::
-	dr PlayBattleAnim, $40d8
-	dr BattleAnimCmd_RaiseSub, $45e6
-	dr BattleAnimCmd_MinimizeOpp, $466b
-	dr BattleAnim_Sine_e, $6699
-
-
-SECTION "rom54", ROMX[$4000], BANK[54]
-; ROM $36 : $D8000 - $DBFFF
-
-	dr FontInversed, $4000
-
-
-SECTION "rom56", ROMX[$4000], BANK[56]
-; ROM $38 : $E0000 - $E3FFF
-
-	dr AnimateUnusedPikachu, $4000
-	dr _Diploma, $4002
-	dr PlaceDiplomaOnScreen, $4009
-	dr PrintDiplomaPage2, $40d5
-	dr RotateUnownFrontpic, $43ea
-	dr UnusedCursor_InterpretJoypad_AnimateCursor, $44d7
-	dr _CardFlip, $44d8
-	dr _UnownPuzzle, $556a
-	dr _MemoryGame, $6257
-	dr MemoryGame_InterpretJoypad_AnimateCursor, $6599
-	dr _DepositPKMN, $6789
-	dr _WithdrawPKMN, $6961
-	dr _MovePKMNWithoutMail, $6b39
-	dr StatsScreenDPad, $734b
-	dr _ChangeBox, $798a
-
-
 SECTION "rom57", ROMX[$4000], BANK[57]
 ; ROM $39 : $E4000 - $E7FFF
 
@@ -132,6 +82,7 @@ LoadMusicByte::
 	dr _PlayMusic, $4b30
 	dr _PlayCry, $4b79
 	dr _PlaySFX, $4c04
+	dr PlayStereoSFX, $4ca6
 	dr ClearChannels, $4fe9
 	dr PlayTrainerEncounterMusic, $500a
 
@@ -423,10 +374,6 @@ SECTION "rom75", ROMX[$4000], BANK[75]
 
 ;SECTION "rom98", ROMX[$4000], BANK[98]
 ; ROM $62 : $188000 - $18BFFF
-
-
-;SECTION "rom123", ROMX[$4000], BANK[123]
-; ROM $7b : $1EC000 - $1EFFFF
 
 
 ;SECTION "rom124", ROMX[$4000], BANK[124]

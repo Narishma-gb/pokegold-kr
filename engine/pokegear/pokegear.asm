@@ -287,7 +287,7 @@ InitPokegearTilemap:
 	jr z, .dmg
 	ld a, $2
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 .dmg
 	call WaitBGMap
 	ret
@@ -2562,7 +2562,7 @@ TownMapBGUpdate:
 ; The BG Map is updated in thirds, so we wait
 
 ; 3 frames to update the whole screen's palettes.
-	call Function15ba
+	call Delay4
 .tiles
 ; Update BG Map tiles
 	call WaitBGMap

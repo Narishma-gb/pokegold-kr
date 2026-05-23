@@ -264,30 +264,30 @@ INCLUDE "engine/events/lucky_number.asm"
 INCLUDE "engine/pokemon/caught_nickname.asm"
 
 
-;SECTION "bank32", ROMX
+SECTION "bank32", ROMX
 
-;INCLUDE "engine/battle_anims/bg_effects.asm"
-;INCLUDE "data/moves/animations.asm"
-;INCLUDE "engine/events/poisonstep_pals.asm"
-
-
-;SECTION "Move Animations", ROMX
-
-;INCLUDE "engine/events/bug_contest/display_stats.asm"
-;INCLUDE "engine/battle_anims/anim_commands.asm"
-;INCLUDE "engine/battle_anims/core.asm"
-;INCLUDE "engine/battle_anims/functions.asm"
-;INCLUDE "engine/battle_anims/helpers.asm"
+INCLUDE "engine/battle_anims/bg_effects.asm"
+INCLUDE "data/moves/animations.asm"
+INCLUDE "engine/events/poisonstep_pals.asm"
 
 
-;SECTION "bank38", ROMX
+SECTION "Move Animations", ROMX
 
-;INCLUDE "engine/events/diploma.asm"
-;INCLUDE "engine/events/print_unown_2.asm"
-;INCLUDE "engine/games/card_flip.asm"
-;INCLUDE "engine/games/unown_puzzle.asm"
-;INCLUDE "engine/games/memory_game.asm"
-;INCLUDE "engine/pokemon/bills_pc.asm"
+INCLUDE "engine/events/bug_contest/display_stats.asm"
+INCLUDE "engine/battle_anims/anim_commands.asm"
+INCLUDE "engine/battle_anims/core.asm"
+INCLUDE "engine/battle_anims/functions.asm"
+INCLUDE "engine/battle_anims/helpers.asm"
+
+
+SECTION "bank38", ROMX
+
+INCLUDE "engine/events/diploma.asm"
+INCLUDE "engine/events/print_unown_2.asm"
+INCLUDE "engine/games/card_flip.asm"
+INCLUDE "engine/games/unown_puzzle.asm"
+INCLUDE "engine/games/memory_game.asm"
+INCLUDE "engine/pokemon/bills_pc.asm"
 
 
 ;SECTION "bank39", ROMX

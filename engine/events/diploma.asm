@@ -16,22 +16,26 @@ PlaceDiplomaOnScreen:
 	call DisableLCD
 	ld hl, DiplomaGFX
 	ld de, vTiles2
-	call Decompress
+	ld a, BANK(DiplomaGFX)
+	call FarDecompress
 	ld hl, DiplomaPage1Tilemap
 	decoord 0, 0
 	ld bc, SCREEN_AREA
 	call CopyBytes
 	ld de, .Player
-	hlcoord 2, 5
+	hlcoord 3, 5
 	call PlaceString
-	ld de, .EmptyString
+	ld de, .Honorific
 	hlcoord 15, 5
 	call PlaceString
 	ld de, wPlayerName
 	hlcoord 9, 5
 	call PlaceString
 	ld de, .Certification
-	hlcoord 2, 8
+	hlcoord 3, 8
+	call PlaceString
+	ld de, .GameFreak
+	hlcoord 11, 16
 	call PlaceString
 	call EnableLCD
 	call WaitBGMap
@@ -42,18 +46,19 @@ PlaceDiplomaOnScreen:
 	ret
 
 .Player:
-	db "PLAYER@"
+	db "플레이어@"
 
-.EmptyString:
-	db "@"
+.Honorific:
+	db "님@"
 
 .Certification:
-	db   "This certifies"
-	next "that you have"
-	next "completed the"
-	next "new #DEX."
-	next "Congratulations!"
+	db   "신형 포켓몬 도감을"
+	next "훌륭하게 완성시킨"
+	next "위대한 공로를 칭찬하며"
+	next "여기에 증명하겠습니다"
 	db   "@"
+
+.GameFreak: db "게임 프리크@"
 
 PrintDiplomaPage2:
 	hlcoord 0, 0
@@ -64,9 +69,6 @@ PrintDiplomaPage2:
 	decoord 0, 0
 	ld bc, SCREEN_AREA
 	call CopyBytes
-	ld de, .GameFreak
-	hlcoord 8, 0
-	call PlaceString
 	ld de, .PlayTime
 	hlcoord 3, 15
 	call PlaceString
@@ -81,11 +83,7 @@ PrintDiplomaPage2:
 	call PrintNum
 	ret
 
-.PlayTime: db "PLAY TIME@"
-.GameFreak: db "GAME FREAK@"
-
-DiplomaGFX:
-INCBIN "gfx/diploma/diploma.2bpp.lz"
+.PlayTime: db "플레이 시간@"
 
 DiplomaPage1Tilemap:
 INCBIN "gfx/diploma/page1.tilemap"

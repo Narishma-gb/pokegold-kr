@@ -3,7 +3,11 @@
 
 MACRO add_predef
 \1Predef::
-	dab \1
+	IF _NARG == 1
+		dab \1
+	ELSE
+		dwb \1, \2
+	ENDC
 ENDM
 
 PredefPointers::
@@ -54,7 +58,7 @@ PredefPointers::
 	add_predef PrintMonTypes
 	add_predef GetUnownLetter
 	add_predef LoadPoisonBGPals
-	add_predef DummyPredef2F
+	add_predef DummyPredef2F, $32 ; wrong bank
 	add_predef InitSGBBorder
 	add_predef LoadSGBLayout
 	add_predef Pokedex_GetArea
