@@ -3351,7 +3351,7 @@ PlayFXAnimID:
 	ld a, d
 	ld [wFXAnimID + 1], a
 
-	call Function15ba
+	call Delay4
 	callfar PlayBattleAnim
 	ret
 

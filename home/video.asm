@@ -94,12 +94,12 @@ UpdateBGMap::
 	farcall_reg _UpdateBGMap
 	ret
 
-Function15ba::
+Delay4::
 	ldh a, [hVBlank]
 	cp VBLANK_CUTSCENE
-	jr z, .asm_15c3
+	jr z, .delay3
 	call DelayFrame
-.asm_15c3
+.delay3
 	call DelayFrame
 	call DelayFrame
 	jp DelayFrame

@@ -58,26 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-SECTION "rom56", ROMX[$4000], BANK[56]
-; ROM $38 : $E0000 - $E3FFF
-
-	dr AnimateUnusedPikachu, $4000
-	dr _Diploma, $4002
-	dr PlaceDiplomaOnScreen, $4009
-	dr PrintDiplomaPage2, $40d5
-	dr RotateUnownFrontpic, $43ea
-	dr UnusedCursor_InterpretJoypad_AnimateCursor, $44d7
-	dr _CardFlip, $44d8
-	dr _UnownPuzzle, $556a
-	dr _MemoryGame, $6257
-	dr MemoryGame_InterpretJoypad_AnimateCursor, $6599
-	dr _DepositPKMN, $6789
-	dr _WithdrawPKMN, $6961
-	dr _MovePKMNWithoutMail, $6b39
-	dr StatsScreenDPad, $734b
-	dr _ChangeBox, $798a
-
-
 SECTION "rom57", ROMX[$4000], BANK[57]
 ; ROM $39 : $E4000 - $E7FFF
 
@@ -394,10 +374,6 @@ SECTION "rom75", ROMX[$4000], BANK[75]
 
 ;SECTION "rom98", ROMX[$4000], BANK[98]
 ; ROM $62 : $188000 - $18BFFF
-
-
-;SECTION "rom123", ROMX[$4000], BANK[123]
-; ROM $7b : $1EC000 - $1EFFFF
 
 
 ;SECTION "rom124", ROMX[$4000], BANK[124]

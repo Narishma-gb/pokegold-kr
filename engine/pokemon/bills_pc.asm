@@ -87,8 +87,7 @@ _DepositPKMN:
 	call PCMonInfo
 	ld a, $1
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
+	call Delay4
 	ret
 
 .a_button
@@ -190,7 +189,7 @@ BillsPCDepositFuncRelease:
 	ld de, PCString_ReleasePKMN
 	call BillsPC_PlaceString
 	call LoadStandardMenuHeader
-	lb bc, 14, 11
+	lb bc, 14, 12
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	dec a
@@ -234,10 +233,10 @@ BillsPCDepositMenuHeader:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "DEPOSIT@"
-	db "STATS@"
-	db "RELEASE@"
-	db "CANCEL@"
+	db "맡기다@"
+	db "상태를 보다@"
+	db "놓아주다@"
+	db "그만두다@"
 
 _WithdrawPKMN:
 	ld hl, wOptions
@@ -330,8 +329,7 @@ _WithdrawPKMN:
 	call PCMonInfo
 	ld a, $1
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
+	call Delay4
 	ret
 .a_button
 	call BillsPC_GetSelectedPokemonSpecies
@@ -429,7 +427,7 @@ BillsPC_Withdraw:
 	ld de, PCString_ReleasePKMN
 	call BillsPC_PlaceString
 	call LoadStandardMenuHeader
-	lb bc, 14, 11
+	lb bc, 14, 12
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	dec a
@@ -472,10 +470,10 @@ BillsPC_Withdraw:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "WITHDRAW@"
-	db "STATS@"
-	db "RELEASE@"
-	db "CANCEL@"
+	db "찾다@"
+	db "상태를 보다@"
+	db "놓아주다@"
+	db "그만두다@"
 
 _MovePKMNWithoutMail:
 	ld hl, wOptions
@@ -572,8 +570,7 @@ _MovePKMNWithoutMail:
 	call PCMonInfo
 	ld a, $1
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
+	call Delay4
 	ret
 
 .d_pad
@@ -682,9 +679,9 @@ _MovePKMNWithoutMail:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
-	db "MOVE@"
-	db "STATS@"
-	db "CANCEL@"
+	db "이동하다@"
+	db "상태를 보다@"
+	db "그만두다@"
 
 .PrepInsertCursor:
 	xor a
@@ -720,8 +717,7 @@ _MovePKMNWithoutMail:
 	call BillsPC_RefreshTextboxes
 	ld a, $1
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
+	call Delay4
 	ret
 
 .dpad_2
@@ -768,8 +764,8 @@ BillsPC_InitRAM:
 	xor a
 	ld [wJumptableIndex], a
 	ld [wUnusedBillsPCData], a
-	ld [wUnusedBillsPCData+1], a
-	ld [wUnusedBillsPCData+2], a
+	ld [wUnusedBillsPCData + 1], a
+	ld [wUnusedBillsPCData + 2], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	ret
@@ -946,8 +942,8 @@ BillsPC_LeftRightDidSomething:
 
 BillsPC_PlaceString:
 	push de
-	hlcoord 0, 15
-	lb bc, 1, 18
+	hlcoord 0, 14
+	lb bc, 2, 18
 	call Textbox
 	pop de
 	hlcoord 1, 16
@@ -956,15 +952,15 @@ BillsPC_PlaceString:
 
 BillsPC_MoveMonWOMail_BoxNameAndArrows:
 	call BillsPC_BoxName
-	hlcoord 8, 1
+	hlcoord 9, 2
 	ld [hl], $5f
-	hlcoord 19, 1
+	hlcoord 19, 2
 	ld [hl], $5e
 	ret
 
 BillsPC_BoxName:
-	hlcoord 8, 0
-	lb bc, 1, 10
+	hlcoord 9, 0
+	lb bc, 2, 9
 	call Textbox
 
 	ld a, [wBillsPC_LoadedBox]
@@ -988,12 +984,12 @@ BillsPC_BoxName:
 .party
 	ld de, .PartyPKMN
 .print
-	hlcoord 10, 1
+	hlcoord 10, 2
 	call PlaceString
 	ret
 
 .PartyPKMN:
-	db "PARTY <PK><MN>@"
+	db "지니고있는 포켓몬@"
 
 PCMonInfo:
 ; Display a monster's pic and
@@ -1007,12 +1003,8 @@ PCMonInfo:
 ; whether it's holding an item.
 
 	hlcoord 0, 0
-	lb bc, 15, 8
-	call ClearBox
-
-	hlcoord 8, 14
-	lb bc, 1, 3
-	call ClearBox
+	lb bc, 12, 7
+	call Textbox
 
 	call BillsPC_GetSelectedPokemonSpecies
 	and a
@@ -1021,7 +1013,7 @@ PCMonInfo:
 	ret z
 
 	ld [wTempSpecies], a
-	hlcoord 1, 4
+	hlcoord 1, 1
 	xor a
 	ld b, 7
 .row
@@ -1058,10 +1050,10 @@ PCMonInfo:
 	ret z
 
 	call GetBasePokemonName
-	hlcoord 1, 14
+	hlcoord 1, 11
 	call PlaceString
 
-	hlcoord 1, 12
+	hlcoord 2, 9
 	call PrintLevel
 
 	ld a, TEMPMON
@@ -1072,7 +1064,7 @@ PCMonInfo:
 	jr nz, .printgender
 	ld a, '♀'
 .printgender
-	hlcoord 5, 12
+	hlcoord 7, 11
 	ld [hl], a
 .skip_gender
 
@@ -1090,7 +1082,7 @@ PCMonInfo:
 	ld [wBillsPC_MonHasMail], a
 	ld a, $5c ; mail icon
 .printitem
-	hlcoord 7, 12
+	hlcoord 7, 9
 	ld [hl], a
 	ret
 
@@ -1202,14 +1194,9 @@ endr
 	ret
 
 BillsPC_RefreshTextboxes:
-	hlcoord 8, 2
-	lb bc, 10, 10
-	call Textbox
-
-	hlcoord 8, 2
-	ld [hl], '└'
-	hlcoord 19, 2
-	ld [hl], '┘'
+	hlcoord 9, 4
+	lb bc, 10, 11
+	call ClearBox
 
 	ld a, [wBillsPC_ScrollPosition]
 	ld e, a
@@ -1220,7 +1207,7 @@ rept BOXLIST_SIZE
 endr
 	ld e, l
 	ld d, h
-	hlcoord 9, 4
+	hlcoord 10, 5
 	ld a, [wBillsPC_NumMonsOnScreen]
 .loop
 	push af
@@ -1240,7 +1227,7 @@ endr
 	ret
 
 .CancelString:
-	db "CANCEL@"
+	db "그만두다@"
 
 .PlaceNickname:
 	ld a, [de]
@@ -1353,7 +1340,7 @@ endr
 	ret
 
 .Placeholder:
-	db "-----@"
+	db "<-><-><-><-><->@"
 
 MACRO copy_box_data
 .loop\@
@@ -1465,26 +1452,24 @@ endr
 	jr .loop
 
 .OAM:
-	dbsprite  9, 5, 7, 1, $00, 0
-	dbsprite 10, 5, 7, 1, $01, 0
-	dbsprite 11, 5, 7, 1, $01, 0
-	dbsprite 12, 5, 7, 1, $01, 0
-	dbsprite 13, 5, 7, 1, $01, 0
-	dbsprite 14, 5, 7, 1, $01, 0
-	dbsprite 15, 5, 7, 1, $01, 0
-	dbsprite 16, 5, 7, 1, $01, 0
-	dbsprite 17, 5, 7, 1, $01, 0
-	dbsprite 18, 5, 7, 1, $02, 0
-	dbsprite  9, 6, 7, 1, $03, 0
-	dbsprite 10, 6, 7, 1, $04, 0
-	dbsprite 11, 6, 7, 1, $04, 0
-	dbsprite 12, 6, 7, 1, $04, 0
-	dbsprite 13, 6, 7, 1, $04, 0
-	dbsprite 14, 6, 7, 1, $04, 0
-	dbsprite 15, 6, 7, 1, $04, 0
-	dbsprite 16, 6, 7, 1, $04, 0
-	dbsprite 17, 6, 7, 1, $04, 0
-	dbsprite 18, 6, 7, 1, $05, 0
+	dbsprite 10, 6, 6, 2, $00, 0
+	dbsprite 11, 6, 6, 2, $01, 0
+	dbsprite 12, 6, 6, 2, $01, 0
+	dbsprite 13, 6, 6, 2, $01, 0
+	dbsprite 14, 6, 6, 2, $01, 0
+	dbsprite 15, 6, 6, 2, $01, 0
+	dbsprite 16, 6, 6, 2, $01, 0
+	dbsprite 17, 6, 6, 2, $01, 0
+	dbsprite 18, 6, 6, 2, $02, 0
+	dbsprite 10, 7, 6, 2, $03, 0
+	dbsprite 11, 7, 6, 2, $04, 0
+	dbsprite 12, 7, 6, 2, $04, 0
+	dbsprite 13, 7, 6, 2, $04, 0
+	dbsprite 14, 7, 6, 2, $04, 0
+	dbsprite 15, 7, 6, 2, $04, 0
+	dbsprite 16, 7, 6, 2, $04, 0
+	dbsprite 17, 7, 6, 2, $04, 0
+	dbsprite 18, 7, 6, 2, $05, 0
 	db -1
 
 BillsPC_UpdateInsertCursor:
@@ -1509,33 +1494,17 @@ endr
 	jr .loop
 
 .OAM:
-	dbsprite 10, 4, 0, 7, $06, 0
-	dbsprite 11, 5, 0, 3, $01, 0
-	dbsprite 12, 5, 0, 3, $01, 0
-	dbsprite 13, 5, 0, 3, $01, 0
-	dbsprite 14, 5, 0, 3, $01, 0
-	dbsprite 15, 5, 0, 3, $01, 0
-	dbsprite 16, 5, 0, 3, $01, 0
-	dbsprite 17, 5, 0, 3, $01, 0
-	dbsprite 18, 5, 0, 3, $01, 0
-	dbsprite 19, 4, 0, 7, $07, 0
+	dbsprite 10, 5, 0, 7, $06, 0
+	dbsprite 11, 6, 0, 3, $01, 0
+	dbsprite 12, 6, 0, 3, $01, 0
+	dbsprite 13, 6, 0, 3, $01, 0
+	dbsprite 14, 6, 0, 3, $01, 0
+	dbsprite 15, 6, 0, 3, $01, 0
+	dbsprite 16, 6, 0, 3, $01, 0
+	dbsprite 17, 6, 0, 3, $01, 0
+	dbsprite 18, 6, 0, 3, $01, 0
+	dbsprite 19, 5, 0, 7, $07, 0
 	db -1
-
-BillsPC_FillBox: ; unreferenced
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-	ret
 
 BillsPC_CheckSpaceInDestination:
 ; If moving within a box, no need to be here.
@@ -1761,24 +1730,19 @@ DepositPokemon:
 	ld a, [wCurPartySpecies]
 	call PlayMonCry
 	hlcoord 0, 0
-	lb bc, 15, 8
-	call ClearBox
-	hlcoord 8, 14
-	lb bc, 1, 3
-	call ClearBox
-	hlcoord 0, 15
-	lb bc, 1, 18
+	lb bc, 12, 7
+	call Textbox
+	hlcoord 0, 14
+	lb bc, 2, 18
 	call Textbox
 	call WaitBGMap
 	hlcoord 1, 16
-	ld de, PCString_Stored
+	ld de, wStringBuffer1
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld de, wStringBuffer1
+	ld de, PCString_Stored
 	call PlaceString
-	ld a, '!'
-	ld [bc], a
 	ld c, 50
 	call DelayFrames
 	and a
@@ -1816,24 +1780,19 @@ TryWithdrawPokemon:
 	ld a, [wCurPartySpecies]
 	call PlayMonCry
 	hlcoord 0, 0
-	lb bc, 15, 8
-	call ClearBox
-	hlcoord 8, 14
-	lb bc, 1, 3
-	call ClearBox
-	hlcoord 0, 15
-	lb bc, 1, 18
+	lb bc, 12, 7
+	call Textbox
+	hlcoord 0, 14
+	lb bc, 2, 18
 	call Textbox
 	call WaitBGMap
 	hlcoord 1, 16
-	ld de, PCString_Got
+	ld de, wStringBuffer1
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld de, wStringBuffer1
+	ld de, PCString_Got
 	call PlaceString
-	ld a, '!'
-	ld [bc], a
 	ld c, 50
 	call DelayFrames
 	and a
@@ -1852,13 +1811,10 @@ TryWithdrawPokemon:
 
 ReleasePKMN_ByePKMN:
 	hlcoord 0, 0
-	lb bc, 15, 8
-	call ClearBox
-	hlcoord 8, 14
-	lb bc, 1, 3
-	call ClearBox
-	hlcoord 0, 15
-	lb bc, 1, 18
+	lb bc, 12, 7
+	call Textbox
+	hlcoord 0, 14
+	lb bc, 2, 18
 	call Textbox
 
 	call WaitBGMap
@@ -1874,24 +1830,28 @@ ReleasePKMN_ByePKMN:
 	ld [wTempSpecies], a
 	call GetPokemonName
 	hlcoord 1, 16
+	ld de, wStringBuffer1
+	call PlaceString
+	ld l, c
+	ld h, b
 	ld de, PCString_ReleasedPKMN
 	call PlaceString
 	ld c, 80
 	call DelayFrames
-	hlcoord 0, 15
-	lb bc, 1, 18
+	hlcoord 0, 14
+	lb bc, 2, 18
 	call Textbox
 	hlcoord 1, 16
 	ld de, PCString_Bye
 	call PlaceString
 	ld l, c
 	ld h, b
-	inc hl
 	ld de, wStringBuffer1
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld [hl], '!'
+	ld de, PCString_Exclamation
+	call PlaceString
 	ld c, 50
 	call DelayFrames
 	ret
@@ -1905,8 +1865,8 @@ MovePKMNWithoutMail_InsertMon:
 	push de
 	push bc
 	push af
-	hlcoord 0, 15
-	lb bc, 1, 18
+	hlcoord 0, 14
+	lb bc, 2, 18
 	call Textbox
 	hlcoord 1, 16
 	ld de, .Saving_LeaveOn
@@ -1949,7 +1909,7 @@ MovePKMNWithoutMail_InsertMon:
 	ret
 
 .Saving_LeaveOn:
-	db "Saving… Leave ON!@"
+	db "세이브중…전원을 끄지 마세요@"
 
 .Jumptable:
 	dw .BoxToBox
@@ -2182,22 +2142,23 @@ BillsPC_InitGFX:
 PCSelectLZ: INCBIN "gfx/pc/pc.2bpp.lz"
 PCMailGFX:  INCBIN "gfx/pc/pc_mail.2bpp"
 
-PCString_ChooseaPKMN: db "Choose a <PK><MN>.@"
-PCString_WhatsUp: db "What's up?@"
-PCString_ReleasePKMN: db "Release <PK><MN>?@"
-PCString_MoveToWhere: db "Move to where?@"
-PCString_ItsYourLastPKMN: db "It's your last <PK><MN>!@"
-PCString_TheresNoRoom: db "There's no room!@"
-PCString_NoMoreUsablePKMN: db "No more usable <PK><MN>!@"
-PCString_RemoveMail: db "Remove MAIL.@"
-PCString_ReleasedPKMN: db "Released <PK><MN>.@"
-PCString_Bye: db "Bye,@"
-PCString_Stored: db "Stored @"
-PCString_Got: db "Got @"
-PCString_Non: db "Non.@" ; unreferenced
-PCString_BoxFull: db "The BOX is full.@"
-PCString_PartyFull: db "The party's full!@"
-PCString_NoReleasingEGGS: db "No releasing EGGS!@"
+PCString_ChooseaPKMN: db "포켓몬을 골라주세요@"
+PCString_WhatsUp: db "어떻게 하겠습니까?@"
+PCString_ReleasePKMN: db "정말로 놓아주겠습니까?@"
+PCString_MoveToWhere: db "이동할 곳을 선택해 주세요@"
+PCString_ItsYourLastPKMN: db "지니고있는 포켓몬이 없어집니다!@"
+PCString_TheresNoRoom: db "여기는 이미 가득 찼습니다!@"
+PCString_NoMoreUsablePKMN: db "싸울 포켓몬이 없어지게 됩니다!@"
+PCString_RemoveMail: db "메일을 꺼내주세요@"
+PCString_ReleasedPKMN: db "를(을) 밖에 놓아주었다@"
+PCString_Bye: db "잘가- @"
+PCString_Exclamation: db "!@"
+PCString_Stored: db "를(을) 맡겼다!@"
+PCString_Got: db "를(을) 찾았다!@"
+PCString_Non: db "없음@" ; unreferenced
+PCString_BoxFull: db "박스가 가득찼습니다!@"
+PCString_PartyFull: db "더이상 데리고 갈 수 없습니다!@"
+PCString_NoReleasingEGGS: db "알은 놓아줄 수 없습니다!@"
 
 _ChangeBox:
 	call LoadStandardMenuHeader
@@ -2294,7 +2255,7 @@ BillsPC_PrintBoxCountAndCapacity:
 	ret
 
 .Pokemon:
-	db "#MON@"
+	db "포켓몬의 수@"
 
 .OutOf20:
 	db "/{d:MONS_PER_BOX}@" ; "/20@"
@@ -2363,7 +2324,7 @@ BillsPC_PrintBoxName:
 	ret
 
 .Current:
-	db "CURRENT@"
+	db "지금의 박스@"
 
 BillsPC_ChangeBoxSubmenu:
 	ld hl, .MenuHeader
@@ -2376,12 +2337,10 @@ BillsPC_ChangeBoxSubmenu:
 	jr z, .Switch
 	cp $2
 	jr z, .Name
-	cp $3
-	jr z, .Print
 	and a
 	ret
 
-.Print:
+.Print: ; unreferenced
 	call GetBoxCount
 	and a
 	jr z, .EmptyBox
@@ -2436,31 +2395,30 @@ BillsPC_ChangeBoxSubmenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 4, SCREEN_WIDTH - 1, 13
+	menu_coords 11, 4, SCREEN_WIDTH - 1, 11
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 4 ; items
-	db "SWITCH@"
-	db "NAME@"
-	db "PRINT@"
-	db "QUIT@"
+	db 3 ; items
+	db "바꾸다@"
+	db "이름@"
+	db "돌아가다@"
 
 BillsPC_PlaceChooseABoxString:
 	ld de, .ChooseABox
 	jr BillsPC_PlaceChangeBoxString
 
 .ChooseABox:
-	db "Choose a BOX.@"
+	db "박스를 골라주세요@"
 
 BillsPC_PlaceWhatsUpString:
 	ld de, .WhatsUp
 	jr BillsPC_PlaceChangeBoxString
 
 .WhatsUp:
-	db "What's up?@"
+	db "뭐할꺼야?@"
 
 BillsPC_PlaceEmptyBoxString_SFX:
 	ld de, .NoMonString
@@ -2473,7 +2431,7 @@ BillsPC_PlaceEmptyBoxString_SFX:
 	ret
 
 .NoMonString:
-	db "There's no #MON.@"
+	db "포켓몬이 들어있지 않습니다!@"
 
 BillsPC_PlaceChangeBoxString:
 	push de

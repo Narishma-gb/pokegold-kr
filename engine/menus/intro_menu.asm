@@ -710,7 +710,7 @@ ShrinkPlayer:
 	ld b, 7
 	ld c, 7
 	call ClearBox
-	call Function15ba
+	call Delay4
 
 	call Intro_PlaceChrisSprite
 	call LoadFontsExtra

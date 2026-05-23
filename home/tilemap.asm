@@ -4,7 +4,7 @@ WaitBGMap::
 ; Tell VBlank to update BG Map
 	ld a, 1 ; BG Map 0 tiles
 	ldh [hBGMapMode], a
-	call Function15ba	
+	call Delay4	
 	call DelayFrame
 	ret
 
@@ -15,13 +15,13 @@ WaitBGMap2::
 
 	ld a, 2
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	call DelayFrame
 
 .bg0
 	ld a, 1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	call DelayFrame
 	ret
 
@@ -47,7 +47,7 @@ ApplyTilemap::
 ; WaitBGMap
 	ld a, 1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	call DelayFrame
 	ret
 

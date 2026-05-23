@@ -534,7 +534,7 @@ ApplyAttrmap:
 	push af
 	ld a, $2
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	call DelayFrame
 	pop af
 	ldh [hBGMapMode], a

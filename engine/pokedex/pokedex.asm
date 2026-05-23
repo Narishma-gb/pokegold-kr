@@ -235,7 +235,7 @@ Pokedex_UpdateMainScreen:
 	call Pokedex_PrintListing
 	ld a, 1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	ret
 
 .a
@@ -657,7 +657,7 @@ Pokedex_UpdateSearchResultsScreen:
 	call Pokedex_PrintListing
 	ld a, 1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	ret
 
 .go_to_dex_entry
@@ -766,7 +766,7 @@ Pokedex_UnownModeHandleDPadInput:
 	farcall PrintUnownWord
 	ld a, $1
 	ldh [hBGMapMode], a
-	call Function15ba
+	call Delay4
 	ret
 
 Pokedex_UnownModeEraseCursor:

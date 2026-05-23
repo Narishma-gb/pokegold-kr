@@ -820,7 +820,9 @@ UnownPuzzleCursorGFX:
 INCBIN "gfx/unown_puzzle/cursor.2bpp"
 
 UnownPuzzleStartCancelLZ:
-INCBIN "gfx/unown_puzzle/start_cancel.2bpp.lz"
+; start_cancel.2bpp.lz has an extra $e0 byte at the start, and lzcomp
+; cannot perfectly match the way it's compressed.
+INCBIN "gfx/unown_puzzle/start_cancel.2bpp.lz.bin"
 
 HoOhPuzzleLZ:
 INCBIN "gfx/unown_puzzle/hooh.2bpp.lz"

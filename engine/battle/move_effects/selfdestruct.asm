@@ -1,7 +1,7 @@
 BattleCommand_Selfdestruct:
 	ld a, ANIM_PLAYER_DAMAGE - BATTLE_AFTERANIMS
 	ld [wBattleAfterAnim], a
-	call Function15ba
+	call Delay4
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	xor a

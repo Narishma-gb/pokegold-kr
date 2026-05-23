@@ -261,6 +261,8 @@ gfx/trainers/swimmer_m.gbcpal: tools/gbcpal += --reverse
 
 gfx/credits/copyright.2bpp: tools/gfx += --remove-whitespace
 
+gfx/diploma/diploma.2bpp: tools/gfx += --trim-whitespace
+
 gfx/error_screen/error_screen.2bpp: tools/gfx += --trim-whitespace
 
 gfx/intro/fire.2bpp: tools/gfx += --remove-whitespace

@@ -429,8 +429,7 @@ MemoryGame_PlaceCard:
 	ld [hli], a
 	inc a
 	ld [hl], a
-	ld c, 3
-	call DelayFrames
+	call Delay4
 	ret
 
 MemoryGame_DeleteCard:
@@ -441,8 +440,7 @@ MemoryGame_DeleteCard:
 	add hl, bc
 	ld [hli], a
 	ld [hl], a
-	ld c, 3
-	call DelayFrames
+	call Delay4
 	ret
 
 MemoryGame_InitStrings:

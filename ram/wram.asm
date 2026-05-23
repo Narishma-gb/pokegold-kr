@@ -381,7 +381,7 @@ wSlotBuildingMatch:: db
 wSlotsDataEnd::
 	ds 28
 wSlotsEnd::
-/*
+
 NEXTU
 ; card flip
 wDeck:: ds CARDFLIP_DECK_SIZE
@@ -412,7 +412,7 @@ wMemoryGameNumCardsMatched:: db
 
 NEXTU
 ; unown puzzle
-wPuzzlePieces:: ds 6 * 6*/
+wPuzzlePieces:: ds 6 * 6
 ENDU
 
 
@@ -472,7 +472,7 @@ wPrinterExposureTime:: db
 	ds 16
 wGameboyPrinterRAMEnd::
 
-/*
+
 SECTION UNION "Overworld Map", WRAM0
 
 ; bill's pc data
@@ -490,7 +490,7 @@ wBillsPC_BackupLoadedBox:: db
 wBillsPC_MonHasMail:: db
 	ds 5
 wBillsPCDataEnd::
-*/
+
 
 SECTION UNION "Overworld Map", WRAM0
 

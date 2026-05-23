@@ -65,3 +65,9 @@ SECTION "Pokégear GFX", ROMX
 
 PokegearGFX::
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
+
+
+SECTION "Diploma GFX", ROMX
+
+DiplomaGFX::
+INCBIN "gfx/diploma/diploma.2bpp.lz"
