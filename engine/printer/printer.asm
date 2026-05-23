@@ -266,8 +266,6 @@ PrintUnownStamp:
 	ret
 
 PrintMailAndExit:
-	ld a, [wPrinterQueueLength]
-	push af
 	xor a
 	ldh [hPrinter], a
 	call Printer_PlayMusic
@@ -289,8 +287,6 @@ PrintMailAndExit:
 	push af
 	ld [hl], VBLANK_SERIAL
 
-	ld a, 18 / 2
-	ld [wPrinterQueueLength], a
 	call SendScreenToPrinter
 
 	pop af
@@ -304,8 +300,6 @@ PrintMailAndExit:
 	ldh [rIE], a
 
 	call Printer_ExitPrinter
-	pop af
-	ld [wPrinterQueueLength], a
 	ret
 
 PrintPartymon:
@@ -465,6 +459,14 @@ Printer_CopyBufferToTilemap:
 	decoord 0, 0
 	ld bc, SCREEN_AREA
 	call CopyBytes
+
+	ld a, BANK(sScratch)
+	call OpenSRAM
+	hlcoord 0, 0, sScratch
+	decoord 0, 0, wAttrmap
+	ld bc, SCREEN_AREA
+	call CopyBytes
+	call CloseSRAM
 	ret
 
 Printer_ResetJoypadRegisters:

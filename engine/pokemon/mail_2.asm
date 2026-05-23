@@ -48,9 +48,11 @@ ReadAnyMail:
 	ldh a, [hJoyPressed]
 	and PAD_A | PAD_B | PAD_START
 	jr z, .loop
+	and PAD_START
+	jr nz, .pressed_start
 	ret
 
-.pressed_start ; unreferenced
+.pressed_start
 	ld a, [wJumptableIndex]
 	push af
 	callfar PrintMailAndExit ; printer
