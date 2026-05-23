@@ -2324,6 +2324,13 @@ Pokedex_LoadUnownFrontpicTiles:
 	ld a, UNOWN
 	ld [wCurPartySpecies], a
 	call GetBaseData
+	jr .next
+
+; temporary hack to fix NewPokedexEntry jump
+	nop
+	jr _NewPokedexEntry
+
+.next
 	ld de, vTiles2 tile $00
 	predef GetMonFrontpic
 	pop af

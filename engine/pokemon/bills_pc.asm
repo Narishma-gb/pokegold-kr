@@ -2337,10 +2337,12 @@ BillsPC_ChangeBoxSubmenu:
 	jr z, .Switch
 	cp $2
 	jr z, .Name
+	cp $3
+	jr z, .Print
 	and a
 	ret
 
-.Print: ; unreferenced
+.Print:
 	call GetBoxCount
 	and a
 	jr z, .EmptyBox
@@ -2395,15 +2397,16 @@ BillsPC_ChangeBoxSubmenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 4, SCREEN_WIDTH - 1, 11
+	menu_coords 11, 4, SCREEN_WIDTH - 1, 13
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 3 ; items
+	db 4 ; items
 	db "바꾸다@"
 	db "이름@"
+	db "프린트@"
 	db "돌아가다@"
 
 BillsPC_PlaceChooseABoxString:

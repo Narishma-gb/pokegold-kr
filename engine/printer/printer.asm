@@ -113,11 +113,6 @@ PrintDexEntry:
 	ret
 
 PrintPCBox:
-	ld a, [wPrinterQueueLength]
-	push af
-	ld a, 18 / 2
-	ld [wPrinterQueueLength], a
-
 	ld a, e
 	ld [wAddrOfBoxToPrint], a
 	ld a, d
@@ -189,6 +184,7 @@ PrintPCBox:
 	pop af
 	ldh [hVBlank], a
 	call Printer_CleanUpAfterSend
+	call ClearScreen
 
 	xor a
 	ldh [rIF], a
@@ -196,8 +192,6 @@ PrintPCBox:
 	ldh [rIE], a
 	call Printer_ExitPrinter
 
-	pop af
-	ld [wPrinterQueueLength], a
 	ret
 
 Printer_ResetRegistersAndStartDataSend:
@@ -637,10 +631,7 @@ GBPrinterString_PrinterError4:
 PrintPCBox_Page1:
 	xor a
 	ld [wWhichBoxMonToPrint], a
-	hlcoord 0, 0
-	ld bc, SCREEN_AREA
-	ld a, ' '
-	call ByteFill
+	call ClearScreen
 	call Printer_PlaceEmptyBoxSlotString
 
 	hlcoord 0, 0
@@ -651,7 +642,7 @@ PrintPCBox_Page1:
 	call Printer_PlaceSideBorders
 	call Printer_PlaceTopBorder
 
-	hlcoord 4, 3
+	hlcoord 5, 4
 	ld de, .String_PokemonList
 	call PlaceString
 
@@ -661,23 +652,20 @@ PrintPCBox_Page1:
 	call AddNTimes
 	ld d, h
 	ld e, l
-	hlcoord 6, 5
+	hlcoord 8, 6
 	call PlaceString
 	ld a, 1
 	call Printer_GetBoxMonSpecies
-	hlcoord 2, 9
+	hlcoord 2, 10
 	ld c, 3
 	call Printer_PrintBoxListSegment
 	ret
 
 .String_PokemonList:
-	db "#MON LIST@"
+	db "포켓몬 목록@"
 
 PrintPCBox_Page2:
-	hlcoord 0, 0
-	ld bc, SCREEN_AREA
-	ld a, ' '
-	call ByteFill
+	call ClearScreen
 	call Printer_PlaceEmptyBoxSlotString
 	call Printer_PlaceSideBorders
 	ld a, [wFinishedPrintingBox]
@@ -685,16 +673,13 @@ PrintPCBox_Page2:
 	ret nz
 	ld a, 4
 	call Printer_GetBoxMonSpecies
-	hlcoord 2, 0
+	hlcoord 2, 1
 	ld c, 6
 	call Printer_PrintBoxListSegment
 	ret
 
 PrintPCBox_Page3:
-	hlcoord 0, 0
-	ld bc, SCREEN_AREA
-	ld a, ' '
-	call ByteFill
+	call ClearScreen
 	call Printer_PlaceEmptyBoxSlotString
 	call Printer_PlaceSideBorders
 	ld a, [wFinishedPrintingBox]
@@ -702,20 +687,19 @@ PrintPCBox_Page3:
 	ret nz
 	ld a, 10
 	call Printer_GetBoxMonSpecies
-	hlcoord 2, 0
+	hlcoord 2, 1
 	ld c, 6
 	call Printer_PrintBoxListSegment
 	ret
 
 PrintPCBox_Page4:
-	hlcoord 0, 0
-	ld bc, SCREEN_AREA
-	ld a, ' '
-	call ByteFill
+	call ClearScreen
 	call Printer_PlaceEmptyBoxSlotString
+	; 6 empty box strings were printed, but we only need 5
 	hlcoord 1, 15
 	lb bc, 2, 18
 	call ClearBox
+
 	call Printer_PlaceSideBorders
 	call Printer_PlaceBottomBorders
 	ld a, [wFinishedPrintingBox]
@@ -723,7 +707,7 @@ PrintPCBox_Page4:
 	ret nz
 	ld a, 16
 	call Printer_GetBoxMonSpecies
-	hlcoord 2, 0
+	hlcoord 2, 1
 	ld c, 5
 	call Printer_PrintBoxListSegment
 	ret
@@ -747,7 +731,7 @@ Printer_PrintBoxListSegment:
 	push de
 
 	push hl
-	ld bc, 16
+	ld bc, 12
 	ld a, ' '
 	call ByteFill
 	pop hl
@@ -763,19 +747,11 @@ Printer_PrintBoxListSegment:
 	pop hl
 	jr z, .ok2
 
-	ld bc, MON_NAME_LENGTH
+	ld bc, 5
 	add hl, bc
 	call Printer_GetMonGender
-	ld bc, SCREEN_WIDTH - MON_NAME_LENGTH
-	add hl, bc
 	ld a, '/'
 	ld [hli], a
-
-	push hl
-	ld bc, 14
-	ld a, ' '
-	call ByteFill
-	pop hl
 
 	push hl
 	ld a, [wAddrOfBoxToPrint]
@@ -795,7 +771,7 @@ Printer_PrintBoxListSegment:
 	call PlaceString
 	pop hl
 
-	ld bc, MON_NAME_LENGTH
+	ld bc, 6
 	add hl, bc
 	push hl
 	ld a, [wAddrOfBoxToPrint]
@@ -917,7 +893,7 @@ Printer_PlaceBottomBorders:
 	ret
 
 Printer_PlaceEmptyBoxSlotString:
-	hlcoord 2, 0
+	hlcoord 2, 1
 	ld c, 6
 .loop
 	push bc
@@ -933,7 +909,7 @@ Printer_PlaceEmptyBoxSlotString:
 	ret
 
 .EmptyBoxSlotString:
-	db "  <-><-><-><-><-><->@"
+	db "<-><-><-><-><-> /<-><-><-><-><->@"
 
 PrintPartyMon:
 	call ClearBGPalettes
