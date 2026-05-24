@@ -4,11 +4,10 @@
 	const OPT_BATTLE_SCENE  ; 1
 	const OPT_BATTLE_STYLE  ; 2
 	const OPT_SOUND         ; 3
-	const OPT_PRINT         ; 4
-	const OPT_MENU_ACCOUNT  ; 5
-	const OPT_FRAME         ; 6
-	const OPT_CANCEL        ; 7
-DEF NUM_OPTIONS EQU const_value ; 8
+	const OPT_MENU_ACCOUNT  ; 4
+	const OPT_FRAME         ; 5
+	const OPT_CANCEL        ; 6
+DEF NUM_OPTIONS EQU const_value ; 7
 
 _Option:
 ; BUG: Options menu fails to clear joypad state on initialization (see docs/bugs_and_glitches.md)
@@ -21,8 +20,11 @@ _Option:
 	ld b, SCREEN_HEIGHT - 2
 	ld c, SCREEN_WIDTH - 2
 	call Textbox
-	hlcoord 2, 2
+	hlcoord 1, 2
 	ld de, StringOptions
+	call PlaceString
+	hlcoord 11, 12
+	ld de, StringOptions2
 	call PlaceString
 	xor a
 	ld [wJumptableIndex], a
@@ -62,8 +64,7 @@ _Option:
 
 .dpad
 	call Options_UpdateCursorPosition
-	ld c, 3
-	call DelayFrames
+	call Delay4
 	jr .joypad_loop
 
 .ExitOptions:
@@ -72,21 +73,16 @@ _Option:
 	ret
 
 StringOptions:
-	db "TEXT SPEED<LF>"
-	db "        :<LF>"
-	db "BATTLE SCENE<LF>"
-	db "        :<LF>"
-	db "BATTLE STYLE<LF>"
-	db "        :<LF>"
-	db "SOUND<LF>"
-	db "        :<LF>"
-	db "PRINT<LF>"
-	db "        :<LF>"
-	db "MENU ACCOUNT<LF>"
-	db "        :<LF>"
-	db "FRAME<LF>"
-	db "        :TYPE<LF>"
-	db "CANCEL@"
+	db   "이야기의 속도"
+	next "전투 애니메이션"
+	next "시합의 룰"
+	next "사운드"
+	next "메뉴 설명"
+	next "윈도우@"
+
+StringOptions2:
+	db   "타입"
+	next "끝@"
 
 GetOptionPointer:
 	jumptable .Pointers, wJumptableIndex
@@ -97,7 +93,6 @@ GetOptionPointer:
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_Sound
-	dw Options_Print
 	dw Options_MenuAccount
 	dw Options_Frame
 	dw Options_Cancel
@@ -149,7 +144,7 @@ Options_TextSpeed:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	hlcoord 11, 3
+	hlcoord 11, 2
 	call PlaceString
 	and a
 	ret
@@ -160,9 +155,9 @@ Options_TextSpeed:
 	dw .Mid
 	dw .Slow
 
-.Fast: db "FAST@"
-.Mid:  db "MID @"
-.Slow: db "SLOW@"
+.Fast: db "빠르게@"
+.Mid:  db "보통<SP>@"
+.Slow: db "느리게@"
 
 GetTextSpeed:
 ; converts TEXT_DELAY_* value in a to OPT_TEXT_SPEED_* value in c,
@@ -219,13 +214,13 @@ Options_BattleScene:
 	ld de, .Off
 
 .Display:
-	hlcoord 11, 5
+	hlcoord 11, 4
 	call PlaceString
 	and a
 	ret
 
-.On:  db "ON @"
-.Off: db "OFF@"
+.On:  db "천천히<SP>보다@"
+.Off: db "빠르게<SP>보다@"
 
 Options_BattleStyle:
 	ld hl, wOptions
@@ -257,13 +252,13 @@ Options_BattleStyle:
 	ld de, .Set
 
 .Display:
-	hlcoord 11, 7
+	hlcoord 11, 6
 	call PlaceString
 	and a
 	ret
 
-.Shift: db "SHIFT@"
-.Set:   db "SET  @"
+.Shift: db "교체<SP>타입<SP><SP><SP>@"
+.Set:   db "승자<SP>계속<SP>타입@"
 
 Options_Sound:
 	ld hl, wOptions
@@ -302,13 +297,13 @@ Options_Sound:
 	ld de, .Stereo
 
 .Display:
-	hlcoord 11, 9
+	hlcoord 11, 8
 	call PlaceString
 	and a
 	ret
 
-.Mono:   db "MONO  @"
-.Stereo: db "STEREO@"
+.Mono:   db "모노<SP><SP>@"
+.Stereo: db "스테레오@"
 
 	const_def
 	const OPT_PRINT_LIGHTEST ; 0
@@ -317,7 +312,7 @@ Options_Sound:
 	const OPT_PRINT_DARKER   ; 3
 	const OPT_PRINT_DARKEST  ; 4
 
-Options_Print:
+Options_Print: ; unreferenced
 	call GetPrinterSetting
 	ldh a, [hJoyPressed]
 	bit B_PAD_LEFT, a
@@ -356,7 +351,7 @@ Options_Print:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	hlcoord 11, 11
+	hlcoord 11, 10
 	call PlaceString
 	and a
 	ret
@@ -369,11 +364,11 @@ Options_Print:
 	dw .Darker
 	dw .Darkest
 
-.Lightest: db "LIGHTEST@"
-.Lighter:  db "LIGHTER @"
-.Normal:   db "NORMAL  @"
-.Darker:   db "DARKER  @"
-.Darkest:  db "DARKEST @"
+.Lightest: db "흐리게<SP><SP><SP>@"
+.Lighter:  db "약간<SP>흐리게@"
+.Normal:   db "보통<SP><SP><SP><SP>@"
+.Darker:   db "약간<SP>진하게@"
+.Darkest:  db "진하게<SP><SP><SP>@"
 
 GetPrinterSetting:
 ; converts GBPRINTER_* value in a to OPT_PRINT_* value in c,
@@ -442,13 +437,13 @@ Options_MenuAccount:
 	ld de, .On
 
 .Display:
-	hlcoord 11, 13
+	hlcoord 11, 10
 	call PlaceString
 	and a
 	ret
 
-.Off: db "OFF@"
-.On:  db "ON @"
+.Off: db "표시하지<SP>않다@"
+.On:  db "표시하다<SP><SP><SP>@"
 
 Options_Frame:
 	ld hl, wTextboxFrame
@@ -474,7 +469,7 @@ Options_Frame:
 	ld [hl], a
 UpdateFrame:
 	ld a, [wTextboxFrame]
-	hlcoord 16, 15 ; where on the screen the number is drawn
+	hlcoord 14, 12 ; where on the screen the number is drawn
 	add '1'
 	ld [hl], a
 	call LoadFontsExtra
@@ -541,7 +536,7 @@ OptionsControl:
 	ret
 
 Options_UpdateCursorPosition:
-	hlcoord 1, 1
+	hlcoord 10, 1
 	ld de, SCREEN_WIDTH
 	ld c, SCREEN_HEIGHT - 2
 .loop
@@ -549,7 +544,7 @@ Options_UpdateCursorPosition:
 	add hl, de
 	dec c
 	jr nz, .loop
-	hlcoord 1, 2
+	hlcoord 10, 2
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wJumptableIndex]
 	call AddNTimes

@@ -58,20 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-SECTION "rom57", ROMX[$4000], BANK[57]
-; ROM $39 : $E4000 - $E7FFF
-
-	dr CopyrightGFX, $4000
-	dr TitleScreenGFX3, $41e0
-	set_gs_diff $40
-	drd TitleScreenGFX2, $4220
-	set_gs_diff $1b8
-	drd _Option, $4450
-	drd SplashScreen, $4804
-	drd GameFreakPresents_UpdateLogoPal, $497c
-	drd GoldSilverIntro, $4b0d
-
-
 SECTION "rom58", ROMX[$4000], BANK[58]
 ; ROM $3a : $E8000 - $EBFFF
 

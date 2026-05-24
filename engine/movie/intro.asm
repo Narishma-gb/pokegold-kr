@@ -1,8 +1,10 @@
 GoldSilverIntro:
+	farcall NormalSpeed
 	call .Init
 .Loop:
 	call .PlayFrame
 	jr nc, .Loop
+	farcall DoubleSpeed
 	ret
 
 .Init:
