@@ -1653,8 +1653,7 @@ wCreditsLYOverride:: db
 NEXTU
 ; pokedex
 wPrevDexEntryJumptableIndex:: db
-wPrevDexEntryBackup::
-wPokedexStatus:: db
+wPrevDexEntryBackup:: db
 wUnusedPokedexByte:: db
 
 NEXTU
@@ -2806,7 +2805,7 @@ wHangulTilesIndexTable:: ds $100
 
 wHangulCharBuffer:: ds 2 * TILE_SIZE
 
-w2_d120::
+wInvertedHangulToggle::
 
 
 SECTION "WRAM Window Stack", WRAMX

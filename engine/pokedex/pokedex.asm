@@ -15,8 +15,6 @@
 	const DEXSTATE_UPDATE_UNOWN_MODE
 	const DEXSTATE_EXIT
 
-EXPORT DEF POKEDEX_SCX EQU 5
-
 Pokedex:
 	ld hl, wOptions
 	ld a, [hl]
@@ -2273,7 +2271,7 @@ Pokedex_InvertTiles:
 	ld a, b
 	or c
 	jr nz, .loop
-	call Function1480
+	call SetInvertedHangulFont
 	ret
 
 PokedexLZ:

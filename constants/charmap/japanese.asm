@@ -56,13 +56,6 @@
 	charmap "ペ", $44 ; Katakana, shared graphic tile with Hiragana "ぺ"
 	charmap "ぽ", $45
 
-	charmap "<「>", $70
-	charmap "<」>", $71
-	charmap "<『>", $72
-	charmap "<』>", $73
-	charmap "・", $74
-	charmap "⋯", $75
-
 	charmap "　", $7f
 
 	charmap "ア", $80
