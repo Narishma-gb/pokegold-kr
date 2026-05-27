@@ -160,8 +160,8 @@ ROMX $3e
 	"bank3E"
 	"Shrink Pics"
 	"bank3E_2"
-; ROMX $3f
-; 	"bank3F"
+ROMX $3f
+	"bank3F"
 ; ROMX $40
 ; 	"Standard Scripts"
 ; ROMX $41

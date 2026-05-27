@@ -132,7 +132,7 @@ wPCItemsScrollPosition:: db
 
 wc1d9:: db
 
-	ds 16
+wTileAnimBuffer:: ds 1 tiles
 
 ; link data
 UNION
@@ -274,7 +274,7 @@ wTimeSetBufferEnd::
 NEXTU
 ; hall of fame temp struct
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
-/*
+
 NEXTU
 ; debug mon color picker
 wDebugMiddleColors::
@@ -291,7 +291,7 @@ wDebugPalette::
 wDebugWhiteTileColor:: ds 2
 wDebugLightTileColor:: ds 2
 wDebugDarkTileColor::  ds 2
-wDebugBlackTileColor:: ds 2*/
+wDebugBlackTileColor:: ds 2
 ENDU
 
 ; This union spans 280 bytes.
@@ -497,12 +497,12 @@ SECTION UNION "Overworld Map", WRAM0
 ; Hall of Fame data
 wHallOfFamePokemonList:: hall_of_fame wHallOfFamePokemonList
 
-/*
+
 SECTION UNION "Overworld Map", WRAM0
 
 ; debug color picker
 wDebugOriginalColors:: ds 256 * 4
-*/
+
 
 SECTION UNION "Overworld Map", WRAM0
 
@@ -1623,10 +1623,6 @@ wMenuScrollPosition:: ds 4
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
 
-/*
-wTileAnimBuffer:: ds 1 tiles
-*/
-
 
 SECTION "WRAM 1", WRAMX
 
@@ -2430,9 +2426,9 @@ wRegisteredItem:: db
 wPlayerState:: db
 
 wHallOfFameCount:: db
-/*	ds 1
+	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
-
+/*
 	ds 33
 
 wMooMooBerries:: db
@@ -2503,7 +2499,7 @@ wMountMoonSquareSceneID::                         db
 	ds 197
 */
 
-	ds 275
+	ds 273
 
 wEventFlags:: flag_array NUM_EVENTS
 

@@ -437,9 +437,7 @@ DebugColor_UpdateScreen:
 
 	ld a, 2
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
+	call Delay4
 
 .sgb
 	call WaitBGMap
@@ -1043,8 +1041,8 @@ DebugColor_PlaceCursor:
 
 DebugColor_AreYouFinishedString:
 	db   "おわりますか？"                        ; Are you finished?
-	next "はい<DOT><DOT><DOT>", DEBUGTEST_A ; YES...(A)
-	next "いいえ<DOT><DOT>", DEBUGTEST_B     ; NO..(B)
+	next "はい．．．", DEBUGTEST_A ; YES...(A)
+	next "いいえ．．", DEBUGTEST_B     ; NO..(B)
 	db   "@"
 
 DebugColor_UpArrowGFX:
@@ -1199,8 +1197,7 @@ DebugColorMain2: ; unreferenced
 	call CopyBytes
 	ld a, 2
 	ldh [hBGMapMode], a
-	ld c, 3
-	call DelayFrames
+	call Delay4
 	ld a, 1
 	ldh [hBGMapMode], a
 	ret

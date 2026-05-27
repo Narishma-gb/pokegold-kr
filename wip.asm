@@ -58,46 +58,6 @@ SECTION "rom37", ROMX[$4000], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-SECTION "rom63", ROMX[$4000], BANK[63]
-; ROM $3f : $FC000 - $FFFFF
-
-	dr DummyPredef3A, $4001
-	dr _AnimateTileset, $4003
-	dr Tileset0Anim, $401e
-TilesetJohtoModernAnim::
-TilesetKantoAnim::
-TilesetParkAnim::
-TilesetForestAnim::
-	dr TilesetJohtoAnim, $404a
-	dr TilesetPortAnim, $40d6
-	dr TilesetEliteFourRoomAnim, $4106
-	dr TilesetCaveAnim, $418e
-TilesetDarkCaveAnim::
-	dr TilesetIcePathAnim, $41da
-	dr TilesetTowerAnim, $4226
-	dr TilesetHouseAnim, $428e
-TilesetPlayersHouseAnim::
-TilesetPokecenterAnim::
-TilesetGateAnim::
-TilesetLabAnim::
-TilesetFacilityAnim::
-TilesetMartAnim::
-TilesetMansionAnim::
-TilesetGameCornerAnim::
-TilesetTraditionalHouseAnim::
-TilesetTrainStationAnim::
-TilesetChampionsRoomAnim::
-TilesetLighthouseAnim::
-TilesetPlayersRoomAnim::
-TilesetRuinsOfAlphAnim::
-TilesetRadioTowerAnim::
-TilesetUndergroundAnim::
-	dr NPCTrade, $49ae
-	dr MomTriesToBuySomething, $4d87
-	dr StagePartyDataForMysteryGift, $4f6a
-	dr InitMysteryGiftLayout, $4fb2
-
-
 SECTION "rom64", ROMX[$4000], BANK[64]
 ; ROM $40 : $100000 - $103FFF
 
