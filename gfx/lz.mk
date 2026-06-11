@@ -27,6 +27,7 @@ gfx/pokedex/slowpoke.2bpp.lz: LZFLAGS += --odd-alternate --align 1
 
 gfx/pokegear/pokegear.2bpp.lz: LZFLAGS += --iterate-only --align 1
 gfx/pokegear/pokegear_sprites.2bpp.lz: LZFLAGS += --align 4
+gfx/pokegear/town_map.2bpp.lz: LZFLAGS += --skip-initial-byte --odd-alternate --iterate-only --long-32 --align 4
 
 gfx/pokemon/hitmontop/back_gold.2bpp.lz: LZFLAGS += --no-lookback-3
 gfx/pokemon/miltank/back_gold.2bpp.lz: LZFLAGS += --no-lookback-3
@@ -51,3 +52,4 @@ gfx/title/logo_silver.2bpp.lz: LZFLAGS += --iterate-only --align 1
 gfx/title/lugia_silver.2bpp.lz: LZFLAGS += --align 4
 
 gfx/unown_puzzle/%.lz: LZFLAGS += --align 4
+gfx/unown_puzzle/start_cancel.2bpp.lz: LZFLAGS += --skip-initial-byte --iterate-only --long-32 --align 3
