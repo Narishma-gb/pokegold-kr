@@ -190,7 +190,7 @@ pokesilver_vc.gbc: BASEROM = baserom_s.bin
 include gfx/lz.mk
 
 %.lz: %
-	tools/lzcomp $(LZFLAGS) -- $< $@
+	tools/lzcompress $(LZFLAGS) -- $< $@
 
 
 ### Pokemon and trainer sprite rules

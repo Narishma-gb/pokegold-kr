@@ -33,9 +33,7 @@ ExpBarGFX:
 INCBIN "gfx/battle/expbar.2bpp"
 
 TownMapGFX:
-; town_map.2bpp.lz contains an extra $e0 byte, and lzcomp
-; cannot perfectly match the way it's compressed.
-INCBIN "gfx/pokegear/town_map.2bpp.lz.bin"
+INCBIN "gfx/pokegear/town_map.2bpp.lz"
 
 UnusedWeekdayKanjiGFX: ; unreferenced
 INCBIN "gfx/font/unused_weekday_kanji.2bpp"
