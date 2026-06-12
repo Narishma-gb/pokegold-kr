@@ -34,11 +34,6 @@ MACRO drd
 	dr \1, (\2) + gs_diff
 ENDM
 
-; StdScripts
-MACRO drs
-	dr \1StdScript, (\2) * 3 + $4000
-ENDM
-
 ; Phone scripts
 MACRO drc
 	dr \1CalleeScript, \2
@@ -46,74 +41,19 @@ MACRO drc
 ENDM
 
 
+EXPORT DEF SCENE_MAHOGANYTOWN_NOOP EQU 1
+EXPORT DEF SCENE_ROUTE36NATIONALPARKGATE_NOOP EQU 0
+EXPORT DEF SCENE_ROUTE35NATIONALPARKGATE_NOOP EQU 0
+
 INCLUDE "main.asm"
 INCLUDE "engine/dumps/bank71.asm"
 INCLUDE "engine/dumps/bank7f.asm"
 
 
-SECTION "rom37", ROMX[$4000], BANK[37]
+SECTION "rom37", ROMX[$40ed], BANK[37]
 ; ROM $25 : $94000 - $97FFF
 
-	dr MapScenes, $4000
 	dr MapGroupPointers, $40ed
-
-
-SECTION "rom64", ROMX[$4000], BANK[64]
-; ROM $40 : $100000 - $103FFF
-
-StdScripts::
-	drs MagazineBookshelfScript, $3
-	drs IncenseBurnerScript, $5
-	drs MerchandiseShelfScript, $6
-	drs TownMapScript, $7
-	drs WindowScript, $8
-	drs TVScript, $9
-	drs Radio1Script, $b
-	drs BugContestResultsWarpScript, $16 
-	drs PCScript, $2b
-
-	dr StdText, $45f3
-INCLUDE "data/text/std_text.asm"
-INCLUDE "data/text/battle.asm"
-
-
-SECTION "rom65", ROMX[$4000], BANK[65]
-; ROM $41 : $104000 - $107FFF
-
-	dr UnusedPhoneScript, $4000
-	dr MomPhoneCalleeScript, $4004
-	dr MomPhoneLectureScript, $40fa
-	drc BillPhone, $410d, $4148
-	drc ElmPhone, $414d, $41b7
-	drc JackPhone, $4200, $420a
-	drc BeverlyPhone, $422b, $4235
-	drc HueyPhone, $4256, $4260
-	drc GavenPhone, $427a, $4284
-	drc BethPhone, $42a5, $42af
-	drc JosePhone, $42d0, $42da
-	drc ReenaPhone, $4302, $430c
-	drc JoeyPhone, $432d, $4337
-	drc WadePhone, $435e, $4383
-	drc RalphPhone, $43c5, $43cf
-	drc LizPhone, $4411, $441b
-	drc AnthonyPhone, $4442, $444c
-	drc ToddPhone, $448c, $4496
-	drc GinaPhone, $44bd, $44cd
-	drc IrwinPhone, $44fa, $450a
-	drc ArniePhone, $4531, $453b
-	drc AlanPhone, $4575, $457f
-	drc DanaPhone, $45a0, $45aa
-	drc ChadPhone, $45cb, $45d5
-	drc DerekPhone, $460f, $4634
-	drc ChrisPhone, $4670, $467a
-	drc BrentPhone, $469b, $46a5
-	drc TiffanyPhone, $46cd, $46d7
-	drc VancePhone, $46ff, $4709
-	drc WiltonPhone, $472a, $4734
-	drc KenjiPhone, $4770, $477a
-	drc ParryPhone, $479b, $47a5
-	drc ErinPhone, $47df, $47e9
-	dr BikeShopPhoneCallerScript, $4962
 
 
 ;SECTION "rom66", ROMX[$4000], BANK[66]

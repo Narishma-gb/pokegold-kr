@@ -2428,14 +2428,14 @@ wPlayerState:: db
 wHallOfFameCount:: db
 	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
-/*
-	ds 33
 
+	ds 17
+/*
 wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 
 	ds 14
-
+*/
 wPokecenter2FSceneID::                            db
 wTradeCenterSceneID::                             db
 wColosseumSceneID::                               db
@@ -2497,9 +2497,6 @@ wFastShipB1FSceneID::                             db
 wMountMoonSquareSceneID::                         db
 
 	ds 197
-*/
-
-	ds 273
 
 wEventFlags:: flag_array NUM_EVENTS
 

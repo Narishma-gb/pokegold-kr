@@ -1,355 +1,285 @@
 PhoneMaleAnswerMornText:
-	text "Hello. This is"
-	line "@"
+	text "여보세요 @"
 	text_ram wStringBuffer3
-	text "…"
+	text "인데요"
 
-	para "Good morning,"
-	line "<PLAYER>!"
+	para "여어 <PLAYER>군 안녕!"
 	done
 
 PhoneMaleAnswerDayText:
-	text "Hello. This is"
-	line "@"
+	text "여보세요 @"
 	text_ram wStringBuffer3
-	text "…"
+	text "인데요"
 
-	para "How's it going,"
-	line "<PLAYER>?"
+	para "여어 <PLAYER>군 안녕!"
 	done
 
 PhoneMaleAnswerNiteText:
-	text "Hello. This is"
-	line "@"
+	text "여보세요 @"
 	text_ram wStringBuffer3
-	text "…"
+	text "인데…"
 
-	para "Good evening,"
-	line "<PLAYER>!"
+	para "여어 <PLAYER>군 안녕!"
 	done
 
 PhoneFemaleAnswerMornText:
-	text "Hi. This is"
-	line "@"
+	text "네 @"
 	text_ram wStringBuffer3
-	text "."
+	text "입니다"
 
-	para "Hi, <PLAYER>!"
-	line "Good morning."
+	para "엥 <PLAYER>군 안녕"
 	done
 
 PhoneFemaleAnswerDayText:
-	text "Hi. This is"
-	line "@"
+	text "네 @"
 	text_ram wStringBuffer3
-	text "."
+	text "입니다"
 
-	para "Hi, <PLAYER>!"
-	line "How are you?"
+	para "엥 <PLAYER>군 안녕"
 	done
 
 PhoneFemaleAnswerNiteText:
-	text "Hi. This is"
-	line "@"
+	text "네 @"
 	text_ram wStringBuffer3
-	text "."
+	text "입니다"
 
-	para "Hi, <PLAYER>!"
-	line "Good evening."
+	para "엥 <PLAYER>군 안녕"
 	done
 
 PhoneMaleGreetMornText:
-	text "<PLAYER>, good"
-	line "morning!"
+	text "<PLAYER>군 안녕!"
 
-	para "It's me, @"
+	para "@"
 	text_ram wStringBuffer3
-	text "."
-	line "How are you doing?"
+	text "인데 잘 있니?"
 	done
 
 PhoneMaleGreetDayText:
-	text "<PLAYER>, howdy!"
+	text "<PLAYER>군 안녕!"
 
-	para "It's me, @"
+	para "@"
 	text_ram wStringBuffer3
-	text "."
-	line "Isn't it nice out?"
+	text "인데"
+	line "좋은 날씨구나!"
 	done
 
 PhoneMaleGreetNiteText:
-	text "<PLAYER>, good"
-	line "evening!"
+	text "<PLAYER>군 안녕!"
 
-	para "It's me, @"
+	para "@"
 	text_ram wStringBuffer3
-	text "."
-	line "Got a minute?"
+	text "인데 시간있어?"
 	done
 
 PhoneFemaleGreetMornText:
-	text "Good morning,"
-	line "<PLAYER>."
-
-	para "This is @"
+	text "<PLAYER>군 안녕하세요"
+	line "@"
 	text_ram wStringBuffer3
-	text "."
-	line "Did I wake you?"
+	text "입니다만"
+	cont "잠자고 있었어요?"
 	done
 
 PhoneFemaleGreetDayText:
-	text "Hello, <PLAYER>."
-
-	para "This is @"
+	text "<PLAYER>군 안녕하세요"
+	line "@"
 	text_ram wStringBuffer3
-	text "."
-	line "How are things?"
+	text "입니다만"
+	cont "잘 지내나요?"
 	done
 
 PhoneFemaleGreetNiteText:
-	text "Good evening,"
-	line "<PLAYER>."
-
-	para "This is @"
+	text "<PLAYER>군 안녕하세요"
+	line "@"
 	text_ram wStringBuffer3
-	text "."
-	line "Were you awake?"
+	text "입니다만"
+	cont "일어났어요?"
 	done
 
 PhoneMaleReallyEnergeticText:
-	text "How are your"
-	line "#MON doing?"
+	text "너의 포켓몬 건강하냐?"
 
-	para "My @"
+	para "내 @"
 	text_ram wStringBuffer4
-	text "'s"
-	line "really energetic."
-	cont "It's a handful!"
+	text "는(은)"
+	line "너무 건강해서 탈이 날"
+	cont "정도야"
 	done
 
 PhoneFemaleTopShapeText:
-	text "How are your"
-	line "#MON doing?"
+	text "포켓몬 상태는 어때?"
 
-	para "I always keep my"
-	line "@"
+	para "내 @"
 	text_ram wStringBuffer4
-	text " in top"
-
-	para "shape by going to"
-	line "#MON CENTERS."
+	text "는(은) 늘"
+	line "포켓몬 센터에 다니고 있으니까"
+	cont "상태는 아주 좋아!"
 	done
 
 PhoneMaleLookingAwesomeText:
-	text "My @"
+	text "내 @"
 	text_ram wStringBuffer4
-	text "'s"
-	line "looking awesome."
-
-	para "I wish I could"
-	line "show you."
+	text "는(은) 더"
+	line "한층 멋있어졌다!"
+	cont "너한테도 보여주고 싶구나"
 	done
 
 PhoneFemaleDressedUpText:
-	text "I dressed up my"
-	line "@"
+	text "내 @"
 	text_ram wStringBuffer4
-	text "."
-
-	para "It looks even"
-	line "cuter than before."
+	text "는(은)"
+	line "화려하게 치장을 했더니 아주"
+	cont "귀여워졌어"
 	done
 
 PhoneMaleManagedToBeatText:
-	text "Oh, yeah, I man-"
-	line "aged to beat a"
-	cont "tough @"
+	text "그래 그래 요전에"
+	line "@"
 	text_ram wStringBuffer4
-	text "."
+	text "를(을)"
+	cont "어떡게든 쓰러뜨렸어"
 
-	para "I need to make my"
-	line "party stronger."
+	para "아직도 키우는게 부족한걸까"
 	done
 
 PhoneFemaleTypeAdvantageText:
-	text "You have to hear"
-	line "this! I battled"
-
-	para "@"
+	text "저기저기 좀 들어봐"
+	line "요전에 @"
 	text_ram wStringBuffer4
-	text " the"
-	line "other day."
+	text "(이)랑"
+	cont "싸웠더니 간단하게 쓰러뜨렸어!"
 
-	para "It was easy! I had"
-	line "a type advantage."
+	para "상성이 좋았던 것일까?"
 	done
 
 PhoneMaleAlmostCaughtText:
-	text "Hey, listen!"
-	line "I almost caught"
-
-	para "@"
+	text "그리고 좀 들어줘!"
+	line "요전에 다 되었다 싶을 때"
+	cont "@"
 	text_ram wStringBuffer4
-	text " the"
-	line "other day."
+	text "(이)가 도망쳤어"
 
-	para "Oh, it was soooo"
-	line "close too!"
+	para "그것 정말 아까운데 말야"
 	done
 
 PhoneFemaleMissedCatchingText:
-	text "Guess what happen-"
-	line "ed the other day."
+	text "그리고 말야 들어봐"
 
-	para "I missed catching"
-	line "@"
+	para "또 @"
 	text_ram wStringBuffer4
-	text " again."
-
-	para "Maybe I'm not very"
-	line "good at this…"
+	text "를(을)"
+	line "잡는데 실패했어"
+	cont "나는 형편 없는걸까…"
 	done
 
 PhoneMaleWantsToBattleText:
-	text "Want to battle?"
-	line "It's not going to"
-
-	para "be a repeat of the"
-	line "last time we met."
-
-	para "I'll be around"
-	line "@"
-	text_ram wStringBuffer5
-	text "."
-	done
-
-PhoneFemaleWantsToBattleText:
-	text "Do you want to"
-	line "battle? I'm going"
-	cont "to win this time!"
-
-	para "I'll be waiting"
-	line "for you around"
+	text "포켓몬 승부하지 않을래?"
+	line "요전처럼은 되지 않을꺼야!"
 
 	para "@"
 	text_ram wStringBuffer5
-	text "."
-	line "Look for me, OK?"
+	text "에 있을테니까"
+	line "근처에 오면 이야기해라!"
+	done
+
+PhoneFemaleWantsToBattleText:
+	text "포켓몬 승부하지 않을래?"
+	line "이번엔 내가 이길테니까!"
+
+	para "@"
+	text_ram wStringBuffer5
+	text "에 있을테니까"
+	line "근처를 지나갈때 말해줘!"
 	done
 
 PhoneWrongNumberKazText:
-	text "Hello? This is"
-	line "@"
+	text "여보세요 @"
 	text_ram wStringBuffer3
-	text "…"
+	text "인데…"
 
-	para "Uh-oh… You're not"
-	line "KAZ! Sorry, wrong"
-	cont "number."
+	para "엣! 이광조군 아니니?"
+	line "미안 미안 잘못걸었네요"
 	done
 
 PhoneWrongNumberAudreyText:
-	text "Hello, this is"
-	line "@"
+	text "여보세요 @"
 	text_ram wStringBuffer3
-	text ". How are"
-	cont "you doing, AUDREY?"
+	text "인데요"
+	line "지현이 잘 지내니?"
 
-	para "Huh? <PLAYER>?"
-	line "Oops! My mistake!"
+	para "엥 <PLAYER>군!?"
+	line "잘못걸었다 미안해-"
 	done
 
 PhoneSeeYouLaterText:
-	text "See you later!"
+	text "그럼 다음에!"
 	done
 
 PhoneByeByeText:
-	text "Bye-bye!"
+	text "그럼 바이바이!"
 	done
 
 PhoneSwarmGrassText:
-	text "You have to see"
-	line "this! It's wild!"
+	text "저기 저기 굉장해!"
 
-	para "A whole bunch of"
+	para "@"
+	text_ram wStringBuffer5
+	text "에"
 	line "@"
 	text_ram wStringBuffer4
-	text " have"
-
-	para "shown up around"
-	line "@"
-	text_ram wStringBuffer5
-	text "!"
+	text "(이)가 많아!"
+	cont "진짜야 너도 와서 보라니까!"
 	done
 
 PhoneSwarmFishText:
-	text "It's amazing!"
+	text "뭔지 굉장해!"
 
-	para "On @"
+	para "@"
 	text_ram wStringBuffer5
-	text ","
+	text "에서"
 	line "@"
 	text_ram wStringBuffer4
-	text " are"
-
-	para "biting like there"
-	line "is no tomorrow."
-
-	para "<PLAYER>, bring"
-	line "your ROD, buddy!"
+	text "(이)가 잘잡혀"
+	cont "<PLAYER>군도 낚시하러 올래?"
 	done
 
 PhoneSwarmCaveText:
-	text "A friend just told"
-	line "me this."
+	text "아까-"
+	line "친구한테 들었는데"
 
-	para "He saw a lot of"
+	para "@"
+	text_ram wStringBuffer5
+	text "에서 많은"
 	line "@"
 	text_ram wStringBuffer4
-	text " in"
-	cont "@"
-	text_ram wStringBuffer5
-	text "."
+	text "를(을) 발견"
+	cont "했다는 것 같다는데"
 
-	para "<PLAYER>, you ought"
-	line "to go look."
+	para "<PLAYER>군도 가본다면"
+	line "어떻겠니?"
 	done
 
 PhoneBugCatchingContestText:
-	text "They're holding"
-	line "the Bug-Catching"
+	text "오늘은 확실히"
+	line "공원에서 곤충채집 대회가"
+	cont "열리는 날이었지?"
 
-	para "Contest today at"
-	line "the PARK."
-
-	para "<PLAYER>, are you"
-	line "going to go?"
+	para "<PLAYER>군은 갈꺼니?"
 	done
 
 IrwinRocketTakeoverRumorText:
-	text "<PLAYER>, did you"
-	line "know?"
+	text "<PLAYER>군 알고 있니?"
 
-	para "I hear GOLDENROD's"
-	line "RADIO TOWER was"
+	para "금빛시티의 라디오타워가"
+	line "로켓단에게 점령당했대"
 
-	para "taken over by TEAM"
-	line "ROCKET."
-
-	para "But what exactly"
-	line "is TEAM ROCKET?"
+	para "근데 로켓단이라는건 뭐니?"
 	done
 
 GinaRocketTakeoverRumorText:
-	text "<PLAYER>, did you"
-	line "hear the news?"
+	text "<PLAYER>군 소문 들었니?"
 
-	para "TEAM ROCKET has"
-	line "taken over the"
+	para "금빛시티 라디오타워가"
+	line "로켓단에게 빼았겼대!"
 
-	para "RADIO TOWER in"
-	line "GOLDENROD CITY."
-
-	para "I wonder if the"
-	line "workers are OK…"
+	para "안에 있는 사람들 괜찮을까?"
 	done

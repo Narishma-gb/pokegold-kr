@@ -1,6 +1,6 @@
-;SECTION "Maps", ROMX
+SECTION "Maps", ROMX
 
-;INCLUDE "data/maps/scenes.asm"
+INCLUDE "data/maps/scenes.asm"
 ;INCLUDE "data/maps/maps.asm"
 ;INCLUDE "data/maps/attributes.asm"
 
