@@ -290,61 +290,61 @@ INCLUDE "engine/games/memory_game.asm"
 INCLUDE "engine/pokemon/bills_pc.asm"
 
 
-;SECTION "bank39", ROMX
+SECTION "bank39", ROMX
 
-;INCLUDE "engine/menus/options_menu.asm"
-;INCLUDE "engine/movie/splash.asm"
-;INCLUDE "engine/movie/intro.asm"
-
-
-;SECTION "bank3E", ROMX
-
-;INCLUDE "engine/gfx/load_font.asm"
-;INCLUDE "data/collision/collision_permissions.asm"
+INCLUDE "engine/menus/options_menu.asm"
+INCLUDE "engine/movie/splash.asm"
+INCLUDE "engine/movie/intro.asm"
 
 
-;SECTION "bank3E_2", ROMX
+SECTION "bank3E", ROMX
 
-;INCLUDE "engine/link/time_capsule.asm"
-;INCLUDE "engine/events/name_rater.asm"
-;INCLUDE "engine/events/play_slow_cry.asm"
-;INCLUDE "engine/pokedex/new_pokedex_entry.asm"
-;INCLUDE "engine/link/time_capsule_2.asm"
-;INCLUDE "engine/pokedex/unown_dex.asm"
-;INCLUDE "engine/events/magikarp.asm"
-;INCLUDE "engine/battle/hidden_power.asm"
-;INCLUDE "engine/battle/misc.asm"
+INCLUDE "engine/gfx/load_font.asm"
+INCLUDE "data/collision/collision_permissions.asm"
 
 
-;SECTION "bank3F", ROMX
+SECTION "bank3E_2", ROMX
 
-;INCLUDE "engine/tilesets/tileset_anims.asm"
-;INCLUDE "engine/events/npc_trade.asm"
-;INCLUDE "engine/events/mom_phone.asm"
-;INCLUDE "engine/link/mystery_gift_3.asm"
-;INCLUDE "engine/debug/color_picker.asm"
-
-
-;SECTION "Standard Scripts", ROMX
-
-;INCLUDE "engine/events/std_scripts.asm"
-;INCLUDE "data/text/battle.asm"
+INCLUDE "engine/link/time_capsule.asm"
+INCLUDE "engine/events/name_rater.asm"
+INCLUDE "engine/events/play_slow_cry.asm"
+INCLUDE "engine/pokedex/new_pokedex_entry.asm"
+INCLUDE "engine/link/time_capsule_2.asm"
+INCLUDE "engine/pokedex/unown_dex.asm"
+INCLUDE "engine/events/magikarp.asm"
+INCLUDE "engine/battle/hidden_power.asm"
+INCLUDE "engine/battle/misc.asm"
 
 
-;SECTION "Phone Scripts", ROMX
+SECTION "bank3F", ROMX
 
-;INCLUDE "engine/phone/scripts/unused.asm"
-;INCLUDE "engine/phone/scripts/mom.asm"
-;INCLUDE "engine/phone/scripts/bill.asm"
-;INCLUDE "engine/phone/scripts/elm.asm"
-;INCLUDE "engine/phone/scripts/trainers.asm"
-;INCLUDE "engine/phone/scripts/bike_shop.asm"
-;INCLUDE "data/phone/text/unused.asm"
-;INCLUDE "data/phone/text/mom.asm"
-;INCLUDE "data/phone/text/bill.asm"
-;INCLUDE "data/phone/text/elm.asm"
-;INCLUDE "data/phone/text/trainers.asm"
-;INCLUDE "data/phone/text/bike_shop.asm"
+INCLUDE "engine/tilesets/tileset_anims.asm"
+INCLUDE "engine/events/npc_trade.asm"
+INCLUDE "engine/events/mom_phone.asm"
+INCLUDE "engine/link/mystery_gift_3.asm"
+INCLUDE "engine/debug/color_picker.asm"
+
+
+SECTION "Standard Scripts", ROMX
+
+INCLUDE "engine/events/std_scripts.asm"
+INCLUDE "data/text/battle.asm"
+
+
+SECTION "Phone Scripts", ROMX
+
+INCLUDE "engine/phone/scripts/unused.asm"
+INCLUDE "engine/phone/scripts/mom.asm"
+INCLUDE "engine/phone/scripts/bill.asm"
+INCLUDE "engine/phone/scripts/elm.asm"
+INCLUDE "engine/phone/scripts/trainers.asm"
+INCLUDE "engine/phone/scripts/bike_shop.asm"
+INCLUDE "data/phone/text/unused.asm"
+INCLUDE "data/phone/text/mom.asm"
+INCLUDE "data/phone/text/bill.asm"
+INCLUDE "data/phone/text/elm.asm"
+INCLUDE "data/phone/text/trainers.asm"
+INCLUDE "data/phone/text/bike_shop.asm"
 
 
 SECTION "Names", ROMX

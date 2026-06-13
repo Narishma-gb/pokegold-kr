@@ -132,7 +132,7 @@ wPCItemsScrollPosition:: db
 
 wc1d9:: db
 
-	ds 16
+wTileAnimBuffer:: ds 1 tiles
 
 ; link data
 UNION
@@ -274,7 +274,7 @@ wTimeSetBufferEnd::
 NEXTU
 ; hall of fame temp struct
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
-/*
+
 NEXTU
 ; debug mon color picker
 wDebugMiddleColors::
@@ -291,7 +291,7 @@ wDebugPalette::
 wDebugWhiteTileColor:: ds 2
 wDebugLightTileColor:: ds 2
 wDebugDarkTileColor::  ds 2
-wDebugBlackTileColor:: ds 2*/
+wDebugBlackTileColor:: ds 2
 ENDU
 
 ; This union spans 280 bytes.
@@ -498,12 +498,12 @@ SECTION UNION "Overworld Map", WRAM0
 ; Hall of Fame data
 wHallOfFamePokemonList:: hall_of_fame wHallOfFamePokemonList
 
-/*
+
 SECTION UNION "Overworld Map", WRAM0
 
 ; debug color picker
 wDebugOriginalColors:: ds 256 * 4
-*/
+
 
 SECTION UNION "Overworld Map", WRAM0
 
@@ -1624,10 +1624,6 @@ wMenuScrollPosition:: ds 4
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
 
-/*
-wTileAnimBuffer:: ds 1 tiles
-*/
-
 
 SECTION "WRAM 1", WRAMX
 
@@ -1654,8 +1650,7 @@ wCreditsLYOverride:: db
 NEXTU
 ; pokedex
 wPrevDexEntryJumptableIndex:: db
-wPrevDexEntryBackup::
-wPokedexStatus:: db
+wPrevDexEntryBackup:: db
 wUnusedPokedexByte:: db
 
 NEXTU
@@ -2345,7 +2340,7 @@ wFollowMovementQueue:: ds 5
 UNION
 wObjectStructs::
 wPlayerStruct:: object_struct wPlayer ; player is object struct 0
-; wObjectStruct1 - wObjectStruct12
+; wObject1Struct - wObject12Struct
 for n, 1, NUM_OBJECT_STRUCTS
 wObject{d:n}Struct:: object_struct wObject{d:n}
 endr
@@ -2432,16 +2427,16 @@ wRegisteredItem:: db
 wPlayerState:: db
 
 wHallOfFameCount:: db
-/*	ds 1
+	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
 
-	ds 33
-
+	ds 17
+/*
 wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 
 	ds 14
-
+*/
 wPokecenter2FSceneID::                            db
 wTradeCenterSceneID::                             db
 wColosseumSceneID::                               db
@@ -2503,9 +2498,6 @@ wFastShipB1FSceneID::                             db
 wMountMoonSquareSceneID::                         db
 
 	ds 197
-*/
-
-	ds 275
 
 wEventFlags:: flag_array NUM_EVENTS
 
@@ -2807,7 +2799,7 @@ wHangulTilesIndexTable:: ds $100
 
 wHangulCharBuffer:: ds 2 * TILE_SIZE
 
-w2_d120::
+wInvertedHangulToggle::
 
 
 SECTION "WRAM Window Stack", WRAMX

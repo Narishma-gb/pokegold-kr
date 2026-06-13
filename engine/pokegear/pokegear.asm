@@ -521,7 +521,8 @@ PokegearMap_CheckRegion:
 .johto
 	ld a, POKEGEARSTATE_JOHTOMAPINIT
 	jr .done
-	ret
+
+	ret ; unreferenced
 
 .kanto
 	ld a, POKEGEARSTATE_KANTOMAPINIT
@@ -1226,7 +1227,7 @@ PokegearPhoneContactSubmenu:
 	jr nz, .clear_column
 	pop hl
 	ld a, [wPokegearPhoneSubmenuCursor]
-	ld bc, SCREEN_WIDTH  * 2
+	ld bc, SCREEN_WIDTH * 2
 	call AddNTimes
 	ld [hl], '▶'
 	pop de

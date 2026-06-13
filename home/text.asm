@@ -891,23 +891,23 @@ TextCommand_DAY::
 .Satur:  db "토@"
 .Day:    db "요일@"
 
-Function1470::
+SetStandardHangulFont::
 	di
-	ld a, $02
+	ld a, BANK("WRAM 2")
 	ldh [rWBK], a
-	ld a, $00
-	ld [w2_d120], a
+	ld a, 0
+	ld [wInvertedHangulToggle], a
 	ld a, $01
 	ldh [rWBK], a
 	ei
 	ret
 
-Function1480::
+SetInvertedHangulFont::
 	di
-	ld a, $02
+	ld a, BANK("WRAM 2")
 	ldh [rWBK], a
-	ld a, $FF
-	ld [w2_d120], a
+	ld a, $ff
+	ld [wInvertedHangulToggle], a
 	ld a, $01
 	ldh [rWBK], a
 	ei
@@ -915,11 +915,11 @@ Function1480::
 
 Function1490::
 	di
-	ld a, $02
+	ld a, BANK("WRAM 2")
 	ldh [rWBK], a
-	ld a, [w2_d120]
+	ld a, [wInvertedHangulToggle]
 	cpl
-	ld [w2_d120], a
+	ld [wInvertedHangulToggle], a
 	ld a, $01
 	ldh [rWBK], a
 	ei
@@ -946,9 +946,9 @@ Function14a8::
 Function14b6::
 	push bc
 	push hl
-	ld bc, $0940
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
-	res 3, [hl]
+	res B_BG_BANK1, [hl]
 	pop hl
 	pop bc
 	ret
@@ -980,9 +980,9 @@ PrepareVDMAData::
 	ld a, b
 	rst Bankswitch
 	di
-	ld a, $02
+	ld a, BANK("WRAM 2")
 	ldh [rWBK], a
-	ld a, [w2_d120]
+	ld a, [wInvertedHangulToggle]
 	ld b, a
 
 	ld c, 2 * TILE_1BPP_SIZE

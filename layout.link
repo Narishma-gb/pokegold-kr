@@ -112,7 +112,7 @@ ROMX $23
 ROMX $24
 	"bank24"
 ROMX $25
-; 	"Maps"
+	"Maps"
 	org $65f9
 	"Events"
 ROMX $26
@@ -144,31 +144,31 @@ ROMX $37
 	"Tileset Data 5"
 ROMX $38
 	"bank38"
-; ROMX $39
-; 	"Copyright"
-; 	"Title Screen 2"
-; 	"bank39"
-; ROMX $3a
-; 	"Audio"
-; 	"Songs 1"
-; ROMX $3b
-; 	"Songs 2"
-; ROMX $3c
-; 	"Songs 3"
-; 	"Sound Effects"
-; 	"Cries"
-; ROMX $3d
-; 	"Songs 4"
-; ROMX $3e
-; 	"bank3E"
-; 	"Shrink Pics"
-; 	"bank3E_2"
-; ROMX $3f
-; 	"bank3F"
-; ROMX $40
-; 	"Standard Scripts"
-; ROMX $41
-; 	"Phone Scripts"
+ROMX $39
+	"Copyright"
+	"Title Screen 2"
+	"bank39"
+ROMX $3a
+	"Audio"
+	"Songs 1"
+ROMX $3b
+	"Songs 2"
+ROMX $3c
+	"Songs 3"
+	"Sound Effects"
+	"Cries"
+ROMX $3d
+	"Songs 4"
+ROMX $3e
+	"bank3E"
+	"Shrink Pics"
+	"bank3E_2"
+ROMX $3f
+	"bank3F"
+ROMX $40
+	"Standard Scripts"
+ROMX $41
+	"Phone Scripts"
 ; ROMX $42
 ; 	"Map Scripts 1"
 ; ROMX $43
