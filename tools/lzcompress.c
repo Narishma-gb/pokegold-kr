@@ -417,7 +417,7 @@ void compress_matching(char const *input_name, char const *output_name) {
 
 	FILE *output = xfopen(output_name, 'w');
 	write_commands(output);
-	fclose(output);
+	xfclose(output);
 
 	free(commands);
 }
@@ -648,7 +648,7 @@ void compress_dynamic(char const *input_name, char const *output_name) {
 
 	FILE *output = xfopen(output_name, 'w');
 	write_commands_dynamic(output);
-	fclose(output);
+	xfclose(output);
 
 	free(raw_data);
 	free(commands);
