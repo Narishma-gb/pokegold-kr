@@ -56,16 +56,6 @@ SECTION "rom37", ROMX[$40ed], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-;SECTION "rom66", ROMX[$4000], BANK[66]
-; ROM $42 : $108000 - $10BFFF
-
-
-SECTION "rom67", ROMX[$4000], BANK[67]
-; ROM $43 : $10C000 - $10FFFF
-
-	dr CardKeySlotScript, $5c1d
-
-
 ;SECTION "rom68", ROMX[$4000], BANK[68]
 ; ROM $44 : $110000 - $113FFF
 

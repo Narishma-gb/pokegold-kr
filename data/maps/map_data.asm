@@ -8,4 +8,4 @@ INCLUDE "data/maps/scenes.asm"
 INCLUDE "data/maps/blocks.asm"
 
 
-;INCLUDE "data/maps/scripts.asm"
+INCLUDE "data/maps/scripts.asm"

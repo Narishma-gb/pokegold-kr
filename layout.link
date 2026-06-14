@@ -166,10 +166,10 @@ ROMX $40
 	"Standard Scripts"
 ROMX $41
 	"Phone Scripts"
-; ROMX $42
-; 	"Map Scripts 1"
-; ROMX $43
-; 	"Map Scripts 2"
+ROMX $42
+	"Map Scripts 1"
+ROMX $43
+	"Map Scripts 2"
 ; ROMX $44
 ; 	"Map Scripts 3"
 ; ROMX $45

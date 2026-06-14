@@ -34,7 +34,7 @@ INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 
-
+/*
 SECTION "Map Scripts 3", ROMX
 
 INCLUDE "maps/RuinsOfAlphOutside.asm"
@@ -492,5 +492,5 @@ INCLUDE "maps/CherrygroveEvolutionSpeechHouse.asm"
 INCLUDE "maps/Route30BerryHouse.asm"
 INCLUDE "maps/MrPokemonsHouse.asm"
 INCLUDE "maps/Route31VioletGate.asm"
-
+*/
 ENDSECTION

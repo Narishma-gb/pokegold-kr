@@ -158,7 +158,7 @@ RadioTower1FRadioCardWomanScript:
 	end
 
 .RadioCardText:
-	db "RADIO CARD@"
+	db "라디오카드@"
 
 .ReceiveItem:
 	jumpstd ReceiveItemScript
@@ -211,259 +211,208 @@ RadioTower1FLuckyNumberManReturnToPlayerMovement:
 	step_end
 
 RadioTower1FReceptionistWelcomeText:
-	text "Welcome!"
+	text "어서오세요!"
 	done
 
 RadioTower1FReceptionistNoToursText:
-	text "Hello. I'm sorry,"
-	line "but we're not"
-	cont "offering any tours"
-	cont "today."
+	text "…… 어서오세요"
+	line "대단히 죄송하지만"
+	cont "지금은 견학을 할 수 없습니다"
 	done
 
 RadioTower1FLuckyNumberManAskToPlayText:
-	text "Hi, are you here"
-	line "for the LUCKY NUM-"
-	cont "BER SHOW?"
+	text "예 여기는 교환소입니다"
 
-	para "Want me to check"
-	line "the ID numbers of"
-	cont "your #MON?"
-
-	para "If you get lucky,"
-	line "you win a prize."
+	para "당신의 포켓몬"
+	line "아이디 넘버로"
+	cont "운이 좋다면 상품획득 찬스!"
 	done
 
 RadioTower1FLuckyNumberManThisWeeksIdIsText:
-	text "This week's ID"
-	line "number is @"
+	text "이번 아이디 넘버는"
+	line "@"
 	text_ram wStringBuffer3
-	text "."
+	text " 입니다"
 	done
 
 RadioTower1FLuckyNumberManCheckIfMatchText:
-	text "Let's see if you"
-	line "have a match."
+	text "그럼 바로 체크"
+	line "하겠습니다"
 	done
 
 RadioTower1FLuckyNumberManDotDotDotText:
-	text "<……>"
-	line "<……>"
+	text "…… …… …… …… ……"
+	line " …… …… …… …… ……"
 	done
 
 RadioTower1FLuckyNumberManComeAgainText:
-	text "Please come back"
-	line "next week for the"
-	cont "next LUCKY NUMBER."
+	text "다음의 발표를"
+	line "즐겁게 기다려주세요"
 	done
 
 RadioTower1FLuckyNumberManPerfectMatchText:
-	text "Wow! You have a"
-	line "perfect match of"
-	cont "all five numbers!"
+	text "이 이럴수가 5자리 맞았습니다!"
+	line "1등! 1등입니다!"
 
-	para "We have a grand"
-	line "prize winner!"
-
-	para "You have won a"
-	line "MASTER BALL!"
+	para "1등 상품은"
+	line "마스터볼입니다!"
 	done
 
 RadioTower1FLuckyNumberManOkayMatchText:
-	text "Hey! You've"
-	line "matched the last"
-	cont "three numbers!"
+	text "오옷! 아래 3자리 맞았습니다!"
+	line "2등입니다!"
 
-	para "You've won second"
-	line "prize, an EXP."
-	cont "SHARE!"
+	para "2등 상품은"
+	line "학습장치입니다!"
 	done
 
 RadioTower1FLuckyNumberManWeakMatchText:
-	text "Ooh, you've"
-	line "matched the last"
-	cont "two numbers."
+	text "아래 2자리 수가 맞았습니다!"
+	line "3등이 당첨되었습니다"
 
-	para "You've won third"
-	line "prize, a PP UP."
+	para "3등 상품은"
+	line "포인트 업 입니다!"
 	done
 
 RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:
-	text "Nope, none of your"
-	line "ID numbers match."
+	text "애석하게도"
+	line "모두 꽝입니다"
 	done
 
 RadioTower1FLuckyNumberManNoRoomForYourPrizeText:
-	text "You've got no room"
-	line "for your prize."
-
-	para "Make room and come"
-	line "back right away."
+	text "짐이 잔뜩 있는 것 같군요"
+	line "짐을 줄이시고 되도록 빨리"
+	cont "오시길 바랍니다"
 	done
 
 RadioTower1FRadioCardWomanOfferQuizText:
-	text "We have a special"
-	line "quiz campaign on"
-	cont "right now."
+	text "지금 막 캠페인 중!"
 
-	para "Answer five ques-"
-	line "tions correctly to"
-	cont "win a RADIO CARD."
+	para "퀴즈 5문제에 계속해서"
+	line "정답이 나오면"
+	cont "라디오 카드를 선물로!"
 
-	para "Slide it into your"
-	line "#GEAR to play"
-
-	para "the radio anytime,"
-	line "anywhere."
-
-	para "Would you like to"
-	line "take the quiz?"
+	para "포켓기어에 꽂으면 언제 어디서나"
+	line "라디오를 들을 수 있습니다"
+	cont "퀴즈에 도전하겠습니까?"
 	done
 
 RadioTower1FRadioCardWomanQuestion1Text:
-	text "Question 1:"
+	text "그럼 제1문제!"
 
-	para "Can the TOWN MAP"
-	line "be displayed on a"
-	cont "#GEAR?"
+	para "포켓기어로 마을지도를"
+	line "볼 수 있을까요?"
 	done
 
 RadioTower1FRadioCardWomanQuestion2Text:
-	text "Correct!"
-	line "Question 2:"
+	text "정답입니다"
+	line "그럼 제2문제!"
 
-	para "Can NIDORINA be"
-	line "female only?"
+	para "포켓몬의 니드리나는"
+	line "♀밖에 없다?"
 	done
 
 RadioTower1FRadioCardWomanQuestion3Text:
-	text "Bull's-eye!"
-	line "Question 3:"
+	text "정답입니다"
+	line "계속해서 제3문제!"
 
-	para "Does KURT, the"
-	line "# BALL crafts-"
-	cont "man, use APRIKORN?"
+	para "볼의 전문가 강집 할아버지가"
+	line "재료로 쓰는것은 봉골레?"
 	done
 
 RadioTower1FRadioCardWomanQuestion4Text:
-	text "So far so good!"
-	line "Question 4:"
+	text "계속해서 정답"
+	line "그럼 제4문제"
 
-	para "MAGIKARP won't"
-	line "learn any TM move?"
+	para "포켓몬 잉어킹에게"
+	line "기술머신은 쓸수없다?"
 	done
 
 RadioTower1FRadioCardWomanQuestion5Text:
-	text "Wow! Right again!"
-	line "Here's the final"
-	cont "question:"
+	text "대단하군요!"
+	line "드디어 마지막 문제입니다"
 
-	para "PROF.OAK'S #MON"
-	line "TALK is a very"
-	cont "popular program."
-
-	para "Is MARIE the co-"
-	line "host of the show?"
+	para "인기 방송"
+	line "오박사의 포켓몬 강좌"
+	cont "상대는 이애영씨?"
 	done
 
 RadioTower1FRadioCardWomanYouWinText:
-	text "Bingo! You got it!"
-	line "Congratulations!"
-
-	para "Here's your prize,"
-	line "a RADIO CARD!"
+	text "모든 문제 정답"
+	line "축하드립니다!"
+	cont "상품인 라디오 카드입니다!"
 	done
 
 RadioTower1FPokegearIsARadioText:
-	text "<PLAYER>'s #GEAR"
-	line "can now double as"
-	cont "a radio!"
+	text "<PLAYER>의 포켓몬 기어에서"
+	line "라디오를 들을 수 있게 되었다!"
 	done
 
 RadioTower1FRadioCardWomanTuneInText:
-	text "Please tune in to"
-	line "our radio shows."
+	text "우리들의 방송"
+	line "항상 듣고 즐기시길!"
 	done
 
 RadioTower1FRadioCardWomanWrongAnswerText:
-	text "Oh, dear."
-	line "Sorry, but you"
-
-	para "got it wrong."
-	line "Please try again!"
+	text "이런이런 틀리셨네요"
+	line "아깝게 되었군요"
+	cont "다음에 다시 도전해주세요!"
 	done
 
 RadioTower1FRadioCardWomanNotTakingQuizText:
-	text "Oh. I see. Please"
-	line "try if you change"
-	cont "your mind."
+	text "그렇습니까?"
+	line "다시 할 마음이 생기면 찾아주세요"
 	done
 
 RadioTower1FLassText:
-	text "BEN is a fabulous"
-	line "DJ."
+	text "DJ라고 한다면 준화뿐이지!"
+	line "저 달콤한 목소리를 말하자면……"
 
-	para "His sweet voice"
-	line "makes me melt!"
+	para "벌써 녹아서 헤롱헤롱"
 	done
 
 RadioTower1FYoungsterText:
-	text "I love MARY, from"
-	line "#MON TALK."
+	text "나는 포켓몬 강좌의"
+	line "호두님이 좋아!"
 
-	para "I only know what"
-	line "she sounds like,"
-	cont "though."
+	para "……목소리밖에 모르지만"
 	done
 
 GruntM3SeenText:
-	text "We've finally"
-	line "taken over the"
-	cont "RADIO TOWER!"
+	text "드디어 라디오타워를 접수했다!"
+	line "로켓단의 무서움을"
+	cont "전국에 알려야한다"
 
-	para "Now everyone will"
-	line "get to experience"
-
-	para "the true terror of"
-	line "TEAM ROCKET!"
-
-	para "We'll show you"
-	line "how scary we are!"
+	para "먼저 너에게 우리들의"
+	line "두려움을 가르쳐 주겠다!"
 	done
 
 GruntM3BeatenText:
-	text "Too strong! We"
-	line "must watch you…"
+	text "이 이녀석은 강하군……"
+	line "요주의 인물이로군"
 	done
 
 GruntM3AfterBattleText:
-	text "You're too strong."
+	text "넌 너무나 강하군"
 
-	para "Our plan could be"
-	line "ruined. I must"
-	cont "warn the others…"
+	para "이대로는 계획이 물거품이다"
+	line "동료들에게 알리지 않으면……"
 	done
 
 RadioTower1FDirectoryText:
-	text "1F RECEPTION"
-	line "2F SALES"
-
-	para "3F PERSONNEL"
-	line "4F PRODUCTION"
-
-	para "5F DIRECTOR'S"
-	line "   OFFICE"
+	text "1층 …… 안내"
+	line "2층 …… 영업부"
+	cont "3층 …… 총무부"
+	cont "4층 …… 제작실"
+	cont "5층 …… 국장실"
 	done
 
 RadioTower1FLuckyChannelSignText:
-	text "LUCKY CHANNEL!"
+	text "럭키- 채널!"
+	line "당신의 포켓몬은 몇번?"
 
-	para "Win with #MON"
-	line "ID numbers!"
-
-	para "Trade your #MON"
-	line "to collect differ-"
-	cont "ent ID numbers!"
+	para "포켓몬을 교환해서"
+	line "여러가지 번호를 모아보자!"
 	done
 
 RadioTower1F_MapEvents:

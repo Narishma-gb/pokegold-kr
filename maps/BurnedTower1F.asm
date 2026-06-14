@@ -161,119 +161,85 @@ FirebreatherDickMovement:
 	step_end
 
 BurnedTowerRival_BeforeText:
-	text "<……> <……> <……>"
+	text "…… …… ……"
 
-	para "…Oh, it's you."
+	para "…… 뭐야 너였냐?"
 
-	para "You wanted to get"
-	line "stronger, so you"
+	para "조금은 강해지고 싶어서"
+	line "이곳에 잠들어 있다고 전해지는"
+	cont "전설의 포켓몬을 찾으려고 왔다"
+	cont "뭐 그런 마음이었을 테지!"
 
-	para "came for the leg-"
-	line "endary #MON"
+	para "하지만 그건 무리야"
 
-	para "that's supposed to"
-	line "be here. That's"
-	cont "your story, right?"
+	para "전설의 포켓몬은"
+	line "내가 잡을꺼야……"
 
-	para "Well, that's not"
-	line "going to happen."
+	para "누가 뭐라해도 나는 최강의 "
+	line "트레이너가 될 테니까"
+	cont "전설의 포켓몬이 어울리니까"
 
-	para "Because I'm going"
-	line "to get it!"
-
-	para "I'm going to be"
-	line "the world's great-"
-	cont "est trainer, so a"
-	cont "legendary #MON"
-	cont "would be perfect"
-	cont "for me."
-
-	para "…Well, anyway,"
-	line "I'm getting tired"
-
-	para "of having a wimp"
-	line "like you always"
-	cont "showing up."
+	para "…… 그것보다도 너"
+	line "약한주제에 여기저기"
+	cont "어정거려서 눈에 거슬려"
 	done
 
 BurnedTowerRival_WinText:
-	text "…Humph!"
+	text "…… 흥!"
 
-	para "This is why I hate"
-	line "battling wimps."
-
-	para "There's no"
-	line "challenge in it."
+	para "이렇기 때문에 약한 녀석과"
+	line "싸우는 것이 싫다니까"
+	cont "나도 모르는 새 놀자판이 된다니까"
 	done
 
 BurnedTowerRival_AfterText1:
-	text "…Aw, whatever."
+	text "…… 뭐 괜찮아"
 
-	para "You would never be"
-	line "able to catch a"
-
-	para "legendary #MON"
-	line "anyway."
+	para "너 같은 녀석에게"
+	line "전설의 포켓몬이"
+	cont "잡힐 리가 없으니까"
 	done
 
 BurnedTowerRival_LossText:
-	text "…Humph!"
+	text "…… 흥!"
 
-	para "This is why I hate"
-	line "battling wimps."
-
-	para "It's just a waste"
-	line "of my time."
+	para "이렇기 때문에 약한 녀석과"
+	line "싸우는 것이 싫다니까"
+	cont "시간낭비만 될 뿐이야"
 	done
 
 FirebreatherDickBeforeText:
-	text "Hey, I'm training"
-	line "secretly here!"
-
-	para "Don't embarrass me"
-	line "by looking!"
+	text "몰래 연습하고 있는 것을"
+	line "보이게된다면 창피하잖아!"
 	done
 
 FirebreatherDickBeatenText:
-	text "I burned down to"
-	line "white ashes…"
+	text "불이 붙었다……"
+	line "새하얗게 되어 버렸어……"
 	done
 
 FirebreatherDickAfterText:
-	text "I was so into my"
-	line "training that I"
-
-	para "fell down this"
-	line "hole."
+	text "연습에 열중해서"
+	line "구덩이로부터 떨어져버렸어  와하하"
 	done
 
 FirebreatherNedSeenText:
-	text "My soul is on"
-	line "fire. I'll show"
-
-	para "you how hot it"
-	line "burns!"
+	text "나의 투혼이 불타오르고 있다"
+	line "그 뜨거움을 가르쳐주마"
 	done
 
 FirebreatherNedBeatenText:
-	text "Still not hot"
-	line "enough…"
+	text "아직 온도가 낮았었나?"
 	done
 
 FirebreatherNedAfterText:
-	text "In the past, there"
-	line "were these #MON"
+	text "옛날 엄청나게 빠른 속도로"
+	line "여기저기의 길을 뛰어다녔던"
+	cont "포켓몬이 있었던 것 같다"
 
-	para "that ran through"
-	line "grass at super-"
-	cont "high speed."
-
-	para "They say that they"
-	line "run like the wind."
-
-	para "If you run into"
-	line "one in grass, it"
-	cont "will likely bolt."
+	para "바람처럼 재빠른것 같으니"
+	line "우연히 풀숲에서 만나도"
+	cont "바로 도망가버리겠지!"
 	done
 
 BurnedTower1F_MapEvents:
