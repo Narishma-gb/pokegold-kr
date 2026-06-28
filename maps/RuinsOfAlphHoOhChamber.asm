@@ -44,17 +44,13 @@ RuinsOfAlphHoOhChamberDescriptionSign:
 	jumptext RuinsOfAlphHoOhChamberDescriptionText
 
 RuinsOfAlphHoOhChamberAncientReplicaText:
-	text "It's a replica of"
-	line "an ancient #-"
-	cont "MON."
+	text "옛날의 포켓몬을"
+	line "흉내내서 만들어진 것"
 	done
 
 RuinsOfAlphHoOhChamberDescriptionText:
-	text "A #MON that"
-	line "flew gracefully on"
-
-	para "rainbow-colored"
-	line "wings."
+	text "무지개 빛으로 빛나는 날개로"
+	line "넓은 하늘을 우아하게 나는 포켓몬"
 	done
 
 RuinsOfAlphHoOhChamber_MapEvents:

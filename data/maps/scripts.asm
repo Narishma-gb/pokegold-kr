@@ -34,7 +34,7 @@ INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 
-/*
+
 SECTION "Map Scripts 3", ROMX
 
 INCLUDE "maps/RuinsOfAlphOutside.asm"
@@ -56,7 +56,7 @@ INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 
-
+/*
 SECTION "Map Scripts 4", ROMX
 
 INCLUDE "maps/MahoganyMart1F.asm"

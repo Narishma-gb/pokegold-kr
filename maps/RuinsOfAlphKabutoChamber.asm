@@ -51,36 +51,24 @@ RuinsOfAlphKabutoChamberDescriptionSign:
 	jumptext RuinsOfAlphKabutoChamberDescriptionText
 
 RuinsOfAlphKabutoChamberReceptionistText:
-	text "Welcome to this"
-	line "chamber."
+	text "유적의 방에 잘 오셨습니다!"
 
-	para "There are sliding"
-	line "panels that depict"
+	para "아주 오래전의 사람이 그린"
+	line "포켓몬의 그림이 있습니다!"
+	cont "움직여봐 주세요"
 
-	para "a #MON drawn by"
-	line "the ancients."
-
-	para "Slide the panels"
-	line "around to form the"
-	cont "picture."
-
-	para "To the right is a"
-	line "description of the"
-	cont "#MON."
+	para "오른쪽은 그 포켓몬에 대한"
+	line "설명이라고 말해지고 있습니다"
 	done
 
 RuinsOfAlphKabutoChamberAncientReplicaText:
-	text "It's a replica of"
-	line "an ancient #-"
-	cont "MON."
+	text "옛날의 포켓몬을"
+	line "모방해서 만들어진 것"
 	done
 
 RuinsOfAlphKabutoChamberDescriptionText:
-	text "A #MON that hid"
-	line "on the sea floor."
-
-	para "Eyes on its back"
-	line "scanned the area."
+	text "바다 밑에 숨어서 등 뒤의"
+	line "눈으로 주변을 보던 포켓몬"
 	done
 
 RuinsOfAlphKabutoChamber_MapEvents:

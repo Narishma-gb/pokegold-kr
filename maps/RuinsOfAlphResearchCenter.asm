@@ -135,15 +135,13 @@ RuinsOfAlphResearchCenterPrinter:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 	iftrue .SkipChecking
-	readvar VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, .PrinterAvailable
 .SkipChecking:
 	writetext RuinsOfAlphResearchCenterPrinterText_DoesntWork
 	waitbutton
 	closetext
 	end
 
-.PrinterAvailable:
+.PrinterAvailable: ; unreferenced
 	writetext RuinsOfAlphResearchCenterUnownPrinterText
 	waitbutton
 	special UnownPrinter
@@ -172,149 +170,105 @@ RuinsOfAlphResearchCenterLeavesPlayerMovement:
 	step_end
 
 RuinsOfAlphResearchCenterModifiedDexText:
-	text "Done!"
+	text "좋아!"
 
-	para "I modified your"
-	line "#DEX."
+	para "포켓몬 도감의 개조가"
+	line "끝났다!"
 
-	para "I added an"
-	line "optional #DEX"
+	para "옵션에서 안농도감을"
+	line "추가해 넣었다"
 
-	para "to store UNOWN"
-	line "data."
-
-	para "It records them in"
-	line "the sequence that"
-	cont "they were caught."
+	para "잡힌 순서대로"
+	line "기록될 수 있도록 했단다"
 	done
 
 RuinsOfAlphResearchCenterDexUpgradedText:
-	text "<PLAYER>'s #DEX"
-	line "was upgraded."
+	text "<PLAYER>의"
+	line "포켓몬 도감의 성능이 향상되었다!"
 	done
 
 RuinsOfAlphResearchCenterScientist3Text:
-	text "The UNOWN you"
-	line "catch will all be"
-	cont "recorded."
+	text "잡힌 안농이"
+	line "전부 기록되어질꺼야"
 
-	para "Check to see how"
-	line "many kinds exist."
+	para "몇 종류나 있을까"
+	line "너도 확인해 줘!"
 	done
 
 RuinsOfAlphResearchCenterScientist3_PrinterAvailable:
-	text "You caught all the"
-	line "UNOWN variations?"
-
-	para "That's a great"
-	line "achievement!"
-
-	para "I've set up the"
-	line "printer here for"
-	cont "handling UNOWN."
-
-	para "Feel free to use"
-	line "it anytime."
+	text "안농을 전부"
+	line "잡았다구?"
+	cont "그것 굉장하군!"
 	done
 
 RuinsOfAlphResearchCenterScientist1Text:
-	text "The RUINS are"
-	line "about 1500 years"
-	cont "old."
-
-	para "But it's not known"
-	line "why they were"
-	cont "built--or by whom."
+	text "대략 1500년 전에"
+	line "유적이 만들어졌지만"
+	cont "누가 무엇을 위해 만들었나"
+	cont "아직 모릅니다……"
 	done
 
 RuinsOfAlphResearchCenterScientist1Text_GotUnownDex:
-	text "I wonder how many"
-	line "kinds of #MON"
-	cont "are in the RUINS?"
+	text "유적의 포켓몬"
+	line "전부 몇 종류나 있지?"
 	done
 
 RuinsOfAlphResearchCenterScientist1Text_UnownAppeared:
-	text "#MON appeared"
-	line "in the RUINS?"
+	text "유적의 포켓몬이"
+	line "출현했어요!?"
 
-	para "That's incredible"
-	line "news!"
-
-	para "We'll need to"
-	line "investigate this."
+	para "이건 대 사건이군"
+	line "바로 조사를 착수해야겠군!"
 	done
 
 RuinsOfAlphResearchCenterScientist2Text:
-	text "There are odd pat-"
-	line "terns drawn on the"
+	text "벽에 그려져 있는 모양이"
+	line "유적의 수수께끼를 푸는 열쇠다!"
 
-	para "walls of the"
-	line "RUINS."
-
-	para "They must be the"
-	line "keys for unravel-"
-	cont "ing the mystery"
-	cont "of the RUINS."
+	para "……라고 생각하는데-"
 	done
 
 RuinsOfAlphResearchCenterScientist2Text_UnownAppeared:
-	text "The strange #-"
-	line "MON you saw in the"
-	cont "RUINS?"
+	text "네가 만난 포켓몬은"
+	line "유적 벽의 모양과"
+	cont "닮아있는것 같군"
 
-	para "They appear to be"
-	line "very much like the"
+	para "……흐음"
 
-	para "drawings on the"
-	line "walls there."
-
-	para "Hmm…"
-
-	para "That must mean"
-	line "there are many"
-	cont "kinds of them…"
+	para "그렇다고하면 수많은 종류가"
+	line "유적에 있다는 것인가……"
 	done
 
 RuinsOfAlphResearchCenterComputerText:
-	text "RUINS OF ALPH"
-
-	para "Exploration"
-	line "Year 10"
+	text "알프 유적의 조사"
+	line "……올해로 10년째"
 	done
 
 RuinsOfAlphResearchCenterComputerText_GotAllUnown:
-	text "Mystery #MON"
-	line "Name: UNOWN"
-
-	para "A total of {d:NUM_UNOWN}"
-	line "kinds found."
+	text "수수께끼의 포켓몬"
+	line "이름……안농"
+	cont "전부해서 {d:NUM_UNOWN}종류 발견"
 	done
 
 RuinsOfAlphResearchCenterPrinterText_DoesntWork:
-	text "This doesn't seem"
-	line "to work yet."
+	text "이상한 기계다……"
 	done
 
 RuinsOfAlphResearchCenterUnownPrinterText:
-	text "UNOWN may be"
-	line "printed out."
+	text "안농의 모습을"
+	line "프린트할 수 있습니다!"
 	done
 
 RuinsOfAlphResearchCenterProfSilktreePhotoText:
-	text "It's a photo of"
-	line "the RESEARCH"
-
-	para "CENTER'S founder,"
-	line "PROF.SILKTREE."
+	text "알프의 유적 연구소"
+	line "초대 소장"
+	cont "작명박사의 사진이다!"
 	done
 
 RuinsOfAlphResearchCenterAcademicBooksText:
-	text "There are many"
-	line "academic books."
-
-	para "Ancient Ruins…"
-	line "Mysteries of the"
-	cont "Ancients…"
+	text "어려운 책들이 가득하군"
+	line "『고대 유적』……"
+	cont "『고대 문명의 수수께끼』……"
 	done
 
 RuinsOfAlphResearchCenter_MapEvents:
