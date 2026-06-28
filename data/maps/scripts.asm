@@ -56,6 +56,10 @@ INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 
+; temporary hack
+INCLUDE "maps/RuinsOfAlphResearchCenter_2.asm"
+
+
 /*
 SECTION "Map Scripts 4", ROMX
 

@@ -200,9 +200,6 @@ Printer_ResetRegistersAndStartDataSend:
 	ret
 
 PrintUnownStamp:
-	ld a, [wPrinterQueueLength]
-	push af
-
 	xor a
 	ldh [hPrinter], a
 	call Printer_PlayMusic
@@ -228,8 +225,6 @@ PrintUnownStamp:
 	call SafeLoadTempTilemapToTilemap
 	call Printer_ResetJoypadRegisters
 
-	ld a, 18 / 2
-	ld [wPrinterQueueLength], a
 .loop
 	call JoyTextDelay
 	call CheckCancelPrint
@@ -261,8 +256,6 @@ PrintUnownStamp:
 	pop af
 	ldh [rIE], a
 
-	pop af
-	ld [wPrinterQueueLength], a
 	ret
 
 PrintMailAndExit:

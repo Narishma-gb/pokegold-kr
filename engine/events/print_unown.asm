@@ -74,11 +74,15 @@ _UnownPrinter:
 	and PAD_B
 	jr nz, .pressed_b
 
+	ldh a, [hJoyPressed]
+	and PAD_A
+	jr nz, .pressed_a
+
 	call .LeftRight
 	call DelayFrame
 	jr .joy_loop
 
-.pressed_a ; unreferenced
+.pressed_a
 	ld a, [wJumptableIndex]
 	push af
 	farcall PrintUnownStamp
@@ -133,6 +137,10 @@ _UnownPrinter:
 	jr z, .vacant
 	inc a
 	ld [wUnownLetter], a
+	; clear the pic box in case hangul was printed
+	hlcoord 1, 6
+	lb bc, 7, 7
+	call ClearBox
 	ld a, UNOWN
 	ld [wCurPartySpecies], a
 	xor a
@@ -179,7 +187,8 @@ UnownDexDoWhatString:
 	db "어떻게 하겠습니까?@"
 
 UnownDexMenuString:
-	db   "B버튼▶그만두다"
+	db   UNOWNSTAMP_BOLD_A, "버튼▶프린트"
+	next UNOWNSTAMP_BOLD_B, "버튼▶그만두다"
 	next "왼쪽 ▶이전"
 	next "오른쪽▶다음"
 	db   "@"
@@ -197,6 +206,7 @@ PlaceUnownPrinterFrontpic:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	hlcoord 7, 11
 	ld a, $31
 	ldh [hGraphicStartTile], a

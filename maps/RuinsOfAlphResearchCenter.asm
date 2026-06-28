@@ -133,15 +133,21 @@ RuinsOfAlphResearchCenterComputer:
 
 RuinsOfAlphResearchCenterPrinter:
 	opentext
-	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-	iftrue .SkipChecking
+	; temporary hack to preserve bank symbols
+	sjump RuinsOfAlphResearchCenterPrinter2
+
+	ds 3, 0
+	;checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	;iftrue .SkipChecking
+	;readvar VAR_UNOWNCOUNT
+	;ifequal NUM_UNOWN, .PrinterAvailable
 .SkipChecking:
 	writetext RuinsOfAlphResearchCenterPrinterText_DoesntWork
 	waitbutton
 	closetext
 	end
 
-.PrinterAvailable: ; unreferenced
+.PrinterAvailable:
 	writetext RuinsOfAlphResearchCenterUnownPrinterText
 	waitbutton
 	special UnownPrinter

@@ -1,0 +1,6 @@
+RuinsOfAlphResearchCenterPrinter2:
+	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	iftrue RuinsOfAlphResearchCenterPrinter.SkipChecking
+	readvar VAR_UNOWNCOUNT
+	ifequal NUM_UNOWN, RuinsOfAlphResearchCenterPrinter.PrinterAvailable
+	sjump RuinsOfAlphResearchCenterPrinter.SkipChecking
