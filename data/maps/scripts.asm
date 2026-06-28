@@ -56,7 +56,7 @@ INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 
-
+/*
 SECTION "Map Scripts 4", ROMX
 
 INCLUDE "maps/MahoganyMart1F.asm"
@@ -492,5 +492,5 @@ INCLUDE "maps/CherrygroveEvolutionSpeechHouse.asm"
 INCLUDE "maps/Route30BerryHouse.asm"
 INCLUDE "maps/MrPokemonsHouse.asm"
 INCLUDE "maps/Route31VioletGate.asm"
-
+*/
 ENDSECTION

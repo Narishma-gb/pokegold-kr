@@ -10,34 +10,25 @@ TinTowerSageScript:
 	jumptextfaceplayer TinTowerSageText
 
 TinTowerSageText:
-	text "I'm trying to un-"
-	line "cover the secret"
+	text "나는 이곳에 내려온다고 하는"
+	line "전설의 포켓몬의"
+	cont "비밀을 밝혀내려 하고 있소"
 
-	para "of the legendary"
-	line "#MON that is"
-	cont "said to land here."
+	para "서쪽의 탑이 불에 타버린 이후"
+	line "여기에 있던 포켓몬은"
+	cont "계속 하늘을 날고 있다하오"
 
-	para "They say that the"
-	line "#MON has flown"
+	para "거기서 생각해보았소이다"
+	line "날고있는 포켓몬과"
+	cont "같은 것을 가지고 있는 다면"
+	cont "유인되어져 올 것이라는 것을!"
 
-	para "continuously ever"
-	line "since the TOWER in"
-	cont "the West burned."
+	para "그 같은 것 이란것은 아마도……"
 
-	para "So, I thought that"
-	line "if I had what the"
+	para "무지개빛 날개!"
 
-	para "#MON has, it"
-	line "would be attracted"
-	cont "by that item."
-
-	para "I think that item"
-	line "is probably…"
-
-	para "A RAINBOW WING!"
-
-	para "But, where would"
-	line "I find one?"
+	para "그렇지만 그런 것이"
+	line "어디에 있겠소이까?"
 	done
 
 TinTower1F_MapEvents:

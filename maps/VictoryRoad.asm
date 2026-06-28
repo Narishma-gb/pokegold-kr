@@ -162,78 +162,58 @@ VictoryRoadRivalBattleExitMovement2:
 	step_end
 
 VictoryRoadRivalBeforeText:
-	text "Hold it."
+	text "기다렷"
 
-	para "…Are you going to"
-	line "take the #MON"
-	cont "LEAGUE challenge?"
+	para "…… 지금부터 포켓몬 리그에"
+	line "도전할건가?"
 
-	para "…Don't make me"
-	line "laugh."
+	para "…… 장난치지마"
+	line "나보다도 약한 주제에"
 
-	para "You're so much"
-	line "weaker than I am."
+	para "지금까지의 나라고 생각하지마!"
 
-	para "I'm not like I was"
-	line "before."
-
-	para "I now have the"
-	line "best and strongest"
-
-	para "#MON with me."
-	line "I'm invincible!"
+	para "마지막 최강의"
+	line "포켓몬을 손에 넣었다"
+	cont "나에게는 누구도 이길 수 없어!"
 
 	para "<PLAYER>!"
-	line "I challenge you!"
+	line "나하고 승부를 내자!"
 	done
 
 VictoryRoadRivalDefeatText:
-	text "…I couldn't win…"
+	text "…… 이기지 못했다"
 
-	para "I gave it every-"
-	line "thing I had…"
+	para "전력을 다해서 싸웠는데……"
 
-	para "What you possess,"
-	line "and what I lack…"
+	para "너는 지니고 있고"
+	line "나에게는 없는 것……"
 
-	para "I'm beginning to"
-	line "understand what"
-
-	para "that dragon master"
-	line "said to me…"
+	para "그 드래곤 조련사에게 들은 이야기"
+	line "어쩐지 알 것 같아……"
 	done
 
 VictoryRoadRivalAfterText:
-	text "…I haven't given up"
-	line "on becoming the"
-	cont "greatest trainer…"
+	text "…… …… ……"
 
-	para "I'm going to find"
-	line "out why I can't"
+	para "나는 최강의 트레이너를"
+	line "포기한건 아니야"
 
-	para "win and become"
-	line "stronger…"
+	para "지금의 내가 이기지 못하는 이유"
+	line "반드시 발견해서 강해질꺼야"
+	cont "그리고 너와 싸우겠어"
 
-	para "When I do, I will"
-	line "challenge you."
+	para "그때에는 있는 힘을 다해서"
+	line "맛을 보여주마"
 
-	para "And I'll beat you"
-	line "down with all my"
-	cont "power."
-
-	para "…Humph! You keep"
-	line "at it until then."
+	para "…… 흥!"
+	line "더욱 더 노력하는 것이 좋을꺼야"
 	done
 
 VictoryRoadRivalVictoryText:
-	text "…Humph!"
+	text "…… 흥!"
 
-	para "When it comes down"
-	line "to it, nothing can"
-	cont "beat power."
-
-	para "I don't need any-"
-	line "thing else."
+	para "역시 중요한 것은 강함"
+	line "다른 것은 아무것도 필요없어"
 	done
 
 VictoryRoad_MapEvents:
