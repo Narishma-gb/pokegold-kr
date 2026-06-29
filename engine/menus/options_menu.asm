@@ -4,10 +4,11 @@
 	const OPT_BATTLE_SCENE  ; 1
 	const OPT_BATTLE_STYLE  ; 2
 	const OPT_SOUND         ; 3
-	const OPT_MENU_ACCOUNT  ; 4
-	const OPT_FRAME         ; 5
-	const OPT_CANCEL        ; 6
-DEF NUM_OPTIONS EQU const_value ; 7
+	const OPT_PRINT         ; 4
+	const OPT_MENU_ACCOUNT  ; 5
+	const OPT_FRAME         ; 6
+	const OPT_CANCEL        ; 7
+DEF NUM_OPTIONS EQU const_value ; 8
 
 _Option:
 ; BUG: Options menu fails to clear joypad state on initialization (see docs/bugs_and_glitches.md)
@@ -23,7 +24,7 @@ _Option:
 	hlcoord 1, 2
 	ld de, StringOptions
 	call PlaceString
-	hlcoord 11, 12
+	hlcoord 11, 14
 	ld de, StringOptions2
 	call PlaceString
 	xor a
@@ -77,6 +78,7 @@ StringOptions:
 	next "전투 애니메이션"
 	next "시합의 룰"
 	next "사운드"
+	next "프린터 농도"
 	next "메뉴 설명"
 	next "윈도우@"
 
@@ -93,6 +95,7 @@ GetOptionPointer:
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_Sound
+	dw Options_Print
 	dw Options_MenuAccount
 	dw Options_Frame
 	dw Options_Cancel
@@ -437,7 +440,7 @@ Options_MenuAccount:
 	ld de, .On
 
 .Display:
-	hlcoord 11, 10
+	hlcoord 11, 12
 	call PlaceString
 	and a
 	ret
@@ -469,7 +472,7 @@ Options_Frame:
 	ld [hl], a
 UpdateFrame:
 	ld a, [wTextboxFrame]
-	hlcoord 14, 12 ; where on the screen the number is drawn
+	hlcoord 14, 14 ; where on the screen the number is drawn
 	add '1'
 	ld [hl], a
 	call LoadFontsExtra
