@@ -51,16 +51,6 @@ SECTION "rom37", ROMX[$40ed], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-;SECTION "rom69", ROMX[$4000], BANK[69]
-; ROM $45 : $114000 - $117FFF
-
-
-SECTION "rom70", ROMX[$4000], BANK[70]
-; ROM $46 : $118000 - $11BFFF
-
-	dr BasementDoorScript, $429e
-
-
 ;SECTION "rom71", ROMX[$4000], BANK[71]
 ; ROM $47 : $11C000 - $11FFFF
 

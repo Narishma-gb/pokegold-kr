@@ -56,7 +56,7 @@ INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 
-/*
+
 SECTION "Map Scripts 4", ROMX
 
 INCLUDE "maps/MahoganyMart1F.asm"
@@ -82,7 +82,7 @@ INCLUDE "maps/IcePathB2FMahoganySide.asm"
 INCLUDE "maps/IcePathB2FBlackthornSide.asm"
 INCLUDE "maps/IcePathB3F.asm"
 
-
+/*
 SECTION "Map Scripts 6", ROMX
 
 INCLUDE "maps/WhirlIslandNW.asm"

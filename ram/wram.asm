@@ -2429,13 +2429,13 @@ wHallOfFameCount:: db
 	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
 
-	ds 17
+	ds 2
 /*
-wMooMooBerries:: db
+wMooMooBerries:: db*/
 wUndergroundSwitchPositions:: db
 
 	ds 14
-*/
+
 wPokecenter2FSceneID::                            db
 wTradeCenterSceneID::                             db
 wColosseumSceneID::                               db
