@@ -82,7 +82,7 @@ INCLUDE "maps/IcePathB2FMahoganySide.asm"
 INCLUDE "maps/IcePathB2FBlackthornSide.asm"
 INCLUDE "maps/IcePathB3F.asm"
 
-/*
+
 SECTION "Map Scripts 6", ROMX
 
 INCLUDE "maps/WhirlIslandNW.asm"
@@ -113,7 +113,7 @@ INCLUDE "maps/AzaleaTown.asm"
 INCLUDE "maps/CianwoodCity.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 
-
+/*
 SECTION "Map Scripts 8", ROMX
 
 INCLUDE "maps/OlivineCity.asm"

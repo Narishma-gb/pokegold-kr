@@ -137,14 +137,6 @@ NewBarkTownElmsLabSign:
 NewBarkTownElmsHouseSign:
 	jumptext NewBarkTownElmsHouseSignText
 
-MrChronoScript: ; unreferenced
-	faceplayer
-	opentext
-	writetext MrChronoText
-	special MrChrono
-	closetext
-	end
-
 NewBarkTown_TeacherRunsToYouMovement1:
 	step LEFT
 	step LEFT
@@ -195,101 +187,83 @@ NewBarkTown_RivalReturnsToTheShadowsMovement:
 	step_end
 
 Text_GearIsImpressive:
-	text "Wow, your #GEAR"
-	line "is impressive!"
-
-	para "Did your mom get"
-	line "it for you?"
+	text "와아 멋있는 포켓기어구나!"
+	line "엄마가 사줬어?"
 	done
 
 Text_WaitPlayer:
-	text "Wait, <PLAYER>!"
+	text "아! <PLAYER>군"
 	done
 
 Text_WhatDoYouThinkYoureDoing:
-	text "What do you think"
-	line "you're doing?"
+	text "혼자서 어디 가니?"
 	done
 
 Text_ItsDangerousToGoAlone:
-	text "It's dangerous to"
-	line "go out without a"
-	cont "#MON!"
+	text "이런! 포켓몬도 지니지 않고"
+	line "도로에 나가다니 위험해!"
 
-	para "Wild #MON"
-	line "jump out of the"
-
-	para "grass on the way"
-	line "to the next town."
+	para "근처의 마을까지는"
+	line "야생의 포켓몬이 튀어 나오는"
+	cont "풀숲만 있으니까"
 	done
 
 Text_YourMonIsAdorable:
-	text "Oh! Your #MON"
-	line "is adorable!"
-	cont "I wish I had one!"
+	text "우와! 귀여운 포켓몬!"
+	line "나도 가지고싶어"
 	done
 
 Text_TellMomIfLeaving:
-	text "Hi, <PLAYER>!"
-	line "Leaving again?"
+	text "이런 <PLAYER>군"
+	line "또 밖에 나가니?"
 
-	para "You should tell"
-	line "your mom if you"
-	cont "are leaving."
+	para "외출할 때는 엄마에게"
+	line "꼭 이야기를 해야지!"
 	done
 
 Text_CallMomOnGear:
-	text "Call your mom on"
-	line "your #GEAR to"
+	text "포켓기어가 있으면"
+	line "언제든지 엄마에게"
 
-	para "let her know how"
-	line "you're doing."
+	para "건강한 목소리를"
+	line "들려줄 수 있단다"
 	done
 
 Text_ElmDiscoveredNewMon:
-	text "Yo, <PLAYER>!"
+	text "어이!<PLAYER>"
 
-	para "I hear PROF.ELM"
-	line "discovered some"
-	cont "new #MON."
+	para "공박사님이 새로운"
+	line "포켓몬을 발견하셨대"
 	done
 
 NewBarkTownRivalText1:
-	text "<……>"
+	text "…… …… ……"
 
-	para "So this is the"
-	line "famous ELM #MON"
-	cont "LAB…"
+	para "이곳이 유명한"
+	line "공박사 포켓몬 연구소……"
 	done
 
 NewBarkTownRivalText2:
-	text "…What are you"
-	line "staring at?"
+	text "…… 뭐야"
+	line "사람을 뚫어지게 쳐다보고"
 	done
 
 NewBarkTownSignText:
-	text "NEW BARK TOWN"
-
-	para "The Town Where the"
-	line "Winds of a New"
-	cont "Beginning Blow"
+	text "이곳은 연두마을"
+	line "시작을 알리는 바람이 부는 마을"
 	done
 
 NewBarkTownPlayersHouseSignText:
-	text "<PLAYER>'s House"
+	text "이곳은 <PLAYER>의 집"
 	done
 
 NewBarkTownElmsLabSignText:
-	text "ELM #MON LAB"
+	text "공박사 포켓몬 연구소"
 	done
 
 NewBarkTownElmsHouseSignText:
-	text "ELM'S HOUSE"
+	text "이곳은 공박사의 집"
 	done
-
-MrChronoText:
-	text "I'm MR.CHRONO."
-	prompt
 
 NewBarkTown_MapEvents:
 	db 0, 0 ; filler
