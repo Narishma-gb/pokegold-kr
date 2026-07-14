@@ -113,7 +113,7 @@ INCLUDE "maps/AzaleaTown.asm"
 INCLUDE "maps/CianwoodCity.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 
-/*
+
 SECTION "Map Scripts 8", ROMX
 
 INCLUDE "maps/OlivineCity.asm"
@@ -133,7 +133,7 @@ INCLUDE "maps/Route29.asm"
 INCLUDE "maps/Route30.asm"
 INCLUDE "maps/Route31.asm"
 
-
+/*
 SECTION "Map Scripts 10", ROMX
 
 INCLUDE "maps/Route32.asm"
