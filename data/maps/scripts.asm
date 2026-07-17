@@ -133,7 +133,7 @@ INCLUDE "maps/Route29.asm"
 INCLUDE "maps/Route30.asm"
 INCLUDE "maps/Route31.asm"
 
-/*
+
 SECTION "Map Scripts 10", ROMX
 
 INCLUDE "maps/Route32.asm"
@@ -162,7 +162,7 @@ INCLUDE "maps/Route46.asm"
 INCLUDE "maps/PewterCity.asm"
 INCLUDE "maps/Route2.asm"
 
-
+/*
 SECTION "Map Scripts 13", ROMX
 
 INCLUDE "maps/ViridianCity.asm"
