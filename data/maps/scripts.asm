@@ -162,7 +162,7 @@ INCLUDE "maps/Route46.asm"
 INCLUDE "maps/PewterCity.asm"
 INCLUDE "maps/Route2.asm"
 
-/*
+
 SECTION "Map Scripts 13", ROMX
 
 INCLUDE "maps/ViridianCity.asm"
@@ -195,7 +195,7 @@ INCLUDE "maps/SaffronCity.asm"
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/CeruleanCity.asm"
 
-
+/*
 SECTION "Map Scripts 15", ROMX
 
 INCLUDE "maps/Route9.asm"

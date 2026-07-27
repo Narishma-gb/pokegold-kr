@@ -190,10 +190,10 @@ ROMX $4c
 	"Map Scripts 11"
 ROMX $4d
 	"Map Scripts 12"
-; ROMX $4e
-; 	"Map Scripts 13"
-; ROMX $4f
-; 	"Map Scripts 14"
+ROMX $4e
+	"Map Scripts 13"
+ROMX $4f
+	"Map Scripts 14"
 ; ROMX $50
 ; 	"Map Scripts 15"
 ; ROMX $51

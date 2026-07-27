@@ -6,6 +6,8 @@ It builds the following ROMs:
 
 - Pocket Monsters - Gold Version (K) [C].gbc `sha1: c0ff3999e1093e1af59ef3eea3f1bfd7c1f18a65`
 - Pocket Monsters - Silver Version (K) [C].gbc `sha1: cb22d7e03a74dc3a563fde6be8626626b2b392e7`
+- ~~CGBAAUK0.959.patch `sha1: 333a7e4740f3ca6ba1f5d0bc5873b604240c30c8`~~
+- ~~CGBAAXK0.960.patch `sha1: 0b59abdba7e9e226312a4a779514489a80764318`~~
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
@@ -13,10 +15,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 - The whole repository structure, most ASM files, tools and build scripts originate from pret [**pokegold**][pokegold].
 - [**Emulicious**][emulicious] debugger features have been invaluable, navigating the ROM to look for differences with the US release.
+- The Korean character map was sourced from [**Bulbapedia**][bulbapedia], which lists all Hangul and Jamo codepoints.
 
 ## Note
 
 The base ROMs of Gold & Silver are required to build, these should be placed at the top-level directory: `baserom_g.bin` and `baserom_s.bin`.
 
 [pokegold]: https://github.com/pret/pokegold
-[emulicious]:https://www.emulicious.net
+[emulicious]: https://www.emulicious.net
+[bulbapedia]: https://bulbapedia.bulbagarden.net/wiki/Korean_character_encoding_(Generation_II)
