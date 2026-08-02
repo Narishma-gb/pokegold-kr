@@ -51,14 +51,6 @@ SECTION "rom37", ROMX[$40ed], BANK[37]
 	dr MapGroupPointers, $40ed
 
 
-;SECTION "rom80", ROMX[$4000], BANK[80]
-; ROM $50 : $140000 - $143FFF
-
-
-;SECTION "rom81", ROMX[$4000], BANK[81]
-; ROM $51 : $144000 - $147FFF
-
-
 ;SECTION "rom82", ROMX[$4000], BANK[82]
 ; ROM $52 : $148000 - $14BFFF
 

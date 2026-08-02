@@ -195,7 +195,7 @@ INCLUDE "maps/SaffronCity.asm"
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/CeruleanCity.asm"
 
-/*
+
 SECTION "Map Scripts 15", ROMX
 
 INCLUDE "maps/Route9.asm"
@@ -227,7 +227,7 @@ INCLUDE "maps/MahoganyGym.asm"
 INCLUDE "maps/MahoganyPokecenter1F.asm"
 INCLUDE "maps/Route42EcruteakGate.asm"
 
-
+/*
 SECTION "Map Scripts 17", ROMX
 
 INCLUDE "maps/EcruteakTinTowerEntrance.asm"

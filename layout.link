@@ -194,10 +194,10 @@ ROMX $4e
 	"Map Scripts 13"
 ROMX $4f
 	"Map Scripts 14"
-; ROMX $50
-; 	"Map Scripts 15"
-; ROMX $51
-; 	"Map Scripts 16"
+ROMX $50
+	"Map Scripts 15"
+ROMX $51
+	"Map Scripts 16"
 ; ROMX $52
 ; 	"Map Scripts 17"
 ; ROMX $53

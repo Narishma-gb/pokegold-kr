@@ -76,104 +76,92 @@ Route8FruitTree:
 	fruittree FRUITTREE_ROUTE_8
 
 BikerDwayneSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERATION"
-	cont "trainer group."
-
-	para "We'll drive you"
-	line "under our wheels!"
+	text "우리들 트레이너 그룹"
+	line "「관동 포켓몬 연합」!"
+	cont "너같은건 이거닷!"
 	done
 
 BikerDwayneBeatenText:
-	text "S-sorry!"
+	text "미 미안해요-!"
 	done
 
 BikerDwayneAfterBattleText:
-	text "The KANTO #MON"
-	line "FEDERATION will"
-	cont "never fall!"
+	text "「관동 포켓몬 연합」은"
+	line "영원불멸이닷!"
 	done
 
 BikerHarrisSeenText:
-	text "The cops shut down"
-	line "our UNDERGROUND"
-
-	para "PATH! That really"
-	line "fries me!"
+	text "우리들의 세력권"
+	line "지하통로를 폐쇄했겠다!"
+	cont "못 참겠다!"
 	done
 
 BikerHarrisBeatenText:
-	text "F-forgive me!"
+	text "요 용서해주세요!"
 	done
 
 BikerHarrisAfterBattleText:
-	text "Wiped out by some"
-	line "punk from JOHTO…"
+	text "성도의 녀석에게"
+	line "져버렸다……!"
 	done
 
 BikerZekeSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERA-"
-	cont "TION!"
-	cont "Right on, dude!"
+	text "「관동 포켓몬 연합」"
+	line "잘 부탁한다!"
 	done
 
 BikerZekeBeatenText:
-	text "Yikes! Sorry!"
+	text "죄 죄송해요!"
 	done
 
 BikerZekeAfterBattleText:
-	text "We'll try not to"
-	line "disturb anyone"
-	cont "from now on…"
+	text "이제부터는 그다지"
+	line "사람들에게 실례를"
+	cont "범하지 않도록 하겠어요……네"
 	done
 
 SupernerdSamSeenText:
-	text "How does the MAG-"
-	line "NET TRAIN work?"
+	text "리니어 기차의 메카니즘은"
+	line "어떻게 생겼을까?"
 	done
 
 SupernerdSamBeatenText:
-	text "I just want to see"
-	line "the MAGNET TRAIN…"
+	text "리니어 기차를 한번만이라도"
+	line "보고싶었다 …… ……"
 	done
 
 SupernerdSamAfterBattleText:
-	text "The power of mag-"
-	line "nets is awesome!"
+	text "자석의 힘이란"
+	line "대단해-!"
 	done
 
 SupernerdTomSeenText:
-	text "We can't do with-"
-	line "out electricity."
+	text "우리들의 삶에"
+	line "전기는 필요"
 
-	para "The POWER PLANT"
-	line "supplies us with"
-	cont "electricity."
+	para "발전소가 힘을내서"
+	line "전기를 만들고 있습니다"
 	done
 
 SupernerdTomBeatenText:
-	text "Don't waste"
-	line "electricity!"
+	text "전기는 소중하게……!"
 	done
 
 SupernerdTomAfterBattleText:
-	text "The POWER PLANT"
-	line "north of LAVENDER"
-
-	para "supplies power to"
-	line "the MAGNET TRAIN."
+	text "보라타운의 북쪽에 있는"
+	line "발전소에서"
+	cont "리니어 기차에 사용하는 전기를"
+	cont "만들고 있단다"
 	done
 
 Route8LockedDoorText:
-	text "It's locked…"
+	text "열쇠가 잠겨있다!"
+	line "……열리지않는다!"
 	done
 
 Route8UndergroundPathSignText:
-	text "The flyer's torn."
-
-	para "It's impossible to"
-	line "read…"
+	text "…… 전단지가 붙어있다"
+	line "읽을 수 없다……!"
 	done
 
 Route8_MapEvents:

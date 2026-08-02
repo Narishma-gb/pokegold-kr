@@ -10,16 +10,13 @@ Route38EcruteakGateOfficerScript:
 	jumptextfaceplayer Route38EcruteakGateOfficerText
 
 Route38EcruteakGateOfficerText:
-	text "Where did you say"
-	line "you're from?"
+	text "너는 어디서 왔느냐?"
 
-	para "NEW BARK TOWN?"
+	para "엣 연두마을!?"
 
-	para "PROF.ELM lives"
-	line "over there, right?"
-
-	para "You've come a long"
-	line "way to get here."
+	para "아아 공박사가 "
+	line "계시는 마을이지"
+	cont "꽤나 멀리서 왔구나"
 	done
 
 Route38EcruteakGate_MapEvents:

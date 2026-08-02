@@ -2429,9 +2429,9 @@ wHallOfFameCount:: db
 	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
 
-	ds 2
-/*
-wMooMooBerries:: db*/
+	ds 1
+
+wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 
 	ds 14
