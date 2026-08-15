@@ -25,15 +25,14 @@ BlackthornDragonSpeechHouseMagazineBookshelf: ; unreferenced
 	jumpstd MagazineBookshelfScript
 
 BlackthornDragonSpeechHouseGrannyText:
-	text "CLAIR and LANCE"
-	line "trained here to"
-
-	para "hone their skills"
-	line "as trainers."
+	text "이향과 목호는"
+	line "이곳에서 수행을 해서"
+	cont "포켓몬 트레이너로서"
+	cont "실력을 갈고 닦았단다!"
 	done
 
 BlackthornDragonSpeechHouseDratiniText:
-	text "DRATINI: Draa!"
+	text "미뇽『미뇽-"
 	done
 
 BlackthornDragonSpeechHouse_MapEvents:

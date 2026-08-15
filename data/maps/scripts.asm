@@ -227,7 +227,7 @@ INCLUDE "maps/MahoganyGym.asm"
 INCLUDE "maps/MahoganyPokecenter1F.asm"
 INCLUDE "maps/Route42EcruteakGate.asm"
 
-/*
+
 SECTION "Map Scripts 17", ROMX
 
 INCLUDE "maps/EcruteakTinTowerEntrance.asm"
@@ -258,7 +258,7 @@ INCLUDE "maps/LakeOfRageMagikarpHouse.asm"
 INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route43Gate.asm"
 
-
+/*
 SECTION "Map Scripts 19", ROMX
 
 INCLUDE "maps/CeruleanGymBadgeSpeechHouse.asm"

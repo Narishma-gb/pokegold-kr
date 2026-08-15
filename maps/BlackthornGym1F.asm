@@ -148,257 +148,183 @@ BlackthornGymStatue:
 	jumpstd GymStatue2Script
 
 ClairIntroText:
-	text "I am CLAIR. I'm"
-	line "the world's best"
-	cont "dragon master."
+	text "내가 이향!"
+	line "세계에서 제일가는"
+	cont "드래곤 조련사다"
 
-	para "I can hold my own"
-	line "against even the"
+	para "실력도 역시 포켓몬 리그의"
+	line "사천왕들에게도"
+	cont "진적이 없다!"
+	cont "어때 그래도 싸울꺼니?"
 
-	para "#MON LEAGUE's"
-	line "ELITE FOUR."
+	para "…… 그래 알겠다"
+	line "그럼 시작해보자꾸나!"
 
-	para "Do you still want"
-	line "to take me on?"
-
-	para "…Fine."
-	line "Let's do it!"
-
-	para "As a trainer, I"
-	line "will use my full"
-
-	para "power against any"
-	line "opponent!"
+	para "나역시 트레이너"
+	line "어떤 상대라도"
+	cont "전력을 다해서 상대를 해준다!"
 	done
 
 ClairWinText:
-	text "I lost?"
+	text "이 내가 지다니……"
 
-	para "I don't believe"
-	line "it. There must be"
-	cont "some mistake…"
+	para "믿을 수 없어"
+	line "뭔가 잘못된 것 같아……"
 	done
 
 ClairText_GoToDragonsDen:
-	text "I won't admit"
-	line "this."
+	text "나는 인정할 수 없어"
 
-	para "I may have lost,"
-	line "but you're still"
+	para "졌다고 말할 수 없지만"
+	line "너의 실력으로는"
+	cont "포켓몬 리그에 도전하는 것도"
+	cont "무리야"
 
-	para "not ready for the"
-	line "#MON LEAGUE."
+	para "…… 그렇군!"
 
-	para "I know. You should"
-	line "take the dragon"
-	cont "user challenge."
+	para "이 포켓몬 체육관 뒤에"
+	line "용의 굴이라 불리우는"
+	cont "장소가 있어"
 
-	para "Behind this GYM is"
-	line "a place called"
-	cont "DRAGON'S DEN."
+	para "그곳 깊숙히 놓여 있는"
+	line "용의 이빨을 가지고 오는 것이"
+	cont "참 된 드래곤 조련사로"
+	cont "인정받기 위한 의식이지"
 
-	para "Go and bring me"
-	line "the DRAGON FANG"
-
-	para "from deep inside"
-	line "the DEN."
-
-	para "That is the test"
-	line "to be accepted as"
-
-	para "a true dragon"
-	line "user."
-
-	para "If you can do"
-	line "that, I will ac-"
-	cont "cept you as a"
-	cont "worthy trainer."
-
-	para "Until then, I"
-	line "won't give you a"
-	cont "BADGE."
+	para "너도 그것을 할 수 있다면"
+	line "체육관 배지를 받을 자격이 있지"
+	cont "트레이너로서 인정해 주겠어!"
 	done
 
 ClairText_WhatsTheMatter:
-	text "CLAIR: What's"
-	line "the matter?"
+	text "이향『어떻게 되었니?"
 
-	para "This errand won't"
-	line "be hard for you,"
-
-	para "unless your vic-"
-	line "tory was a fluke."
+	para "나에게 이긴 것이"
+	line "어쩌다 운이 좋아서가 아니라면"
+	cont "가지고 오는것 정도는 간단하겠지?"
 	done
 
 BlackthornGymClairText_Cheat:
-	text "CLAIR: You did"
-	line "not get that at"
-	cont "DRAGON'S DEN."
+	text "이향『그것은 용의 굴에서"
+	line "가지고 온 것이 아니잖아"
 
-	para "Trying to cheat"
-	line "like that…"
-
-	para "I'm disappointed"
-	line "in you."
+	para "그런 흉내를 내지말라니까……"
+	line "아주 실망했어"
 	done
 
 BlackthornGymClairText_YouKeptMeWaiting:
-	text "CLAIR: You have"
-	line "proven yourself to"
-	cont "me."
+	text "이향『너의 실력을"
+	line "꺼리낌 없이 인정하겠어"
 
-	para "I want you to have"
-	line "this TM."
+	para "이 기술머신도 가지고 가"
 	done
 
 BlackthornGymText_ReceivedTM24: ; unreferenced
-	text "<PLAYER> received"
-	line "TM24."
+	text "<PLAYER>는(은) 이향으로부터"
+	line "기술머신24를 얻었다!"
 	done
 
 BlackthornGymClairText_DescribeTM24:
-	text "That contains"
-	line "DRAGONBREATH."
+	text "안에 들어 있는 것은"
+	line "용의 숨결"
 
-	para "No, it doesn't"
-	line "have anything to"
-	cont "do with my breath."
-
-	para "If you don't want"
-	line "it, you don't have"
-	cont "to take it."
+	para "…… 그다지 화려하진 않아"
+	line "필요 없으면 무리해서"
+	cont "가지고 가지 않아도 좋아"
 	done
 
 BlackthornGymClairText_League:
-	text "So you've col-"
-	line "lected all the"
-	cont "BADGES."
+	text "모든 배지를 모은 것 같구나"
 
-	para "Your destination"
-	line "is the #MON"
+	para "예전에는 석영고원"
+	line "포켓몬 리그였는데"
 
-	para "LEAGUE in INDIGO"
-	line "PLATEAU."
+	para "장소는 알고 있어?"
+	line "그래 여기서부터라면"
+	cont "먼저 연두마을에 가야해"
 
-	para "Do you know how to"
-	line "get there?"
+	para "거기서부터 파도타기로"
+	line "동쪽으로 계속 가면 좋을꺼야"
+	cont "단 험난한 길이 될꺼야"
 
-	para "From here, go to"
-	line "NEW BARK TOWN."
+	para "포켓몬 리그에서도"
+	line "진다면 용서하지 않을꺼야!"
 
-	para "Then SURF east."
-	line "The route there is"
-	cont "very tough."
-
-	para "Don't you dare"
-	line "lose at the #-"
-	cont "MON LEAGUE!"
-
-	para "If you do, I'll"
-	line "feel even worse"
-
-	para "about having lost"
-	line "to you!"
+	para "그렇게 하지 않으면"
+	line "내가 면목이 없게 되잖아!"
 	done
 
 CooltrainermPaulSeenText:
-	text "Your first battle"
-	line "against dragons?"
-
-	para "I'll show you how"
-	line "tough they are!"
+	text "처음 싸우는 드래곤 조련사의"
+	line "강함을 알아두는 것이 좋을꺼다!"
 	done
 
 CooltrainermPaulBeatenText:
-	text "I'm disappointed."
+	text "유감이로군"
 	done
 
 CooltrainermPaulAfterBattleText:
-	text "You've met LANCE,"
-	line "the dragon master?"
-
-	para "That just can't be"
-	line "true."
+	text "드래곤 조련사 목호님을"
+	line "만난 적이 있다고……?"
+	cont "설마 그럴리가 없겠지"
 	done
 
 CooltrainermMikeSeenText:
-	text "My chance of"
-	line "losing? Not even"
-	cont "one percent!"
+	text "내가 질꺼라는 예상 같은 것은"
+	line "1퍼센트도 없어!"
 	done
 
 CooltrainermMikeBeatenText:
-	text "That's odd."
+	text "이상하네"
 	done
 
 CooltrainermMikeAfterBattleText:
-	text "I know my short-"
-	line "comings now."
-
-	para "Thanks for showing"
-	line "me!"
+	text "나의 부족함을 깨닫게되었다"
+	line "그것을 가르쳐준"
+	cont "너에게 감사한다!"
 	done
 
 CooltrainerfLolaSeenText:
-	text "Dragons are sacred"
-	line "#MON."
-
-	para "They are full of"
-	line "life energy."
-
-	para "If you're not"
-	line "serious, you won't"
-
-	para "be able to beat"
-	line "them."
+	text "드래곤은 성스러운 생명체"
+	line "생명력이 넘치는 포켓몬"
+	cont "전력을 다하지않으면 이길수 없다!"
 	done
 
 CooltrainerfLolaBeatenText:
-	text "Way to go!"
+	text "제법 하는군"
 	done
 
 CooltrainerfLolaAfterBattleText:
-	text "Dragons are weak"
-	line "against dragon-"
-	cont "type moves."
+	text "그렇군 드래곤의 약점은"
+	line "드래곤타입의 기술이지"
 	done
 
 BlackthornGymGuideText:
-	text "Yo! CHAMP in"
-	line "making!"
+	text "여어!"
+	line "미래의 챔피언!"
 
-	para "It's been a long"
-	line "journey, but we"
+	para "드디어 이곳까지 왔구나"
+	line "이제 얼마 남지 않았다!"
+	cont "나도 협력하겠어!"
 
-	para "are almost done!"
-	line "Count on me!"
+	para "이향이가 사용하는 포켓몬은"
+	line "전설의 생명체"
+	cont "성스러운 드래곤 포켓몬"
 
-	para "CLAIR uses the"
-	line "mythical and sac-"
-	cont "red dragon-type"
-	cont "#MON."
+	para "시시한 공격으로는"
+	line "데미지를 입힐 수 없지!"
 
-	para "You can't damage"
-	line "them very easily."
-
-	para "But you know,"
-	line "they're supposed"
-
-	para "to be weak against"
-	line "ice-type moves."
+	para "…… 하지만"
+	line "얼음타입의 기술에는"
+	cont "약하다는 이야기가 있어!"
 	done
 
 BlackthornGymGuideWinText:
-	text "You were great to"
-	line "beat CLAIR!"
+	text "이향에게 이기다니"
+	line "대단하군!"
 
-	para "All that's left is"
-	line "the #MON LEAGUE"
-	cont "challenge."
-
-	para "You're on the way"
-	line "to becoming the"
-	cont "#MON CHAMPION!"
+	para "남은 것은 포켓몬 리그의 도전!"
+	line "목표로 삼아라 챔피언을!"
 	done
 
 BlackthornGym1F_MapEvents:

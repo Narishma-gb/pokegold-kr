@@ -79,55 +79,42 @@ TrainerCooltrainerfFran:
 	end
 
 CooltrainermCodySeenText:
-	text "It's not as if we"
-	line "all use dragon-"
-	cont "type #MON."
+	text "체육관의 누구나 드래곤타입의"
+	line "포켓몬을 쓰지는 않아!"
 
-	para "My policy is to"
-	line "use #MON that"
-
-	para "are stronger than"
-	line "dragon #MON."
+	para "드래곤보다 강한 포켓몬"
+	line "그것이 나의 주제다!"
 	done
 
 CooltrainermCodyBeatenText:
-	text "You are special…"
+	text "역시 대단하구나"
 	done
 
 CooltrainermCodyAfterBattleText:
-	text "But just watch!"
-	line "My #MON will"
+	text "하지만 나의 포켓몬은"
+	line "아직도 강해질 기회가 있다!"
 
-	para "become even more"
-	line "powerful."
-
-	para "We'll be tougher"
-	line "as a trainer and"
-	cont "#MON team."
+	para "그렇게해서 트레이너도 포켓몬도"
+	line "단련시킬 수 있는 것이지!"
 	done
 
 CooltrainerfFranSeenText:
-	text "We go through rig-"
-	line "orous training un-"
-	cont "der CLAIR. I can't"
-	cont "afford to lose."
+	text "이향님이랑 함께"
+	line "힘든 훈련을 했었어"
+	cont "지는 일은 없을꺼다"
 	done
 
 CooltrainerfFranBeatenText:
-	text "Arrrgh! I'm so"
-	line "disgusted!"
+	text "……아휴 분해라"
 	done
 
 CooltrainerfFranAfterBattleText:
-	text "Whew…"
-
-	para "I'll have to re-"
-	line "think my training…"
+	text "후우……"
+	line "수행을 다시해야겠네"
 	done
 
 BlackthornGym2FBoulderFellText:
-	text "The boulder fell"
-	line "through!"
+	text "바위는 아래에 떨어졌다!"
 	done
 
 BlackthornGym2F_MapEvents:
