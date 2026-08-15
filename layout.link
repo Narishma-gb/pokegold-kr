@@ -280,19 +280,18 @@ WRAM0
 	"Unused Map Buffer"
 	align 8
 	"Overworld Map"
-	org $cc27
 	"Video"
 WRAMX $1
 	"WRAM 1"
-	org $d25c
 	"Game Data"
-	org $db1f
 	"Party"
 ; 	"Stack"
 WRAMX $2
 	"WRAM 2"
 WRAMX $3
 	"WRAM Window Stack"
+WRAMX $7
+	"Link Mail Buffer"
 VRAM $00
 	"VRAM0"
 VRAM $01
