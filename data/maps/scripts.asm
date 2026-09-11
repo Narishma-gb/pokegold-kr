@@ -258,7 +258,7 @@ INCLUDE "maps/LakeOfRageMagikarpHouse.asm"
 INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route43Gate.asm"
 
-/*
+
 SECTION "Map Scripts 19", ROMX
 
 INCLUDE "maps/CeruleanGymBadgeSpeechHouse.asm"
@@ -298,7 +298,7 @@ INCLUDE "maps/Route35NationalParkGate.asm"
 INCLUDE "maps/Route36RuinsOfAlphGate.asm"
 INCLUDE "maps/Route36NationalParkGate.asm"
 
-
+/*
 SECTION "Map Scripts 22", ROMX
 
 INCLUDE "maps/GoldenrodGym.asm"
