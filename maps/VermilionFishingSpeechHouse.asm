@@ -16,33 +16,23 @@ FishingDudesHouseBookshelf: ; unreferenced
 	jumpstd PictureBookshelfScript
 
 FishingDudeText:
-	text "I am the FISHING"
-	line "GURU, the elder of"
-	cont "the FISHING BROS."
+	text "나는 낚시아저씨"
+	line "낚시 형제의 형"
 
-	para "Do you happen to"
-	line "know FISHERMAN"
+	para "너는 44번 도로에 있던"
+	line "낚시꾼 광선이를 알고있니?"
 
-	para "WILTON? He fishes"
-	line "on ROUTE 44."
+	para "그녀석이 전화로 알려주는"
+	line "낚시 정보는 대단하단다"
 
-	para "He came through"
-	line "with an amazing"
-	cont "tip on the phone."
-
-	para "Thanks to him, I"
-	line "caught a whole lot"
-
-	para "of a rare #MON."
-	line "What a day it was!"
+	para "진귀한 포켓몬도 낚아올리는"
+	line "낚시의 황제란다!"
 	done
 
 FishingDudesHousePhotoText:
-	text "It's a photo of"
-	line "people fishing…"
-
-	para "They're having a"
-	line "great time…"
+	text "낚시를 하고 있는 사람이"
+	line "찍혀있다……"
+	cont "매우 즐거운 것 같다"
 	done
 
 VermilionFishingSpeechHouse_MapEvents:

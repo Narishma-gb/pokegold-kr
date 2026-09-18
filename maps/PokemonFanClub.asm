@@ -119,179 +119,153 @@ PokemonFanClubBraggingSign:
 	jumptext PokemonFanClubBraggingSignText
 
 PokemonFanClubChairmanDidYouVisitToHearAboutMyMonText:
-	text "I'm the CHAIRMAN"
-	line "of the #MON FAN"
-	cont "CLUB."
+	text "포켓몬 애호가 클럽"
+	line "회장은 나다!"
 
-	para "I've raised over"
-	line "150 #MON."
+	para "키워온 포켓몬은"
+	line "150마리를 넘는다!"
 
-	para "I'm very fussy"
-	line "when it comes to"
-	cont "#MON."
+	para "포켓몬에 관해서는"
+	line "정말 시끄럽단다!"
 
-	para "Did you visit just"
-	line "to hear about my"
-	cont "#MON?"
+	para "너는 나의 포켓몬 자랑을"
+	line "듣고싶어서 왔느냐?"
 	done
 
 PokemonFanClubChairmanRapidashText:
-	text "Good!"
-	line "Then listen up!"
+	text "그래!"
+	line "그렇다면 바로 시작해 볼까"
 
-	para "So… my favorite"
-	line "RAPIDASH…"
+	para "저기…… 내가 좋아하는"
+	line "날쌩마가…… ……"
 
-	para "It… cute… lovely…"
-	line "smart… unbearably…"
-	cont "plus… amazing… oh…"
-	cont "you think so?…"
-	cont "Too much… wild…"
-	cont "beautiful… kindly…"
-	cont "love it!"
+	para "…… 그래서…… 이……"
+	line "…… …… 귀여워서……"
+	cont "참을 수 없어…… 크……"
+	cont "…… 더욱이…… 뭐……"
+	cont "대단해서…… …… 서……"
+	cont "…… 그렇게 생각하는가……"
+	cont "…… 하-!"
 
-	para "Hug it… when…"
-	line "sleeping… warm and"
-	cont "cuddly… Oh, and…"
-	cont "spectacular…"
-	cont "ravishing… simply"
-	cont "divine…"
-	cont "Oops! Look at the"
-	cont "time! I've kept"
-	cont "you too long!"
+	para "…… …… 포옹하고……"
+	line "나쁠 때도……"
+	cont "목욕할 때도……"
+	cont "…… 그렇지…… ……"
+	cont "…… …… 대단해……!"
+	cont "…… 아름다워……"
+	cont "…… …… 이야!"
+	cont "벌써 이렇게 시간이"
+	cont "좀 지나치게 길게 말했구나!"
 	done
 
 PokemonFanClubChairmanIWantYouToHaveThisText:
-	text "Thanks for hearing"
-	line "me out. I want you"
-	cont "to have this!"
+	text "나의 포켓몬 자랑을"
+	line "얌전하게 들어준 선물로"
+	cont "……이것을 주마!"
 	done
 
 PokemonFanClubChairmanItsARareCandyText:
-	text "It's a RARE CANDY"
-	line "that makes #MON"
-	cont "stronger."
+	text "포켓몬이 강해지는"
+	line "이상한 사탕!"
 
-	para "I prefer making my"
-	line "#MON stronger"
+	para "나는 함께 싸워서"
+	line "강해지는 방법을"
+	cont "좋아해서"
 
-	para "by battling, so"
-	line "you can have it."
+	para "그 사탕을 너에게 주겠다"
 	done
 
 PokemonFanClubChairmanMoreTalesToTellText:
-	text "Hello, <PLAYER>!"
+	text "이야- <PLAYER>군!"
 
-	para "Did you come see"
-	line "me about my #-"
-	cont "MON again?"
+	para "또 나의 포켓몬 자랑을"
+	line "듣기위해 왔구나"
 
-	para "No? Oh… I had more"
-	line "tales to tell…"
+	para "……응? 아니야?"
+	line "뭐야…… 쑥스럽게"
 	done
 
 PokemonFanClubChairmanHowDisappointingText:
-	text "How disappointing…"
-
-	para "Come back if you"
-	line "want to listen."
+	text "뭐야 재미없게……"
+	line "듣고싶어지면 오너라!"
 	done
 
 PokemonFanClubReceptionistText:
-	text "Our CHAIRMAN is"
-	line "very vocal when it"
-	cont "comes to #MON…"
+	text "우리 회장님은"
+	line "정말 포켓몬에대해 시끄러워!"
 	done
 
 PokemonFanClubClefairyGuyClefairyIsSoAdorableText:
-	text "I love the way"
-	line "CLEFAIRY waggles"
-
-	para "its finger when"
-	line "it's trying to use"
-
-	para "METRONOME."
-	line "It's so adorable!"
+	text "손가락을 흔들고 있는"
+	line "동작이라고 한다면……"
+	cont "므흣-!"
+	cont "삐삐 참을 수 없어!"
 	done
 
 PokemonFanClubClefairyGuyMakingDoWithADollIFoundText:
-	text "I love CLEFAIRY,"
-	line "but I could never"
+	text "삐삐를 매우 좋아하지만"
+	line "어떡게해도 잡을 수 없어서"
 
-	para "catch one. So I'm"
-	line "making do with a"
-
-	para "# DOLL that I"
-	line "found."
+	para "할 수 없이"
+	line "주워온 삐삐인형으로"
+	cont "참고 있단다……"
 	done
 
 PokemonFanClubClefairyGuyTakeThisDollBackToGirlText:
-	text "Oh, I see now. The"
-	line "girl who lost this"
+	text "그래 이 인형을"
+	line "잃어버린 여자아이가"
+	cont "슬퍼하겠구나……"
 
-	para "# DOLL is sad…"
+	para "알았어!"
+	line "삐삐인형을 그 아이에게"
+	cont "돌려줘 줘!"
 
-	para "OK. Could you take"
-	line "this # DOLL"
-
-	para "back to that poor"
-	line "little girl?"
-
-	para "I'll befriend a"
-	line "real CLEFAIRY on"
-
-	para "my own one day."
-	line "No worries!"
+	para "나는 내 힘으로"
+	line "삐삐랑 친구가 될꺼야!"
 	done
 
 PokemonFanClubPlayerReceivedDollText:
-	text "<PLAYER> received"
-	line "# DOLL."
+	text "<PLAYER>는(은)"
+	line "삐삐인형을 맡았다!"
 	done
 
 PokemonFanClubClefairyGuyGoingToGetARealClefairyText:
-	text "You watch. I'm"
-	line "going to get a"
-
-	para "real CLEFAIRY as"
-	line "my friend."
+	text "진짜 삐삐랑"
+	line "반드시 친구가 될꺼야!"
 	done
 
 PokemonFanClubClefairyGuyPackIsJammedFullText:
-	text "Your PACK is"
-	line "jammed full."
+	text "너의 가방이"
+	line "가득 찬 것 같다!"
 	done
 
 PokemonFanClubTeacherText:
-	text "Look at my darling"
-	line "BAYLEEF!"
+	text "볼래 볼래!"
+	line "내 베이리프"
 
-	para "The leaf on its"
-	line "head is so cute!"
+	para "머리의 나뭇잎이"
+	line "너무나 귀엽단다!"
 	done
 
 PokemonFanClubClefairyDollText:
-	text "It's a CLEFAIRY!"
-	line "Huh?"
+	text "삐삐다!"
+	line "…… ?"
 
-	para "Oh, right. It's a"
-	line "CLEFAIRY #"
-	cont "DOLL."
+	para "뭐야 삐삐인형이잖아!"
 	done
 
 PokemonFanClubBayleefText:
-	text "BAYLEEF: Li liif!"
+	text "베이리프『리 리-프!"
 	done
 
 PokemonFanClubListenSignText:
-	text "Let's all listen"
-	line "politely to other"
-	cont "trainers."
+	text "포켓몬 주인들의 자랑꺼리는"
+	line "조용히 귀를 기울이자!"
 	done
 
 PokemonFanClubBraggingSignText:
-	text "If someone brags,"
-	line "brag right back!"
+	text "다른 사람의 자랑 이야기는"
+	line "10배로 돌려주자"
 	done
 
 PokemonFanClub_MapEvents:

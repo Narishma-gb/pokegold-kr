@@ -208,10 +208,10 @@ ROMX $55
 	"Map Scripts 20"
 ROMX $56
 	"Map Scripts 21"
-; ROMX $57
-; 	"Map Scripts 22"
-; ROMX $59
-; 	"Map Scripts 23"
+ROMX $57
+	"Map Scripts 22"
+ROMX $59
+	"Map Scripts 23"
 ; ROMX $5a
 ; 	"Map Scripts 24"
 ; ROMX $5b

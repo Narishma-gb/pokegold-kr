@@ -54,50 +54,37 @@ FlowerShopRadio: ; unreferenced
 	jumpstd Radio2Script
 
 GoldenrodFlowerShopTeacherBetterThanWhitneyText:
-	text "Oh, you're better"
-	line "than WHITNEY."
+	text "응? 너"
+	line "꼭두보다 강하구나"
 
-	para "Do you know about"
-	line "that moving tree?"
+	para "움직이는 나무를 알고 있니?"
 
-	para "If you wet it with"
-	line "a SQUIRTBOTTLE, it"
-	cont "attacks."
-
-	para "But since you"
-	line "have some BADGES,"
-	cont "you should be OK."
+	para "꼬부기 물뿌리개로 물을 뿌리면"
+	line "덤벼든다는데"
+	cont "그렇듯 배지를 가지고 있다면"
+	cont "걱정 없을 것 같네!"
 	done
 
 GoldenrodFlowerShopTeacherLalalaHavePlentyOfWaterText:
-	text "Lalala lalalala."
-	line "Have plenty of"
-	cont "water, my lovely!"
+	text "라라라 라라라라"
+	line "듬뿍 물을 줄께"
 	done
 
 GoldenrodFlowerShopFloriaMustBeAMonText:
-	text "When I watered"
-	line "that moving tree"
+	text "36번 도로의"
+	line "움직이는 나무에게 물을 주니까"
+	cont "놀라서 뛰어올랐단다"
 
-	para "on ROUTE 36, it"
-	line "jumped!"
-
-	para "I think it must be"
-	line "a #MON."
-
-	para "But it would take"
-	line "someone like WHIT-"
-	cont "NEY, our GYM LEAD-"
-	cont "ER, to beat it."
+	para "틀림없이 포켓몬이라고 생각하는데"
+	line "체육관 관장인 꼭두정도로"
+	cont "강하지 않으면 이기지 못해……"
 	done
 
 GoldenrodFlowerShopFloriaJumpsInSurpriseText:
-	text "Do you know about"
-	line "the moving tree?"
+	text "움직이는 나무 알고 있니?"
 
-	para "If you water it,"
-	line "it jumps up in"
-	cont "surprise!"
+	para "물을 뿌리면"
+	line "놀라서 뛰어오른단다"
 	done
 
 GoldenrodFlowerShop_MapEvents:

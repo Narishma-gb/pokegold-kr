@@ -28,47 +28,29 @@ GoldenrodPokecenter1FLassScript:
 	jumptextfaceplayer GoldenrodPokecenter1FLassText
 
 GoldenrodPokecenter1FGameboyKidText:
-	text "The COLOSSEUM--"
-	line "upstairs at any"
+	text "포켓몬 센터의"
+	line "2층에 있는 콜로세움에서"
+	cont "통신대전을 할 수 있지"
 
-	para "#MON CENTER--is"
-	line "for link battles."
-
-	para "Battle records are"
-	line "posted on the"
-
-	para "wall, so I can't"
-	line "afford to lose."
+	para "벽을 보면 자신의 성적을"
+	line "알 수 있으니까 질 수 없어"
 	done
 
 GoldenrodPokecenter1FPersonText:
-	text "I wonder how many"
-	line "kinds of #MON"
+	text "이 세상에는 어느정도나"
+	line "포켓몬이 있는 것일까"
 
-	para "there are in the"
-	line "world."
-
-	para "Three years ago,"
-	line "PROF.OAK said that"
-
-	para "there were 150"
-	line "different kinds."
+	para "3년전 오박사님은"
+	line "150종류가 있다고"
+	cont "발표하셨는데"
 	done
 
 GoldenrodPokecenter1FLassText:
-	text "A higher level"
-	line "#MON doesn't"
-	cont "always win."
+	text "얼마나 레벨이 높든"
+	line "타입의 상성이 있단다"
 
-	para "After all, it may"
-	line "have a type dis-"
-	cont "advantage."
-
-	para "I don't think"
-	line "there is a single"
-
-	para "#MON that is"
-	line "the toughest."
+	para "절대 강한 포켓몬이란 것은"
+	line "그렇게 없는 것 같아"
 	done
 
 GoldenrodPokecenter1F_MapEvents:
