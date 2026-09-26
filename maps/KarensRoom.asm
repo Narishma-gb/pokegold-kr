@@ -29,7 +29,7 @@ KarensRoomDoorsCallback:
 
 KarensRoomDoorLocksBehindYouScript:
 	applymovement PLAYER, KarensRoom_EnterMovement
-	reanchormap $85
+	reanchormap $86
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 14, $2a ; wall
@@ -79,55 +79,46 @@ KarensRoom_EnterMovement:
 	step_end
 
 KarenScript_KarenBeforeText:
-	text "I am KAREN of the"
-	line "ELITE FOUR."
+	text "나는 사천왕인 카렌"
 
-	para "You're <PLAYER>?"
-	line "How amusing."
+	para "네가 <PLAYER>(이)로군"
+	line "흐음 굉장히 재미있을 것 같네"
 
-	para "I love dark-type"
-	line "#MON."
+	para "내가 사랑하고 있는 것은"
+	line "악 타입의 포켓몬!"
 
-	para "I find their wild,"
-	line "tough image to be"
+	para "와일드하고 터프한 느낌"
+	line "멋있겠지?"
+	cont "게다가 엄-청나게 강하단다"
 
-	para "so appealing. And"
-	line "they're so strong."
+	para "네가 상대가 될 수 있을까?"
+	line "힘을내서 우리들을"
+	cont "즐겁게 해 주었으면 좋겠다"
 
-	para "Think you can take"
-	line "them? Just try to"
-	cont "entertain me."
-
-	para "Let's go."
+	para "자 그럼 시작할까!"
 	done
 
 KarenScript_KarenBeatenText:
-	text "Well, aren't you"
-	line "good. I like that"
-	cont "in a trainer."
+	text "흐음 잘하잖아"
+	line "강하다는 것은 아주 멋있지"
 	done
 
 KarenScript_KarenDefeatText:
-	text "Strong #MON."
+	text "강한 포켓몬"
 
-	para "Weak #MON."
+	para "약한 포켓몬"
 
-	para "That is only the"
-	line "selfish perception"
-	cont "of people."
+	para "그런것은 사람 나름"
 
-	para "Truly skilled"
-	line "trainers should"
+	para "정말 강한 트레이너라면"
+	line "좋아하는 포켓몬으로"
+	cont "승리 할 수 있도록 노력해야해"
 
-	para "try to win with"
-	line "their favorites."
+	para "좋아 너는"
+	line "중요한 것을 알고 있는 듯 하니까"
 
-	para "I like your style."
-	line "You understand"
-	cont "what's important."
-
-	para "Go on--the CHAM-"
-	line "PION is waiting."
+	para "다음 관문을 향해 가거라"
+	line "챔피언이 너를 기다릴꺼야"
 	done
 
 KarensRoom_MapEvents:

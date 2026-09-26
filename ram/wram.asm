@@ -130,7 +130,7 @@ wDisableTextAcceleration:: db
 wPCItemsCursor:: db
 wPCItemsScrollPosition:: db
 
-wc1d9:: db
+wUnusedRAMBank:: db
 
 wTileAnimBuffer:: ds 1 tiles
 
@@ -201,13 +201,6 @@ SECTION UNION "Miscellaneous", WRAM0
 wBoxPartialData:: ds 480
 wBoxPartialDataEnd::
 
-/*
-SECTION UNION "Miscellaneous", WRAM0
-
-; 20x18 grid of 8x8 tiles
-wTempTilemap::
-	ds SCREEN_AREA
-*/
 
 SECTION UNION "Miscellaneous", WRAM0
 
@@ -1088,37 +1081,7 @@ wPlayerJustGotFrozen:: db
 wEnemyJustGotFrozen:: db
 wBattleEnd::
 ENDU
-/*
 
-IF DEF(_DEBUG)
-SECTION UNION "Overworld Map", WRAM0
-
-; debug room paged values
-UNION
-; debug room new item values
-wDebugRoomItemID::       db
-wDebugRoomItemQuantity:: db
-NEXTU
-; debug room new pokemon values
-wDebugRoomMon::    box_struct wDebugRoomMon
-wDebugRoomMonBox:: db
-NEXTU
-; debug room RTC values
-wDebugRoomRTCSec::  db
-wDebugRoomRTCMin::  db
-wDebugRoomRTCHour:: db
-wDebugRoomRTCDay::  dw
-wDebugRoomRTCCurSec::  db
-wDebugRoomRTCCurMin::  db
-wDebugRoomRTCCurHour:: db
-wDebugRoomRTCCurDay::  dw
-NEXTU
-; debug room GB ID values
-wDebugRoomGBID:: dw
-ENDU
-
-ENDC
-*/
 
 SECTION "Video", WRAM0
 
@@ -1323,11 +1286,11 @@ NEXTU
 ; credits
 wCreditsPos:: dw
 wCreditsTimer:: db
-/*
+
 NEXTU
 ; mail temp storage
 wTempMail:: mailmsg wTempMail
-*/
+
 NEXTU
 ; bug-catching contest
 wBugContestResults::
@@ -1492,24 +1455,7 @@ NEXTU
 wDebugColorIsTrainer:: db
 wDebugColorIsShiny:: db
 wDebugColorCurTMHM:: db
-/*
-IF DEF(_DEBUG)
-NEXTU
-; debug room paged values
-wDebugRoomCurPage::        db
-wDebugRoomCurValue::       db
-wDebugRoomAFunction::      dw
-wDebugRoomStartFunction::  dw
-wDebugRoomSelectFunction:: dw
-wDebugRoomAutoFunction::   dw
-wDebugRoomPageCount::      db
-wDebugRoomPagesPointer::   dw
-ENDC
-*/
 ENDU
-
-
-SECTION "wram_wip1", WRAM0[$cf11]
 
 UNION
 ; trainer data
@@ -1670,6 +1616,14 @@ wMenuScrollPosition:: ds 4
 
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
+
+
+SECTION "Stack", WRAM0
+
+wStackBottom::
+	ds $c2
+wStackTop::
+	ds 1
 
 
 SECTION "WRAM 1", WRAMX
@@ -2853,14 +2807,6 @@ wPokemonDataEnd::
 wGameDataEnd::
 ENDU
 
-/*
-SECTION "Stack", WRAMX
-
-wStackBottom::
-	ds $fc
-wStackTop::
-	ds 1
-*/
 
 SECTION "WRAM 2", WRAMX
 

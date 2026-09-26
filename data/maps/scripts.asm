@@ -340,7 +340,7 @@ INCLUDE "maps/RedsHouse2F.asm"
 INCLUDE "maps/BluesHouse.asm"
 INCLUDE "maps/OaksLab.asm"
 
-/*
+
 SECTION "Map Scripts 24", ROMX
 
 INCLUDE "maps/PewterNidoranSpeechHouse.asm"
@@ -357,7 +357,7 @@ INCLUDE "maps/KarensRoom.asm"
 INCLUDE "maps/LancesRoom.asm"
 INCLUDE "maps/HallOfFame.asm"
 
-
+/*
 SECTION "Map Scripts 25", ROMX
 
 INCLUDE "maps/OlivinePort.asm"

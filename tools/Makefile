@@ -9,8 +9,7 @@ tools := \
 	lzcompress \
 	make_patch \
 	png_dimensions \
-	scan_includes \
-	stadium
+	scan_includes
 
 all: $(tools)
 	@:

@@ -125,8 +125,7 @@ $(pokegold_vc_obj):      RGBASMFLAGS += -D _GOLD -D _GOLD_VC
 $(pokesilver_vc_obj):    RGBASMFLAGS += -D _SILVER -D _SILVER_VC
 
 %.patch: %_vc.gbc %.gbc vc/%.patch.template
-# Ignore the checksums added by tools/stadium at the end of the ROM
-	tools/make_patch --ignore 0x1ffdf8:0x208 $*_vc.sym $^ $@
+	tools/make_patch $*_vc.sym $^ $@
 
 rgbdscheck.o: rgbdscheck.asm
 	$(RGBASM) -o $@ $<
@@ -181,7 +180,6 @@ pokesilver_vc.gbc: BASEROM = baserom_s.bin
 %.gbc: $$(%_obj) layout.link
 	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -n $*.sym -m $*.map -O $(BASEROM) -o $@ $(filter %.o,$^)
 	$(RGBFIX) $(RGBFIXFLAGS) $@
-# 	tools/stadium $@
 
 
 ### LZ compression rules

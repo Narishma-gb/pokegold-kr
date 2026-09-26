@@ -20,24 +20,24 @@ ResetWRAM:
 	ret
 
 _ResetWRAM:
-	ld hl, wc1d9
-	ld bc, $22
+	ld hl, wUnusedRAMBank
+	ld bc, wNamedObjectType + 1 - wUnusedRAMBank
 	xor a
 	call ByteFill
 
-	ld hl, wd000
-	ld bc, 5
+	ld hl, STARTOF("WRAM 1")
+	ld bc, wFXAnimID - STARTOF("WRAM 1")
 	xor a
 	call ByteFill
 
 	ld hl, wShadowOAM
-	ld bc, $c3d
+	ld bc, wStackBottom - wShadowOAM
 	xor a
 	call ByteFill
 
-	; zero the same bytes again
+	; pointless
 	ld hl, wShadowOAM
-	ld bc, $254
+	ld bc, wSpriteAnim4Duration - wShadowOAM
 	xor a
 	call ByteFill
 

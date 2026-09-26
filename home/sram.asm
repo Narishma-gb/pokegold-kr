@@ -2,12 +2,12 @@ OpenSRAM::
 ; switch to sram bank a
 	push af
 	cp $4
-	jr c, .asm_3182
+	jr c, .ok
 ; ... unless a > 3
 	pop af
 	jr CloseSRAM
 
-.asm_3182
+.ok
 ; latch clock data
 	ld a, 1
 	ld [rRTCLATCH], a
@@ -17,7 +17,7 @@ OpenSRAM::
 ; select sram bank
 	pop af
 	ld [rRAMB], a
-	ld [wc1d9], a
+	ld [wUnusedRAMBank], a
 	ret
 
 CloseSRAM::
@@ -28,6 +28,6 @@ CloseSRAM::
 ; disable sram/clock write
 	ld [rRAMG], a
 	ld a, $ff
-	ld [wc1d9], a
+	ld [wUnusedRAMBank], a
 	pop af
 	ret

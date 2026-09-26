@@ -1,8 +1,9 @@
-EXPORT DEF wTempMailMessage EQU $CEC2
-EXPORT DEF wTempMail EQU $CEC2
-EXPORT DEF wTempMailAuthor EQU $CF03
-EXPORT DEF wStackBottom EQU $CF3D
-EXPORT DEF wStackTop EQU $CFFF
-EXPORT DEF wd000 EQU $D000
 EXPORT DEF wTempTilemap EQU $D800
-EXPORT DEF hClockResetTrigger EQU $FFEE
+
+/*
+SECTION UNION "Miscellaneous", WRAM0
+
+; 20x18 grid of 8x8 tiles
+wTempTilemap::
+	ds SCREEN_AREA
+*/

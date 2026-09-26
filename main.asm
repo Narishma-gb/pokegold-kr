@@ -364,9 +364,6 @@ INCLUDE "data/items/descriptions.asm"
 SECTION "bank70", ROMX
 
 INCLUDE "engine/printer/print_party.asm"
-;IF DEF(_DEBUG)
-;INCLUDE "engine/debug/debug_room.asm"
-;ENDC
 
 
 SECTION "bank70_2", ROMX
@@ -387,12 +384,11 @@ SECTION "Credits Strings", ROMX
 INCLUDE "data/credits_strings.asm"
 
 
-;SECTION "Stadium 2 Checksums", ROMX[$7DF8], BANK[$7F]
+SECTION "bank7F", ROMX
 
-;; The end of the ROM is taken up by checksums of the content, apparently used
-;; by Pokémon Stadium 2 due to the checksums' "N64PS3" header. (In Japan,
-;; Pokémon Stadium Gold and Silver was the third Stadium release for N64.)
-;; This SECTION reserves space for those checksums.
-;; If it is removed, also remove the "tools/stadium" command in the Makefile.
-
-;	ds $208
+INCLUDE "engine/init_ram.asm"
+INCLUDE "engine/double_speed.asm"
+INCLUDE "engine/text.asm"
+INCLUDE "engine/video.asm"
+INCLUDE "engine/menus/exit_menu.asm"
+INCLUDE "engine/tilemap.asm"

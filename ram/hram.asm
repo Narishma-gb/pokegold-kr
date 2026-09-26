@@ -165,6 +165,10 @@ hCGB::          db
 hSGB::          db
 hAGB::          db
 
-	ds 20
+	ds 3
+
+hClockResetTrigger:: db
+
+	ds 16
 
 ENDSECTION

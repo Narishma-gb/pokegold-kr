@@ -212,8 +212,8 @@ ROMX $57
 	"Map Scripts 22"
 ROMX $59
 	"Map Scripts 23"
-; ROMX $5a
-; 	"Map Scripts 24"
+ROMX $5a
+	"Map Scripts 24"
 ; ROMX $5b
 ; 	"Map Scripts 25"
 ; ROMX $5c
@@ -266,8 +266,6 @@ ROMX $7b
 	"Diploma GFX"
 ROMX $7f
 	"bank7F"
-; 	org $7df8
-; 	"Stadium 2 Checksums"
 WRAM0
 	"Audio RAM"
 	"WRAM"
@@ -281,11 +279,11 @@ WRAM0
 	align 8
 	"Overworld Map"
 	"Video"
+	"Stack"
 WRAMX $1
 	"WRAM 1"
 	"Game Data"
 	"Party"
-; 	"Stack"
 WRAMX $2
 	"WRAM 2"
 WRAMX $3
@@ -302,7 +300,6 @@ SRAM $00
 	"SRAM Bank 0"
 	"Backup Save 1"
 	"SRAM Stack"
-; 	org $b800
 SRAM $01
 	"Save"
 	"Active Box"

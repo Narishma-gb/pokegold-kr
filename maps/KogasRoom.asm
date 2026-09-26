@@ -29,7 +29,7 @@ KogasRoomDoorsCallback:
 
 KogasRoomDoorLocksBehindYouScript:
 	applymovement PLAYER, KogasRoom_EnterMovement
-	reanchormap $85
+	reanchormap $86
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 14, $2a ; wall
@@ -79,52 +79,40 @@ KogasRoom_EnterMovement:
 	step_end
 
 KogaScript_KogaBeforeText:
-	text "Fwahahahaha!"
+	text "…… 하 하 하!"
 
-	para "I am KOGA of the"
-	line "ELITE FOUR."
+	para "나는 사천왕인 독수!"
+	line "현존하는 닌자다!"
 
-	para "I live in shadows,"
-	line "a ninja!"
+	para "나의 싸움방식을"
+	line "우습게 보면 큰코다칠 것이다"
 
-	para "My intricate style"
-	line "will confound and"
-	cont "destroy you!"
+	para "어지럽게 잠들게"
+	line "독에 중독시키고……"
 
-	para "Confusion, sleep,"
-	line "poison…"
+	para "바로 한마디로 줄이면"
+	line "이상한 기술이지!"
 
-	para "Prepare to be the"
-	line "victim of my sin-"
-	cont "ister technique!"
+	para "…… 하 하 하!"
 
-	para "Fwahahahaha!"
-
-	para "#MON is not"
-	line "merely about brute"
-
-	para "force--you shall"
-	line "see soon enough!"
+	para "힘만으로는 해결할 수 없는"
+	line "포켓몬의 깊은 내면을"
+	cont "듬뿍 맛보는게 좋을 것이다!"
 	done
 
 KogaScript_KogaBeatenText:
-	text "Ah!"
-	line "You have proven"
-	cont "your worth!"
+	text "오오!"
+	line "너는 굉장하구나!"
 	done
 
 KogaScript_KogaDefeatText:
-	text "I subjected you to"
-	line "everything I could"
-	cont "muster."
+	text "가진 기술은 전부 펼쳤다"
 
-	para "But my efforts"
-	line "failed. I must"
-	cont "hone my skills."
+	para "그래도 승복하지 못한다면"
+	line "소인배란 소리를 듣겠지"
 
-	para "Go on to the next"
-	line "room, and put your"
-	cont "abilities to test!"
+	para "너! 다음 관문으로 향하여"
+	line "자신의 실력을 확인함이 좋을꺼다!"
 	done
 
 KogasRoom_MapEvents:
