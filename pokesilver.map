@@ -1,8 +1,8 @@
 SUMMARY:
 	ROM0: 16114 bytes used / 270 free
-	ROMX: 1118523 bytes used / 962245 free in 127 banks
+	ROMX: 1125872 bytes used / 954896 free in 127 banks
 	SRAM: 30805 bytes used / 1963 free in 4 banks
-	WRAM0: 3896 bytes used / 200 free
+	WRAM0: 4091 bytes used / 5 free
 	WRAMX: 7560 bytes used / 21112 free in 7 banks
 	HRAM: 127 bytes used / 0 free
 
@@ -929,7 +929,7 @@ ROM0 bank #0:
 	         $3164 = RandomRange.mod
 	         $316a = RandomRange.loop
 	         $317a = OpenSRAM
-	         $3182 = OpenSRAM.asm_3182
+	         $3182 = OpenSRAM.ok
 	         $3194 = CloseSRAM
 	         $31a4 = _hl_
 	         $31a5 = _de_
@@ -26621,7 +26621,184 @@ ROMX bank #89:
 	TOTAL EMPTY: $2300 bytes
 
 ROMX bank #90:
-	EMPTY
+	SECTION: $4000-$5cb4 ($1cb5 bytes) ["Map Scripts 24"]
+	         $4000 = PewterNidoranSpeechHouse_MapScripts
+	         $4002 = PewterNidoranSpeechHouseSuperNerdScript
+	         $4005 = PewterNidoran
+	         $400f = PewterNidoranSpeechHouseSuperNerdText
+	         $401c = PewterNidoranText
+	         $4033 = PewterNidoranSpeechHouse_MapEvents
+	         $405d = PewterGym_MapScripts
+	         $405f = PewterGymBrockScript
+	         $408d = PewterGymBrockScript.FightDone
+	         $4093 = TrainerCamperJerry
+	         $409f = TrainerCamperJerry.Script
+	         $40a7 = PewterGymGuideScript
+	         $40b5 = PewterGymGuideScript.PewterGymGuideWinScript
+	         $40bb = PewterGymStatue
+	         $40c4 = PewterGymStatue.Beaten
+	         $40cb = BrockIntroText
+	         $4186 = BrockWinLossText
+	         $41e1 = ReceivedBoulderBadgeText
+	         $420b = BrockBoulderBadgeText
+	         $4272 = BrockFightDoneText
+	         $42de = CamperJerrySeenText
+	         $434f = CamperJerryBeatenText
+	         $4370 = CamperJerryAfterBattleText
+	         $43af = PewterGymGuideText
+	         $442c = PewterGymGuideWinText
+	         $446b = PewterGym_MapEvents
+	         $44ac = PewterMart_MapScripts
+	         $44ae = PewterMartClerkScript
+	         $44b5 = PewterMartYoungsterScript
+	         $44b8 = PewterMartSuperNerdScript
+	         $44bb = PewterMartYoungsterText
+	         $4502 = PewterMartSuperNerdText
+	         $4563 = PewterMart_MapEvents
+	         $459a = PewterPokecenter1F_MapScripts
+	         $459c = PewterPokecenter1FNurseScript
+	         $459f = PewterPokecenter1FTeacherScript
+	         $45a2 = PewterJigglypuff
+	         $45ac = PewterPokecenter1FBugCatcherScript
+	         $45af = Chris
+	         $45b6 = PewterPokecenter1FTeacherText
+	         $4619 = PewterJigglypuffText
+	         $462e = PewterPokecenter1FBugCatcherText
+	         $469b = PewterPokecenter1F_MapEvents
+	         $46f1 = PewterPokecenter2FBeta_MapScripts
+	         $46f3 = PewterPokecenter2FBeta_MapEvents
+	         $46fe = PewterSnoozeSpeechHouse_MapScripts
+	         $4700 = PewterSnoozeSpeechHouseGrampsScript
+	         $4703 = PewterSnoozeSpeechHouseBookshelf
+	         $4706 = PewterSnoozeSpeechHouseGrampsText
+	         $4747 = PewterSnoozeSpeechHouse_MapEvents
+	         $476e = IndigoPlateauPokecenter1F_MapScripts
+	         $4777 = IndigoPlateauPokecenter1FNoopScene
+	         $4778 = IndigoPlateauPokecenter1FPrepareElite4Callback
+	         $47c1 = PlateauRivalBattle1
+	         $4802 = PlateauRivalBattle2
+	         $483c = PlateauRivalBattleCommon
+	         $4861 = PlateauRivalBattleCommon.Totodile
+	         $4871 = PlateauRivalBattleCommon.Chikorita
+	         $4881 = PlateauRivalPostBattle
+	         $4899 = PlateauRivalScriptDone
+	         $489a = IndigoPlateauPokecenter1FNurseScript
+	         $489d = IndigoPlateauPokecenter1FClerkScript
+	         $48a4 = IndigoPlateauPokecenter1FCooltrainerMScript
+	         $48a7 = TeleportGuyScript
+	         $48c2 = TeleportGuyScript.No
+	         $48c8 = AbraScript
+	         $48d2 = PlateauRivalMovement1
+	         $48d9 = PlateauRivalMovement2
+	         $48e0 = PlateauRivalLeavesMovement
+	         $48e6 = IndigoPlateauPokecenter1FCooltrainerMText
+	         $4945 = PlateauRivalText1
+	         $49cd = PlateauRivalWinText
+	         $49f8 = PlateauRivalText2
+	         $4a7a = PlateauRivalLoseText
+	         $4ac3 = TeleportGuyText1
+	         $4b6b = TeleportGuyYesText
+	         $4ba8 = TeleportGuyNoText
+	         $4bcb = AbraText
+	         $4bdf = IndigoPlateauPokecenter1F_MapEvents
+	         $4c57 = WillsRoom_MapScripts
+	         $4c64 = WillsRoomLockDoorScene
+	         $4c68 = WillsRoomNoopScene
+	         $4c69 = WillsRoomDoorsCallback
+	         $4c73 = WillsRoomDoorsCallback.KeepEntranceOpen
+	         $4c7d = WillsRoomDoorsCallback.KeepExitClosed
+	         $4c7e = WillsRoomDoorLocksBehindYouScript
+	         $4c96 = WillScript_Battle
+	         $4cc4 = WillScript_AfterBattle
+	         $4cca = WillsRoom_EnterMovement
+	         $4ccf = WillScript_WillBeforeText
+	         $4d8e = WillScript_WillBeatenText
+	         $4d99 = WillScript_WillDefeatText
+	         $4e39 = WillsRoom_MapEvents
+	         $4e5b = KogasRoom_MapScripts
+	         $4e68 = KogasRoomLockDoorScene
+	         $4e6c = KogasRoomNoopScene
+	         $4e6d = KogasRoomDoorsCallback
+	         $4e77 = KogasRoomDoorsCallback.KeepEntranceOpen
+	         $4e81 = KogasRoomDoorsCallback.KeepExitClosed
+	         $4e82 = KogasRoomDoorLocksBehindYouScript
+	         $4e9a = KogaScript_Battle
+	         $4ec8 = KogaScript_AfterBattle
+	         $4ece = KogasRoom_EnterMovement
+	         $4ed3 = KogaScript_KogaBeforeText
+	         $4fdd = KogaScript_KogaBeatenText
+	         $4ff7 = KogaScript_KogaDefeatText
+	         $507c = KogasRoom_MapEvents
+	         $50a3 = BrunosRoom_MapScripts
+	         $50b0 = BrunosRoomLockDoorScene
+	         $50b4 = BrunosRoomNoopScene
+	         $50b5 = BrunosRoomDoorsCallback
+	         $50bf = BrunosRoomDoorsCallback.KeepEntranceOpen
+	         $50c9 = BrunosRoomDoorsCallback.KeepExitClosed
+	         $50ca = BrunosRoomDoorLocksBehindYouScript
+	         $50e2 = BrunoScript_Battle
+	         $5110 = BrunoScript_AfterBattle
+	         $5116 = BrunosRoom_EnterMovement
+	         $511b = BrunoScript_BrunoBeforeText
+	         $5247 = BrunoScript_BrunoBeatenText
+	         $5273 = BrunoScript_BrunoDefeatText
+	         $52be = BrunosRoom_MapEvents
+	         $52e5 = KarensRoom_MapScripts
+	         $52f2 = KarensRoomLockDoorScene
+	         $52f6 = KarensRoomNoopScene
+	         $52f7 = KarensRoomDoorsCallback
+	         $5301 = KarensRoomDoorsCallback.KeepEntranceOpen
+	         $530b = KarensRoomDoorsCallback.KeepExitClosed
+	         $530c = KarensRoomDoorLocksBehindYouScript
+	         $5324 = KarenScript_Battle
+	         $5352 = KarenScript_AfterBattle
+	         $5358 = KarensRoom_EnterMovement
+	         $535d = KarenScript_KarenBeforeText
+	         $5461 = KarenScript_KarenBeatenText
+	         $548a = KarenScript_KarenDefeatText
+	         $5559 = KarensRoom_MapEvents
+	         $5580 = LancesRoom_MapScripts
+	         $558d = LancesRoomLockDoorScene
+	         $5591 = LancesRoomNoopScene
+	         $5592 = LancesRoomDoorsCallback
+	         $559c = LancesRoomDoorsCallback.KeepEntranceOpen
+	         $55a6 = LancesRoomDoorsCallback.KeepExitClosed
+	         $55a7 = LancesRoomDoorLocksBehindYouScript
+	         $55be = Script_ApproachLanceFromLeft
+	         $55c8 = Script_ApproachLanceFromRight
+	         $55cf = LancesRoomLanceScript
+	         $5686 = LancesRoom_EnterMovement
+	         $568b = MovementData_ApproachLanceFromLeft
+	         $5690 = MovementData_ApproachLanceFromRight
+	         $5696 = LancesRoomMovementData_MaryRushesIn
+	         $569c = LancesRoomMovementData_OakWalksIn
+	         $56a0 = LancesRoomMovementData_MaryYieldsToOak
+	         $56a3 = LancesRoomMovementData_MaryInterviewChampion
+	         $56a6 = LancesRoomMovementData_LancePositionsSelfToGuidePlayerAway
+	         $56aa = LancesRoomMovementData_LanceLeadsPlayerToHallOfFame
+	         $56ac = LancesRoomMovementData_PlayerExits
+	         $56ae = LancesRoomMovementData_MaryTriesToFollow
+	         $56b2 = LancesRoomMovementData_MaryRunsBackAndForth
+	         $56be = LanceBattleIntroText
+	         $57a4 = LanceBattleWinText
+	         $5827 = LanceBattleAfterText
+	         $58d7 = LancesRoomMaryOhNoOakText
+	         $5910 = LancesRoomOakCongratulationsText
+	         $5a26 = LancesRoomMaryInterviewText
+	         $5a56 = LancesRoomNoisyText
+	         $5a9c = LancesRoomMaryNoInterviewText
+	         $5abc = LancesRoom_MapEvents
+	         $5b0d = HallOfFame_MapScripts
+	         $5b17 = HallOfFameEnterScene
+	         $5b1b = HallOfFameNoopScene
+	         $5b1c = HallOfFameEnterScript
+	         $5b5f = HallOfFameEnterScript.SkipPhoneCall
+	         $5b61 = HallOfFame_WalkUpWithLance
+	         $5b6c = HallOfFame_SlowlyApproachMachine
+	         $5b6e = HallOfFame_LanceText
+	         $5c98 = HallOfFame_MapEvents
+	EMPTY: $5cb5-$7fff ($234b bytes)
+	TOTAL EMPTY: $234b bytes
 
 ROMX bank #91:
 	EMPTY
@@ -28427,16 +28604,16 @@ ROMX bank #127:
 	         $4748 = _CopyTilemapAtOnce.wait2
 	         $4756 = _CopyTilemapAtOnce.CopyBGMapViaStack
 	         $4767 = _CopyTilemapAtOnce.loop
-	         $4768 = _CopyTilemapAtOnce.loop_u149
-	         $4771 = _CopyTilemapAtOnce.loop_u150
-	         $477a = _CopyTilemapAtOnce.loop_u151
-	         $4783 = _CopyTilemapAtOnce.loop_u152
-	         $478c = _CopyTilemapAtOnce.loop_u153
-	         $4795 = _CopyTilemapAtOnce.loop_u154
-	         $479e = _CopyTilemapAtOnce.loop_u155
-	         $47a7 = _CopyTilemapAtOnce.loop_u156
-	         $47b0 = _CopyTilemapAtOnce.loop_u157
-	         $47b9 = _CopyTilemapAtOnce.loop_u158
+	         $4768 = _CopyTilemapAtOnce.loop_u146
+	         $4771 = _CopyTilemapAtOnce.loop_u147
+	         $477a = _CopyTilemapAtOnce.loop_u148
+	         $4783 = _CopyTilemapAtOnce.loop_u149
+	         $478c = _CopyTilemapAtOnce.loop_u150
+	         $4795 = _CopyTilemapAtOnce.loop_u151
+	         $479e = _CopyTilemapAtOnce.loop_u152
+	         $47a7 = _CopyTilemapAtOnce.loop_u153
+	         $47b0 = _CopyTilemapAtOnce.loop_u154
+	         $47b9 = _CopyTilemapAtOnce.loop_u155
 	EMPTY: $47d4-$7fff ($382c bytes)
 	TOTAL EMPTY: $382c bytes
 
@@ -37329,7 +37506,7 @@ WRAM0 bank #0:
 	         $c1d6 = wDisableTextAcceleration
 	         $c1d7 = wPCItemsCursor
 	         $c1d8 = wPCItemsScrollPosition
-	         $c1d9 = wc1d9
+	         $c1d9 = wUnusedRAMBank
 	         $c1da = wTileAnimBuffer
 	         $c1ea = wLinkReceivedSyncBuffer
 	         $c1ea = wOtherPlayerLinkMode
@@ -39297,7 +39474,7 @@ WRAM0 bank #0:
 	         $cc25 = wPlayerJustGotFrozen
 	         $cc26 = wEnemyJustGotFrozen
 	         $cc27 = wBattleEnd
-	SECTION: $cc27-$cf10 ($02ea bytes) ["Video"]
+	SECTION: $cc27-$cf3c ($0316 bytes) ["Video"]
 	         $cc27 = wBGMapBuffer
 	         $cc4f = wBGMapPalBuffer
 	         $cc77 = wBGMapBufferPointers
@@ -39425,6 +39602,9 @@ WRAM0 bank #0:
 	         $cec2 = wSwitchItemBuffer
 	         $cec2 = wWhichBoxMonToPrint
 	         $cec2 = wBufferMonNickname
+	         $cec2 = wTempMail
+	         $cec2 = wTempMailMessage
+	         $cec2 = wTempMailLine1
 	         $cec2 = wTownMapPlayerIconLandmark
 	         $cec2 = wCurRadioLine
 	         $cec2 = wLuckyNumberDigitsBuffer
@@ -39509,7 +39689,9 @@ WRAM0 bank #0:
 	         $cedd = wMartItem10BCD
 	         $cede = wBufferMonID
 	         $cee0 = wBufferMonExp
+	         $cee2 = wTempMailLineBreak
 	         $cee3 = wBufferMonStatExp
+	         $cee3 = wTempMailLine2
 	         $cee3 = wBufferMonHPExp
 	         $cee5 = wBufferMonAtkExp
 	         $cee7 = wBufferMonDefExp
@@ -39531,12 +39713,16 @@ WRAM0 bank #0:
 	         $cefe = wBufferMonStats
 	         $cf00 = wBufferMonDefense
 	         $cf02 = wBufferMonSpeed
+	         $cf03 = wTempMailAuthor
 	         $cf04 = wBufferMonSpclAtk
 	         $cf06 = wBufferMonSpclDef
 	         $cf08 = wBufferMonStructEnd
-	SECTION: $cf11-$cf3c ($002c bytes) ["wram_wip1"]
+	         $cf0d = wTempMailAuthorID
+	         $cf0f = wTempMailSpecies
+	         $cf10 = wTempMailType
 	         $cf11 = wSeenTrainerBank
 	         $cf11 = wMenuItemsList
+	         $cf11 = wTempMailEnd
 	         $cf11 = wPoisonStepFlagSum
 	         $cf11 = wHiddenItemEvent
 	         $cf11 = wCurBGEvent
@@ -39625,8 +39811,10 @@ WRAM0 bank #0:
 	         $cf36 = wMenuScrollPosition
 	         $cf3a = wQueuedScriptBank
 	         $cf3b = wQueuedScriptAddr
-	EMPTY: $cf3d-$cfff ($00c3 bytes)
-	TOTAL EMPTY: $00c8 bytes
+	SECTION: $cf3d-$cfff ($00c3 bytes) ["Stack"]
+	         $cf3d = wStackBottom
+	         $cfff = wStackTop
+	TOTAL EMPTY: $0005 bytes
 
 WRAMX bank #1:
 	SECTION: $d000-$d25b ($025c bytes) ["WRAM 1"]
@@ -41708,4 +41896,5 @@ HRAM bank #0:
 	         $ffe8 = hCGB
 	         $ffe9 = hSGB
 	         $ffea = hAGB
+	         $ffee = hClockResetTrigger
 	TOTAL EMPTY: $0000 bytes
