@@ -2819,7 +2819,7 @@ wInvertedHangulToggle::
 
 SECTION "WRAM Window Stack", WRAMX
 
-;wWindowStackBottom::
+wWindowStackBottom::
 	ds $800 - 1
 wWindowStackTop::
 	ds 1

@@ -357,7 +357,7 @@ INCLUDE "maps/KarensRoom.asm"
 INCLUDE "maps/LancesRoom.asm"
 INCLUDE "maps/HallOfFame.asm"
 
-/*
+
 SECTION "Map Scripts 25", ROMX
 
 INCLUDE "maps/OlivinePort.asm"
@@ -391,7 +391,7 @@ INCLUDE "maps/TradeCenter.asm"
 INCLUDE "maps/Colosseum.asm"
 INCLUDE "maps/TimeCapsule.asm"
 
-
+/*
 SECTION "Map Scripts 27", ROMX
 
 INCLUDE "maps/LavenderPokecenter1F.asm"

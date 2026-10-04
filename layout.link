@@ -214,10 +214,10 @@ ROMX $59
 	"Map Scripts 23"
 ROMX $5a
 	"Map Scripts 24"
-; ROMX $5b
-; 	"Map Scripts 25"
-; ROMX $5c
-; 	"Map Scripts 26"
+ROMX $5b
+	"Map Scripts 25"
+ROMX $5c
+	"Map Scripts 26"
 ; ROMX $5d
 ; 	"Map Scripts 27"
 ; ROMX $5e
@@ -253,7 +253,7 @@ ROMX $70
 	"Pokégear GFX"
 	"Credits Strings"
 ROMX $71
-	"bank71"
+	"Hangul Naming Screen"
 ROMX $72
 	"DMG Error Screen"
 ROMX $78

@@ -38,21 +38,12 @@ ENDM
 EXPORT DEF SCENE_ELMSLAB_NOOP EQU 2
 
 INCLUDE "main.asm"
-INCLUDE "engine/dumps/bank71.asm"
 
 
 SECTION "rom37", ROMX[$40ed], BANK[37]
 ; ROM $25 : $94000 - $97FFF
 
 	dr MapGroupPointers, $40ed
-
-
-;SECTION "rom91", ROMX[$4000], BANK[91]
-; ROM $5b : $16C000 - $16FFFF
-
-
-;SECTION "rom92", ROMX[$4000], BANK[92]
-; ROM $5c : $170000 - $173FFF
 
 
 ;SECTION "rom93", ROMX[$4000], BANK[93]

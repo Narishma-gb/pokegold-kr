@@ -374,6 +374,11 @@ INCLUDE "engine/events/catch_tutorial_input.asm"
 INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
 
 
+SECTION "Hangul Naming Screen", ROMX
+
+INCLUDE "engine/menus/naming_screen_2.asm"
+
+
 SECTION "DMG Error Screen", ROMX
 
 INCLUDE "engine/movie/error_screen.asm"
