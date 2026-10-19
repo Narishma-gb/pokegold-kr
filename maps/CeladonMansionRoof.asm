@@ -9,7 +9,7 @@ CeladonMansionRoofSign: ; unreferenced
 	jumptext CeladonMansionRoofSignText
 
 CeladonMansionRoofSignText:
-	text "I KNOW EVERYTHING!"
+	text "나는 무엇이든지 속속들이 안다!"
 	done
 
 CeladonMansionRoof_MapEvents:

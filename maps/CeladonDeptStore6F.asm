@@ -78,17 +78,17 @@ CeladonDeptStore6FVendingMachine:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 2, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 0, 2, SCREEN_WIDTH - 5, TEXTBOX_Y - 1
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "FRESH WATER  ¥{d:CELADONDEPTSTORE6F_FRESH_WATER_PRICE}@"
-	db "SODA POP     ¥{d:CELADONDEPTSTORE6F_SODA_POP_PRICE}@"
-	db "LEMONADE     ¥{d:CELADONDEPTSTORE6F_LEMONADE_PRICE}@"
-	db "CANCEL@"
+	db "맛있는 물   {d:CELADONDEPTSTORE6F_FRESH_WATER_PRICE}₩@"
+	db "미네랄 사이다 {d:CELADONDEPTSTORE6F_SODA_POP_PRICE}₩@"
+	db "후르츠 밀크  {d:CELADONDEPTSTORE6F_LEMONADE_PRICE}₩@"
+	db "그만두다@"
 
 CeladonDeptStore6FDirectory:
 	jumptext CeladonDeptStore6FDirectoryText
@@ -97,48 +97,41 @@ CeladonDeptStore6FElevatorButton: ; unreferenced
 	jumpstd ElevatorButtonScript
 
 CeladonVendingText:
-	text "A vending machine!"
-	line "Here's the menu."
+	text "자동판매기다!"
+	line "마시고싶은 음료는…… ……"
 	done
 
 CeladonClangText:
-	text "Clang!"
+	text "덜컹!"
 
 	para "@"
 	text_ram wStringBuffer3
-	text_start
-	line "popped out."
+	text "(이)가 나왔다"
 	done
 
 CeladonVendingNoMoneyText:
-	text "Oops, not enough"
-	line "money…"
+	text "돈이 모자라!"
 	done
 
 CeladonVendingNoSpaceText:
-	text "There's no more"
-	line "room for stuff…"
+	text "이 이상 들 수 없어!"
 	done
 
 CeladonDeptStore6FSuperNerdText:
-	text "A vending machine"
-	line "with a prize rou-"
-	cont "lette…"
-
-	para "You never see"
-	line "those anymore."
+	text "근처 제비뽑기"
+	line "자동판매기……"
+	cont "최근에는 볼 수가 없네"
 	done
 
 CeladonDeptStore6FYoungsterText:
-	text "Aww! There's no"
-	line "games here!"
-
-	para "I wanted to play…"
+	text "저기 형아!"
+	line "여긴 게임이 없어!"
+	cont "난 게임으로 놀고싶은데"
 	done
 
 CeladonDeptStore6FDirectoryText:
-	text "6F: ROOFTOP SQUARE"
-	line "VENDING MACHINES"
+	text "6층 …… 휴식의 공원"
+	line "      …… 자동판매기"
 	done
 
 CeladonDeptStore6F_MapEvents:
