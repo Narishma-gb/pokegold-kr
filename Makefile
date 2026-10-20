@@ -8,7 +8,7 @@ patches := \
 rom_obj := \
 	audio.o \
 	home.o \
-	wip.o \
+	main.o \
 	ram.o \
 	data/text/common.o \
 	data/maps/map_data.o \
@@ -20,7 +20,6 @@ rom_obj := \
 	gfx/hangul.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
-# 	main.o \
 
 # Distinguish asm files which are game-exclusive for building (*_[gold|silver].asm)
 gs_excl_asm := \
@@ -172,13 +171,8 @@ pokesilver.gbc:    RGBFIXFLAGS += -t POKEMON_SLV -i AAXK
 pokegold_vc.gbc:   RGBFIXFLAGS += -t POKEMON_GLD -i AAUK
 pokesilver_vc.gbc: RGBFIXFLAGS += -t POKEMON_SLV -i AAXK
 
-pokegold.gbc:      BASEROM = baserom_g.bin
-pokesilver.gbc:    BASEROM = baserom_s.bin
-pokegold_vc.gbc:   BASEROM = baserom_g.bin
-pokesilver_vc.gbc: BASEROM = baserom_s.bin
-
 %.gbc: $$(%_obj) layout.link
-	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -n $*.sym -m $*.map -O $(BASEROM) -o $@ $(filter %.o,$^)
+	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -n $*.sym -m $*.map -o $@ $(filter %.o,$^)
 	$(RGBFIX) $(RGBFIXFLAGS) $@
 
 

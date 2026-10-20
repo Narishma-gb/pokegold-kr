@@ -464,7 +464,7 @@ INCLUDE "maps/DayOfWeekSiblingsHouse.asm"
 INCLUDE "maps/Route27SandstormHouse.asm"
 INCLUDE "maps/Route29Route46Gate.asm"
 
-/*
+
 SECTION "Map Scripts 31", ROMX
 
 INCLUDE "maps/FightingDojo.asm"
@@ -492,5 +492,5 @@ INCLUDE "maps/CherrygroveEvolutionSpeechHouse.asm"
 INCLUDE "maps/Route30BerryHouse.asm"
 INCLUDE "maps/MrPokemonsHouse.asm"
 INCLUDE "maps/Route31VioletGate.asm"
-*/
+
 ENDSECTION

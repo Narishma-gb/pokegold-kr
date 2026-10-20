@@ -168,203 +168,166 @@ MrPokemonsHouse_OakExits:
 	step_end
 
 MrPokemonIntroText1:
-	text "Hello, hello! You"
-	line "must be <PLAYER>."
+	text "이야이야"
+	line "네가 <PLAYER>군이로군"
 
-	para "PROF.ELM said that"
-	line "you would visit."
+	para "공박사로부터"
+	line "연락이 있어서 기다리고 있었단다"
 	done
 
 MrPokemonIntroText2:
-	text "This is what I"
-	line "want PROF.ELM to"
-	cont "examine."
+	text "이것이 공박사에게"
+	line "조사를 의뢰하고싶은 것이란다!"
 	done
 
 MrPokemonsHouse_GotEggText:
-	text "<PLAYER> received"
-	line "MYSTERY EGG."
+	text "<PLAYER>는(은)"
+	line "포켓몬 할아버지로부터"
+	cont "이상한 알을 맡았다!"
 	done
 
 MrPokemonIntroText3:
-	text "I know a couple"
-	line "who run a #MON"
-	cont "DAY-CARE service."
+	text "포켓몬을 맡아 기르고 있는"
+	line "부부가 있는데"
+	cont "거기서 얻은 것이란다"
 
-	para "They gave me that"
-	line "EGG."
+	para "혹시 그렇다면…… 라고 생각해서"
+	line "공박사에게 메일을 보냈단다"
 
-	para "I was intrigued,"
-	line "so I sent mail to"
-	cont "PROF.ELM."
-
-	para "For #MON evolu-"
-	line "tion, PROF.ELM is"
-	cont "the authority."
+	para "포켓몬 진화의 연구라면"
+	line "공박사가 최고니까!"
 	done
 
 MrPokemonIntroText4:
-	text "Even PROF.OAK here"
-	line "recognizes that."
+	text "여하튼 이 오박사도"
+	line "인정하는 정도니까"
 	done
 
 MrPokemonIntroText5:
-	text "If my assumption"
-	line "is correct, PROF."
-	cont "ELM will know it."
+	text "내 상상이 맞았는가……"
+	line "공박사라면 알고있을 터"
 	done
 
 MrPokemonsHouse_MrPokemonHealText:
-	text "You are returning"
-	line "to PROF.ELM?"
+	text "공박사가 계신곳에"
+	line "돌아갈 작정인가?"
 
-	para "Here. Your #MON"
-	line "should have some"
-	cont "rest."
+	para "약간 포켓몬을"
+	line "쉬게 하는 것이 좋겠지!"
 	done
 
 MrPokemonText_ImDependingOnYou:
-	text "I'm depending on"
-	line "you!"
+	text "그럼 잘 부탁한다!"
 	done
 
 MrPokemonText_AlwaysNewDiscoveries:
-	text "Life is delight-"
-	line "ful! Always, new"
-
-	para "discoveries to be"
-	line "made!"
+	text "이 세상은 참 재미있구나!"
+	line "여러가지 발견이 있으니까!"
 	done
 
 MrPokemonsHouse_OakText1:
-	text "OAK: Aha! So"
-	line "you're <PLAYER>!"
+	text "오박사『호오!"
+	line "네가 <PLAYER>군인가!"
 
-	para "I'm OAK! A #MON"
-	line "researcher."
+	para "나는 오박사"
+	line "포켓몬 연구를 하고있단다!"
 
-	para "I was just visit-"
-	line "ing my old friend"
-	cont "MR.#MON."
+	para "오랜 친구인"
+	line "포켓몬 할아버지를 방문 해보니까"
+	cont "공박사가 있는 곳으로부터"
+	cont "심부름꾼이 온다고 들어서"
+	cont "기다라고 있었단다!"
 
-	para "I heard you were"
-	line "running an errand"
+	para "호오-!"
+	line "진귀한 포켓몬을 가지고 있구나!"
 
-	para "for PROF.ELM, so I"
-	line "waited here."
+	para "게다가…… ……"
 
-	para "Oh! What's this?"
-	line "A rare #MON!"
+	para "흐음 역시!"
 
-	para "Let's see…"
+	para "공박사가 포켓몬을 줘서"
+	line "너에게 심부름을 부탁한 이유를"
+	cont "잘 알겠구나!"
 
-	para "Hm, I see!"
+	para "나와 공박사같은"
+	line "연구가에게 있어서 포켓몬은"
+	cont "소중한 친구이기 때문이란다!"
 
-	para "I understand why"
-	line "PROF.ELM gave you"
+	para "너라면 포켓몬을 소중하게"
+	line "키울 것 이라 생각한단다!"
 
-	para "a #MON for this"
-	line "errand."
+	para "…… 그렇구나!"
 
-	para "To researchers"
-	line "like PROF.ELM and"
+	para "너에게 기대를 걸고 나도"
+	line "한가지 부탁을 할까!"
 
-	para "I, #MON are our"
-	line "friends."
+	para "실은……"
 
-	para "He saw that you"
-	line "would treat your"
+	para "이것!"
+	line "이 포켓몬 도감이란다!"
 
-	para "#MON with love"
-	line "and care."
-
-	para "…Ah!"
-
-	para "You seem to be"
-	line "dependable."
-
-	para "How would you like"
-	line "to help me out?"
-
-	para "See? This is the"
-	line "latest version of"
-	cont "#DEX."
-
-	para "It automatically"
-	line "records data on"
-
-	para "#MON you've"
-	line "seen or caught."
-
-	para "It's a hi-tech"
-	line "encyclopedia!"
+	para "발견한 포켓몬의 데이터가"
+	line "자동적으로 기록되어져"
+	cont "페이지가 늘어간다고 하는"
+	cont "하이테크 도감이란다"
 	done
 
 MrPokemonsHouse_GetDexText:
-	text "<PLAYER> received"
-	line "#DEX!"
+	text "<PLAYER>는(은) 오박사로부터"
+	line "포켓몬 도감을 얻었다!"
 	done
 
 MrPokemonsHouse_OakText2:
-	text "Go meet many kinds"
-	line "of #MON and"
+	text "많은 포켓몬과 만나서"
+	line "이 도감을 완전하게"
+	cont "만들어 주었으면 좋겠구나!"
 
-	para "complete that"
-	line "#DEX!"
+	para "이런!"
+	line "오랫동안 시간을 끌었구나!"
 
-	para "But I've stayed"
-	line "too long."
+	para "이제부터 금빛시티에 가서"
+	line "늘 그렇듯이 라디오 방송을"
+	cont "녹음하지 않으면 안 되겠구나"
 
-	para "I have to get to"
-	line "GOLDENROD for my"
-	cont "usual radio show."
-
-	para "<PLAYER>, I'm"
-	line "counting on you!"
+	para "그럼 <PLAYER>군!"
+	line "잘 부탁한다!"
 	done
 
 MrPokemonText_GimmeTheScale:
-	text "Hm? That SCALE!"
-	line "What's that?"
-	cont "A red GYARADOS?"
+	text "응? 그 비늘은?"
+	line "뭐라! 빨간 갸라도스?"
 
-	para "That's rare! "
-	line "I, I want it…"
+	para "그 그것 참 희귀하군!"
+	line "가 가지고싶구나……"
 
-	para "<PLAYER>, would you"
-	line "care to trade it?"
-
-	para "I can offer this"
-	line "EXP.SHARE I got"
-	cont "from PROF.OAK."
+	para "<PLAYER>군"
+	line "내가 오박사로부터 얻은"
+	cont "이 학습장치랑"
+	cont "교환하지 않겠느냐?"
 	done
 
 MrPokemonText_Disappointed:
-	text "That's disappoint-"
-	line "ing. That happens"
-	cont "to be very rare."
+	text "그런가 그것 참 유감이구나"
+	line "꽤나 희귀한 것인데……"
 	done
 
 MrPokemonsHouse_ForeignMagazinesText:
-	text "It's packed with"
-	line "foreign magazines."
+	text "전 세계의 잡지가"
+	line "가득 진열되어있다!"
 
-	para "Can't even read"
-	line "their titles…"
+	para "…… ……"
+	line "제목을 읽을 수 없다……"
 	done
 
 MrPokemonsHouse_BrokenComputerText:
-	text "It's a big com-"
-	line "puter. Hmm. It's"
-	cont "broken."
+	text "커다란 컴퓨터!"
+	line "……고장나있는 것 같다"
 	done
 
 MrPokemonsHouse_StrangeCoinsText:
-	text "A whole pile of"
-	line "strange coins!"
-
-	para "Maybe they're from"
-	line "another country…"
+	text "본적도 없는 동전이"
+	line "가득 흩어져있다"
+	cont "어느 나라의 돈일까?"
 	done
 
 MrPokemonsHouse_MapEvents:

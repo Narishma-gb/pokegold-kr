@@ -35,45 +35,34 @@ SaffronPokecenter1FYoungsterScript:
 	jumptextfaceplayer SaffronPokecenter1FYoungsterText
 
 SaffronPokecenter1FTeacherText:
-	text "There's a huge"
-	line "POWER PLANT north"
-	cont "of LAVENDER TOWN."
+	text "커다란 발전소가"
+	line "보라타운의 북쪽에 있어!"
 	done
 
 SaffronPokecenter1FFisherText:
-	text "I just happened to"
-	line "come through ROCK"
-
-	para "TUNNEL. There was"
-	line "some commotion at"
-	cont "the POWER PLANT."
+	text "아까 돌산 터널을"
+	line "지나왔는데"
+	cont "어쩐지 발전소가"
+	cont "떠들썩했던 것 같아……"
 	done
 
 SaffronPokecenter1FFisherReturnedMachinePartText:
-	text "Caves collapse"
-	line "easily."
+	text "동굴은 무너지기 쉽다!"
 
-	para "Several caves have"
-	line "disappeared in the"
+	para "블루시티 동굴처럼"
+	line "무너진 동굴이"
+	cont "몇개정도 있단다!"
 
-	para "past few years,"
-	line "like the one out-"
-	cont "side CERULEAN."
-
-	para "As a pro HIKER,"
-	line "that's common"
-	cont "knowledge."
+	para "프로 등산가로서"
+	line "상식이지!"
 	done
 
 SaffronPokecenter1FYoungsterText:
-	text "SILPH CO.'s HEAD"
-	line "OFFICE and the"
+	text "실프주식회사 본사랑"
+	line "리니어 스테이션"
 
-	para "MAGNET TRAIN STA-"
-	line "TION--they're the"
-
-	para "places to see in"
-	line "SAFFRON."
+	para "이 두 곳이"
+	line "노랑시티의 명소란다!"
 	done
 
 SaffronPokecenter1F_MapEvents:

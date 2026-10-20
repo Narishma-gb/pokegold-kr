@@ -17,10 +17,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 - [**Emulicious**][emulicious] debugger features have been invaluable, navigating the ROM to look for differences with the US release.
 - The Korean character map was sourced from [**Bulbapedia**][bulbapedia], which lists all Hangul and Jamo codepoints.
 
-## Note
-
-The base ROMs of Gold & Silver are required to build, these should be placed at the top-level directory: `baserom_g.bin` and `baserom_s.bin`.
-
 [pokegold]: https://github.com/pret/pokegold
 [emulicious]: https://www.emulicious.net
 [bulbapedia]: https://bulbapedia.bulbagarden.net/wiki/Korean_character_encoding_(Generation_II)
