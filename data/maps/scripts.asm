@@ -437,7 +437,7 @@ INCLUDE "maps/Route16Gate.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route17Route18Gate.asm"
 
-/*
+
 SECTION "Map Scripts 29", ROMX
 
 INCLUDE "maps/ViridianGym.asm"
@@ -464,7 +464,7 @@ INCLUDE "maps/DayOfWeekSiblingsHouse.asm"
 INCLUDE "maps/Route27SandstormHouse.asm"
 INCLUDE "maps/Route29Route46Gate.asm"
 
-
+/*
 SECTION "Map Scripts 31", ROMX
 
 INCLUDE "maps/FightingDojo.asm"

@@ -39,20 +39,7 @@ MeetMomScript:
 	promptbutton
 	special SetDayOfWeek
 .SetDayOfWeek:
-	writetext IsItDSTText
-	yesorno
-	iffalse .WrongDay
-	special InitialSetDSTFlag
-	yesorno
-	iffalse .SetDayOfWeek
-	sjump .DayOfWeekDone
-
-.WrongDay:
-	special InitialClearDSTFlag
-	yesorno
-	iffalse .SetDayOfWeek
-.DayOfWeekDone:
-	writetext ComeHomeForDSTText
+	writetext DoYouKnowHowToUsePhoneText
 	yesorno
 	iffalse .ExplainPhone
 	sjump .KnowPhone
@@ -76,7 +63,7 @@ MeetMomScript:
 	end
 
 PokegearName:
-	db "#GEAR@"
+	db "포켓몬 기어@"
 
 PlayersHouse1FReceiveItemStd:
 	jumpstd ReceiveItemScript
@@ -148,143 +135,102 @@ MomWalksBackMovement:
 	step_end
 
 ElmsLookingForYouText:
-	text "Oh, <PLAYER>…! Our"
-	line "neighbor, PROF."
+	text "아 <PLAYER>!"
+	line "옆집의 공박사님이"
+	cont "찾아왔었단다"
 
-	para "ELM, was looking"
-	line "for you."
+	para "뭔지 너에게"
+	line "부탁할 것이 있다고 하셔서"
 
-	para "He said he wanted"
-	line "you to do some-"
-	cont "thing for him."
+	para "그래! 잊어먹을 뻔 했네"
+	line "수리를 보냈던"
+	cont "포켓몬기어가 돌아왔단다"
 
-	para "Oh! I almost for-"
-	line "got! Your #MON"
-
-	para "GEAR is back from"
-	line "the repair shop."
-
-	para "Here you go!"
+	para "여기!"
 	done
 
 MomGivesPokegearText:
-	text "#MON GEAR, or"
-	line "just #GEAR."
+	text "포켓몬기어"
+	line "줄여서 포켓기어"
 
-	para "It's essential if"
-	line "you want to be a"
-	cont "good trainer."
+	para "훌륭한 트레이너가"
+	line "되려면 가지고 있지 않으면 않될껄"
 
-	para "Oh, the day of the"
-	line "week isn't set."
-
-	para "You mustn't forget"
-	line "that!"
+	para "엥? 요일을 맞추지 않았네"
+	line "사용하기 전에 오늘은"
+	cont "무슨 요일인가 정해놓지 않으면"
 	done
 
-IsItDSTText:
-	text "Is it Daylight"
-	line "Saving Time now?"
-	done
-
-ComeHomeForDSTText:
-	text "Come home to"
-	line "adjust your clock"
-
-	para "for Daylight"
-	line "Saving Time."
-
-	para "By the way, do you"
-	line "know how to use"
-	cont "the PHONE?"
+DoYouKnowHowToUsePhoneText:
+	text "그래 그래"
+	line "전화의 사용방법 기억하고 있니?"
 	done
 
 KnowTheInstructionsText:
-	text "Don't you just"
-	line "turn the #GEAR"
-
-	para "on and select the"
-	line "PHONE icon?"
+	text "포켓몬기어의 스위치를 넣고"
+	line "아이콘을 고르기만 하면 되잖니?"
 	done
 
 DontKnowTheInstructionsText:
-	text "I'll read the"
-	line "instructions."
+	text "그럼 설명서를 읽을께"
 
-	para "Turn the #GEAR"
-	line "on and select the"
-	cont "PHONE icon."
+	para "포켓몬기어의 스위치를 넣고"
+	line "전화 아이콘을 고르는 것이란다"
 	done
 
 InstructionsNextText:
-	text "Phone numbers are"
-	line "stored in memory."
+	text "전화번호는"
+	line "자동으로 등록되어지니까"
+	cont "기록하고 싶은 상대를 고르면 된다"
 
-	para "Just choose a name"
-	line "you want to call."
-
-	para "Gee, isn't that"
-	line "convenient?"
+	para "이렇게 간단하게"
+	line "전화를 할 수 있다니 대단하네"
 	done
 
 HurryUpElmIsWaitingText:
-	text "PROF.ELM is wait-"
-	line "ing for you."
-
-	para "Hurry up, baby!"
+	text "공박사님이 부르셨단다"
+	line "빨리 가봐야지!"
 	done
 
 SoWhatWasProfElmsErrandText:
-	text "So, what was PROF."
-	line "ELM's errand?"
+	text "공박사님의"
+	line "용무는 무엇이었니?"
 
-	para "…"
+	para "…… …… …… "
 
-	para "That does sound"
-	line "challenging."
-
-	para "But, you should be"
-	line "proud that people"
-	cont "rely on you."
+	para "그래 아주 힘들겠구나"
+	line "그래도 다른사람에게 부탁을 받는건"
+	cont "중요한 것이란다!"
 	done
 
 ImBehindYouText:
-	text "<PLAYER>, do it!"
-
-	para "I'm behind you all"
-	line "the way!"
+	text "<PLAYER>! 힘내거라!"
+	line "엄마가 응원할께!"
 	done
 
 PlayersHouse1FStoveText:
-	text "Mom's specialty!"
-
-	para "CINNABAR VOLCANO"
-	line "BURGER!"
+	text "엄마의 특별요리"
+	line "홍련섬 풍의 화산 햄버거!"
 	done
 
 PlayersHouse1FSinkText:
-	text "The sink is spot-"
-	line "less. Mom likes it"
-	cont "clean."
+	text "빤짝빤짝거리는 싱크대!"
+	line "엄마는 깔끔쟁이"
 	done
 
 PlayersHouse1FFridgeText:
-	text "Let's see what's"
-	line "in the fridge…"
+	text "냉장고 안에는……"
 
-	para "FRESH WATER and"
-	line "tasty LEMONADE!"
+	para "맛있는 물이 가득"
+	line "그리고 달콤한 후르츠 밀크!"
 	done
 
 PlayersHouse1FTVText:
-	text "There's a movie on"
-	line "TV: Stars dot the"
+	text "TV에서 영화를 하고 있다"
+	line "남자아이가 둘이 여행을 하고 있다"
+	cont "기차의 창너머로 별이 보인다……"
 
-	para "sky as two boys"
-	line "ride on a train…"
-
-	para "I'd better get"
-	line "rolling too!"
+	para "…… 나도 빨리 가봐야지!"
 	done
 
 PlayersHouse1F_MapEvents:

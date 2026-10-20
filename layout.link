@@ -222,10 +222,10 @@ ROMX $5d
 	"Map Scripts 27"
 ROMX $5e
 	"Map Scripts 28"
-; ROMX $5f
-; 	"Map Scripts 29"
-; ROMX $60
-; 	"Map Scripts 30"
+ROMX $5f
+	"Map Scripts 29"
+ROMX $60
+	"Map Scripts 30"
 ; ROMX $61
 ; 	"Map Scripts 31"
 ; ROMX $62
