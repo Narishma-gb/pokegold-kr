@@ -128,139 +128,105 @@ MovementDragonsDen_ClairWalksAway:
 	step_end
 
 ClairText_GiveDragonbreathDragonDen:
-	text "CLAIR: All right."
-	line "I recognize your"
-
-	para "true power. This"
-	line "BADGE is yours."
+	text "이향『알겠어요!"
+	line "당신의 실력 인정하지요"
+	cont "이 배지를 가지고 가세요"
 	done
 
 DragonShrinePlayerReceivedRisingBadgeText:
-	text "<PLAYER> received"
-	line "RISINGBADGE."
+	text "<PLAYER>는(은) 이향으로부터"
+	line "라이징배지를 받았다!"
 	done
 
 DragonShrineRisingBadgeExplanationText:
-	text "RISINGBADGE will"
-	line "enable your"
+	text "라이징배지를 가지고 있으면"
+	line "어떤 폭포라도"
+	cont "오를 수 있도록 되요!"
 
-	para "#MON to use the"
-	line "move for climbing"
-	cont "waterfalls."
+	para "또한 모든 포켓몬이"
+	line "당신을 트레이너로서 인정하고"
+	cont "어떠한 명령도 따르게 되지요!"
 
-	para "Also, all #MON"
-	line "will recognize you"
-
-	para "as a trainer and"
-	line "obey your every"
-
-	para "command without"
-	line "question."
-
-	para "I also want you to"
-	line "have this TM."
+	para "그거랑 이 기술머신을"
+	line "가지고가면 좋아요"
 	done
 
 Text_ReceivedTM24: ; unreferenced
-	text "<PLAYER> received"
-	line "TM24."
+	text "<PLAYER>는(은) 이향으로부터"
+	line "기술머신 24를 얻었다!"
 	done
 
 ClairText_DescribeDragonbreathDragonDen:
-	text "That contains"
-	line "DRAGONBREATH."
+	text "안에 들어있는 것은"
+	line "용의 숨결"
 
-	para "No, it doesn't"
-	line "have anything to"
-	cont "do with my breath."
-
-	para "If you don't want"
-	line "it, you don't have"
-	cont "to take it."
+	para "……별로 화려한 것은 아니야"
+	line "필요없으면 무리해서"
+	cont "가지고 가지 않아도 좋아"
 	done
 
 ClairText_CollectedAllBadges:
-	text "So, you've col-"
-	line "lected all the"
-	cont "BADGES."
+	text "모든 배지가 전부 모인 것 같군 "
 
-	para "Your destination"
-	line "is the #MON"
+	para "향할 곳은 석영고원"
+	line "포켓몬 리그"
 
-	para "LEAGUE in INDIGO"
-	line "PLATEAU."
+	para "장소는 알고있니?"
+	line "그렇군, 여기서부터라면"
+	cont "먼저 연두마을에 가야해"
 
-	para "Do you know how to"
-	line "get there?"
+	para "그곳에서 파도타기로"
+	line "계속 동쪽으로 가면 될꺼야"
+	cont "단지 힘든 여정이 될꺼야"
 
-	para "From here, go to"
-	line "NEW BARK TOWN."
+	para "포켓몬 리그에서도"
+	line "진다면 용서하지 않을 꺼니까!"
 
-	para "Then SURF east."
-	line "The route there is"
-	cont "very tough."
-
-	para "Don't you dare"
-	line "lose at the #-"
-	cont "MON LEAGUE!"
-
-	para "If you do, I'll"
-	line "feel even worse"
-
-	para "about having lost"
-	line "to you!"
+	para "그렇지않으면 패한"
+	line "내가 비참해지잖아!"
 	done
 
 DragonShrineSignpostText:
-	text "DRAGON SHRINE"
+	text "용의 사당"
 
-	para "A shrine honoring"
-	line "the dragon #MON"
-
-	para "said to have lived"
-	line "in DRAGON'S DEN."
+	para "용이 굴에 있다고 한다"
+	line "드래곤 포켓몬을 받들어 모신다"
 	done
 
 RivalText_Training1:
-	text "…"
-	line "What? <PLAYER>?"
+	text "…… …… ……"
+	line "뭐야 <PLAYER>(이)잖아……"
 
-	para "…No, I won't"
-	line "battle you now…"
+	para "…… 미안하지만 너의"
+	line "상대가 되어줄 생각은 없다"
 
-	para "My #MON aren't"
-	line "ready to beat you."
+	para "지금의 이 녀석들로서는"
+	line "너에게 이길 수 없으니까"
+	cont "그런 무책임한 짓은 시킬 수 없지"
 
-	para "I can't push them"
-	line "too hard now."
-
-	para "I have to be dis-"
-	line "ciplined to become"
-
-	para "the greatest #-"
-	line "MON trainer…"
+	para "그렇게하지 않으면"
+	line "최강의 트레이너는"
+	cont "될 수 없으니까……"
 	done
 
 RivalText_Training2:
-	text "…"
+	text "…… …… ……"
 
-	para "Whew…"
-
-	para "Learn to stay out"
-	line "of my way…"
+	para "후우……"
+	line "사람의 방해를 해서는 안되지!"
 	done
 
 Text_FoundDragonFang:
-	text "<PLAYER> found a"
+	text "<PLAYER>는(은)"
 	line "@"
 	text_ram wStringBuffer3
-	text "!"
+	text "를(을)"
+	cont "발견했다"
 	done
 
 Text_NoRoomForDragonFang:
-	text "But <PLAYER> can't"
-	line "carry any more"
-	cont "items."
+	text "그러나 <PLAYER>는(은)"
+	line "더 이상 도구를 지닐 수 없다!"
 	done
 
 DragonsDenB1F_MapEvents:

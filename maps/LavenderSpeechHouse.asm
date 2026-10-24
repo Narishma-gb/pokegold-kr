@@ -13,17 +13,11 @@ LavenderSpeechHouseBookshelf:
 	jumpstd PictureBookshelfScript
 
 LavenderSpeechHousePokefanFText:
-	text "LAVENDER is a"
-	line "tiny, quiet town"
+	text "보라타운은"
+	line "산기슭의 조용한 마을이란다!"
 
-	para "at the foot of the"
-	line "mountains."
-
-	para "It's gotten a bit"
-	line "busier since the"
-
-	para "RADIO TOWER was"
-	line "built."
+	para "라디오타워가 생기고 나서"
+	line "약간 북적거리게 되었지만!"
 	done
 
 LavenderSpeechHouse_MapEvents:

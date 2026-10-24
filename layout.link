@@ -174,64 +174,64 @@ ROMX $43
 	"Map Scripts 2"
 ROMX $44
 	"Map Scripts 3"
-; ROMX $45
-; 	"Map Scripts 4"
-; ROMX $46
-; 	"Map Scripts 5"
-; ROMX $47
-; 	"Map Scripts 6"
-; ROMX $48
-; 	"Map Scripts 7"
-; ROMX $49
-; 	"Map Scripts 8"
-; ROMX $4a
-; 	"Map Scripts 9"
-; ROMX $4b
-; 	"Map Scripts 10"
-; ROMX $4c
-; 	"Map Scripts 11"
-; ROMX $4d
-; 	"Map Scripts 12"
-; ROMX $4e
-; 	"Map Scripts 13"
-; ROMX $4f
-; 	"Map Scripts 14"
-; ROMX $50
-; 	"Map Scripts 15"
-; ROMX $51
-; 	"Map Scripts 16"
-; ROMX $52
-; 	"Map Scripts 17"
-; ROMX $53
-; 	"Map Scripts 18"
-; ROMX $54
-; 	"Map Scripts 19"
-; ROMX $55
-; 	"Map Scripts 20"
-; ROMX $56
-; 	"Map Scripts 21"
-; ROMX $57
-; 	"Map Scripts 22"
-; ROMX $59
-; 	"Map Scripts 23"
-; ROMX $5a
-; 	"Map Scripts 24"
-; ROMX $5b
-; 	"Map Scripts 25"
-; ROMX $5c
-; 	"Map Scripts 26"
-; ROMX $5d
-; 	"Map Scripts 27"
-; ROMX $5e
-; 	"Map Scripts 28"
-; ROMX $5f
-; 	"Map Scripts 29"
-; ROMX $60
-; 	"Map Scripts 30"
-; ROMX $61
-; 	"Map Scripts 31"
-; ROMX $62
-; 	"Map Scripts 32"
+ROMX $45
+	"Map Scripts 4"
+ROMX $46
+	"Map Scripts 5"
+ROMX $47
+	"Map Scripts 6"
+ROMX $48
+	"Map Scripts 7"
+ROMX $49
+	"Map Scripts 8"
+ROMX $4a
+	"Map Scripts 9"
+ROMX $4b
+	"Map Scripts 10"
+ROMX $4c
+	"Map Scripts 11"
+ROMX $4d
+	"Map Scripts 12"
+ROMX $4e
+	"Map Scripts 13"
+ROMX $4f
+	"Map Scripts 14"
+ROMX $50
+	"Map Scripts 15"
+ROMX $51
+	"Map Scripts 16"
+ROMX $52
+	"Map Scripts 17"
+ROMX $53
+	"Map Scripts 18"
+ROMX $54
+	"Map Scripts 19"
+ROMX $55
+	"Map Scripts 20"
+ROMX $56
+	"Map Scripts 21"
+ROMX $57
+	"Map Scripts 22"
+ROMX $59
+	"Map Scripts 23"
+ROMX $5a
+	"Map Scripts 24"
+ROMX $5b
+	"Map Scripts 25"
+ROMX $5c
+	"Map Scripts 26"
+ROMX $5d
+	"Map Scripts 27"
+ROMX $5e
+	"Map Scripts 28"
+ROMX $5f
+	"Map Scripts 29"
+ROMX $60
+	"Map Scripts 30"
+ROMX $61
+	"Map Scripts 31"
+ROMX $62
+	"Map Scripts 32"
 ROMX $64
 	"Text 1"
 ROMX $65
@@ -255,7 +255,7 @@ ROMX $70
 	"Pokégear GFX"
 	"Credits Strings"
 ROMX $71
-	"bank71"
+	"Hangul Naming Screen"
 ROMX $72
 	"DMG Error Screen"
 ROMX $78
@@ -268,8 +268,6 @@ ROMX $7b
 	"Diploma GFX"
 ROMX $7f
 	"bank7F"
-; 	org $7df8
-; 	"Stadium 2 Checksums"
 WRAM0
 	"Audio RAM"
 	"WRAM"
@@ -282,19 +280,18 @@ WRAM0
 	"Unused Map Buffer"
 	align 8
 	"Overworld Map"
-	org $cc27
 	"Video"
+	"Stack"
 WRAMX $1
 	"WRAM 1"
-	org $d25c
 	"Game Data"
-	org $db1f
 	"Party"
-; 	"Stack"
 WRAMX $2
 	"WRAM 2"
 WRAMX $3
 	"WRAM Window Stack"
+WRAMX $7
+	"Link Mail Buffer"
 VRAM $00
 	"VRAM0"
 VRAM $01
@@ -305,7 +302,6 @@ SRAM $00
 	"SRAM Bank 0"
 	"Backup Save 1"
 	"SRAM Stack"
-; 	org $b800
 SRAM $01
 	"Save"
 	"Active Box"

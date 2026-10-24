@@ -24,11 +24,11 @@ PhoneRing_CopyTilemapAtOnce:
 	jr c, .wait
 
 	di
-	ld a, BANK(vBGMap2)
+	ld a, BANK(vAttrmap0)
 	ldh [rVBK], a
 	hlcoord 0, 0, wAttrmap
 	call .CopyBGMapViaStack
-	ld a, BANK(vBGMap0)
+	ld a, BANK(vTilemap0)
 	ldh [rVBK], a
 	hlcoord 0, 0
 	call .CopyBGMapViaStack
@@ -46,7 +46,7 @@ PhoneRing_CopyTilemapAtOnce:
 	ret
 
 .CopyBGMapViaStack:
-; Copy all tiles to vBGMap
+; Copy all tiles to vTilemap
 	ld [hSPBuffer], sp
 	ld sp, hl
 	ldh a, [hBGMapAddress + 1]
@@ -65,7 +65,7 @@ rept SCREEN_WIDTH / 2
 	ldh a, [c]
 	and b
 	jr nz, .loop\@
-; load vBGMap
+; load vTilemap
 	ld [hl], e
 	inc l
 	ld [hl], d

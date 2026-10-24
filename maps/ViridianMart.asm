@@ -21,17 +21,15 @@ ViridianMartCooltrainerMScript:
 	jumptextfaceplayer ViridianMartCooltrainerMText
 
 ViridianMartLassText:
-	text "The GYM LEADER"
-	line "here is totally"
-	cont "cool."
+	text "이 마을의 체육관 관장"
+	line "매우 멋있단다!"
 	done
 
 ViridianMartCooltrainerMText:
-	text "Have you been to"
-	line "CINNABAR?"
+	text "홍련마을에는 갔었나?"
 
-	para "It's an island way"
-	line "south of here."
+	para "여기서부터 계속 남쪽으로 내려가면"
+	line "있는 섬이 홍련마을이야!"
 	done
 
 ViridianMart_MapEvents:

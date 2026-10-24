@@ -26,49 +26,35 @@ OlivineCafeFishingGuruScript:
 	jumptextfaceplayer OlivineCafeFishingGuruText
 
 OlivineCafeStrengthSailorText:
-	text "Hah! Your #MON"
-	line "sure look like"
-	cont "lightweights!"
+	text "뭐야? 꽤나"
+	line "약해보이는 포켓몬이구나"
 
-	para "They don't have"
-	line "the power to move"
-	cont "boulders aside."
+	para "그래가지고는"
+	line "커다란 바위도 밀수 없을껄"
 
-	para "Here, use this"
-	line "and teach them"
-	cont "STRENGTH!"
+	para "이것을 사용해서"
+	line "괴력의 기술을 가르쳐주거라!"
 
-	para "You'll need"
-	line "GOLDENROD's GYM"
-
-	para "BADGE to use that"
-	line "outside battles."
+	para "단 싸우지 않을때에 사용하려면"
+	line "금빛시티의 체육관 배지가"
+	cont "필요하단다!"
 	done
 
 OlivineCafeStrengthSailorText_GotStrength:
-	text "On the sea, the"
-	line "only thing you can"
-
-	para "count on is your"
-	line "own good self!"
-
-	para "I'm so proud of my"
-	line "buff bod!"
+	text "바다 위에서 의지할 수 있는 것은"
+	line "내 자신의 육체뿐"
+	cont "강한 힘이 자랑꺼리란다!"
 	done
 
 OlivineCafeFishingGuruText:
-	text "Crossing the sea?"
-	line "Then listen up!"
+	text "바다를 건널 작정인가"
+	line "그렇다면 이야기를 들어라!"
 
-	para "There are whirl-"
-	line "pools on the way"
-	cont "to CIANWOOD."
+	para "여기서부터 진청시티까지"
+	line "곳곳에 소용돌이가 치고있다"
 
-	para "Your #MON must"
-	line "know a special"
-
-	para "move to get over"
-	line "the whirlpools."
+	para "특별한 기술을 가르치지 않으면"
+	line "바다 위를 지나갈 수 없다!"
 	done
 
 OlivineCafe_MapEvents:

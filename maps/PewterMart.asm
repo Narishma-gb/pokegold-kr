@@ -21,26 +21,18 @@ PewterMartSuperNerdScript:
 	jumptextfaceplayer PewterMartSuperNerdText
 
 PewterMartYoungsterText:
-	text "Hi! Check out my"
-	line "GYARADOS!"
+	text "볼래 볼래 내 갸라도스"
 
-	para "I raised it from a"
-	line "MAGIKARP. I can't"
-
-	para "believe how strong"
-	line "it has become."
+	para "잉어킹 때부터 키워서"
+	line "이렇게도 강하게 되었단다!"
 	done
 
 PewterMartSuperNerdText:
-	text "There once was a"
-	line "weird old man who"
-	cont "sold MAGIKARP."
+	text "예전에 포켓몬을 강매하는"
+	line "이상한 아저씨가 있었단다"
 
-	para "He was saying the"
-	line "MAGIKARP from the"
-
-	para "LAKE OF RAGE were"
-	line "excellent."
+	para "분노의 호수에 사는"
+	line "잉어킹이 좋다고 말했었단다"
 	done
 
 PewterMart_MapEvents:

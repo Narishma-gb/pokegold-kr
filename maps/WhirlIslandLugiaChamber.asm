@@ -48,7 +48,7 @@ Lugia:
 	end
 
 LugiaText:
-	text "Gyaaas!"
+	text "으갸아아!!"
 	done
 
 WhirlIslandLugiaChamber_MapEvents:

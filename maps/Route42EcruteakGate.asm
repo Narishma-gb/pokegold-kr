@@ -10,11 +10,9 @@ Route42EcruteakGateOfficerScript:
 	jumptextfaceplayer Route42EcruteakGateOfficerText
 
 Route42EcruteakGateOfficerText:
-	text "MOUNT MORTAR is"
-	line "like a maze."
-
-	para "Be careful. Don't"
-	line "get lost in there."
+	text "절구산의 안은"
+	line "천연의 미로로 되어있다"
+	cont "길을 잃지 않도록 주의하거라"
 	done
 
 Route42EcruteakGate_MapEvents:

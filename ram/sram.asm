@@ -76,14 +76,6 @@ sStackTop:: dw
 sRTCHaltCheckValue:: dw
 
 
-;SECTION "SRAM Window Stack", SRAM
-
-;sWindowStackBottom::
-;	ds $800 - 1
-;sWindowStackTop::
-;	ds 1
-
-
 SECTION "Save", SRAM
 
 sOptions:: ds wOptionsEnd - wOptions

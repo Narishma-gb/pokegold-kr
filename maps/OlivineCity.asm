@@ -163,112 +163,82 @@ OlivineCityPlayerStepsAsideBottomMovement:
 	step_end
 
 OlivineCityRivalText:
-	text "…"
+	text "…… …… ……"
 
-	para "You again?"
+	para "…… 또 너냐"
 
-	para "There's no need to"
-	line "panic. I don't"
+	para "뭘 대비했냐?"
+	line "나는 너처럼"
+	cont "약한 녀석과 상대하지 않아"
 
-	para "bother with wimps"
-	line "like you."
+	para "약하다고 말 한다면"
+	line "이곳의 체육관 관장만한 놈도 없지"
 
-	para "Speaking of weak-"
-	line "lings, the city's"
+	para "등대에서 약해진"
+	line "포켓몬을 돌보고 있어"
 
-	para "GYM LEADER isn't"
-	line "here."
+	para "…… 흥! 바보 같으니"
+	line "약해진 포켓몬 같은 것은"
+	cont "내버려 두는 것이 좋지"
 
-	para "Supposedly taking"
-	line "care of a sick"
+	para "싸우지 못하는 포켓몬에게는"
+	line "아무런 가치도 없으니까"
 
-	para "#MON at the"
-	line "LIGHTHOUSE."
+	para "너 등대에서"
+	line "수행을 해보면 어떻겠냐?"
 
-	para "Humph! Boo-hoo!"
-	line "Just let sick"
-	cont "#MON go!"
-
-	para "A #MON that"
-	line "can't battle is"
-	cont "worthless!"
-
-	para "Why don't you go"
-	line "train at the"
-	cont "LIGHTHOUSE?"
-
-	para "Who knows. It may"
-	line "make you a bit"
-	cont "less weak!"
+	para "조금은"
+	line "강해질지도 모르지"
 	done
 
 OlivineCitySailor1Text:
-	text "Dark roads are"
-	line "dangerous at"
-	cont "night."
+	text "어두운 밤길은 위험!"
+	line "어두운 바다에도 위험이 가득!"
 
-	para "But in the pitch-"
-	line "black of night,"
-
-	para "the sea is even"
-	line "more treacherous!"
-
-	para "Without the beacon"
-	line "of the LIGHTHOUSE"
-
-	para "to guide it, no"
-	line "ship can sail."
+	para "등대의 빛이 없으면"
+	line "배는 움직일 수 없단다"
 	done
 
 OlivineCityStandingYoungsterPokegearText:
-	text "That thing you"
-	line "have--it's a #-"
-	cont "GEAR, right? Wow,"
-	cont "that's cool."
+	text "네가 가지고 있는 그것은"
+	line "포켓기어지?"
+	cont "좋겠다 멋있구나"
 	done
 
 OlivineCityStandingYoungsterPokedexText:
-	text "Wow, you have a"
-	line "#DEX!"
-
-	para "That is just so"
-	line "awesome."
+	text "네가 가지고 있는 그것은"
+	line "포켓몬 도감이지?"
+	cont "좋다 멋있다"
 	done
 
 OlivineCitySailor2Text:
-	text "Hello, laddie!"
-	line "The sea is sweet!"
+	text "오오 소년이여!"
+	line "바다는 좋단다!"
 
-	para "Sing with me! "
-	line "Yo-ho! Blow the"
-	cont "man down!…"
+	para "바다는 넓고도"
+	line "넓단다!"
 	done
 
 OlivineCitySignText:
-	text "OLIVINE CITY"
-
-	para "The Port Closest"
-	line "to Foreign Lands"
+	text "이곳은 담청시티"
+	line "멀리 떨어진 이국에서"
+	cont "제일 가까운 항구도시"
 	done
 
 OlivineCityPortSignText:
-	text "OLIVINE PORT"
-	line "FAST SHIP PIER"
+	text "이곳은 담청시티의 항구"
+	line "쾌속선 타는 곳"
 	done
 
 OlivineGymSignText:
-	text "OLIVINE CITY"
-	line "#MON GYM"
-	cont "LEADER: JASMINE"
-
-	para "The Steel-Clad"
-	line "Defense Girl"
+	text "담청시티 포켓몬 체육관"
+	line "관장 규리"
+	cont "철벽 방어의 여자아이"
 	done
 
 OlivineLighthouseSignText:
-	text "OLIVINE LIGHTHOUSE"
-	line "Also Known as the"
-	cont "GLITTER LIGHTHOUSE"
+	text "담청시티의 등대"
+	line "다른 이름은 빛남의 등대"
 	done
 
 OlivineCity_MapEvents:

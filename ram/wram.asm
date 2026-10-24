@@ -130,7 +130,7 @@ wDisableTextAcceleration:: db
 wPCItemsCursor:: db
 wPCItemsScrollPosition:: db
 
-wc1d9:: db
+wUnusedRAMBank:: db
 
 wTileAnimBuffer:: ds 1 tiles
 
@@ -201,13 +201,6 @@ SECTION UNION "Miscellaneous", WRAM0
 wBoxPartialData:: ds 480
 wBoxPartialDataEnd::
 
-/*
-SECTION UNION "Miscellaneous", WRAM0
-
-; 20x18 grid of 8x8 tiles
-wTempTilemap::
-	ds SCREEN_AREA
-*/
 
 SECTION UNION "Miscellaneous", WRAM0
 
@@ -512,26 +505,86 @@ SECTION UNION "Overworld Map", WRAM0
 wUnusedPikachuFrameset:: db
 	ds 18
 wUnusedJigglypuffNoteXCoord:: db
-/*
+
 
 SECTION UNION "Overworld Map", WRAM0
 
-; raw link data
-wLinkData:: ds 1300
+; This section union is 1300 bytes
+wLinkData::
+
+; player's party data, formatted for link transfer (Gen 2 link session)
+wLinkSendParty::
+wLinkSendPartyPreamble:: ds SERIAL_PREAMBLE_LENGTH
+wLinkSendPartyPlayerName:: ds NAME_LENGTH
+wLinkSendPartyPartyCount::   db
+wLinkSendPartyPartySpecies:: ds PARTY_LENGTH
+wLinkSendPartyPartyEnd::     db ; older code doesn't check PartyCount
+wLinkSendPartyPlayerID:: dw
+; wLinkSendPartyPlayerPartyMon1 - wLinkSendPartyPlayerPartyMon6
+for n, 1, PARTY_LENGTH + 1
+wLinkSendPartyPlayerPartyMon{d:n}:: party_struct wLinkSendPartyPlayerPartyMon{d:n}
+endr
+wLinkSendPartyPlayerPartyMonOTs::
+; wLinkSendPartyPlayerPartyMon1OT - wLinkSendPartyPlayerPartyMon6OT
+for n, 1, PARTY_LENGTH + 1
+wLinkSendPartyPlayerPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
+wLinkSendPartyPlayerPartyMonNicknames::
+; wLinkSendPartyPlayerPartyMon1Nickname - wLinkSendPartyPlayerPartyMon6Nickname
+for n, 1, PARTY_LENGTH + 1
+wLinkSendPartyPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
+wLinkSendPartyPadding:: ds SERIAL_PADDING_LENGTH
+wLinkSendPartyEnd::
+
+	ds 850
+
 wLinkDataEnd::
 
 
 SECTION UNION "Overworld Map", WRAM0
 
-; link data members
-wLinkPlayerName:: ds NAME_LENGTH
-wLinkPartyCount:: db
-wLinkPartySpecies:: ds PARTY_LENGTH
-wLinkPartyEnd:: db ; older code doesn't check PartyCount
+; player's party data, formatted for link transfer (Time Capsule link session)
+wLinkSendTimeCapsuleParty::
+wLinkSendTimeCapsulePartyPreamble:: ds SERIAL_PREAMBLE_LENGTH
+wLinkSendTimeCapsulePartyPlayerName:: ds NAME_LENGTH
+wLinkSendTimeCapsulePartyPartyCount::   db
+wLinkSendTimeCapsulePartyPartySpecies:: ds PARTY_LENGTH
+wLinkSendTimeCapsulePartyPartyEnd::     db ; older code doesn't check PartyCount
+; wLinkSendTimeCapsulePartyMon1 - wLinkSendTimeCapsulePartyMon6
+for n, 1, PARTY_LENGTH + 1
+wLinkSendTimeCapsulePartyMon{d:n}:: red_party_struct wLinkSendTimeCapsulePartyMon{d:n}
+endr
+wLinkSendTimeCapsulePartyMonOTs::
+; wLinkSendTimeCapsulePartyMon1OT - wLinkSendTimeCapsulePartyMon6OT
+for n, 1, PARTY_LENGTH + 1
+wLinkSendTimeCapsulePartyMon{d:n}OT:: ds NAME_LENGTH
+endr
+wLinkSendTimeCapsulePartyMonNicknames::
+; wLinkSendTimeCapsulePartyMon1Nickname - wLinkSendTimeCapsulePartyMon6Nickname
+for n, 1, PARTY_LENGTH + 1
+wLinkSendTimeCapsulePartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
+wLinkSendTimeCapsulePartyPadding:: ds SERIAL_PADDING_LENGTH
+wLinkSendTimeCapsulePartyEnd::
 
-UNION
-; link player data
-wLinkPlayerData::
+
+SECTION UNION "Overworld Map", WRAM0
+
+; after the initial link session (Gen 2), the other player's party data
+; is temporarily stored here before applying patch data
+wLinkPlayerPartyData::
+
+; link player's name and party species are not patched,
+; as they normally don't contain SERIAL_NO_DATA_BYTE
+wLinkPlayerName:: ds NAME_LENGTH
+wLinkPartyCount::   db
+wLinkPartySpecies:: ds PARTY_LENGTH
+wLinkPartyEnd::     db ; older code doesn't check PartyCount
+
+wLinkPlayerPatchedData::
+wLinkPlayerID:: dw
+
 ; wLinkPlayerPartyMon1 - wLinkPlayerPartyMon6
 for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}:: party_struct wLinkPlayerPartyMon{d:n}
@@ -549,9 +602,23 @@ for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 
-NEXTU
-; time capsule party data
-wTimeCapsulePlayerData::
+wLinkPlayerPartyDataEnd::
+
+
+SECTION UNION "Overworld Map", WRAM0
+
+; after the initial link session (Gen 1), the other player's party data
+; is temporarily stored here before applying patch data
+wLinkTimeCapsulePartyData::
+
+; link player's name and party species are not patched,
+; as they normally don't contain SERIAL_NO_DATA_BYTE
+wLinkTimeCapsulePlayerName:: ds NAME_LENGTH
+wLinkTimeCapsulePartyCount::   db
+wLinkTimeCapsulePartySpecies:: ds PARTY_LENGTH
+wLinkTimeCapsulePartyEnd::     db ; older code doesn't check PartyCount
+
+wTimeCapsulePatchedData::
 ; wTimeCapsulePartyMon1 - wTimeCapsulePartyMon6
 for n, 1, PARTY_LENGTH + 1
 wTimeCapsulePartyMon{d:n}:: red_party_struct wTimeCapsulePartyMon{d:n}
@@ -569,12 +636,14 @@ for n, 1, PARTY_LENGTH + 1
 wTimeCapsulePartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 
-ENDU
+wLinkTimeCapsulePartyPadding:: ds SERIAL_PADDING_LENGTH
+
+wLinkTimeCapsulePartyDataEnd::
 
 
 SECTION UNION "Overworld Map", WRAM0
 
-; link data prep
+; Time Capsule link data prep
 	ds 1000
 wCurLinkOTPartyMonTypePointer:: dw
 
@@ -584,34 +653,6 @@ for n, 1, PARTY_LENGTH + 1
 wLinkOTPartyMon{d:n}Type:: dw
 endr
 
-
-SECTION UNION "Overworld Map", WRAM0
-
-; link mail data
-	ds 500
-wLinkPlayerMail::
-wLinkPlayerMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
-wLinkPlayerMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
-wLinkPlayerMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
-wLinkPlayerMailPatchSet:: ds 100 + SERIAL_PATCH_PREAMBLE_LENGTH
-wLinkPlayerMailEnd::
-	ds 10
-wLinkOTMail::
-wLinkOTMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
-wLinkOTMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
-wLinkOTMailPatchSet:: ds 100 + SERIAL_PATCH_PREAMBLE_LENGTH
-wLinkOTMailPadding:: ds SERIAL_MAIL_PREAMBLE_LENGTH
-wLinkOTMailEnd::
-	ds 10
-
-
-SECTION UNION "Overworld Map", WRAM0
-
-; received link mail data
-	ds 500
-wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
-wLinkReceivedMailEnd:: db
-*/
 
 SECTION UNION "Overworld Map", WRAM0
 
@@ -1041,37 +1082,7 @@ wPlayerJustGotFrozen:: db
 wEnemyJustGotFrozen:: db
 wBattleEnd::
 ENDU
-/*
 
-IF DEF(_DEBUG)
-SECTION UNION "Overworld Map", WRAM0
-
-; debug room paged values
-UNION
-; debug room new item values
-wDebugRoomItemID::       db
-wDebugRoomItemQuantity:: db
-NEXTU
-; debug room new pokemon values
-wDebugRoomMon::    box_struct wDebugRoomMon
-wDebugRoomMonBox:: db
-NEXTU
-; debug room RTC values
-wDebugRoomRTCSec::  db
-wDebugRoomRTCMin::  db
-wDebugRoomRTCHour:: db
-wDebugRoomRTCDay::  dw
-wDebugRoomRTCCurSec::  db
-wDebugRoomRTCCurMin::  db
-wDebugRoomRTCCurHour:: db
-wDebugRoomRTCCurDay::  dw
-NEXTU
-; debug room GB ID values
-wDebugRoomGBID:: dw
-ENDU
-
-ENDC
-*/
 
 SECTION "Video", WRAM0
 
@@ -1276,11 +1287,11 @@ NEXTU
 ; credits
 wCreditsPos:: dw
 wCreditsTimer:: db
-/*
+
 NEXTU
 ; mail temp storage
 wTempMail:: mailmsg wTempMail
-*/
+
 NEXTU
 ; bug-catching contest
 wBugContestResults::
@@ -1445,24 +1456,7 @@ NEXTU
 wDebugColorIsTrainer:: db
 wDebugColorIsShiny:: db
 wDebugColorCurTMHM:: db
-/*
-IF DEF(_DEBUG)
-NEXTU
-; debug room paged values
-wDebugRoomCurPage::        db
-wDebugRoomCurValue::       db
-wDebugRoomAFunction::      dw
-wDebugRoomStartFunction::  dw
-wDebugRoomSelectFunction:: dw
-wDebugRoomAutoFunction::   dw
-wDebugRoomPageCount::      db
-wDebugRoomPagesPointer::   dw
-ENDC
-*/
 ENDU
-
-
-SECTION "wram_wip1", WRAM0[$cf11]
 
 UNION
 ; trainer data
@@ -1623,6 +1617,14 @@ wMenuScrollPosition:: ds 4
 
 wQueuedScriptBank:: db
 wQueuedScriptAddr:: dw
+
+
+SECTION "Stack", WRAM0
+
+wStackBottom::
+	ds $c2
+wStackTop::
+	ds 1
 
 
 SECTION "WRAM 1", WRAMX
@@ -2430,13 +2432,13 @@ wHallOfFameCount:: db
 	ds 1
 wTradeFlags:: flag_array NUM_NPC_TRADES
 
-	ds 17
-/*
+	ds 1
+
 wMooMooBerries:: db
 wUndergroundSwitchPositions:: db
 
 	ds 14
-*/
+
 wPokecenter2FSceneID::                            db
 wTradeCenterSceneID::                             db
 wColosseumSceneID::                               db
@@ -2728,10 +2730,33 @@ wRoamMons_LastMapGroup:: db
 wBestMagikarpLength:: dw
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
 
+; This union spans 451 bytes.
 UNION
+; during a link session, other player's raw party data is initially stored here
+; the actual data is contained between SERIAL_PREAMBLE_LENGTH and SERIAL_PADDING_LENGTH,
+; allowing possible data shift due to hardware behavior
+wLinkReceivedPartyData::
+UNION
+	; Gen 2 link format
+	ds SERIAL_PREAMBLE_LENGTH 
+	ds NAME_LENGTH 
+	ds 1 + PARTY_LENGTH + 1
+	ds 2
+	ds (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH
+	ds SERIAL_PADDING_LENGTH
+NEXTU
+	; Gen 1 link format
+	ds SERIAL_PREAMBLE_LENGTH
+	ds NAME_LENGTH
+	ds 1 + PARTY_LENGTH + 1
+	ds (REDMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH
+	ds SERIAL_PADDING_LENGTH
+ENDU
+wLinkReceivedPartyEnd:: db
+
+NEXTU
 wPokedexShowPointerAddr:: dw
 wPokedexShowPointerBank:: db
-	ds 3
 
 NEXTU
 wUnusedEggHatchFlag:: db
@@ -2745,7 +2770,6 @@ wOTPlayerID:: dw
 wOTPartyCount::   db
 wOTPartySpecies:: ds PARTY_LENGTH
 wOTPartyEnd::     db ; older code doesn't check PartyCount
-ENDU
 
 UNION
 ; ot party mons
@@ -2782,16 +2806,8 @@ ENDU
 
 wPokemonDataEnd::
 wGameDataEnd::
+ENDU
 
-/*
-SECTION "Stack", WRAMX
-
-	ds 2
-wStackBottom::
-	ds $fc
-wStackTop::
-	ds 1
-*/
 
 SECTION "WRAM 2", WRAMX
 
@@ -2804,9 +2820,47 @@ wInvertedHangulToggle::
 
 SECTION "WRAM Window Stack", WRAMX
 
-;wWindowStackBottom::
+wWindowStackBottom::
 	ds $800 - 1
 wWindowStackTop::
 	ds 1
+
+
+SECTION UNION "Link Mail Buffer", WRAMX
+
+; player's party mail, formatted for link transfer, during a link session
+wLinkSendMail::
+wLinkSendMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
+wLinkSendMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
+wLinkSendMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
+wLinkSendMailPatchSet:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH + 1
+wLinkSendMailEnd::
+
+UNION
+wLinkReceivedMail::
+; during a link session, the other player's raw mail data is initially stored here
+	ds SERIAL_MAIL_PREAMBLE_LENGTH
+	ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
+	ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH + 1
+wLinkReceivedMailEnd::
+
+NEXTU
+; it's then processed on location to align data start with wLinkReceivedMailMessages,
+; before applying the mail patch
+wLinkReceivedMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
+wLinkReceivedMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
+wLinkReceivedMailPatchSet:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH + 1
+ENDU
+
+
+SECTION UNION "Link Mail Buffer", WRAMX
+
+; other player's link mail data, patched and formatted to mailmsg structure
+wLinkOTMail::
+; wLinkOTMon1Mail - wLinkOTMon6Mail
+for n, 1, PARTY_LENGTH + 1
+wLinkOTMon{d:n}Mail:: mailmsg wLinkOTMon{d:n}Mail
+endr
+wLinkOTMailEnd:: db
 
 ENDSECTION

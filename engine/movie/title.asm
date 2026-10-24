@@ -144,19 +144,19 @@ FillTitleScreenPals:
 	ld bc, 18 * TILEMAP_WIDTH
 	xor a
 	call ByteFill
-	hlbgcoord 1, 0, vBGMap2
+	hlbgcoord 1, 0, vAttrmap0
 	lb bc, 5, 16
 	ld a, 1
 	call DrawTitleGraphic
-	hlbgcoord 16, 2, vBGMap2
+	hlbgcoord 16, 2, vAttrmap0
 	lb bc, 3, 3
 	ld a, 3
 	call DrawTitleGraphic
-	hlbgcoord 1, 5, vBGMap2
+	hlbgcoord 1, 5, vAttrmap0
 	ld bc, 15
 	ld a, 2
 	call ByteFill
-	hlbgcoord 0, 12, vBGMap2
+	hlbgcoord 0, 12, vAttrmap0
 	ld bc, 5 * TILEMAP_WIDTH
 	ld a, 4
 	call ByteFill

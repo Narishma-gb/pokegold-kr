@@ -155,67 +155,52 @@ MahoganyMart1FLanceGoDownStairsMovement:
 	step_end
 
 MahoganyMart1FRageCandyBarText: ; unreferenced
-	text "Hello, youngster!"
+	text "어서와요 도련님!"
+	line "자자! 어때요?"
 
-	para "How would you like"
-	line "some RAGECANDYBAR?"
-
-	para "It's the thing to"
-	line "eat in MAHOGANY!"
+	para "「분노의 호두과자」!"
+	line "황토마을의 명물이지요!"
 	done
 
 MahoganyMart1FPharmacistText_LanceEntered:
-	text "Arrgh… You found"
-	line "the secret stair-"
-	cont "way…"
+	text "지하 쪽의 계단"
+	line "들켜버렸다……"
 	done
 
 MahoganyMart1FBlackBeltText:
-	text "Heheh! The experi-"
-	line "ment worked like a"
-	cont "charm."
+	text "헤헤헤!"
+	line "실험은 대성공!"
 
-	para "MAGIKARP are just"
-	line "worthless, but"
-
-	para "GYARADOS are big"
-	line "moneymakers."
+	para "잉어킹은 팔리지 않지만"
+	line "갸라도스라면 잘 팔릴꺼야"
 	done
 
 MahoganyMart1FBlackBeltText_LanceEntered:
-	text "Urrgh…"
+	text "우우……"
 
-	para "That guy's dragon"
-	line "#MON are tough…"
+	para "녀석의 드래곤 포켓몬……"
+	line "너무나도 강하다……"
 	done
 
 MahoganyMart1FLanceDragoniteHyperBeamText:
-	text "LANCE: DRAGONITE,"
-	line "HYPER BEAM."
+	text "목호『망나뇽 파괴광선"
 	done
 
 MahoganyMart1FLanceRadioText:
-	text "What took you,"
-	line "<PLAYER>?"
+	text "늦었구나 <PLAYER>군!"
 
-	para "Just as I thought,"
-	line "that strange radio"
-
-	para "signal is coming"
-	line "from here."
+	para "역시 여기로부터"
+	line "이상한 전파가 흘러나오고 있었어"
 	done
 
 MahoganyMart1FLanceStairsText:
-	text "The stairs are"
-	line "right here."
+	text "계단은 여기다!"
 	done
 
 MahoganyMart1FLanceSplitUpText:
-	text "LANCE: <PLAYER>, we"
-	line "should split up to"
-
-	para "check this place."
-	line "I'll go first."
+	text "목호『<PLAYER>군!"
+	line "갈라져서 안으로 잠입하자!"
+	cont "나부터 먼저 가겠어!"
 	done
 
 MahoganyMart1F_MapEvents:

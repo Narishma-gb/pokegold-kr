@@ -8,7 +8,7 @@ patches := \
 rom_obj := \
 	audio.o \
 	home.o \
-	wip.o \
+	main.o \
 	ram.o \
 	data/text/common.o \
 	data/maps/map_data.o \
@@ -20,7 +20,6 @@ rom_obj := \
 	gfx/hangul.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
-# 	main.o \
 
 # Distinguish asm files which are game-exclusive for building (*_[gold|silver].asm)
 gs_excl_asm := \
@@ -83,11 +82,11 @@ silver_vc:    pokesilver.patch
 
 clean: tidy
 	find gfx \
-	     \( -name "*.[12]bpp" \
-	        -o -name "*.lz" \
-	        -o -name "*.gbcpal" \
-	        -o -name "*.dimensions" \
-	        -o -name "*.sgb.tilemap" \) \
+	     \( -iname "*.[12]bpp" \
+	        -o -iname "*.lz" \
+	        -o -iname "*.gbcpal" \
+	        -o -iname "*.dimensions" \
+	        -o -iname "*.sgb.tilemap" \) \
 	     -delete
 
 tidy:
@@ -106,9 +105,6 @@ tidy:
 	      rgbdscheck.o
 	$(MAKE) clean -C tools/
 
-compare: $(roms)
-	@$(SHA1) -c roms.sha1
-
 tools:
 	$(MAKE) -C tools/
 
@@ -125,8 +121,7 @@ $(pokegold_vc_obj):      RGBASMFLAGS += -D _GOLD -D _GOLD_VC
 $(pokesilver_vc_obj):    RGBASMFLAGS += -D _SILVER -D _SILVER_VC
 
 %.patch: %_vc.gbc %.gbc vc/%.patch.template
-# Ignore the checksums added by tools/stadium at the end of the ROM
-	tools/make_patch --ignore 0x1ffdf8:0x208 $*_vc.sym $^ $@
+	tools/make_patch $*_vc.sym $^ $@
 
 rgbdscheck.o: rgbdscheck.asm
 	$(RGBASM) -o $@ $<
@@ -173,15 +168,9 @@ pokesilver.gbc:    RGBFIXFLAGS += -t POKEMON_SLV -i AAXK
 pokegold_vc.gbc:   RGBFIXFLAGS += -t POKEMON_GLD -i AAUK
 pokesilver_vc.gbc: RGBFIXFLAGS += -t POKEMON_SLV -i AAXK
 
-pokegold.gbc:      BASEROM = baserom_g.bin
-pokesilver.gbc:    BASEROM = baserom_s.bin
-pokegold_vc.gbc:   BASEROM = baserom_g.bin
-pokesilver_vc.gbc: BASEROM = baserom_s.bin
-
 %.gbc: $$(%_obj) layout.link
-	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -n $*.sym -m $*.map -O $(BASEROM) -o $@ $(filter %.o,$^)
+	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -n $*.sym -m $*.map -o $@ $(filter %.o,$^)
 	$(RGBFIX) $(RGBFIXFLAGS) $@
-# 	tools/stadium $@
 
 
 ### LZ compression rules

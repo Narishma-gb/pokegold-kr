@@ -524,267 +524,206 @@ UndergroundRivalRetreatMovement2:
 	step_end
 
 UndergroundRivalBeforeText:
-	text "Hold it!"
+	text "기다려!"
 
-	para "I saw you, so I"
-	line "tailed you."
+	para "너의 모습을 발견하고는"
+	line "뒤를 쫓아왔어"
 
-	para "I don't need you"
-	line "underfoot while I"
+	para "또 로켓단을 물리치는데"
+	line "방해받으면 참을 수 없으니까"
 
-	para "take care of TEAM"
-	line "ROCKET."
+	para "…… 생각났다"
+	line "그러고 보니까 너한테도"
+	cont "진 적이 있었군"
 
-	para "…Wait a second."
-	line "You beat me be-"
-	cont "fore, didn't you?"
-
-	para "That was just a"
-	line "fluke."
-
-	para "But I repay my"
-	line "debts!"
+	para "어쩌다 이긴 것이겠지만"
+	line "빚은 되돌려주겠어"
 	done
 
 UndergroundRivalWinText:
-	text "…Why…"
-	line "Why do I lose?"
+	text "…… 어째서냐!"
+	line "어째서 진거야!"
 
-	para "I've assembled the"
-	line "toughest #MON."
+	para "최강의 포켓몬을 모았다는"
+	line "자만도 하지 않았는데……"
 
-	para "I didn't ease up"
-	line "on the gas."
-
-	para "So why do I lose?"
+	para "왜, 어째서냐?"
 	done
 
 UndergroundRivalAfterText:
-	text "…I don't under-"
-	line "stand…"
+	text "……크우 알 수 없군"
 
-	para "Is what that LANCE"
-	line "guy said true?"
+	para "그 목호라는 녀석이 말했듯이"
+	line "나는 포켓몬에의"
 
-	para "That I don't treat"
-	line "#MON properly?"
+	para "애정이……"
 
-	para "Love…"
+	para "신뢰가……"
 
-	para "Trust…"
+	para "부족하기에 이길 수 없단말인가"
 
-	para "Are they really"
-	line "what I lack?"
+	para "어째서인지 모르겠어"
 
-	para "Are they keeping"
-	line "me from winning?"
+	para "하지만 이대로 끝나진 않아"
 
-	para "I… I just don't"
-	line "understand."
-
-	para "But it's not going"
-	line "to end here."
-
-	para "Not now. Not"
-	line "because of this."
-
-	para "I won't give up my"
-	line "dream of becoming"
-
-	para "the world's best"
-	line "#MON trainer!"
+	para "이런일로 최강이 되겠다는"
+	line "꿈을 포기할 순 없어……"
 	done
 
 UndergroundRivalLossText:
-	text "Humph. This is my"
-	line "real power, wimp."
+	text "이것이 나의 실력"
 
-	para "I'll make TEAM"
-	line "ROCKET history."
-
-	para "And I'm going to"
-	line "grind that LANCE"
-	cont "under my heels."
+	para "이대로 로켓단을 무찔러"
+	line "그 목호라는 녀석도"
+	cont "완전히 밟아주겠어"
 	done
 
 GoldenrodUndergroundSwitchRoomEntrances_SuperNerdText:
-	text "I was challenged"
-	line "to a battle down-"
-	cont "stairs."
-
-	para "It's rough down"
-	line "there. You'd"
-	cont "better be careful."
+	text "후우……"
+	line "지하에서 포켓몬 승부를 당해서"
+	cont "엄청나게 고생했어"
+	cont "너도 주의하는 편이 좋을꺼야"
 	done
 
 GoldenrodUndergroundSwitchRoomEntrances_TeacherText:
-	text "There are some"
-	line "shops downstairs…"
+	text "지하에는 가게가 있지만……"
 
-	para "But there are"
-	line "also trainers."
-
-	para "I'm scared to go"
-	line "down there."
+	para "트레이너가 잔뜩 있으니까"
+	line "어쩐지 무서워서 다가갈 수가 없어"
 	done
 
 GruntM11SeenText:
-	text "Open one shutter,"
-	line "another closes."
-
-	para "Bet you can't get"
-	line "where you want!"
+	text "어딘가의 셔터를 열면"
+	line "어딘가의 셔터가 닫힌다"
+	cont "목적지에 도달할 수 있을까?"
 	done
 
 GruntM11BeatenText:
-	text "Drat! I was sunk"
-	line "by indecision!"
+	text "크웃! 싸우는 방법에"
+	line "갈피를 잡지 못해버렸나!"
 	done
 
 GruntM11AfterBattleText:
-	text "I'm confused too…"
-	line "The switch on the"
+	text "…… 나도 갈피를 못 잡고있어"
 
-	para "end is the one to"
-	line "press first, but…"
+	para "맨 처음 누르는 것은"
+	line "제일 구석의 스위치였다는 것밖에는"
 	done
 
 GruntM25SeenText:
-	text "Kwahaha!"
+	text "크하하!"
 
-	para "Confounded by the"
-	line "shutters, are we?"
+	para "셔터의 구조를 몰라서"
+	line "곤란한 것 같군"
 
-	para "I'll let you in on"
-	line "a secret if you"
-	cont "can beat me!"
+	para "나에게 이기면"
+	line "좋은 것 가르쳐주지"
 	done
 
 GruntM25BeatenText:
-	text "Uwww…"
-	line "I blew it."
+	text "우우……"
+	line "졌다"
 	done
 
 GruntM25AfterBattleText:
-	text "All right. A hint!"
+	text "알겠다, 힌트를 주지"
 
-	para "Change the order"
-	line "of switching."
-
-	para "That'll change the"
-	line "ways the shutters"
-	cont "open and close."
+	para "셔터의 스위치를"
+	line "누르는 순서가 비뀌면"
+	cont "열리는 장소도 바뀐다"
 	done
 
 BurglarDuncanSeenText:
-	text "Fork over your"
-	line "goodies!"
+	text "너의 소중한 것을"
+	line "훔쳐주겠어!"
 	done
 
 BurglarDuncanBeatenText:
-	text "Mercy!"
+	text "우르르-"
 	done
 
 BurglarDuncanAfterBattleText:
-	text "Steal and sell!"
-	line "That's basic in"
-	cont "crime, bub!"
+	text "남의 것을 훔쳐서"
+	line "팔아먹는다……"
+	cont "그것이야말로 나쁜 짓의 방법이다"
 	done
 
 BurglarEddieSeenText:
-	text "They ditched this"
-	line "project before"
-	cont "they finished."
-
-	para "I'm searching for"
-	line "leftover loot."
+	text "여기는 개발 도중에"
+	line "발굴되어진 장소다……"
+	cont "뭔가 없을까 살피는 중이다"
 	done
 
 BurglarEddieBeatenText:
-	text "Over the top!"
+	text "강하군……"
 	done
 
 BurglarEddieAfterBattleText:
-	text "UNDERGROUND WARE-"
-	line "HOUSE?"
+	text "지하 창고에 갈텐가?"
 
-	para "What do you want"
-	line "to go there for?"
-
-	para "There's nothing"
-	line "down there."
+	para "그만둬"
+	line "그쪽엔 아무것도 없다"
 	done
 
 GruntM13SeenText:
-	text "I don't care if"
-	line "you're lost."
-
-	para "You show up here,"
-	line "you're nothing but"
-	cont "a victim!"
+	text "미아인지 뭔지 간에"
+	line "내 앞에 나타난 놈은"
+	cont "모두 쓰러뜨려 주겠다!"
 	done
 
 GruntM13BeatenText:
-	text "Urk! Yeah, think"
-	line "you're cool, huh?"
+	text "크웃!"
+	line "뽐내지 말거라"
 	done
 
 GruntM13AfterBattleText:
-	text "You must have ice"
-	line "in your veins to"
-	cont "dis TEAM ROCKET."
+	text "로켓단에게 이빨을 드러내다니"
+	line "무서운 것을 모른다는 것인가……"
 	done
 
 SwitchRoomText_Switch1:
-	text "It's labeled"
-	line "SWITCH 1."
+	text "스위치에 1이라고 써있다"
 	done
 
 GruntF3SeenText:
-	text "Are you lost? No,"
-	line "you can't be."
+	text "갈피를 못 잡겠니? 아니 틀리군"
 
-	para "You don't have"
-	line "that scared look."
-
-	para "I'll give you"
-	line "something to be"
-	cont "scared about!"
+	para "그런 겁에 질린 눈이 아니니까"
+	line "그럼 누나가 가르쳐주지"
+	cont "진정 무서움이란 무엇인가를!"
 	done
 
 GruntF3BeatenText:
-	text "How could you?"
+	text "뭐야 이건"
 	done
 
 GruntF3AfterBattleText:
-	text "Go wherever you'd"
-	line "like! Get lost!"
-	cont "See if I care!"
+	text "뭐 좋아"
+	line "가고싶은 곳 어디든 가서"
+	cont "헤매거라!"
 	done
 
 SwitchRoomText_OffTurnOn:
-	text "It's OFF."
-	line "Turn it ON?"
+	text "OFF로 되어있습니다만"
+	line "ON으로 하겠습니까?"
 	done
 
 SwitchRoomText_OnTurnOff:
-	text "It's ON."
-	line "Turn it OFF?"
+	text "ON으로 되어있습니다만"
+	line "OFF로 하겠습니까?"
 	done
 
 SwitchRoomText_Switch2:
-	text "It's labeled"
-	line "SWITCH 2."
+	text "스위치에 2라고 써있다"
 	done
 
 SwitchRoomText_Switch3:
-	text "It's labeled"
-	line "SWITCH 3."
+	text "스위치에 3이라고 써있다"
 	done
 
 SwitchRoomText_Emergency:
-	text "It's labeled"
-	line "EMERGENCY."
+	text "스위치에 비상용"
+	line "이라고 써있다"
 	done
 
 GoldenrodUndergroundSwitchRoomEntrances_MapEvents:

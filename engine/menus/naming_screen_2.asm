@@ -1,5 +1,3 @@
-SECTION "bank71", ROMX
-
 MACRO kr_struct
 	if _NARG > 2
 		dw \1 + (\2) << 5 + (\3) << 10

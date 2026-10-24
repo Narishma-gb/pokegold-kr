@@ -124,145 +124,113 @@ VermilionCityHiddenFullHeal:
 	hiddenitem FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
 VermilionCityTeacherText:
-	text "VERMILION PORT is"
-	line "KANTO's seaside"
-	cont "gateway."
+	text "여기 갈색시티의 항구는"
+	line "관동 바다의 입구란다"
 
-	para "Luxury liners from"
-	line "around the world"
-	cont "dock here."
+	para "외국으로부터"
+	line "호화 여객선도 왔었어"
 	done
 
 VermilionMachopOwnerText:
-	text "My #MON is"
-	line "preparing the land"
-	cont "for construction."
-
-	para "But I have no"
-	line "money to start the"
-	cont "project…"
+	text "포켓몬에게 땅을 다지게 시키는데"
+	line "정작 빌딩을 지을 돈이 없단다"
 	done
 
 VermilionMachopText1:
-	text "MACHOP: Guooh"
-	line "gogogoh!"
+	text "알통몬『알통 알통-"
 	done
 
 VermilionMachopText2:
-	text "A MACHOP is growl-"
-	line "ing while stomping"
-	cont "the ground flat."
+	text "알통몬은 끙끙거리며"
+	line "지면을 다지고있다!"
 	done
 
 VermilionCitySuperNerdText:
-	text "There are eight"
-	line "GYMS in KANTO."
+	text "관동지방에도"
+	line "8개의 체육관이 있단다"
 
-	para "That big building"
-	line "is VERMILION's"
-	cont "#MON GYM."
+	para "자 저곳의 커다란 건물이"
+	line "갈색시티의 포켓몬 체육관이다!"
 	done
 
 VermilionCitySnorlaxSleepingText:
-	text "SNORLAX is snoring"
-	line "peacefully…"
+	text "잠만보는 기분좋게"
+	line "코를 골고 있다……"
 	done
 
 VermilionCityRadioNearSnorlaxText:
-	text "The #GEAR was"
-	line "placed near the"
-	cont "sleeping SNORLAX…"
+	text "잠만보에게"
+	line "포켓기어를 들려주었다……"
 
-	para "…"
+	para "…… …… …… …… ……"
+	line " …… …… …… …… ……"
 
-	para "SNORLAX woke up!"
+	para "잠만보가 눈을 떴다!"
 	done
 
 VermilionCityBadgeGuyTrainerText:
-	text "Skilled trainers"
-	line "gather in KANTO."
+	text "관동의 체육관은"
+	line "강한 트레이너들이 모여있다"
 
-	para "GYM LEADERS are"
-	line "especially strong."
-
-	para "They won't be easy"
-	line "to defeat."
+	para "특히 체육관 관장은 강적이다"
+	line "간단하게는 이길 수 없다고 생각해"
 	done
 
 VermilionCityBadgeGuySomeBadgesText:
-	text "You've started to"
-	line "collect KANTO GYM"
-	cont "BADGES?"
+	text "관동의 체육관 배지를"
+	line "모으기 시작했구나!"
 
-	para "Don't you agree"
-	line "that the trainers"
-	cont "here are tough?"
+	para "상대하기 벅찬 트레이너가"
+	line "많이 있을꺼야!"
 	done
 
 VermilionCityBadgeGuyMostBadgesText:
-	text "I guess you'll be"
-	line "finished with your"
+	text "이제 조금만 더 하면"
+	line "관동 체육관 제패로군!"
 
-	para "conquest of KANTO"
-	line "GYMS soon."
-
-	para "Let me know if"
-	line "you get all eight"
-	cont "BADGES."
+	para "8개 전부 모았다면"
+	line "나에게 가르쳐줘!"
 	done
 
 VermilionCityBadgeGuyAllBadgesText:
-	text "Congratulations!"
+	text "축하해! 관동의 배지를"
+	line "전부 모았구나!"
 
-	para "You got all the"
-	line "KANTO GYM BADGES."
-
-	para "I've got a reward"
-	line "for your efforts."
+	para "열심히한 너에게는"
+	line "이것을 주마!"
 	done
 
 VermilionCityBadgeGuyBattleEdgeText:
-	text "Having a variety"
-	line "of #MON types"
+	text "친구들과 싸울 때는"
+	line "여러 타입을 가지고 있으면"
+	cont "유리할꺼야"
 
-	para "should give you an"
-	line "edge in battle."
-
-	para "I'm sure the KANTO"
-	line "GYM BADGES will"
-	cont "help you."
+	para "틀림없이 관동의 배지가"
+	line "도움이 될꺼라고 생각해!"
 	done
 
 VermilionCitySignText:
-	text "VERMILION CITY"
-
-	para "The Port of"
-	line "Exquisite Sunsets"
+	text "이곳은 갈색시티"
+	line "갈색은 오렌지 저녁노을의 색깔"
 	done
 
 VermilionGymSignText:
-	text "VERMILION CITY"
-	line "#MON GYM"
-	cont "LEADER: LT.SURGE"
-
-	para "The Lightning"
-	line "American"
+	text "갈색시티 포켓몬 체육관"
+	line "관장 마티스"
+	cont "번개 아메리칸"
 	done
 
 PokemonFanClubSignText:
-	text "#MON FAN CLUB"
-
-	para "All #MON Fans"
-	line "Welcome!"
+	text "여기는 포켓몬 애호가 클럽"
+	line "포켓몬을 좋아하면 누구든지 환영"
 	done
 
 VermilionCityDiglettsCaveSignText:
-	text "DIGLETT'S CAVE"
+	text "디그다의 굴"
 	done
 
 VermilionCityPortSignText:
-	text "VERMILION PORT"
-	line "ENTRANCE"
+	text "갈색시티 항구 입구"
 	done
 
 VermilionCity_MapEvents:

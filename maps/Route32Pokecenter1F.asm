@@ -44,52 +44,43 @@ Route32Pokecenter1FCooltrainerFScript:
 	jumptextfaceplayer Route32Pokecenter1FCooltrainerFText
 
 Route32Pokecenter1FFishingGuruText_Question:
-	text "This is a great"
-	line "fishing spot."
+	text "이 근처는 낚시의 명소란다"
+	line "모두가 낚고 있는 것을 보고"
+	cont "너도 낚시가 하고싶어지지?"
 
-	para "You saw people"
-	line "fishing? How"
-	cont "about you?"
-
-	para "Would you like one"
-	line "of my RODS?"
+	para "괜찮다면 내"
+	line "낚싯대를 나누어줄까?"
 	done
 
 Route32Pokecenter1FFishingGuruText_Yes:
-	text "Heh, that's good"
-	line "to hear."
-
-	para "Now you're an"
-	line "angler too!"
+	text "기쁘구나! 이것으로 너도"
+	line "낚시꾼의 동지가 되었단다"
 	done
 
 Route32Pokecenter1FFishingGuruText_GiveOldRod:
-	text "Fishing is great!"
+	text "낚시는 아주 좋아!"
 
-	para "If there's water,"
-	line "be it the sea or a"
-
-	para "stream, try out"
-	line "your ROD."
+	para "물이 있는 곳이라면"
+	line "바다든지 강이든지"
+	cont "계속 낚싯대를 사용하거라! "
 	done
 
 Route32Pokecenter1FFishingGuruText_No:
-	text "Oh. That's rather"
-	line "disappointing…"
+	text "얼라리"
+	line "그렇다면 유감이로구나"
 	done
 
 Route32Pokecenter1FFishingGuruText_After:
-	text "Yo, youngster. How"
-	line "are they biting?"
+	text "어이! 소년"
+	line "낚시는 잘 되는가?"
 	done
 
 Route32Pokecenter1FCooltrainerFText:
-	text "What should I make"
-	line "my #MON hold?"
+	text "움- 포켓몬에게"
+	line "무엇을 지니게 할까 망설여진다"
 
-	para "Maybe an item that"
-	line "increases ATTACK"
-	cont "power…"
+	para "공격력을 강하게 하는"
+	line "도구로 할까"
 	done
 
 Route32Pokecenter1F_MapEvents:

@@ -557,352 +557,243 @@ RocketBasePlayerLeavesElectrodesMovement3:
 	step_end
 
 RocketBaseExecutiveFHoldItText:
-	text "Hold it right"
-	line "there!"
+	text "거기까지다!"
 	done
 
 RocketBaseBossFThrashText:
-	text "We can't have a"
-	line "brat like you on"
-	cont "the loose."
+	text "꼬마에게 놀림을 당한다면"
+	line "로켓단의"
+	cont "프라이드에 손상이 가겠지"
 
-	para "It's harmful to"
-	line "TEAM ROCKET's"
-	cont "pride, you see."
+	para "니녀석이 얼마나 강한진 모르지만"
+	line "우리 둘을 동시에"
+	cont "상대하기는 무리겠지?"
 
-	para "However strong you"
-	line "may be, you can't"
-
-	para "take both of us at"
-	line "the same time."
-
-	para "Sorry, baby. Now"
-	line "get ready to be"
-	cont "thrashed."
+	para "미안하지만"
+	line "각오하는 것이 좋을꺼다"
 	done
 
 RocketBaseLanceShareFunText:
-	text "Hey! Don't be so"
-	line "selfish. Spread"
-	cont "the fun around."
+	text "그런말 하지말고"
+	line "어디서든 놀아주지 않겠어?"
 	done
 
 RocketBaseBossDontMeddleText:
-	text "What? You had an"
-	line "accomplice?"
+	text "동료가 있었군"
+	line "마음에 들지 않아"
 
-	para "Where is your"
-	line "sense of honor?"
+	para "비주기님이 안 계시는 것을 대신해"
+	line "내가 한수 가르쳐주지"
 
-	para "As the interim"
-	line "boss in place of"
-
-	para "GIOVANNI, I'll"
-	line "show you how wrong"
-
-	para "it is to meddle"
-	line "with TEAM ROCKET!"
+	para "로켓단에 덤벼들면"
+	line "어떻게 된다는 것을!"
 	done
 
 RocketBaseBossWinText:
-	text "Tch, you really"
-	line "are strong."
+	text "어머 강하군"
 
-	para "It's too bad."
-
-	para "If you were to"
-	line "join TEAM ROCKET,"
-
-	para "you could become"
-	line "an EXECUTIVE."
+	para "안타깝네"
+	line "니가 로켓단에 있었다면"
+	cont "간부가 될 수 있었을 텐데"
 	done
 
 RocketBaseBossRetreatText:
-	text "…This hideout is"
-	line "done for…"
+	text "…… 이 아지트도 끝이로군"
 
-	para "But that's fine."
-	line "The broadcast ex-"
-	cont "periment was a"
-	cont "total success."
+	para "뭐 좋아"
+	line "전파의 실험도"
+	cont "잘 되었던 것 같고"
+	cont "이따위 아지트 어떻게되던 상관없어"
 
-	para "It doesn't matter"
-	line "what happens to"
-	cont "this hideout now."
+	para "우리들의"
+	line "목표는 더욱 위대하다"
 
-	para "We have much big-"
-	line "ger plans."
+	para "로켓단의 무서움을"
+	line "조만간에 알 수 있도록 해주겠다"
 
-	para "You'll come to"
-	line "appreciate TEAM"
-
-	para "ROCKET's true"
-	line "power soon enough."
-
-	para "Enjoy yourself"
-	line "while you can…"
-
-	para "Fufufufu…"
+	para "그때를 즐겁게 기다려라……"
+	line "후후후"
 	done
 
 RocketBaseLancePostBattleText:
-	text "LANCE: That did"
-	line "it. We defeated"
+	text "목호『후우 이것으로"
+	line "아지트 안의 로켓단원의"
+	cont "모두를 쓰러뜨린건가!"
 
-	para "all the ROCKETS"
-	line "here."
-
-	para "But I'm concerned"
-	line "about the young"
-
-	para "guy I battled in"
-	line "the process…"
+	para "도중에 싸웠던"
+	line "소년이 걱정되는데……"
 	done
 
 RocketBaseLancePowerOffText:
-	text "Sorry, <PLAYER>."
-	line "I saw how well you"
+	text "미안했다 <PLAYER>군"
+	line "네가 열심히 싸우는 것을 보고"
+	cont "약간은 내가 나설 때를 기다렸단다"
 
-	para "were doing, so I"
-	line "just hung back."
-
-	para "Now all there is"
-	line "left to do is to"
-
-	para "turn off that odd"
-	line "radio signal."
+	para "그건 그렇고 다음은"
+	line "이상한 전파를 멈추는 것뿐인가……"
 	done
 
 RockerBaseLanceElectrodeFaintText:
-	text "It's this machine"
-	line "that's causing all"
-	cont "the problems."
+	text "이것이 장치……"
+	line "스위치는 발견되지 않는군"
 
-	para "I don't see a"
-	line "switch on it…"
+	para "어쩔 수 없다"
+	line "붐볼을 기절시켜보자"
 
-	para "We have no choice."
-	line "We have to make"
+	para "그렇게하면 이상한"
+	line "전파도 나오지 않게 되겠지"
 
-	para "all the ELECTRODE"
-	line "faint."
+	para "포켓몬이 나쁜 것은 아니니까"
+	line "약간은 걱정이 되지만"
 
-	para "That should stop"
-	line "this machine from"
-
-	para "transmitting that"
-	line "strange signal."
-
-	para "It's no fault of"
-	line "the #MON, so it"
-
-	para "makes me feel"
-	line "guilty."
-
-	para "<PLAYER>, let's"
-	line "split the job."
+	para "<PLAYER>군"
+	line "반씩 나눠서 해보자"
 	done
 
 RocketBaseLancesSideText:
-	text "LANCE: Leave this"
-	line "side to me."
+	text "목호『이쪽은 나에게 맡겨 줘"
 	done
 
 RocketBaseLanceElectrodeDoneText:
-	text "LANCE: That odd"
-	line "signal has finally"
-	cont "stopped."
+	text "목호『드디어"
+	line "이상한 전파가 멈췄다"
 
-	para "The LAKE should be"
-	line "back to normal."
+	para "이것으로 호수도"
+	line "원래의 모습으로 돌아오겠지"
+	cont "이게 다 네 덕분이야"
 
-	para "You're the hero!"
-	line "Let me thank you"
+	para "포켓몬을 대신해서"
+	line "고맙다는 말을 하지!"
 
-	para "on behalf of all"
-	line "the #MON."
+	para "그래!"
+	line "이걸 가지고가!"
 
-	para "Oh, yes. You"
-	line "should take this."
-
-	para "I found it here,"
-	line "but I don't have"
-	cont "any need for it."
+	para "좀전에 발견한 것인데"
+	line "내게는 필요 없으니까"
 	done
 
 RocketBaseReceivedHM06Text: ; unreferenced
-	text "<PLAYER> received"
-	line "HM06."
+	text "<PLAYER>는(은) 목호에게서"
+	line "비전머신06을 얻었다!"
 	done
 
 RocketBaseLanceWhirlpoolText:
-	text "That's WHIRLPOOL."
-	line "Teach it to a"
+	text "그것은 바다 회오리!"
 
-	para "#MON to get"
-	line "across wild water."
+	para "포켓몬에게 가르치면"
+	line "거친 바다 위라도 나아갈 수 있어"
 
-	para "But keep this in"
-	line "mind."
-
-	para "You can use that"
-	line "out of battle only"
-
-	para "with the BADGE"
-	line "from MAHOGANY GYM."
+	para "하지만 황토마을의"
+	line "체육관 배지를 지니고 있지 않으면"
+	cont "사용할 수 없으니까 주의해"
 	done
 
 RocketBaseLanceMonMasterText:
-	text "<PLAYER>…"
+	text "<PLAYER>군!"
 
-	para "The journey to be-"
-	line "coming the #MON"
+	para "포켓몬 마스터에의"
+	line "길은 멀고도 험난하다고 말한다……"
+	cont "그래도 목표로 삼을 텐가?"
 
-	para "MASTER is long and"
-	line "difficult."
+	para "…… …… …… ……"
+	line "그래"
+	cont "그렇겠지"
 
-	para "Knowing that, will"
-	line "you keep going?"
+	para "포기할 정도라면"
+	line "처음부터 꿈을 갖지 않았겠지"
 
-	para "…"
-
-	para "I see. No, you're"
-	line "right."
-
-	para "If you would give"
-	line "up that easily,"
-
-	para "you would have"
-	line "never chased that"
-
-	para "dream in the first"
-	line "place."
-
-	para "I look forward to"
-	line "seeing you again!"
+	para "자 그럼 또 만나자!"
 	done
 
 LanceHealsText1:
-	text "LANCE: Are you all"
-	line "right?"
+	text "목호『견딜만 하니?"
 
-	para "Your #MON are"
-	line "hurt and tired."
-
-	para "Here, give them"
-	line "some of my medi-"
-	cont "cine."
+	para "너의 포켓몬"
+	line "대부분 상처를 입은 것 같군"
+	cont "내 약을 나누어주마"
 	done
 
 LanceHealsText2:
-	text "LANCE: <PLAYER>,"
-	line "let's give it our"
-	cont "best for #MON."
+	text "목호『자- <PLAYER>군"
+	line "포켓몬을 위하여 힘을 내자!"
 	done
 
 GruntM17SeenText:
-	text "The door won't"
-	line "open?"
+	text "문이 열리지 않는다구?"
 
-	para "Well, duh."
-	line "It has to have a"
-
-	para "password that only"
-	line "TEAM ROCKET knows."
+	para "그건 그럴꺼다"
+	line "로켓단만이 알고있는"
+	cont "패스워드가 필요하기 때문이지"
 	done
 
 GruntM17BeatenText:
-	text "What? I lost?"
+	text "져 졌나?"
 	done
 
 GruntM17AfterBattleText:
-	text "Heh, I'm just a"
-	line "GRUNT."
-
-	para "I don't know the"
-	line "password. Too bad"
-	cont "for you."
+	text "나는 조무래기에 불과하니까"
+	line "패스워드는 가르쳐주지 않았어"
+	cont "안됐군"
 	done
 
 GruntM18SeenText:
-	text "Oh, a kid? I don't"
-	line "really like this,"
-
-	para "but eliminate you"
-	line "I must."
+	text "우우 꼬맹인가……"
+	line "어쩐지 좋지않은 기분이"
+	cont "방해물은 쓰러뜨리지 않으면!"
 	done
 
 GruntM18BeatenText:
-	text "I knew I'd lose…"
+	text "우우 역시 졌다"
 	done
 
 GruntM18AfterBattleText:
-	text "I got wiped out on"
-	line "the last mission"
-	cont "by a kid too."
-
-	para "When we were ab-"
-	line "ducting #MON,"
-
-	para "this kid with long"
-	line "red hair and mean-"
-
-	para "looking eyes just"
-	line "creamed me…"
+	text "우우 요전의 임무로"
+	line "포켓몬을 훔칠 때도"
+	cont "눈매가 날카로운"
+	cont "빨갛고 긴머리의 꼬맹이에게"
+	cont "엄청나게 당했었는데……"
 	done
 
 GruntM19SeenText:
-	text "You rotten little"
-	line "pest!"
+	text "갈팡질팡하면 눈에 거슬리잖아!"
 	done
 
 GruntM19BeatenText:
-	text "Grrrr…"
+	text "우아아아……"
 	done
 
 GruntM19AfterBattleText:
-	text "Heh, only the boss"
-	line "knows the password"
-	cont "for that door."
+	text "그쪽 문의 패스워드를"
+	line "알고있는 것은 두목뿐이다"
 
-	para "Where's the boss?"
-	line "Who knows? Go look"
-	cont "for yourself."
+	para "두목이 있는 곳?"
+	line "글쎄 직접 찾아보시지"
 	done
 
 RocketBaseDoorNoPasswordText:
-	text "The door's closed…"
+	text "문이 닫혀있다……"
 
-	para "It needs a pass-"
-	line "word to open."
+	para "열기 위해서는"
+	line "패스워드 1개가 필요하다"
 	done
 
 RocketBaseDoorKnowPasswordText:
-	text "The door's closed…"
+	text "문이 닫혀있다……"
 
-	para "<PLAYER> entered"
-	line "the password."
+	para "<PLAYER>는(은)"
+	line "패스워드를 입력했다"
 
-	para "The door opened!"
+	para "문이 열렸다!"
 	done
 
 RocketBaseB2FTransmitterText:
-	text "It's the radio"
-	line "transmitter that's"
-
-	para "sending the"
-	line "sinister signal."
-
-	para "It's working at"
-	line "full capacity."
+	text "괴전파 발생장치"
+	line "쩌렁쩌렁 동작하고 있다"
 	done
 
 RocketBaseB2FDeactivateTransmitterText:
-	text "The radio trans-"
-	line "mitter has finally"
-
-	para "stopped its evil"
-	line "broadcast."
+	text "괴전파 발생장치"
+	line "어쩐지 멈춘 것 같다"
 	done
 
 TeamRocketBaseB2F_MapEvents:

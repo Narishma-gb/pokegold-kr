@@ -10,10 +10,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 - The whole repository structure, most ASM files, tools and build scripts originate from pret [**pokegold**][pokegold].
 - [**Emulicious**][emulicious] debugger features have been invaluable, navigating the ROM to look for differences with the US release.
-
-## Note
-
-The base ROMs of Gold & Silver are required to build, these should be placed at the top-level directory: `baserom_g.bin` and `baserom_s.bin`.
+- The Korean character map was sourced from [**Bulbapedia**][bulbapedia], which lists all Hangul and Jamo codepoints.
 
 [pokegold]: https://github.com/pret/pokegold
-[emulicious]:https://www.emulicious.net
+[emulicious]: https://www.emulicious.net
+[bulbapedia]: https://bulbapedia.bulbagarden.net/wiki/Korean_character_encoding_(Generation_II)

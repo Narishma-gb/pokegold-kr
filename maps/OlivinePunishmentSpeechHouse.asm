@@ -20,21 +20,16 @@ OlivinePunishmentSpeechHouseBookshelf1:
 	jumpstd MagazineBookshelfScript
 
 OlivinePunishmentSpeechHouseDadText:
-	text "Along the way to"
-	line "CIANWOOD, there"
+	text "진청시티에 가는 도중에"
+	line "4개의 무인도가 있단다"
 
-	para "are four deserted"
-	line "islands."
-
-	para "Bad kids are taken"
-	line "to the islands as"
-	cont "punishment!"
+	para "나쁜 아이는 벌을 주려고"
+	line "그 섬에 데리고 간데"
 	done
 
 OlivinePunishmentSpeechHouseDaughterText:
-	text "Whenever I get in"
-	line "trouble, Daddy"
-	cont "always scares me."
+	text "내가 장난을 치면"
+	line "아빠는 바로 나를 놀래켜…"
 	done
 
 OlivinePunishmentSpeechHouse_MapEvents:
