@@ -123,9 +123,9 @@ GoldenrodGameCornerTMVendorMenuHeader:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "기술머신25  5500@"
-	db "기술머신14  5500@"
-	db "기술머신38  5500@"
+	db "기술머신25  {4d:GOLDENRODGAMECORNER_TM25_COINS}@"
+	db "기술머신14  {4d:GOLDENRODGAMECORNER_TM14_COINS}@"
+	db "기술머신38  {4d:GOLDENRODGAMECORNER_TM38_COINS}@"
 	db "그만두다@"
 
 GoldenrodGameCornerPrizeMonVendorScript:
@@ -212,9 +212,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .Gold_MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "캐이시      200@"
-	db "아보       700@"
-	db "미뇽      2100@"
+	db "캐이시     {4d:GOLDENRODGAMECORNER_ABRA_COINS}@"
+	db "아보      {4d:GOLDENRODGAMECORNER_EKANS_COINS}@"
+	db "미뇽      {4d:GOLDENRODGAMECORNER_DRATINI_COINS}@"
 	db "그만두다@"
 
 .Silver_Loop:
@@ -291,9 +291,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .Silver_MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "캐이시      200@"
-	db "모래두지     700@"
-	db "미뇽      2100@"
+	db "캐이시     {4d:GOLDENRODGAMECORNER_ABRA_COINS}@"
+	db "모래두지    {4d:GOLDENRODGAMECORNER_SANDSHREW_COINS}@"
+	db "미뇽      {4d:GOLDENRODGAMECORNER_DRATINI_COINS}@"
 	db "그만두다@"
 
 GoldenrodGameCornerPharmacistScript:

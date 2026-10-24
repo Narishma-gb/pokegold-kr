@@ -6,7 +6,7 @@ DisplayDMGErrorScreen:
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call ClearTilemap
-	ld a, HIGH(vBGMap0)
+	ld a, HIGH(vTilemap0)
 	ldh [hBGMapAddress + 1], a
 	xor a
 	ldh [hBGMapAddress], a

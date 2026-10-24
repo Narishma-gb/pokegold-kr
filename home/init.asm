@@ -107,9 +107,9 @@ Init::
 
 	callfar InitCGBPals
 
-	ld a, HIGH(vBGMap1)
+	ld a, HIGH(vTilemap1)
 	ldh [hBGMapAddress + 1], a
-	xor a ; LOW(vBGMap1)
+	xor a ; LOW(vTilemap1)
 	ldh [hBGMapAddress], a
 
 	farcall StartClock

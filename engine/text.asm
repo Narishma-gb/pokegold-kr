@@ -404,7 +404,7 @@ _DrawHangulChar::
 
 .start_HBlank_DMA
 	di
-	ld a, BANK(vBGMap2)
+	ld a, BANK(vAttrmap0)
 	ldh [rVBK], a
 	ld a, $02
 	ldh [rWBK], a
@@ -424,14 +424,14 @@ _DrawHangulChar::
 
 	ld a, $01
 	ldh [rWBK], a
-	ld a, BANK(vBGMap0)
+	ld a, BANK(vTilemap0)
 	ldh [rVBK], a
 	ei
 	ret
 
 .general_purpose_DMA
 	di
-	ld a, BANK(vBGMap2)
+	ld a, BANK(vAttrmap0)
 	ldh [rVBK], a
 	ld a, $02
 	ldh [rWBK], a
@@ -439,7 +439,7 @@ _DrawHangulChar::
 	ldh [rVDMA_LEN], a
 	ld a, $01
 	ldh [rWBK], a
-	ld a, BANK(vBGMap0)
+	ld a, BANK(vTilemap0)
 	ldh [rVBK], a
 	ei
 	ret

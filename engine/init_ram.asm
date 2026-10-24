@@ -16,15 +16,15 @@ ClearHRAM::
 	ret
 
 BlankAllBGMaps::
-	ld hl, vBGMap0
+	ld hl, vTilemap0
 	call .BlankBGMap
-	ld hl, vBGMap1
+	ld hl, vTilemap1
 	call .BlankBGMap
 	ret
 
 .BlankBGMap:
 	ld a, ' '
-	ld de, vBGMap1 - vBGMap0
+	ld de, vTilemap1 - vTilemap0
 .loop
 	ld [hli], a
 	dec e

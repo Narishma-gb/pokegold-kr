@@ -25,7 +25,7 @@ LinkCommunications:
 	hlcoord 7, 10
 	ld de, String_PleaseWait
 	call PlaceString
-	call WaitTop
+	call FinishBGMapTransfer
 	ld hl, wLinkByteTimeout
 	assert LOW(SERIAL_LINK_BYTE_TIMEOUT) == 0
 	xor a ; LOW(SERIAL_LINK_BYTE_TIMEOUT)
@@ -1976,7 +1976,7 @@ LinkTrade:
 	hlcoord 1, 14
 	ld de, String_TradeCompleted
 	call PlaceString
-	call WaitTop
+	call FinishBGMapTransfer
 	vc_hook Trade_save_game_end
 	ld c, 50
 	call DelayFrames
