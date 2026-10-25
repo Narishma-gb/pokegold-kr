@@ -65,6 +65,7 @@ PrintDiplomaPage2:
 	ld bc, SCREEN_AREA
 	ld a, ' '
 	call ByteFill
+	call Function14a2
 	ld hl, DiplomaPage2Tilemap
 	decoord 0, 0
 	ld bc, SCREEN_AREA

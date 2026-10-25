@@ -34,12 +34,14 @@ GameFreakGameDesignerScript:
 GameFreakGraphicArtistScript:
 	faceplayer
 	opentext
+	checkevent EVENT_ENABLE_DIPLOMA_PRINTING
+	iftrue .CanPrintDiploma
 	writetext GameFreakGraphicArtistText
 	waitbutton
 	closetext
 	end
 
-.CanPrintDiploma: ; unreferenced
+.CanPrintDiploma:
 	writetext GameFreakGraphicArtistPrintDiplomaText
 	yesorno
 	iffalse .Refused

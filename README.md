@@ -2,7 +2,13 @@
 
 This is a WIP disassembly of 포켓몬스터 금·은.
 
-This branch aims to restore the deleted GB Printer features. Currently WIP.
+* This branch aims to restore the deleted GB Printer features:
+  - Pokédex entries
+  - Pokémon PC Box
+  - Photo Studio
+  - Diploma
+  - Mail
+  - Alph Ruins Stamps
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
